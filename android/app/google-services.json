@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "414736215528",
+    "project_id": "shaoniapp",
+    "storage_bucket": "shaoniapp.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:414736215528:android:36da94caa2a03c973d485d",
+        "android_client_info": {
+          "package_name": "com.shaoni.shaoni"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD8LPtuAccG6JJZqXhZwoHGpEntmkf2ew8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

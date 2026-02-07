@@ -1,0 +1,1057 @@
+// DO NOT EDIT. This is code generated via package:intl/generate_localized.dart
+// This is a library that provides messages for a en locale. All the
+// messages from the main program should be duplicated here with the same
+// function name.
+
+// Ignore issues from commonly used lints in this file.
+// ignore_for_file:unnecessary_brace_in_string_interps, unnecessary_new
+// ignore_for_file:prefer_single_quotes,comment_references, directives_ordering
+// ignore_for_file:annotate_overrides,prefer_generic_function_type_aliases
+// ignore_for_file:unused_import, file_names, avoid_escaping_inner_quotes
+// ignore_for_file:unnecessary_string_interpolations, unnecessary_string_escapes
+
+import 'package:intl/intl.dart';
+import 'package:intl/message_lookup_by_library.dart';
+
+final messages = new MessageLookup();
+
+typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
+
+class MessageLookup extends MessageLookupByLibrary {
+  String get localeName => 'en';
+
+  final messages = _notInlinedMessages(_notInlinedMessages);
+  static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+    "Application": MessageLookupByLibrary.simpleMessage("Application"),
+    "OutOfGroup": MessageLookupByLibrary.simpleMessage("Out of Group"),
+    "SearchInQuestions": MessageLookupByLibrary.simpleMessage(
+      "Search in questions",
+    ),
+    "Showing": MessageLookupByLibrary.simpleMessage("Showing"),
+    "abd": MessageLookupByLibrary.simpleMessage("Abdelsalam Sleim"),
+    "aboutApp": MessageLookupByLibrary.simpleMessage("About us"),
+    "ac": MessageLookupByLibrary.simpleMessage("Arafa Camps"),
+    "accDetails": MessageLookupByLibrary.simpleMessage("Account Details"),
+    "accepted": MessageLookupByLibrary.simpleMessage("Accepted"),
+    "acceptedBody": MessageLookupByLibrary.simpleMessage(
+      "Your order is Accepted",
+    ),
+    "according": MessageLookupByLibrary.simpleMessage(
+      "According to the local time of ",
+    ),
+    "accountDeleted": MessageLookupByLibrary.simpleMessage("Account Deleted"),
+    "acg": MessageLookupByLibrary.simpleMessage("Activity Guide"),
+    "actMeal": MessageLookupByLibrary.simpleMessage("Activities Meals"),
+    "activities": MessageLookupByLibrary.simpleMessage("Activities"),
+    "activity": MessageLookupByLibrary.simpleMessage("Activity"),
+    "activityPhases": MessageLookupByLibrary.simpleMessage("Activity Phases"),
+    "addEmail": MessageLookupByLibrary.simpleMessage("Add New Email"),
+    "addNew": MessageLookupByLibrary.simpleMessage(" Add New"),
+    "addNewAddress": MessageLookupByLibrary.simpleMessage("Add Address"),
+    "addPassword": MessageLookupByLibrary.simpleMessage("Add New Password"),
+    "addReq": MessageLookupByLibrary.simpleMessage("Add New Request"),
+    "addToCart": MessageLookupByLibrary.simpleMessage("Add To Cart"),
+    "address": MessageLookupByLibrary.simpleMessage("Shipping Address"),
+    "addressDetails": MessageLookupByLibrary.simpleMessage("Address Details"),
+    "addressListTitle": MessageLookupByLibrary.simpleMessage(
+      "You can add more than one address for more than branch",
+    ),
+    "agentCode": MessageLookupByLibrary.simpleMessage("Agent Code (Optional)"),
+    "allergies": MessageLookupByLibrary.simpleMessage("Allergies"),
+    "allergiesPr": MessageLookupByLibrary.simpleMessage("Allergies Problems"),
+    "alreadyYouHaveAccount": MessageLookupByLibrary.simpleMessage(
+      "already you have an account ?",
+    ),
+    "alsoAvailable": MessageLookupByLibrary.simpleMessage(
+      "Also Available In :",
+    ),
+    "amount": MessageLookupByLibrary.simpleMessage("The amount"),
+    "angleDevice": MessageLookupByLibrary.simpleMessage("Device Angle"),
+    "angleQibla": MessageLookupByLibrary.simpleMessage("Qibla Angle"),
+    "appName": MessageLookupByLibrary.simpleMessage("teaa"),
+    "appTitle": MessageLookupByLibrary.simpleMessage("Teaa Client"),
+    "arabic": MessageLookupByLibrary.simpleMessage("Arabic"),
+    "arrDate": MessageLookupByLibrary.simpleMessage("Arrival Date"),
+    "arrDe": MessageLookupByLibrary.simpleMessage("Arrival & Departure Info. "),
+    "arrFli": MessageLookupByLibrary.simpleMessage("Arrival Flight No."),
+    "arrival": MessageLookupByLibrary.simpleMessage("Arrival"),
+    "as": MessageLookupByLibrary.simpleMessage("as"),
+    "asian": MessageLookupByLibrary.simpleMessage("Asian"),
+    "askDelete": MessageLookupByLibrary.simpleMessage(
+      "Are you sure you want to delete your account?",
+    ),
+    "asr": MessageLookupByLibrary.simpleMessage("Asr"),
+    "avaiableToLoan": MessageLookupByLibrary.simpleMessage("avaliable to loan"),
+    "avaliableItemCount": MessageLookupByLibrary.simpleMessage(
+      "avaliable Itmes",
+    ),
+    "ayahs": MessageLookupByLibrary.simpleMessage("Ayahs"),
+    "back": MessageLookupByLibrary.simpleMessage("Back"),
+    "backToHome": MessageLookupByLibrary.simpleMessage("Back To Home"),
+    "bagDetails": MessageLookupByLibrary.simpleMessage("Bag Details:"),
+    "bestDestination": MessageLookupByLibrary.simpleMessage(
+      "Best destinations",
+    ),
+    "bestDestinations": MessageLookupByLibrary.simpleMessage(
+      "Best Destinations",
+    ),
+    "bestOffers": MessageLookupByLibrary.simpleMessage("Best Offers"),
+    "bookNow": MessageLookupByLibrary.simpleMessage("Book Now"),
+    "bookmarked": MessageLookupByLibrary.simpleMessage("bookmarked"),
+    "breakfast": MessageLookupByLibrary.simpleMessage("Breakfast"),
+    "buffet": MessageLookupByLibrary.simpleMessage("Open Buffet"),
+    "buildingNumber": MessageLookupByLibrary.simpleMessage("Building Number"),
+    "bus": MessageLookupByLibrary.simpleMessage("Buses"),
+    "buyNow": MessageLookupByLibrary.simpleMessage("Buy Now"),
+    "buyingLimit": MessageLookupByLibrary.simpleMessage(
+      "You cannot buy for less than 500 pounds",
+    ),
+    "byClickYourAgreeTerms": MessageLookupByLibrary.simpleMessage(
+      "By clicking on the button, you agree to our ",
+    ),
+    "callUs": MessageLookupByLibrary.simpleMessage("Call us"),
+    "camera": MessageLookupByLibrary.simpleMessage("Camera"),
+    "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
+    "cancleOrder": MessageLookupByLibrary.simpleMessage("Cancle The Order"),
+    "cancleOrderBody": MessageLookupByLibrary.simpleMessage(
+      "are you sure that you want to cancle this order",
+    ),
+    "cart": MessageLookupByLibrary.simpleMessage("Cart"),
+    "cashBack": MessageLookupByLibrary.simpleMessage("Cash Back"),
+    "cashOnDelivery": MessageLookupByLibrary.simpleMessage("Cash on Delivery"),
+    "cashOnDeliveryScreen": MessageLookupByLibrary.simpleMessage(
+      "Cash on Delivery Screen",
+    ),
+    "cashOnDeliverydes": MessageLookupByLibrary.simpleMessage(
+      "You will pay when you receive the order",
+    ),
+    "cat": MessageLookupByLibrary.simpleMessage("Category: "),
+    "categories": MessageLookupByLibrary.simpleMessage("Categories"),
+    "category": MessageLookupByLibrary.simpleMessage("Category"),
+    "change": MessageLookupByLibrary.simpleMessage("change"),
+    "changeColor": MessageLookupByLibrary.simpleMessage("Change Color"),
+    "chatUs": MessageLookupByLibrary.simpleMessage("Chat US"),
+    "checkOut": MessageLookupByLibrary.simpleMessage("Check Out"),
+    "chooseImage": MessageLookupByLibrary.simpleMessage("Choose Image"),
+    "choosePaymentMethod": MessageLookupByLibrary.simpleMessage(
+      "Payment Method",
+    ),
+    "city": MessageLookupByLibrary.simpleMessage("The City of Mecca"),
+    "cityAr": MessageLookupByLibrary.simpleMessage(
+      "City of Residence ( Arrival )",
+    ),
+    "cityDep": MessageLookupByLibrary.simpleMessage(
+      "City of Residence ( Departure )",
+    ),
+    "code": MessageLookupByLibrary.simpleMessage(
+      "Scan QR Code for profile Information",
+    ),
+    "color": MessageLookupByLibrary.simpleMessage("Color"),
+    "companies": MessageLookupByLibrary.simpleMessage("companies"),
+    "company": MessageLookupByLibrary.simpleMessage("Company"),
+    "comparePrice": MessageLookupByLibrary.simpleMessage("Compare Price"),
+    "compass": MessageLookupByLibrary.simpleMessage("compass"),
+    "completed": MessageLookupByLibrary.simpleMessage("Completed"),
+    "confirm": MessageLookupByLibrary.simpleMessage("Confirm "),
+    "confirmAddress": MessageLookupByLibrary.simpleMessage("Confirm Address"),
+    "confirmEmail": MessageLookupByLibrary.simpleMessage("Confirm Email"),
+    "confirmExitMessage": MessageLookupByLibrary.simpleMessage(
+      "Are you sure you want to exit the app?",
+    ),
+    "confirmPass": MessageLookupByLibrary.simpleMessage("Confirm Password"),
+    "confirmPassword": MessageLookupByLibrary.simpleMessage("Confirm password"),
+    "confirmPayment": MessageLookupByLibrary.simpleMessage("Confirm Payment"),
+    "congrats": MessageLookupByLibrary.simpleMessage("Congratulation"),
+    "contactWithClient": MessageLookupByLibrary.simpleMessage(
+      "Contact  With Client",
+    ),
+    "continueButton": MessageLookupByLibrary.simpleMessage("Continue"),
+    "continuePayment": MessageLookupByLibrary.simpleMessage("Continue Payment"),
+    "continueShoping": MessageLookupByLibrary.simpleMessage("continue"),
+    "continuee": MessageLookupByLibrary.simpleMessage("continue"),
+    "contvertTo": MessageLookupByLibrary.simpleMessage(
+      "You Can Convert Your Points To :  ",
+    ),
+    "coontinue": MessageLookupByLibrary.simpleMessage("Continue"),
+    "cost": MessageLookupByLibrary.simpleMessage("The Cost"),
+    "createAccount": MessageLookupByLibrary.simpleMessage("New "),
+    "createNewPassword": MessageLookupByLibrary.simpleMessage(
+      "Create New Password",
+    ),
+    "creditCard": MessageLookupByLibrary.simpleMessage("Credit Card"),
+    "creditCardPaymentScreen": MessageLookupByLibrary.simpleMessage(
+      "Credit Card Payment Screen",
+    ),
+    "creditCarddes": MessageLookupByLibrary.simpleMessage(
+      "pay using your credit card ",
+    ),
+    "currentEvent": MessageLookupByLibrary.simpleMessage("Current Events"),
+    "currentLocation": MessageLookupByLibrary.simpleMessage("Current Location"),
+    "currentRequest": MessageLookupByLibrary.simpleMessage("Current Requests"),
+    "currentlyDownloadingSurahes": MessageLookupByLibrary.simpleMessage(
+      "Currently downloading Surahes. Please wait...",
+    ),
+    "customerStagnantItems": MessageLookupByLibrary.simpleMessage(
+      "Customer\'s Stagnant Items.....You can browse stagnant items at other pharmacies in your area and repurchase them",
+    ),
+    "da": MessageLookupByLibrary.simpleMessage("Date: "),
+    "date05": MessageLookupByLibrary.simpleMessage("05/17/2024  06:30PM"),
+    "date15": MessageLookupByLibrary.simpleMessage("15/04/2024"),
+    "dateBirth": MessageLookupByLibrary.simpleMessage("Date of Brith"),
+    "delayedCash": MessageLookupByLibrary.simpleMessage("Delayed Cash"),
+    "delayedCashDes": MessageLookupByLibrary.simpleMessage(
+      "buy now and buy later ",
+    ),
+    "delayedCashScreen": MessageLookupByLibrary.simpleMessage(
+      "Delayed Cash Payment Screen",
+    ),
+    "delayedCashScreenDesTime": MessageLookupByLibrary.simpleMessage(
+      "You have 30 days to repay the debt",
+    ),
+    "deleteAccount": MessageLookupByLibrary.simpleMessage("Delete My Account"),
+    "deleteBody": MessageLookupByLibrary.simpleMessage(
+      "This action is irreversible. All your data will be lost, and you will not be able to recover it.",
+    ),
+    "delivered": MessageLookupByLibrary.simpleMessage("Delivered"),
+    "deliveredBody": MessageLookupByLibrary.simpleMessage(
+      "Your order is Delivered please call us for any problems",
+    ),
+    "dency": MessageLookupByLibrary.simpleMessage("Residency"),
+    "depDate": MessageLookupByLibrary.simpleMessage("Departure Date"),
+    "depFli": MessageLookupByLibrary.simpleMessage("Departure Flight No."),
+    "depart": MessageLookupByLibrary.simpleMessage("Depart to Mina"),
+    "des": MessageLookupByLibrary.simpleMessage("Description"),
+    "desc": MessageLookupByLibrary.simpleMessage("Description:"),
+    "description": MessageLookupByLibrary.simpleMessage("Description"),
+    "design": MessageLookupByLibrary.simpleMessage("Design & Development By"),
+    "designDevelopmentBy": MessageLookupByLibrary.simpleMessage(
+      "Design & Development By",
+    ),
+    "details": MessageLookupByLibrary.simpleMessage("Details"),
+    "deviceAngle": MessageLookupByLibrary.simpleMessage("Device Angle"),
+    "dhuhr": MessageLookupByLibrary.simpleMessage("Dhuhr"),
+    "dinner": MessageLookupByLibrary.simpleMessage("Dinner"),
+    "direction": MessageLookupByLibrary.simpleMessage("To Get Qibla Direction"),
+    "discont": MessageLookupByLibrary.simpleMessage("discont"),
+    "diseases": MessageLookupByLibrary.simpleMessage("Diseases"),
+    "diseasesPr": MessageLookupByLibrary.simpleMessage("Diseases Problems"),
+    "diseasesWrite": MessageLookupByLibrary.simpleMessage(
+      "write if you have any diseases problems",
+    ),
+    "does": MessageLookupByLibrary.simpleMessage(
+      "Dose user need any special assistance ?",
+    ),
+    "done": MessageLookupByLibrary.simpleMessage("Done"),
+    "dontHaveAccont": MessageLookupByLibrary.simpleMessage(
+      "Don’t have an account?",
+    ),
+    "downloadQuranApp": MessageLookupByLibrary.simpleMessage(
+      "Download Quran App",
+    ),
+    "downloadingQuran": MessageLookupByLibrary.simpleMessage(
+      "Downloading Quran data...",
+    ),
+    "duis": MessageLookupByLibrary.simpleMessage(
+      "   Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatu",
+    ),
+    "eMail": MessageLookupByLibrary.simpleMessage("E-mail"),
+    "editProduct": MessageLookupByLibrary.simpleMessage("Edit The Product"),
+    "eggs": MessageLookupByLibrary.simpleMessage(
+      "Omelets eggs + green salad + Bread",
+    ),
+    "egy": MessageLookupByLibrary.simpleMessage("Egyptian"),
+    "ejad": MessageLookupByLibrary.simpleMessage("Ejad Digital Solutions co"),
+    "ejadDigitalSolutions": MessageLookupByLibrary.simpleMessage(
+      "EJAD Digital Solutions co",
+    ),
+    "elSalah": MessageLookupByLibrary.simpleMessage("El Salah"),
+    "email": MessageLookupByLibrary.simpleMessage("Email"),
+    "emailPasswordSend": MessageLookupByLibrary.simpleMessage(
+      "The Reset Code is Sent",
+    ),
+    "english": MessageLookupByLibrary.simpleMessage("English"),
+    "enimad": MessageLookupByLibrary.simpleMessage(
+      "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo con \\n\\nDuis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatu",
+    ),
+    "enr": MessageLookupByLibrary.simpleMessage("Enrichment"),
+    "enterDes": MessageLookupByLibrary.simpleMessage(
+      "enter a description of bag",
+    ),
+    "enterEmailToResetPassword": MessageLookupByLibrary.simpleMessage(
+      "Enter Your E-mail to Reset Your Password",
+    ),
+    "enterMobileWallet": MessageLookupByLibrary.simpleMessage(
+      "Enter The Mobile Wallet Number",
+    ),
+    "enterOtp": MessageLookupByLibrary.simpleMessage(
+      "Enter The Verification Code which sent on Your E-mail",
+    ),
+    "enterPhoneDescription": MessageLookupByLibrary.simpleMessage(
+      "Enter your phone number to receive verification code",
+    ),
+    "enterPhoneNumber": MessageLookupByLibrary.simpleMessage(
+      "Enter phone number",
+    ),
+    "enterpharmaceuticalName": MessageLookupByLibrary.simpleMessage(
+      "Enter Pharmaceutical Name",
+    ),
+    "error": MessageLookupByLibrary.simpleMessage("there is an error"),
+    "eveningShift": MessageLookupByLibrary.simpleMessage(
+      "evening shift Number",
+    ),
+    "excellent": MessageLookupByLibrary.simpleMessage("Excellent"),
+    "exitApp": MessageLookupByLibrary.simpleMessage("Exit App"),
+    "expiredProducts": MessageLookupByLibrary.simpleMessage(
+      "Expired Products or Expired Items.......Dispose of expired items by uploading expired or damaged products",
+    ),
+    "exploreIraq": MessageLookupByLibrary.simpleMessage("explore Iraq  "),
+    "fNo": MessageLookupByLibrary.simpleMessage("Enter flight number"),
+    "faceTowrds": MessageLookupByLibrary.simpleMessage(
+      "Face towards the Holy Kaaba in Makkah",
+    ),
+    "factory": MessageLookupByLibrary.simpleMessage("Al-Kiswa Factory"),
+    "fahd": MessageLookupByLibrary.simpleMessage(
+      "King Fhad Glorious Quran Printing Complex",
+    ),
+    "failedDownloadingSurahes": MessageLookupByLibrary.simpleMessage(
+      "Failed to download Surahs. Please try again",
+    ),
+    "fajr": MessageLookupByLibrary.simpleMessage("Fajr"),
+    "fal": MessageLookupByLibrary.simpleMessage(
+      "2 falafel sandwiches + 1 fava beans sandwich + 1 egg + 1 green salad",
+    ),
+    "faq": MessageLookupByLibrary.simpleMessage("FAQ"),
+    "favorite": MessageLookupByLibrary.simpleMessage("Favorites"),
+    "favoriteItems": MessageLookupByLibrary.simpleMessage(
+      "My Favorite Items.....What you want to buy later",
+    ),
+    "fawry": MessageLookupByLibrary.simpleMessage("pay with fawry"),
+    "fawryCode": MessageLookupByLibrary.simpleMessage("Your Code To Pay"),
+    "fawryDes": MessageLookupByLibrary.simpleMessage("use to code to payment"),
+    "featureComingSoon": MessageLookupByLibrary.simpleMessage(
+      "Feature Coming Soon",
+    ),
+    "feed": MessageLookupByLibrary.simpleMessage("Feedback"),
+    "feedSend": MessageLookupByLibrary.simpleMessage(
+      "Feedback Sent Successfully",
+    ),
+    "female": MessageLookupByLibrary.simpleMessage("Female"),
+    "findingYourDirection": MessageLookupByLibrary.simpleMessage(
+      "Finding your direction to the Holy Kaaba...",
+    ),
+    "firstName": MessageLookupByLibrary.simpleMessage("First Name "),
+    "flashTodaySale": MessageLookupByLibrary.simpleMessage("Today Sale"),
+    "followOeder": MessageLookupByLibrary.simpleMessage("Follow Order"),
+    "followOrder": MessageLookupByLibrary.simpleMessage("Follow Order"),
+    "forget": MessageLookupByLibrary.simpleMessage("Forget Password ?"),
+    "forgetPassword": MessageLookupByLibrary.simpleMessage("Forget Password ?"),
+    "forgetPasswordBody": MessageLookupByLibrary.simpleMessage(
+      "enter your email or phonenumber and we will send you a password resent link.",
+    ),
+    "forgetPasswordTitle": MessageLookupByLibrary.simpleMessage(
+      "Forget Password",
+    ),
+    "foul": MessageLookupByLibrary.simpleMessage("Foul and Falafel"),
+    "found": MessageLookupByLibrary.simpleMessage("Lost & found"),
+    "full": MessageLookupByLibrary.simpleMessage("Full Name"),
+    "gallery": MessageLookupByLibrary.simpleMessage("Gallery"),
+    "gender": MessageLookupByLibrary.simpleMessage("Gender"),
+    "general": MessageLookupByLibrary.simpleMessage("General"),
+    "getPaymentCode": MessageLookupByLibrary.simpleMessage("Get Payment Code"),
+    "getStarted": MessageLookupByLibrary.simpleMessage("Get Started"),
+    "go": MessageLookupByLibrary.simpleMessage("Go to Home"),
+    "good": MessageLookupByLibrary.simpleMessage("Good"),
+    "gr": MessageLookupByLibrary.simpleMessage("Group:  Group A"),
+    "grA1": MessageLookupByLibrary.simpleMessage("Group A-1"),
+    "grB3": MessageLookupByLibrary.simpleMessage("Group B-3"),
+    "grB6": MessageLookupByLibrary.simpleMessage("Group B-6"),
+    "groupA": MessageLookupByLibrary.simpleMessage("Group A"),
+    "groups": MessageLookupByLibrary.simpleMessage("Groups"),
+    "groupsKeywords": MessageLookupByLibrary.simpleMessage(
+      "group,groups,community,team,members,join,people,friends,colleagues,squad,crew,gang,club,association,organization,society,circle,gathering,meeting,congregation,assembly,participants,attendees,roster,fellowship",
+    ),
+    "guestAccess": MessageLookupByLibrary.simpleMessage("Guest Access"),
+    "guestAccessTo": MessageLookupByLibrary.simpleMessage(
+      "You will be able to access:",
+    ),
+    "guestAssistant": MessageLookupByLibrary.simpleMessage(
+      "I am your smart assistant in TEAA app",
+    ),
+    "guestContactEmail": MessageLookupByLibrary.simpleMessage(
+      "Contact via Email",
+    ),
+    "guestContactPhone": MessageLookupByLibrary.simpleMessage(
+      "Call us directly",
+    ),
+    "guestContactUs": MessageLookupByLibrary.simpleMessage(
+      "Please contact us to create your account",
+    ),
+    "guestContactWhatsApp": MessageLookupByLibrary.simpleMessage(
+      "contact via WhatsApp",
+    ),
+    "guestFeatureActivities": MessageLookupByLibrary.simpleMessage(
+      "Activities",
+    ),
+    "guestFeatureGroups": MessageLookupByLibrary.simpleMessage("Groups"),
+    "guestFeatureMeals": MessageLookupByLibrary.simpleMessage("Meals"),
+    "guestFeatureResidence": MessageLookupByLibrary.simpleMessage("Residence"),
+    "guestUnlockFeatures": MessageLookupByLibrary.simpleMessage(
+      "To access all amazing app features",
+    ),
+    "guestWelcome": MessageLookupByLibrary.simpleMessage("Welcome!"),
+    "guide": MessageLookupByLibrary.simpleMessage("Guide"),
+    "ha": MessageLookupByLibrary.simpleMessage("Hajj - Arafa"),
+    "hajj": MessageLookupByLibrary.simpleMessage("Hajj Activity"),
+    "helper": MessageLookupByLibrary.simpleMessage("Help"),
+    "hh": MessageLookupByLibrary.simpleMessage("mm/dd/yyyy  hh:mm"),
+    "hijriDate": MessageLookupByLibrary.simpleMessage("Hijri Date"),
+    "hilton": MessageLookupByLibrary.simpleMessage("Hilton Hotel"),
+    "history": MessageLookupByLibrary.simpleMessage("history"),
+    "hm": MessageLookupByLibrary.simpleMessage("Hajj - Mena"),
+    "holdDeviceFlat": MessageLookupByLibrary.simpleMessage(
+      "Hold your device flat",
+    ),
+    "home": MessageLookupByLibrary.simpleMessage("Home"),
+    "homeKeywords": MessageLookupByLibrary.simpleMessage(
+      "home,main,dashboard,start,beginning,initial,first,welcome,homepage,index,overview,summary,lobby,entrance,base,root",
+    ),
+    "hours": MessageLookupByLibrary.simpleMessage("Hours"),
+    "how": MessageLookupByLibrary.simpleMessage("How I use app"),
+    "hu": MessageLookupByLibrary.simpleMessage("Hajj & Umrah"),
+    "hug": MessageLookupByLibrary.simpleMessage("Hajj & Umrah Guide"),
+    "huv": MessageLookupByLibrary.simpleMessage("Hajj & Umrah Video Guide"),
+    "iAgreeTo": MessageLookupByLibrary.simpleMessage("I agree to "),
+    "imHereToHelp": MessageLookupByLibrary.simpleMessage(
+      "I am here to help you with what benefits your religion and your journey, just tell me what you want",
+    ),
+    "image": MessageLookupByLibrary.simpleMessage("Image"),
+    "inProgress": MessageLookupByLibrary.simpleMessage("In Progress"),
+    "information": MessageLookupByLibrary.simpleMessage("ّInformation"),
+    "installmentWithSouhoola": MessageLookupByLibrary.simpleMessage(
+      "Installment with souhoola",
+    ),
+    "installmentWithValu": MessageLookupByLibrary.simpleMessage(
+      "Installment with valu",
+    ),
+    "installments12mon": MessageLookupByLibrary.simpleMessage(
+      "installments on 12 months",
+    ),
+    "installments6mon": MessageLookupByLibrary.simpleMessage(
+      "installments on 6 months",
+    ),
+    "installmentsServices": MessageLookupByLibrary.simpleMessage(
+      "Installments Services",
+    ),
+    "invalidEmail": MessageLookupByLibrary.simpleMessage(
+      " please enter valid email ",
+    ),
+    "invalidOtp": MessageLookupByLibrary.simpleMessage("Invalid OTP code"),
+    "isha": MessageLookupByLibrary.simpleMessage("Isha"),
+    "jeddah": MessageLookupByLibrary.simpleMessage("Jeddah"),
+    "juz": MessageLookupByLibrary.simpleMessage("Juz"),
+    "juzIndex": MessageLookupByLibrary.simpleMessage("Juz Index"),
+    "kaaba": MessageLookupByLibrary.simpleMessage("Kaaba Tawaf"),
+    "kaabaActivity": MessageLookupByLibrary.simpleMessage(
+      "Kaaba Tawaf Activity",
+    ),
+    "kaabahtawaf": MessageLookupByLibrary.simpleMessage("KAABAH TAWAF"),
+    "kabaa": MessageLookupByLibrary.simpleMessage("The Kaaba"),
+    "karim": MessageLookupByLibrary.simpleMessage("Karim"),
+    "language": MessageLookupByLibrary.simpleMessage("Language"),
+    "languageArabic": MessageLookupByLibrary.simpleMessage("العربية"),
+    "languageDes": MessageLookupByLibrary.simpleMessage(
+      "Change the language of the application",
+    ),
+    "languageEnglish": MessageLookupByLibrary.simpleMessage("English"),
+    "lastAddress": MessageLookupByLibrary.simpleMessage("Last Address"),
+    "lastName": MessageLookupByLibrary.simpleMessage("Last Name "),
+    "later": MessageLookupByLibrary.simpleMessage("Later"),
+    "letsStart": MessageLookupByLibrary.simpleMessage("Welcome Again"),
+    "lightYourHeart": MessageLookupByLibrary.simpleMessage(
+      "Lighten your heart with the remembrance of Allah",
+    ),
+    "limit": MessageLookupByLibrary.simpleMessage("Lowest Limit"),
+    "loRe": MessageLookupByLibrary.simpleMessage("   Location Residence"),
+    "loading": MessageLookupByLibrary.simpleMessage("Loading..."),
+    "loc": MessageLookupByLibrary.simpleMessage(
+      "Location service Denied Forever !",
+    ),
+    "locSer": MessageLookupByLibrary.simpleMessage(
+      "Location service permission denied",
+    ),
+    "localIID": MessageLookupByLibrary.simpleMessage("en_US"),
+    "localeee": MessageLookupByLibrary.simpleMessage("en"),
+    "location": MessageLookupByLibrary.simpleMessage("Location"),
+    "locationError": MessageLookupByLibrary.simpleMessage("Location Error"),
+    "logOut": MessageLookupByLibrary.simpleMessage("Log Out"),
+    "login": MessageLookupByLibrary.simpleMessage("Login"),
+    "loginBody": MessageLookupByLibrary.simpleMessage(
+      "The World Is Waiting – Let’s Go!",
+    ),
+    "loginTitle": MessageLookupByLibrary.simpleMessage("Welcome  "),
+    "loginWithPhone": MessageLookupByLibrary.simpleMessage("Login with Phone"),
+    "logout": MessageLookupByLibrary.simpleMessage("Logout"),
+    "lostBag": MessageLookupByLibrary.simpleMessage("Lost My Bags in Airport"),
+    "luggage": MessageLookupByLibrary.simpleMessage("Luggage"),
+    "lun": MessageLookupByLibrary.simpleMessage("Lunch"),
+    "lunch": MessageLookupByLibrary.simpleMessage("Lunch"),
+    "lunchTime": MessageLookupByLibrary.simpleMessage(
+      "Lunch time is approaching, Be prepared!",
+    ),
+    "maghrib": MessageLookupByLibrary.simpleMessage("Maghrib"),
+    "main": MessageLookupByLibrary.simpleMessage("Main"),
+    "mainGroup": MessageLookupByLibrary.simpleMessage("Main Group"),
+    "mainMeal": MessageLookupByLibrary.simpleMessage("Main Meals"),
+    "makkah": MessageLookupByLibrary.simpleMessage("Makkah"),
+    "male": MessageLookupByLibrary.simpleMessage("Male"),
+    "markAll": MessageLookupByLibrary.simpleMessage("Mark all as read"),
+    "meCo": MessageLookupByLibrary.simpleMessage("Meal Components "),
+    "meal": MessageLookupByLibrary.simpleMessage("Meal"),
+    "mealKeywords": MessageLookupByLibrary.simpleMessage(
+      "meal,hungry,food,eat,breakfast,lunch,dinner,snack,restaurant,cafe,dish,menu,order,cooking,recipe,appetite,starving,famished,craving,delicious,tasty,yummy,cuisine,dining,supper,brunch,dessert,beverage,drink,thirsty,feed,nutrition,diet,calories,protein,carbs,vegetables,fruits,meat,chicken,fish,rice,bread,pasta,pizza,burger,sandwich,salad,soup,chef,cook,kitchen,plate,spoon,fork,knife",
+    ),
+    "meals": MessageLookupByLibrary.simpleMessage("Meals"),
+    "medical": MessageLookupByLibrary.simpleMessage("Medical"),
+    "medicalServices": MessageLookupByLibrary.simpleMessage(
+      " you can take a look on our newest digital services ",
+    ),
+    "medicalSupplies": MessageLookupByLibrary.simpleMessage("Medical Supplies"),
+    "medicine": MessageLookupByLibrary.simpleMessage("Medicine"),
+    "mena": MessageLookupByLibrary.simpleMessage("Mena Camps"),
+    "menu": MessageLookupByLibrary.simpleMessage("Menu"),
+    "minutes": MessageLookupByLibrary.simpleMessage("Minutes"),
+    "missingItemsNotebook": MessageLookupByLibrary.simpleMessage(
+      "Missing Items Notebook....You can upload a missing items sheet or an Excel sheet, and the orders will be processed automatically on your behalf",
+    ),
+    "mm": MessageLookupByLibrary.simpleMessage("MM-DD-YYYY"),
+    "mob": MessageLookupByLibrary.simpleMessage("Mobile No"),
+    "mobilWalletOption": MessageLookupByLibrary.simpleMessage(
+      "if you doesnt receive a massage from us to continue buying use this qr code ",
+    ),
+    "mobileWallet": MessageLookupByLibrary.simpleMessage(" Mobile Wallet"),
+    "mobileWalletDes": MessageLookupByLibrary.simpleMessage(
+      "you can pay using your mobile phone wallet",
+    ),
+    "moneyYouLoan": MessageLookupByLibrary.simpleMessage("you loan"),
+    "more": MessageLookupByLibrary.simpleMessage("More"),
+    "morningShift": MessageLookupByLibrary.simpleMessage(
+      "Morning shift Number",
+    ),
+    "mostSoldItmes": MessageLookupByLibrary.simpleMessage("Most Sold Items"),
+    "mostafa": MessageLookupByLibrary.simpleMessage("Mostafa Zakaria"),
+    "myOrder": MessageLookupByLibrary.simpleMessage("My Order"),
+    "myOrders": MessageLookupByLibrary.simpleMessage("myOrders"),
+    "myStagnantCategories": MessageLookupByLibrary.simpleMessage(
+      "My Stagnant Categories",
+    ),
+    "myWallet": MessageLookupByLibrary.simpleMessage("My Wallet"),
+    "name": MessageLookupByLibrary.simpleMessage("Name:"),
+    "nation": MessageLookupByLibrary.simpleMessage("Nationality"),
+    "newPass": MessageLookupByLibrary.simpleMessage("New Password"),
+    "newPassword": MessageLookupByLibrary.simpleMessage("New Password"),
+    "newProduct": MessageLookupByLibrary.simpleMessage("New Product"),
+    "no": MessageLookupByLibrary.simpleMessage("No"),
+    "noData": MessageLookupByLibrary.simpleMessage(
+      "There is no data here till now",
+    ),
+    "noInternetConnection": MessageLookupByLibrary.simpleMessage(
+      "There is no internet connection",
+    ),
+    "noItemsInCart": MessageLookupByLibrary.simpleMessage(
+      "there is no items in cart",
+    ),
+    "noPreviousTrips": MessageLookupByLibrary.simpleMessage(
+      "No Previous Tours till now ",
+    ),
+    "noRating": MessageLookupByLibrary.simpleMessage("No Rating"),
+    "noReply": MessageLookupByLibrary.simpleMessage("No Reply Yet"),
+    "noResult": MessageLookupByLibrary.simpleMessage("No results found"),
+    "noResults": MessageLookupByLibrary.simpleMessage("No results found"),
+    "noResultsFound": MessageLookupByLibrary.simpleMessage("No results found"),
+    "noUserFound": MessageLookupByLibrary.simpleMessage(
+      "These credentials are not found",
+    ),
+    "notVerified": MessageLookupByLibrary.simpleMessage(
+      "please verify your account",
+    ),
+    "notes": MessageLookupByLibrary.simpleMessage(" Additional Notes"),
+    "notification": MessageLookupByLibrary.simpleMessage("Notifications"),
+    "notifications": MessageLookupByLibrary.simpleMessage("Notifications"),
+    "offers": MessageLookupByLibrary.simpleMessage("Offers"),
+    "omlet": MessageLookupByLibrary.simpleMessage("Omelets Eggs"),
+    "onboarding1Desc": MessageLookupByLibrary.simpleMessage(
+      "Your personal assistant in your workplace. Consider this your first reference for help. Whether you need to request equipment, review company policies, or get an answer to a question, we provide support at every step.",
+    ),
+    "onboarding1Title": MessageLookupByLibrary.simpleMessage(
+      "Employee Service Management",
+    ),
+    "onboarding2Desc": MessageLookupByLibrary.simpleMessage(
+      "Support at your fingertips. Get the resources, tools, and assistance you need to succeed. Easily manage your requests and find essential information with ease.",
+    ),
+    "onboarding2Title": MessageLookupByLibrary.simpleMessage(
+      "Request Tracking",
+    ),
+    "onboarding3Desc": MessageLookupByLibrary.simpleMessage(
+      "Everything you need, in one place. From IT support and HR requests to office supplies, Employee Service Management is your central hub for getting things done. We handle the logistics so you can focus on your core work.",
+    ),
+    "onboarding3Title": MessageLookupByLibrary.simpleMessage("Notifications"),
+    "onboardingDes": MessageLookupByLibrary.simpleMessage(
+      "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatu\n\nUt enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo con\n\nDuis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatu",
+    ),
+    "onbordingMsg": MessageLookupByLibrary.simpleMessage(
+      "i am here to help you around the whole app",
+    ),
+    "oof": MessageLookupByLibrary.simpleMessage("of"),
+    "op": MessageLookupByLibrary.simpleMessage("Open"),
+    "open": MessageLookupByLibrary.simpleMessage("Open Google Map"),
+    "or": MessageLookupByLibrary.simpleMessage("or"),
+    "orderDetails": MessageLookupByLibrary.simpleMessage("Order Details"),
+    "orderExecution": MessageLookupByLibrary.simpleMessage("Order Execution"),
+    "orderNumber": MessageLookupByLibrary.simpleMessage("Order Number "),
+    "orederPlaced": MessageLookupByLibrary.simpleMessage("Oreder Placed"),
+    "orederPlacedBody": MessageLookupByLibrary.simpleMessage(
+      "Oreder Placed and we review it ",
+    ),
+    "other": MessageLookupByLibrary.simpleMessage("Other Features"),
+    "otherFeed": MessageLookupByLibrary.simpleMessage("Other Feedback"),
+    "otherTypes": MessageLookupByLibrary.simpleMessage("Other Types"),
+    "otp": MessageLookupByLibrary.simpleMessage("OTP"),
+    "otpSent": MessageLookupByLibrary.simpleMessage(
+      "OTP code sent successfully",
+    ),
+    "ourOffers": MessageLookupByLibrary.simpleMessage("Our Offers"),
+    "ourTours": MessageLookupByLibrary.simpleMessage("Our Tours"),
+    "package": MessageLookupByLibrary.simpleMessage("Package: "),
+    "packing": MessageLookupByLibrary.simpleMessage("packing"),
+    "packingBody": MessageLookupByLibrary.simpleMessage(
+      "we are packing your order and searching for nearest delivery",
+    ),
+    "passNo": MessageLookupByLibrary.simpleMessage("Passport No."),
+    "password": MessageLookupByLibrary.simpleMessage("Password"),
+    "passwordEmpty": MessageLookupByLibrary.simpleMessage(
+      "password can not Be Empty",
+    ),
+    "passwordTooShort": MessageLookupByLibrary.simpleMessage(
+      "The password cant be less than 4 ",
+    ),
+    "payWithLastAddress": MessageLookupByLibrary.simpleMessage(
+      "Pay with Last Address",
+    ),
+    "paymentMethod": MessageLookupByLibrary.simpleMessage("Payment Method"),
+    "pdfGuide": MessageLookupByLibrary.simpleMessage("PDF Guide"),
+    "pending": MessageLookupByLibrary.simpleMessage("Pending"),
+    "perInfo": MessageLookupByLibrary.simpleMessage("Personal Information"),
+    "perform": MessageLookupByLibrary.simpleMessage("Perform SA\'I"),
+    "personalEmail": MessageLookupByLibrary.simpleMessage("Personal Email"),
+    "pharma": MessageLookupByLibrary.simpleMessage("Pharmaceutical"),
+    "pharmacy": MessageLookupByLibrary.simpleMessage("Pharmacy"),
+    "phoneNumber": MessageLookupByLibrary.simpleMessage("Phone Number"),
+    "phoneRequired": MessageLookupByLibrary.simpleMessage(
+      "Phone number is required",
+    ),
+    "placeName": MessageLookupByLibrary.simpleMessage("Place Name"),
+    "placeNumber": MessageLookupByLibrary.simpleMessage("Place Number"),
+    "please": MessageLookupByLibrary.simpleMessage(
+      "Please enable Location service",
+    ),
+    "pleaseAddRate": MessageLookupByLibrary.simpleMessage("please add rate"),
+    "pleaseChooseActivity": MessageLookupByLibrary.simpleMessage(
+      "please choose activity",
+    ),
+    "pleaseEndterValue": MessageLookupByLibrary.simpleMessage(
+      "please dont let this filed null",
+    ),
+    "pleaseEnterPassport": MessageLookupByLibrary.simpleMessage(
+      "Please enter your passport number",
+    ),
+    "pleaseEnterPassword": MessageLookupByLibrary.simpleMessage(
+      "Please enter your password",
+    ),
+    "pleaseFlatSurface": MessageLookupByLibrary.simpleMessage(
+      "Please place the phone on a flat surface  \n to determine the Qibla direction",
+    ),
+    "pleaseSelectAntherCategory": MessageLookupByLibrary.simpleMessage(
+      "Please select another category this didn\'t contain any implemented yet",
+    ),
+    "pleaseWait": MessageLookupByLibrary.simpleMessage("Please wait"),
+    "point": MessageLookupByLibrary.simpleMessage("point"),
+    "points": MessageLookupByLibrary.simpleMessage("Points"),
+    "poor": MessageLookupByLibrary.simpleMessage("Poor"),
+    "postalCode": MessageLookupByLibrary.simpleMessage("Postal Code"),
+    "pound": MessageLookupByLibrary.simpleMessage("EGP"),
+    "prayer": MessageLookupByLibrary.simpleMessage("Prayer Time"),
+    "prayerIn": MessageLookupByLibrary.simpleMessage("Prayer Time  11:52 AM"),
+    "prayerKeywords": MessageLookupByLibrary.simpleMessage(
+      "prayer,salah,mosque,azan,dua,worship,prostration,qibla,direction,fajr,dhuhr,asr,maghrib,isha,tahajjud,sunnah,nafl,rakat,imam,masjid,islamic,muslim,religion,spiritual,ablution,wudu,adhan,call,times",
+    ),
+    "previous": MessageLookupByLibrary.simpleMessage("previous"),
+    "previousRequest": MessageLookupByLibrary.simpleMessage(
+      "Previous Requests",
+    ),
+    "previousTrips": MessageLookupByLibrary.simpleMessage("Previous Trips"),
+    "price": MessageLookupByLibrary.simpleMessage("Price"),
+    "priceAfterOffer": MessageLookupByLibrary.simpleMessage(
+      "Price After Offer",
+    ),
+    "priceBeforeOffer": MessageLookupByLibrary.simpleMessage(
+      "Price before Offer",
+    ),
+    "privacyPolicy": MessageLookupByLibrary.simpleMessage("Privacy Policy"),
+    "produce": MessageLookupByLibrary.simpleMessage(
+      "Produced by King Fhad Glorious Quran Printing Complex in Al-Madina Al-Munawwara",
+    ),
+    "productDescription": MessageLookupByLibrary.simpleMessage(
+      "Product Description",
+    ),
+    "productName": MessageLookupByLibrary.simpleMessage("Product Name"),
+    "profile": MessageLookupByLibrary.simpleMessage("Profile"),
+    "profileInfo": MessageLookupByLibrary.simpleMessage("Profile Info"),
+    "profileInfoDes": MessageLookupByLibrary.simpleMessage(
+      "Make Changes to your profile Info",
+    ),
+    "profileKeywords": MessageLookupByLibrary.simpleMessage(
+      "profile,account,settings,personal,info,information,details,data,user,me,my,preferences,configuration,options,edit,update,change,modify,myself,identity,credentials,biography",
+    ),
+    "provide": MessageLookupByLibrary.simpleMessage("ProvideBy:"),
+    "qibla": MessageLookupByLibrary.simpleMessage("Qibla"),
+    "qiblaAngle": MessageLookupByLibrary.simpleMessage("Qibla Angle"),
+    "qiblaDirection": MessageLookupByLibrary.simpleMessage("Qibla Direction"),
+    "qiblaDirectionTitle": MessageLookupByLibrary.simpleMessage(
+      "Qibla Direction",
+    ),
+    "qr": MessageLookupByLibrary.simpleMessage("QR Code"),
+    "qrCodeDes": MessageLookupByLibrary.simpleMessage(
+      "if you didnt receive massage scan this QRcode",
+    ),
+    "quantity": MessageLookupByLibrary.simpleMessage("Quantity"),
+    "quran": MessageLookupByLibrary.simpleMessage("Quran"),
+    "quranHafs": MessageLookupByLibrary.simpleMessage("Quran Hafs By KFGQPC"),
+    "quranKarem": MessageLookupByLibrary.simpleMessage("Quran Kareem"),
+    "reCharge": MessageLookupByLibrary.simpleMessage("Re Change"),
+    "reOrder": MessageLookupByLibrary.simpleMessage("Re-Order"),
+    "rec": MessageLookupByLibrary.simpleMessage("Rectangle 44"),
+    "rechangreWallet": MessageLookupByLibrary.simpleMessage("Recharge Wallet"),
+    "rechangreWalletBody": MessageLookupByLibrary.simpleMessage(
+      "you can use any payment method",
+    ),
+    "refundReason": MessageLookupByLibrary.simpleMessage("Refund Reason"),
+    "refunds": MessageLookupByLibrary.simpleMessage("refunds"),
+    "refused": MessageLookupByLibrary.simpleMessage("Pending"),
+    "register": MessageLookupByLibrary.simpleMessage("Register"),
+    "registerSuccessfully": MessageLookupByLibrary.simpleMessage(
+      "Your account is registered successfully",
+    ),
+    "rememberMe": MessageLookupByLibrary.simpleMessage("Remember Me"),
+    "remotePayment": MessageLookupByLibrary.simpleMessage("Remote Payment"),
+    "repeatNewPassword": MessageLookupByLibrary.simpleMessage(
+      "Repeat New Password",
+    ),
+    "reqDetail": MessageLookupByLibrary.simpleMessage("Request Details:"),
+    "reqDetails": MessageLookupByLibrary.simpleMessage("Request Details"),
+    "reqSub": MessageLookupByLibrary.simpleMessage("Request Sub Activity"),
+    "reqtitle": MessageLookupByLibrary.simpleMessage("Request Title"),
+    "requestSend": MessageLookupByLibrary.simpleMessage(
+      "Request Sent Successfully",
+    ),
+    "requestSuccessfully": MessageLookupByLibrary.simpleMessage(
+      "Your request is sent successfully",
+    ),
+    "requests": MessageLookupByLibrary.simpleMessage("Requests"),
+    "requirements": MessageLookupByLibrary.simpleMessage("requirements"),
+    "res": MessageLookupByLibrary.simpleMessage("Residencies"),
+    "resLocation": MessageLookupByLibrary.simpleMessage("Residence Location"),
+    "resend": MessageLookupByLibrary.simpleMessage("Resend Code"),
+    "reservation": MessageLookupByLibrary.simpleMessage("Reservation"),
+    "resetPassword": MessageLookupByLibrary.simpleMessage("Reset Password"),
+    "resi": MessageLookupByLibrary.simpleMessage("Residences"),
+    "residence": MessageLookupByLibrary.simpleMessage("Residence"),
+    "residenceKeywords": MessageLookupByLibrary.simpleMessage(
+      "residence,home,place,house,accommodation,lodging,hotel,apartment,room,stay,living,dwelling,quarters,shelter,housing,address,location,building,suite,flat,villa,compound",
+    ),
+    "resolved": MessageLookupByLibrary.simpleMessage("Resolved"),
+    "results": MessageLookupByLibrary.simpleMessage("results"),
+    "retry": MessageLookupByLibrary.simpleMessage("Retry"),
+    "returnOrder": MessageLookupByLibrary.simpleMessage(
+      "Return Order....You can return an item within 3 days after receiving it",
+    ),
+    "reviews": MessageLookupByLibrary.simpleMessage("Reviews"),
+    "rotate": MessageLookupByLibrary.simpleMessage("Rotate Device"),
+    "round": MessageLookupByLibrary.simpleMessage("Arrival Time"),
+    "saf": MessageLookupByLibrary.simpleMessage("   Safwa Hotel"),
+    "safwa": MessageLookupByLibrary.simpleMessage("Safwa Hotel"),
+    "saleTime": MessageLookupByLibrary.simpleMessage("The Sale Time ends in"),
+    "saudiArabia": MessageLookupByLibrary.simpleMessage("saudiArabia"),
+    "saveAndPay": MessageLookupByLibrary.simpleMessage("Save and Pay"),
+    "saveChanges": MessageLookupByLibrary.simpleMessage("Save"),
+    "saveNewPassword": MessageLookupByLibrary.simpleMessage(
+      "Save New Password",
+    ),
+    "scanQr": MessageLookupByLibrary.simpleMessage("Scan QR Code"),
+    "search": MessageLookupByLibrary.simpleMessage("Search here"),
+    "searchJuzIndex": MessageLookupByLibrary.simpleMessage(
+      "Search Juz Index ...",
+    ),
+    "searchPlaceholder": MessageLookupByLibrary.simpleMessage("search..."),
+    "searchSurahIndex": MessageLookupByLibrary.simpleMessage(
+      "Search Surah Index ...",
+    ),
+    "searchTitle": MessageLookupByLibrary.simpleMessage("Search"),
+    "seconds": MessageLookupByLibrary.simpleMessage("Seconds"),
+    "seeAll": MessageLookupByLibrary.simpleMessage("see all"),
+    "selDep": MessageLookupByLibrary.simpleMessage("Select Department"),
+    "selIssue": MessageLookupByLibrary.simpleMessage("select issue department"),
+    "selLig": MessageLookupByLibrary.simpleMessage("Select Luggage"),
+    "selectActivity": MessageLookupByLibrary.simpleMessage("Select Activity"),
+    "selectAddress": MessageLookupByLibrary.simpleMessage(
+      "Please Select Address first",
+    ),
+    "selectArr": MessageLookupByLibrary.simpleMessage("select arrival city"),
+    "selectCategory": MessageLookupByLibrary.simpleMessage("Select Category"),
+    "selectCity": MessageLookupByLibrary.simpleMessage("choose your city"),
+    "selectCountry": MessageLookupByLibrary.simpleMessage("Select Country"),
+    "selectDep": MessageLookupByLibrary.simpleMessage("select departure city"),
+    "selectDepartment": MessageLookupByLibrary.simpleMessage(
+      "Select Department",
+    ),
+    "selectIssueDep": MessageLookupByLibrary.simpleMessage(
+      "Select Issue Department",
+    ),
+    "selectLanguage": MessageLookupByLibrary.simpleMessage("Select Language"),
+    "selectLuggage": MessageLookupByLibrary.simpleMessage("Select Luggage"),
+    "selectNation": MessageLookupByLibrary.simpleMessage("Select Nationality"),
+    "selectOneActivity": MessageLookupByLibrary.simpleMessage(
+      "Select One of Activities",
+    ),
+    "selectQuantitiy": MessageLookupByLibrary.simpleMessage(
+      "Select Quantitiy at First",
+    ),
+    "selectReadingTheme": MessageLookupByLibrary.simpleMessage(
+      "Select Reading Theme",
+    ),
+    "selectRegion": MessageLookupByLibrary.simpleMessage("Select region"),
+    "send": MessageLookupByLibrary.simpleMessage("Send"),
+    "sendFeed": MessageLookupByLibrary.simpleMessage("Send Feedback"),
+    "sendOtp": MessageLookupByLibrary.simpleMessage("verify OTP"),
+    "sendToWallet": MessageLookupByLibrary.simpleMessage("send to wallet "),
+    "sending": MessageLookupByLibrary.simpleMessage("Sending ....."),
+    "sentIn": MessageLookupByLibrary.simpleMessage(
+      "Sent in: 15/4/2024 03:45 pm",
+    ),
+    "serOffice": MessageLookupByLibrary.simpleMessage("Service Office"),
+    "service": MessageLookupByLibrary.simpleMessage("Service Office:  165"),
+    "services": MessageLookupByLibrary.simpleMessage("services"),
+    "settings": MessageLookupByLibrary.simpleMessage("Settings"),
+    "shipping": MessageLookupByLibrary.simpleMessage("shipping"),
+    "shippingBody": MessageLookupByLibrary.simpleMessage(
+      "please wait your order in the way ",
+    ),
+    "show": MessageLookupByLibrary.simpleMessage("Show All"),
+    "showAllQuestions": MessageLookupByLibrary.simpleMessage(
+      "Show All Questions",
+    ),
+    "singIn": MessageLookupByLibrary.simpleMessage("Sign In"),
+    "singUp": MessageLookupByLibrary.simpleMessage("Sing Up"),
+    "size": MessageLookupByLibrary.simpleMessage("Size"),
+    "sk": MessageLookupByLibrary.simpleMessage("Skip"),
+    "skip": MessageLookupByLibrary.simpleMessage("SKIP INTRO"),
+    "skipIntro": MessageLookupByLibrary.simpleMessage("SKIP INTRO"),
+    "souhoola": MessageLookupByLibrary.simpleMessage("Souhoola"),
+    "speakToUs": MessageLookupByLibrary.simpleMessage(
+      "you can speak to a specialist",
+    ),
+    "splashScreenText": MessageLookupByLibrary.simpleMessage(
+      "Welcome to CementTech Store,your one-stop shop for all cement products with low price and high quality",
+    ),
+    "splashSubtitle": MessageLookupByLibrary.simpleMessage(
+      "Motawifs of Turkey Pilgrims and Pilgrims of Europe, America and Australia Company",
+    ),
+    "splashTitle": MessageLookupByLibrary.simpleMessage(
+      "شركــة مطوفي حجاج تركيا و حجاج أوروبا وأمريكا واستراليا",
+    ),
+    "srAbd": MessageLookupByLibrary.simpleMessage(
+      "Supervisor:  Abdelsalam Sleim",
+    ),
+    "stagnantCategories": MessageLookupByLibrary.simpleMessage(
+      "Stagnant categories",
+    ),
+    "stagnantItems": MessageLookupByLibrary.simpleMessage(
+      "Stagnant Items.......You can upload your stagnant items to your account and they will be rotated and resold on your behalf",
+    ),
+    "startSearch": MessageLookupByLibrary.simpleMessage("Starting Search"),
+    "status": MessageLookupByLibrary.simpleMessage("Status"),
+    "stoning": MessageLookupByLibrary.simpleMessage("Stoning Devil in Mina"),
+    "streetName": MessageLookupByLibrary.simpleMessage("Street Name"),
+    "subActivityRequest": MessageLookupByLibrary.simpleMessage(
+      "Sub Activity Request",
+    ),
+    "subGroup": MessageLookupByLibrary.simpleMessage("Sub Groups"),
+    "subReq": MessageLookupByLibrary.simpleMessage("Submit Request"),
+    "success": MessageLookupByLibrary.simpleMessage("Success"),
+    "sunrise": MessageLookupByLibrary.simpleMessage("Sunrise"),
+    "sup": MessageLookupByLibrary.simpleMessage("Supervisor"),
+    "supReply": MessageLookupByLibrary.simpleMessage("Supervisor Reply:"),
+    "supervisor": MessageLookupByLibrary.simpleMessage("Supervisor:"),
+    "supervisorReply": MessageLookupByLibrary.simpleMessage(
+      "Supervisor Reply :",
+    ),
+    "support": MessageLookupByLibrary.simpleMessage("Support"),
+    "supportTic": MessageLookupByLibrary.simpleMessage("Support Ticket"),
+    "surah": MessageLookupByLibrary.simpleMessage("Surah"),
+    "surahs": MessageLookupByLibrary.simpleMessage("Surahs"),
+    "surahsIndexs": MessageLookupByLibrary.simpleMessage("Surahs Index"),
+    "tabToSelectLuggage": MessageLookupByLibrary.simpleMessage(
+      "Tap to select luggage",
+    ),
+    "tapToRead": MessageLookupByLibrary.simpleMessage("Tap to read"),
+    "tawafStart": MessageLookupByLibrary.simpleMessage(
+      "Kaaba Tawaf activity will start within 30 minutes",
+    ),
+    "termsOfUse": MessageLookupByLibrary.simpleMessage("Terms of use"),
+    "thankFeed": MessageLookupByLibrary.simpleMessage(
+      "Thanks for sending feedback.",
+    ),
+    "thanksMassage": MessageLookupByLibrary.simpleMessage(
+      "Thank you for using our app!",
+    ),
+    "thanksProfile": MessageLookupByLibrary.simpleMessage(
+      "Thanks for completing your profile. Now you can use app",
+    ),
+    "thanksRequest": MessageLookupByLibrary.simpleMessage(
+      "Thanks for sending request, and will\nrespond ASAP",
+    ),
+    "themeCalmBlue": MessageLookupByLibrary.simpleMessage("Calm Blue"),
+    "themeClassicMushaf": MessageLookupByLibrary.simpleMessage(
+      "Classic Mushaf",
+    ),
+    "themeIslamicGold": MessageLookupByLibrary.simpleMessage("Islamic Gold"),
+    "themeMadinahGreen": MessageLookupByLibrary.simpleMessage("Madinah Green"),
+    "themeNaturalOlive": MessageLookupByLibrary.simpleMessage("Natural Olive"),
+    "themeNightMode": MessageLookupByLibrary.simpleMessage("Night Mode"),
+    "themeSoftRose": MessageLookupByLibrary.simpleMessage("Soft Rose"),
+    "themeVintageSepia": MessageLookupByLibrary.simpleMessage("Vintage Sepia"),
+    "time": MessageLookupByLibrary.simpleMessage("Time: "),
+    "time09": MessageLookupByLibrary.simpleMessage("09:30 AM"),
+    "timeNowIS": MessageLookupByLibrary.simpleMessage("Time now is "),
+    "toAccessAiHelperLog": MessageLookupByLibrary.simpleMessage(
+      "To access the AI Helper feature please log in or create an account",
+    ),
+    "today": MessageLookupByLibrary.simpleMessage("Today Notifications"),
+    "total": MessageLookupByLibrary.simpleMessage("Total"),
+    "tourDetails": MessageLookupByLibrary.simpleMessage("Tour Details"),
+    "tourForm": MessageLookupByLibrary.simpleMessage("Tour Form data"),
+    "tours": MessageLookupByLibrary.simpleMessage("Tours"),
+    "tryAgain": MessageLookupByLibrary.simpleMessage(
+      "Please try again or sign up",
+    ),
+    "tryLater": MessageLookupByLibrary.simpleMessage("Please Try Later"),
+    "trySearch": MessageLookupByLibrary.simpleMessage(
+      "Try searching with different keywords or browse all questions",
+    ),
+    "ty": MessageLookupByLibrary.simpleMessage("Type: "),
+    "type": MessageLookupByLibrary.simpleMessage("Type:"),
+    "typePass": MessageLookupByLibrary.simpleMessage(
+      "Type your Passport Number",
+    ),
+    "typePersonal": MessageLookupByLibrary.simpleMessage(
+      "Type your Personal Email",
+    ),
+    "under": MessageLookupByLibrary.simpleMessage("Under Process"),
+    "underDelivery": MessageLookupByLibrary.simpleMessage("under delivery"),
+    "underProcess": MessageLookupByLibrary.simpleMessage("Under Process"),
+    "unitPrice": MessageLookupByLibrary.simpleMessage("Unit Price"),
+    "unknown": MessageLookupByLibrary.simpleMessage("Unknown"),
+    "upcoming": MessageLookupByLibrary.simpleMessage("Upcoming"),
+    "update": MessageLookupByLibrary.simpleMessage("Update"),
+    "updateAvailable": MessageLookupByLibrary.simpleMessage("Update Available"),
+    "updateBody": MessageLookupByLibrary.simpleMessage(
+      "A new version of the TEAA is available. Please update to continue",
+    ),
+    "userName": MessageLookupByLibrary.simpleMessage("User Name"),
+    "ut": MessageLookupByLibrary.simpleMessage(
+      "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo con",
+    ),
+    "valu": MessageLookupByLibrary.simpleMessage("Valu"),
+    "verificationCode": MessageLookupByLibrary.simpleMessage(
+      "Verification Code",
+    ),
+    "verificationStatus": MessageLookupByLibrary.simpleMessage(
+      "conect with us for varification ",
+    ),
+    "verified": MessageLookupByLibrary.simpleMessage("verified"),
+    "verifiedAccount": MessageLookupByLibrary.simpleMessage("Verified Account"),
+    "verify": MessageLookupByLibrary.simpleMessage("Verify Account"),
+    "version": MessageLookupByLibrary.simpleMessage("Version"),
+    "veryGood": MessageLookupByLibrary.simpleMessage("Very Good"),
+    "videoGuide": MessageLookupByLibrary.simpleMessage("Video Guide"),
+    "view": MessageLookupByLibrary.simpleMessage("View"),
+    "viewAll": MessageLookupByLibrary.simpleMessage("View all"),
+    "visa": MessageLookupByLibrary.simpleMessage("Visa"),
+    "visaDetails": MessageLookupByLibrary.simpleMessage("Visa Details"),
+    "visaForm": MessageLookupByLibrary.simpleMessage("Visa Form data"),
+    "visaNo": MessageLookupByLibrary.simpleMessage("Visa No."),
+    "visitFactory": MessageLookupByLibrary.simpleMessage(
+      "Visit Al-Kiswa Factory",
+    ),
+    "visitFestival": MessageLookupByLibrary.simpleMessage(
+      "Visit Riyadh Festival",
+    ),
+    "voiceListenToMe": MessageLookupByLibrary.simpleMessage("Listen to me"),
+    "voiceListening": MessageLookupByLibrary.simpleMessage("Listening..."),
+    "voiceNotAvailable": MessageLookupByLibrary.simpleMessage(
+      "Voice recognition not available",
+    ),
+    "voicePermissionDenied": MessageLookupByLibrary.simpleMessage(
+      "Microphone permission denied",
+    ),
+    "voiceProcessing": MessageLookupByLibrary.simpleMessage("Processing..."),
+    "voiceStopListening": MessageLookupByLibrary.simpleMessage(
+      "Stop listening",
+    ),
+    "voiceTapToSpeak": MessageLookupByLibrary.simpleMessage("Tap to speak"),
+    "wallet": MessageLookupByLibrary.simpleMessage(
+      "Wallet......Here you can get money and cashback to help you increase your profits",
+    ),
+    "walletCacheDes": MessageLookupByLibrary.simpleMessage(
+      "pay from your wallet balance",
+    ),
+    "walletTitle": MessageLookupByLibrary.simpleMessage(
+      "you can use the wallet balance to buy ",
+    ),
+    "welcome": MessageLookupByLibrary.simpleMessage("Welcome Back,"),
+    "welcomeDescreption": MessageLookupByLibrary.simpleMessage(
+      "we have many awesome prizes like Laptops , iphone and cars",
+    ),
+    "welcomeMessage": MessageLookupByLibrary.simpleMessage(
+      "Welcome in C-Store for cement products",
+    ),
+    "whatisNewOffers": MessageLookupByLibrary.simpleMessage(
+      "What are the latest offers ?",
+    ),
+    "whatsApp": MessageLookupByLibrary.simpleMessage(" WhatsApp"),
+    "will": MessageLookupByLibrary.simpleMessage(
+      "will be ready in 15 minutes.",
+    ),
+    "workName": MessageLookupByLibrary.simpleMessage(
+      "set your organization name",
+    ),
+    "worktype": MessageLookupByLibrary.simpleMessage(
+      "write more details like : Type Of The Service",
+    ),
+    "writeAllergies": MessageLookupByLibrary.simpleMessage(
+      "write if you have any allergies problems",
+    ),
+    "writeEmail": MessageLookupByLibrary.simpleMessage("write email address"),
+    "writeFeed": MessageLookupByLibrary.simpleMessage(
+      "write your other feedback here",
+    ),
+    "writeMob": MessageLookupByLibrary.simpleMessage("write mobile number"),
+    "writeNAme": MessageLookupByLibrary.simpleMessage("write your name here"),
+    "writeReqDetailsHere": MessageLookupByLibrary.simpleMessage(
+      "write request details here",
+    ),
+    "writeVisa": MessageLookupByLibrary.simpleMessage("write your visa number"),
+    "writetitleHere": MessageLookupByLibrary.simpleMessage("write title here"),
+    "yes": MessageLookupByLibrary.simpleMessage("Yes"),
+    "youHave": MessageLookupByLibrary.simpleMessage("you have : "),
+  };
+}

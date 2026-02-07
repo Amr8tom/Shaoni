@@ -1,0 +1,122 @@
+import 'package:flutter/material.dart';
+
+class ColorRes {
+  ColorRes._();
+
+  /// App Basic Colors
+  // static const Color primary = Color(0xFF0D0D0D); // 50% opacity Red
+  static const Color primary = Color(0xFF009D8B); // 50% opacity Red
+    static const Color primaryLight = Color(0xFF404040); // Lighter version of primary
+  static const Color scaffoldBG = Color(0xFFE7ECED);
+  static const Color lightYellow = Color(0x38FFD700);
+  static const Color lightYellow2 = Color(0xFFDCBA8D);
+  static const Color yellow = Color(0xFFD4962E);
+  static const Color deepYellow = Color(0xFFEDC61B);
+  static const Color mealSelection = Color(0x26D4962E);
+  static const Color mealBorder = Color(0xFFD4962E);
+  static const Color primaryBGAppBar =
+      Color(0x99B91C1C); // Slightly transparent Red
+  static const Color primaryDark = Color(0xFF111827); // Strong Black
+  static const Color accent = Color(0xFFE5E7EB); // Light Gray
+
+  /// Special Colors
+  static const Color gold = Color(0xffDDB351); // Gold
+  static const Color gold2 = Color(0xffdda051); // Gold
+  static const Color silver = Color(0xff9C9C9C); // Silver
+  static const Color whiteLevel = Color(0xffEBEBEB); // Light White
+  static const Color blueColor = Color(0xff358FE1); // Accent Blue
+
+  /// App Bar & Buttons
+  static const Color appBarColor = Color(0xFFB91C1C); // Match primary color
+  static const Color buttonPrimary = Color(0xFFB91C1C); // Dark Red Button
+  static const Color buttonSecondary = Color(0xFF111827); // Strong Black Button
+  static const Color buttonDisabled = Color(0xFFC4C4C4); // Gray Disabled
+
+  /// Background Colors
+  static const Color light = Color(0xFFF6F6F6); // Soft Light
+  static const Color dark = Color(0xFF111827); // Strong Black
+  static const Color primaryBackground = Color(0xFF111827); // Dark Background
+
+  /// Text Colors
+  static const Color textPrimary = Color(0xFFFFFFFF); // White Text
+  static const Color textSecondary = Color(0xFFE5E7EB); // Light Gray Text
+  static const Color textWhite = Colors.white;
+
+  /// Borders
+  static const Color borderPrimary = Color(0xFFD9D9D9);
+  static const Color borderSecondary = Color(0xFFE6E6E6);
+  static const Color borderTextFormField = Color(0xFFECECEC);
+
+  /// Error and Validation Colors
+  static const Color error = Color(0xFFB91C1C);
+  static const Color error2 = Color(0xFFB91C1C);
+  static const Color success = Color(0xFF388E3C);
+  static const Color warning = Color(0xFFF57C00);
+  static const Color info = Color(0xFF1976D2);
+
+  /// Neutral Shades
+  static const Color black = Color(0xFF37474F);
+  static const Color realBlack = Color(0xFF232323);
+  static const Color darkerGrey = Color(0xFF4F4F4F);
+  static const Color darkGrey = Color(0xFF939393);
+  static const Color grey = Color(0xFF62757F);
+  static const Color grey2 = Color(0xFF6F7073);
+  static const Color grey3 = Color(0xFFf6f4f7);
+  static const Color grey6 = Color(0xfff3f3f9);
+  static const Color grey4 = Color(0xfff1f1f1);
+  static const Color grey_F707340 = Color(0x406f7073);
+  static const Color grey5= Color(0x1a6f7073);
+  static const Color bgColorOfCategoryComponent = Color(0xFFFCFCFC);
+  static const Color softGrey = Color(0xFFF4F4F4);
+  static const Color lightGrey = Color(0xFFF1F1F1);
+  static const Color white = Color(0xFFFFFFFF);
+  static const Color green = Color(0xFF169A1A);
+
+  static const Color transparent = Colors.transparent;
+
+  /// Gradient Colors
+  static const Gradient linerGradient = LinearGradient(
+    begin: Alignment(0, 0),
+    end: Alignment(0.707, -0.707),
+    colors: [
+      Color(0xFFB91C1C), // Dark Red
+      Color(0xFF111827), // Strong Black
+    ],
+  );
+
+  /// Gradient Lists
+  static const List<Color> giftGrad = [
+    Colors.yellow,
+    Colors.yellow,
+    Colors.yellow,
+    ColorRes.primary,
+    ColorRes.primary,
+    ColorRes.primary,
+  ];
+  static const List<Color> langGrad = [
+    Colors.white,
+    ColorRes.primaryLight,
+    ColorRes.primary,
+  ];
+  static const List<Color> pointsGrad = [
+    ColorRes.primary,
+    ColorRes.primary,
+    Colors.yellow,
+  ];
+  static const List<Color> profileGrad = [
+    ColorRes.primary,
+    ColorRes.primary,
+    ColorRes.white,
+  ];
+
+  /// Gift Status Gradients
+  static const List<Color> pendinggrad = [
+    Colors.grey,
+    Colors.yellow,
+  ];
+  static const List<Color> refusedGrad = [Colors.grey, Colors.red];
+  // static const List<Color> acceptedGrad = [
+  // Colors.grey,
+  // Colors.green,
+  // ];
+}

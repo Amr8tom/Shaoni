@@ -1,0 +1,92 @@
+import 'package:flutter/material.dart';
+import '../../../core/constants/app_sizes.dart';
+import '../../../core/constants/colors.dart';
+import '../../../features/auth/presentation/widgets/auth_button.dart';
+import '../../../features/auth/presentation/widgets/auth_text_filed.dart';
+import '../../../generated/l10n.dart';
+import '../sizeboxs/Sizer.dart';
+
+void showOTPPopUp({required BuildContext context, required String email}) {
+  showDialog(
+    context: context,
+    barrierDismissible: false,
+    builder: (BuildContext context) {
+      return Dialog(
+        child: Directionality(
+          textDirection: TextDirection.ltr,
+          child: Container(
+            padding: EdgeInsets.symmetric(horizontal: AppSizes.padding / 3),
+            decoration: BoxDecoration(
+              color: ColorRes.white,
+              borderRadius: BorderRadius.circular(AppSizes.borderRadiusLarge),
+            ),
+            height: AppSizes.containerLarge * 1.5,
+            child: Stack(
+              children: [
+                Padding(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: AppSizes.padding / 2,
+                  ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      /// Title
+                      Text(
+                        S.current.resetPassword,
+                        style: Theme.of(
+                          context,
+                        ).textTheme.headlineLarge!.copyWith(letterSpacing: 1.2),
+                        textAlign: TextAlign.center,
+                        maxLines: 5,
+                      ),
+
+                      /// make size
+                      const Sizer(height: 8),
+
+                      /// Description
+                      Flexible(
+                        child: Text(
+                          S.current.enterEmailToResetPassword,
+                          style: Theme.of(context).textTheme.bodyLarge!
+                              .copyWith(color: ColorRes.darkGrey, height: 1.5),
+                          maxLines: 7,
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+
+                      /// email
+                      AuthTextField(
+                        hint: S.current.email,
+                        controller: TextEditingController(),
+                        prefixIcon: Icon(Icons.email, color: ColorRes.grey),
+                      ),
+                      const Sizer(height: 16),
+                      AuthButton(
+                        text: S.current.send,
+                        onPressed: () {},
+                        width: double.infinity,
+                        height: AppSizes.buttonHeight,
+                        textColor: ColorRes.white,
+                        backgroundColor: ColorRes.primary,
+                      ),
+                    ],
+                  ),
+                ),
+                Positioned(
+                  top: 0,
+                  left: 0,
+                  child: IconButton(
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                    icon: Icon(Icons.close, color: ColorRes.grey),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      );
+    },
+  );
+}
