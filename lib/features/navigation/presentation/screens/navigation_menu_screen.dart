@@ -38,6 +38,7 @@ class NavigationMenuScreen extends StatelessWidget {
                   state.screens[controller.indx],
                 ],
               ),
+              // body: state.screens[controller.indx],
               bottomNavigationBar: const CustomBottomNavigationBar(),
             ),
           );

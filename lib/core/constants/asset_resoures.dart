@@ -170,6 +170,7 @@ class AssetRes {
   static const String deletedIcon = 'assets/images/pngs/deleted.png';
   static const String reminingIcon = 'assets/images/pngs/remining.png';
   static const String waitingIcon = 'assets/images/pngs/waiting.png';
+  static const String approvedIcon = 'assets/images/pngs/approvedIcon.png';
 
   /// side menu
   static const String homeIcon = 'assets/images/pngs/home_icon.png';

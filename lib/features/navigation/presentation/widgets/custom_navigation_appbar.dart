@@ -11,17 +11,18 @@ PreferredSizeWidget customNavigationAppBars(int indx, BuildContext context) {
   return DAppBar(
     // showBackArrow: true,
     bgColor: ColorRes.transparent,
-    appHeight: DDeviceUtils.getAppBarHeight()*3.6,
+    appHeight: DDeviceUtils.getAppBarHeight()*4,
     actions: [
       const Sizer(width: 15),
 
       /// when profile show special skip and done button
       // IconButton(onPressed: (){}, icon:Icon(Icons.menu,color: ColorRes.white,)),
-      SvgPicture.asset(AssetRes.menuIcon),
+      SvgPicture.asset(AssetRes.menuIcon,color: ColorRes.white,),
       const Sizer(width: 30),
       /// todo : remove comment form this stack to red point for unreaded notification
       Stack(
         children: [
+          // Text("Sdsds"),
           // context.read<NavigationCubit>().state.notificationCount > 0
           //     ? Text(
           //       "${context.read<NavigationCubit>().state.notificationCount}",
@@ -32,7 +33,8 @@ PreferredSizeWidget customNavigationAppBars(int indx, BuildContext context) {
           //       ),
           //     )
           //     :const Sizer(),
-          SvgPicture.asset(AssetRes.notificationIcon),
+
+          SvgPicture.asset(AssetRes.notificationIcon,color: ColorRes.white,),
         ],
       ),
       const Spacer(),
