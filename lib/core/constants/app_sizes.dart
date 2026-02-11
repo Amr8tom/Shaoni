@@ -81,4 +81,7 @@ class AppSizes {
   static final double fullHeight = 1.0.sh;
   static final double appBarHeight = 56.0.h;
   static final double buttonHeight = 48.0.h;
+
+  static final double paddingHorizontallyContainer = 100.w;
+
 }

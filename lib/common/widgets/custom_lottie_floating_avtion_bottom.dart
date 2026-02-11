@@ -13,7 +13,7 @@ class CustomLottieFloatingAvtionBottom extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        context.read<NavigationCubit>().chnageIndx(4);
+        context.read<NavigationCubit>().changeIndex(4);
       },
       child: RepaintBoundary(
         child: CircleAvatar(

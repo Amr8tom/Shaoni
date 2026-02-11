@@ -63,7 +63,7 @@ class NavigationCubit extends Cubit<NavigationState> {
   //   }
   // }
 
-  void chnageIndx(int index) {
+  void changeIndex(int index) {
     emit(state.copyWith(status: GeneralStatus.loading));
     indx = index;
     emit(state.copyWith(status: GeneralStatus.success));

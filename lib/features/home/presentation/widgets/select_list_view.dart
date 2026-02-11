@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
-import '../../common/widgets/sizeboxs/Sizer.dart';
-import '../../core/constants/app_sizes.dart';
-import '../../core/constants/asset_resoures.dart';
-import '../../core/constants/colors.dart';
-import '../../generated/l10n.dart';
+import '../../../../common/widgets/sizeboxs/Sizer.dart';
+import '../../../../core/constants/app_sizes.dart';
+import '../../../../core/constants/asset_resoures.dart';
+import '../../../../core/constants/colors.dart';
+import '../../../../generated/l10n.dart';
 
 class SelectListView extends StatelessWidget {
   const SelectListView({super.key});
@@ -57,6 +57,7 @@ class SelectListView extends StatelessWidget {
             position: index,
             child: SlideAnimation(
               duration: const Duration(milliseconds: 2000),
+              horizontalOffset: AppSizes.paddingHorizontallyContainer,
               child:homeStatisticsList[index]
             ),
           );
@@ -64,7 +65,7 @@ class SelectListView extends StatelessWidget {
           // child: SelectedItemWidget(currentIndex: index)));
         },
         separatorBuilder: (BuildContext context, int index) {
-          return const Sizer(width: 6);
+          return const Sizer(width: 10);
         },
       ),
     );
@@ -80,8 +81,8 @@ class SelectListView extends StatelessWidget {
     required String imagePath,
   }) {
     return Container(
-      height: AppSizes.heightcontainer * 2,
-      width: AppSizes.widthcontainer * 1.15,
+      height: AppSizes.heightcontainer ,
+      width: AppSizes.widthcontainer * 1.1,
       decoration: BoxDecoration(
         color: ColorRes.white,
         borderRadius: BorderRadius.all(
@@ -96,15 +97,16 @@ class SelectListView extends StatelessWidget {
             padding:  EdgeInsets.all(AppSizes.padding/1.4),
             child: Row(
               children: [
-                Text(
-                  count,
-                  style: Theme.of(context).textTheme.headlineLarge?.copyWith(
-                    color: color,
-                    fontSize: AppSizes.fontSizeXXLg*1.3,
+                Flexible(
+                  child: Text(
+                    count,
+                    style: Theme.of(context).textTheme.headlineLarge?.copyWith(
+                      color: color,
+                      fontSize: AppSizes.fontSizeXXLg*1.3,
+                    ),
                   ),
                 ),
                 const Sizer(width: 30),
-
                 Image.asset(
                   imagePath,
                   color: color,

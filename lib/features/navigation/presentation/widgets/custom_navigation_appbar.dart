@@ -7,11 +7,12 @@ import 'package:shaoni/core/device/device_utility.dart';
 import 'package:shaoni/features/navigation/presentation/widgets/profile_header.dart';
 import '../../../../core/constants/colors.dart';
 
-PreferredSizeWidget customNavigationAppBars(int indx, BuildContext context) {
+PreferredSizeWidget customNavigationAppBars(
+    {required int indx, required BuildContext context, double? height}) {
   return DAppBar(
     // showBackArrow: true,
     bgColor: ColorRes.transparent,
-    appHeight: DDeviceUtils.getAppBarHeight()*4,
+    appHeight: height??DDeviceUtils.getAppBarHeight()*4,
     actions: [
       const Sizer(width: 15),
 

@@ -64,6 +64,11 @@ class S {
     return Intl.message('SKIP INTRO', name: 'skip', desc: '', args: []);
   }
 
+  /// `Order Type`
+  String get orderType {
+    return Intl.message('Order Type', name: 'orderType', desc: '', args: []);
+  }
+
   /// `Welcome Back,`
   String get welcome {
     return Intl.message('Welcome Back,', name: 'welcome', desc: '', args: []);
@@ -929,6 +934,36 @@ class S {
     return Intl.message(
       'Create New Password',
       name: 'createNewPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `My Orders`
+  String get myOrders {
+    return Intl.message('My Orders', name: 'myOrders', desc: '', args: []);
+  }
+
+  /// `services`
+  String get services {
+    return Intl.message('services', name: 'services', desc: '', args: []);
+  }
+
+  /// `date`
+  String get date {
+    return Intl.message('date', name: 'date', desc: '', args: []);
+  }
+
+  /// `Order Date`
+  String get orderDate {
+    return Intl.message('Order Date', name: 'orderDate', desc: '', args: []);
+  }
+
+  /// `Order Status`
+  String get orderStatus {
+    return Intl.message(
+      'Order Status',
+      name: 'orderStatus',
       desc: '',
       args: [],
     );
@@ -3644,9 +3679,54 @@ class S {
     return Intl.message('Register', name: 'register', desc: '', args: []);
   }
 
-  /// `myOrders`
-  String get myOrders {
-    return Intl.message('myOrders', name: 'myOrders', desc: '', args: []);
+  /// `Purchases / Warehouses`
+  String get repositories {
+    return Intl.message(
+      'Purchases / Warehouses',
+      name: 'repositories',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Human Resources`
+  String get humanResources {
+    return Intl.message(
+      'Human Resources',
+      name: 'humanResources',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Salaries and Bonuses`
+  String get salaries {
+    return Intl.message(
+      'Salaries and Bonuses',
+      name: 'salaries',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Reservation Management`
+  String get registration {
+    return Intl.message(
+      'Reservation Management',
+      name: 'registration',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Training and Education`
+  String get study {
+    return Intl.message(
+      'Training and Education',
+      name: 'study',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Most Sold Items`
@@ -4482,11 +4562,6 @@ class S {
       desc: '',
       args: [],
     );
-  }
-
-  /// `services`
-  String get services {
-    return Intl.message('services', name: 'services', desc: '', args: []);
   }
 
   /// `Call us`

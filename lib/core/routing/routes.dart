@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:shaoni/core/routing/route_names.dart';
+import 'package:shaoni/features/profile/profile_screen.dart';
 import '../../features/auth/presentation/screen/login_screen.dart';
 import '../../features/auth/presentation/screen/new_password_screen.dart';
 import '../../features/auth/presentation/screen/otp_screen.dart';
@@ -162,9 +163,9 @@ class RouteGenerator {
         );
 
       /// OTP verification Screen
-      case DRoutesName.OTPRoute:
+      case DRoutesName.profileInfoRoute:
         return PageTransition(
-          child: const OtpScreen(),
+          child: const ProfileScreen(),
           type: PageTransitionType.rightToLeft,
           settings: settings,
         );

@@ -4,9 +4,18 @@
   "welcome": " , مرحبا",
   "quranKarem": "القرآن الكريم",
   "surah": "سوره",
+
+
+
+   "repositories":"المشتريات/المستودعات",
+   "humanResources":"الموارد البشرية",
+   "salaries":"الرواتب والمكافأت",
+   "registration":"ادارة الحجوزات",
+   "study":"التدريب والدراسة",
+
   "juz": "جزء",
   "juzIndex": "فهرس الأجزاء",
-  
+  "orderType":"نوع الطلب",
   "searchJuzIndex": "ابحث عن رقم الجزء...",
   "featureComingSoon": "الميزة قادمة قريباً",
   "lightYourHeart":"نور قلبك بذكر الله",
@@ -577,8 +586,10 @@
   "createAccount": "انشئ حساب",
   "createNewPassword": "انشئ كلمة مرور جديدة",
   "loading": "جاري التحميل",
-    "myOrders":"طلباتي"،
-                          "services":"الخدمات"،
+                          "services":"الخدمات",
+"date":"التاريخ",
+   "orderDate":"تاريخ الطلب",
+   "orderStatus":"حالة الطلب",
   "confirmPassword": "تأكيد كلمة المرور",
   "unknown": "غير معروف",
   "coontinue": "متابعة",

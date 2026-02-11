@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:shaoni/common/widgets/sizeboxs/Sizer.dart';
+import 'package:shaoni/core/constants/app_sizes.dart';
 import 'package:shaoni/core/device/device_utility.dart';
 import '../../../core/constants/asset_resoures.dart';
 import '../../../core/constants/colors.dart';
@@ -41,14 +43,17 @@ class CustomBottomNavigationBar extends StatelessWidget {
     return Directionality(
       textDirection: TextDirection.ltr,
       child: Container(
-        height: DDeviceUtils.getAppBarHeight()*1.4.sp,
+        height: DDeviceUtils.getBottomNavigationBarHeight() * 1.7.sp,
         margin: EdgeInsets.only(bottom: 0),
-        padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 12.h),
+        padding: EdgeInsets.symmetric(
+          horizontal: AppSizes.padding / 2,
+          vertical: AppSizes.padding / 2,
+        ),
         decoration: BoxDecoration(
           color: ColorRes.primary,
           borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(33.r),
-            topRight: Radius.circular(33.r),
+            topLeft: Radius.circular(AppSizes.borderRadiusXXLg),
+            topRight: Radius.circular(AppSizes.borderRadiusXXLg),
           ),
           boxShadow: [
             BoxShadow(
@@ -67,7 +72,7 @@ class CustomBottomNavigationBar extends StatelessWidget {
               context: context,
               item: items[index],
               isActive: isActive,
-              onTap: () => context.read<NavigationCubit>().chnageIndx(index),
+              onTap: () => context.read<NavigationCubit>().changeIndex(index),
             );
           }),
         ),
@@ -85,6 +90,7 @@ class CustomBottomNavigationBar extends StatelessWidget {
       onTap: onTap,
       behavior: HitTestBehavior.opaque,
       child: AnimatedContainer(
+        width: AppSizes.widthcontainer / 2,
         duration: const Duration(milliseconds: 350),
         curve: Curves.easeOutCubic,
         padding: EdgeInsets.symmetric(
@@ -93,18 +99,23 @@ class CustomBottomNavigationBar extends StatelessWidget {
         ),
         decoration: BoxDecoration(
           color: isActive ? Colors.white : Colors.transparent,
-          borderRadius: BorderRadius.circular(20.r),
-          boxShadow: isActive
-              ? [
-                  BoxShadow(
-                    color: Colors.white.withValues(alpha: 0.3),
-                    blurRadius: 8,
-                    offset: const Offset(0, 2),
-                  ),
-                ]
-              : null,
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(AppSizes.borderRadiusXXLg * 1.5),
+            topRight: Radius.circular(AppSizes.borderRadiusXXLg * 1.5),
+          ),
+          boxShadow:
+              isActive
+                  ? [
+                    BoxShadow(
+                      color: Colors.white.withValues(alpha: 0.3),
+                      blurRadius: 8,
+                      offset: const Offset(0, 2),
+                    ),
+                  ]
+                  : null,
         ),
-        child: Row(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisSize: MainAxisSize.min,
           children: [
             TweenAnimationBuilder<double>(
@@ -117,31 +128,38 @@ class CustomBottomNavigationBar extends StatelessWidget {
                     isActive ? item.activeIcon : item.icon,
                     height: 22.h,
                     colorFilter: ColorFilter.mode(
-                      isActive ? ColorRes.primary : Colors.white.withValues(alpha: 0.85),
+                      isActive
+                          ? ColorRes.primary
+                          : Colors.white.withValues(alpha: 0.85),
                       BlendMode.srcIn,
                     ),
                   ),
                 );
               },
             ),
+            const Sizer(height: 8),
             ClipRect(
               child: AnimatedSize(
                 duration: const Duration(milliseconds: 300),
                 curve: Curves.easeOutCubic,
-                child: isActive
-                    ? Padding(
-                        padding: EdgeInsets.only(left: 10.w),
-                        child: Text(
-                          item.label,
-                          style: TextStyle(
-                            color: ColorRes.primary,
-                            fontWeight: FontWeight.w700,
-                            fontSize: 13.sp,
-                            letterSpacing: 0.3,
-                          ),
-                        ),
-                      )
-                    : const SizedBox.shrink(),
+                child: isActive?Text(
+                            item.label,
+                            style: TextStyle(
+                              color: ColorRes.primary,
+                              fontWeight: FontWeight.w700,
+                              fontSize: AppSizes.fontSizeSm *0.7,
+                              // letterSpacing: 0.3,
+                            ),
+                          )
+                        : Text(
+                      item.label,
+                      style: TextStyle(
+                        color: ColorRes.white,
+                        fontWeight: FontWeight.w700,
+                        fontSize: AppSizes.fontSizeSm *0.7,
+                        // letterSpacing: 0.3,
+                      ),
+                    )
               ),
             ),
           ],
@@ -156,10 +174,5 @@ class _NavItem {
   final String activeIcon;
   final String label;
 
-  _NavItem({
-    required this.icon,
-    required this.activeIcon,
-    required this.label,
-  });
+  _NavItem({required this.icon, required this.activeIcon, required this.label});
 }
-

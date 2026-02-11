@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:shaoni/common/widgets/sizeboxs/Sizer.dart';
 import 'package:shaoni/core/constants/app_sizes.dart';
 import 'package:shaoni/core/constants/colors.dart';
-import 'package:shaoni/features/home/select_list_view.dart';
+import 'package:shaoni/features/home/presentation/widgets/select_list_view.dart';
 
 import '../../generated/l10n.dart';
+import 'presentation/widgets/my_orders_grid_view.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -15,14 +16,15 @@ class HomeScreen extends StatelessWidget {
       children: [
         const Sizer(height: 160),
         Padding(
-          padding: EdgeInsets.all(AppSizes.padding/2),
+          padding: EdgeInsets.symmetric(horizontal:AppSizes.padding/2),
           child: const SelectListView(),
         ),
+        const Sizer(height: 10,),
         Padding(
           padding:  EdgeInsets.symmetric(horizontal: AppSizes.padding),
           child: Row(children: [
             Text(S.current.myOrders,style: Theme.of(context).textTheme.titleSmall),
-            Spacer(),
+            const Spacer(),
             Row(
               children: [
                 Text(S.current.seeAll,style: Theme.of(context).textTheme.bodyMedium?.copyWith(
@@ -30,12 +32,18 @@ class HomeScreen extends StatelessWidget {
                 ),),
                   const Sizer(width: 8,),
                   Icon(Icons.arrow_forward_ios,size: AppSizes.iconXs,)
-
               ],
             ),
 
           ],),
-        )
+        ),
+        // Text("sssssssssssssssssssssssssssssssssssssssssssss"),
+        const Sizer(height: 10,),
+
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal:  AppSizes.padding),
+          child: const MyOrdersGridView(),
+        ),
       ],
     );
   }

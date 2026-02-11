@@ -1,3 +1,5 @@
+import 'package:shaoni/generated/l10n.dart';
+
 class AssetRes {
   /// -- App Logos
   static const String appLogo = 'assets/images/pngs/meals_screen.png';
@@ -245,25 +247,13 @@ class AssetRes {
   static const String activeProfile = 'assets/images/pngs/profile.png';
   static const String homeLottieIcon = 'assets/lotties/home.json';
 
-  /// prayer times
-  static const String asr = 'assets/images/svgs/Asr.svg';
-  static const String fajr = 'assets/images/svgs/fajr.svg';
-  static const String dhuhr = 'assets/images/svgs/dhuhr.svg';
-  static const String maghrib = 'assets/images/svgs/maghrib.svg';
-  static const String isha = 'assets/images/svgs/isha.svg';
-  static const String sunrise = 'assets/images/svgs/sunrise.svg';
-
-  /// qibla
-  static const String qibla = 'assets/images/svgs/qibla.svg';
-  static const String qiblaArrow = 'assets/images/svgs/arrow.svg';
-
-  /// Kabaa
-  static const String bGKabba = 'assets/images/pngs/kabaa_bg.png';
-  static const String kabbaLottie = 'assets/lotties/kabaa.json';
-
-  /// activities phases
-  static const String DepartToMina = 'assets/images/pngs/depart_to_mina.png';
-  static const String stoningDevil = 'assets/images/pngs/stoning_devil.png';
+  /// services
+  static const String study = 'assets/images/pngs/study.png';
+  static const String humanResources = 'assets/images/pngs/human_sources.png';
+  static const String info = 'assets/images/pngs/information.png';
+  static const String salaries = 'assets/images/pngs/salaries.png';
+  static const String registration = 'assets/images/pngs/registration.png';
+  static const String repositories = 'assets/images/pngs/repository.png';
 
   /// other Icons
   static const String calenderIcon = 'assets/images/svgs/calender.svg';

@@ -225,7 +225,7 @@ class CustomUI {
 
   static Widget mapLoader() {
     return RepaintBoundary(
-      child: Center(child: Lottie.asset(AssetRes.kabbaLottie, width: 200.w)),
+      child: Center(child: Lottie.asset(AssetRes.loaderLottie, width: 200.w)),
     );
   }
 

@@ -195,6 +195,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Customer\'s Stagnant Items.....You can browse stagnant items at other pharmacies in your area and repurchase them",
     ),
     "da": MessageLookupByLibrary.simpleMessage("Date: "),
+    "date": MessageLookupByLibrary.simpleMessage("date"),
     "date05": MessageLookupByLibrary.simpleMessage("05/17/2024  06:30PM"),
     "date15": MessageLookupByLibrary.simpleMessage("15/04/2024"),
     "dateBirth": MessageLookupByLibrary.simpleMessage("Date of Brith"),
@@ -419,6 +420,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "how": MessageLookupByLibrary.simpleMessage("How I use app"),
     "hu": MessageLookupByLibrary.simpleMessage("Hajj & Umrah"),
     "hug": MessageLookupByLibrary.simpleMessage("Hajj & Umrah Guide"),
+    "humanResources": MessageLookupByLibrary.simpleMessage("Human Resources"),
     "huv": MessageLookupByLibrary.simpleMessage("Hajj & Umrah Video Guide"),
     "iAgreeTo": MessageLookupByLibrary.simpleMessage("I agree to "),
     "imHereToHelp": MessageLookupByLibrary.simpleMessage(
@@ -540,7 +542,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "mostSoldItmes": MessageLookupByLibrary.simpleMessage("Most Sold Items"),
     "mostafa": MessageLookupByLibrary.simpleMessage("Mostafa Zakaria"),
     "myOrder": MessageLookupByLibrary.simpleMessage("My Order"),
-    "myOrders": MessageLookupByLibrary.simpleMessage("myOrders"),
+    "myOrders": MessageLookupByLibrary.simpleMessage("My Orders"),
     "myStagnantCategories": MessageLookupByLibrary.simpleMessage(
       "My Stagnant Categories",
     ),
@@ -605,9 +607,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "op": MessageLookupByLibrary.simpleMessage("Open"),
     "open": MessageLookupByLibrary.simpleMessage("Open Google Map"),
     "or": MessageLookupByLibrary.simpleMessage("or"),
+    "orderDate": MessageLookupByLibrary.simpleMessage("Order Date"),
     "orderDetails": MessageLookupByLibrary.simpleMessage("Order Details"),
     "orderExecution": MessageLookupByLibrary.simpleMessage("Order Execution"),
     "orderNumber": MessageLookupByLibrary.simpleMessage("Order Number "),
+    "orderStatus": MessageLookupByLibrary.simpleMessage("Order Status"),
+    "orderType": MessageLookupByLibrary.simpleMessage("Order Type"),
     "orederPlaced": MessageLookupByLibrary.simpleMessage("Oreder Placed"),
     "orederPlacedBody": MessageLookupByLibrary.simpleMessage(
       "Oreder Placed and we review it ",
@@ -741,10 +746,16 @@ class MessageLookup extends MessageLookupByLibrary {
     "registerSuccessfully": MessageLookupByLibrary.simpleMessage(
       "Your account is registered successfully",
     ),
+    "registration": MessageLookupByLibrary.simpleMessage(
+      "Reservation Management",
+    ),
     "rememberMe": MessageLookupByLibrary.simpleMessage("Remember Me"),
     "remotePayment": MessageLookupByLibrary.simpleMessage("Remote Payment"),
     "repeatNewPassword": MessageLookupByLibrary.simpleMessage(
       "Repeat New Password",
+    ),
+    "repositories": MessageLookupByLibrary.simpleMessage(
+      "Purchases / Warehouses",
     ),
     "reqDetail": MessageLookupByLibrary.simpleMessage("Request Details:"),
     "reqDetails": MessageLookupByLibrary.simpleMessage("Request Details"),
@@ -779,6 +790,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "round": MessageLookupByLibrary.simpleMessage("Arrival Time"),
     "saf": MessageLookupByLibrary.simpleMessage("   Safwa Hotel"),
     "safwa": MessageLookupByLibrary.simpleMessage("Safwa Hotel"),
+    "salaries": MessageLookupByLibrary.simpleMessage("Salaries and Bonuses"),
     "saleTime": MessageLookupByLibrary.simpleMessage("The Sale Time ends in"),
     "saudiArabia": MessageLookupByLibrary.simpleMessage("saudiArabia"),
     "saveAndPay": MessageLookupByLibrary.simpleMessage("Save and Pay"),
@@ -881,6 +893,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "status": MessageLookupByLibrary.simpleMessage("Status"),
     "stoning": MessageLookupByLibrary.simpleMessage("Stoning Devil in Mina"),
     "streetName": MessageLookupByLibrary.simpleMessage("Street Name"),
+    "study": MessageLookupByLibrary.simpleMessage("Training and Education"),
     "subActivityRequest": MessageLookupByLibrary.simpleMessage(
       "Sub Activity Request",
     ),
