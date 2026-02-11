@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:iconsax/iconsax.dart';
 import 'package:shaoni/common/widgets/appbar/appbar.dart';
 import 'package:shaoni/common/widgets/sizeboxs/Sizer.dart';
 import 'package:shaoni/core/device/device_utility.dart';
@@ -17,6 +18,8 @@ class ProfileScreen extends StatelessWidget {
     final nameController = TextEditingController(text: 'مصطفى زكريا محمد');
     final phoneController = TextEditingController(text: '010123456789');
     final emailController = TextEditingController(text: 'm.zakaria@ejad.sa');
+    final positionController = TextEditingController(text: 'Senior Developer');
+    final departmentController = TextEditingController(text: 'IT Department');
     final passwordController = TextEditingController(text: '*************');
 
     return Scaffold(
@@ -58,7 +61,7 @@ class ProfileScreen extends StatelessWidget {
                             Positioned.fill(
                               child: CircleAvatar(
                                 backgroundColor: Colors.transparent,
-                                backgroundImage: const AssetImage('assets/images/ss/avatar.png'),
+                                backgroundImage: const AssetImage('assets/images/pngs/profile.png'),
                               ),
                             ),
                             // Edit badge - bottom left
@@ -116,10 +119,27 @@ class ProfileScreen extends StatelessWidget {
                     ),
                     const Sizer(height: 12),
                     ProfileField(
+                      controller: positionController,
+                      trailingIcon: Iconsax.briefcase,
+                    ),
+                    const Sizer(height: 12),
+                    ProfileField(
+                      controller: departmentController,
+                      trailingIcon: Iconsax.building,
+                    ),
+                    const Sizer(height: 12),
+                    ProfileField(
                       controller: passwordController,
                       isObscure: true,
                       trailingIcon: Icons.lock_outline,
                     ),
+                    
+                    const Sizer(height: 32),
+                    
+                    // Settings Section
+                    _buildSettingsSection(context),
+                    
+                    const Sizer(height: 24),
                   ],
                 ),
               ),
@@ -144,6 +164,102 @@ class ProfileScreen extends StatelessWidget {
             ),
           ),
         ],
+      ),
+    );
+  }
+  
+  // Settings section with menu options
+  Widget _buildSettingsSection(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        color: ColorRes.white,
+        borderRadius: BorderRadius.circular(AppSizes.borderRadiusLarge),
+        border: Border.all(color: ColorRes.grey4, width: 1),
+      ),
+      child: Column(
+        children: [
+          _buildSettingsItem(
+            icon: Iconsax.notification,
+            title: 'Notifications',
+            onTap: () {
+              // TODO: Navigate to notifications settings
+            },
+          ),
+          Divider(height: 1, color: ColorRes.grey4),
+          _buildSettingsItem(
+            icon: Iconsax.security,
+            title: 'Privacy & Security',
+            onTap: () {
+              // TODO: Navigate to privacy settings
+            },
+          ),
+          Divider(height: 1, color: ColorRes.grey4),
+          _buildSettingsItem(
+            icon: Iconsax.setting_2,
+            title: 'Settings',
+            onTap: () {
+              // TODO: Navigate to app settings
+            },
+          ),
+          Divider(height: 1, color: ColorRes.grey4),
+          _buildSettingsItem(
+            icon: Iconsax.info_circle,
+            title: 'Help & Support',
+            onTap: () {
+              // TODO: Navigate to help
+            },
+          ),
+        ],
+      ),
+    );
+  }
+  
+  // Individual settings item
+  Widget _buildSettingsItem({
+    required IconData icon,
+    required String title,
+    required VoidCallback onTap,
+  }) {
+    return InkWell(
+      onTap: onTap,
+      borderRadius: BorderRadius.circular(AppSizes.borderRadiusLarge),
+      child: Padding(
+        padding: EdgeInsets.symmetric(
+          horizontal: 16.w,
+          vertical: 16.h,
+        ),
+        child: Row(
+          children: [
+            Container(
+              padding: EdgeInsets.all(10.w),
+              decoration: BoxDecoration(
+                color: ColorRes.primary.withOpacity(0.1),
+                borderRadius: BorderRadius.circular(8.r),
+              ),
+              child: Icon(
+                icon,
+                size: 20.sp,
+                color: ColorRes.primary,
+              ),
+            ),
+            SizedBox(width: 12.w),
+            Expanded(
+              child: Text(
+                title,
+                style: TextStyle(
+                  fontSize: 16.sp,
+                  fontWeight: FontWeight.w500,
+                  color: ColorRes.darkGrey,
+                ),
+              ),
+            ),
+            Icon(
+              Icons.arrow_forward_ios,
+              size: 16.sp,
+              color: ColorRes.grey2,
+            ),
+          ],
+        ),
       ),
     );
   }
