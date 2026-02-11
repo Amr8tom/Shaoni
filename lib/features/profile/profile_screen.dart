@@ -222,7 +222,6 @@ class ProfileScreen extends StatelessWidget {
   }) {
     return InkWell(
       onTap: onTap,
-      borderRadius: BorderRadius.circular(AppSizes.borderRadiusLarge),
       child: Padding(
         padding: EdgeInsets.symmetric(
           horizontal: 16.w,
