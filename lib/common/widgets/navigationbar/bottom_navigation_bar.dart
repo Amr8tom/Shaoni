@@ -5,8 +5,10 @@ import 'package:flutter_svg/svg.dart';
 import 'package:shaoni/common/widgets/sizeboxs/Sizer.dart';
 import 'package:shaoni/core/constants/app_sizes.dart';
 import 'package:shaoni/core/device/device_utility.dart';
+import 'package:shaoni/core/extentions/navigation_extension.dart';
 import '../../../core/constants/asset_resoures.dart';
 import '../../../core/constants/colors.dart';
+import '../../../core/routing/route_names.dart';
 import '../../../features/navigation/presentation/controllers/navigation_cubit.dart';
 import '../../../generated/l10n.dart';
 
@@ -41,7 +43,7 @@ class CustomBottomNavigationBar extends StatelessWidget {
     ];
 
     return Directionality(
-      textDirection: TextDirection.ltr,
+      textDirection: TextDirection.rtl,
       child: Container(
         height: DDeviceUtils.getBottomNavigationBarHeight() * 1.7.sp,
         margin: EdgeInsets.only(bottom: 0),
@@ -72,7 +74,12 @@ class CustomBottomNavigationBar extends StatelessWidget {
               context: context,
               item: items[index],
               isActive: isActive,
-              onTap: () => context.read<NavigationCubit>().changeIndex(index),
+              onTap: () {
+                if(index==3){
+                  context.pushNamed(DRoutesName.profileInfoRoute);
+                }{
+                  context.read<NavigationCubit>().changeIndex(index);
+                }}
             );
           }),
         ),

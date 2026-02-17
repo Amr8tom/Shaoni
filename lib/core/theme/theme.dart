@@ -14,14 +14,14 @@ class DAppTheme {
   DAppTheme._();
 
   static ThemeData lightTheme(BuildContext context) {
-    String fontFamily = 'Poppins';
+    String fontFamily = 'Cairo';
 
     return ThemeData(
       useMaterial3: true,
       fontFamily: fontFamily,
       // iconTheme: ,
       brightness: Brightness.light,
-      primaryColor: ColorRes.primary,
+      primaryColor: ColorRes.black,
       scaffoldBackgroundColor: ColorRes.white,
       primarySwatch: Colors.blue,
       textTheme: DTextTheme.lightTextTheme,
@@ -38,7 +38,7 @@ class DAppTheme {
   }
 
   static ThemeData darkTheme(BuildContext context) {
-    String fontFamily = 'Poppins';
+    String fontFamily = 'Cairo';
     return ThemeData(
       useMaterial3: true,
       fontFamily: fontFamily,

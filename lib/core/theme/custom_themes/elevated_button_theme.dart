@@ -16,7 +16,7 @@ class DElevatedButtonTheme {
       padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
       textStyle: TextStyle(
           color: Colors.white,
-          fontFamily: "Poppins",
+          fontFamily: "Cairo",
           fontSize: 21,
           fontWeight: FontWeight.bold),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
@@ -33,7 +33,7 @@ class DElevatedButtonTheme {
       padding: EdgeInsets.symmetric(horizontal: 15, vertical: 5),
       textStyle: TextStyle(
           color: Colors.white,
-          fontFamily: "Poppins",
+          fontFamily: "Cairo",
           fontSize: 21,
           fontWeight: FontWeight.bold),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),

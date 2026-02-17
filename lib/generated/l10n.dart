@@ -79,6 +79,96 @@ class S {
     return Intl.message('Juz Index', name: 'juzIndex', desc: '', args: []);
   }
 
+  /// `Request Data`
+  String get requestData {
+    return Intl.message(
+      'Request Data',
+      name: 'requestData',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Request Number`
+  String get requestNumber {
+    return Intl.message(
+      'Request Number',
+      name: 'requestNumber',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Request Status`
+  String get requestStatus {
+    return Intl.message(
+      'Request Status',
+      name: 'requestStatus',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Permission Type`
+  String get permissionType {
+    return Intl.message(
+      'Permission Type',
+      name: 'permissionType',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Attachments`
+  String get attachments {
+    return Intl.message('Attachments', name: 'attachments', desc: '', args: []);
+  }
+
+  /// `Medical Report from Doctor`
+  String get medicalReportFromDoctor {
+    return Intl.message(
+      'Medical Report from Doctor',
+      name: 'medicalReportFromDoctor',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Request Stage`
+  String get requestStage {
+    return Intl.message(
+      'Request Stage',
+      name: 'requestStage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `New`
+  String get NNew {
+    return Intl.message('New', name: 'NNew', desc: '', args: []);
+  }
+
+  /// `Manager Approval`
+  String get managerApproval {
+    return Intl.message(
+      'Manager Approval',
+      name: 'managerApproval',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `HR Manager Approval`
+  String get hrManagerApproval {
+    return Intl.message(
+      'HR Manager Approval',
+      name: 'hrManagerApproval',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Quran Kareem`
   String get quranKarem {
     return Intl.message('Quran Kareem', name: 'quranKarem', desc: '', args: []);
@@ -489,14 +579,29 @@ class S {
     );
   }
 
-  /// `Design & Development By`
-  String get designDevelopmentBy {
+  /// `Design & Development`
+  String get designDevelopment {
     return Intl.message(
-      'Design & Development By',
-      name: 'designDevelopmentBy',
+      'Design & Development',
+      name: 'designDevelopment',
       desc: '',
       args: [],
     );
+  }
+
+  /// `Add Correct Sign At All`
+  String get addCorrectSignAtAll {
+    return Intl.message(
+      'Add Correct Sign At All',
+      name: 'addCorrectSignAtAll',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Update Data`
+  String get updateData {
+    return Intl.message('Update Data', name: 'updateData', desc: '', args: []);
   }
 
   /// `EJAD Digital Solutions co`
@@ -949,6 +1054,206 @@ class S {
     return Intl.message('services', name: 'services', desc: '', args: []);
   }
 
+  /// `Leave Request`
+  String get leaveRequest {
+    return Intl.message(
+      'Leave Request',
+      name: 'leaveRequest',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Overtime Request`
+  String get overtimeRequest {
+    return Intl.message(
+      'Overtime Request',
+      name: 'overtimeRequest',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Fingerprint Verification Request`
+  String get fingerprintProofRequest {
+    return Intl.message(
+      'Fingerprint Verification Request',
+      name: 'fingerprintProofRequest',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Exit Permission Request`
+  String get exitPermissionRequest {
+    return Intl.message(
+      'Exit Permission Request',
+      name: 'exitPermissionRequest',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `School Permission Request`
+  String get schoolPermissionRequest {
+    return Intl.message(
+      'School Permission Request',
+      name: 'schoolPermissionRequest',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Car Permit Request`
+  String get carPermitRequest {
+    return Intl.message(
+      'Car Permit Request',
+      name: 'carPermitRequest',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `During working hours: leaving and returning on the same day (quick medical appointment).`
+  String get duringWorkHours {
+    return Intl.message(
+      'During working hours: leaving and returning on the same day (quick medical appointment).',
+      name: 'duringWorkHours',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `End of Service Request`
+  String get endOfServiceRequest {
+    return Intl.message(
+      'End of Service Request',
+      name: 'endOfServiceRequest',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Clearance Request`
+  String get clearanceRequest {
+    return Intl.message(
+      'Clearance Request',
+      name: 'clearanceRequest',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `ID Renewal Request`
+  String get idRenewalRequest {
+    return Intl.message(
+      'ID Renewal Request',
+      name: 'idRenewalRequest',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Exit Permission Request`
+  String get exitPermissionTitle {
+    return Intl.message(
+      'Exit Permission Request',
+      name: 'exitPermissionTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `When and Why It Is Used`
+  String get whenAndWhyUsed {
+    return Intl.message(
+      'When and Why It Is Used',
+      name: 'whenAndWhyUsed',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Exit permission is used in cases where an employee needs to be outside the workplace during official working hours.\n\nDuring working hours: leaving and returning on the same day (a quick medical appointment).\n\nBefore the end of the workday: leaving without returning (early departure).\n\nExternal assignments: if the employee is assigned a task that requires being present at another location.`
+  String get whenAndWhyDescription {
+    return Intl.message(
+      'Exit permission is used in cases where an employee needs to be outside the workplace during official working hours.\n\nDuring working hours: leaving and returning on the same day (a quick medical appointment).\n\nBefore the end of the workday: leaving without returning (early departure).\n\nExternal assignments: if the employee is assigned a task that requires being present at another location.',
+      name: 'whenAndWhyDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Exit permission is used when an employee needs to be outside the workplace during official working hours.`
+  String get exitPermissionDescription {
+    return Intl.message(
+      'Exit permission is used when an employee needs to be outside the workplace during official working hours.',
+      name: 'exitPermissionDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Before the end of the workday: leaving without returning (early departure).`
+  String get beforeEndOfDay {
+    return Intl.message(
+      'Before the end of the workday: leaving without returning (early departure).',
+      name: 'beforeEndOfDay',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `External assignments: when an employee is assigned a task that requires being at another location.`
+  String get externalMission {
+    return Intl.message(
+      'External assignments: when an employee is assigned a task that requires being at another location.',
+      name: 'externalMission',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Allowed Duration / Rules`
+  String get allowedDurationRules {
+    return Intl.message(
+      'Allowed Duration / Rules',
+      name: 'allowedDurationRules',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Processing Type: Immediate / Requires Approval`
+  String get processingType {
+    return Intl.message(
+      'Processing Type: Immediate / Requires Approval',
+      name: 'processingType',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Service Level Agreement / Expected Response Time`
+  String get slaResponseTime {
+    return Intl.message(
+      'Service Level Agreement / Expected Response Time',
+      name: 'slaResponseTime',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Create Request`
+  String get createRequest {
+    return Intl.message(
+      'Create Request',
+      name: 'createRequest',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `date`
   String get date {
     return Intl.message('date', name: 'date', desc: '', args: []);
@@ -1104,9 +1409,49 @@ class S {
     return Intl.message('Login', name: 'login', desc: '', args: []);
   }
 
+  /// `Your request has been sent successfully`
+  String get requestSentSuccessfully {
+    return Intl.message(
+      'Your request has been sent successfully',
+      name: 'requestSentSuccessfully',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Passport No.`
   String get passNo {
     return Intl.message('Passport No.', name: 'passNo', desc: '', args: []);
+  }
+
+  /// `About the App`
+  String get aboutApp {
+    return Intl.message('About the App', name: 'aboutApp', desc: '', args: []);
+  }
+
+  /// `Privacy Policy`
+  String get privacyPolicy {
+    return Intl.message(
+      'Privacy Policy',
+      name: 'privacyPolicy',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `User Policy`
+  String get userPolicy {
+    return Intl.message('User Policy', name: 'userPolicy', desc: '', args: []);
+  }
+
+  /// `App Language`
+  String get appLanguage {
+    return Intl.message(
+      'App Language',
+      name: 'appLanguage',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Type your Passport Number`
@@ -1122,6 +1467,86 @@ class S {
   /// `Password`
   String get password {
     return Intl.message('Password', name: 'password', desc: '', args: []);
+  }
+
+  /// `Request applicant Data`
+  String get requestApplicantData {
+    return Intl.message(
+      'Request applicant Data',
+      name: 'requestApplicantData',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Applicant Name`
+  String get applicantName {
+    return Intl.message(
+      'Applicant Name',
+      name: 'applicantName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Organizational Unit`
+  String get organizationalUnit {
+    return Intl.message(
+      'Organizational Unit',
+      name: 'organizationalUnit',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Request Details`
+  String get requestDetails {
+    return Intl.message(
+      'Request Details',
+      name: 'requestDetails',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Permission Date`
+  String get permissionDate {
+    return Intl.message(
+      'Permission Date',
+      name: 'permissionDate',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Permission Time`
+  String get permissionTime {
+    return Intl.message(
+      'Permission Time',
+      name: 'permissionTime',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Duration (Hours)`
+  String get durationInHours {
+    return Intl.message(
+      'Duration (Hours)',
+      name: 'durationInHours',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Submit Request`
+  String get submitRequest {
+    return Intl.message(
+      'Submit Request',
+      name: 'submitRequest',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Forget Password ?`
@@ -3819,11 +4244,6 @@ class S {
     );
   }
 
-  /// `About us`
-  String get aboutApp {
-    return Intl.message('About us', name: 'aboutApp', desc: '', args: []);
-  }
-
   /// ` you can take a look on our newest digital services `
   String get medicalServices {
     return Intl.message(
@@ -4422,16 +4842,6 @@ class S {
   /// `I agree to `
   String get iAgreeTo {
     return Intl.message('I agree to ', name: 'iAgreeTo', desc: '', args: []);
-  }
-
-  /// `Privacy Policy`
-  String get privacyPolicy {
-    return Intl.message(
-      'Privacy Policy',
-      name: 'privacyPolicy',
-      desc: '',
-      args: [],
-    );
   }
 
   /// `see all`

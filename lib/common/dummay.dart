@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import '../core/constants/asset_resoures.dart';
+import '../core/constants/colors.dart';
+import '../features/notifications/domain/entities/notification_entity.dart';
 
 class Dummy {
 
@@ -65,5 +67,89 @@ class Dummy {
   //   ),
   // ];
 
+  /// Sample notification data
+  static List<NotificationEntity> notifications = [
+    NotificationEntity(
+      id: 1,
+      title: 'تم الموافقة علي طلبك رقم #56745',
+      description:
+      'تم الموافقة علي طلبك رقم #13242 الخاص باذن خروج بتاريخ 29/1/2026',
+      isApproved: true,
+      isRead: false,
+    ),
+    NotificationEntity(
+      id: 2,
+      title: 'تم رفض طلبك رقم #32423',
+      description: '',
+      isApproved: false,
+      isRead: true,
+    ),
+    NotificationEntity(
+      id: 3,
+      title: 'تم رفض طلبك رقم #32423',
+      description: '',
+      isApproved: false,
+      isRead: true,
+    ),
+    NotificationEntity(
+      id: 4,
+      title: 'تم رفض طلبك رقم #32423',
+      description: '',
+      isApproved: false,
+      isRead: true,
+    ),
+    NotificationEntity(
+      id: 5,
+      title: 'تم رفض طلبك رقم #32423',
+      description: '',
+      isApproved: false,
+      isRead: true,
+    ),
+  ];
+
+  static List<Map<String, dynamic>> orders = [
+    {
+      'status': 'approved',
+      'statusColor': ColorRes.green,
+      'orderNumber': '#VL2110',
+      'date': '07 Oct, 2021',
+      'type': 'study order',
+    },
+    {
+      'status': 'waiting',
+      'statusColor': ColorRes.blueColor,
+      'orderNumber': '#VL2111',
+      'date': '07 Oct, 2021',
+      'type': 'order viewing',
+    },
+    {
+      'status': 'rejectet',
+      'statusColor': ColorRes.yellow,
+      'orderNumber': '#VL2112',
+      'date': '07 Oct, 2021',
+      'type': 'order left',
+    },
+    {
+      'status': 'deleted',
+      'statusColor': ColorRes.error,
+      'orderNumber': '#VL2113',
+      'date': '07 Oct, 2021',
+      'type': 'loan ',
+    },
+    {
+      'status': 'deleted',
+      'statusColor': ColorRes.error,
+      'orderNumber': '#VL2113',
+      'date': '07 Oct, 2021',
+      'type': 'loan ',
+    },
+    {
+      'status': 'deleted',
+      'statusColor': ColorRes.error,
+      'orderNumber': '#VL2113',
+      'date': '07 Oct, 2021',
+      'type': 'loan ',
+    },
+  ];
 
 }

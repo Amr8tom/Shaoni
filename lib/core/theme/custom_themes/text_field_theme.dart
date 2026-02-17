@@ -8,8 +8,8 @@ class DTextFormFieldTheme {
 
   static InputDecorationTheme lightInputDecorationTheme = InputDecorationTheme(
     errorMaxLines: 2,
-    prefixIconColor: ColorRes.primary,
-    suffixIconColor: ColorRes.primary,
+    prefixIconColor: ColorRes.black,
+    suffixIconColor: ColorRes.black,
     labelStyle: const TextStyle().copyWith(
         fontWeight: FontWeight.w400, fontSize: 14.sp, color: Colors.grey),
     hintStyle: const TextStyle().copyWith(
@@ -20,15 +20,15 @@ class DTextFormFieldTheme {
         const TextStyle().copyWith(color: ColorRes.black.withOpacity(0.8)),
     border: const OutlineInputBorder().copyWith(
       borderRadius: BorderRadius.circular(14.r),
-      borderSide: BorderSide(width: 1.w, color: ColorRes.primary),
+      borderSide: BorderSide(width: 1.w, color: ColorRes.black),
     ),
     enabledBorder: const OutlineInputBorder().copyWith(
       borderRadius: BorderRadius.circular(14.r),
-      borderSide: BorderSide(width: 1.w, color: ColorRes.primary),
+      borderSide: BorderSide(width: 1.w, color: ColorRes.black),
     ),
     focusedBorder: const OutlineInputBorder().copyWith(
       borderRadius: BorderRadius.circular(14.r),
-      borderSide: BorderSide(width: 1.w, color: ColorRes.primary),
+      borderSide: BorderSide(width: 1.w, color: ColorRes.black),
     ),
     errorBorder: const OutlineInputBorder().copyWith(
       borderRadius: BorderRadius.circular(14.r),

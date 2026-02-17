@@ -12,26 +12,26 @@ class DAppBarTheme {
     backgroundColor: ColorRes.black,
     surfaceTintColor: ColorRes.black,
     shadowColor: ColorRes.primaryBGAppBar,
-    iconTheme: IconThemeData(color: ColorRes.primary, size: 24),
+    iconTheme: IconThemeData(color: ColorRes.black, size: 24),
     actionsIconTheme: IconThemeData(color: ColorRes.black, size: 24),
     titleTextStyle: TextStyle(
         fontSize: 32,
         // fontSize: 32.sp,
-        fontFamily: 'Poppins',
+        fontFamily: 'Cairo',
         fontWeight: FontWeight.w700,
-        color: ColorRes.primary),
+        color: ColorRes.black),
   );
 
   static final darkAppBarTheme = AppBarTheme(
     elevation: 0,
     centerTitle: false,
     scrolledUnderElevation: 0,
-    backgroundColor: ColorRes.primary,
-    surfaceTintColor: ColorRes.primary,
-    shadowColor: ColorRes.primary,
+    backgroundColor: ColorRes.black,
+    surfaceTintColor: ColorRes.black,
+    shadowColor: ColorRes.black,
     iconTheme: IconThemeData(color: ColorRes.white, size: 24),
     actionsIconTheme: IconThemeData(color: ColorRes.white, size: 24),
-    titleTextStyle: TextStyle( fontFamily: 'Poppins',
+    titleTextStyle: TextStyle( fontFamily: 'Cairo',
         fontSize: 32, fontWeight: FontWeight.w700, color: ColorRes.white),
   );
 }

@@ -28,38 +28,7 @@ class ProfileHeader extends StatelessWidget {
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          /// User info column
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.end,
-            mainAxisAlignment: MainAxisAlignment.center,
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Text(
-                S.current.welcome,
-                style: TextStyle(
-                  color: Colors.white.withValues(alpha: 0.9),
-                  fontSize: AppSizes.fontSizeSm,
-                  fontWeight: FontWeight.w500,
-                  height: 1.3,
-                  letterSpacing: 0.2,
-                ),
-              ),
-              SizedBox(height: 2.h),
-              Text(
-                userName ?? "مصطفى ذكريا محمد",
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: AppSizes.fontSizeMd,
-                  fontWeight: FontWeight.w700,
-                  height: 1.2,
-                  letterSpacing: 0.3,
-                ),
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-              ),
-            ],
-          ),
-          Sizer(width: 10),
+
           /// Profile avatar with enhanced design
           Container(
             // width: AppSizes.imageSize*2,
@@ -91,16 +60,50 @@ class ProfileHeader extends StatelessWidget {
               child: ClipOval(
                 child: userImage != null
                     ? Image.network(
-                        userImage!,
-                        fit: BoxFit.cover,
-                        errorBuilder: (context, error, stackTrace) {
-                          return _buildDefaultAvatar();
-                        },
-                      )
+                  userImage!,
+                  fit: BoxFit.cover,
+                  errorBuilder: (context, error, stackTrace) {
+                    return _buildDefaultAvatar();
+                  },
+                )
                     : _buildDefaultAvatar(),
               ),
             ),
           ),
+
+          Sizer(width: 10),
+          /// User info column
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text(
+                S.current.welcome,
+                style: TextStyle(
+                  color: Colors.white.withValues(alpha: 0.9),
+                  fontSize: AppSizes.fontSizeSm,
+                  fontWeight: FontWeight.w500,
+                  height: 1.3,
+                  letterSpacing: 0.2,
+                ),
+              ),
+              SizedBox(height: 2.h),
+              Text(
+                userName ?? "مصطفى ذكريا محمد",
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: AppSizes.fontSizeMd,
+                  fontWeight: FontWeight.w700,
+                  height: 1.2,
+                  letterSpacing: 0.3,
+                ),
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+              ),
+            ],
+          ),
+
         ],
       ),
     );

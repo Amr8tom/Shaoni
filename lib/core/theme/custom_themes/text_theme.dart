@@ -13,7 +13,7 @@ class DTextTheme {
         fontWeight: FontWeight.bold,
         color: ColorRes.black,
         // height: 1.2,
-        fontFamily: 'Poppins'
+        fontFamily: 'Cairo'
 
     ),
     headlineMedium: TextStyle(
@@ -22,56 +22,56 @@ class DTextTheme {
         fontWeight: FontWeight.bold,
         color: ColorRes.black,
         // height: 1.2,
-        fontFamily: 'Poppins'
+        fontFamily: 'Cairo'
     ),
     headlineSmall: TextStyle().copyWith(
         fontSize: 18.sp,
         fontWeight: FontWeight.w600,
         color: ColorRes.black,
         // height: 1.2,
-        fontFamily: 'Poppins'),
+        fontFamily: 'Cairo'),
     titleLarge: TextStyle().copyWith(
-      fontFamily: 'Poppins',
+      fontFamily: 'Cairo',
       fontSize: 28.sp,
       fontWeight: FontWeight.w600,
       color: Colors.black,
     ),
     titleMedium: TextStyle().copyWith(
-        fontFamily: 'Poppins',
+        fontFamily: 'Cairo',
         fontSize: 24.sp,
         fontWeight: FontWeight.w500,
         color: Colors.black),
     titleSmall: TextStyle().copyWith(
-        fontFamily: 'Poppins',
+        fontFamily: 'Cairo',
         fontSize: 20.sp,
         fontWeight: FontWeight.w400,
         color: Colors.black),
     bodyLarge: TextStyle(overflow: TextOverflow.ellipsis).copyWith(
-        fontFamily: 'Poppins',
+        fontFamily: 'Cairo',
         fontSize: 16.sp,
         fontWeight: FontWeight.w500,
         // height: 1.5.h,
         color: ColorRes.black
     ),
     bodyMedium: TextStyle(overflow: TextOverflow.ellipsis).copyWith(
-        fontFamily: 'Poppins',
+        fontFamily: 'Cairo',
         fontSize: 14.sp,
         fontWeight: FontWeight.normal,
         // height: 1.4.h,
         color: ColorRes.primary),
     bodySmall: TextStyle().copyWith(
-        fontFamily: 'Poppins',
+        fontFamily: 'Cairo',
         fontSize: 12.sp,
         fontWeight: FontWeight.w500,
         // height: 1.3.h,
         color: ColorRes.primary),
     labelLarge: TextStyle(
-        fontFamily: 'Poppins',
+        fontFamily: 'Cairo',
         fontSize: 44.sp,
         fontWeight: FontWeight.normal,
         color: Colors.black),
     labelMedium: TextStyle().copyWith(
-        fontFamily: 'Poppins',
+        fontFamily: 'Cairo',
         fontSize: 35.sp,
         fontWeight: FontWeight.normal,
         color: Colors.black),

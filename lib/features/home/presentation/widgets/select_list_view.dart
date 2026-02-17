@@ -9,11 +9,9 @@ import '../../../../generated/l10n.dart';
 class SelectListView extends StatelessWidget {
   const SelectListView({super.key});
 
-
   @override
   Widget build(BuildContext context) {
-    List homeStatisticsList =
-    [
+    List homeStatisticsList = [
       _homeStatisticsIcon(
         context: context,
         color: ColorRes.error,
@@ -48,7 +46,7 @@ class SelectListView extends StatelessWidget {
     ];
     return Container(
       width: double.infinity,
-      height: AppSizes.heightcontainerCategories*2.05,
+      height: AppSizes.heightcontainerCategories * 2.05,
       child: ListView.separated(
         scrollDirection: Axis.horizontal,
         itemCount: homeStatisticsList.length,
@@ -58,7 +56,7 @@ class SelectListView extends StatelessWidget {
             child: SlideAnimation(
               duration: const Duration(milliseconds: 2000),
               horizontalOffset: AppSizes.paddingHorizontallyContainer,
-              child:homeStatisticsList[index]
+              child: homeStatisticsList[index],
             ),
           );
           // horizontalOffset: AppSizes.paddingHorizontallyContainer,
@@ -69,10 +67,7 @@ class SelectListView extends StatelessWidget {
         },
       ),
     );
-
   }
-
-
 
   Widget _homeStatisticsIcon({
     Color color = ColorRes.primary,
@@ -81,8 +76,8 @@ class SelectListView extends StatelessWidget {
     required String imagePath,
   }) {
     return Container(
-      height: AppSizes.heightcontainer ,
-      width: AppSizes.widthcontainer * 1.1,
+      height: AppSizes.heightcontainer,
+      width: AppSizes.widthcontainer * 1.15,
       decoration: BoxDecoration(
         color: ColorRes.white,
         borderRadius: BorderRadius.all(
@@ -94,7 +89,7 @@ class SelectListView extends StatelessWidget {
       child: Stack(
         children: [
           Padding(
-            padding:  EdgeInsets.all(AppSizes.padding/1.4),
+            padding: EdgeInsets.all(AppSizes.padding / 1.4),
             child: Row(
               children: [
                 Flexible(
@@ -102,7 +97,7 @@ class SelectListView extends StatelessWidget {
                     count,
                     style: Theme.of(context).textTheme.headlineLarge?.copyWith(
                       color: color,
-                      fontSize: AppSizes.fontSizeXXLg*1.3,
+                      fontSize: AppSizes.fontSizeXXLg * 1.3,
                     ),
                   ),
                 ),
@@ -125,7 +120,7 @@ class SelectListView extends StatelessWidget {
                 S.current.deleteAccount,
                 style: Theme.of(context).textTheme.headlineLarge?.copyWith(
                   color: color,
-                  fontSize: AppSizes.fontSizeMd*0.85,
+                  fontSize: AppSizes.fontSizeMd * 0.85,
                 ),
               ),
             ),
@@ -134,6 +129,4 @@ class SelectListView extends StatelessWidget {
       ),
     );
   }
-
-
 }

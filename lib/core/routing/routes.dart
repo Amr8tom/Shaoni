@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:shaoni/core/routing/route_names.dart';
+import 'package:shaoni/features/my-services/presentation/screens/request_certain_service.dart';
 import 'package:shaoni/features/profile/profile_screen.dart';
 import '../../features/auth/presentation/screen/login_screen.dart';
 import '../../features/auth/presentation/screen/new_password_screen.dart';
 import '../../features/auth/presentation/screen/otp_screen.dart';
+import '../../features/my-orders/presentation/screens/order_details_screen.dart';
+import '../../features/my-services/presentation/screens/choose_new_request_services_screen.dart';
+import '../../features/my-services/presentation/screens/request_create_details_screen.dart';
 import '../../features/navigation/presentation/screens/navigation_menu_screen.dart';
+import '../../features/notifications/presentation/notification_screen.dart';
 import '../../features/onboarding/presentation/screens/onboarding_screen.dart';
 import '../../features/splash/presentation/screens/splash_screen.dart';
 
@@ -38,29 +43,38 @@ class RouteGenerator {
           settings: settings,
         );
 
-      // /// notification Screen
-      // case DRoutesName.notificationsRoute:
-      //   return PageTransition(
-      //     child: const NotificationScreen(),
-      //     type: PageTransitionType.rightToLeft,
-      //     settings: settings,
-      //   );
-      //
-      // /// quran Screen
-      // case DRoutesName.quranRoute:
-      //   return PageTransition(
-      //     child: const QuranScreen(),
-      //     type: PageTransitionType.rightToLeft,
-      //     settings: settings,
-      //   );
-      //
-      // /// surah screen
-      // case DRoutesName.surahRoute:
-      //   return PageTransition(
-      //     child: const SurahScreen(),
-      //     type: PageTransitionType.rightToLeft,
-      //     settings: settings,
-      //   );
+      /// notification Screen
+      case DRoutesName.notificationsRoute:
+        return PageTransition(
+          child: const NotificationScreen(),
+          type: PageTransitionType.rightToLeft,
+          settings: settings,
+        );
+
+
+      /// Request Services Screen
+      case DRoutesName.chooseNewRequestNewService:
+        return PageTransition(
+          child: const ChooseNewRequestServicesScreen(),
+          type: PageTransitionType.rightToLeft,
+          settings: settings,
+        );
+
+      /// Request Certain Services Screen
+      case DRoutesName.requestCertainService:
+        return PageTransition(
+          child: const RequestCertainService(),
+          type: PageTransitionType.rightToLeft,
+          settings: settings,
+        );
+
+      ///  request create details screen
+      case DRoutesName.requestCreateDetails:
+        return PageTransition(
+          child: const RequestCreateDetailsScreen(),
+          type: PageTransitionType.rightToLeft,
+          settings: settings,
+        );
       // /// juz screen
       // case DRoutesName.juzRoute:
       //   return PageTransition(
@@ -180,14 +194,14 @@ class RouteGenerator {
       //     settings: settings,
       //   );
       //
-      // /// QRCode  Screen
-      // case DRoutesName.QRCodeRoute:
-      //   return PageTransition(
-      //     child: const QRCodeScreen(),
-      //     type: PageTransitionType.rightToLeft,
-      //     settings: settings,
-      //   );
-      //
+      /// order details  Screen
+      case DRoutesName.orderDetailsRoute:
+        return PageTransition(
+          child: const OrderDetailsScreen(),
+          type: PageTransitionType.rightToLeft,
+          settings: settings,
+        );
+
       // /// feedBack Screen
       // case DRoutesName.feedbackRoute:
       //   final Map<String, dynamic> args =

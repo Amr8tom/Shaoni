@@ -17,11 +17,12 @@ class AuthTextField extends StatefulWidget {
   final String? Function(String?)? validator;
   final void Function()? onTap;
   final bool readOnly;
-  final Color? borderColor;
+  final Color? borderColor,backgroundColor;
+  final double? borderRadius;
 
   const AuthTextField({
     super.key,
-     this.label,
+    this.label,
     required this.hint,
     required this.controller,
     this.isPassword = false,
@@ -34,6 +35,7 @@ class AuthTextField extends StatefulWidget {
     this.onTap,
     this.borderColor,
     this.readOnly = false,
+    this.borderRadius, this.backgroundColor,
   });
 
   @override
@@ -45,73 +47,79 @@ class _AuthTextFieldState extends State<AuthTextField> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        /// Label
-        if (widget.label != null) ...[
+    return Container(
+      color: widget.backgroundColor,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          /// Label
+          if (widget.label != null) ...[
+            Text(
+              widget.label!,
+              style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                color: ColorRes.primary,
+                fontSize: AppSizes.fontSizeSm / 1.1,
+              ),
+            ),
+            const Sizer(height: 8),
+          ],
           Text(
-            widget.label!,
+            widget.label ?? '',
             style: Theme.of(context).textTheme.bodyLarge?.copyWith(
               color: ColorRes.primary,
               fontSize: AppSizes.fontSizeSm / 1.1,
             ),
           ),
-          const Sizer(height: 8),
-        ],
-        Text(
-          widget.label??'',
-          style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-            color: ColorRes.primary,
-            fontSize: AppSizes.fontSizeSm/1.1,
-          ),
-        ),
 
-        /// Text Field
-        TextFormField(
-          controller: widget.controller,
-          readOnly: widget.readOnly,
-          onTap: widget.onTap,
-          obscureText: widget.isPassword && !_showPassword,
-          keyboardType: _getKeyboardType(),
-          inputFormatters: _getFormatters(),
-          validator: widget.validator,
-          decoration: InputDecoration(
-            hintText: widget.hint,
-            hintStyle: Theme.of(context).textTheme.bodyMedium?.copyWith(
+          /// Text Field
+          TextFormField(
+            controller: widget.controller,
+            readOnly: widget.readOnly,
+            onTap: widget.onTap,
+            obscureText: widget.isPassword && !_showPassword,
+            keyboardType: _getKeyboardType(),
+            inputFormatters: _getFormatters(),
+            validator: widget.validator,
+            decoration: InputDecoration(
+              hintText: widget.hint,
+              hintStyle: Theme.of(context).textTheme.bodyMedium?.copyWith(
                 color: ColorRes.grey2.withOpacity(0.7),
-              fontSize: AppSizes.fontSizeSm*1.2
+                fontSize: AppSizes.fontSizeSm * 1.2,
+              ),
+              prefixIcon: widget.prefixIcon ?? _getDefaultIcon(),
+              suffixIcon: widget.suffixIcon ?? _getSuffixIcon(),
+              contentPadding: EdgeInsets.symmetric(
+                horizontal: AppSizes.spaceBetweenIcon * 3,
+              ),
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(widget.borderRadius??AppSizes.borderRadiusXXLg),
+                borderSide: const BorderSide(color: ColorRes.primary, width: 2),
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(widget.borderRadius??AppSizes.borderRadiusXXLg),
+                borderSide: BorderSide(
+                  color: widget.borderColor ?? ColorRes.grey_F707340,
+                  width: 1,
+                ),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(widget.borderRadius??AppSizes.borderRadiusXXLg),
+                borderSide: const BorderSide(color: ColorRes.primary, width: 1),
+              ),
+              errorBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(widget.borderRadius??AppSizes.borderRadiusXXLg),
+                borderSide: const BorderSide(color: ColorRes.error, width: 1),
+              ),
+              focusedErrorBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(widget.borderRadius??AppSizes.borderRadiusXXLg),
+                borderSide: const BorderSide(color: ColorRes.error, width: 1),
+              ),
+              filled: true,
+              fillColor: Colors.white,
             ),
-            prefixIcon: widget.prefixIcon ?? _getDefaultIcon(),
-            suffixIcon: widget.suffixIcon ?? _getSuffixIcon(),
-            contentPadding:  EdgeInsets.symmetric(
-              horizontal: AppSizes.spaceBetweenIcon*3,
-            ),
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(AppSizes.borderRadiusXXLg),
-              borderSide: const BorderSide(color: ColorRes.primary, width: 2),
-            ),
-            enabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(AppSizes.borderRadiusXXLg),
-              borderSide:  BorderSide(color: widget.borderColor??ColorRes.grey_F707340, width: 1),
-            ),
-            focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(AppSizes.borderRadiusXXLg),
-              borderSide: const BorderSide(color: ColorRes.primary, width: 1),
-            ),
-            errorBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(AppSizes.borderRadiusXXLg),
-              borderSide: const BorderSide(color: ColorRes.error, width: 1),
-            ),
-            focusedErrorBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(AppSizes.borderRadiusXXLg),
-              borderSide: const BorderSide(color: ColorRes.error, width: 1),
-            ),
-            filled: true,
-            fillColor: Colors.white,
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 
@@ -173,9 +181,9 @@ class _AuthTextFieldState extends State<AuthTextField> {
 class DateFormatter extends TextInputFormatter {
   @override
   TextEditingValue formatEditUpdate(
-      TextEditingValue oldValue,
-      TextEditingValue newValue,
-      ) {
+    TextEditingValue oldValue,
+    TextEditingValue newValue,
+  ) {
     final text = newValue.text.replaceAll(RegExp(r'[^0-9]'), '');
 
     String formatted = '';

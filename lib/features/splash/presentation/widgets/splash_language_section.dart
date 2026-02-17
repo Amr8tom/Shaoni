@@ -42,7 +42,7 @@ class SplashLanguageSection extends StatelessWidget {
           Sizer(width: double.infinity, height: AppSizes.fullHeight / 16),
           Center(
             child: Text(
-              S.current.designDevelopmentBy,
+              S.current.designDevelopment,
               style: Theme.of(context).textTheme.bodySmall?.copyWith(
                 fontWeight: FontWeight.bold,
                 color: ColorRes.black,

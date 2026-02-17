@@ -31,8 +31,6 @@ class AssetRes {
   static const String splashLogo = 'assets/images/svgs/splash.svg';
   static const String logo = 'assets/images/pngs/logo.png';
   static const String logoWithName = 'assets/images/pngs/logo_with_name.png';
-  static const String kaaba2 = 'assets/images/pngs/kaaba_2.png';
-  static const String kaaba3 = 'assets/images/pngs/kaaba_3.png';
 
   /// -- OnBoarding Images Lotties
   static const String onBoardingImage1 = 'assets/lotties/onboardingDoctor.json';
@@ -60,32 +58,11 @@ class AssetRes {
   static const String error404Lottie = 'assets/lotties/Error 404.json';
   static const String loaderLottie = 'assets/lotties/Sandy Loading.json';
 
-  ///////// rebots Image
-  static const String rebot1 = 'assets/lotties/rebot1.json';
-  static const String rebot2 = 'assets/lotties/rebot_teaa.json';
-
-  /// quran Images
-  static const String quranLottie = 'assets/lotties/Quran.json';
-
   ///////// splash Image
 
   static const String splashLottie = 'assets/lotties/lastSplash.json';
   static const String search = 'assets/lotties/search.json';
   static const String noData = 'assets/lotties/no_data.json';
-
-  //// Logo like gif images
-  static const String gif1 = 'assets/images/svgs/Untitled (1).svg';
-  static const String gif2 = 'assets/images/svgs/Screen-2 (1).svg';
-  static const String gif3 = 'assets/images/svgs/Screen-3 (1).svg';
-
-  // static const String gif4 = 'assets/lotties/emtpyProduct1.json';
-  static const String gif5 = 'assets/images/svgs/Screen-5.svg';
-  static const String gif6 = 'assets/images/svgs/Screen-6.svg';
-  static const String gif7 = 'assets/images/svgs/Screen-7.svg';
-
-  ///   emptyProduct
-  static const String emptyProductFromServer =
-      'https://doctorpharmaco.com/public/assets/img/placeholder.jpg';
 
   ///////// loading
   static const String normalLoading = 'assets/lotties/loading1.json';
@@ -98,14 +75,6 @@ class AssetRes {
   static const String greenSale = 'assets/lotties/sale.json';
   static const String coloredSale = 'assets/lotties/sale2.json';
   static const String greenSale2 = 'assets/lotties/greenSale2.json';
-
-  /////////// AppBar Icons
-  static const String cartAfterFilling = 'assets/lotties/cartAfterFilling.json';
-  static const String cartAfterFilling2 =
-      'assets/lotties/cartAfterFilling2.json';
-  static const String cartBeforeFilling = 'assets/lotties/emptyGreenCart.json';
-  static const String searchICon = 'assets/lotties/search_icon.json';
-  static const String gifts = 'assets/lotties/gifts.json';
 
   /// address Images
   static const String cashImage = 'assets/lotties/cash.json';
@@ -128,10 +97,6 @@ class AssetRes {
 
   /// No Connection
   static const String noConnection = 'assets/images/svgs/noConnection.svg';
-
-  /// tools
-  static const String hammer = 'assets/lotties/hammer.json';
-  static const String fixTools = 'assets/lotties/fix_tools.json';
 
   /// Upload Images
   static const String uploadImage = 'assets/lotties/uploadImage.json';
@@ -156,6 +121,7 @@ class AssetRes {
   static const String cameraIcon = 'assets/images/svgs/Camera.svg';
   static const String deleteAccountIcon =
       'assets/images/pngs/delete_account_icon.png';
+  static const String trashIcon = 'assets/images/pngs/deleteee.png';
 
   /// home
   static const String homeBannerInfo =
@@ -175,13 +141,11 @@ class AssetRes {
   static const String approvedIcon = 'assets/images/pngs/approvedIcon.png';
 
   /// side menu
-  static const String homeIcon = 'assets/images/pngs/home_icon.png';
-  static const String qrCodeIcon = 'assets/images/pngs/Qr code.png';
-  static const String supportIcon = 'assets/images/pngs/support.png';
-  static const String FAQIcon = 'assets/images/pngs/FAQ.png';
-  static const String feedbackIcon = 'assets/images/pngs/feed_back.png';
-  static const String logoutIcon = 'assets/images/pngs/log_out.png';
-  static const String sideMenuLogo = 'assets/images/pngs/side_menu_logo.png';
+  static const String sideHomeIcon = 'assets/images/pngs/side_home.png';
+  static const String sideAboutIcon = 'assets/images/pngs/side_about.png';
+  static const String sidePrivaceyIcon =
+      'assets/images/pngs/side_privacey_user.png';
+  static const String sideQuestionIcon = 'assets/images/pngs/side_question.png';
 
   /// notifications
   static const String mealNotification =
@@ -197,6 +161,7 @@ class AssetRes {
 
   /// Product
   static const String product = 'assets/images/pngs/product.png';
+  static const String editForProfile = 'assets/images/pngs/edit_iconn.png';
   static const String bProduct = 'assets/images/pngs/b_product.png';
 
   /// Programmer
@@ -267,7 +232,7 @@ class AssetRes {
   static const String arrowUpIcon = 'assets/images/svgs/ArrowDownCircle.svg';
   static const String specialAssistanceIcon =
       'assets/images/pngs/disabled-person 1.png';
-  static const String doubleCorrect = 'assets/images/svgs/CheckAll.svg';
+  static const String doubleCorrect = 'assets/images/svgs/correct2.svg';
   static const String pdfIcon = 'assets/images/svgs/pdf_icon.svg';
   static const String videIcon = 'assets/images/svgs/video__icon.svg';
 }

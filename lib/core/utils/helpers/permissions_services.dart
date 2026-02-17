@@ -1,7 +1,6 @@
 import 'dart:io';
 import 'package:app_tracking_transparency/app_tracking_transparency.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-import 'package:geolocator/geolocator.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 class PermissionsService {
@@ -69,14 +68,14 @@ class PermissionsService {
     await requestPermission(Permission.scheduleExactAlarm, 'Exact alarm');
   }
 
-  static Future<void> location() async {
-    if (Platform.isIOS) {
-      await Geolocator.requestPermission();
-    } else {
-      await requestPermission(Permission.location, 'Location');
-      await Geolocator.requestPermission();
-    }
-  }
+  // static Future<void> location() async {
+  //   if (Platform.isIOS) {
+  //     await Geolocator.requestPermission();
+  //   } else {
+  //     await requestPermission(Permission.location, 'Location');
+  //     await Geolocator.requestPermission();
+  //   }
+  // }
 
   // ✅ Activity Recognition (Android & iOS)
   static Future<void> activityRecognition() async {

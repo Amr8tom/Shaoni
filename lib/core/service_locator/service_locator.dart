@@ -1,5 +1,7 @@
 import 'package:data_connection_checker_tv/data_connection_checker.dart';
 import 'package:get_it/get_it.dart';
+import 'package:shaoni/core/service_locator/profile_service_locator.dart';
+import 'package:shaoni/core/service_locator/request_service_locator.dart';
 import '../connection/checkNetwork.dart';
 import '../dio/dio_helper.dart';
 import '../utils/helpers/geolocator.dart';
@@ -13,7 +15,7 @@ class DI {
     /// initial depended classes for all services
     serviceLocator.registerLazySingleton(() => DioHelper());
     serviceLocator.registerLazySingleton(() => DataConnectionChecker());
-    serviceLocator.registerLazySingleton(() => GeolocatorService());
+    // serviceLocator.registerLazySingleton(() => GeolocatorService());
     serviceLocator.registerLazySingleton<NetworkInfo>(
           () => NetworkInfoImpl(serviceLocator()),
     );
@@ -29,10 +31,12 @@ class DI {
     //
     /// language
     await LanguageServiceLocator.execute(serviceLocator: serviceLocator);
-    //
-    //
+
+
     /// profile
-    // await ProfileServiceLocator.execute(serviceLocator: serviceLocator);
+    await ProfileServiceLocator.execute(serviceLocator: serviceLocator);
+    /// request service
+    await RequestServiceLocator.execute(serviceLocator: serviceLocator);
 
 
     // /// delete account

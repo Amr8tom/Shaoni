@@ -7,17 +7,17 @@ import 'package:shaoni/features/navigation/presentation/widgets/custom_navigatio
 import 'package:upgrader/upgrader.dart';
 import '../../../../core/connection/check_for_updates.dart';
 import '../../../../core/service_locator/service_locator.dart';
-import '../../../../core/utils/helpers/permissions_services.dart';
 import '../controllers/navigation_cubit.dart';
+import '../widgets/custom_side_menu.dart';
 
 class NavigationMenuScreen extends StatelessWidget {
-  const NavigationMenuScreen({super.key});
+  NavigationMenuScreen({super.key});
+
+  final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
-    PermissionsService.location();
     checkForUpdate(context: context);
-
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (context) => serviceLocator<NavigationCubit>()),
@@ -26,23 +26,27 @@ class NavigationMenuScreen extends StatelessWidget {
         builder: (context) {
           final controller = context.watch<NavigationCubit>();
           final state = controller.state;
-          // controller.isGuestMode();
           return UpgradeAlert(
             child: Scaffold(
+              key: scaffoldKey,
+              drawer: const CustomSideMenu(),
               backgroundColor: ColorRes.grey6,
               body: Stack(
                 children: [
                   controller.indx == 0
-                      ? customNavigationAppBars(
-                        indx: controller.indx,
+                      ? customAppBar(
+                        scaffoldKey: scaffoldKey,
                         context: context,
+                        isHeader: true,
                       )
-                      : customNavigationAppBars(
-                        indx: controller.indx,
+                      : customAppBar(
+                        scaffoldKey: scaffoldKey,
                         context: context,
                         height: DDeviceUtils.getAppBarHeight() * 3,
                       ),
-                  state.screens[controller.indx],
+                  controller.indx == 3
+                      ? const SizedBox()
+                      : state.screens[controller.indx],
                 ],
               ),
               // body: state.screens[controller.indx],

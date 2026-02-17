@@ -23,13 +23,14 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
     "Application": MessageLookupByLibrary.simpleMessage("طلب"),
+    "NNew": MessageLookupByLibrary.simpleMessage("جديد"),
     "OutOfGroup": MessageLookupByLibrary.simpleMessage("خارج المجموعة"),
     "SearchInQuestions": MessageLookupByLibrary.simpleMessage(
       "ابحث في الأسئلة",
     ),
     "Showing": MessageLookupByLibrary.simpleMessage("عرض"),
     "abd": MessageLookupByLibrary.simpleMessage("عبدالسلام سليم"),
-    "aboutApp": MessageLookupByLibrary.simpleMessage("المَــزيد عنــا"),
+    "aboutApp": MessageLookupByLibrary.simpleMessage("عن التطبيق"),
     "ac": MessageLookupByLibrary.simpleMessage("مخيمات عرفة"),
     "accDetails": MessageLookupByLibrary.simpleMessage("تفاصيل الحساب"),
     "accepted": MessageLookupByLibrary.simpleMessage("مقبــوُل"),
@@ -43,6 +44,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "activities": MessageLookupByLibrary.simpleMessage("الأنشطة"),
     "activity": MessageLookupByLibrary.simpleMessage("الأنشطة"),
     "activityPhases": MessageLookupByLibrary.simpleMessage("مراحل النشاط"),
+    "addCorrectSignAtAll": MessageLookupByLibrary.simpleMessage(
+      "ضع علامة مقروء على الكل",
+    ),
     "addEmail": MessageLookupByLibrary.simpleMessage(
       "إضافة بريد إلكتروني جديد",
     ),
@@ -59,6 +63,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "agentCode": MessageLookupByLibrary.simpleMessage("كود الوكيل (اختياري)"),
     "allergies": MessageLookupByLibrary.simpleMessage("الحساسية"),
     "allergiesPr": MessageLookupByLibrary.simpleMessage("مشاكل الحساسية"),
+    "allowedDurationRules": MessageLookupByLibrary.simpleMessage(
+      "المدة المسموح بها / القواعد",
+    ),
     "alreadyYouHaveAccount": MessageLookupByLibrary.simpleMessage(
       "هل لديك حساب بالفعل؟",
     ),
@@ -66,8 +73,10 @@ class MessageLookup extends MessageLookupByLibrary {
     "amount": MessageLookupByLibrary.simpleMessage("المبلغ"),
     "angleDevice": MessageLookupByLibrary.simpleMessage("زاوية الجهاز"),
     "angleQibla": MessageLookupByLibrary.simpleMessage("زاوية القبلة"),
+    "appLanguage": MessageLookupByLibrary.simpleMessage("لغة التطبيق"),
     "appName": MessageLookupByLibrary.simpleMessage("تيا"),
     "appTitle": MessageLookupByLibrary.simpleMessage("عميل تيا"),
+    "applicantName": MessageLookupByLibrary.simpleMessage("اسم مقدم الطلب"),
     "arabic": MessageLookupByLibrary.simpleMessage("العربية"),
     "arrDate": MessageLookupByLibrary.simpleMessage("تاريخ الوصول"),
     "arrDe": MessageLookupByLibrary.simpleMessage("معلومات الوصول والمغادرة."),
@@ -79,6 +88,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "هل آنت متاكد انك تريد حذف حسابك",
     ),
     "asr": MessageLookupByLibrary.simpleMessage("العصر"),
+    "attachments": MessageLookupByLibrary.simpleMessage("المرفقات"),
     "avaiableToLoan": MessageLookupByLibrary.simpleMessage("متاح للقرض"),
     "avaliableItemCount": MessageLookupByLibrary.simpleMessage(
       "عدد الأصناف المتاحة",
@@ -87,6 +97,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "back": MessageLookupByLibrary.simpleMessage("رجوع"),
     "backToHome": MessageLookupByLibrary.simpleMessage("العودة إلى الرئيسية"),
     "bagDetails": MessageLookupByLibrary.simpleMessage("تفاصيل الحقيبة:"),
+    "beforeEndOfDay": MessageLookupByLibrary.simpleMessage(
+      "قبل انتهاء الدوام: المغادرة وعدم العودة (الخروج المبكر).",
+    ),
     "bestDestination": MessageLookupByLibrary.simpleMessage("أفضل الوجهات"),
     "bestDestinations": MessageLookupByLibrary.simpleMessage("أفضل الوجهات"),
     "bestOffers": MessageLookupByLibrary.simpleMessage("أفـضـل العٍــروض"),
@@ -108,6 +121,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "cancleOrderBody": MessageLookupByLibrary.simpleMessage(
       "هل انت متأكد أنك تريد حذف هذا الطلب",
     ),
+    "carPermitRequest": MessageLookupByLibrary.simpleMessage("طلب تصريح سيارة"),
     "cart": MessageLookupByLibrary.simpleMessage("العربة"),
     "cashBack": MessageLookupByLibrary.simpleMessage("كاش باك"),
     "cashOnDelivery": MessageLookupByLibrary.simpleMessage(
@@ -131,6 +145,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "city": MessageLookupByLibrary.simpleMessage("مدينة مكة"),
     "cityAr": MessageLookupByLibrary.simpleMessage("مدينة الإقامة ( الوصول )"),
     "cityDep": MessageLookupByLibrary.simpleMessage("مدينة الإقامة (المغادرة)"),
+    "clearanceRequest": MessageLookupByLibrary.simpleMessage("طلب إخلاء طرف"),
     "code": MessageLookupByLibrary.simpleMessage(
       "مسح رمز الاستجابة السريعة للحصول على معلومات الملف الشخصي",
     ),
@@ -172,6 +187,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "createNewPassword": MessageLookupByLibrary.simpleMessage(
       "انشئ كلمة مرور جديدة",
     ),
+    "createRequest": MessageLookupByLibrary.simpleMessage("إنشاء الطلب"),
     "creditCard": MessageLookupByLibrary.simpleMessage("بطاقة ائتمان"),
     "creditCardPaymentScreen": MessageLookupByLibrary.simpleMessage(
       "شاشة دفع بطاقة الائتمان",
@@ -192,7 +208,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "date": MessageLookupByLibrary.simpleMessage("التاريخ"),
     "date05": MessageLookupByLibrary.simpleMessage("05/17/2024  06:30PM"),
     "date15": MessageLookupByLibrary.simpleMessage("15/04/2024"),
-    "dateBirth": MessageLookupByLibrary.simpleMessage("تاريخ الميلاد"),
+    "dateBirth": MessageLookupByLibrary.simpleMessage("التاريخ الميلادي"),
     "delayedCash": MessageLookupByLibrary.simpleMessage("الدفع المؤجل"),
     "delayedCashDes": MessageLookupByLibrary.simpleMessage(
       "اشتري الآن وادفع لاحقا",
@@ -219,9 +235,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "desc": MessageLookupByLibrary.simpleMessage("الوصف:"),
     "description": MessageLookupByLibrary.simpleMessage("الـوصـف"),
     "design": MessageLookupByLibrary.simpleMessage("التصميم والتطوير بواسطة"),
-    "designDevelopmentBy": MessageLookupByLibrary.simpleMessage(
-      "تصميم وتطوير بواسطة",
-    ),
+    "designDevelopment": MessageLookupByLibrary.simpleMessage("تصميم وتطوير"),
     "details": MessageLookupByLibrary.simpleMessage("تفاصيل"),
     "deviceAngle": MessageLookupByLibrary.simpleMessage("زاوية الجهاز"),
     "dhuhr": MessageLookupByLibrary.simpleMessage("الظهر"),
@@ -251,6 +265,10 @@ class MessageLookup extends MessageLookupByLibrary {
     "duis": MessageLookupByLibrary.simpleMessage(
       "   هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل الخارجي للنص",
     ),
+    "durationInHours": MessageLookupByLibrary.simpleMessage("المدة بالساعات"),
+    "duringWorkHours": MessageLookupByLibrary.simpleMessage(
+      "أثناء ساعات العمل: للخروج والعودة مرة أخرى (مثل موعد طبي سريع). قبل انتهاء الدوام: للمغادرة وعدم العودة (الخروج المبكر). المهام الخارجية: عند تكليف الموظف بمهمة عمل تتطلب تواجده في موقع آخر.",
+    ),
     "eMail": MessageLookupByLibrary.simpleMessage("البريد الالكتروني"),
     "editProduct": MessageLookupByLibrary.simpleMessage("تَــعديـل المُنـتج"),
     "eggs": MessageLookupByLibrary.simpleMessage("عجة بيض + سلطة خضراء + خبز"),
@@ -263,6 +281,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "email": MessageLookupByLibrary.simpleMessage("البريد الإكتروني"),
     "emailPasswordSend": MessageLookupByLibrary.simpleMessage(
       "تم إرسال كود إعادة التعيين",
+    ),
+    "endOfServiceRequest": MessageLookupByLibrary.simpleMessage(
+      "طلب نهاية خدمة",
     ),
     "english": MessageLookupByLibrary.simpleMessage("English"),
     "enimad": MessageLookupByLibrary.simpleMessage(
@@ -292,10 +313,20 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "excellent": MessageLookupByLibrary.simpleMessage("ممتاز"),
     "exitApp": MessageLookupByLibrary.simpleMessage("الخٍـروُج من التَـطبيـق"),
+    "exitPermissionDescription": MessageLookupByLibrary.simpleMessage(
+      "يستخدم إذن الخروج في الحالات التي تستدعي تواجد الموظف خارج مقر العمل أثناء ساعات الدوام الرسمية.",
+    ),
+    "exitPermissionRequest": MessageLookupByLibrary.simpleMessage(
+      "طلب إذن خروج",
+    ),
+    "exitPermissionTitle": MessageLookupByLibrary.simpleMessage("طلب إذن خروج"),
     "expiredProducts": MessageLookupByLibrary.simpleMessage(
       "المنتجات منتهية الصلاحية أو الأصناف المنتهية الصلاحية.......تخلص من الأصناف منتهية الصلاحية عن طريق رفع المنتجات المنتهية الصلاحية أو التالفة",
     ),
     "exploreIraq": MessageLookupByLibrary.simpleMessage("استكشف العراق"),
+    "externalMission": MessageLookupByLibrary.simpleMessage(
+      "المهمات الخارجية: إذا كلف الموظف بمهمة عمل تتطلب تواجده في موقع آخر.",
+    ),
     "fNo": MessageLookupByLibrary.simpleMessage("إدخل رقم الطائرة"),
     "faceTowrds": MessageLookupByLibrary.simpleMessage(
       "توجه نحو الكعبة المشرفة في مكة المكرمة",
@@ -327,6 +358,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "female": MessageLookupByLibrary.simpleMessage("أنثى"),
     "findingYourDirection": MessageLookupByLibrary.simpleMessage(
       "جاري العثور على اتجاهك نحو الكعبة المشرفة...",
+    ),
+    "fingerprintProofRequest": MessageLookupByLibrary.simpleMessage(
+      "طلب إثبات بصمة",
     ),
     "firstName": MessageLookupByLibrary.simpleMessage("الاسم الأول"),
     "flashTodaySale": MessageLookupByLibrary.simpleMessage("عِـــروٌض الــيوم"),
@@ -408,11 +442,15 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "hours": MessageLookupByLibrary.simpleMessage("ساعات"),
     "how": MessageLookupByLibrary.simpleMessage("كيف أستخدم التطبيق"),
+    "hrManagerApproval": MessageLookupByLibrary.simpleMessage(
+      "موافقة مدير الموارد البشرية",
+    ),
     "hu": MessageLookupByLibrary.simpleMessage("الحج و العمرة"),
     "hug": MessageLookupByLibrary.simpleMessage("دليل الحج والعمرة"),
     "humanResources": MessageLookupByLibrary.simpleMessage("الموارد البشرية"),
     "huv": MessageLookupByLibrary.simpleMessage("دليل الحج والعمرة بالفيديو"),
     "iAgreeTo": MessageLookupByLibrary.simpleMessage("أوافق على"),
+    "idRenewalRequest": MessageLookupByLibrary.simpleMessage("طلب تجديد هوية"),
     "imHereToHelp": MessageLookupByLibrary.simpleMessage(
       "أَنا هُنا لمُساعَدَتَكَ بِما ينفع في دِينِكَ وَرِحلَتِكَ، فَقَط حَدِّثني بِما تُريدُ ِ",
     ),
@@ -454,6 +492,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "lastAddress": MessageLookupByLibrary.simpleMessage("العنوان الأخير"),
     "lastName": MessageLookupByLibrary.simpleMessage("الاسم الأخير"),
     "later": MessageLookupByLibrary.simpleMessage("لاحقا"),
+    "leaveRequest": MessageLookupByLibrary.simpleMessage("طلب إجازة"),
     "letsStart": MessageLookupByLibrary.simpleMessage("لنبدأ"),
     "lightYourHeart": MessageLookupByLibrary.simpleMessage(
       "نور قلبك بذكر الله",
@@ -467,7 +506,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "locSer": MessageLookupByLibrary.simpleMessage("تم رفض إذن خدمة الموقع"),
     "localIID": MessageLookupByLibrary.simpleMessage("ar_SA"),
     "localeee": MessageLookupByLibrary.simpleMessage("ar"),
-    "location": MessageLookupByLibrary.simpleMessage("الموقع"),
+    "location": MessageLookupByLibrary.simpleMessage("المقر"),
     "locationError": MessageLookupByLibrary.simpleMessage("الموقع خطآ"),
     "logOut": MessageLookupByLibrary.simpleMessage("تَســجيل الخــروج"),
     "login": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
@@ -492,6 +531,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "mainMeal": MessageLookupByLibrary.simpleMessage("الوجبات الرئيسية"),
     "makkah": MessageLookupByLibrary.simpleMessage("مكة"),
     "male": MessageLookupByLibrary.simpleMessage("ذكر"),
+    "managerApproval": MessageLookupByLibrary.simpleMessage("موافقة المدير"),
     "markAll": MessageLookupByLibrary.simpleMessage("تحديد كمقروءة"),
     "meCo": MessageLookupByLibrary.simpleMessage("مكونات الوجبة "),
     "meal": MessageLookupByLibrary.simpleMessage("الوجبة"),
@@ -500,6 +540,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "meals": MessageLookupByLibrary.simpleMessage("الوجبات"),
     "medical": MessageLookupByLibrary.simpleMessage("طبي"),
+    "medicalReportFromDoctor": MessageLookupByLibrary.simpleMessage(
+      "تصريح مرضي من الطبيب",
+    ),
     "medicalServices": MessageLookupByLibrary.simpleMessage("الخدمات الطبية"),
     "medicalSupplies": MessageLookupByLibrary.simpleMessage(
       "المستلزمات الطبية",
@@ -601,6 +644,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "orederPlacedBody": MessageLookupByLibrary.simpleMessage(
       "تم وضع الطلب وسوف نراجعه",
     ),
+    "organizationalUnit": MessageLookupByLibrary.simpleMessage(
+      "الوحدة التنظيمية",
+    ),
     "other": MessageLookupByLibrary.simpleMessage("ميزات أخرى"),
     "otherFeed": MessageLookupByLibrary.simpleMessage("تعليقات أخرى"),
     "otherTypes": MessageLookupByLibrary.simpleMessage("أنواع أخرى"),
@@ -610,6 +656,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "ourOffers": MessageLookupByLibrary.simpleMessage("عروضنا"),
     "ourTours": MessageLookupByLibrary.simpleMessage("رحلاتنا"),
+    "overtimeRequest": MessageLookupByLibrary.simpleMessage(
+      "طلب وقت عمل إضافي",
+    ),
     "package": MessageLookupByLibrary.simpleMessage("الباقة: "),
     "packing": MessageLookupByLibrary.simpleMessage("جاري تجهيز الطلب"),
     "packingBody": MessageLookupByLibrary.simpleMessage(
@@ -631,6 +680,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "pending": MessageLookupByLibrary.simpleMessage("معلقة"),
     "perInfo": MessageLookupByLibrary.simpleMessage("معلومات شخصية"),
     "perform": MessageLookupByLibrary.simpleMessage("أداء السعي"),
+    "permissionDate": MessageLookupByLibrary.simpleMessage("تاريخ الإذن"),
+    "permissionTime": MessageLookupByLibrary.simpleMessage("موعد الإذن"),
+    "permissionType": MessageLookupByLibrary.simpleMessage("نوع الإذن"),
     "personalEmail": MessageLookupByLibrary.simpleMessage("بريدإلكتروني شخصي"),
     "pharma": MessageLookupByLibrary.simpleMessage("الأدوية"),
     "pharmacy": MessageLookupByLibrary.simpleMessage("الصيدلية"),
@@ -676,6 +728,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "priceAfterOffer": MessageLookupByLibrary.simpleMessage("السعر بعد العرض"),
     "priceBeforeOffer": MessageLookupByLibrary.simpleMessage("السعر قبل العرض"),
     "privacyPolicy": MessageLookupByLibrary.simpleMessage("سياسة الخصوصية"),
+    "processingType": MessageLookupByLibrary.simpleMessage(
+      "نوع المعالجة: فوري / يتطلب موافقة",
+    ),
     "produce": MessageLookupByLibrary.simpleMessage(
       "إنتاج مجمع الملك فهد لطباعة المصحف الشريف بالمدينة المنورة",
     ),
@@ -705,7 +760,6 @@ class MessageLookup extends MessageLookupByLibrary {
     "quranHafs": MessageLookupByLibrary.simpleMessage(
       "القرآن برواية حفص بواسطة: KFGQPC",
     ),
-    "quranKarem": MessageLookupByLibrary.simpleMessage("القرآن الكريم"),
     "reCharge": MessageLookupByLibrary.simpleMessage("أرسال"),
     "reOrder": MessageLookupByLibrary.simpleMessage("إعادة الطلب"),
     "rec": MessageLookupByLibrary.simpleMessage("Rectangle 44"),
@@ -729,13 +783,24 @@ class MessageLookup extends MessageLookupByLibrary {
       "اعادة كلمة المرور",
     ),
     "repositories": MessageLookupByLibrary.simpleMessage(
-      "المشتريات / المستودعات",
+      "المشتريات/المستودعات",
     ),
     "reqDetail": MessageLookupByLibrary.simpleMessage("طلب تفاصيل:"),
     "reqDetails": MessageLookupByLibrary.simpleMessage("طلب تفاصيل"),
     "reqSub": MessageLookupByLibrary.simpleMessage("طلب نشاط فرعي"),
     "reqtitle": MessageLookupByLibrary.simpleMessage("اكتب عنوان الطلب هنا"),
+    "requestApplicantData": MessageLookupByLibrary.simpleMessage(
+      "بيانات مقدم الطلب",
+    ),
+    "requestData": MessageLookupByLibrary.simpleMessage("بيانات الطلب"),
+    "requestDetails": MessageLookupByLibrary.simpleMessage("بيانات الطلب"),
+    "requestNumber": MessageLookupByLibrary.simpleMessage("رقم الطلب"),
     "requestSend": MessageLookupByLibrary.simpleMessage("تم إرسال طلبك بنجاح"),
+    "requestSentSuccessfully": MessageLookupByLibrary.simpleMessage(
+      "تم ارسال طلبك بنجاح",
+    ),
+    "requestStage": MessageLookupByLibrary.simpleMessage("مرحلة الطلب"),
+    "requestStatus": MessageLookupByLibrary.simpleMessage("حالة الطلب"),
     "requestSuccessfully": MessageLookupByLibrary.simpleMessage(
       "تم إرسال طلبك بنجاح",
     ),
@@ -771,6 +836,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "saveChanges": MessageLookupByLibrary.simpleMessage("حفظ"),
     "saveNewPassword": MessageLookupByLibrary.simpleMessage("حفظ كلمة المرور"),
     "scanQr": MessageLookupByLibrary.simpleMessage("مسح رمز الاستجابة السريعة"),
+    "schoolPermissionRequest": MessageLookupByLibrary.simpleMessage(
+      "طلب إذن مدارس",
+    ),
     "search": MessageLookupByLibrary.simpleMessage(
       "البحث عن طريق الكلمات الرئيسية",
     ),
@@ -837,6 +905,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "sk": MessageLookupByLibrary.simpleMessage("تخطي"),
     "skip": MessageLookupByLibrary.simpleMessage("تخطي المقدمة"),
     "skipIntro": MessageLookupByLibrary.simpleMessage("تخطي المقدمة"),
+    "slaResponseTime": MessageLookupByLibrary.simpleMessage(
+      "اتفاقية مستوى الخدمة / وقت الاستجابة المتوقع",
+    ),
     "souhoola": MessageLookupByLibrary.simpleMessage("سهولة"),
     "speakToUs": MessageLookupByLibrary.simpleMessage("تحدث إلينا"),
     "splashScreenText": MessageLookupByLibrary.simpleMessage(
@@ -861,6 +932,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "subActivityRequest": MessageLookupByLibrary.simpleMessage("طلب نشاط فرعي"),
     "subGroup": MessageLookupByLibrary.simpleMessage("المجموعات الفرعية"),
     "subReq": MessageLookupByLibrary.simpleMessage("تقديم الطلب"),
+    "submitRequest": MessageLookupByLibrary.simpleMessage("ارسال الطلب"),
     "success": MessageLookupByLibrary.simpleMessage("نجح"),
     "sunrise": MessageLookupByLibrary.simpleMessage("الشروق"),
     "sup": MessageLookupByLibrary.simpleMessage("المشرف"),
@@ -869,7 +941,6 @@ class MessageLookup extends MessageLookupByLibrary {
     "supervisorReply": MessageLookupByLibrary.simpleMessage(" رد المشرف:"),
     "support": MessageLookupByLibrary.simpleMessage("الدعم"),
     "supportTic": MessageLookupByLibrary.simpleMessage("بطاقة الدعم"),
-    "surah": MessageLookupByLibrary.simpleMessage("سوره"),
     "surahs": MessageLookupByLibrary.simpleMessage("سور"),
     "surahsIndexs": MessageLookupByLibrary.simpleMessage("فهرس السور"),
     "tabToSelectLuggage": MessageLookupByLibrary.simpleMessage(
@@ -941,7 +1012,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "updateBody": MessageLookupByLibrary.simpleMessage(
       "هنــاك تحـديث جديد من TEAA التحــديث للاستمرار",
     ),
+    "updateData": MessageLookupByLibrary.simpleMessage("تحديث البيانات"),
     "userName": MessageLookupByLibrary.simpleMessage("أسم المستخدم"),
+    "userPolicy": MessageLookupByLibrary.simpleMessage("سياسة المستخدم"),
     "ut": MessageLookupByLibrary.simpleMessage(
       "هناك حقيقة أن المحتوى المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل ال��ارجي الفقرات في الصفحة التي يقرأها.",
     ),
@@ -1001,6 +1074,10 @@ class MessageLookup extends MessageLookupByLibrary {
       "ما هي العروض الجديدة",
     ),
     "whatsApp": MessageLookupByLibrary.simpleMessage("واتساب"),
+    "whenAndWhyDescription": MessageLookupByLibrary.simpleMessage(
+      "يستخدم إذن الخروج في الحالات التي تستدعي تواجد الموظف خارج مقر العمل أثناء ساعات الدوام الرسمية.\n\nأثناء ساعات العمل: الخروج والعودة في نفس اليوم (موعد طبي سريع).\n\nقبل انتهاء الدوام: المغادرة وعدم العودة (الخروج المبكر).\n\nالمهمات الخارجية: إذا كلف الموظف بمهمة عمل تتطلب تواجده في موقع آخر.",
+    ),
+    "whenAndWhyUsed": MessageLookupByLibrary.simpleMessage("متى ولماذا يستخدم"),
     "will": MessageLookupByLibrary.simpleMessage("سوف يكون جاهزا في 15 دقيقة."),
     "workName": MessageLookupByLibrary.simpleMessage("اضبط اسم منظمتك"),
     "worktype": MessageLookupByLibrary.simpleMessage(

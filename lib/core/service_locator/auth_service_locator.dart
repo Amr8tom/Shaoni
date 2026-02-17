@@ -64,7 +64,7 @@
 //       () => SetPasswordCubit(serviceLocator()),
 //     );
 //
-//     /// forget password cubit
+//     /// forget password controllers
 //     serviceLocator.registerFactory<ForgetPasswordCubit>(
 //       () => ForgetPasswordCubit(serviceLocator()),
 //     );

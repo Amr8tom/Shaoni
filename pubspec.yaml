@@ -61,13 +61,13 @@ dependencies:
 
   # map && location
   permission_handler: ^12.0.1
-  flutter_map: ^8.0.0
-  geolocator: ^13.0.2
-  geocoding: ^2.1.0
+#  flutter_map: ^8.0.0
+#  geolocator: ^13.0.2
+#  geocoding: ^2.1.0
 
   #  flutter_polyline_points: ^2.1.0
   # date package
-  hijri: ^3.0.0
+#  hijri: ^3.0.0
   # for updates the app
   in_app_update: ^4.2.3   # play store
   upgrader: ^12.1.0 # app store
@@ -79,6 +79,7 @@ dependencies:
   flutter_otp_text_field: ^1.5.1+1
   firebase_messaging: ^16.0.2
   flutter_local_notifications: ^19.4.2
+  flutter_dash: ^1.0.0
 
 
 
@@ -106,8 +107,9 @@ flutter_icons:
 
 # The following section is specific to Flutter packages.
 flutter:
-  uses-material-design: true
   generate: true
+  uses-material-design: true
+
 
   #-------------------- LOCAL ASSETS --------------------#
   assets:

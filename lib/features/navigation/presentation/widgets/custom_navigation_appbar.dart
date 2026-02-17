@@ -4,22 +4,30 @@ import 'package:shaoni/common/widgets/appbar/appbar.dart';
 import 'package:shaoni/common/widgets/sizeboxs/Sizer.dart';
 import 'package:shaoni/core/constants/asset_resoures.dart';
 import 'package:shaoni/core/device/device_utility.dart';
+import 'package:shaoni/core/extentions/navigation_extension.dart';
+import 'package:shaoni/core/routing/route_names.dart';
 import 'package:shaoni/features/navigation/presentation/widgets/profile_header.dart';
 import '../../../../core/constants/colors.dart';
 
-PreferredSizeWidget customNavigationAppBars(
-    {required int indx, required BuildContext context, double? height}) {
+PreferredSizeWidget customAppBar({
+  final bool isHeader = false,
+  final bool showBackArrow = false,
+  final double? height,
+  final BuildContext? context,
+  final GlobalKey<ScaffoldState>? scaffoldKey,
+}) {
   return DAppBar(
-    // showBackArrow: true,
+    showBackArrow: showBackArrow,
     bgColor: ColorRes.transparent,
-    appHeight: height??DDeviceUtils.getAppBarHeight()*4,
+    appHeight: height ?? DDeviceUtils.getAppBarHeight() * 4,
     actions: [
       const Sizer(width: 15),
 
       /// when profile show special skip and done button
       // IconButton(onPressed: (){}, icon:Icon(Icons.menu,color: ColorRes.white,)),
-      SvgPicture.asset(AssetRes.menuIcon,color: ColorRes.white,),
-      const Sizer(width: 30),
+      isHeader ? const ProfileHeader() : const Sizer(),
+      const Spacer(),
+
       /// todo : remove comment form this stack to red point for unreaded notification
       Stack(
         children: [
@@ -34,12 +42,21 @@ PreferredSizeWidget customNavigationAppBars(
           //       ),
           //     )
           //     :const Sizer(),
-
-          SvgPicture.asset(AssetRes.notificationIcon,color: ColorRes.white,),
+          GestureDetector(onTap: (){
+            context?.pushNamed(DRoutesName.notificationsRoute);
+          },
+              child: SvgPicture.asset(
+                  AssetRes.notificationIcon, color: ColorRes.white)),
         ],
       ),
-      const Spacer(),
-      const ProfileHeader(),
+      const Sizer(width: 30),
+
+      GestureDetector(
+          onTap: (){
+            scaffoldKey?.currentState?.openDrawer();
+          },
+          child: SvgPicture.asset(AssetRes.menuIcon, color: ColorRes.white)),
+
       const Sizer(width: 15),
     ],
   );

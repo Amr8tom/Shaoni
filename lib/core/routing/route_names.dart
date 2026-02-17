@@ -23,24 +23,24 @@ class DRoutesName {
   static const String mapRoute = 'map-route';
 
   /// side menu
-  static const String FAQRoute='F-A-Q-route';
-  static const String feedbackRoute='feedback-route';
-  static const String QRCodeRoute='Q-R-Code-route';
-  static const String requestRoutes='request-route';
-  static const String requestDetailsRoutes='request-details-route';
-  static const String addNewRequestRoutes='add-new-request-route';
+  static const String FAQRoute = 'F-A-Q-route';
+  static const String feedbackRoute = 'feedback-route';
+  static const String QRCodeRoute = 'Q-R-Code-route';
+  static const String requestRoutes = 'request-route';
+  static const String requestDetailsRoutes = 'request-details-route';
+  static const String requestCertainService = 'request-certain-route';
+  static const String addNewRequestRoutes = 'add-new-request-route';
 
   ///  navigation route  and different  sections in navigation screen  routes
   static const String navigationMenuRoute = 'navigation-menu-route';
-  static const String quranRoute = 'quran-route';
-  static const String pageRoute ='quran-page-route';
-  static const String juzRoute ='quran-juz-route';
-  static const String surahRoute ='quran-surah-route';
-  static const String qiblaRoute = 'qibla-route';
-  static const String residenceLocationRoute = 'residence-location-route';
   static const String notificationsRoute = 'notifications-route';
-  static const String groupDetailsRoute = 'group-details-route';
-  static const String activityPhasesRoute = 'activity-phases-route';
+  static const String profileRoute = 'notifications-route';
+  static const String chooseNewRequestNewService = 'Request-New-Service-route';
+  static const String requestCreateDetails =
+      'Request-create-details-Service-route';
+
+  /// orders
+  static const String orderDetailsRoute = 'order-details-route';
 
   /// More
   static const String termsAndConditionRoute = 'terms-and-conditions-route';
