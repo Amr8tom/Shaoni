@@ -149,6 +149,16 @@ class S {
     return Intl.message('New', name: 'NNew', desc: '', args: []);
   }
 
+  /// `Request Type`
+  String get requestType {
+    return Intl.message(
+      'Request Type',
+      name: 'requestType',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Manager Approval`
   String get managerApproval {
     return Intl.message(

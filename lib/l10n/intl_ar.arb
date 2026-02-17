@@ -132,6 +132,7 @@
   "requestNumber": "رقم الطلب",
   "requestStatus": "حالة الطلب",
   "NNew":"جديد",
+  "requestType":"نوع الطلب",
   "permissionType": "نوع الإذن",
   "attachments": "المرفقات",
   "medicalReportFromDoctor": "تصريح مرضي من الطبيب",

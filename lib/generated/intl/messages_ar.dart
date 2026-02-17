@@ -804,6 +804,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "requestSuccessfully": MessageLookupByLibrary.simpleMessage(
       "تم إرسال طلبك بنجاح",
     ),
+    "requestType": MessageLookupByLibrary.simpleMessage("نوع الطلب"),
     "requests": MessageLookupByLibrary.simpleMessage("الطلبات"),
     "requirements": MessageLookupByLibrary.simpleMessage("المتطلبات"),
     "res": MessageLookupByLibrary.simpleMessage("السكن"),

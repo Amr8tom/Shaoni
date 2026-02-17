@@ -841,6 +841,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "requestSuccessfully": MessageLookupByLibrary.simpleMessage(
       "Your request is sent successfully",
     ),
+    "requestType": MessageLookupByLibrary.simpleMessage("Request Type"),
     "requests": MessageLookupByLibrary.simpleMessage("Requests"),
     "requirements": MessageLookupByLibrary.simpleMessage("requirements"),
     "res": MessageLookupByLibrary.simpleMessage("Residencies"),

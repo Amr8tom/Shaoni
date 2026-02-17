@@ -29,9 +29,7 @@ class OrderDetailsScreen extends StatelessWidget {
           Padding(
             padding: EdgeInsets.symmetric(horizontal: AppSizes.padding),
             child: Container(
-              padding: EdgeInsets.all(AppSizes.padding / 2),
-              // height: AppSizes.heightcontainer,
-              // width: AppSizes.widthcontainer,
+              padding: EdgeInsets.all(AppSizes.padding ),
               decoration: BoxDecoration(
                 color: ColorRes.white,
                 borderRadius: BorderRadius.circular(AppSizes.borderRadiusLarge),
@@ -50,14 +48,14 @@ class OrderDetailsScreen extends StatelessWidget {
                         title: S.current.orderNumber,
                         result: "orderNumber",
                       ),
-                      const Sizer(width: 90),
-                      OrderTextCard(title: S.current.orderType, result: "type"),
+                      const Sizer(width: 80),
+                      OrderTextCard(title: S.current.orderStatus, result: "type"),
                     ],
                   ),
                   Row(
                     children: [
                       OrderTextCard(
-                        title: S.current.orderNumber,
+                        title: S.current.requestType,
                         result: S.current.orderNumber,
                       ),
                     ],
@@ -65,58 +63,61 @@ class OrderDetailsScreen extends StatelessWidget {
                   Row(
                     children: [
                       OrderTextCard(
-                        title: S.current.orderNumber,
+                        title: S.current.hijriDate,
                         result: "orderNumber",
                       ),
-                      const Sizer(width: 90),
-                      OrderTextCard(title: S.current.orderType, result: "type"),
+                      const Sizer(width: 80),
+                      OrderTextCard(title: S.current.dateBirth, result: "type"),
                     ],
                   ),
                 ],
               ),
             ),
           ),
-          const Sizer(height: 5),
+          const Sizer(height: 20),
           Padding(
             padding: EdgeInsets.symmetric(horizontal: AppSizes.padding),
             child: Container(
-
+              padding: EdgeInsets.all(AppSizes.padding ),
               decoration: BoxDecoration(
                 color: ColorRes.white,
                 borderRadius: BorderRadius.circular(AppSizes.borderRadiusLarge),
               ),
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(S.current.requestData),
+                  Text(
+                    S.current.orderDetails,
+                    style: Theme.of(context).textTheme.titleSmall,
+                  ),
                   Divider(color: ColorRes.grey4),
                   Row(
                     children: [
                       OrderTextCard(
-                        title: S.current.orderNumber,
+                        title: S.current.permissionDate,
                         result: "orderNumber",
                       ),
-                      const Sizer(width: 10),
-                      OrderTextCard(title: S.current.orderType, result: "type"),
+                      const Sizer(width: 80),
+                      OrderTextCard(title: S.current.permissionTime, result: "type"),
+                    ],
+                  ),
+
+                  Row(
+                    children: [
+                      OrderTextCard(
+                        title: S.current.permissionType,
+                        result: "orderNumber",
+                      ),
+                      const Sizer(width: 80),
+                      OrderTextCard(title: S.current.durationInHours, result: "type"),
                     ],
                   ),
                   Row(
                     children: [
                       OrderTextCard(
-                        title: S.current.orderNumber,
-                        result: "orderNumber",
+                        title: S.current.attachments,
+                        result: S.current.medicalReportFromDoctor,
                       ),
-                      const Sizer(width: 10),
-                      OrderTextCard(title: S.current.orderType, result: "type"),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      OrderTextCard(
-                        title: S.current.orderNumber,
-                        result: "orderNumber",
-                      ),
-                      const Sizer(width: 10),
-                      OrderTextCard(title: S.current.orderType, result: "type"),
                     ],
                   ),
                 ],
