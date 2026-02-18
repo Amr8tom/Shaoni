@@ -27,7 +27,7 @@ class _SplashScreenState extends State<SplashScreen> {
     super.initState();
     _setSystemUIOverlayStyle();
     /// todo: use it after develop auth feature
-    // _delayBeforeNavigation();
+    ///  _delayBeforeNavigation();
   }
 
   void _setSystemUIOverlayStyle() {
