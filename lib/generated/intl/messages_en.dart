@@ -79,6 +79,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "appName": MessageLookupByLibrary.simpleMessage("teaa"),
     "appTitle": MessageLookupByLibrary.simpleMessage("Teaa Client"),
     "applicantName": MessageLookupByLibrary.simpleMessage("Applicant Name"),
+    "approvedRequest": MessageLookupByLibrary.simpleMessage("Approved Request"),
     "arabic": MessageLookupByLibrary.simpleMessage("Arabic"),
     "arrDate": MessageLookupByLibrary.simpleMessage("Arrival Date"),
     "arrDe": MessageLookupByLibrary.simpleMessage("Arrival & Departure Info. "),
@@ -125,6 +126,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "callUs": MessageLookupByLibrary.simpleMessage("Call us"),
     "camera": MessageLookupByLibrary.simpleMessage("Camera"),
     "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
+    "canceledRequest": MessageLookupByLibrary.simpleMessage("Canceled Request"),
     "cancleOrder": MessageLookupByLibrary.simpleMessage("Cancle The Order"),
     "cancleOrderBody": MessageLookupByLibrary.simpleMessage(
       "are you sure that you want to cancle this order",
@@ -702,6 +704,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "paymentMethod": MessageLookupByLibrary.simpleMessage("Payment Method"),
     "pdfGuide": MessageLookupByLibrary.simpleMessage("PDF Guide"),
     "pending": MessageLookupByLibrary.simpleMessage("Pending"),
+    "pendingRequest": MessageLookupByLibrary.simpleMessage("Pending Request"),
     "perInfo": MessageLookupByLibrary.simpleMessage("Personal Information"),
     "perform": MessageLookupByLibrary.simpleMessage("Perform SA\'I"),
     "permissionDate": MessageLookupByLibrary.simpleMessage("Permission Date"),
@@ -812,6 +815,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "registration": MessageLookupByLibrary.simpleMessage(
       "Reservation Management",
     ),
+    "rejectedRequest": MessageLookupByLibrary.simpleMessage("Rejected Request"),
+    "remainingLeaves": MessageLookupByLibrary.simpleMessage("Remaining Leaves"),
     "rememberMe": MessageLookupByLibrary.simpleMessage("Remember Me"),
     "remotePayment": MessageLookupByLibrary.simpleMessage("Remote Payment"),
     "repeatNewPassword": MessageLookupByLibrary.simpleMessage(
@@ -1105,6 +1110,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Stop listening",
     ),
     "voiceTapToSpeak": MessageLookupByLibrary.simpleMessage("Tap to speak"),
+    "waiting": MessageLookupByLibrary.simpleMessage("Waiting"),
     "wallet": MessageLookupByLibrary.simpleMessage(
       "Wallet......Here you can get money and cashback to help you increase your profits",
     ),

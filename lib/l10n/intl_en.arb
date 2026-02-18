@@ -20,6 +20,15 @@
   "quranKarem": "Quran Kareem",
   "lightYourHeart":"Lighten your heart with the remembrance of Allah",
   "surah": "Surah",
+
+   "pendingRequest": "Pending Request",
+    "approvedRequest": "Approved Request",
+    "remainingLeaves": "Remaining Leaves",
+    "canceledRequest": "Canceled Request",
+    "rejectedRequest": "Rejected Request",
+    "waiting": "Waiting",
+
+
   "featureComingSoon": "Feature Coming Soon",
   "qiblaDirectionTitle": "Qibla Direction",
   "imHereToHelp": "I am here to help you with what benefits your religion and your journey, just tell me what you want",

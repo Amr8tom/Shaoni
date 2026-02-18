@@ -199,6 +199,61 @@ class S {
     return Intl.message('Surah', name: 'surah', desc: '', args: []);
   }
 
+  /// `Pending Request`
+  String get pendingRequest {
+    return Intl.message(
+      'Pending Request',
+      name: 'pendingRequest',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Approved Request`
+  String get approvedRequest {
+    return Intl.message(
+      'Approved Request',
+      name: 'approvedRequest',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Remaining Leaves`
+  String get remainingLeaves {
+    return Intl.message(
+      'Remaining Leaves',
+      name: 'remainingLeaves',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Canceled Request`
+  String get canceledRequest {
+    return Intl.message(
+      'Canceled Request',
+      name: 'canceledRequest',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Rejected Request`
+  String get rejectedRequest {
+    return Intl.message(
+      'Rejected Request',
+      name: 'rejectedRequest',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Waiting`
+  String get waiting {
+    return Intl.message('Waiting', name: 'waiting', desc: '', args: []);
+  }
+
   /// `Feature Coming Soon`
   String get featureComingSoon {
     return Intl.message(

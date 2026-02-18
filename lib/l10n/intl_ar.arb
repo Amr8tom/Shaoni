@@ -141,7 +141,12 @@
   "managerApproval": "موافقة المدير",
   "hrManagerApproval": "موافقة مدير الموارد البشرية",
 
-
+  "pendingRequest": "طلب قيد الانتظار",
+  "approvedRequest": "طلب معتمد",
+  "remainingLeaves": "الإجازات المتبقية",
+  "canceledRequest": "طلب ملغي",
+  "rejectedRequest": "طلب مرفوض",
+  "waiting": "الانتظار",
 
   "loginWithPhone": "تسجيل الدخول بالهاتف",
   "enterPhoneDescription": "أدخل رقم هاتفك لاستلام رمز التحقق",

@@ -13,36 +13,42 @@ class StatisticsListView extends StatelessWidget {
   Widget build(BuildContext context) {
     List homeStatisticsList = [
       _homeStatisticsIcon(
+        title: S.current.remainingLeaves,
         context: context,
-        color: ColorRes.error,
-        count: '22',
-        imagePath: AssetRes.deletedIcon,
+        color: ColorRes.grey,
+        count: '7',
+        imagePath: AssetRes.reminingIcon,
       ),
 
       _homeStatisticsIcon(
+        title: S.current.approvedRequest,
+        context: context,
+        color: ColorRes.green,
+        count: '11',
+        imagePath: AssetRes.approvedIcon,
+      ),
+  _homeStatisticsIcon(
+        title: S.current.pendingRequest,
+        context: context,
+        color: ColorRes.blueColor,
+        count: '20',
+        imagePath: AssetRes.waitingIcon,
+      ),
+
+      _homeStatisticsIcon(
+        title: S.current.rejectedRequest,
         context: context,
         color: ColorRes.yellow,
-        count: '22',
+        count: '9',
         imagePath: AssetRes.rejectedIcon,
       ),
       _homeStatisticsIcon(
-        context: context,
-        color: ColorRes.blueColor,
-        count: '22',
-        imagePath: AssetRes.waitingIcon,
-      ),
-      _homeStatisticsIcon(
+        title: S.current.canceledRequest,
         context: context,
         color: ColorRes.error,
-        count: '22',
-        imagePath: AssetRes.reminingIcon,
-      ),
-      _homeStatisticsIcon(
-        context: context,
-        color: ColorRes.green,
-        count: '7',
-        imagePath: AssetRes.approvedIcon,
-      ),
+        count: '3',
+        imagePath: AssetRes.deletedIcon,
+      )
     ];
     return Container(
       width: double.infinity,
@@ -72,7 +78,7 @@ class StatisticsListView extends StatelessWidget {
   Widget _homeStatisticsIcon({
     Color color = ColorRes.primary,
     required BuildContext context,
-    required String count,
+    required String count,title,
     required String imagePath,
   }) {
     return Container(
@@ -117,7 +123,7 @@ class StatisticsListView extends StatelessWidget {
             child: Padding(
               padding: EdgeInsets.all(AppSizes.padding / 2.5),
               child: Text(
-                S.current.deleteAccount,
+               title,
                 style: Theme.of(context).textTheme.headlineLarge?.copyWith(
                   color: color,
                   fontSize: AppSizes.fontSizeMd * 0.85,

@@ -77,6 +77,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "appName": MessageLookupByLibrary.simpleMessage("تيا"),
     "appTitle": MessageLookupByLibrary.simpleMessage("عميل تيا"),
     "applicantName": MessageLookupByLibrary.simpleMessage("اسم مقدم الطلب"),
+    "approvedRequest": MessageLookupByLibrary.simpleMessage("طلب معتمد"),
     "arabic": MessageLookupByLibrary.simpleMessage("العربية"),
     "arrDate": MessageLookupByLibrary.simpleMessage("تاريخ الوصول"),
     "arrDe": MessageLookupByLibrary.simpleMessage("معلومات الوصول والمغادرة."),
@@ -117,6 +118,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "callUs": MessageLookupByLibrary.simpleMessage("اتصل بنا"),
     "camera": MessageLookupByLibrary.simpleMessage("كاميرا"),
     "cancel": MessageLookupByLibrary.simpleMessage("إلغاء"),
+    "canceledRequest": MessageLookupByLibrary.simpleMessage("طلب ملغي"),
     "cancleOrder": MessageLookupByLibrary.simpleMessage("الغاء الطلب"),
     "cancleOrderBody": MessageLookupByLibrary.simpleMessage(
       "هل انت متأكد أنك تريد حذف هذا الطلب",
@@ -678,6 +680,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "paymentMethod": MessageLookupByLibrary.simpleMessage("طريقة الدفع"),
     "pdfGuide": MessageLookupByLibrary.simpleMessage("دليل PDF"),
     "pending": MessageLookupByLibrary.simpleMessage("معلقة"),
+    "pendingRequest": MessageLookupByLibrary.simpleMessage("طلب قيد الانتظار"),
     "perInfo": MessageLookupByLibrary.simpleMessage("معلومات شخصية"),
     "perform": MessageLookupByLibrary.simpleMessage("أداء السعي"),
     "permissionDate": MessageLookupByLibrary.simpleMessage("تاريخ الإذن"),
@@ -777,6 +780,10 @@ class MessageLookup extends MessageLookupByLibrary {
       "تم تسـجيل حســابك بنجــاح",
     ),
     "registration": MessageLookupByLibrary.simpleMessage("ادارة الحجوزات"),
+    "rejectedRequest": MessageLookupByLibrary.simpleMessage("طلب مرفوض"),
+    "remainingLeaves": MessageLookupByLibrary.simpleMessage(
+      "الإجازات المتبقية",
+    ),
     "rememberMe": MessageLookupByLibrary.simpleMessage("تذكرني"),
     "remotePayment": MessageLookupByLibrary.simpleMessage("الدفع الالكترونى"),
     "repeatNewPassword": MessageLookupByLibrary.simpleMessage(
@@ -1055,6 +1062,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "إيقاف الاستماع",
     ),
     "voiceTapToSpeak": MessageLookupByLibrary.simpleMessage("اضغط للتحدث"),
+    "waiting": MessageLookupByLibrary.simpleMessage("الانتظار"),
     "wallet": MessageLookupByLibrary.simpleMessage(
       "المحفظة......هنا يمكنك الحصول على المال والكاش باك لمساعدتك في زيادة أرباحك",
     ),
