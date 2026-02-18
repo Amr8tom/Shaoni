@@ -6,11 +6,11 @@ import 'package:shaoni/core/device/device_utility.dart';
 
 import '../../../../core/constants/colors.dart';
 import '../../../../generated/l10n.dart';
-import '../widgets/order_stage_card.dart';
+import '../widgets/request_stage_card.dart';
 import '../../../home/presentation/widgets/order_text_card.dart';
 
-class OrderDetailsScreen extends StatelessWidget {
-  const OrderDetailsScreen({super.key});
+class RequestDetailsScreen extends StatelessWidget {
+  const RequestDetailsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -125,7 +125,7 @@ class OrderDetailsScreen extends StatelessWidget {
             ),
           ),
           Sizer(height: 20),
-          OrderStageCard(),
+          RequestStageCard(),
         ],
       ),
     );

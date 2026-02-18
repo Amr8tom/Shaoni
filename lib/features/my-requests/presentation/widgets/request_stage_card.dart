@@ -6,8 +6,8 @@ import 'package:shaoni/core/constants/colors.dart';
 
 import '../../../../generated/l10n.dart';
 
-class OrderStageCard extends StatelessWidget {
-  const OrderStageCard({super.key});
+class RequestStageCard extends StatelessWidget {
+  const RequestStageCard({super.key});
 
   @override
   Widget build(BuildContext context) {

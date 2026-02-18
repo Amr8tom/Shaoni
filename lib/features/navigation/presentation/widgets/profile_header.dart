@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:shaoni/core/constants/app_sizes.dart';
 import 'package:shaoni/core/extentions/navigation_extension.dart';
+import 'package:shaoni/core/routing/route_names.dart';
 import '../../../../common/widgets/sizeboxs/Sizer.dart';
 import '../../../../core/constants/asset_resoures.dart';
 import '../../../../core/constants/colors.dart';
@@ -22,8 +23,7 @@ class ProfileHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        // Navigate to profile or show menu
-        context.pop();
+        context.pushNamed(DRoutesName.profileRoute);
       },
       child: Row(
         mainAxisSize: MainAxisSize.min,

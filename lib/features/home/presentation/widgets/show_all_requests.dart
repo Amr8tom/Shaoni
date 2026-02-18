@@ -1,0 +1,37 @@
+import 'package:flutter/material.dart';
+import '../../../../common/widgets/sizeboxs/Sizer.dart';
+import '../../../../core/constants/app_sizes.dart';
+import '../../../../core/constants/colors.dart';
+import '../../../../generated/l10n.dart';
+
+class ShowAllRequests extends StatelessWidget {
+  const ShowAllRequests({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: AppSizes.padding),
+      child: Row(
+        children: [
+          Text(
+            S.current.myOrders,
+            style: Theme.of(context).textTheme.titleSmall,
+          ),
+          const Spacer(),
+          Row(
+            children: [
+              Text(
+                S.current.seeAll,
+                style: Theme.of(
+                  context,
+                ).textTheme.bodyMedium?.copyWith(color: ColorRes.grey),
+              ),
+              const Sizer(width: 8),
+              Icon(Icons.arrow_forward_ios, size: AppSizes.iconXs),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+}

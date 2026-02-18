@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shaoni/common/widgets/appbar/appbar.dart';
 import 'package:shaoni/common/widgets/navigationbar/bottom_navigation_bar.dart';
+import 'package:shaoni/common/widgets/sizeboxs/Sizer.dart';
+import 'package:shaoni/core/constants/app_sizes.dart';
 import 'package:shaoni/core/constants/colors.dart';
 import 'package:shaoni/core/device/device_utility.dart';
 import 'package:shaoni/features/navigation/presentation/widgets/custom_navigation_appbar.dart';
@@ -28,8 +31,17 @@ class NavigationMenuScreen extends StatelessWidget {
           final state = controller.state;
           return UpgradeAlert(
             child: Scaffold(
+              appBar:
+                  controller.indx == 0
+                      ? null
+                      : DAppBar(
+                        // scaffoldKey: scaffoldKey,
+                        // context: context,
+                        isHeader: true,
+                      ),
               key: scaffoldKey,
               drawer: const CustomSideMenu(),
+              // extendBodyBehindAppBar: true,
               backgroundColor: ColorRes.grey6,
               body: Stack(
                 children: [
@@ -38,15 +50,19 @@ class NavigationMenuScreen extends StatelessWidget {
                         scaffoldKey: scaffoldKey,
                         context: context,
                         isHeader: true,
+                        height: AppSizes.appBarHeight * 4.5,
                       )
-                      : customAppBar(
-                        scaffoldKey: scaffoldKey,
-                        context: context,
-                        height: DDeviceUtils.getAppBarHeight() * 3,
-                      ),
+                      : const Sizer(),
                   controller.indx == 3
                       ? const SizedBox()
-                      : state.screens[controller.indx],
+                      : Column(
+                        children: [
+                          controller.indx == 0
+                              ? const Sizer(height: 200)
+                              : const Sizer(),
+                          state.screens[controller.indx],
+                        ],
+                      ),
                 ],
               ),
               // body: state.screens[controller.indx],

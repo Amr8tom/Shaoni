@@ -9,14 +9,14 @@ import 'package:shaoni/features/home/presentation/widgets/home_status_badge.dart
 import 'package:shaoni/features/home/presentation/widgets/order_text_card.dart';
 import '../../../../generated/l10n.dart';
 
-class MyOrdersGridView extends StatelessWidget {
-  const MyOrdersGridView({super.key});
+class MyRequestGridView extends StatelessWidget {
+  const MyRequestGridView({super.key});
 
   @override
   Widget build(BuildContext context) {
     /// Sample data - replace with actual data later
     return SizedBox(
-      height: AppSizes.fullHeight * 0.56,
+      // height: AppSizes.fullHeight * 0.5,
       child: GridView.builder(
         padding: EdgeInsets.zero,
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -37,7 +37,7 @@ class MyOrdersGridView extends StatelessWidget {
             date: Dummy.orders[index]['date'],
             type: Dummy.orders[index]['type'],
             onTap: () {
-              context.pushNamed(DRoutesName.orderDetailsRoute);
+              context.pushNamed(DRoutesName.requestDetailsRoute);
             },
           );
         },
@@ -89,7 +89,7 @@ class MyOrdersGridView extends StatelessWidget {
             //
             /// Row 2: Order Type
             const Spacer(),
-            //
+
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
 

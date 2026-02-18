@@ -15,15 +15,15 @@ class ChooseNewRequestServicesScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: ColorRes.grey6,
       appBar: DAppBar(
         showBackArrow: true,
-        appHeight: DDeviceUtils.getAppBarHeight() * 3,
       ),
+// appBar: AppBar(),
       body: Padding(
-        padding: EdgeInsets.all(AppSizes.padding),
+        padding: EdgeInsets.symmetric(horizontal:AppSizes.padding),
         child: Container(
           child: GridView.builder(
+            padding: EdgeInsets.zero,
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 1,
               crossAxisSpacing: 12,

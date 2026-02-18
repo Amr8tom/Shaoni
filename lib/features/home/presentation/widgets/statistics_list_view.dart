@@ -6,8 +6,8 @@ import '../../../../core/constants/asset_resoures.dart';
 import '../../../../core/constants/colors.dart';
 import '../../../../generated/l10n.dart';
 
-class SelectListView extends StatelessWidget {
-  const SelectListView({super.key});
+class StatisticsListView extends StatelessWidget {
+  const StatisticsListView({super.key});
 
   @override
   Widget build(BuildContext context) {

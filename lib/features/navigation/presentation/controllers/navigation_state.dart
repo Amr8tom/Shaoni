@@ -14,7 +14,7 @@ final class NavigationState  extends Equatable{
     this.screens =const [
       HomeScreen(),
       ServicesScreen(),
-      MyOrderScreen(),
+      MyRequestsScreen(),
       ProfileScreen(),
     ]
   });

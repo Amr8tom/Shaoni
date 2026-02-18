@@ -5,11 +5,6 @@ class ServicesScreen extends StatelessWidget {
   const ServicesScreen({super.key});
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        const Sizer(height: 160),
-        const ServicesGridView(),
-      ],
-    );
+    return const ServicesGridView();
   }
 }

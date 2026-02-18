@@ -69,18 +69,29 @@ class CustomBottomNavigationBar extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: List.generate(items.length, (index) {
-            final isActive = controller.indx == index;
-            return _buildNavItem(
-              context: context,
-              item: items[index],
-              isActive: isActive,
-              onTap: () {
-                if(index==3){
-                  context.pushNamed(DRoutesName.profileInfoRoute);
-                }{
-                  context.read<NavigationCubit>().changeIndex(index);
-                }}
-            );
+
+            if(index==3){
+            return  _buildNavItem(
+                  context: context,
+                  item: items[index],
+                  isActive: false,
+                  onTap: () {
+                      context.pushNamed(DRoutesName.profileRoute);
+                  }
+              );
+            }else{
+              final isActive = controller.indx == index;
+              return _buildNavItem(
+                  context: context,
+                  item: items[index],
+                  isActive: isActive,
+                  onTap: () {
+
+                      context.read<NavigationCubit>().changeIndex(index);
+                    }
+              );
+            }
+
           }),
         ),
       ),

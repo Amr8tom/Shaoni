@@ -6,7 +6,7 @@ import 'package:shaoni/features/profile/profile_screen.dart';
 import '../../features/auth/presentation/screen/login_screen.dart';
 import '../../features/auth/presentation/screen/new_password_screen.dart';
 import '../../features/auth/presentation/screen/otp_screen.dart';
-import '../../features/my-orders/presentation/screens/order_details_screen.dart';
+import '../../features/my-requests/presentation/screens/request_details_screen.dart';
 import '../../features/my-services/presentation/screens/choose_new_request_services_screen.dart';
 import '../../features/my-services/presentation/screens/request_create_details_screen.dart';
 import '../../features/navigation/presentation/screens/navigation_menu_screen.dart';
@@ -177,7 +177,7 @@ class RouteGenerator {
         );
 
       /// OTP verification Screen
-      case DRoutesName.profileInfoRoute:
+      case DRoutesName.profileRoute:
         return PageTransition(
           child: const ProfileScreen(),
           type: PageTransitionType.rightToLeft,
@@ -195,9 +195,9 @@ class RouteGenerator {
       //   );
       //
       /// order details  Screen
-      case DRoutesName.orderDetailsRoute:
+      case DRoutesName.requestDetailsRoute:
         return PageTransition(
-          child: const OrderDetailsScreen(),
+          child: const RequestDetailsScreen(),
           type: PageTransitionType.rightToLeft,
           settings: settings,
         );

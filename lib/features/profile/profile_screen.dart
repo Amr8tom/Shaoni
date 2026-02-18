@@ -68,7 +68,7 @@ class ProfileScreen extends StatelessWidget {
                                       ),
                                     ),
                                   ),
-                                  // Edit badge - bottom left
+                                  /// Edit badge - bottom left
                                   Positioned(
                                     bottom: 0,
                                     left: 0,

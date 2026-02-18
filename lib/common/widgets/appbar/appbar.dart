@@ -9,6 +9,7 @@ import '../../../core/constants/asset_resoures.dart';
 import '../../../core/constants/colors.dart';
 import '../../../core/device/device_utility.dart';
 import '../../../core/routing/route_names.dart';
+import '../../../features/navigation/presentation/widgets/profile_header.dart';
 import '../sizeboxs/Sizer.dart';
 
 class DAppBar extends StatelessWidget implements PreferredSizeWidget {
@@ -24,7 +25,7 @@ class DAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.fontSize,
     this.appHeight,
     this.showBackGroundColor = false,
-    this.doSomeThing,
+    this.doSomeThing,  this.isHeader=false,
   });
 
   final String? title;
@@ -33,6 +34,7 @@ class DAppBar extends StatelessWidget implements PreferredSizeWidget {
   final bool centerTitle;
   final double? fontSize;
   final bool arrowBackColor;
+  final bool isHeader;
   final List<Widget>? actions;
   final Widget? leadingWidget;
   final Color? bgColor;
@@ -61,7 +63,7 @@ class DAppBar extends StatelessWidget implements PreferredSizeWidget {
                 bottomRight: Radius.circular(AppSizes.borderRadiusLarge * 1.5),
               ),
             ),
-            height: appHeight ?? DDeviceUtils.getAppBarHeight().sp * 3,
+            height: appHeight ?? AppSizes.appBarHeight*3
           ),
           Container(
             child: Column(
@@ -105,6 +107,9 @@ class DAppBar extends StatelessWidget implements PreferredSizeWidget {
                   actions:
                       actions ??
                       [
+                        const Sizer(width: 12),
+                        isHeader ? const ProfileHeader() : const Sizer(),
+const Spacer(),
                         /// todo : remove comment form this stack to red point for unreaded notification
                         Stack(
                           children: [
@@ -182,5 +187,5 @@ class DAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Size get preferredSize =>
-      Size.fromHeight(appHeight ?? DDeviceUtils.getAppBarHeight().sp * 3);
+      Size.fromHeight(appHeight ?? AppSizes.appBarHeight*2);
 }

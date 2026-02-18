@@ -16,8 +16,8 @@ class DRoutesName {
   static const String onBoardingRoute = 'on-boarding-route';
 
   /// Profile && Setting
-  static const String profileInfoRoute = 'profile-info-route';
   static const String deleteAccountRoute = 'delete-account-route';
+  static const String profileRoute = 'profile-route';
 
   /// location & maps Screen
   static const String mapRoute = 'map-route';
@@ -34,13 +34,12 @@ class DRoutesName {
   ///  navigation route  and different  sections in navigation screen  routes
   static const String navigationMenuRoute = 'navigation-menu-route';
   static const String notificationsRoute = 'notifications-route';
-  static const String profileRoute = 'notifications-route';
   static const String chooseNewRequestNewService = 'Request-New-Service-route';
   static const String requestCreateDetails =
       'Request-create-details-Service-route';
 
-  /// orders
-  static const String orderDetailsRoute = 'order-details-route';
+  /// requests
+  static const String requestDetailsRoute = 'request-details-route';
 
   /// More
   static const String termsAndConditionRoute = 'terms-and-conditions-route';

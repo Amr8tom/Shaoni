@@ -2,52 +2,40 @@ import 'package:flutter/material.dart';
 import 'package:shaoni/common/widgets/sizeboxs/Sizer.dart';
 import 'package:shaoni/core/constants/app_sizes.dart';
 import 'package:shaoni/core/constants/colors.dart';
-import 'package:shaoni/features/home/presentation/widgets/select_list_view.dart';
+import 'package:shaoni/features/home/presentation/widgets/show_all_requests.dart';
+import 'package:shaoni/features/home/presentation/widgets/statistics_list_view.dart';
 import '../../generated/l10n.dart';
-import 'presentation/widgets/my_orders_grid_view.dart';
+import 'presentation/widgets/my_requests_grid_view.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const Sizer(height: 160),
+        /// show some statistics
         Padding(
           padding: EdgeInsets.symmetric(horizontal: AppSizes.padding / 2),
-          child: const SelectListView(),
+          child: const StatisticsListView(),
         ),
-        const Sizer(height: 10),
-        Padding(
-          padding: EdgeInsets.symmetric(horizontal: AppSizes.padding),
-          child: Row(
-            children: [
-              Text(
-                S.current.myOrders,
-                style: Theme.of(context).textTheme.titleSmall,
-              ),
-              const Spacer(),
-              Row(
-                children: [
-                  Text(
-                    S.current.seeAll,
-                    style: Theme.of(
-                      context,
-                    ).textTheme.bodyMedium?.copyWith(color: ColorRes.grey),
-                  ),
-                  const Sizer(width: 8),
-                  Icon(Icons.arrow_forward_ios, size: AppSizes.iconXs),
-                ],
-              ),
-            ],
-          ),
-        ),
-        // Text("sssssssssssssssssssssssssssssssssssssssssssss"),
+
+        /// make size
         const Sizer(height: 10),
 
+        /// show all request button and title
+        const ShowAllRequests(),
+
+        /// make size
+        const Sizer(height: 10),
+
+        /// display lastest requests in listView with scrolling
         Padding(
           padding: EdgeInsets.symmetric(horizontal: AppSizes.padding),
-          child: const MyOrdersGridView(),
+          child: SizedBox(
+
+              height: AppSizes.fullHeight * 0.5,
+              child: const MyRequestGridView()),
         ),
       ],
     );
