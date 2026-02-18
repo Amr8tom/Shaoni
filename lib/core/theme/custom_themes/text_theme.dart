@@ -14,10 +14,8 @@ class DTextTheme {
         color: ColorRes.black,
         // height: 1.2,
         fontFamily: 'Cairo'
-
     ),
     headlineMedium: TextStyle(
-
         fontSize: 22.sp,
         fontWeight: FontWeight.bold,
         color: ColorRes.black,
@@ -34,18 +32,18 @@ class DTextTheme {
       fontFamily: 'Cairo',
       fontSize: 28.sp,
       fontWeight: FontWeight.w600,
-      color: Colors.black,
+      color: ColorRes.black,
     ),
     titleMedium: TextStyle().copyWith(
         fontFamily: 'Cairo',
         fontSize: 24.sp,
         fontWeight: FontWeight.w500,
-        color: Colors.black),
+        color: ColorRes.black),
     titleSmall: TextStyle().copyWith(
         fontFamily: 'Cairo',
         fontSize: 20.sp,
         fontWeight: FontWeight.w400,
-        color: Colors.black),
+        color: ColorRes.black),
     bodyLarge: TextStyle(overflow: TextOverflow.ellipsis).copyWith(
         fontFamily: 'Cairo',
         fontSize: 16.sp,
@@ -58,23 +56,23 @@ class DTextTheme {
         fontSize: 14.sp,
         fontWeight: FontWeight.normal,
         // height: 1.4.h,
-        color: ColorRes.primary),
+        color: ColorRes.black),
     bodySmall: TextStyle().copyWith(
         fontFamily: 'Cairo',
         fontSize: 12.sp,
         fontWeight: FontWeight.w500,
         // height: 1.3.h,
-        color: ColorRes.primary),
+        color: ColorRes.black),
     labelLarge: TextStyle(
         fontFamily: 'Cairo',
         fontSize: 44.sp,
         fontWeight: FontWeight.normal,
-        color: Colors.black),
+        color: ColorRes.black),
     labelMedium: TextStyle().copyWith(
         fontFamily: 'Cairo',
         fontSize: 35.sp,
         fontWeight: FontWeight.normal,
-        color: Colors.black),
+        color: ColorRes.black),
   );
 
   /// Customizable Dark Text Theme
