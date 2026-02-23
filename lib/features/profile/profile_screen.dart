@@ -12,6 +12,7 @@ import 'package:shaoni/core/widgets/buttons/d_button.dart';
 import 'package:shaoni/features/profile/presentation/controllers/profile_cubit.dart';
 import '../../generated/l10n.dart';
 import '../auth/presentation/widgets/auth_text_filed.dart';
+import '../navigation/presentation/widgets/custom_side_menu.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -26,6 +27,7 @@ class ProfileScreen extends StatelessWidget {
           showBackArrow: true,
           appHeight: DDeviceUtils.getAppBarHeight() * 3,
         ),
+        drawer: const CustomSideMenu(),
         body: BlocBuilder<ProfileCubit, ProfileState>(
           builder: (context, state) {
             final controller = context.read<ProfileCubit>();

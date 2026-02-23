@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:shaoni/core/extentions/navigation_extension.dart';
-import 'package:shaoni/features/navigation/presentation/widgets/custom_side_menu.dart';
 
 import '../../../core/constants/app_sizes.dart';
 import '../../../core/constants/asset_resoures.dart';
@@ -25,7 +24,9 @@ class DAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.fontSize,
     this.appHeight,
     this.showBackGroundColor = false,
-    this.doSomeThing,  this.isHeader=false,
+    this.doSomeThing,
+    this.isHeader = false,
+    this.scaffoldKey,
   });
 
   final String? title;
@@ -39,11 +40,13 @@ class DAppBar extends StatelessWidget implements PreferredSizeWidget {
   final Widget? leadingWidget;
   final Color? bgColor;
   final double? appHeight;
+  final GlobalKey<ScaffoldState>? scaffoldKey;
 
   void Function()? doSomeThing;
 
   @override
   Widget build(BuildContext context) {
+    debugPrint('DAppBar build: scaffoldKey is ${scaffoldKey == null ? "null" : "not null"}');
     return Directionality(
       textDirection: TextDirection.rtl,
       child: Stack(
@@ -140,8 +143,29 @@ const Spacer(),
                         const Sizer(width: 30),
 
                         GestureDetector(
-                          onTap: (){
-                            Scaffold.of(context).openDrawer();
+                          onTap: () {
+                            debugPrint('Menu icon tapped');
+                            debugPrint('scaffoldKey is null: ${scaffoldKey == null}');
+                            debugPrint('scaffoldKey.currentState: ${scaffoldKey?.currentState}');
+
+                            if (scaffoldKey != null && scaffoldKey!.currentState != null) {
+                              debugPrint('Using scaffoldKey to open drawer');
+                              scaffoldKey!.currentState!.openDrawer();
+                            } else {
+                              debugPrint('ScaffoldKey not available, trying Scaffold.of(context)');
+                              // Fallback: Try to find Scaffold in current context
+                              try {
+                                final scaffoldState = Scaffold.maybeOf(context);
+                                if (scaffoldState != null) {
+                                  scaffoldState.openDrawer();
+                                  debugPrint('Drawer opened successfully');
+                                } else {
+                                  debugPrint('No Scaffold found in context');
+                                }
+                              } catch (e) {
+                                debugPrint('Error opening drawer: $e');
+                              }
+                            }
                           },
                           child: SvgPicture.asset(
                             AssetRes.menuIcon,
