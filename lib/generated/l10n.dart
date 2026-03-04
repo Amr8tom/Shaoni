@@ -1109,9 +1109,9 @@ class S {
     );
   }
 
-  /// `My Orders`
+  /// `Orders`
   String get myOrders {
-    return Intl.message('My Orders', name: 'myOrders', desc: '', args: []);
+    return Intl.message('Orders', name: 'myOrders', desc: '', args: []);
   }
 
   /// `services`

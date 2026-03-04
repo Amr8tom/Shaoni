@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:shaoni/core/routing/route_names.dart';
 import 'package:shaoni/features/my-services/presentation/screens/request_certain_service.dart';
+import 'package:shaoni/features/my-services/presentation/widgets/create_delete_buttons.dart';
 import 'package:shaoni/features/profile/profile_screen.dart';
 import '../../features/auth/presentation/screen/login_screen.dart';
 import '../../features/auth/presentation/screen/new_password_screen.dart';
@@ -30,7 +31,7 @@ class RouteGenerator {
       /// splash Screen
       case DRoutesName.splashSRoute:
         return PageTransition(
-          child: const SplashScreen(),
+          child: const RequestCreateDetailsScreen(),
           type: PageTransitionType.rightToLeft,
           settings: settings,
         );

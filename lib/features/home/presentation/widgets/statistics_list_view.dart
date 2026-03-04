@@ -23,14 +23,14 @@ class StatisticsListView extends StatelessWidget {
       _homeStatisticsIcon(
         title: S.current.approvedRequest,
         context: context,
-        color: ColorRes.green,
+        color: ColorRes.staticGreenColor,
         count: '11',
         imagePath: AssetRes.approvedIcon,
       ),
   _homeStatisticsIcon(
         title: S.current.pendingRequest,
         context: context,
-        color: ColorRes.blueColor,
+        color: ColorRes.staticBlueColor,
         count: '20',
         imagePath: AssetRes.waitingIcon,
       ),
@@ -38,14 +38,14 @@ class StatisticsListView extends StatelessWidget {
       _homeStatisticsIcon(
         title: S.current.rejectedRequest,
         context: context,
-        color: ColorRes.yellow,
+        color: ColorRes.staticYellowColor,
         count: '9',
         imagePath: AssetRes.rejectedIcon,
       ),
       _homeStatisticsIcon(
         title: S.current.canceledRequest,
         context: context,
-        color: ColorRes.error,
+        color: ColorRes.staticRedColor,
         count: '3',
         imagePath: AssetRes.deletedIcon,
       )
@@ -60,7 +60,7 @@ class StatisticsListView extends StatelessWidget {
           return AnimationConfiguration.staggeredList(
             position: index,
             child: SlideAnimation(
-              duration: const Duration(milliseconds: 2000),
+              duration: const Duration(milliseconds: 300),
               horizontalOffset: AppSizes.paddingHorizontallyContainer,
               child: homeStatisticsList[index],
             ),
@@ -82,8 +82,8 @@ class StatisticsListView extends StatelessWidget {
     required String imagePath,
   }) {
     return Container(
-      height: AppSizes.heightcontainer,
-      width: AppSizes.widthcontainer * 1.15,
+      height: AppSizes.heightcontainer*1.15,
+      width: AppSizes.widthcontainer * 1.10,
       decoration: BoxDecoration(
         color: ColorRes.white,
         borderRadius: BorderRadius.all(
@@ -95,31 +95,32 @@ class StatisticsListView extends StatelessWidget {
       child: Stack(
         children: [
           Padding(
-            padding: EdgeInsets.all(AppSizes.padding / 1.4),
-            child: Row(
-              children: [
-                Flexible(
-                  child: Text(
+            padding:  EdgeInsets.only(left:AppSizes.padding,right: AppSizes.padding,top:AppSizes.iconPadding),
+            child: Container(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
                     count,
                     style: Theme.of(context).textTheme.headlineLarge?.copyWith(
-                      color: color,
-                      fontSize: AppSizes.fontSizeXXLg * 1.3,
-                    ),
+                        color: color,
+                        fontSize: AppSizes.fontSizeXXLg*1.5
+                    )
                   ),
-                ),
-                const Sizer(width: 30),
-                Image.asset(
-                  imagePath,
-                  color: color,
-                  fit: BoxFit.fitWidth,
-                  width: AppSizes.xxl * 0.9,
-                  height: AppSizes.xxl * 0.9,
-                ),
-              ],
+               const  Spacer(),
+                  Image.asset(
+                    imagePath,
+                    color: color,
+                    // fit: BoxFit.fitWidth,
+                    width: AppSizes.iconXLarge ,
+                    height: AppSizes.iconXLarge,
+                  ),
+                ],
+              ),
             ),
           ),
           Positioned(
-            bottom: 0,
+            bottom: AppSizes.iconPadding/2,
             child: Padding(
               padding: EdgeInsets.all(AppSizes.padding / 2.5),
               child: Text(

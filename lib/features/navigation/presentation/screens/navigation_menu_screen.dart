@@ -14,9 +14,7 @@ import '../widgets/custom_side_menu.dart';
 
 class NavigationMenuScreen extends StatelessWidget {
   NavigationMenuScreen({super.key});
-
   final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
-
   @override
   Widget build(BuildContext context) {
     checkForUpdate(context: context);
@@ -41,6 +39,7 @@ class NavigationMenuScreen extends StatelessWidget {
               drawer: const CustomSideMenu(),
               // extendBodyBehindAppBar: true,
               backgroundColor: ColorRes.grey6,
+              extendBody: true,
               body: Stack(
                 children: [
                   controller.indx == 0
@@ -64,7 +63,11 @@ class NavigationMenuScreen extends StatelessWidget {
                 ],
               ),
               // body: state.screens[controller.indx],
-              bottomNavigationBar: const CustomBottomNavigationBar(),
+              floatingActionButton: Padding(
+                padding:  EdgeInsets.all(AppSizes.padding*1.1),
+                child: const CustomBottomNavigationBar(),
+              ),
+              floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
             ),
           );
         },

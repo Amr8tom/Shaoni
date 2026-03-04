@@ -17,6 +17,8 @@ class RequestStageCard extends StatelessWidget {
         padding: EdgeInsets.all(AppSizes.padding),
 
         decoration: BoxDecoration(
+          border: Border.all(width: 1,color: ColorRes.greyForBorders),
+
           color: Colors.white,
           borderRadius: BorderRadius.circular(AppSizes.borderRadiusLarge),
         ),
@@ -25,7 +27,7 @@ class RequestStageCard extends StatelessWidget {
           children: [
             Text(
               S.current.requestStage,
-              style: Theme.of(context).textTheme.titleSmall
+              style: Theme.of(context).textTheme.bodyLarge?.copyWith(fontWeight: FontWeight.bold),
             ),
             Divider(color: ColorRes.grey4),
 
@@ -113,8 +115,9 @@ class _StepItem extends StatelessWidget {
             padding: const EdgeInsets.only(top: 6),
             child: Text(
               title,
-              style: Theme.of(context).textTheme.titleSmall?.copyWith(
+              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                 color: isLast ? ColorRes.grey : ColorRes.primary,
+                fontWeight: FontWeight.bold
               ),
             ),
           ),

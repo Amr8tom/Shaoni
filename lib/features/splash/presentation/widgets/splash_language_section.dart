@@ -21,15 +21,19 @@ class SplashLanguageSection extends StatelessWidget {
             children: [
               Expanded(
                 child: DButton(
+                  borderRadius: AppSizes.borderRadiusXXLg,
+                  height: AppSizes.heightcontainer,
                   text: S.current.languageEnglish,
                   onPressed: () => onLanguageSelected('en'),
-                  variant: DButtonVariant.outline,
+                  variant: DButtonVariant.secondary,
                   size: DButtonSize.medium,
                 ),
               ),
               const Sizer(width: 8),
               Expanded(
                 child: DButton(
+                  borderRadius: AppSizes.borderRadiusXXLg,
+                  height: AppSizes.heightcontainer,
                   text: S.current.languageArabic,
                   onPressed: () => onLanguageSelected('ar'),
                   variant: DButtonVariant.primary,
@@ -52,7 +56,7 @@ class SplashLanguageSection extends StatelessWidget {
           const Sizer(height: 2),
           Center(
             child: Text(
-              S.current.ejadDigitalSolutions,
+              S.current.ejad,
               style: Theme.of(context).textTheme.bodySmall?.copyWith(
                 fontWeight: FontWeight.bold,
                 color: ColorRes.black,

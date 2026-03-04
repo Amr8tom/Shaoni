@@ -57,70 +57,76 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: ColorRes.white,
-      body: SafeArea(
-        child: Stack(
-          children: [
-            Column(
-              children: [
-                /// PageView
-                Expanded(
-                  child: PageView.builder(
-                    controller: _pageController,
-                    onPageChanged: _onPageChanged,
-                    itemCount: OnboardingData.getPages(context).length,
-                    itemBuilder: (context, index) {
-                      return OnboardingPageWidget(
-                        page: OnboardingData.getPages(context)[index],
-                      );
-                    },
-                  ),
+      body: Stack(
+        children: [
+          Column(
+            children: [
+              /// PageView
+              Expanded(
+                child: PageView.builder(
+                  controller: _pageController,
+                  onPageChanged: _onPageChanged,
+                  itemCount: OnboardingData.getPages(context).length,
+                  itemBuilder: (context, index) {
+                    return OnboardingPageWidget(
+                      page: OnboardingData.getPages(context)[index],
+                    );
+                  },
                 ),
+              ),
 
-                /// Bottom section with indicator and buttons
-                Padding(
-                  padding: EdgeInsets.all(AppSizes.xl),
-                  child: Column(
-                    children: [
-                      PageIndicator(
-                        currentPage: _currentPage,
-                        totalPages: OnboardingData.getPages(context).length,
-                      ),
-                    ],
-                  ),
-                ),
+              /// Bottom section with indicator and buttons
+              Padding(
+                padding: EdgeInsets.only(left:AppSizes.xl,right:AppSizes.xl,bottom: AppSizes.xl),
+                child: Column(
+                  children: [
+                    PageIndicator(
+                      currentPage: _currentPage,
+                      totalPages: OnboardingData.getPages(context).length,
+                    ),
+                    Row(
+                      children: [
+                        Expanded(
+                          child: DButton(
+                            borderRadius: AppSizes.borderRadiusXXLg,
 
-                /// Buttons
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: AppSizes.padding*3),
-                  child: Row(
-                    children: [
-                      Expanded(
-                        child: DButton(
-                          text: S.current.continuee,
-                          onPressed: _goToNextPage,
-                          variant: DButtonVariant.outline,
-                          size: DButtonSize.medium,
+                            height: AppSizes.heightcontainer,
+                            text: S.current.continuee,
+                            onPressed: _goToNextPage,
+                            variant: DButtonVariant.secondary,
+                            size: DButtonSize.medium,
+                          ),
                         ),
-                      ),
-                      const Sizer(width: 8),
-                      Expanded(
-                        child: DButton(
-                          text: S.current.previous,
-                          onPressed: _goToPreviousPage,
-                          variant: DButtonVariant.primary,
-                          size: DButtonSize.medium,
-                          useShadow: true,
+                        const Sizer(width: 8),
+                        Expanded(
+                          child: DButton(
+                            borderRadius: AppSizes.borderRadiusXXLg,
+
+                            height: AppSizes.heightcontainer,
+                            text: S.current.previous,
+                            onPressed: _goToPreviousPage,
+                            variant: DButtonVariant.primary,
+                            size: DButtonSize.medium,
+                            useShadow: true,
+                          ),
                         ),
-                      ),
-                    ],
-                  ),
+                      ],
+                    ),
+                  ],
+
                 ),
+              ),
+
+              // /// Buttons
+              // Padding(
+              //   padding: EdgeInsets.symmetric(horizontal: AppSizes.padding*3),
+              //   child:
+              // ),
 
 
-              ],
-            ),
-          ],
-        ),
+            ],
+          ),
+        ],
       ),
     );
   }

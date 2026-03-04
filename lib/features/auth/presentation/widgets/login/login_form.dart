@@ -1,25 +1,47 @@
 import 'package:flutter/material.dart';
-import 'package:iconsax/iconsax.dart';
 
 import 'package:shaoni/core/extentions/navigation_extension.dart';
-import 'package:shaoni/features/auth/presentation/widgets/otp_input.dart';
 
 import '../../../../../common/widgets/dialogs/show_custom_pop_up.dart';
 import '../../../../../common/widgets/sizeboxs/Sizer.dart';
 import '../../../../../core/constants/app_sizes.dart';
 import '../../../../../core/constants/colors.dart';
 import '../../../../../core/routing/route_names.dart';
+import '../../../../../core/utils/validators.dart';
 import '../../../../../generated/l10n.dart';
 import '../auth_button.dart';
 import '../auth_text_filed.dart';
 
-class LoginForm extends StatelessWidget {
+class LoginForm extends StatefulWidget {
   const LoginForm({super.key});
+
+  @override
+  State<LoginForm> createState() => _LoginFormState();
+}
+
+class _LoginFormState extends State<LoginForm> {
+  final _formKey = GlobalKey<FormState>();
+  final _usernameController = TextEditingController();
+  final _passwordController = TextEditingController();
+
+  @override
+  void dispose() {
+    _usernameController.dispose();
+    _passwordController.dispose();
+    super.dispose();
+  }
+
+  void _handleLogin(BuildContext context) {
+    if (_formKey.currentState!.validate()) {
+      // Form is valid, proceed with login
+      context.pushNamed(DRoutesName.OTPRoute);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     return Form(
-      // key: context.read<LoginCubit>().loginFormKey,
+      key: _formKey,
       child: Container(
         decoration: BoxDecoration(
           color: ColorRes.white,
@@ -30,60 +52,70 @@ class LoginForm extends StatelessWidget {
         ),
         width: double.infinity,
         padding: EdgeInsets.only(left: AppSizes.xl, right: AppSizes.xl),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            /// Title
-            Text(
-              S.current.login,
-              style: Theme.of(
-                context,
-              ).textTheme.headlineLarge!.copyWith(letterSpacing: 1.2),
-              textAlign: TextAlign.center,
-              maxLines: 5,
-            ),
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              /// Title
+              const Sizer(height: 30),
+              Text(
+                S.current.login,
+                style: Theme.of(
+                  context,
+                ).textTheme.headlineMedium,
+                textAlign: TextAlign.center,
+                maxLines: 5,
+              ),
 
-            ///
-            AuthTextField(
-              hint: S.current.userName,
-              controller: TextEditingController(),
-              prefixIcon: Icon(Icons.person, color: ColorRes.grey),
-            ),
-            AuthTextField(
-              hint: S.current.password,
-              controller: TextEditingController(),
-              prefixIcon: Icon(Icons.lock_open_sharp, color: ColorRes.grey),
-            ),
-            const Sizer(height: 5),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                GestureDetector(
-                  onTap: () {
-                    showOTPPopUp(context: context, email: 'amr8tom@gmail.com');
-                  },
-                  child: Text(
-                    S.current.forgetPassword,
-                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                      color: ColorRes.black,
-                      fontWeight: FontWeight.w600,
+              /// make size
+              const Sizer(height: 10),
+
+              ///
+              AuthTextField(
+                validator: Validators.username,
+                hint: S.current.userName,
+                controller: _usernameController,
+                prefixIcon: Icon(Icons.person, color: ColorRes.grey),
+              ),
+              AuthTextField(
+                isPassword: true,
+                validator: Validators.password,
+                hint: S.current.password,
+                controller: _passwordController,
+                prefixIcon: Icon(Icons.lock_open_sharp, color: ColorRes.grey),
+              ),
+              const Sizer(height: 8),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  GestureDetector(
+                    onTap: () {
+                      showOTPPopUp(
+                        context: context,
+                        email: 'amr8tom@gmail.com',
+                      );
+                    },
+                    child: Text(
+                      S.current.forgetPassword,
+                      style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                        color: ColorRes.black,
+                        fontWeight: FontWeight.w600,
+                      ),
                     ),
                   ),
-                ),
-              ],
-            ),
-            const Sizer(height: 20),
-            AuthButton(
-              text: S.current.login,
-              onPressed: () {
-                context.pushNamed(DRoutesName.OTPRoute);
-              },
-              width: double.infinity,
-              height: AppSizes.buttonHeight,
-              textColor: ColorRes.white,
-              backgroundColor: ColorRes.primary,
-            ),
-          ],
+                ],
+              ),
+              const Sizer(height: 20),
+              AuthButton(
+                text: S.current.login,
+                onPressed: () => _handleLogin(context),
+                width: double.infinity,
+                height: AppSizes.buttonHeight,
+                textColor: ColorRes.white,
+                backgroundColor: ColorRes.primary,
+              ),
+            ],
+          ),
         ),
       ),
     );

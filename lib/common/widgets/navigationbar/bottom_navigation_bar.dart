@@ -1,8 +1,9 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:shaoni/common/widgets/sizeboxs/Sizer.dart';
 import 'package:shaoni/core/constants/app_sizes.dart';
 import 'package:shaoni/core/device/device_utility.dart';
 import 'package:shaoni/core/extentions/navigation_extension.dart';
@@ -44,55 +45,49 @@ class CustomBottomNavigationBar extends StatelessWidget {
 
     return Directionality(
       textDirection: TextDirection.rtl,
-      child: Container(
-        height: DDeviceUtils.getBottomNavigationBarHeight() * 1.7.sp,
-        margin: EdgeInsets.only(bottom: 0),
-        padding: EdgeInsets.symmetric(
-          horizontal: AppSizes.padding / 2,
-          vertical: AppSizes.padding / 2,
-        ),
-        decoration: BoxDecoration(
-          color: ColorRes.primary,
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(AppSizes.borderRadiusXXLg),
-            topRight: Radius.circular(AppSizes.borderRadiusXXLg),
-          ),
-          boxShadow: [
-            BoxShadow(
-              color: ColorRes.primary.withValues(alpha: 0.4),
-              blurRadius: 25,
-              offset: const Offset(0, 12),
-              spreadRadius: 0,
+      child: ClipRect(
+        clipBehavior: Clip.hardEdge,
+        child: BackdropFilter(
+          filter: ImageFilter.blur(sigmaX: 4, sigmaY: 4),
+          child: Container(
+            height: DDeviceUtils.getBottomNavigationBarHeight() * 1.3.sp,
+            margin: EdgeInsets.only(bottom: 0),
+            padding: EdgeInsets.symmetric(
+              horizontal: AppSizes.padding / 3,
+              vertical: AppSizes.padding / 3,
             ),
-          ],
-        ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: List.generate(items.length, (index) {
-
-            if(index==3){
-            return  _buildNavItem(
-                  context: context,
-                  item: items[index],
-                  isActive: false,
-                  onTap: () {
+            decoration: BoxDecoration(
+              color: ColorRes.primary.withOpacity(0.79),
+              borderRadius: BorderRadius.all(
+                Radius.circular(AppSizes.borderRadiusXXLg * 2),
+              ),
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: List.generate(items.length, (index) {
+                if (index == 3) {
+                  return _buildNavItem(
+                    context: context,
+                    item: items[index],
+                    isActive: false,
+                    onTap: () {
                       context.pushNamed(DRoutesName.profileRoute);
-                  }
-              );
-            }else{
-              final isActive = controller.indx == index;
-              return _buildNavItem(
-                  context: context,
-                  item: items[index],
-                  isActive: isActive,
-                  onTap: () {
-
+                    },
+                  );
+                } else {
+                  final isActive = controller.indx == index;
+                  return _buildNavItem(
+                    context: context,
+                    item: items[index],
+                    isActive: isActive,
+                    onTap: () {
                       context.read<NavigationCubit>().changeIndex(index);
-                    }
-              );
-            }
-
-          }),
+                    },
+                  );
+                }
+              }),
+            ),
+          ),
         ),
       ),
     );
@@ -107,81 +102,60 @@ class CustomBottomNavigationBar extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       behavior: HitTestBehavior.opaque,
-      child: AnimatedContainer(
-        width: AppSizes.widthcontainer / 2,
-        duration: const Duration(milliseconds: 350),
-        curve: Curves.easeOutCubic,
-        padding: EdgeInsets.symmetric(
-          horizontal: isActive ? 18.w : 14.w,
-          vertical: 10.h,
-        ),
-        decoration: BoxDecoration(
-          color: isActive ? Colors.white : Colors.transparent,
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(AppSizes.borderRadiusXXLg * 1.5),
-            topRight: Radius.circular(AppSizes.borderRadiusXXLg * 1.5),
-          ),
-          boxShadow:
-              isActive
-                  ? [
-                    BoxShadow(
-                      color: Colors.white.withValues(alpha: 0.3),
-                      blurRadius: 8,
-                      offset: const Offset(0, 2),
-                    ),
-                  ]
-                  : null,
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            TweenAnimationBuilder<double>(
-              duration: const Duration(milliseconds: 300),
+      child: Column(
+        children: [
+          AnimatedContainer(
+            width: AppSizes.widthcontainer / 3.2,
+            height: AppSizes.heightcontainer * 0.8,
+            duration: const Duration(milliseconds: 500),
+            curve: Curves.easeOutCubic,
+            padding: EdgeInsets.symmetric(
+              horizontal: 10.w,
+              // vertical: 10.h,
+            ),
+            decoration: BoxDecoration(
+              color: isActive ? ColorRes.white : Colors.transparent,
+              borderRadius: BorderRadius.all(
+                Radius.circular(AppSizes.borderRadiusXXLg * 4),
+              ),
+              boxShadow:
+                  isActive
+                      ? [
+                        BoxShadow(
+                          color: Colors.white.withValues(alpha: 0.3),
+                          blurRadius: 8,
+                          offset: const Offset(0, 2),
+                        ),
+                      ]
+                      : null,
+            ),
+            child: TweenAnimationBuilder<double>(
+              duration: const Duration(milliseconds: 500),
               tween: Tween(begin: 1.0, end: isActive ? 1.15 : 1.0),
               builder: (context, scale, child) {
-                return Transform.scale(
-                  scale: scale,
-                  child: SvgPicture.asset(
-                    isActive ? item.activeIcon : item.icon,
-                    height: 22.h,
-                    colorFilter: ColorFilter.mode(
-                      isActive
-                          ? ColorRes.primary
-                          : Colors.white.withValues(alpha: 0.85),
-                      BlendMode.srcIn,
-                    ),
+                return SvgPicture.asset(
+                  isActive ? item.activeIcon : item.icon,
+                  // height: 200.h,
+                  // width: 200.w,
+                  colorFilter: ColorFilter.mode(
+                    isActive
+                        ? ColorRes.primary
+                        : Colors.white.withValues(alpha: 0.6),
+                    BlendMode.srcIn,
                   ),
                 );
               },
             ),
-            const Sizer(height: 8),
-            ClipRect(
-              child: AnimatedSize(
-                duration: const Duration(milliseconds: 300),
-                curve: Curves.easeOutCubic,
-                child: isActive?Text(
-                            item.label,
-                            style: TextStyle(
-                              color: ColorRes.primary,
-                              fontWeight: FontWeight.w700,
-                              fontSize: AppSizes.fontSizeSm *0.7,
-                              // letterSpacing: 0.3,
-                            ),
-                          )
-                        : Text(
-                      item.label,
-                      style: TextStyle(
-                        color: ColorRes.white,
-                        fontWeight: FontWeight.w700,
-                        fontSize: AppSizes.fontSizeSm *0.7,
-                        // letterSpacing: 0.3,
-                      ),
-                    )
-              ),
+          ),
+          Text(
+            item.label,
+            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+              color:
+                  isActive ? ColorRes.white : ColorRes.white.withOpacity(0.6),
+              fontWeight: isActive ? FontWeight.bold : FontWeight.normal,
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

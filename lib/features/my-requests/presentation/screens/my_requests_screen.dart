@@ -12,7 +12,7 @@ class MyRequestsScreen extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: AppSizes.padding),
       child: SizedBox(
-        height: AppSizes.fullHeight * 0.66,
+        height: AppSizes.fullHeight * 0.79,
         child: const MyRequestGridView(),
       ),
     );

@@ -1,0 +1,83 @@
+import 'dart:ui';
+import 'package:flutter/material.dart';
+import '../../../../common/widgets/dialogs/custom_dialog_img_title_des.dart';
+import '../../../../common/widgets/sizeboxs/Sizer.dart';
+import '../../../../core/constants/app_sizes.dart';
+import '../../../../core/constants/asset_resoures.dart';
+import '../../../../core/constants/colors.dart';
+import '../../../../generated/l10n.dart';
+import '../../../auth/presentation/widgets/auth_button.dart';
+
+
+
+class CreateDeleteButtons extends StatelessWidget {
+  const CreateDeleteButtons({super.key});
+  @override
+  Widget build(BuildContext context) {
+    return  Positioned(
+      left: 0,
+      right: 0,
+      bottom: AppSizes.padding * 3,
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(AppSizes.borderRadiusXXLg),
+        child: BackdropFilter(
+          filter: ImageFilter.blur(sigmaX: 4, sigmaY: 4),
+          child: Container(
+            padding: EdgeInsets.symmetric(
+              horizontal: AppSizes.padding,
+              vertical: AppSizes.padding * 0.8,
+            ),
+            decoration: BoxDecoration(
+              color: Colors.transparent,
+              borderRadius: BorderRadius.circular(AppSizes.borderRadiusXXLg),
+            ),
+            child: Row(
+              children: [
+                Flexible(
+                  flex: 7,
+                  child: AuthButton(
+                    backgroundColor: ColorRes.primary,
+                    fontSize: AppSizes.fontSizeMd,
+                    text: S.current.submitRequest,
+                    onPressed: () {
+                      CustomDialogImgTitleDes(
+                        button1: S.current.myOrders,
+                        button2: S.current.home,
+                        onTab2: (){},
+                        onTab1: (){}  ,
+                        context: context,
+                        title: S.current.requestSentSuccessfully,
+                        des: S.current.requestSentSuccessfully,
+                        imgPath: AssetRes.doubleCorrect,
+                        isSvg: true,
+                      );
+                    },
+                  ),
+                ),
+                const Sizer(width: 15),
+                Expanded(
+                  flex: 2,
+                  child: Container(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: AppSizes.padding * 1.4,
+                      vertical: AppSizes.padding * 0.6,
+                    ),
+                    decoration: BoxDecoration(
+                      color: ColorRes.red,
+                      borderRadius: BorderRadius.circular(AppSizes.borderRadiusXXLg),
+                    ),
+                    child: Image.asset(
+                      AssetRes.trashIcon,
+                      width: AppSizes.iconLg,
+                      height: AppSizes.iconLg,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}

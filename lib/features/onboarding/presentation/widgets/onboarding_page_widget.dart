@@ -34,7 +34,7 @@ class OnboardingPageWidget extends StatelessWidget {
             children: [
               /// Top section with illustration
               Expanded(
-                flex: 6,
+                flex: 10,
                 child: Padding(
                   padding: EdgeInsets.symmetric(
                     horizontal: AppSizes.xl,
@@ -48,7 +48,7 @@ class OnboardingPageWidget extends StatelessWidget {
 
               /// Bottom section with text content
               Expanded(
-                flex: 3,
+                flex: 5,
                 child: Container(
                   decoration: BoxDecoration(
                     color: ColorRes.white,
@@ -66,7 +66,8 @@ class OnboardingPageWidget extends StatelessWidget {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      // Title
+                      const Sizer(height: 10,),
+                      /// Title
                       Text(
                         page.title,
                         style: Theme.of(
@@ -76,10 +77,11 @@ class OnboardingPageWidget extends StatelessWidget {
                         maxLines: 5,
                       ),
 
-                      const Sizer(height: 32),
+                      const Sizer(height: 40),
 
                       /// Description
                       Flexible(
+                        fit: FlexFit.tight,
                         child: Text(
                           page.description,
                           style: Theme.of(context).textTheme.bodyLarge!

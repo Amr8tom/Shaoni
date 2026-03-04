@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../constants/app_sizes.dart';
@@ -21,6 +23,11 @@ class DButton extends StatelessWidget {
     this.isArabic = false,
     this.useRoundedBorder = true,
     this.useShadow = true, // Add this parameter
+    this.useBlur = false,
+    this.blurSigma = 15.0,
+    this.fontSize,
+    this.borderRadius,
+    this.padding,
   });
 
   /// Button text content
@@ -60,17 +67,47 @@ class DButton extends StatelessWidget {
   /// Whether to use shadow around the button (defaults to true)
   final bool useShadow;
 
+  /// Whether to apply a backdrop blur effect (defaults to false)
+  final bool useBlur;
+
+  /// The blur intensity (defaults to 15.0)
+  final double blurSigma;
+
+  /// Custom font size (overrides the default based on size enum)
+  final double? fontSize;
+
+  /// Custom border radius (overrides the default based on size enum)
+  final double? borderRadius;
+
+  /// Custom padding (overrides the default based on size enum)
+  final EdgeInsetsGeometry? padding;
+
   @override
   Widget build(BuildContext context) {
+    final button = ElevatedButton(
+      onPressed: _getOnPressed(),
+      style: _getButtonStyle(),
+      child: _buildContent(),
+    );
+
     return SafeArea(
       child: SizedBox(
         width: width ?? double.infinity,
         height: height ?? _getHeight(),
-        child: ElevatedButton(
-          onPressed: _getOnPressed(),
-          style: _getButtonStyle(),
-          child: _buildContent(),
-        ),
+        child: useBlur
+            ? ClipRRect(
+                borderRadius: BorderRadius.circular(
+                  useRoundedBorder ? _getBorderRadius() : 0,
+                ),
+                child: BackdropFilter(
+                  filter: ImageFilter.blur(
+                    sigmaX: blurSigma,
+                    sigmaY: blurSigma,
+                  ),
+                  child: button,
+                ),
+              )
+            : button,
       ),
     );
   }
@@ -93,6 +130,7 @@ class DButton extends StatelessWidget {
 
   ButtonStyle _getButtonStyle() {
     return ElevatedButton.styleFrom(
+     /// todo: font size height
       backgroundColor: _getBackgroundColor(),
       foregroundColor: _getForegroundColor(),
       disabledBackgroundColor: ColorRes.buttonDisabled,
@@ -104,11 +142,11 @@ class DButton extends StatelessWidget {
       // Enhanced shadow
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(
-          useRoundedBorder ? _getBorderRadius() : 0,
+          borderRadius ?? (useRoundedBorder ? _getBorderRadius() : 0),
         ),
         side: _getBorderSide(),
       ),
-      padding: EdgeInsets.symmetric(
+      padding: padding ?? EdgeInsets.symmetric(
         horizontal: _getHorizontalPadding(),
         vertical: _getVerticalPadding(),
       ),
@@ -158,9 +196,9 @@ class DButton extends StatelessWidget {
       case DButtonSize.small:
         return AppSizes.borderRadiusSmall;
       case DButtonSize.medium:
-        return AppSizes.borderRadiusLg;
-      case DButtonSize.large:
         return AppSizes.borderRadiusLarge;
+      case DButtonSize.large:
+        return AppSizes.borderRadiusXXLg;
     }
   }
 
@@ -243,7 +281,10 @@ class DButton extends StatelessWidget {
         break;
     }
 
-    return baseStyle.copyWith(color: _getForegroundColor());
+    return baseStyle.copyWith(
+      color: _getForegroundColor(),
+      fontSize: fontSize ?? baseStyle.fontSize,
+    );
   }
 
   Widget _buildContent() {

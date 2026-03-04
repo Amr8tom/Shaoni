@@ -789,9 +789,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "repeatNewPassword": MessageLookupByLibrary.simpleMessage(
       "اعادة كلمة المرور",
     ),
-    "repositories": MessageLookupByLibrary.simpleMessage(
-      "المشتريات/المستودعات",
-    ),
+    "repositories": MessageLookupByLibrary.simpleMessage("المشتريات"),
     "reqDetail": MessageLookupByLibrary.simpleMessage("طلب تفاصيل:"),
     "reqDetails": MessageLookupByLibrary.simpleMessage("طلب تفاصيل"),
     "reqSub": MessageLookupByLibrary.simpleMessage("طلب نشاط فرعي"),

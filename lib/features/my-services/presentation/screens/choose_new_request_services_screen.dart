@@ -4,10 +4,7 @@ import 'package:shaoni/core/constants/app_sizes.dart';
 import 'package:shaoni/core/constants/colors.dart';
 import 'package:shaoni/core/extentions/navigation_extension.dart';
 import 'package:shaoni/core/routing/route_names.dart';
-
-import '../../../../core/device/device_utility.dart';
 import '../../../../generated/l10n.dart';
-import '../../../navigation/presentation/widgets/custom_navigation_appbar.dart';
 
 class ChooseNewRequestServicesScreen extends StatelessWidget {
   const ChooseNewRequestServicesScreen({super.key});
@@ -23,12 +20,12 @@ class ChooseNewRequestServicesScreen extends StatelessWidget {
         padding: EdgeInsets.symmetric(horizontal:AppSizes.padding),
         child: Container(
           child: GridView.builder(
-            padding: EdgeInsets.zero,
+            padding: EdgeInsets.only(top: AppSizes.padding*2),
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 1,
               crossAxisSpacing: 12,
               mainAxisSpacing: 14,
-              childAspectRatio: 6,
+              childAspectRatio: 7,
             ),
             itemCount: requestsCategories.length,
             itemBuilder: (BuildContext context, int index) {
@@ -42,14 +39,15 @@ class ChooseNewRequestServicesScreen extends StatelessWidget {
                   ),
                   alignment: Alignment.centerRight,
                   decoration: BoxDecoration(
+                    border: Border.all(color: ColorRes.greyForBorders, width: 1),
                     color: ColorRes.white,
                     borderRadius: BorderRadius.circular(
-                      AppSizes.borderRadiusXLg,
+                      AppSizes.borderRadiusMd,
                     ),
                   ),
                   child: Text(
                       requestsCategories[index],
-                    style: Theme.of(context).textTheme.titleSmall?.copyWith(
+                    style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                       color: ColorRes.black
                     ),
                   ),

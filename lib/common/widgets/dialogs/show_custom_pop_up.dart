@@ -24,24 +24,24 @@ void showOTPPopUp({required BuildContext context, required String email}) {
             child: Stack(
               children: [
                 Padding(
-                  padding: EdgeInsets.symmetric(
-                    horizontal: AppSizes.padding / 2,
-                  ),
+                  padding: EdgeInsets.symmetric(horizontal: AppSizes.padding),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       /// Title
-                      Text(
-                        S.current.resetPassword,
-                        style: Theme.of(
-                          context,
-                        ).textTheme.headlineLarge!.copyWith(letterSpacing: 1.2),
-                        textAlign: TextAlign.center,
-                        maxLines: 5,
+                      Padding(
+                        padding: EdgeInsets.symmetric(
+                          vertical: AppSizes.padding,
+                        ),
+                        child: Text(
+                          S.current.resetPassword,
+                          style: Theme.of(context).textTheme.headlineMedium!,
+                          textAlign: TextAlign.center,
+                          maxLines: 5,
+                        ),
                       ),
 
                       /// make size
-                      const Sizer(height: 8),
 
                       /// Description
                       Flexible(
@@ -55,10 +55,13 @@ void showOTPPopUp({required BuildContext context, required String email}) {
                       ),
 
                       /// email
-                      AuthTextField(
-                        hint: S.current.email,
-                        controller: TextEditingController(),
-                        prefixIcon: Icon(Icons.email, color: ColorRes.grey),
+                      Directionality(
+                        textDirection: TextDirection.rtl,
+                        child: AuthTextField(
+                          hint: S.current.email,
+                          controller: TextEditingController(),
+                          prefixIcon: Icon(Icons.email, color: ColorRes.grey),
+                        ),
                       ),
                       const Sizer(height: 16),
                       AuthButton(

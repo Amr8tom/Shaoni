@@ -30,6 +30,7 @@ class AssetRes {
   static const String splash = 'assets/images/pngs/splash.png';
   static const String splashLogo = 'assets/images/svgs/splash.svg';
   static const String logo = 'assets/images/pngs/logo.png';
+  static const String sideMenuLogo = 'assets/images/pngs/side_menu_logo.png';
   static const String logoWithName = 'assets/images/pngs/logo_with_name.png';
 
   /// -- OnBoarding Images Lotties
@@ -215,6 +216,7 @@ class AssetRes {
   /// services
   static const String study = 'assets/images/pngs/study.png';
   static const String humanResources = 'assets/images/pngs/human_sources.png';
+  static const String man1 = 'assets/images/pngs/man 1.png';
   static const String info = 'assets/images/pngs/information.png';
   static const String salaries = 'assets/images/pngs/salaries.png';
   static const String registration = 'assets/images/pngs/registration.png';

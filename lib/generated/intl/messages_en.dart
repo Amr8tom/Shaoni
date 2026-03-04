@@ -597,7 +597,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "mostSoldItmes": MessageLookupByLibrary.simpleMessage("Most Sold Items"),
     "mostafa": MessageLookupByLibrary.simpleMessage("Mostafa Zakaria"),
     "myOrder": MessageLookupByLibrary.simpleMessage("My Order"),
-    "myOrders": MessageLookupByLibrary.simpleMessage("My Orders"),
+    "myOrders": MessageLookupByLibrary.simpleMessage("Orders"),
     "myStagnantCategories": MessageLookupByLibrary.simpleMessage(
       "My Stagnant Categories",
     ),

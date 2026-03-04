@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shaoni/common/widgets/sizeboxs/Sizer.dart';
@@ -33,25 +35,70 @@ class RequestCertainService extends StatelessWidget {
             right: AppSizes.padding,
             top: DDeviceUtils.getAppBarHeight() * 3.1,
           ),
-          child: SingleChildScrollView(
-            child: Column(
-              children: [
-                Text(
-                  S.current.exitPermissionRequest,
-                  style: Theme.of(context).textTheme.titleSmall?.copyWith(
-                    fontWeight: FontWeight.bold
-                  ),),
-                const Sizer(height: 16),
-                const ServicesInformationGridview(),
-                DButton(
-                  text: S.current.createRequest,
-                  onPressed: () {
+          child: Stack(
+            children: [
+
+              /// Scrollable content
+              SingleChildScrollView(
+                physics: const BouncingScrollPhysics(),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    const Sizer(height: 20),
+
+                    Text(
+                      S.current.exitPermissionRequest,
+                      style: Theme.of(context)
+                          .textTheme
+                          .titleSmall
+                          ?.copyWith(fontWeight: FontWeight.bold),
+                    ),
+                    const Sizer(height: 24),
+                    const ServicesInformationGridview(),
+                    // Extra space so content doesn't hide behind the button
+                    Sizer(height: AppSizes.heightcontainer + AppSizes.padding * 5),
+                  ],
+                ),
+              ),
+
+              /// Blur button floating above the list
+              Positioned(
+                left: 10,
+                right: 10,
+                bottom: AppSizes.padding * 3,
+                child: GestureDetector(
+                  onTap: () {
                     context.pushNamed(DRoutesName.requestCreateDetails);
                   },
-                  size: DButtonSize.large,
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(AppSizes.xxl),
+                    ),
+                    child: BackdropFilter(
+                      filter: ImageFilter.blur(sigmaX: 4, sigmaY: 4),
+                      child: Container(
+                        height: AppSizes.heightcontainer,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(AppSizes.xxl),
+                          ),
+                          color: ColorRes.primary.withOpacity(0.7),
+                        ),
+                        child: Center(
+                          child: Text(
+                            S.current.createRequest,
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyLarge
+                                ?.copyWith(color: ColorRes.white),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),

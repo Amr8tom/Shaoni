@@ -17,7 +17,7 @@ class AuthTextField extends StatefulWidget {
   final String? Function(String?)? validator;
   final void Function()? onTap;
   final bool readOnly;
-  final Color? borderColor,backgroundColor;
+  final Color? borderColor, backgroundColor, formColor;
   final double? borderRadius;
 
   const AuthTextField({
@@ -35,7 +35,9 @@ class AuthTextField extends StatefulWidget {
     this.onTap,
     this.borderColor,
     this.readOnly = false,
-    this.borderRadius, this.backgroundColor,
+    this.borderRadius,
+    this.backgroundColor,
+    this.formColor,
   });
 
   @override
@@ -84,7 +86,7 @@ class _AuthTextFieldState extends State<AuthTextField> {
               hintText: widget.hint,
               hintStyle: Theme.of(context).textTheme.bodyMedium?.copyWith(
                 color: ColorRes.grey2.withOpacity(0.7),
-                fontSize: AppSizes.fontSizeSm * 1.2,
+                fontSize: AppSizes.fontSizeSm * 1,
               ),
               prefixIcon: widget.prefixIcon ?? _getDefaultIcon(),
               suffixIcon: widget.suffixIcon ?? _getSuffixIcon(),
@@ -92,30 +94,40 @@ class _AuthTextFieldState extends State<AuthTextField> {
                 horizontal: AppSizes.spaceBetweenIcon * 3,
               ),
               border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(widget.borderRadius??AppSizes.borderRadiusXXLg),
+                borderRadius: BorderRadius.circular(
+                  widget.borderRadius ?? AppSizes.borderRadiusXXLg,
+                ),
                 borderSide: const BorderSide(color: ColorRes.primary, width: 2),
               ),
               enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(widget.borderRadius??AppSizes.borderRadiusXXLg),
+                borderRadius: BorderRadius.circular(
+                  widget.borderRadius ?? AppSizes.borderRadiusXXLg,
+                ),
                 borderSide: BorderSide(
                   color: widget.borderColor ?? ColorRes.grey_F707340,
                   width: 1,
                 ),
               ),
               focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(widget.borderRadius??AppSizes.borderRadiusXXLg),
+                borderRadius: BorderRadius.circular(
+                  widget.borderRadius ?? AppSizes.borderRadiusXXLg,
+                ),
                 borderSide: const BorderSide(color: ColorRes.primary, width: 1),
               ),
               errorBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(widget.borderRadius??AppSizes.borderRadiusXXLg),
+                borderRadius: BorderRadius.circular(
+                  widget.borderRadius ?? AppSizes.borderRadiusXXLg,
+                ),
                 borderSide: const BorderSide(color: ColorRes.error, width: 1),
               ),
               focusedErrorBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(widget.borderRadius??AppSizes.borderRadiusXXLg),
+                borderRadius: BorderRadius.circular(
+                  widget.borderRadius ?? AppSizes.borderRadiusXXLg,
+                ),
                 borderSide: const BorderSide(color: ColorRes.error, width: 1),
               ),
               filled: true,
-              fillColor: Colors.white,
+              fillColor: widget.formColor??ColorRes.white,
             ),
           ),
         ],

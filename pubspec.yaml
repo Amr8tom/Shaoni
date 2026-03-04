@@ -34,6 +34,7 @@ dependencies:
   flutter_rating: ^2.0.2
   flutter_rating_bar: null
   shimmer: ^3.0.0
+
   # dev package
   dartz: ^0.10.1
   equatable: ^2.0.7
@@ -45,6 +46,7 @@ dependencies:
   intl: ^0.19.0
   #device_preview: ^1.2.0
   accordion: ^2.6.0
+
   # connection packages
   data_connection_checker_tv: ^0.3.5-nullsafety
   internet_connection_checker: ^1.0.0+1
@@ -124,29 +126,18 @@ flutter:
     - assets/fonts/ar/
 
   fonts:
-    - family: Poppins
+    - family: Cairo
       fonts:
-        - asset: assets/fonts/en/Poppins-Light.ttf
+        - asset: assets/fonts/ar/Cairo-Light.ttf
           weight: 300
-        - asset: assets/fonts/en/Poppins-Regular.ttf
+        - asset: assets/fonts/ar/Cairo-Regular.ttf
           weight: 400
-        - asset: assets/fonts/en/Poppins-Italic.ttf
-          style: italic
-        - asset: assets/fonts/en/Poppins-Medium.ttf
+        - asset: assets/fonts/ar/Cairo-Medium.ttf
           weight: 500
-        - asset: assets/fonts/en/Poppins-MediumItalic.ttf
-          weight: 500
-          style: italic
-        - asset: assets/fonts/en/Poppins-SemiBold.ttf
+        - asset: assets/fonts/ar/Cairo-SemiBold.ttf
           weight: 600
-        - asset: assets/fonts/en/Poppins-Bold.ttf
-          weight: 800
-    - family: Amiri
-      fonts:
-        - asset: assets/fonts/ar/Amiri-Regular.ttf
-    - family: AmiriQuran
-      fonts:
-        - asset: assets/fonts/ar/AmiriQuran-Regular.ttf
+        - asset: assets/fonts/ar/Cairo-Bold.ttf
+          weight: 700
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/to/font-from-package

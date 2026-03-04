@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../../core/constants/app_sizes.dart';
 import '../../../../core/constants/asset_resoures.dart';
+import '../../../../core/constants/colors.dart';
 import '../widgets/login/login_form.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -9,20 +10,19 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: Stack(
-          children: [
-            ///  Background Image
-            Positioned(
-              top: 0,
-              left: 0,
-              right: 0,
-              child: Image.asset(
-                AssetRes.backGroundImage,
-                width: AppSizes.fullWidth,
-                fit: BoxFit.fitWidth,
-              ),
+      extendBodyBehindAppBar: true,
+      backgroundColor: ColorRes.error,
+      body: Stack(
+        children: [
+          ///  Background Image - outside SafeArea to extend behind status bar & app bar
+          Positioned.fill(
+            child: Image.asset(
+              AssetRes.backGroundImage,
+              width: AppSizes.fullWidth,
+              fit: BoxFit.cover,
+              alignment: Alignment.topCenter,
             ),
+          ),
 
             Column(
               children: [
@@ -44,11 +44,11 @@ class LoginScreen extends StatelessWidget {
                 ),
 
                 /// Bottom section with text content
-                Expanded(flex: 3, child: LoginForm()),
+                const Expanded(flex: 4, child: LoginForm()),
               ],
             ),
-          ],
-        ),
+
+        ],
       ),
     );
   }

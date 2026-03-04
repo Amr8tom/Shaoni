@@ -22,8 +22,8 @@ class MyRequestGridView extends StatelessWidget {
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 1,
           childAspectRatio: 4,
-          crossAxisSpacing: 8,
-          mainAxisSpacing: 8,
+          crossAxisSpacing: 12,
+          mainAxisSpacing: 12,
         ),
         shrinkWrap: true,
         // physics: const NeverScrollableScrollPhysics(),

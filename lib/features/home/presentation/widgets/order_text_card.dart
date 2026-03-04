@@ -17,7 +17,7 @@ class OrderTextCard extends StatelessWidget {
 
         Text(
           title+ ":    ",
-          style: Theme.of(context).textTheme.titleSmall?.copyWith(
+          style: Theme.of(context).textTheme.bodyLarge?.copyWith(
             color: ColorRes.black,
             fontSize: AppSizes.fontSizeSm*0.8,
             fontWeight: FontWeight.w800,
@@ -30,7 +30,7 @@ class OrderTextCard extends StatelessWidget {
           result ,
           style: Theme.of(
             context,
-          ).textTheme.bodySmall?.copyWith(color: ColorRes.grey),
+          ).textTheme.bodyMedium?.copyWith(color: ColorRes.grey),
         ),
       ],
     );

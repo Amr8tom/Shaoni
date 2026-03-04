@@ -8,6 +8,7 @@ import '../../../../core/constants/colors.dart';
 import '../../../../core/device/device_utility.dart';
 import '../../../../features/language/presentation/controller/language_cubit.dart';
 import '../../../../generated/l10n.dart';
+import 'drawer_logo_widget.dart';
 
 class CustomSideMenu extends StatelessWidget {
   const CustomSideMenu({super.key});
@@ -23,7 +24,7 @@ class CustomSideMenu extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              const Sizer(height: 50),
+              const Sizer(height: 20),
               Center(
                 child: Image.asset(
                   AssetRes.logoWithName,
@@ -58,24 +59,30 @@ class CustomSideMenu extends StatelessWidget {
                   // context.pushNamed(DRoutesName.);
                 },
               ),
-              const Sizer(height: 170),
+
+              const Sizer(height: 200),
 
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: AppSizes.padding),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const Sizer(width: 2,),
+                    const Sizer(width: 2),
                     Text(
                       S.current.appLanguage,
-                      style: Theme.of(context).textTheme.titleSmall?.copyWith(
-                            fontWeight: FontWeight.w600,
-                          ),
+                      style: Theme
+                          .of(context)
+                          .textTheme
+                          .titleSmall
+                          ?.copyWith(
+                        fontWeight: FontWeight.w600,
+                      ),
                     ),
                     BlocBuilder<LanguageCubit, LanguageState>(
                       builder: (context, state) {
                         final languageCubit = context.read<LanguageCubit>();
-                        final currentLang = languageCubit.currentLanguage.languageCode;
+                        final currentLang =
+                            languageCubit.currentLanguage.languageCode;
 
                         return Container(
                           padding: EdgeInsets.symmetric(
@@ -90,8 +97,13 @@ class CustomSideMenu extends StatelessWidget {
                           child: DropdownButton<String>(
                             value: currentLang,
                             underline: const SizedBox(),
-                            icon: const Icon(Icons.keyboard_arrow_down_outlined),
-                            style: Theme.of(context).textTheme.titleSmall,
+                            icon: const Icon(
+                              Icons.keyboard_arrow_down_outlined,
+                            ),
+                            style: Theme
+                                .of(context)
+                                .textTheme
+                                .titleSmall,
                             dropdownColor: Colors.white,
                             borderRadius: BorderRadius.circular(
                               AppSizes.borderRadiusSm,
@@ -101,14 +113,20 @@ class CustomSideMenu extends StatelessWidget {
                                 value: 'ar',
                                 child: Text(
                                   S.current.arabic,
-                                  style: Theme.of(context).textTheme.titleSmall,
+                                  style: Theme
+                                      .of(context)
+                                      .textTheme
+                                      .titleSmall,
                                 ),
                               ),
                               DropdownMenuItem(
                                 value: 'en',
                                 child: Text(
                                   S.current.english,
-                                  style: Theme.of(context).textTheme.titleSmall,
+                                  style: Theme
+                                      .of(context)
+                                      .textTheme
+                                      .titleSmall,
                                 ),
                               ),
                             ],
@@ -122,32 +140,11 @@ class CustomSideMenu extends StatelessWidget {
                       },
                     ),
                     // const Sizer(width: 2,),
-                  //
+                    //
                   ],
                 ),
               ),
-              const Sizer(height: 30),
-              Center(
-                child: Text(
-                  S.current.designDevelopment,
-                  style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                    fontWeight: FontWeight.bold,
-                    color: ColorRes.grey,
-                  ),
-                ),
-              ),
-              const Sizer(height: 2),
-
-              Center(
-                child: Text(
-                  S.current.ejadDigitalSolutions,
-                  style: Theme.of(context).textTheme.titleSmall?.copyWith(
-                    fontWeight: FontWeight.bold,
-                    color: ColorRes.grey,
-                  ),
-                ),
-              ),
-              const Sizer(height: 16),
+              const DrawerLogoWidget(),
             ],
           ),
         ),
@@ -186,13 +183,16 @@ class SideMenuItem extends StatelessWidget {
             const Sizer(width: 12),
             Text(
               title,
-              style: Theme.of(
+              style: Theme
+                  .of(
                 context,
-              ).textTheme.headlineSmall?.copyWith(color: ColorRes.grey2),
+              )
+                  .textTheme
+                  .headlineSmall
+                  ?.copyWith(color: ColorRes.grey2),
             ),
           ],
         ),
       ),
     );
-  }
-}
+  }}

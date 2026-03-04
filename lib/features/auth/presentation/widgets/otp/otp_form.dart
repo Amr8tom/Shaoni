@@ -1,23 +1,41 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shaoni/core/extentions/navigation_extension.dart';
-import '../../../../../common/widgets/dialogs/show_custom_pop_up.dart';
 import '../../../../../common/widgets/sizeboxs/Sizer.dart';
 import '../../../../../core/constants/app_sizes.dart';
 import '../../../../../core/constants/colors.dart';
 import '../../../../../core/routing/route_names.dart';
+import '../../../../../core/utils/validators.dart';
 import '../../../../../generated/l10n.dart';
 import '../auth_button.dart';
-import '../auth_text_filed.dart';
 
-class OtpForm extends StatelessWidget {
+class OtpForm extends StatefulWidget {
   const OtpForm({super.key});
+
+  @override
+  State<OtpForm> createState() => _OtpFormState();
+}
+
+class _OtpFormState extends State<OtpForm> {
+  final _formKey = GlobalKey<FormState>();
+  String _otpCode = '';
+  String? _errorMessage;
+
+  void _handleSubmitOtp(BuildContext context) {
+    setState(() {
+      _errorMessage = Validators.otp(_otpCode, length: 5);
+    });
+
+    if (_errorMessage == null) {
+      // OTP is valid, proceed to next screen
+      context.pushNamed(DRoutesName.addNewPasswordRoute);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     return Form(
-      // key: context.read<LoginCubit>().loginFormKey,
+      key: _formKey,
       child: Container(
         decoration: BoxDecoration(
           color: ColorRes.white,
@@ -36,11 +54,12 @@ class OtpForm extends StatelessWidget {
               S.current.otp,
               style: Theme.of(
                 context,
-              ).textTheme.headlineLarge!.copyWith(letterSpacing: 1.2),
+              ).textTheme.headlineMedium,
               textAlign: TextAlign.center,
               maxLines: 5,
             ),
-
+/// make size
+            const Sizer(height: 12,),
             /// Description
             Flexible(
               child: Text(
@@ -55,38 +74,56 @@ class OtpForm extends StatelessWidget {
             ),
 
             /// make size
-            const Sizer(height: 20),
+            const Sizer(height: 70),
 
             /// OTP fields
             OtpTextField(
-              fieldWidth: AppSizes.xl*1.6,
-              fieldHeight: AppSizes.xxl*1.1,
+              fieldWidth: AppSizes.xl*1.8,
+              fieldHeight: AppSizes.xxl*1.5,
               numberOfFields: 5,
-              borderColor: ColorRes.darkerGrey,
+              borderColor: _errorMessage != null ? ColorRes.error : ColorRes.darkerGrey,
               showFieldAsBox: true,
-              onCodeChanged: (String code) {},
+              onCodeChanged: (String code) {
+                setState(() {
+                  _otpCode = code;
+                  _errorMessage = null; // Clear error on change
+                });
+              },
               onSubmit: (String verificationCode) {
-                // context.read<LoginCubit>().otpController.text =
-                //     verificationCode;
-                // context.read<LoginCubit>().checkOtp(otpID: otpId);
+                setState(() {
+                  _otpCode = verificationCode;
+                });
+                _handleSubmitOtp(context);
               }, // end onSubmit
             ),
-            const Sizer(height: 10),
+            const Sizer(height: 12,),
+
+            // Error message
+            if (_errorMessage != null)
+              Padding(
+                padding: EdgeInsets.only(top: AppSizes.sm),
+                child: Text(
+                  _errorMessage!,
+                  style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                    color: ColorRes.error,
+                  ),
+                ),
+              ),
+
+            // const Sizer(height: 6),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: AppSizes.padding*2),
               child: AuthButton(
                 text: S.current.sendOtp,
-                onPressed: () {
-                  context.pushNamed(DRoutesName.addNewPasswordRoute);
-                  // context.read<LoginCubit>().loginPilgrim();
-                  // OtpInput(length: 2, onCompleted: (String ) {  },);
-                },
+                onPressed: () => _handleSubmitOtp(context),
                 width: double.infinity,
                 height: AppSizes.buttonHeight,
                 textColor: ColorRes.white,
                 backgroundColor: ColorRes.primary,
               ),
             ),
+            const Sizer(height: 12,),
+
           ],
         ),
       ),
