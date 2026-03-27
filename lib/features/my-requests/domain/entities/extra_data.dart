@@ -41,7 +41,7 @@ class ExtraData extends Equatable {
       visaRequest: json['visaRequest'],
       exitPermission: json['exitPermission'] != null
           ? ExitPermission.fromJson(json['exitPermission'])
-          : null,
+          : null,git
     );
   }
   /// to json
