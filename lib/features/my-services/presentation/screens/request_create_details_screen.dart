@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shaoni/common/widgets/sizeboxs/Sizer.dart';
 import 'package:shaoni/core/constants/app_sizes.dart';
 import 'package:shaoni/core/constants/colors.dart';
 import 'package:shaoni/core/device/device_utility.dart';
+import 'package:shaoni/core/service_locator/service_locator.dart';
 import 'package:shaoni/features/auth/presentation/widgets/auth_text_filed.dart';
 import 'package:shaoni/features/my-services/presentation/widgets/create_delete_buttons.dart';
 import '../../../../generated/l10n.dart';
 import '../../../navigation/presentation/widgets/custom_navigation_appbar.dart';
+import '../controller/request_services/request_service_cubit.dart';
 
 
 
@@ -14,7 +17,9 @@ class RequestCreateDetailsScreen extends StatelessWidget {
   const RequestCreateDetailsScreen({super.key});
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return BlocProvider(
+  create: (context) => serviceLocator<RequestServiceCubit>(),
+  child: Scaffold(
       appBar: customAppBar(
         showBackArrow: true,
         height: DDeviceUtils.getAppBarHeight() * 3,
@@ -45,7 +50,7 @@ class RequestCreateDetailsScreen extends StatelessWidget {
                         child: AuthTextField(
                           borderRadius: AppSizes.borderRadiusMd,
                           hint: S.current.hijriDate,
-                          prefixIcon: Icon(
+                          suffixIcon: Icon(
                             Icons.date_range,
                             color: ColorRes.grey2.withOpacity(0.5),
                           ),
@@ -56,7 +61,7 @@ class RequestCreateDetailsScreen extends StatelessWidget {
                         child: AuthTextField(
                           borderRadius: AppSizes.borderRadiusMd,
                           hint: S.current.dateBirth,
-                          prefixIcon: Icon(
+                          suffixIcon: Icon(
                             Icons.date_range,
                             color: ColorRes.grey2.withOpacity(0.5),
                           ),
@@ -98,6 +103,7 @@ class RequestCreateDetailsScreen extends StatelessWidget {
                     S.current.requestDetails,
                     style: Theme.of(context).textTheme.headlineMedium,
                   ),
+                  /// permission data and time
                   Row(
                     spacing: 10,
                     children: [
@@ -105,7 +111,7 @@ class RequestCreateDetailsScreen extends StatelessWidget {
                         child: AuthTextField(
                           borderRadius: AppSizes.borderRadiusMd,
                           hint: S.current.permissionDate,
-                          prefixIcon: Icon(
+                          suffixIcon: Icon(
                             Icons.date_range,
                             color: ColorRes.grey2.withOpacity(0.5),
                           ),
@@ -116,7 +122,36 @@ class RequestCreateDetailsScreen extends StatelessWidget {
                         child: AuthTextField(
                           borderRadius: AppSizes.borderRadiusMd,
                           hint: S.current.permissionDate,
-                          prefixIcon: Icon(
+                          suffixIcon: Icon(
+                            Icons.lock_clock,
+                            color: ColorRes.grey2.withOpacity(0.5),
+                          ),
+                          controller: TextEditingController(),
+                        ),
+                      ),
+                    ],
+                  ),
+
+                  /// permission time and duration
+                  Row(
+                    spacing: 10,
+                    children: [
+                      Flexible(
+                        child: AuthTextField(
+                          borderRadius: AppSizes.borderRadiusMd,
+                          hint: S.current.permissionType,
+                          suffixIcon: Icon(
+                            Icons.date_range,
+                            color: ColorRes.grey2.withOpacity(0.5),
+                          ),
+                          controller: TextEditingController(),
+                        ),
+                      ),
+                      Flexible(
+                        child: AuthTextField(
+                          borderRadius: AppSizes.borderRadiusMd,
+                          hint: S.current.durationInHours,
+                          suffixIcon: Icon(
                             Icons.date_range,
                             color: ColorRes.grey2.withOpacity(0.5),
                           ),
@@ -132,7 +167,7 @@ class RequestCreateDetailsScreen extends StatelessWidget {
                         child: AuthTextField(
                           borderRadius: AppSizes.borderRadiusMd,
                           hint: S.current.permissionType,
-                          prefixIcon: Icon(
+                          suffixIcon: Icon(
                             Icons.date_range,
                             color: ColorRes.grey2.withOpacity(0.5),
                           ),
@@ -143,34 +178,7 @@ class RequestCreateDetailsScreen extends StatelessWidget {
                         child: AuthTextField(
                           borderRadius: AppSizes.borderRadiusMd,
                           hint: S.current.durationInHours,
-                          prefixIcon: Icon(
-                            Icons.date_range,
-                            color: ColorRes.grey2.withOpacity(0.5),
-                          ),
-                          controller: TextEditingController(),
-                        ),
-                      ),
-                    ],
-                  ),
-                  Row(
-                    spacing: 10,
-                    children: [
-                      Flexible(
-                        child: AuthTextField(
-                          borderRadius: AppSizes.borderRadiusMd,
-                          hint: S.current.permissionType,
-                          prefixIcon: Icon(
-                            Icons.date_range,
-                            color: ColorRes.grey2.withOpacity(0.5),
-                          ),
-                          controller: TextEditingController(),
-                        ),
-                      ),
-                      Flexible(
-                        child: AuthTextField(
-                          borderRadius: AppSizes.borderRadiusMd,
-                          hint: S.current.durationInHours,
-                          prefixIcon: Icon(
+                          suffixIcon: Icon(
                             Icons.date_range,
                             color: ColorRes.grey2.withOpacity(0.5),
                           ),
@@ -191,6 +199,7 @@ class RequestCreateDetailsScreen extends StatelessWidget {
           ],
         ),
       ),
-    );
+    ),
+);
   }
 }

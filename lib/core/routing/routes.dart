@@ -31,7 +31,7 @@ class RouteGenerator {
       /// splash Screen
       case DRoutesName.splashSRoute:
         return PageTransition(
-          child: const RequestCreateDetailsScreen(),
+          child: const SplashScreen(),
           type: PageTransitionType.rightToLeft,
           settings: settings,
         );

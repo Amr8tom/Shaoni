@@ -1,4 +1,6 @@
 import 'package:get_it/get_it.dart';
+import 'package:shaoni/features/navigation/domain/use_cases/get_user_data_use_case.dart';
+import 'package:shaoni/features/navigation/domain/use_cases/get_user_data_use_case.dart';
 
 import '../../features/navigation/data/data_sources/local_data_sources.dart';
 import '../../features/navigation/data/data_sources/remote_data_sources.dart';
@@ -28,12 +30,15 @@ class NavigationServiseLocator {
     );
 
     /// use cases
-    serviceLocator.registerLazySingleton<GetCountUnreadedNotificationUseCase>(
-      () => GetCountUnreadedNotificationUseCase(serviceLocator()),
+    // serviceLocator.registerLazySingleton<GetCountUnreadedNotificationUseCase>(
+    //   () => GetCountUnreadedNotificationUseCase(serviceLocator()),
+    // );
+    serviceLocator.registerLazySingleton<GetUserDataUseCase>(
+      () => GetUserDataUseCase(serviceLocator()),
     );
 
     /// controller
-    serviceLocator.registerSingleton<NavigationCubit>(
+    serviceLocator.registerFactory<NavigationCubit>(()=>
       NavigationCubit(serviceLocator()),
     );
   }

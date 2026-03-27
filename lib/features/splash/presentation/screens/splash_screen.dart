@@ -1,4 +1,5 @@
  import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shaoni/core/constants/asset_resoures.dart';
 import '../../../../common/widgets/sizeboxs/Sizer.dart';
 import '../../../../core/constants/app_sizes.dart';
@@ -8,6 +9,7 @@ import '../../../../core/local_storage/cache_helper.dart';
 import '../../../../core/local_storage/cache_keys.dart';
 import '../../../../core/routing/route_names.dart';
 import '../../../../core/service_locator/service_locator.dart';
+import '../../../auth/presentation/controller/login/login_cubit.dart';
 import '../../../language/presentation/controller/language_cubit.dart';
 import '../widgets/splash_logo_section.dart';
 import '../widgets/splash_language_section.dart';
@@ -27,7 +29,7 @@ class _SplashScreenState extends State<SplashScreen> {
     super.initState();
     _setSystemUIOverlayStyle();
     /// todo: use it after develop auth feature
-    ///  _delayBeforeNavigation();
+      _delayBeforeNavigation();
   }
 
   void _setSystemUIOverlayStyle() {
@@ -99,16 +101,16 @@ class _SplashScreenState extends State<SplashScreen> {
     );
   }
 
-//   Future<void> _delayBeforeNavigation() async {
-//     if (token?.trim() != '' || token!.isNotEmpty) {
-//       await Future.delayed(Duration(seconds: 4, milliseconds: 500));
-//
-//       if (context.read<LoginCubit>().isTokenValid()) {
-//         Navigator.of(context).pushReplacementNamed(DRoutesName.navigationMenuRoute);
-//       }
-//       else {
-//       Navigator.of(context).pushReplacementNamed(DRoutesName.loginRoute);
-//       // }
-//     }
-//   }
+  Future<void> _delayBeforeNavigation() async {
+    if (token?.trim() != '' || token!.isNotEmpty) {
+      await Future.delayed(Duration(seconds: 4, milliseconds: 500));
+
+      // if (context.read<LoginCubit>().isTokenValid()) {
+        Navigator.of(context).pushReplacementNamed(DRoutesName.navigationMenuRoute);
+      // }
+      // else {
+      // Navigator.of(context).pushReplacementNamed(DRoutesName.loginRoute);
+      // }
+    }
+  }
 }

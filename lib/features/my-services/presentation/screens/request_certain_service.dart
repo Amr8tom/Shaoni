@@ -7,12 +7,11 @@ import 'package:shaoni/core/constants/app_sizes.dart';
 import 'package:shaoni/core/constants/colors.dart';
 import 'package:shaoni/core/extentions/navigation_extension.dart';
 import 'package:shaoni/core/routing/route_names.dart';
-import 'package:shaoni/core/widgets/buttons/d_button.dart';
-
+import 'package:shaoni/core/service_locator/service_locator.dart';
 import '../../../../core/device/device_utility.dart';
 import '../../../../generated/l10n.dart';
 import '../../../navigation/presentation/widgets/custom_navigation_appbar.dart';
-import '../controller/request_service_cubit.dart';
+import '../controller/request_services/request_service_cubit.dart';
 import '../widgets/services_information_gridview.dart';
 
 class RequestCertainService extends StatelessWidget {
@@ -21,7 +20,7 @@ class RequestCertainService extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => RequestServiceCubit(),
+      create: (context) => serviceLocator<RequestServiceCubit>(),
       child: Scaffold(
         backgroundColor: ColorRes.grey6,
         extendBodyBehindAppBar: true,
@@ -37,7 +36,6 @@ class RequestCertainService extends StatelessWidget {
           ),
           child: Stack(
             children: [
-
               /// Scrollable content
               SingleChildScrollView(
                 physics: const BouncingScrollPhysics(),
@@ -48,15 +46,16 @@ class RequestCertainService extends StatelessWidget {
 
                     Text(
                       S.current.exitPermissionRequest,
-                      style: Theme.of(context)
-                          .textTheme
-                          .titleSmall
-                          ?.copyWith(fontWeight: FontWeight.bold),
+                      style: Theme.of(context).textTheme.titleSmall?.copyWith(
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                     const Sizer(height: 24),
                     const ServicesInformationGridview(),
                     // Extra space so content doesn't hide behind the button
-                    Sizer(height: AppSizes.heightcontainer + AppSizes.padding * 5),
+                    Sizer(
+                      height: AppSizes.heightcontainer + AppSizes.padding * 5,
+                    ),
                   ],
                 ),
               ),
@@ -87,9 +86,7 @@ class RequestCertainService extends StatelessWidget {
                         child: Center(
                           child: Text(
                             S.current.createRequest,
-                            style: Theme.of(context)
-                                .textTheme
-                                .bodyLarge
+                            style: Theme.of(context).textTheme.bodyLarge
                                 ?.copyWith(color: ColorRes.white),
                           ),
                         ),

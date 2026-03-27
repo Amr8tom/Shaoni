@@ -5,7 +5,7 @@ enum CacheKeys {
   latitude,
   longitude,
   password,
-  pilgrim,
+  userData,
   token,
   address,
   passportNumber,
@@ -27,8 +27,9 @@ enum CacheKeys {
   luggageList,
   currentCountry,
   todayNotification,
-  generalProfile,
-  medicalProfile,
+  permissionTimes,
+  permissionTypes,
+  allServices,
   email,
   allGroups
 }

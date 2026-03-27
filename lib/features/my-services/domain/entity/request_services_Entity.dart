@@ -1,7 +1,5 @@
 import 'package:equatable/equatable.dart';
-
 class RequestServicesEntity extends Equatable{
-
   final String id;
   final String question;
   final String answer;

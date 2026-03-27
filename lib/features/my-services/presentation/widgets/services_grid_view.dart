@@ -11,6 +11,7 @@ class ServicesGridView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return GridView.count(
       padding: EdgeInsets.all(AppSizes.padding),
       childAspectRatio: 1.1,

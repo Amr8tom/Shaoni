@@ -5,6 +5,8 @@ import 'package:shaoni/core/service_locator/request_service_locator.dart';
 import '../connection/checkNetwork.dart';
 import '../dio/dio_helper.dart';
 import '../utils/helpers/geolocator.dart';
+import 'auth_service_locator.dart';
+import 'home_service_locator.dart';
 import 'language_service_locator.dart';
 import 'navigation_servise_locator.dart';
 
@@ -19,20 +21,14 @@ class DI {
     serviceLocator.registerLazySingleton<NetworkInfo>(
           () => NetworkInfoImpl(serviceLocator()),
     );
-
-    // /// home
+    /// home
     // await HomeServiceLocator.execute(serviceLocator: serviceLocator);
-    //
-    // /// authentication
-    // await AuthServiceLocator.execute(serviceLocator: serviceLocator);
-    //
+    /// authentication
+    await AuthServiceLocator.execute(serviceLocator: serviceLocator);
     /// navigation
     await NavigationServiseLocator.execute(serviceLocator: serviceLocator);
-    //
     /// language
     await LanguageServiceLocator.execute(serviceLocator: serviceLocator);
-
-
     /// profile
     await ProfileServiceLocator.execute(serviceLocator: serviceLocator);
     /// request service
