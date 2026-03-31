@@ -23,8 +23,8 @@ class NavigationLocalDataSourcesImp implements NavigationLocalDataSources {
   Future<UserModel> getUserData() async {
     final String UserString =
         CacheHelper.getString(key: CacheKeys.userData) ?? '';
-    final Map<String, dynamic> pilgrimMap = jsonDecode(UserString);
-    final UserModel user = UserModel.fromJson(pilgrimMap);
+    final Map<String, dynamic> userMap = jsonDecode(UserString);
+    final UserModel user = UserModel.fromJson(userMap);
     return user;
   }
 }

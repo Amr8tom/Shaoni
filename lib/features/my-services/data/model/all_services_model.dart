@@ -13,10 +13,9 @@ class AllServicesModel extends AllServices {
   }
 
   /// toJson
-  List<dynamic> toJson() {
+  List<Map<String, dynamic>> toJson() {
     return services.map((e) => e.toJson()).toList();
-  }
-}
+}}
 
 // [
 // {

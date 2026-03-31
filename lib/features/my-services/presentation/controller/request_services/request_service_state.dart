@@ -24,6 +24,10 @@ enum RequestStatus {
   filterSearched,
   filterEmpty,
   faqError,
+  permissionTypesError,
+  permissionTimeError,
+  permissionTimeSuccess,
+  permissionTypesSuccess,
   expanded,
 }
 
@@ -31,6 +35,8 @@ final class RequestServiceState extends Equatable {
   final RequestStatus status;
   final List<RequestServicesEntity> services;
   final List<RequestServicesEntity> filteredServices;
+  final List<PermissionType> permissionTypes;
+  final List<PermissionTime> permissionTimes;
   final int? expandedIndex;
 
   const RequestServiceState({
@@ -38,6 +44,8 @@ final class RequestServiceState extends Equatable {
     this.services = const [],
     this.filteredServices = const [],
     this.expandedIndex,
+    this.permissionTypes = const [],
+    this.permissionTimes = const [],
   });
 
   RequestServiceState copyWith({
@@ -46,15 +54,27 @@ final class RequestServiceState extends Equatable {
     List<RequestServicesEntity>? filteredServices,
     int? expandedIndex,
     bool clearExpandedIndex = false,
+    List<PermissionType>? permissionTypes,
+    List<PermissionTime>? permissionTimes,
   }) {
     return RequestServiceState(
       status: status ?? this.status,
       services: services ?? this.services,
       filteredServices: filteredServices ?? this.filteredServices,
-      expandedIndex: clearExpandedIndex ? null : (expandedIndex ?? this.expandedIndex),
+      expandedIndex:
+          clearExpandedIndex ? null : (expandedIndex ?? this.expandedIndex),
+      permissionTypes: permissionTypes ?? this.permissionTypes,
+      permissionTimes: permissionTimes ?? this.permissionTimes,
     );
   }
 
   @override
-  List<Object?> get props => [status, services, filteredServices, expandedIndex];
+  List<Object?> get props => [
+    status,
+    services,
+    filteredServices,
+    expandedIndex,
+    permissionTypes,
+    permissionTimes,
+  ];
 }

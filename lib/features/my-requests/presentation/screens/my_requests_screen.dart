@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shaoni/features/my-requests/presentation/controller/my_requests_cubit.dart';
 
 import '../../../../common/widgets/sizeboxs/Sizer.dart';
 import '../../../../core/constants/app_sizes.dart';
@@ -13,7 +15,11 @@ class MyRequestsScreen extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: AppSizes.padding),
       child: SizedBox(
         height: AppSizes.fullHeight * 0.79,
-        child: const MyRequestGridView(),
+        child: BlocBuilder<MyRequestsCubit, MyRequestsState>(
+          builder: (context, state) {
+            return const MyRequestGridView();
+          },
+        ),
       ),
     );
   }

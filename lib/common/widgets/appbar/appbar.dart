@@ -46,7 +46,9 @@ class DAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
-    debugPrint('DAppBar build: scaffoldKey is ${scaffoldKey == null ? "null" : "not null"}');
+    debugPrint(
+      'DAppBar build: scaffoldKey is ${scaffoldKey == null ? "null" : "not null"}',
+    );
     return Directionality(
       textDirection: TextDirection.rtl,
       child: Stack(
@@ -66,7 +68,7 @@ class DAppBar extends StatelessWidget implements PreferredSizeWidget {
                 bottomRight: Radius.circular(AppSizes.borderRadiusLarge * 1.5),
               ),
             ),
-            height: appHeight ?? AppSizes.appBarHeight*3
+            height: appHeight ?? AppSizes.appBarHeight * 3,
           ),
           Container(
             child: Column(
@@ -112,7 +114,8 @@ class DAppBar extends StatelessWidget implements PreferredSizeWidget {
                       [
                         const Sizer(width: 12),
                         isHeader ? const ProfileHeader() : const Sizer(),
-const Spacer(),
+                        const Spacer(),
+
                         /// todo : remove comment form this stack to red point for unreaded notification
                         Stack(
                           children: [
@@ -145,14 +148,21 @@ const Spacer(),
                         GestureDetector(
                           onTap: () {
                             debugPrint('Menu icon tapped');
-                            debugPrint('scaffoldKey is null: ${scaffoldKey == null}');
-                            debugPrint('scaffoldKey.currentState: ${scaffoldKey?.currentState}');
+                            debugPrint(
+                              'scaffoldKey is null: ${scaffoldKey == null}',
+                            );
+                            debugPrint(
+                              'scaffoldKey.currentState: ${scaffoldKey?.currentState}',
+                            );
 
-                            if (scaffoldKey != null && scaffoldKey!.currentState != null) {
+                            if (scaffoldKey != null &&
+                                scaffoldKey!.currentState != null) {
                               debugPrint('Using scaffoldKey to open drawer');
                               scaffoldKey!.currentState!.openDrawer();
                             } else {
-                              debugPrint('ScaffoldKey not available, trying Scaffold.of(context)');
+                              debugPrint(
+                                'ScaffoldKey not available, trying Scaffold.of(context)',
+                              );
                               // Fallback: Try to find Scaffold in current context
                               try {
                                 final scaffoldState = Scaffold.maybeOf(context);
@@ -211,5 +221,5 @@ const Spacer(),
 
   @override
   Size get preferredSize =>
-      Size.fromHeight(appHeight ?? AppSizes.appBarHeight*2);
+      Size.fromHeight(appHeight ?? AppSizes.appBarHeight * 2);
 }

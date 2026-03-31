@@ -6,6 +6,8 @@ import 'package:shaoni/common/widgets/sizeboxs/Sizer.dart';
 import 'package:shaoni/core/constants/app_sizes.dart';
 import 'package:shaoni/core/constants/colors.dart';
 import 'package:shaoni/core/local_storage/cache_helper.dart';
+import 'package:shaoni/core/service_locator/my_requests_service_locator.dart';
+import 'package:shaoni/features/my-requests/presentation/controller/my_requests_cubit.dart';
 import 'package:shaoni/features/navigation/presentation/widgets/custom_navigation_appbar.dart';
 import 'package:upgrader/upgrader.dart';
 import '../../../../core/connection/check_for_updates.dart';
@@ -26,7 +28,7 @@ class NavigationMenuScreen extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (context) => serviceLocator<NavigationCubit>()),
-        BlocProvider(create: (context) => serviceLocator<MyServicesCubit>()..getAllServices()),
+        BlocProvider(create: (context) => serviceLocator<MyRequestsCubit>()),
       ],
       child: Builder(
         builder: (context) {

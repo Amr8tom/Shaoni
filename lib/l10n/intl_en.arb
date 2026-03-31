@@ -8,7 +8,7 @@
   "requestData": "Request Data",
   "requestNumber": "Request Number",
   "requestStatus": "Request Status",
-
+    "selectDate": "Select Date",
   "permissionType": "Permission Type",
   "attachments": "Attachments",
   "medicalReportFromDoctor": "Medical Report from Doctor",

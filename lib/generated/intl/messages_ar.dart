@@ -869,6 +869,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "selectCategory": MessageLookupByLibrary.simpleMessage("اختر الفئة"),
     "selectCity": MessageLookupByLibrary.simpleMessage("المدينة"),
     "selectCountry": MessageLookupByLibrary.simpleMessage("الـدولـة"),
+    "selectDate": MessageLookupByLibrary.simpleMessage("اختر التوقيت"),
     "selectDep": MessageLookupByLibrary.simpleMessage("اختر مدينة المغادرة"),
     "selectDepartment": MessageLookupByLibrary.simpleMessage("اختر القسم"),
     "selectIssueDep": MessageLookupByLibrary.simpleMessage("آختر قسم المشكله "),

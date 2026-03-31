@@ -178,6 +178,7 @@
     "permissionDate": "تاريخ الإذن",
     "permissionTime": "موعد الإذن",
     "durationInHours": "المدة بالساعات",
+    "selectDate": "اختر التوقيت",
     "permissionType": "نوع الإذن",
     "submitRequest": "ارسال الطلب",
   "requestApplicantData":"بيانات مقدم الطلب",

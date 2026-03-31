@@ -37,6 +37,8 @@ class NavigationRepositoryImp implements NavigationRepository {
       try {
         final result = await _remote.getUserData(params: params);
         await _local.cacheUserData(user: result);
+        print('=====> cached user data: ${result}');
+        print(result);
         return right(result);
       } on ServerFailure {
         return left(ServerFailure(message: "Server Failure"));

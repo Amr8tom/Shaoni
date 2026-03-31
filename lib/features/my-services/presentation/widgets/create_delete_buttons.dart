@@ -1,6 +1,8 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shaoni/core/extentions/navigation_extension.dart';
+import 'package:shaoni/core/routing/route_names.dart';
 import '../../../../common/widgets/dialogs/custom_dialog_img_title_des.dart';
 import '../../../../common/widgets/sizeboxs/Sizer.dart';
 import '../../../../core/constants/app_sizes.dart';
@@ -10,15 +12,16 @@ import '../../../../generated/l10n.dart';
 import '../../../auth/presentation/widgets/auth_button.dart';
 import '../controller/request_services/request_service_cubit.dart';
 
-
 class CreateDeleteButtons extends StatelessWidget {
-  const CreateDeleteButtons({super.key});
+  final VoidCallback? deleteTab;
+  final VoidCallback? createTab;
+
+  const CreateDeleteButtons({super.key, this.deleteTab, this.createTab});
 
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<RequestServiceCubit, RequestServiceState>(
       builder: (context, state) {
-        final controller = context.read<RequestServiceCubit>();
         return Positioned(
           left: 0,
           right: 0,
@@ -35,7 +38,8 @@ class CreateDeleteButtons extends StatelessWidget {
                 decoration: BoxDecoration(
                   color: Colors.transparent,
                   borderRadius: BorderRadius.circular(
-                      AppSizes.borderRadiusXXLg),
+                    AppSizes.borderRadiusXXLg,
+                  ),
                 ),
                 child: Row(
                   children: [
@@ -46,12 +50,23 @@ class CreateDeleteButtons extends StatelessWidget {
                         fontSize: AppSizes.fontSizeMd,
                         text: S.current.submitRequest,
                         onPressed: () {
-                          controller.createExitPermissionRequest(permissionType: "7", permissionTime: "9", reason: "bjnm");
+                          createTab!();
                           CustomDialogImgTitleDes(
                             button1: S.current.myOrders,
                             button2: S.current.home,
-                            onTab2: () {},
-                            onTab1: () {},
+                            onTab2: () {
+                              /// navigation screen
+                              context.pushNamedAndRemoveUntil(
+                                DRoutesName.navigationMenuRoute,
+                                predicate: (route) => false,
+                              );
+                            },
+                            onTab1: () {
+                              context.pushNamedAndRemoveUntil(
+                                DRoutesName.navigationMenuRoute,
+                                predicate: (route) => false,
+                              );
+                            },
                             context: context,
                             title: S.current.requestSentSuccessfully,
                             des: S.current.requestSentSuccessfully,
@@ -64,20 +79,24 @@ class CreateDeleteButtons extends StatelessWidget {
                     const Sizer(width: 15),
                     Expanded(
                       flex: 2,
-                      child: Container(
-                        padding: EdgeInsets.symmetric(
-                          horizontal: AppSizes.padding * 1.4,
-                          vertical: AppSizes.padding * 0.6,
-                        ),
-                        decoration: BoxDecoration(
-                          color: ColorRes.red,
-                          borderRadius: BorderRadius.circular(
-                              AppSizes.borderRadiusXXLg),
-                        ),
-                        child: Image.asset(
-                          AssetRes.trashIcon,
-                          width: AppSizes.iconLg,
-                          height: AppSizes.iconLg,
+                      child: GestureDetector(
+                        onTap: deleteTab,
+                        child: Container(
+                          padding: EdgeInsets.symmetric(
+                            horizontal: AppSizes.padding * 1.4,
+                            vertical: AppSizes.padding * 0.6,
+                          ),
+                          decoration: BoxDecoration(
+                            color: ColorRes.red,
+                            borderRadius: BorderRadius.circular(
+                              AppSizes.borderRadiusXXLg,
+                            ),
+                          ),
+                          child: Image.asset(
+                            AssetRes.trashIcon,
+                            width: AppSizes.iconLg,
+                            height: AppSizes.iconLg,
+                          ),
                         ),
                       ),
                     ),

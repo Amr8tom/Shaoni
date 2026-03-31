@@ -86,19 +86,19 @@ import 'history.dart';
 // ]
 // },
 class Request extends Equatable {
-  final int id;
-  final String requestNumber;
-  final int requesterId;
-  final int requestId;
-  final int serviceId;
+  final int? id;
+  final String? requestNumber;
+  final int? requesterId;
+  final int? requestId;
+  final int? serviceId;
   final bool isGift;
   final int? kafeelId;
   final bool needEmp;
-  final String odooStatus;
-  final int statusId;
-  final String createdAt;
+  final String? odooStatus;
+  final int? statusId;
+  final String? createdAt;
   final String? updatedAt;
-  final ServiceModel service;
+  final ServiceModel? service;
   final List<History> histories;
 
   const Request({
@@ -156,7 +156,7 @@ class Request extends Equatable {
       'statusId': statusId,
       'createdAt': createdAt,
       'updatedAt': updatedAt,
-      'service': service.toJson(),
+      'service': service?.toJson(),
       'histories': histories.map((x) => x.toJson()).toList(),
     };
   }

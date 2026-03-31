@@ -1,5 +1,6 @@
 import 'package:data_connection_checker_tv/data_connection_checker.dart';
 import 'package:get_it/get_it.dart';
+import 'package:shaoni/core/service_locator/my_requests_service_locator.dart';
 import 'package:shaoni/core/service_locator/profile_service_locator.dart';
 import 'package:shaoni/core/service_locator/request_service_locator.dart';
 import '../connection/checkNetwork.dart';
@@ -33,6 +34,9 @@ class DI {
     await ProfileServiceLocator.execute(serviceLocator: serviceLocator);
     /// request service
     await RequestServiceLocator.execute(serviceLocator: serviceLocator);
+    /// My-requests
+    await MyRequestsServiceLocator.execute(serviceLocator: serviceLocator);
+
 
 
     // /// delete account

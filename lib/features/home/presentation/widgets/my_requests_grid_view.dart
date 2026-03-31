@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shaoni/common/dummay.dart';
 import 'package:shaoni/core/constants/app_sizes.dart';
 import 'package:shaoni/core/constants/colors.dart';
@@ -7,6 +8,7 @@ import 'package:shaoni/core/extentions/navigation_extension.dart';
 import 'package:shaoni/core/routing/route_names.dart';
 import 'package:shaoni/features/home/presentation/widgets/home_status_badge.dart';
 import 'package:shaoni/features/home/presentation/widgets/order_text_card.dart';
+import 'package:shaoni/features/my-requests/presentation/controller/my_requests_cubit.dart';
 import '../../../../generated/l10n.dart';
 
 class MyRequestGridView extends StatelessWidget {
@@ -14,6 +16,7 @@ class MyRequestGridView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = context.read<MyRequestsCubit>();
     /// Sample data - replace with actual data later
     return SizedBox(
       // height: AppSizes.fullHeight * 0.5,
@@ -31,13 +34,21 @@ class MyRequestGridView extends StatelessWidget {
         itemBuilder: (context, index) {
           return _orderCard(
             context,
-            status: Dummy.orders[index]['status'],
+            status: controller.state.requests?.items[index].request?.odooStatus??'',
             statusColor: Dummy.orders[index]['statusColor'],
-            orderNumber: Dummy.orders[index]['orderNumber'],
-            date: Dummy.orders[index]['date'],
-            type: Dummy.orders[index]['type'],
+            orderNumber: controller.state.requests?.items[index].request?.requestId.toString()??'',
+            date: controller.state.requests?.items[index].request?.createdAt?.substring(0,10)??'',
+            type: S.current.localeee=="en"?controller.state.requests?.items[index].service?.nameEn??'':controller.state.requests?.items[index].service?.nameAr??'',
             onTap: () {
-              context.pushNamed(DRoutesName.requestDetailsRoute);
+              context.pushNamed(DRoutesName.requestDetailsRoute, arguments: {
+                'status': controller.state.requests?.items[index].request?.odooStatus??'',
+                'orderNumber': controller.state.requests?.items[index].request?.requestId.toString()??'',
+                'date': controller.state.requests?.items[index].request?.createdAt?.substring(0,10)??'',
+                'type':controller.state.requests?.items[index].extraData?.exitPermission?.permissionType.toString(),
+                'numberOfHours':controller.state.requests?.items[index].extraData?.exitPermission?.numberOfHours.toString(),
+                'permissionDate': controller.state.requests?.items[index].extraData?.exitPermission?.exitDate?.substring(0,10)??'',
+                'leavesAttachment': controller.state.requests?.items[index].extraData?.exitPermission?.leavesAttachment??S.current.noData,
+              });
             },
           );
         },
@@ -96,7 +107,6 @@ class MyRequestGridView extends StatelessWidget {
               children: [
                 HomeStatusBadge(statusColor: statusColor, status: status),
                 const Sizer(height: 10),
-
                 OrderTextCard(title: S.current.orderDate, result: date),
               ],
             ),

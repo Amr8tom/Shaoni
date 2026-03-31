@@ -904,6 +904,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "selectCategory": MessageLookupByLibrary.simpleMessage("Select Category"),
     "selectCity": MessageLookupByLibrary.simpleMessage("choose your city"),
     "selectCountry": MessageLookupByLibrary.simpleMessage("Select Country"),
+    "selectDate": MessageLookupByLibrary.simpleMessage("Select Date"),
     "selectDep": MessageLookupByLibrary.simpleMessage("select departure city"),
     "selectDepartment": MessageLookupByLibrary.simpleMessage(
       "Select Department",

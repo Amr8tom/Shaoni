@@ -1,81 +1,72 @@
 import 'package:equatable/equatable.dart';
+
+//
+// "exitPermission": {
+//                         "id": 40,
+//                          "exitDate": "2026-03-29T00:00:00",
+//                          "numberOfHours": 1,
+//                          "permissionTimeValue": "med",
+//                          "permissionType": 2,
+//                          "notes": "tejst",
+//                          "leavesAttachment": null
+//                     }
 class ExitPermission extends Equatable {
-  final int? hrExitPermissionId;
-  final String? hrExitPermissionName;
-  final String? hrExitPermissionState;
-  final int? hrExitPermissionStateId;
-  final int? externalId;
-  final String? externalName;
-  final String? externalState;
-  final int? externalStateId;
-  final bool? success;
-  final String? code;
-  final String? status;
-  final String? message;
+  final int? id;
+  final String? exitDate;
+  final int? numberOfHours;
+  final String? permissionTimeValue;
+  final int? permissionType;
+  final String? notes;
+  final String? leavesAttachment;
+
 
   const ExitPermission({
-    this.hrExitPermissionId,
-    this.hrExitPermissionName,
-    this.hrExitPermissionState,
-    this.hrExitPermissionStateId,
-    this.externalId,
-    this.externalName,
-    this.externalState,
-    this.externalStateId,
-    this.success,
-    this.code,
-    this.status,
-    this.message,
+    this.id,
+    this.exitDate,
+    this.numberOfHours,
+    this.permissionTimeValue,
+    this.permissionType,
+    this.notes,
+    this.leavesAttachment,
+
   });
 
   /// from Json
   factory ExitPermission.fromJson(Map<String, dynamic> json) {
     return ExitPermission(
-      hrExitPermissionId: json['hrExitPermissionId'],
-      hrExitPermissionName: json['hrExitPermissionName'],
-      hrExitPermissionState: json['hrExitPermissionState'],
-      hrExitPermissionStateId: json['hrExitPermissionStateId'],
-      externalId: json['externalId'],
-      externalName: json['externalName'],
-      externalState: json['externalState'],
-      externalStateId: json['externalStateId'],
-      success: json['success'],
-      code: json['code'],
-      status: json['status'],
-      message: json['message'],
+      id: json['id'],
+      exitDate: json['exitDate'],
+      numberOfHours: json['numberOfHours'],
+      permissionTimeValue: json['permissionTimeValue'],
+      permissionType: json['permissionType'],
+      notes: json['notes'],
+      leavesAttachment: json['leavesAttachment'],
+
     );
   }
   /// to json
   Map<String, dynamic> toJson() {
     return {
-      'hrExitPermissionId': hrExitPermissionId,
-      'hrExitPermissionName': hrExitPermissionName,
-      'hrExitPermissionState': hrExitPermissionState,
-      'hrExitPermissionStateId': hrExitPermissionStateId,
-      'externalId': externalId,
-      'externalName': externalName,
-      'externalState': externalState,
-      'externalStateId': externalStateId,
-      'success': success,
-      'code': code,
-      'status': status,
-      'message': message,
+      'id': id,
+      'exitDate': exitDate,
+      'numberOfHours': numberOfHours,
+      'permissionTimeValue': permissionTimeValue,
+      'permissionType': permissionType,
+      'notes': notes,
+      'leavesAttachment': leavesAttachment,
+
     };
   }
 
   @override
   List<Object?> get props => [
-    hrExitPermissionId,
-    hrExitPermissionName,
-    hrExitPermissionState,
-    hrExitPermissionStateId,
-    externalId,
-    externalName,
-    externalState,
-    externalStateId,
-    success,
-    code,
-    status,
-    message,
+    id,
+    exitDate,
+    numberOfHours,
+    permissionTimeValue,
+    permissionType,
+    notes,
+    leavesAttachment,
+
   ];
 }

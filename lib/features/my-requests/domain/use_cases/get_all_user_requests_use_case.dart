@@ -2,17 +2,17 @@ import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
 import 'package:shaoni/core/error/failure.dart';
 import 'package:shaoni/core/utils/usecases/base_usecase.dart';
-import 'package:shaoni/features/my-requests/domain/entities/request_with_stage.dart';
+import 'package:shaoni/features/my-requests/domain/entities/all_requests_with_stages.dart';
 
 import '../repositories/repository.dart';
 
-class GetAllUserRequestsUseCase extends UseCase<RequestWithStage,GetAllUserRequestsParams>{
+class GetAllUserRequestsUseCase extends UseCase<AllRequestsWithStages,GetAllUserRequestsParams>{
   final MyRequestsRepository _repository;
 
   GetAllUserRequestsUseCase(this._repository);
 
   @override
-  Future<Either<Failure, RequestWithStage>> call({required GetAllUserRequestsParams params}) async
+  Future<Either<Failure, AllRequestsWithStages>> call({required GetAllUserRequestsParams params}) async
   {
     return await _repository.getAllUserRequests(params: params);
   }

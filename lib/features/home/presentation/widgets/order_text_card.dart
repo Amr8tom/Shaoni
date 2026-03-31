@@ -19,7 +19,7 @@ class OrderTextCard extends StatelessWidget {
           title+ ":    ",
           style: Theme.of(context).textTheme.bodyLarge?.copyWith(
             color: ColorRes.black,
-            fontSize: AppSizes.fontSizeSm*0.8,
+            fontSize: AppSizes.fontSizeSm*0.74,
             fontWeight: FontWeight.w800,
           ),
           overflow: TextOverflow.ellipsis,

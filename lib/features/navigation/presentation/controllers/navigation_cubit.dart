@@ -22,6 +22,7 @@ class NavigationCubit extends Cubit<NavigationState> {
   // _getCountUnreadedNotificationUseCase;
   final GetUserDataUseCase _getUserDataUseCase;
 
+
   NavigationCubit(this._getUserDataUseCase) : super(const NavigationState()) {
     getUserData(CacheHelper.getString(key: CacheKeys.userId));
     // isGuestMode() ? null :
@@ -37,7 +38,12 @@ class NavigationCubit extends Cubit<NavigationState> {
     );
     return result.fold(
       (failure) => emit(state.copyWith(status: GeneralStatus.error)),
-      (user) => emit(state.copyWith(status: GeneralStatus.success, user: user)),
+      (user) async{
+        print('================= employeeId =============');
+        print(user.employeeId);
+        await CacheHelper.putString(key: CacheKeys.employeeId, value:user.employeeId.toString());
+        emit(state.copyWith(status: GeneralStatus.success, user: user));
+        },
     );
   }
 

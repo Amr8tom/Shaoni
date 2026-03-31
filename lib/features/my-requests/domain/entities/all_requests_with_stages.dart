@@ -186,19 +186,6 @@ class AllRequestsWithStages extends Equatable {
     required this.items,
   });
 
-  /// from Json
-  factory AllRequestsWithStages.fromJson(Map<String, dynamic> json) {
-    return AllRequestsWithStages(
-      pageNumber: json['pageNumber'],
-      pageSize: json['pageSize'],
-      totalCount: json['totalCount'],
-      totalPages: json['totalPages'],
-      items:
-          (json['items'] as List)
-              .map((e) => RequestWithStage.fromJson(e))
-              .toList(),
-    );
-  }
   /// to json
   Map<String, dynamic> toJson() {
     return {
@@ -209,6 +196,27 @@ class AllRequestsWithStages extends Equatable {
       'items': items.map((e) => e.toJson()).toList(),
     };
   }
+  /// from Json
+  factory AllRequestsWithStages.fromJson(Map<String, dynamic> json) {
+    return AllRequestsWithStages(
+      pageNumber: json['pageNumber'] as int? ?? 0,
+      pageSize: json['pageSize'] as int? ?? 0,
+      totalCount: json['totalCount'] as int? ?? 0,
+      totalPages: json['totalPages'] as int? ?? 0,
+      items: _parseItems(json['items'] as List<dynamic>?),
+    );
+  }
+
+  /// Helper method to parse items list safely
+  static List<RequestWithStage> _parseItems(List<dynamic>? itemsList) {
+    if (itemsList == null || itemsList.isEmpty) {
+      return [];
+    }
+    return itemsList
+        .map((item) => RequestWithStage?.fromJson(item as Map<String, dynamic>))
+        .toList();
+  }
+
 
   @override
   List<Object?> get props => [

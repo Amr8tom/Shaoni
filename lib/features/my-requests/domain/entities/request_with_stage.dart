@@ -87,10 +87,10 @@ import 'history.dart';
 // ]
 // },
 class RequestWithStage extends Equatable {
-  final int odooStageId;
+  final int? odooStageId;
   final ExtraData? extraData;
-  final String requesterFullName;
-  final String managerFullName;
+  final String? requesterFullName;
+  final String? managerFullName;
   final Request? request;
   final ServiceModel? service;
   final List<History>? histories;

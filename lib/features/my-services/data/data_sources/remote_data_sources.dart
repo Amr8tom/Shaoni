@@ -49,7 +49,7 @@ class MyServicesRemoteDataSourcesImp implements MyServicesRemoteDataSources {
         body: params.toMap(),
       );
       if (response != null) {
-        return ExitPermissionModel.fromJson(response);
+        return ExitPermission.fromJson(response);
       } else {
         throw ServerFailure(message: 'server failure');
       }
@@ -79,9 +79,11 @@ class MyServicesRemoteDataSourcesImp implements MyServicesRemoteDataSources {
   @override
   Future<List<PermissionTypeModel>> getAllPermissionTypes() async {
     try {
-      final List response = await _dio.getData(URL: URL.getPermissionTypes);
+      final response = await _dio.getData(URL: URL.getPermissionTypes);
       if (response != null) {
-        return response.map((e) => PermissionTypeModel.fromJson(e)).toList();
+        // Extract the data field from the response Map
+        final List data = response['data'] as List;
+        return data.map((e) => PermissionTypeModel.fromJson(e)).toList();
       } else {
         throw ServerFailure(message: 'server failure');
       }
