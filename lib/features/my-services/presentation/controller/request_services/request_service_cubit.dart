@@ -1,9 +1,8 @@
-import 'dart:ffi';
-
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:shaoni/core/local_storage/cache_helper.dart';
 import 'package:shaoni/core/local_storage/cache_keys.dart';
 import 'package:shaoni/core/utils/usecases/base_usecase.dart';
@@ -20,7 +19,8 @@ class RequestServiceCubit extends Cubit<RequestServiceState> {
   final GetPermissionTimeUseCase _getPermissionTimeUseCase;
   final GetPermissionTypesUseCase _getPermissionTypeUseCase;
   final CreateExitPermissionUseCase _createExitPermissionUseCase;
-  final TextEditingController dateController = TextEditingController();
+  final TextEditingController todayDateController = TextEditingController();
+  final TextEditingController permissionDateController = TextEditingController();
   final TextEditingController applicantNameController = TextEditingController();
   final TextEditingController organizationalUnitController =
       TextEditingController();
@@ -28,11 +28,12 @@ class RequestServiceCubit extends Cubit<RequestServiceState> {
   final TextEditingController permissionTypeController =
       TextEditingController();
   final TextEditingController hijriDateController = TextEditingController();
-  final TextEditingController durationItemsController = TextEditingController();
+  final TextEditingController durationController = TextEditingController();
   final TextEditingController permissionTimeTypeController =
       TextEditingController();
   List<DropdownMenuItem<String>> permissionTypeItems = [];
   List<DropdownMenuItem<String>> durationItems = [];
+  final GlobalKey<FormState> requestFormKey =GlobalKey<FormState>();
 
   RequestServiceCubit(
     this._createExitPermissionUseCase,
@@ -45,6 +46,7 @@ class RequestServiceCubit extends Cubit<RequestServiceState> {
 
   /// get permission times
   Future getPermissionTimes() async {
+    emit(state.copyWith(status: RequestStatus.permissionTimeLoading));
     final result = await _getPermissionTimeUseCase.call(params: NoParams());
     result.fold(
       (failure) =>
@@ -74,6 +76,7 @@ class RequestServiceCubit extends Cubit<RequestServiceState> {
 
   /// get permission types
   Future getPermissionTypes() async {
+    emit(state.copyWith(status: RequestStatus.permissionTypesLoading));
     final result = await _getPermissionTypeUseCase.call(params: NoParams());
     result.fold(
       (failure) =>
@@ -98,27 +101,45 @@ class RequestServiceCubit extends Cubit<RequestServiceState> {
     );
   }
 
+
+  // هو الفايل ملهوش دعوه
+  // {
+  // "employee_id": 2,
+  // "permission_type": 1,
+  // "type": "first",
+  // "exit_date": "2026-3-29",
+  // "number_of_hours": 1,
+  // "notes": "test",
+  // "stage_id": 1,
+  // "leaves_attachment": "test by amr",
+  // "leaves_attachment_name": "test"
+  // }
+
   /// create exit permission request
-  Future createExitPermissionRequest({
-    required String permissionType,
-    required String permissionTime,
-    required String reason,
-  }) async {
-    final result = await _createExitPermissionUseCase.call(
-      params: CreateExitPermissionParams(
-        employeeId: int.parse(CacheHelper.getString(key: CacheKeys.employeeId) ?? "1" ),
-        permissionType:int.parse(permissionTimeTypeController.text) ,
-        type: permissionTimeTypeController.text ,
-        exitDate: dateController.text,
-        numberOfHours: int.parse(durationItemsController.text),
-        notes: "",
-        stageId: 0,
-      ),
-    );
-    result.fold(
-      (failure) => emit(state.copyWith()),
-      (permission) => emit(state.copyWith()),
-    );
+  Future createExitPermissionRequest() async {
+
+      final result = await _createExitPermissionUseCase.call(
+        params: CreateExitPermissionParams(
+            employeeId: int.parse(CacheHelper.getString(key: CacheKeys.employeeId) ?? "1" ),
+            // permissionType:int.parse(permissionTimeTypeController.text),
+            permissionType:permissionTypeItems.indexWhere((item) => item.value == permissionTypeController.text) + 1,
+            type: permissionTimeTypeController.text ,
+            // type: "first" ,
+            exitDate: permissionDateController.text,
+            // exitDate: "2026-7-12",
+            numberOfHours: int.parse(durationController.text),
+            // numberOfHours: 1,
+            stageId: 0,
+            leavesAttachment: "",
+            leavesAttachmentName: "",
+            notes: "test "
+        ),
+      );
+      result.fold(
+            (failure) => emit(state.copyWith()),
+            (permission) => emit(state.copyWith()),
+      );
+
   }
 
   /// open specific question

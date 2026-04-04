@@ -1,6 +1,7 @@
 enum CacheKeys {
   userId,
   employeeId,
+  managerId,
   lang,
   isGuest,
   latitude,
@@ -32,6 +33,7 @@ enum CacheKeys {
   permissionTypes,
   allServices,
   myRequests,
+  myRequestsByManager,
   email,
   allGroups
 }

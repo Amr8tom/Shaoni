@@ -33,6 +33,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "aboutApp": MessageLookupByLibrary.simpleMessage("عن التطبيق"),
     "ac": MessageLookupByLibrary.simpleMessage("مخيمات عرفة"),
     "accDetails": MessageLookupByLibrary.simpleMessage("تفاصيل الحساب"),
+    "acceptRequest": MessageLookupByLibrary.simpleMessage("قبول الطلب "),
     "accepted": MessageLookupByLibrary.simpleMessage("مقبــوُل"),
     "acceptedBody": MessageLookupByLibrary.simpleMessage(
       "تمت الموافقة علي الطلب",

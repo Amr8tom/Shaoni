@@ -46,16 +46,21 @@ class History extends Equatable{
 
   /// fromJson
   factory History.fromJson(Map<String, dynamic> json) {
-    return History(
-      id: json['id'],
-      changedBy: json['changedBy'],
-      changedAt: DateTime.parse(json['changedAt']),
-      comment: json['comment'] ?? '',
-      requestId: json['requestId'],
-      request: json['request'] != null ? Request.fromJson(json['request']) : null,
-      statusId: json['statusId'],
-      status: Status.fromJson(json['status']),
-    );
+    try {
+      return History(
+        id: json['id'] ?? 0,
+        changedBy: json['changedBy'] ?? '',
+        changedAt: json['changedAt'] != null ? DateTime.parse(json['changedAt']) : DateTime.now(),
+        comment: json['comment'] ?? '',
+        requestId: json['requestId'] ?? 0,
+        request: json['request'] != null ? Request.fromJson(json['request']) : null,
+        statusId: json['statusId'] ?? 0,
+        status: json['status'] != null ? Status.fromJson(json['status']) : Status.empty(),
+      );
+    } catch (e) {
+      print('Error parsing History: $e');
+      rethrow;
+    }
   }
   /// to json
   Map<String, dynamic> toJson() {

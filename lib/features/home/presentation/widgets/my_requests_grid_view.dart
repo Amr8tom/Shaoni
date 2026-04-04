@@ -6,52 +6,62 @@ import 'package:shaoni/core/constants/colors.dart';
 import 'package:shaoni/common/widgets/sizeboxs/Sizer.dart';
 import 'package:shaoni/core/extentions/navigation_extension.dart';
 import 'package:shaoni/core/routing/route_names.dart';
+import 'package:shaoni/core/utils/enums/general_status.dart';
 import 'package:shaoni/features/home/presentation/widgets/home_status_badge.dart';
 import 'package:shaoni/features/home/presentation/widgets/order_text_card.dart';
 import 'package:shaoni/features/my-requests/presentation/controller/my_requests_cubit.dart';
+import 'package:skeletonizer/skeletonizer.dart';
 import '../../../../generated/l10n.dart';
+import '../../../navigation/presentation/controllers/navigation_cubit.dart';
 
 class MyRequestGridView extends StatelessWidget {
   const MyRequestGridView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final controller = context.read<MyRequestsCubit>();
+    final controller = context.watch<MyRequestsCubit>();
+    final navController =context.watch<NavigationCubit>();
     /// Sample data - replace with actual data later
     return SizedBox(
       // height: AppSizes.fullHeight * 0.5,
-      child: GridView.builder(
-        padding: EdgeInsets.zero,
-        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 1,
-          childAspectRatio: 4,
-          crossAxisSpacing: 12,
-          mainAxisSpacing: 12,
+      child: Skeletonizer(
+        enabled: controller.state.status.isLoading?true:false,
+        child: GridView.builder(
+          padding: EdgeInsets.zero,
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 1,
+            childAspectRatio: 4,
+            crossAxisSpacing: 12,
+            mainAxisSpacing: 12,
+          ),
+          shrinkWrap: true,
+          // physics: const NeverScrollableScrollPhysics(),
+          itemCount: controller.state.requests?.items.length,
+          itemBuilder: (context, index) {
+            return _orderCard(
+              context,
+              status: controller.state.requests?.items[index].request?.odooStatus??'',
+              statusColor: controller.state.requests?.items[index].request?.odooStatus=="new"?ColorRes.staticBlueColor:ColorRes.staticGreenColor,
+              orderNumber: controller.state.requests?.items[index].request?.requestId.toString()??'',
+              date: controller.state.requests?.items[index].request?.createdAt?.substring(0,10)??'',
+              type: S.current.localeee=="en"?controller.state.requests?.items[index].service?.nameEn??'':controller.state.requests?.items[index].service?.nameAr??'',
+              onTap: () {
+                context.pushNamed(DRoutesName.requestDetailsRoute, arguments: {
+                  'status': controller.state.requests?.items[index].request?.odooStatus??'',
+                  'orderNumber': controller.state.requests?.items[index].request?.requestId.toString()??'',
+                  'date': controller.state.requests?.items[index].request?.createdAt?.substring(0,10)??'',
+                  'permissionType':controller.state.requests?.items[index].extraData?.exitPermission?.permissionType.toString(),
+                  'serviceType':S.current.localeee=="en"?controller.state.requests?.items[index].service?.nameEn??'':controller.state.requests?.items[index].service?.nameAr??'' ,
+                  'numberOfHours':controller.state.requests?.items[index].extraData?.exitPermission?.numberOfHours.toString(),
+                  'permissionDate': controller.state.requests?.items[index].extraData?.exitPermission?.exitDate?.substring(0,10)??'',
+                  'leavesAttachment': controller.state.requests?.items[index].extraData?.exitPermission?.leavesAttachment??S.current.noData,
+                  'requestID': controller.state.requests?.items[index].request?.id.toString()??'',
+                  'isManager':navController.state.user?.managerId==0?true:false,
+                });
+              },
+            );
+          },
         ),
-        shrinkWrap: true,
-        // physics: const NeverScrollableScrollPhysics(),
-        itemCount: Dummy.orders.length,
-        itemBuilder: (context, index) {
-          return _orderCard(
-            context,
-            status: controller.state.requests?.items[index].request?.odooStatus??'',
-            statusColor: Dummy.orders[index]['statusColor'],
-            orderNumber: controller.state.requests?.items[index].request?.requestId.toString()??'',
-            date: controller.state.requests?.items[index].request?.createdAt?.substring(0,10)??'',
-            type: S.current.localeee=="en"?controller.state.requests?.items[index].service?.nameEn??'':controller.state.requests?.items[index].service?.nameAr??'',
-            onTap: () {
-              context.pushNamed(DRoutesName.requestDetailsRoute, arguments: {
-                'status': controller.state.requests?.items[index].request?.odooStatus??'',
-                'orderNumber': controller.state.requests?.items[index].request?.requestId.toString()??'',
-                'date': controller.state.requests?.items[index].request?.createdAt?.substring(0,10)??'',
-                'type':controller.state.requests?.items[index].extraData?.exitPermission?.permissionType.toString(),
-                'numberOfHours':controller.state.requests?.items[index].extraData?.exitPermission?.numberOfHours.toString(),
-                'permissionDate': controller.state.requests?.items[index].extraData?.exitPermission?.exitDate?.substring(0,10)??'',
-                'leavesAttachment': controller.state.requests?.items[index].extraData?.exitPermission?.leavesAttachment??S.current.noData,
-              });
-            },
-          );
-        },
       ),
     );
   }

@@ -25,8 +25,9 @@ class NavigationCubit extends Cubit<NavigationState> {
 
   NavigationCubit(this._getUserDataUseCase) : super(const NavigationState()) {
     getUserData(CacheHelper.getString(key: CacheKeys.userId));
-    // isGuestMode() ? null :
+    // isManagerMode() ? null :
     // GetCountUnreadedNotification();
+
   }
 
   int indx = 0;

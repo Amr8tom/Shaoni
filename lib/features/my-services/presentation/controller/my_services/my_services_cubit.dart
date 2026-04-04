@@ -17,6 +17,7 @@ class MyServicesCubit extends Cubit<MyServicesState> {
 
   /// get all services
   Future getAllServices() async {
+    emit(state.copyWith(status: GeneralStatus.loading));
     final result = await _getAllServicesUseCase.call(params: NoParams());
     result.fold(
       (failure) => emit(state.copyWith(status: GeneralStatus.error)),

@@ -65,16 +65,16 @@ class CustomBottomNavigationBar extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: List.generate(items.length, (index) {
-                if (index == 3) {
-                  return _buildNavItem(
-                    context: context,
-                    item: items[index],
-                    isActive: false,
-                    onTap: () {
-                      context.pushNamed(DRoutesName.profileRoute);
-                    },
-                  );
-                } else {
+                // if (index == 3) {
+                //   return _buildNavItem(
+                //     context: context,
+                //     item: items[index],
+                //     isActive: false,
+                //     onTap: () {
+                //       context.pushNamed(DRoutesName.profileRoute);
+                //     },
+                //   );
+                // } else {
                   final isActive = controller.indx == index;
                   return _buildNavItem(
                     context: context,
@@ -84,7 +84,7 @@ class CustomBottomNavigationBar extends StatelessWidget {
                       context.read<NavigationCubit>().changeIndex(index);
                     },
                   );
-                }
+                // }
               }),
             ),
           ),

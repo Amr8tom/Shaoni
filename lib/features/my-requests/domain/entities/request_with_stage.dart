@@ -107,14 +107,36 @@ class RequestWithStage extends Equatable {
 
   /// from Json
   factory RequestWithStage.fromJson(Map<String, dynamic> json) {
+    List<History>? parsedHistories;
+    
+    if (json['histories'] != null && json['histories'] is List) {
+      try {
+        parsedHistories = (json['histories'] as List)
+            .where((x) => x != null && x is Map)
+            .map((x) {
+              try {
+                return History.fromJson(x as Map<String, dynamic>);
+              } catch (e) {
+                print('Error parsing history item: $e');
+                return null;
+              }
+            })
+            .whereType<History>()
+            .toList();
+      } catch (e) {
+        print('Error parsing histories list: $e');
+        parsedHistories = null;
+      }
+    }
+
     return RequestWithStage(
       odooStageId: json['odooStageId'],
       extraData: json['extraData'] != null ? ExtraData.fromJson(json['extraData']) : null,
-        requesterFullName: json['requesterFullName'],
-        managerFullName: json['managerFullName'],
-        request: json['request'] != null ? Request.fromJson(json['request']) : null,
-        service: json['service'] != null ? ServiceModel.fromJson(json['service']) : null,
-        histories: json['histories'] != null ? List<History>.from(json['histories'].map((x) => History.fromJson(x))) : null,
+      requesterFullName: json['requesterFullName'],
+      managerFullName: json['managerFullName'],
+      request: json['request'] != null ? Request.fromJson(json['request']) : null,
+      service: json['service'] != null ? ServiceModel.fromJson(json['service']) : null,
+      histories: parsedHistories,
     );
   }
   /// toJson

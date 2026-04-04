@@ -33,6 +33,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "aboutApp": MessageLookupByLibrary.simpleMessage("About the App"),
     "ac": MessageLookupByLibrary.simpleMessage("Arafa Camps"),
     "accDetails": MessageLookupByLibrary.simpleMessage("Account Details"),
+    "acceptRequest": MessageLookupByLibrary.simpleMessage("Accept Request"),
     "accepted": MessageLookupByLibrary.simpleMessage("Accepted"),
     "acceptedBody": MessageLookupByLibrary.simpleMessage(
       "Your order is Accepted",

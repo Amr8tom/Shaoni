@@ -14,6 +14,24 @@ extension RequestStateExtension on RequestServiceState {
   bool get isFilterEmpty => status == RequestStatus.filterEmpty;
 
   bool get isExpanded => status == RequestStatus.expanded;
+
+  bool get isPermissionTimeLoading =>
+      status == RequestStatus.permissionTimeLoading;
+
+  bool get isPermissionTimeError => status == RequestStatus.permissionTimeError;
+
+  bool get isPermissionTimeSuccess =>
+      status == RequestStatus.permissionTimeSuccess;
+
+  bool get isPermissionTypesLoading =>
+      status == RequestStatus.permissionTypesLoading;
+
+  bool get isPermissionTypesError =>
+      status == RequestStatus.permissionTypesError;
+
+  bool get isPermissionTypesSuccess =>
+      status == RequestStatus.permissionTypesSuccess;
+  bool get isInitialized => status == RequestStatus.initialized;
 }
 
 enum RequestStatus {
@@ -26,6 +44,8 @@ enum RequestStatus {
   faqError,
   permissionTypesError,
   permissionTimeError,
+  permissionTimeLoading,
+  permissionTypesLoading,
   permissionTimeSuccess,
   permissionTypesSuccess,
   expanded,
@@ -70,11 +90,11 @@ final class RequestServiceState extends Equatable {
 
   @override
   List<Object?> get props => [
-    status,
-    services,
-    filteredServices,
-    expandedIndex,
-    permissionTypes,
-    permissionTimes,
-  ];
+        status,
+        services,
+        filteredServices,
+        expandedIndex,
+        permissionTypes,
+        permissionTimes,
+      ];
 }

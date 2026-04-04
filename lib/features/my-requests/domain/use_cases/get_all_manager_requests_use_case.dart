@@ -6,25 +6,28 @@ import 'package:shaoni/features/my-requests/domain/entities/all_requests_with_st
 
 import '../repositories/repository.dart';
 
-class GetAllUserRequestsUseCase extends UseCase<AllRequestsWithStages,GetAllUserRequestsParams>{
+class GetAllManagerRequestsUseCase extends UseCase<AllRequestsWithStages,GetAllManagerRequestsParams>{
   final MyRequestsRepository _repository;
 
-  GetAllUserRequestsUseCase(this._repository);
+  GetAllManagerRequestsUseCase(this._repository);
 
   @override
-  Future<Either<Failure, AllRequestsWithStages>> call({required GetAllUserRequestsParams params}) async
+  Future<Either<Failure, AllRequestsWithStages>> call({required GetAllManagerRequestsParams params}) async
   {
-    return await _repository.getAllUserRequests(params: params);
+    return await _repository.getAllManagerRequests(params: params);
   }
 }
 
-class GetAllUserRequestsParams extends Equatable {
+
+
+
+class GetAllManagerRequestsParams extends Equatable {
   final int userId;
   final List<int> requestIds;
   final int pageNumber;
   final int pageSize;
 
-  const GetAllUserRequestsParams({
+  const GetAllManagerRequestsParams({
     required this.userId,
     required this.requestIds,
     required this.pageNumber,
@@ -39,6 +42,8 @@ class GetAllUserRequestsParams extends Equatable {
       'pageSize': pageSize,
     };
   }
+
   @override
   List<Object?> get props => [userId, requestIds, pageNumber, pageSize];
+
 }

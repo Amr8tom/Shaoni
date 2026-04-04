@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:shaoni/core/constants/app_sizes.dart';
@@ -8,6 +9,7 @@ import '../../../../common/widgets/sizeboxs/Sizer.dart';
 import '../../../../core/constants/asset_resoures.dart';
 import '../../../../core/constants/colors.dart';
 import '../../../../generated/l10n.dart';
+import '../controllers/navigation_cubit.dart';
 
 class ProfileHeader extends StatelessWidget {
   final String? userName;
@@ -21,9 +23,11 @@ class ProfileHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = context.read<NavigationCubit>();
+
     return GestureDetector(
       onTap: () {
-        context.pushNamed(DRoutesName.profileRoute);
+        controller.changeIndex(3);
       },
       child: Row(
         mainAxisSize: MainAxisSize.min,
@@ -31,8 +35,6 @@ class ProfileHeader extends StatelessWidget {
 
           /// Profile avatar with enhanced design
           Container(
-            // width: AppSizes.imageSize*2,
-            // height: AppSizes.heightcontainer*1.5,
             decoration: BoxDecoration(
               shape: BoxShape.circle,
               color: Colors.white,
@@ -90,7 +92,7 @@ class ProfileHeader extends StatelessWidget {
               ),
               SizedBox(height: 2.h),
               Text(
-                userName ?? "مصطفى ذكريا محمد",
+                controller.state.user?.fullName ?? "مصطفى ذكريا محمد",
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: AppSizes.fontSizeMd,

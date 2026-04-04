@@ -1,0 +1,36 @@
+import '../../domain/entities/approve_request.dart';
+import '../../domain/entities/odoo_request.dart';
+
+
+class ApproveRequestModel extends ApproveRequest {
+  const ApproveRequestModel(
+      {required super.requestId,
+      required super.statusNameAr,
+      required super.statusNameEn,
+      required super.statusId,
+      required super.odooResult,
+      required super.comment});
+
+  /// from json
+  factory ApproveRequestModel.fromJson(Map<String, dynamic> json) {
+    return ApproveRequestModel(
+        requestId: json['requestId'],
+        statusNameAr: json['statusNameAr'],
+        statusNameEn: json['statusNameEn'],
+        statusId: json['statusId'],
+        odooResult: OdooRequest.fromJson(json['odooResult']),
+        comment: json['comment']);
+  }
+
+  /// toJson
+  Map<String, dynamic> toJson() {
+    return {
+      'requestId': requestId,
+      'statusNameAr': statusNameAr,
+      'statusNameEn': statusNameEn,
+      'statusId': statusId,
+      'odooResult': odooResult.toJson(),
+      'comment': comment,
+    };
+  }
+}

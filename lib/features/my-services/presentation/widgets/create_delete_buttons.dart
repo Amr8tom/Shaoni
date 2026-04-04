@@ -49,31 +49,7 @@ class CreateDeleteButtons extends StatelessWidget {
                         backgroundColor: ColorRes.primary,
                         fontSize: AppSizes.fontSizeMd,
                         text: S.current.submitRequest,
-                        onPressed: () {
-                          createTab!();
-                          CustomDialogImgTitleDes(
-                            button1: S.current.myOrders,
-                            button2: S.current.home,
-                            onTab2: () {
-                              /// navigation screen
-                              context.pushNamedAndRemoveUntil(
-                                DRoutesName.navigationMenuRoute,
-                                predicate: (route) => false,
-                              );
-                            },
-                            onTab1: () {
-                              context.pushNamedAndRemoveUntil(
-                                DRoutesName.navigationMenuRoute,
-                                predicate: (route) => false,
-                              );
-                            },
-                            context: context,
-                            title: S.current.requestSentSuccessfully,
-                            des: S.current.requestSentSuccessfully,
-                            imgPath: AssetRes.doubleCorrect,
-                            isSvg: true,
-                          );
-                        },
+                        onPressed: createTab,
                       ),
                     ),
                     const Sizer(width: 15),

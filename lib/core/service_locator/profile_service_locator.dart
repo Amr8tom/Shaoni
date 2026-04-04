@@ -1,6 +1,5 @@
 import 'package:get_it/get_it.dart';
 import 'package:shaoni/features/profile/presentation/controllers/profile_cubit.dart';
-import 'package:shaoni/features/profile/presentation/controllers/profile_cubit.dart';
 
 class ProfileServiceLocator {
   static Future<void> execute({required GetIt serviceLocator}) async {

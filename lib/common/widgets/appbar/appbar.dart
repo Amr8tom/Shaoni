@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:shaoni/core/extentions/navigation_extension.dart';
@@ -8,6 +9,7 @@ import '../../../core/constants/asset_resoures.dart';
 import '../../../core/constants/colors.dart';
 import '../../../core/device/device_utility.dart';
 import '../../../core/routing/route_names.dart';
+import '../../../features/navigation/presentation/controllers/navigation_cubit.dart';
 import '../../../features/navigation/presentation/widgets/profile_header.dart';
 import '../sizeboxs/Sizer.dart';
 
@@ -46,6 +48,15 @@ class DAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Make NavigationCubit reading optional - handle cases where it's not in scope
+    NavigationCubit? controller;
+    try {
+      controller = context.read<NavigationCubit>();
+    } catch (e) {
+      // NavigationCubit is not in scope, that's okay
+      controller = null;
+    }
+
     debugPrint(
       'DAppBar build: scaffoldKey is ${scaffoldKey == null ? "null" : "not null"}',
     );

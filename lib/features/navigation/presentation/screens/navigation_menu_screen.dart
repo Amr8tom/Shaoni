@@ -7,6 +7,7 @@ import 'package:shaoni/core/constants/app_sizes.dart';
 import 'package:shaoni/core/constants/colors.dart';
 import 'package:shaoni/core/local_storage/cache_helper.dart';
 import 'package:shaoni/core/service_locator/my_requests_service_locator.dart';
+import 'package:shaoni/core/utils/enums/general_status.dart';
 import 'package:shaoni/features/my-requests/presentation/controller/my_requests_cubit.dart';
 import 'package:shaoni/features/navigation/presentation/widgets/custom_navigation_appbar.dart';
 import 'package:upgrader/upgrader.dart';
@@ -33,6 +34,7 @@ class NavigationMenuScreen extends StatelessWidget {
       child: Builder(
         builder: (context) {
           final controller = context.watch<NavigationCubit>();
+          final requestController = context.watch<MyRequestsCubit>();
           return UpgradeAlert(
             child: Scaffold(
               appBar:
@@ -44,34 +46,44 @@ class NavigationMenuScreen extends StatelessWidget {
               // extendBodyBehindAppBar: true,
               backgroundColor: ColorRes.grey6,
               extendBody: true,
-              body: BlocBuilder<NavigationCubit, NavigationState>(
+              body: BlocConsumer<NavigationCubit, NavigationState>(
+                listener: (context, state) {
+                 if(state.status.isSuccess){
+                   /// if he is employee
+                   if(state.user?.managerId!=0){
+                     requestController.getAllUserRequests(employeeId: int.parse(CacheHelper.getString(key: CacheKeys.employeeId)??state.user!.employeeId.toString()));
+                   } else{
+                     /// if he is manager
+                     requestController.getAllManagerRequests(managerID: state.user!.id??1);
+
+                   }
+                 }
+                },
                 builder: (context, state) {
-                  return Stack(
-                    children: [
-                      controller.indx == 0
-                          ? customAppBar(
-                            scaffoldKey: scaffoldKey,
-                            context: context,
-                            isHeader: true,
-                            height: AppSizes.appBarHeight * 4.5,
-                          )
-                          : const Sizer(),
-                      controller.indx == 3
-                          ? const SizedBox()
-                          : Column(
-                            children: [
-                              controller.indx == 0
-                                  ? const Sizer(height: 200)
-                                  : const Sizer(),
-                              state.screens[controller.indx],
-                            ],
-                          ),
-                    ],
-                  );
+                  if (controller.indx == 0) {
+                    return Stack(
+                      children: [
+                        customAppBar(
+                          scaffoldKey: scaffoldKey,
+                          context: context,
+                          isHeader: true,
+                          height: AppSizes.appBarHeight * 4.5,
+                        ),
+                        Column(
+                          children: [
+                            const Sizer(height: 200),
+                            Expanded(child: state.screens[controller.indx]),
+                          ],
+                        ),
+                      ],
+                    );
+                  } else {
+                    return state.screens[controller.indx];
+                  }
                 },
               ),
               // body: state.screens[controller.indx],
-              floatingActionButton: Padding(
+              floatingActionButton:  Padding(
                 padding: EdgeInsets.all(AppSizes.padding * 1.1),
                 child: const CustomBottomNavigationBar(),
               ),

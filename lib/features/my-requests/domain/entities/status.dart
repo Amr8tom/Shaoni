@@ -34,6 +34,20 @@ class Status extends Equatable{
     required this.isDeleted,
   });
 
+  /// Empty status constructor for default/null cases
+  factory Status.empty() {
+    return const Status(
+      id: 0,
+      code: '',
+      nameAr: 'Unknown',
+      nameEn: 'Unknown',
+      techName: 'unknown',
+      isActive: false,
+      updatedAt: null,
+      isDeleted: false,
+    );
+  }
+
   /// from Json
   factory Status.fromJson(Map<String, dynamic> json) {
     return Status(

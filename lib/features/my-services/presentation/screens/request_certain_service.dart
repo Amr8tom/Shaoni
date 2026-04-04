@@ -54,7 +54,7 @@ class RequestCertainService extends StatelessWidget {
                     const ServicesInformationGridview(),
                     // Extra space so content doesn't hide behind the button
                     Sizer(
-                      height: AppSizes.heightcontainer + AppSizes.padding * 5,
+                      height: AppSizes.heightcontainer *7,
                     ),
                   ],
                 ),

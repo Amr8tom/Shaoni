@@ -13,7 +13,7 @@
     "processingType": "نوع المعالجة: فوري / يتطلب موافقة",
     "slaResponseTime": "اتفاقية مستوى الخدمة / وقت الاستجابة المتوقع",
     "createRequest": "إنشاء الطلب",
-
+    "acceptRequest":"قبول الطلب ",
 
     "repositories":"المشتريات",
     "humanResources":"الموارد البشرية",

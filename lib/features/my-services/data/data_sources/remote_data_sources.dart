@@ -1,5 +1,4 @@
 import 'package:shaoni/features/my-services/data/model/all_services_model.dart';
-import 'package:shaoni/features/my-services/data/model/exit_permission_model.dart';
 import 'package:shaoni/features/my-services/data/model/permission_time_model.dart';
 import 'package:shaoni/features/my-services/domain/use_cases/create_exit_permission_use_case.dart';
 import '../../../../core/constants/api_constants.dart';
@@ -81,7 +80,7 @@ class MyServicesRemoteDataSourcesImp implements MyServicesRemoteDataSources {
     try {
       final response = await _dio.getData(URL: URL.getPermissionTypes);
       if (response != null) {
-        // Extract the data field from the response Map
+        /// Extract the data field from the response Map
         final List data = response['data'] as List;
         return data.map((e) => PermissionTypeModel.fromJson(e)).toList();
       } else {

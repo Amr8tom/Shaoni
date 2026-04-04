@@ -204,6 +204,16 @@ class S {
     return Intl.message('Surah', name: 'surah', desc: '', args: []);
   }
 
+  /// `Accept Request`
+  String get acceptRequest {
+    return Intl.message(
+      'Accept Request',
+      name: 'acceptRequest',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Pending Request`
   String get pendingRequest {
     return Intl.message(

@@ -17,23 +17,7 @@ class ServicesInformationGridview extends StatelessWidget {
         question: S.current.whenAndWhyUsed,
         answer: S.current.whenAndWhyDescription,
       ),
-      RequestServicesEntity(
-        id: '232323',
-        question: S.current.allowedDurationRules,
-        answer: S.current.duringWorkHours,
-      ),  RequestServicesEntity(
-        id: '232323',
-        question: S.current.allowedDurationRules,
-        answer: S.current.duringWorkHours,
-      ),  RequestServicesEntity(
-        id: '232323',
-        question: S.current.allowedDurationRules,
-        answer: S.current.duringWorkHours,
-      ),  RequestServicesEntity(
-        id: '232323',
-        question: S.current.allowedDurationRules,
-        answer: S.current.duringWorkHours,
-      ),  RequestServicesEntity(
+     RequestServicesEntity(
         id: '232323',
         question: S.current.allowedDurationRules,
         answer: S.current.duringWorkHours,

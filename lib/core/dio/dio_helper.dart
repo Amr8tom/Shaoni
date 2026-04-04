@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
+import 'package:shaoni/generated/l10n.dart';
 import '../error/failure.dart';
 import '../local_storage/cache_helper.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
@@ -98,7 +99,7 @@ class DioHelper {
           throw ServerFailure(message: " unauthorized");
         }
       }else if (response.statusCode == 400) {
-        throw ValidationFailure.fromMap(response.data);
+        throw ServerFailure(message: " Server Failure");
       }
     } on DioException catch (error) {
       print("erro ========================================> $error");
