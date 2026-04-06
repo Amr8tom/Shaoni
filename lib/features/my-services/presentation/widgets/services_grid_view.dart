@@ -21,19 +21,19 @@ class ServicesGridView extends StatelessWidget {
       crossAxisCount: 2,
       children: [
         ServiceCard(img: AssetRes.repositories, onTap: () {
-          context.pushNamed(DRoutesName.chooseNewRequestNewService);
+          context.pushNamed(DRoutesName.noDataRoute);
         }, title: S.current.repositories),
         ServiceCard(img: AssetRes.humanResources, onTap: () {
           context.pushNamed(DRoutesName.chooseNewRequestNewService);
         }, title: S.current.humanResources),
         ServiceCard(img: AssetRes.salaries, onTap: () {
-          context.pushNamed(DRoutesName.chooseNewRequestNewService);
+          context.pushNamed(DRoutesName.noDataRoute);
         }, title: S.current.salaries),
         ServiceCard(img: AssetRes.registration, onTap: () {
-          context.pushNamed(DRoutesName.chooseNewRequestNewService);
+          context.pushNamed(DRoutesName.noDataRoute);
         }, title: S.current.registration),
         ServiceCard(img: AssetRes.study, onTap: () {
-          context.pushNamed(DRoutesName.chooseNewRequestNewService);
+          context.pushNamed(DRoutesName.noDataRoute);
         }, title: S.current.study),
       ],
 

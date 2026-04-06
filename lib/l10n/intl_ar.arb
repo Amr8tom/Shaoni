@@ -14,7 +14,7 @@
     "slaResponseTime": "اتفاقية مستوى الخدمة / وقت الاستجابة المتوقع",
     "createRequest": "إنشاء الطلب",
     "acceptRequest":"قبول الطلب ",
-
+      "submittedRequests":"الطلبات المقدمه",
     "repositories":"المشتريات",
     "humanResources":"الموارد البشرية",
     "salaries":"الرواتب والمكافأت",

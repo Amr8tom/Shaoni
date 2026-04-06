@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:shaoni/features/navigation/presentation/controllers/navigation_cubit.dart';
+
 import '../../../../common/widgets/sizeboxs/Sizer.dart';
 import '../../../../core/constants/app_sizes.dart';
 import '../../../../core/constants/colors.dart';
 import '../../../../generated/l10n.dart';
+import '../../../navigation/presentation/controllers/navigation_cubit.dart';
 
-class ShowAllRequests extends StatelessWidget {
-  const ShowAllRequests({super.key});
+class ShowAllSubmittedRequests extends StatelessWidget {
+  const ShowAllSubmittedRequests({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +22,7 @@ class ShowAllRequests extends StatelessWidget {
         child: Row(
           children: [
             Text(
-              S.current.myOrders,
+              S.current.submittedRequests,
               style: Theme.of(context).textTheme.titleSmall,
             ),
             const Spacer(),
@@ -43,3 +44,7 @@ class ShowAllRequests extends StatelessWidget {
     );
   }
 }
+
+
+
+

@@ -165,13 +165,18 @@ class CustomUI {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           RepaintBoundary(
-            child: Lottie.asset(
-              AssetRes.noData,
-              height: AppSizes.productItemHeight,
-
+            child: ColorFiltered(
+              colorFilter: ColorFilter.mode(
+                ColorRes.primary.withOpacity(0.7),
+                BlendMode.srcIn,
+              ),
+              child: Lottie.asset(
+                AssetRes.noData,
+                height: AppSizes.productItemHeight,
+              ),
             ),
           ),
-          SizedBox(height: AppSizes.spaceBtwItems),
+          SizedBox(height: AppSizes.spaceBtwItems*6),
           Text(S.current.noData),
         ],
       ),

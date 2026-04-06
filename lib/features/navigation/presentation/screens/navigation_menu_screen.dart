@@ -37,10 +37,9 @@ class NavigationMenuScreen extends StatelessWidget {
           final requestController = context.watch<MyRequestsCubit>();
           return UpgradeAlert(
             child: Scaffold(
-              appBar:
-                  controller.indx == 0
-                      ? null
-                      : DAppBar(scaffoldKey: scaffoldKey, isHeader: true),
+              appBar: controller.indx == 0
+                  ? null
+                  : DAppBar(scaffoldKey: scaffoldKey, isHeader: true),
               key: scaffoldKey,
               drawer: const CustomSideMenu(),
               // extendBodyBehindAppBar: true,
@@ -48,16 +47,21 @@ class NavigationMenuScreen extends StatelessWidget {
               extendBody: true,
               body: BlocConsumer<NavigationCubit, NavigationState>(
                 listener: (context, state) {
-                 if(state.status.isSuccess){
-                   /// if he is employee
-                   if(state.user?.managerId!=0){
-                     requestController.getAllUserRequests(employeeId: int.parse(CacheHelper.getString(key: CacheKeys.employeeId)??state.user!.employeeId.toString()));
-                   } else{
-                     /// if he is manager
-                     requestController.getAllManagerRequests(managerID: state.user!.id??1);
-
-                   }
-                 }
+                  if (state.status.isSuccess) {
+                    print("employID");
+                    print(CacheHelper.getString(key: CacheKeys.employeeId));
+                    print(state.user?.employeeId);
+                    /// if he is employee
+                    requestController.getAllUserRequests(
+                        employeeId: int.parse(
+                            CacheHelper.getString(key: CacheKeys.employeeId) ??
+                                state.user!.employeeId.toString()));
+                    if (state.user?.managerId == 0) {
+                      /// if he is manager
+                      requestController.getAllManagerRequests(
+                          managerID: state.user!.id ?? 1);
+                    }
+                  }
                 },
                 builder: (context, state) {
                   if (controller.indx == 0) {
@@ -83,7 +87,7 @@ class NavigationMenuScreen extends StatelessWidget {
                 },
               ),
               // body: state.screens[controller.indx],
-              floatingActionButton:  Padding(
+              floatingActionButton: Padding(
                 padding: EdgeInsets.all(AppSizes.padding * 1.1),
                 child: const CustomBottomNavigationBar(),
               ),

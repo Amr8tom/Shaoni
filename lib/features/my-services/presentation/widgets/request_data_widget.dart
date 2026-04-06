@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:intl/intl.dart';
 import 'package:shaoni/features/my-services/presentation/controller/request_services/request_service_cubit.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 import '../../../../common/widgets/sizeboxs/Sizer.dart';
@@ -43,6 +44,7 @@ class RequestDataWidget extends StatelessWidget {
                         final DateTime? pickedDate =
                         await showDatePicker(
                           context: context,
+                          locale: const Locale('en', 'US'),
                           initialDate: DateTime.now(),
                           firstDate: DateTime(2026),
                           lastDate: DateTime(2100),
@@ -91,6 +93,7 @@ class RequestDataWidget extends StatelessWidget {
                             );
                           },
                         );
+                        controller.permissionDateController.text= DateFormat('yyyy-MM-dd').format(pickedDate??DateTime.now());
                       },
                       validator:    (value) {
                         if (value == null || value.isEmpty) {

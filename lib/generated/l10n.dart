@@ -174,6 +174,16 @@ class S {
     );
   }
 
+  /// `Submitted Requests`
+  String get submittedRequests {
+    return Intl.message(
+      'Submitted Requests',
+      name: 'submittedRequests',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `HR Manager Approval`
   String get hrManagerApproval {
     return Intl.message(

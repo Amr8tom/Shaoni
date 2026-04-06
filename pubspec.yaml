@@ -58,6 +58,7 @@ dependencies:
 
   # image handling
   image_picker: ^1.0.7
+  file_picker: ^8.0.0
 
 
 

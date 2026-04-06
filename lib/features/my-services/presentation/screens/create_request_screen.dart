@@ -8,6 +8,7 @@ import 'package:shaoni/core/extentions/navigation_extension.dart';
 import 'package:shaoni/core/service_locator/service_locator.dart';
 import 'package:shaoni/features/my-services/presentation/widgets/create_delete_buttons.dart';
 import 'package:shaoni/features/my-services/presentation/widgets/date_data_widget.dart';
+import 'package:shaoni/features/my-services/presentation/widgets/file_upload_widget.dart';
 import 'package:shaoni/features/my-services/presentation/widgets/request_data_widget.dart';
 import '../../../../common/widgets/dialogs/custom_dialog_img_title_des.dart';
 import '../../../../core/constants/asset_resoures.dart';
@@ -33,7 +34,45 @@ class RequestCreateDetailsScreen extends StatelessWidget {
         body: Builder(
           builder: (context) {
             final controller = context.read<RequestServiceCubit>();
-            return Form(
+            return BlocConsumer<RequestServiceCubit, RequestServiceState>(
+  listener: (context, state) {
+   if(state.isCreateExitPermissionError){
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(state.errorMassage ?? "Error"),
+          backgroundColor: ColorRes.error.withOpacity(0.5),
+        ),
+      );
+   }
+
+   if(state.isCreateExitPermissionSuccess) {
+     CustomDialogImgTitleDes(
+       button1: S.current.myOrders,
+       button2: S.current.home,
+       onTab2: () {
+         /// navigation screen
+         context.pushNamedAndRemoveUntil(
+           DRoutesName.navigationMenuRoute,
+           predicate: (route) => false,
+         );
+       },
+       onTab1: () {
+         context.pushNamedAndRemoveUntil(
+           DRoutesName.navigationMenuRoute,
+           predicate: (route) => false,
+         );
+       },
+       context: context,
+       title: S.current.requestSentSuccessfully,
+       des: S.current.requestSentSuccessfully,
+       imgPath: AssetRes.doubleCorrect,
+       isSvg: true,
+     );
+   }
+
+  },
+  builder: (context, state) {
+    return Form(
               key: controller.requestFormKey,
               child: Padding(
                 padding: EdgeInsets.symmetric(horizontal: AppSizes.padding * 1.5),
@@ -64,6 +103,10 @@ class RequestCreateDetailsScreen extends StatelessWidget {
                           ),
               
                           const RequestDataWidget(),
+
+                          /// file upload
+                          const Sizer(height: 35),
+                          const FileUploadWidget(),
               
                           /// Extra space so content doesn't hide behind the floating buttons
                           const Sizer(height: 120),
@@ -79,28 +122,7 @@ class RequestCreateDetailsScreen extends StatelessWidget {
                       createTab: () {
                         if(controller.requestFormKey.currentState!.validate()){
                           controller.createExitPermissionRequest();
-                          CustomDialogImgTitleDes(
-                            button1: S.current.myOrders,
-                            button2: S.current.home,
-                            onTab2: () {
-                              /// navigation screen
-                              context.pushNamedAndRemoveUntil(
-                                DRoutesName.navigationMenuRoute,
-                                predicate: (route) => false,
-                              );
-                            },
-                            onTab1: () {
-                              context.pushNamedAndRemoveUntil(
-                                DRoutesName.navigationMenuRoute,
-                                predicate: (route) => false,
-                              );
-                            },
-                            context: context,
-                            title: S.current.requestSentSuccessfully,
-                            des: S.current.requestSentSuccessfully,
-                            imgPath: AssetRes.doubleCorrect,
-                            isSvg: true,
-                          );
+
                         }
 
                       },
@@ -109,6 +131,8 @@ class RequestCreateDetailsScreen extends StatelessWidget {
                 ),
               ),
             );
+  },
+);
           },
         ),
       ),

@@ -7,7 +7,33 @@ import 'package:shaoni/core/constants/colors.dart';
 import '../../../../generated/l10n.dart';
 
 class RequestStageCard extends StatelessWidget {
-  const RequestStageCard({super.key});
+  final String status;
+
+  const RequestStageCard({super.key, required this.status});
+
+  /// Determine which stages are completed based on status
+  bool _isStageCompleted(String stageName) {
+    final lowerStatus = status.toLowerCase();
+    
+    // New stage is always completed as it's the first stage
+    if (stageName == 'new') {
+      return true;
+    }
+    
+    // Manager approval stage - completed if manager or hr approval is mentioned
+    if (stageName == 'manager') {
+      return lowerStatus.contains('manager') || lowerStatus.contains('hr')||lowerStatus.contains('done');
+    }
+    
+    // HR Manager approval stage - completed if hr approval is mentioned
+    if (stageName == 'hr') {
+      return lowerStatus.contains('hr');
+    }  if (stageName == 'done') {
+      return lowerStatus.contains('done');
+    }
+    
+    return false;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -32,11 +58,11 @@ class RequestStageCard extends StatelessWidget {
             Divider(color: ColorRes.grey4),
 
             const Sizer(height: 24),
-            _StepItem(title: S.current.NNew, isLast: false),
-            _StepItem(title: S.current.managerApproval, isLast: false,isDotLine: true,),
+            _StepItem(title: S.current.NNew, isCompleted: _isStageCompleted('new'), isLast: false, isDotLine: !_isStageCompleted('new')),
+            _StepItem(title: S.current.managerApproval, isCompleted: (_isStageCompleted('manager')||_isStageCompleted('hr')), isLast: false, isDotLine: !_isStageCompleted('manager')),
             _StepItem(
               title: S.current.hrManagerApproval,
-              isCompleted: false,
+              isCompleted: _isStageCompleted('done'),
               isLast: true,
             ),
           ],

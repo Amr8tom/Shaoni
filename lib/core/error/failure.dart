@@ -23,9 +23,14 @@ class ServerFailure extends Failure {
         message:message ,
       );
   }
-  @override
-  List<Object?> get props => [message, errors];
-}
+
+  factory ServerFailure.fromMap(Map<String, dynamic> map) {
+
+
+    return ServerFailure(
+      message: map['message'] ?? 'Server Failure',
+    );
+}}
 
 class ValidationFailure extends Failure {
   final List<String>? errors;

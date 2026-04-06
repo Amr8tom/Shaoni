@@ -35,12 +35,10 @@ class DateDataWidget extends StatelessWidget {
                   color: ColorRes.grey2.withOpacity(0.5),
                 ),
                 controller: TextEditingController(
-                  text: DateFormat('dd/MM/yyyy').format(DateTime.now()),
+                  text: DateFormat('dd/MM/yyyy', 'en_US').format(DateTime.now()),
                 ),
                 readOnly: true,
-
-
-                validator:    (value) {
+                validator: (value) {
                   if (value == null || value.isEmpty) {
                     return S.current.pleaseEndterValue;
                   }
@@ -56,17 +54,17 @@ class DateDataWidget extends StatelessWidget {
                   Icons.date_range,
                   color: ColorRes.grey2.withOpacity(0.5),
                 ),
-                controller:TextEditingController(
+                controller: TextEditingController(
                   text: DateConverter.convertGregorianToHijriFormatted(
-                    DateTime(
+                    DateFormat('dd/MM/yyyy', 'en_Us').format(DateTime(
                       DateTime.now().year,
                       DateTime.now().month,
                       DateTime.now().day,
-                    ).toString(),
+                    )).toString(),
                   ),
                 ),
                 readOnly: true,
-                validator:    (value) {
+                validator: (value) {
                   if (value == null || value.isEmpty) {
                     return S.current.pleaseEndterValue;
                   }

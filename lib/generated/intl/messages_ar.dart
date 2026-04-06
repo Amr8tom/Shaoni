@@ -941,6 +941,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "subGroup": MessageLookupByLibrary.simpleMessage("المجموعات الفرعية"),
     "subReq": MessageLookupByLibrary.simpleMessage("تقديم الطلب"),
     "submitRequest": MessageLookupByLibrary.simpleMessage("ارسال الطلب"),
+    "submittedRequests": MessageLookupByLibrary.simpleMessage(
+      "الطلبات المقدمه",
+    ),
     "success": MessageLookupByLibrary.simpleMessage("نجح"),
     "sunrise": MessageLookupByLibrary.simpleMessage("الشروق"),
     "sup": MessageLookupByLibrary.simpleMessage("المشرف"),

@@ -175,7 +175,7 @@ class RequestDetailsScreen extends StatelessWidget {
               ),
               const Sizer(height: 20),
              isManager? const CommentWritingWidget():const Sizer(),
-              const RequestStageCard(),
+               RequestStageCard(status: status,),
               isManager?  AcceptRequestButton(requestID: requestID):const Sizer(),
               const Sizer(height: 40),
             ],

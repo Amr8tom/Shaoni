@@ -52,8 +52,8 @@ class MyServicesRemoteDataSourcesImp implements MyServicesRemoteDataSources {
       } else {
         throw ServerFailure(message: 'server failure');
       }
-    } on ServerFailure catch (e) {
-      throw ServerFailure(message: e.message);
+    } on ServerFailure {
+      rethrow;
     }
   }
 

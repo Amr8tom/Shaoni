@@ -96,7 +96,7 @@ class DioHelper {
         if(response is String){
           throw ServerFailure.fromString(response.data);
         }else {
-          throw ServerFailure(message: " unauthorized");
+          throw ServerFailure.fromMap(response.data);
         }
       }else if (response.statusCode == 400) {
         throw ServerFailure(message: " Server Failure");

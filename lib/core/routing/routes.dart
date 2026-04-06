@@ -10,6 +10,7 @@ import '../../features/auth/presentation/screen/otp_screen.dart';
 import '../../features/my-requests/presentation/screens/request_details_screen.dart';
 import '../../features/my-services/presentation/screens/choose_new_request_services_screen.dart';
 import '../../features/my-services/presentation/screens/create_request_screen.dart';
+import '../../features/my-services/presentation/screens/no_data_screen.dart';
 import '../../features/navigation/presentation/screens/navigation_menu_screen.dart';
 import '../../features/notifications/presentation/notification_screen.dart';
 import '../../features/onboarding/presentation/screens/onboarding_screen.dart';
@@ -181,6 +182,12 @@ class RouteGenerator {
       case DRoutesName.profileRoute:
         return PageTransition(
           child: const ProfileScreen(),
+          type: PageTransitionType.rightToLeft,
+          settings: settings,
+        );  /// no data
+      case DRoutesName.noDataRoute:
+        return PageTransition(
+          child: const NoDataScreen(),
           type: PageTransitionType.rightToLeft,
           settings: settings,
         );

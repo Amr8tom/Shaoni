@@ -43,4 +43,5 @@ class DRoutesName {
 
   /// More
   static const String termsAndConditionRoute = 'terms-and-conditions-route';
+  static const String noDataRoute = 'no-data-route';
 }

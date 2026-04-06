@@ -32,6 +32,15 @@ extension RequestStateExtension on RequestServiceState {
   bool get isPermissionTypesSuccess =>
       status == RequestStatus.permissionTypesSuccess;
   bool get isInitialized => status == RequestStatus.initialized;
+  bool get isCreateExitPermissionLoading =>
+      status == RequestStatus.createExitPermissionLoading;
+
+  bool get isCreateExitPermissionError =>
+      status == RequestStatus.createExitPermissionError;
+
+  bool get isCreateExitPermissionSuccess =>
+      status == RequestStatus.createExitPermissionSuccess;
+
 }
 
 enum RequestStatus {
@@ -46,8 +55,11 @@ enum RequestStatus {
   permissionTimeError,
   permissionTimeLoading,
   permissionTypesLoading,
+  createExitPermissionLoading,
   permissionTimeSuccess,
   permissionTypesSuccess,
+  createExitPermissionSuccess,
+  createExitPermissionError,
   expanded,
 }
 
@@ -58,6 +70,7 @@ final class RequestServiceState extends Equatable {
   final List<PermissionType> permissionTypes;
   final List<PermissionTime> permissionTimes;
   final int? expandedIndex;
+  final String? errorMassage;
 
   const RequestServiceState({
     this.status = RequestStatus.initialized,
@@ -66,6 +79,7 @@ final class RequestServiceState extends Equatable {
     this.expandedIndex,
     this.permissionTypes = const [],
     this.permissionTimes = const [],
+    this.errorMassage
   });
 
   RequestServiceState copyWith({
@@ -76,6 +90,7 @@ final class RequestServiceState extends Equatable {
     bool clearExpandedIndex = false,
     List<PermissionType>? permissionTypes,
     List<PermissionTime>? permissionTimes,
+    String? errorMessage
   }) {
     return RequestServiceState(
       status: status ?? this.status,
@@ -85,6 +100,7 @@ final class RequestServiceState extends Equatable {
           clearExpandedIndex ? null : (expandedIndex ?? this.expandedIndex),
       permissionTypes: permissionTypes ?? this.permissionTypes,
       permissionTimes: permissionTimes ?? this.permissionTimes,
+      errorMassage: errorMessage ?? this.errorMassage
     );
   }
 
@@ -96,5 +112,7 @@ final class RequestServiceState extends Equatable {
         expandedIndex,
         permissionTypes,
         permissionTimes,
+        errorMassage,
+
       ];
 }

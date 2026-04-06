@@ -117,29 +117,34 @@ class RequestServiceCubit extends Cubit<RequestServiceState> {
 
   /// create exit permission request
   Future createExitPermissionRequest() async {
+    emit(state.copyWith(status: RequestStatus.createExitPermissionLoading));
 
-      final result = await _createExitPermissionUseCase.call(
-        params: CreateExitPermissionParams(
-            employeeId: int.parse(CacheHelper.getString(key: CacheKeys.employeeId) ?? "1" ),
-            // permissionType:int.parse(permissionTimeTypeController.text),
-            permissionType:permissionTypeItems.indexWhere((item) => item.value == permissionTypeController.text) + 1,
-            type: permissionTimeTypeController.text ,
-            // type: "first" ,
-            exitDate: permissionDateController.text,
-            // exitDate: "2026-7-12",
-            numberOfHours: int.parse(durationController.text),
-            // numberOfHours: 1,
-            stageId: 0,
-            leavesAttachment: "",
-            leavesAttachmentName: "",
-            notes: "test "
-        ),
-      );
-      result.fold(
-            (failure) => emit(state.copyWith()),
-            (permission) => emit(state.copyWith()),
-      );
+    final result = await _createExitPermissionUseCase.call(
+      params: CreateExitPermissionParams(
+          employeeId: int.parse(CacheHelper.getString(key: CacheKeys.employeeId) ?? "1" ),
+          permissionType: permissionTypeItems.indexWhere((item) => item.value == permissionTypeController.text) + 1,
+          type: permissionTimeTypeController.text,
+          exitDate: permissionDateController.text,
+          numberOfHours: int.parse(durationController.text),
+          stageId: 0,
+          leavesAttachment: "",
+          leavesAttachmentName: "",
+          notes: "test "
+      ),
+    );
 
+    result.fold(
+      (failure) {
+
+        emit(state.copyWith(
+          status: RequestStatus.createExitPermissionError,
+          errorMessage: failure.message,
+        ));
+      },
+      (permission) {
+        emit(state.copyWith(status: RequestStatus.createExitPermissionSuccess));
+      },
+    );
   }
 
   /// open specific question

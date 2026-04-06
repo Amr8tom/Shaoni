@@ -5,3 +5,16 @@
 5- i need post api to update user data (name , mobile , email , password)
 6- need api to show statics for total number of requests with status ()
 7- need to fill data  for service in arabic
+
+for me =========
+1- adding notes and files and files names
+2- fix hijri date
+3- change fixed image for profile
+4- bloc some navigation items from the manager
+5- adding validation on the manager accepting request
+6- update status for the request according to the apis
+7- الاستاتس بتاعه حاله الطلب اشيلها من المدير
+8- اسم الخانه بتاعه طلبات اللي الجايه من المدير طلبات تحت الموافقه
+اتاكد من مصظفي من دي نقطه ٧ و ٨
+9- add 2 tabs and scrolling
+?
