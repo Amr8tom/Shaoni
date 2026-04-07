@@ -28,7 +28,10 @@ class ChooseNewRequestServicesScreen extends StatelessWidget {
               padding: EdgeInsets.symmetric(horizontal: AppSizes.padding),
               child: Container(
                 child: Skeletonizer(
-                  enabled: controllerMyServices.state.status.isLoading?true:false,
+                  enabled: controllerMyServices.state.status.isLoading
+                      ? true
+                      : false,
+                  containersColor: ColorRes.black.withOpacity(0.1),
                   child: GridView.builder(
                     padding: EdgeInsets.only(top: AppSizes.padding * 2),
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -61,16 +64,14 @@ class ChooseNewRequestServicesScreen extends StatelessWidget {
                           child: Text(
                             S.current.localeee == "en"
                                 ? controllerMyServices
-                                        .state
-                                        .services![index]
-                                        .nameEn ??
+                                        .state.services![index].nameEn ??
                                     ""
                                 : controllerMyServices
-                                        .state
-                                        .services?[index]
-                                        .nameAr ??
+                                        .state.services?[index].nameAr ??
                                     "",
-                            style: Theme.of(context).textTheme.bodyLarge
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyLarge
                                 ?.copyWith(color: ColorRes.black),
                           ),
                         ),

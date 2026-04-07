@@ -2,7 +2,7 @@ part of 'navigation_cubit.dart';
 
 @immutable
 final class NavigationState extends Equatable {
-  final GeneralStatus status;
+  final NavigationStatus status;
   final int notificationCount;
   final bool isGuest;
   final UserEntity? user;
@@ -10,7 +10,7 @@ final class NavigationState extends Equatable {
 
   const NavigationState({
     this.isGuest = false,
-    this.status = GeneralStatus.initialized,
+    this.status = NavigationStatus.initialized,
     this.notificationCount = 0,
     this.user,
     this.screens = const [
@@ -23,7 +23,7 @@ final class NavigationState extends Equatable {
 
   ///copyWith
   NavigationState copyWith({
-    GeneralStatus? status,
+    NavigationStatus? status,
     int? notificationCount,
     UserEntity? user,
     bool? isGuest,

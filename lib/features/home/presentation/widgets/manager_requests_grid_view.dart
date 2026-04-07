@@ -8,6 +8,8 @@ import 'package:shaoni/core/routing/route_names.dart';
 import 'package:shaoni/features/home/presentation/widgets/home_status_badge.dart';
 import 'package:shaoni/features/home/presentation/widgets/order_text_card.dart';
 import 'package:skeletonizer/skeletonizer.dart';
+import '../../../../core/local_storage/cache_helper.dart';
+import '../../../../core/local_storage/cache_keys.dart';
 import '../../../../generated/l10n.dart';
 import '../../../my-requests/presentation/controller/my_requests_cubit.dart';
 import '../../../navigation/presentation/controllers/navigation_cubit.dart';
@@ -20,6 +22,28 @@ class ManagerRequestsGridView extends StatelessWidget {
     final controller = context.watch<MyRequestsCubit>();
     final navController =context.watch<NavigationCubit>();
     /// Sample data - replace with actual data later
+    ///
+
+    controller.managerScrollController.addListener(() {
+      // If we are 200 pixels away from the bottom, fetch more!
+      if (controller.state.status.isPageLoading) {
+      } else {
+        if (controller.managerScrollController.position.pixels >=
+            controller.managerScrollController.position.maxScrollExtent - 160) {
+          // print("employee id in user request grid view ${CacheHelper.getString(key: CacheKeys.employeeId)}");
+          // print(CacheHelper.getString(key: CacheKeys.employeeId));
+          if(controller.state.requests!.totalPages > controller.managerPage ){
+            controller.getAllUserRequests(
+                employeeId: int.parse(
+                    CacheHelper.getString(key: CacheKeys.employeeId) ??
+                        navController.state.user!.employeeId.toString()),
+                isFirestTime: false);
+          }
+
+        }
+      }
+    });
+
     return SizedBox(
       // height: AppSizes.fullHeight * 0.5,
       child: Skeletonizer(
@@ -36,7 +60,6 @@ class ManagerRequestsGridView extends StatelessWidget {
           // physics: const NeverScrollableScrollPhysics(),
           itemCount: controller.state.itemsManager?.length,
           itemBuilder: (context, index) {
-
             return _orderCard(
               context,
               status: controller.state.itemsManager?[index].request?.odooStatus??'',

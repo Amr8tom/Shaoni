@@ -16,10 +16,10 @@ class OrderTextCard extends StatelessWidget {
       children: [
 
         Text(
-          title+ ":    ",
+          title+ ": ",
           style: Theme.of(context).textTheme.bodyLarge?.copyWith(
             color: ColorRes.black,
-            fontSize: AppSizes.fontSizeSm*0.74,
+            fontSize: AppSizes.fontSizeSm*0.70,
             fontWeight: FontWeight.w800,
           ),
           overflow: TextOverflow.ellipsis,
@@ -30,7 +30,9 @@ class OrderTextCard extends StatelessWidget {
           result ,
           style: Theme.of(
             context,
-          ).textTheme.bodyMedium?.copyWith(color: ColorRes.grey),
+          ).textTheme.bodyMedium?.copyWith(color: ColorRes.grey,
+          fontSize:AppSizes.fontSizeSm*0.86
+          ),
         ),
       ],
     );

@@ -40,9 +40,9 @@ class RequestDataWidget extends StatelessWidget {
                         color: ColorRes.grey2.withOpacity(0.5),
                       ),
                       controller: controller.permissionDateController,
+                      readOnly: true,
                       onTap: () async {
-                        final DateTime? pickedDate =
-                        await showDatePicker(
+                        final DateTime? pickedDate = await showDatePicker(
                           context: context,
                           initialDate: DateTime.now(),
                           firstDate: DateTime(2026),
@@ -92,9 +92,12 @@ class RequestDataWidget extends StatelessWidget {
                             );
                           },
                         );
-                        controller.permissionDateController.text= DateFormat('yyyy-MM-dd').format(pickedDate??DateTime.now());
+                        if (pickedDate != null) {
+                          controller.permissionDateController.text =
+                              DateFormat('yyyy-MM-dd', 'en_US').format(pickedDate);
+                        }
                       },
-                      validator:    (value) {
+                      validator: (value) {
                         if (value == null || value.isEmpty) {
                           return S.current.pleaseEndterValue;
                         }
@@ -136,8 +139,8 @@ class RequestDataWidget extends StatelessWidget {
                       color: ColorRes.white,
                       child: DropdownButtonFormField<String>(
                         style: TextStyle(
-                          fontSize: AppSizes.fontSizeSm,
-                          color: ColorRes.grey2.withOpacity(0.7),
+                          fontSize: AppSizes.fontSizeSm*0.7,
+                          color: ColorRes.black.withOpacity(0.7),
                         ),
                         decoration: InputDecoration(
                           hintText: S.current.permissionType,
@@ -180,8 +183,8 @@ class RequestDataWidget extends StatelessWidget {
                       color: ColorRes.white,
                       child: DropdownButtonFormField<String>(
                         style: TextStyle(
-                          fontSize: AppSizes.fontSizeSm,
-                          color: ColorRes.grey2.withOpacity(0.7),
+                          fontSize: AppSizes.fontSizeSm*0.7,
+                          color: ColorRes.black.withOpacity(0.7),
                         ),
                         decoration: InputDecoration(
                           hintText: S.current.permissionTime,

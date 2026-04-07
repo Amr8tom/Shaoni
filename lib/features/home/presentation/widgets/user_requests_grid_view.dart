@@ -30,11 +30,14 @@ class UserRequestsGridView extends StatelessWidget {
             controller.userScrollController.position.maxScrollExtent - 160) {
           // print("employee id in user request grid view ${CacheHelper.getString(key: CacheKeys.employeeId)}");
           // print(CacheHelper.getString(key: CacheKeys.employeeId));
-          controller.getAllUserRequests(
-              employeeId: int.parse(
-                  CacheHelper.getString(key: CacheKeys.employeeId) ??
-                      navController.state.user!.employeeId.toString()),
-              isFirestTime: false);
+          if(controller.state.requests!.totalPages > controller.userPage ){
+            controller.getAllUserRequests(
+                employeeId: int.parse(
+                    CacheHelper.getString(key: CacheKeys.employeeId) ??
+                        navController.state.user!.employeeId.toString()),
+                isFirestTime: false);
+          }
+
         }
       }
     });
@@ -59,7 +62,10 @@ class UserRequestsGridView extends StatelessWidget {
                 // physics: const NeverScrollableScrollPhysics(),
                 itemCount: controller.state.itemsUser?.length,
                 itemBuilder: (context, index) {
-                  return _orderCard(
+                  // if (controller.state.itemsUser?[index].request?.requestId ==
+                  //     null) {return SizedBox();}else
+                  // {
+                    return _orderCard(
                     context,
                     status: controller
                             .state.itemsUser?[index].request?.odooStatus ??
@@ -129,8 +135,8 @@ class UserRequestsGridView extends StatelessWidget {
                                     : false,
                           });
                     },
-                  );
-                },
+                  );}
+                // },
               ),
             ),
           );

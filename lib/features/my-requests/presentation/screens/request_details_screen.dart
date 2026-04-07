@@ -139,7 +139,7 @@ class RequestDetailsScreen extends StatelessWidget {
                             title: S.current.permissionDate,
                             result: permissionDate,
                           ),
-                          const Sizer(width: 20),
+                          const Sizer(width: 10),
                           OrderTextCard(
                             title: S.current.permissionTime,
                             result: permissionDate,
