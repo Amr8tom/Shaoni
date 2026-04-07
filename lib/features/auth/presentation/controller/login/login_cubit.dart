@@ -22,6 +22,35 @@ class LoginCubit extends Cubit<LoginState> {
     this._loginUseCase,
   ) : super(LoginState());
 
+  // Future<void> login() async {
+  //   if (loginFormKey.currentState!.validate()) {
+  //     emit(state.copyWith(status: LoginStatus.loginLoading));
+  //     final result = await _loginUseCase.call(
+  //       params: LoginParams(
+  //         userName: nameController.text.trim(),
+  //         password: passwordController.text.trim(),
+  //       ),
+  //     );
+  //     print(result);
+  //     result.fold(
+  //       (failure) {
+  //         emit(
+  //         state.copyWith(
+  //           status: LoginStatus.error,
+  //           loginErrorMassage: failure.message,
+  //         ),
+  //       );},
+  //       (data) async {
+  //         await CacheHelper.putString(key: CacheKeys.token, value: data.accessToken!);
+  //         await CacheHelper.putString(key: CacheKeys.userId, value: data.id.toString());
+  //           emit(
+  //           state.copyWith(status: LoginStatus.loggedIn, token: data.accessToken, userID: data.id),
+  //         );
+  //       },
+  //     );
+  //   }
+  // }
+
   Future<void> login() async {
     if (loginFormKey.currentState!.validate()) {
       emit(state.copyWith(status: LoginStatus.loginLoading));
@@ -31,21 +60,21 @@ class LoginCubit extends Cubit<LoginState> {
           password: passwordController.text.trim(),
         ),
       );
-      print(result);
-      print('================================');
       result.fold(
-        (failure) => emit(
-          state.copyWith(
+            (failure) {
+          emit(state.copyWith(
             status: LoginStatus.error,
             loginErrorMassage: failure.message,
-          ),
-        ),
-        (data) async {
+          ));
+        },
+            (data) async {
           await CacheHelper.putString(key: CacheKeys.token, value: data.accessToken!);
           await CacheHelper.putString(key: CacheKeys.userId, value: data.id.toString());
-            emit(
-            state.copyWith(status: LoginStatus.loggedIn, token: data.accessToken, userID: data.id),
-          );
+          emit(state.copyWith(
+            status: LoginStatus.loggedIn,
+            token: data.accessToken,
+            userID: data.id,
+          ));
         },
       );
     }

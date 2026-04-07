@@ -92,14 +92,14 @@ class DioHelper {
           response.statusCode == 200 ||
           response.statusCode == 201) {
         return response.data;
-      } else if (response.statusCode == 403 || response.statusCode == 401) {
+      } else if (response.statusCode == 403 || response.statusCode == 401|| response.statusCode == 400) {
         if(response is String){
           throw ServerFailure.fromString(response.data);
         }else {
           throw ServerFailure.fromMap(response.data);
         }
       }else if (response.statusCode == 400) {
-        throw ServerFailure(message: " Server Failure");
+        throw ServerFailure(message: "server failure");
       }
     } on DioException catch (error) {
       print("erro ========================================> $error");

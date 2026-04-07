@@ -44,7 +44,6 @@ class RequestDataWidget extends StatelessWidget {
                         final DateTime? pickedDate =
                         await showDatePicker(
                           context: context,
-                          locale: const Locale('en', 'US'),
                           initialDate: DateTime.now(),
                           firstDate: DateTime(2026),
                           lastDate: DateTime(2100),

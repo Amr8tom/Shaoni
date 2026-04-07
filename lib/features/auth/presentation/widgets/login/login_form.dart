@@ -21,102 +21,89 @@ class LoginForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-  create: (context) => serviceLocator<LoginCubit>(),
-  child: BlocConsumer<LoginCubit, LoginState>(
-      listener: (context, state) {
-        // TODO: implement listener
-        if (state.status.isLoggedIn) {
-          context.pushNamed(DRoutesName.OTPRoute);
+    final controller=context.read<LoginCubit>();
 
-        }
-      },
-      builder: (context, state) {
-        final controller=context.read<LoginCubit>();
-        return Form(
-          key: controller.loginFormKey,
-          child: Container(
-            decoration: BoxDecoration(
-              color: ColorRes.white,
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(AppSizes.borderRadiusXXLg),
-                topRight: Radius.circular(AppSizes.borderRadiusXXLg),
+    return Form(
+      key: controller.loginFormKey,
+      child: Container(
+        decoration: BoxDecoration(
+          color: ColorRes.white,
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(AppSizes.borderRadiusXXLg),
+            topRight: Radius.circular(AppSizes.borderRadiusXXLg),
+          ),
+        ),
+        width: double.infinity,
+        padding: EdgeInsets.only(left: AppSizes.xl, right: AppSizes.xl),
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              /// Title
+              const Sizer(height: 30),
+              Text(
+                S.current.login,
+                style: Theme.of(context).textTheme.headlineMedium,
+                textAlign: TextAlign.center,
+                maxLines: 5,
               ),
-            ),
-            width: double.infinity,
-            padding: EdgeInsets.only(left: AppSizes.xl, right: AppSizes.xl),
-            child: SingleChildScrollView(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
+
+              /// make size
+              const Sizer(height: 10),
+
+              ///
+              AuthTextField(
+                validator: Validators.username,
+                hint: S.current.userName,
+                controller: controller.nameController,
+                prefixIcon: Icon(Icons.person, color: ColorRes.grey),
+              ),
+              AuthTextField(
+                isPassword: true,
+                validator: Validators.password,
+                hint: S.current.password,
+                controller: controller.passwordController,
+                prefixIcon: Icon(
+                  Icons.lock_open_sharp,
+                  color: ColorRes.grey,
+                ),
+              ),
+              const Sizer(height: 8),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  /// Title
-                  const Sizer(height: 30),
-                  Text(
-                    S.current.login,
-                    style: Theme.of(context).textTheme.headlineMedium,
-                    textAlign: TextAlign.center,
-                    maxLines: 5,
-                  ),
-
-                  /// make size
-                  const Sizer(height: 10),
-
-                  ///
-                  AuthTextField(
-                    validator: Validators.username,
-                    hint: S.current.userName,
-                    controller: controller.nameController,
-                    prefixIcon: Icon(Icons.person, color: ColorRes.grey),
-                  ),
-                  AuthTextField(
-                    isPassword: true,
-                    validator: Validators.password,
-                    hint: S.current.password,
-                    controller: controller.passwordController,
-                    prefixIcon: Icon(
-                      Icons.lock_open_sharp,
-                      color: ColorRes.grey,
-                    ),
-                  ),
-                  const Sizer(height: 8),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      GestureDetector(
-                        onTap: () {
-                          showOTPPopUp(
-                            context: context,
-                            email: 'amr8tom@gmail.com',
-                          );
-                        },
-                        child: Text(
-                          S.current.forgetPassword,
-                          style: Theme.of(
-                            context,
-                          ).textTheme.bodyMedium?.copyWith(
-                            color: ColorRes.black,
-                            fontWeight: FontWeight.w600,
-                          ),
-                        ),
+                  GestureDetector(
+                    onTap: () {
+                      showOTPPopUp(
+                        context: context,
+                        email: 'amr8tom@gmail.com',
+                      );
+                    },
+                    child: Text(
+                      S.current.forgetPassword,
+                      style: Theme.of(
+                        context,
+                      ).textTheme.bodyMedium?.copyWith(
+                        color: ColorRes.black,
+                        fontWeight: FontWeight.w600,
                       ),
-                    ],
-                  ),
-                  const Sizer(height: 20),
-                  AuthButton(
-                    text: S.current.login,
-                    onPressed: () => controller.login(),
-                    width: double.infinity,
-                    height: AppSizes.buttonHeight,
-                    textColor: ColorRes.white,
-                    backgroundColor: ColorRes.primary,
+                    ),
                   ),
                 ],
               ),
-            ),
+              const Sizer(height: 20),
+              AuthButton(
+                text: S.current.login,
+                onPressed: () => controller.login(),
+                width: double.infinity,
+                height: AppSizes.buttonHeight,
+                textColor: ColorRes.white,
+                backgroundColor: ColorRes.primary,
+              ),
+            ],
           ),
-        );
-      },
-    ),
-);
+        ),
+      ),
+    );
   }
 }

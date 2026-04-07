@@ -23,7 +23,7 @@ class AuthRepositoriesImp implements AuthRepositories{
         print(result);
         return Right(result);
       } on ServerFailure catch (e) {
-        return left( ServerFailure(message: "server failure"));
+        return Left(e);
       }
     } else {
       return Left(CacheFailure());

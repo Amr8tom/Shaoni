@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shaoni/core/extentions/navigation_extension.dart';
+import 'package:shaoni/features/auth/presentation/controller/login/login_cubit.dart';
+import 'package:shaoni/features/auth/presentation/controller/login/login_cubit.dart';
 import '../../../../core/constants/app_sizes.dart';
 import '../../../../core/constants/asset_resoures.dart';
 import '../../../../core/constants/colors.dart';
+import '../../../../core/routing/route_names.dart';
+import '../../../../core/service_locator/service_locator.dart';
 import '../widgets/login/login_form.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -9,46 +15,72 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      extendBodyBehindAppBar: true,
-      backgroundColor: ColorRes.error,
-      body: Stack(
-        children: [
-          ///  Background Image - outside SafeArea to extend behind status bar & app bar
-          Positioned.fill(
-            child: Image.asset(
-              AssetRes.backGroundImage,
-              width: AppSizes.fullWidth,
-              fit: BoxFit.cover,
-              alignment: Alignment.topCenter,
-            ),
-          ),
+    return BlocProvider(
+      create: (context) => serviceLocator<LoginCubit>(),
+      child: BlocConsumer<LoginCubit, LoginState>(
+        listener: (context, state) {
+          if (state.status.isLoggedIn) {
+            context.pushNamed(DRoutesName.OTPRoute);
+          }
+          if (state.status.isError) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text(state.loginErrorMassage ?? "Error"),
+                backgroundColor: ColorRes.error2.withOpacity(0.5),
+                duration: Duration(seconds: 3),
+              ),
+            );
 
-            Column(
+
+
+          }
+        },
+        builder: (context, state) {
+          return Scaffold(
+            extendBodyBehindAppBar: true,
+            backgroundColor: ColorRes.error,
+            body: Stack(
               children: [
-                /// Top section with illustration
-                Expanded(
-                  flex: 5,
-                  child: Padding(
-                    padding: EdgeInsets.symmetric(
-                      horizontal: AppSizes.xl,
-                      vertical: AppSizes.xl,
-                    ),
-                    child: Center(
-                      child: Image.asset(
-                        AssetRes.logoWithName,
-                        fit: BoxFit.contain,
-                      ),
-                    ),
+
+                ///  Background Image - outside SafeArea to extend behind status bar & app bar
+                Positioned.fill(
+                  child: Image.asset(
+                    AssetRes.backGroundImage,
+                    width: AppSizes.fullWidth,
+                    fit: BoxFit.cover,
+                    alignment: Alignment.topCenter,
                   ),
                 ),
 
-                /// Bottom section with text content
-                const Expanded(flex: 4, child: LoginForm()),
+                Column(
+                  children: [
+
+                    /// Top section with illustration
+                    Expanded(
+                      flex: 5,
+                      child: Padding(
+                        padding: EdgeInsets.symmetric(
+                          horizontal: AppSizes.xl,
+                          vertical: AppSizes.xl,
+                        ),
+                        child: Center(
+                          child: Image.asset(
+                            AssetRes.logoWithName,
+                            fit: BoxFit.contain,
+                          ),
+                        ),
+                      ),
+                    ),
+
+                    /// Bottom section with text content
+                    const Expanded(flex: 4, child: LoginForm()),
+                  ],
+                ),
+
               ],
             ),
-
-        ],
+          );
+        },
       ),
     );
   }

@@ -22,11 +22,14 @@ class AuthRemoteDataSourcesImp implements AuthRemoteDataSources {
 
   @override
   Future<LoginEntity> login({required LoginParams params}) async {
+    try{
     final reponse = await _dio.postData(URL: URL.login,body: params.toJson());
    if (reponse != null) {
-      return LoginModel.fromJson(reponse);
+        return LoginModel.fromJson(reponse);
     } else {
       throw ServerFailure(message: 'server failure');
+    }} on ServerFailure catch (e) {
+      throw ServerFailure(message: e.message);
     }
   
   }
