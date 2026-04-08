@@ -17,7 +17,7 @@ class URL {
   static const String getCountUnreadedNotificaion =
       '$baseUrl/getCountUnreadedNotificaion';
   static const String privacyPolicy =
-      "https://sites.google.com/view/ejaad-tea-by-eng-amr-alaa/home";
+      "https://sites.google.com/view/shaoni?usp=sharing";
   static const String taskUniqueName = "s-daily-update";
   static const String taskInitUniqueName = "s-one-time-scheduler";
   static const String taskName = "sBackgroundTask";

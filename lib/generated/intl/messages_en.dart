@@ -545,6 +545,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "loginTitle": MessageLookupByLibrary.simpleMessage("Welcome  "),
     "loginWithPhone": MessageLookupByLibrary.simpleMessage("Login with Phone"),
     "logout": MessageLookupByLibrary.simpleMessage("Logout"),
+    "logoutQuestion": MessageLookupByLibrary.simpleMessage(
+      "Are you sure you want to logout?",
+    ),
     "lostBag": MessageLookupByLibrary.simpleMessage("Lost My Bags in Airport"),
     "luggage": MessageLookupByLibrary.simpleMessage("Luggage"),
     "lun": MessageLookupByLibrary.simpleMessage("Lunch"),
@@ -628,6 +631,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "noResultsFound": MessageLookupByLibrary.simpleMessage("No results found"),
     "noUserFound": MessageLookupByLibrary.simpleMessage(
       "These credentials are not found",
+    ),
+    "notImplementedYet": MessageLookupByLibrary.simpleMessage(
+      "This is not implemented yet",
     ),
     "notVerified": MessageLookupByLibrary.simpleMessage(
       "please verify your account",
@@ -816,6 +822,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "registration": MessageLookupByLibrary.simpleMessage(
       "Reservation Management",
     ),
+    "rejectRequest": MessageLookupByLibrary.simpleMessage("Reject Request"),
     "rejectedRequest": MessageLookupByLibrary.simpleMessage("Rejected Request"),
     "remainingLeaves": MessageLookupByLibrary.simpleMessage("Remaining Leaves"),
     "rememberMe": MessageLookupByLibrary.simpleMessage("Remember Me"),
@@ -1150,6 +1157,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "worktype": MessageLookupByLibrary.simpleMessage(
       "write more details like : Type Of The Service",
+    ),
+    "writeAcceptOrRejectReason": MessageLookupByLibrary.simpleMessage(
+      " write the reason of accepting or rejecting the request",
     ),
     "writeAllergies": MessageLookupByLibrary.simpleMessage(
       "write if you have any allergies problems",

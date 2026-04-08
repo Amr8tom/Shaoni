@@ -63,7 +63,7 @@ class CreateDeleteButtons extends StatelessWidget {
                             vertical: AppSizes.padding * 0.6,
                           ),
                           decoration: BoxDecoration(
-                            color: ColorRes.red,
+                            color: ColorRes.grey.withOpacity(0.7),
                             borderRadius: BorderRadius.circular(
                               AppSizes.borderRadiusXXLg,
                             ),

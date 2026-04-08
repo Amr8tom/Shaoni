@@ -180,7 +180,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "continueShoping": MessageLookupByLibrary.simpleMessage(
       "مُتـابعـة التسـوق",
     ),
-    "continuee": MessageLookupByLibrary.simpleMessage("المواصله"),
+    "continuee": MessageLookupByLibrary.simpleMessage("المواصلة"),
     "contvertTo": MessageLookupByLibrary.simpleMessage(
       " يمكنك تحويل هذه النقط الي محفظتك بقيمة  ",
     ),
@@ -521,6 +521,9 @@ class MessageLookup extends MessageLookupByLibrary {
       "تسجيل الدخول بالهاتف",
     ),
     "logout": MessageLookupByLibrary.simpleMessage("تسجيل الخروج"),
+    "logoutQuestion": MessageLookupByLibrary.simpleMessage(
+      "هل أنت متأكد من رغبتك في تسجيل الخروج؟",
+    ),
     "lostBag": MessageLookupByLibrary.simpleMessage("فقدت حقائبي في المطار"),
     "luggage": MessageLookupByLibrary.simpleMessage("أمتعة السفر"),
     "lun": MessageLookupByLibrary.simpleMessage("الغداء"),
@@ -606,6 +609,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "noResultsFound": MessageLookupByLibrary.simpleMessage("لا توجد نتائج"),
     "noUserFound": MessageLookupByLibrary.simpleMessage(
       "لم يتم العثور على هذه البيانات",
+    ),
+    "notImplementedYet": MessageLookupByLibrary.simpleMessage(
+      "هذه الميزة لم يتم تنفيذها بعد",
     ),
     "notVerified": MessageLookupByLibrary.simpleMessage("يرجى تفعيل حسابك"),
     "notes": MessageLookupByLibrary.simpleMessage("ملاحظات إضافية"),
@@ -781,6 +787,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "تم تسـجيل حســابك بنجــاح",
     ),
     "registration": MessageLookupByLibrary.simpleMessage("ادارة الحجوزات"),
+    "rejectRequest": MessageLookupByLibrary.simpleMessage("رفض الطلب"),
     "rejectedRequest": MessageLookupByLibrary.simpleMessage("طلب مرفوض"),
     "remainingLeaves": MessageLookupByLibrary.simpleMessage(
       "الإجازات المتبقية",
@@ -1094,6 +1101,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "workName": MessageLookupByLibrary.simpleMessage("اضبط اسم منظمتك"),
     "worktype": MessageLookupByLibrary.simpleMessage(
       "اكتب تفاصيل أكثر مثل: نوع الخدمة",
+    ),
+    "writeAcceptOrRejectReason": MessageLookupByLibrary.simpleMessage(
+      " اكتب سبب قبول أو رفض الطلب",
     ),
     "writeAllergies": MessageLookupByLibrary.simpleMessage(
       "اكتب إذا كان لديك أي مشاكل الحساسية",

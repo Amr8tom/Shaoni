@@ -11,10 +11,11 @@ plugins {
 
 android {
     namespace = "com.shaoni.shaoni"
-    compileSdk = flutter.compileSdkVersion
-    ndkVersion = flutter.ndkVersion
+    compileSdk = 36
+    ndkVersion = "27.0.12077973"
 
     compileOptions {
+        isCoreLibraryDesugaringEnabled = true // Add this line
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
@@ -28,10 +29,11 @@ android {
         applicationId = "com.shaoni.shaoni"
         // You can update the following values to match your application needs.
         // For more information, see: https://flutter.dev/to/review-gradle-config.
-        minSdk = flutter.minSdkVersion
-        targetSdk = flutter.targetSdkVersion
-        versionCode = flutter.versionCode
-        versionName = flutter.versionName
+        minSdk = 24
+        targetSdk = 36
+        versionCode = 1
+        versionName = "1.0.0"
+        multiDexEnabled= true
     }
 
     buildTypes {
@@ -41,6 +43,14 @@ android {
             signingConfig = signingConfigs.getByName("debug")
         }
     }
+}
+
+dependencies {
+//    implementation(platform("com.google.firebase:firebase-bom:33.15.0"))
+//    implementation("com.google.firebase:firebase-analytics") // Analytics (optional)
+//    implementation("com.google.firebase:firebase-crashlytics")
+    coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.1.4")
+//    coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.1.4")
 }
 
 flutter {

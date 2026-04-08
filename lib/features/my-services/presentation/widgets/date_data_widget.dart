@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hijri/hijri_calendar.dart';
 import 'package:intl/intl.dart';
 
 import '../../../../core/constants/app_sizes.dart';
@@ -14,6 +15,17 @@ class DateDataWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    HijriCalendar _today = HijriCalendar.now();
+    HijriCalendar.setLocal('ar');
+
+
+    final hijriDate=DateConverter.convertGregorianToHijri(
+      DateFormat('dd-MM-yyyy', 'ar').format(DateTime(
+        DateTime.now().year,
+        DateTime.now().month,
+        DateTime.now().day,
+      )).toString(),
+    );
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -26,6 +38,7 @@ class DateDataWidget extends StatelessWidget {
         Row(
           spacing: 10,
           children: [
+            /// birthDate time
             Flexible(
               child: AuthTextField(
                 borderRadius: AppSizes.borderRadiusMd,
@@ -35,7 +48,7 @@ class DateDataWidget extends StatelessWidget {
                   color: ColorRes.grey2.withOpacity(0.5),
                 ),
                 controller: TextEditingController(
-                  text: DateFormat('dd/MM/yyyy', 'en_US').format(DateTime.now()),
+                  text: DateFormat('dd/MM/yyyy', S.current.localeee).format(DateTime.now()),
                 ),
                 readOnly: true,
                 validator: (value) {
@@ -46,6 +59,7 @@ class DateDataWidget extends StatelessWidget {
                 },
               ),
             ),
+            /// hijriDate Time
             Flexible(
               child: AuthTextField(
                 borderRadius: AppSizes.borderRadiusMd,
@@ -55,13 +69,8 @@ class DateDataWidget extends StatelessWidget {
                   color: ColorRes.grey2.withOpacity(0.5),
                 ),
                 controller: TextEditingController(
-                  text: DateConverter.convertGregorianToHijriFormatted(
-                    DateFormat('dd/MM/yyyy', 'en_Us').format(DateTime(
-                      DateTime.now().year,
-                      DateTime.now().month,
-                      DateTime.now().day,
-                    )).toString(),
-                  ),
+                  text:    _today.toFormat("yyyy/MMMM/dd",)
+                  ,
                 ),
                 readOnly: true,
                 validator: (value) {

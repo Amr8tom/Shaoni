@@ -44,7 +44,17 @@ class ChooseNewRequestServicesScreen extends StatelessWidget {
                     itemBuilder: (BuildContext context, int index) {
                       return GestureDetector(
                         onTap: () {
-                          context.pushNamed(DRoutesName.requestCertainService);
+                          /// navigate to hr.exit.permission by its name not id cuz problem in ids and conflict between diffrent partners
+                          if (controllerMyServices
+                                  .state.services![index].nameEn ==
+                              "hr.exit.permission") {
+                            context
+                                .pushNamed(DRoutesName.requestCertainService);
+                          } else {
+                            ///
+                            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                                content: Text(S.current.notImplementedYet)));
+                          }
                         },
                         child: Container(
                           padding: EdgeInsets.symmetric(

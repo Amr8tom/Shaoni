@@ -30,7 +30,12 @@ class CommentWritingWidget extends StatelessWidget {
             ),
             const Divider(color: ColorRes.grey4),
             TextFormField(
-              maxLines: 5,
+              /// change border color for text form filed
+              decoration: InputDecoration(
+                hintText: S.current.writeAcceptOrRejectReason,
+                hintStyle: Theme.of(context).textTheme.bodySmall?.copyWith(color: ColorRes.grey2)
+              ),
+              maxLines: 3,
               controller: controller.commentController,
             ),
             const Sizer(height: 24),

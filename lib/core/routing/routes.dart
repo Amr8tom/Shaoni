@@ -15,6 +15,7 @@ import '../../features/navigation/presentation/screens/navigation_menu_screen.da
 import '../../features/notifications/presentation/notification_screen.dart';
 import '../../features/onboarding/presentation/screens/onboarding_screen.dart';
 import '../../features/splash/presentation/screens/splash_screen.dart';
+import '../../features/terms_conditions/presentation/terms_conditions_screen.dart';
 
 class RouteGenerator {
   /// generate Route
@@ -292,13 +293,13 @@ class RouteGenerator {
       //     settings: settings,
       //   );
       //
-      // // / terms and conditions Route
-      // case DRoutesName.termsAndConditionRoute:
-      //   return PageTransition(
-      //     child: TermsConditionsScreen(),
-      //     type: PageTransitionType.rightToLeft,
-      //     settings: settings,
-      //   );
+      /// terms and conditions Route
+      case DRoutesName.termsAndConditionRoute:
+        return PageTransition(
+          child: TermsConditionsScreen(),
+          type: PageTransitionType.rightToLeft,
+          settings: settings,
+        );
 
       /// when no routes
       default:

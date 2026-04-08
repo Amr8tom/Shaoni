@@ -34,6 +34,8 @@ dependencies:
   flutter_rating: ^2.0.2
   flutter_rating_bar: null
   skeletonizer: ^1.4.3
+  hijri: ^3.0.0
+
 
   # dev package
   dartz: ^0.10.1

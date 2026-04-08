@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shaoni/core/extentions/navigation_extension.dart';
+import 'package:shaoni/features/navigation/presentation/widgets/show_logout_dialog.dart';
+import 'package:shaoni/features/navigation/presentation/widgets/side_menu_item.dart';
 import '../../../../common/widgets/sizeboxs/Sizer.dart';
 import '../../../../core/constants/app_sizes.dart';
 import '../../../../core/constants/asset_resoures.dart';
 import '../../../../core/constants/colors.dart';
 import '../../../../core/device/device_utility.dart';
+import '../../../../core/routing/route_names.dart';
 import '../../../../features/language/presentation/controller/language_cubit.dart';
 import '../../../../generated/l10n.dart';
 import 'drawer_logo_widget.dart';
@@ -49,17 +52,22 @@ class CustomSideMenu extends StatelessWidget {
               SideMenuItem(
                 icon: AssetRes.sidePrivaceyIcon,
                 title: S.current.privacyPolicy,
-                onTap: () {},
-              ),
-              const Divider(color: ColorRes.grey5, thickness: 1),
-              SideMenuItem(
-                icon: AssetRes.sideQuestionIcon,
-                title: S.current.userPolicy,
                 onTap: () {
-                  // context.pushNamed(DRoutesName.);
+                  context.pushNamed(DRoutesName.termsAndConditionRoute);
+
                 },
               ),
+              const Divider(color: ColorRes.grey5, thickness: 1),
 
+              SideMenuItem(
+                icon: AssetRes.sidePrivaceyIcon,
+                title: S.current.logOut,
+                isIcon: true,
+                iconData: Icons.logout_outlined,
+                onTap: () {
+                  showLogoutDialog(context);
+                },
+              ),
               const Sizer(height: 200),
 
               Padding(
@@ -70,13 +78,9 @@ class CustomSideMenu extends StatelessWidget {
                     const Sizer(width: 2),
                     Text(
                       S.current.appLanguage,
-                      style: Theme
-                          .of(context)
-                          .textTheme
-                          .titleSmall
-                          ?.copyWith(
-                        fontWeight: FontWeight.w600,
-                      ),
+                      style: Theme.of(context).textTheme.titleSmall?.copyWith(
+                            fontWeight: FontWeight.w600,
+                          ),
                     ),
                     BlocBuilder<LanguageCubit, LanguageState>(
                       builder: (context, state) {
@@ -100,10 +104,7 @@ class CustomSideMenu extends StatelessWidget {
                             icon: const Icon(
                               Icons.keyboard_arrow_down_outlined,
                             ),
-                            style: Theme
-                                .of(context)
-                                .textTheme
-                                .titleSmall,
+                            style: Theme.of(context).textTheme.titleSmall,
                             dropdownColor: Colors.white,
                             borderRadius: BorderRadius.circular(
                               AppSizes.borderRadiusSm,
@@ -113,26 +114,22 @@ class CustomSideMenu extends StatelessWidget {
                                 value: 'ar',
                                 child: Text(
                                   S.current.arabic,
-                                  style: Theme
-                                      .of(context)
-                                      .textTheme
-                                      .titleSmall,
+                                  style: Theme.of(context).textTheme.titleSmall,
                                 ),
                               ),
                               DropdownMenuItem(
                                 value: 'en',
                                 child: Text(
                                   S.current.english,
-                                  style: Theme
-                                      .of(context)
-                                      .textTheme
-                                      .titleSmall,
+                                  style: Theme.of(context).textTheme.titleSmall,
                                 ),
                               ),
                             ],
                             onChanged: (String? newValue) {
                               if (newValue != null) {
                                 languageCubit.changeLanguage(newValue);
+                                context.pushReplacementNamed(
+                                    DRoutesName.navigationMenuRoute);
                               }
                             },
                           ),
@@ -152,47 +149,3 @@ class CustomSideMenu extends StatelessWidget {
     );
   }
 }
-
-class SideMenuItem extends StatelessWidget {
-  final String icon;
-  final String title;
-  final VoidCallback onTap;
-
-  const SideMenuItem({
-    super.key,
-    required this.icon,
-    required this.title,
-    required this.onTap,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return InkWell(
-      onTap: onTap,
-      child: Padding(
-        padding: EdgeInsets.all(AppSizes.padding / 2),
-        child: Row(
-          children: [
-            const Sizer(width: 20),
-            Image.asset(
-              icon,
-              color: ColorRes.primary,
-              width: AppSizes.iconLg,
-              height: AppSizes.iconLg,
-            ),
-            const Sizer(width: 12),
-            Text(
-              title,
-              style: Theme
-                  .of(
-                context,
-              )
-                  .textTheme
-                  .headlineSmall
-                  ?.copyWith(color: ColorRes.grey2),
-            ),
-          ],
-        ),
-      ),
-    );
-  }}

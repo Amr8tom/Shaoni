@@ -2,6 +2,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shaoni/common/custom_ui.dart';
+import 'package:shaoni/common/widgets/sizeboxs/Sizer.dart';
 import 'package:shaoni/core/extentions/navigation_extension.dart';
 import 'package:shaoni/core/utils/enums/general_status.dart';
 import '../../../../core/constants/app_sizes.dart';
@@ -25,44 +26,95 @@ class AcceptRequestButton extends StatelessWidget {
     }else {
       return Padding(
         padding: EdgeInsets.symmetric(horizontal: AppSizes.padding * 1.8),
-        child: GestureDetector(onTap: () {
-          context.read<MyRequestsCubit>().acceptRequest(
-              params: AcceptRequestParams(
-                  id: int.parse(requestID),
-                  statusCode: 6,
-                  comment:
-                  context
-                      .read<MyRequestsCubit>()
-                      .commentController
-                      .text));
-        },
-          child: ClipRRect(
-            borderRadius: BorderRadius.all(
-              Radius.circular(AppSizes.xxl),
-            ),
-            child: BackdropFilter(
-              filter: ImageFilter.blur(sigmaX: 4, sigmaY: 4),
-              child: Container(
-                height: AppSizes.heightcontainer,
-                decoration: BoxDecoration(
+        child: Row(
+          children: [
+            /// accept request button
+            Expanded(
+              flex: 2,
+              child: GestureDetector(
+                onTap: () {
+                  context.read<MyRequestsCubit>().acceptRequest(
+                      params: AcceptRequestParams(
+                          id: int.parse(requestID),
+                          statusCode: 6,
+                          comment: context
+                              .read<MyRequestsCubit>()
+                              .commentController
+                              .text));
+                },
+                child: ClipRRect(
                   borderRadius: BorderRadius.all(
                     Radius.circular(AppSizes.xxl),
                   ),
-                  color: ColorRes.primary.withOpacity(0.7),
-                ),
-                child: Center(
-                  child: Text(
-                    S.current.acceptRequest,
-                    style: Theme
-                        .of(context)
-                        .textTheme
-                        .bodyLarge
-                        ?.copyWith(color: ColorRes.white),
+                  child: BackdropFilter(
+                    filter: ImageFilter.blur(sigmaX: 4, sigmaY: 4),
+                    child: Container(
+                      height: AppSizes.heightcontainer,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(AppSizes.xxl),
+                        ),
+                        color: ColorRes.primary.withOpacity(0.7),
+                      ),
+                      child: Center(
+                        child: Text(
+                          S.current.acceptRequest,
+                          style: Theme
+                              .of(context)
+                              .textTheme
+                              .bodyLarge
+                              ?.copyWith(color: ColorRes.white),
+                        ),
+                      ),
+                    ),
                   ),
                 ),
               ),
             ),
-          ),
+            Sizer(width: AppSizes.padding),
+            Expanded(
+              flex: 1,
+              child: GestureDetector(
+                onTap: () {
+                  context.read<MyRequestsCubit>().acceptRequest(
+                      params: AcceptRequestParams(
+                          id: int.parse(requestID),
+                          statusCode: 8,
+                          comment: context
+                              .read<MyRequestsCubit>()
+                              .commentController
+                              .text));
+                },
+                child: ClipRRect(
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(AppSizes.xxl),
+                  ),
+                  child: BackdropFilter(
+                    filter: ImageFilter.blur(sigmaX: 4, sigmaY: 4),
+                    child: Container(
+                      height: AppSizes.heightcontainer,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(AppSizes.xxl),
+                        ),
+                        color: ColorRes.grey.withOpacity(0.7),
+                      ),
+                      child: Center(
+                        child: Text(
+                          S.current.rejectRequest,
+                          style: Theme
+                              .of(context)
+                              .textTheme
+                              .bodyLarge
+                              ?.copyWith(color: ColorRes.white),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ],
         ),
       );
     }}, listener: (BuildContext context, MyRequestsState state) {

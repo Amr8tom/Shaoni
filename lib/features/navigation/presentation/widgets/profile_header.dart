@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:shaoni/core/constants/app_sizes.dart';
-import 'package:shaoni/core/extentions/navigation_extension.dart';
-import 'package:shaoni/core/routing/route_names.dart';
 import '../../../../common/widgets/sizeboxs/Sizer.dart';
 import '../../../../core/constants/asset_resoures.dart';
 import '../../../../core/constants/colors.dart';
@@ -113,7 +110,7 @@ class ProfileHeader extends StatelessWidget {
 
   Widget _buildDefaultAvatar() {
     return Image.asset(
-      AssetRes.homeAvatarInfo,
+      AssetRes.man1,
       fit: BoxFit.fill,
     );
   }

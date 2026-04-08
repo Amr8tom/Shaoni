@@ -89,7 +89,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                         Expanded(
                           child: DButton(
                             borderRadius: AppSizes.borderRadiusXXLg,
-
                             height: AppSizes.heightcontainer,
                             text: S.current.continuee,
                             onPressed: _goToNextPage,
@@ -101,7 +100,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                         Expanded(
                           child: DButton(
                             borderRadius: AppSizes.borderRadiusXXLg,
-
                             height: AppSizes.heightcontainer,
                             text: S.current.previous,
                             onPressed: _goToPreviousPage,

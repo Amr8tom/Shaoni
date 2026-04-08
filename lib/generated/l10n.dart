@@ -109,9 +109,29 @@ class S {
     );
   }
 
+  /// `This is not implemented yet`
+  String get notImplementedYet {
+    return Intl.message(
+      'This is not implemented yet',
+      name: 'notImplementedYet',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Select Date`
   String get selectDate {
     return Intl.message('Select Date', name: 'selectDate', desc: '', args: []);
+  }
+
+  /// `Reject Request`
+  String get rejectRequest {
+    return Intl.message(
+      'Reject Request',
+      name: 'rejectRequest',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Permission Type`
@@ -152,6 +172,26 @@ class S {
   /// `New`
   String get NNew {
     return Intl.message('New', name: 'NNew', desc: '', args: []);
+  }
+
+  /// ` write the reason of accepting or rejecting the request`
+  String get writeAcceptOrRejectReason {
+    return Intl.message(
+      ' write the reason of accepting or rejecting the request',
+      name: 'writeAcceptOrRejectReason',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Are you sure you want to logout?`
+  String get logoutQuestion {
+    return Intl.message(
+      'Are you sure you want to logout?',
+      name: 'logoutQuestion',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Request Type`
