@@ -478,7 +478,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "invalidOtp": MessageLookupByLibrary.simpleMessage("رمز التحقق غير صحيح"),
     "isha": MessageLookupByLibrary.simpleMessage("العشاء"),
-    "jeddah": MessageLookupByLibrary.simpleMessage("جدة"),
+    "jeddah": MessageLookupByLibrary.simpleMessage("جده"),
     "juz": MessageLookupByLibrary.simpleMessage("جزء"),
     "juzIndex": MessageLookupByLibrary.simpleMessage("فهرس الأجزاء"),
     "kaaba": MessageLookupByLibrary.simpleMessage("طواف الكعبة"),
@@ -535,6 +535,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "main": MessageLookupByLibrary.simpleMessage("رئيسي"),
     "mainGroup": MessageLookupByLibrary.simpleMessage("المجموعة الأساسية"),
     "mainMeal": MessageLookupByLibrary.simpleMessage("الوجبات الرئيسية"),
+    "makka": MessageLookupByLibrary.simpleMessage("مكه"),
     "makkah": MessageLookupByLibrary.simpleMessage("مكة"),
     "male": MessageLookupByLibrary.simpleMessage("ذكر"),
     "managerApproval": MessageLookupByLibrary.simpleMessage("موافقة المدير"),
@@ -610,6 +611,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "noUserFound": MessageLookupByLibrary.simpleMessage(
       "لم يتم العثور على هذه البيانات",
     ),
+    "nonSaudi": MessageLookupByLibrary.simpleMessage("غير سعودي"),
     "notImplementedYet": MessageLookupByLibrary.simpleMessage(
       "هذه الميزة لم يتم تنفيذها بعد",
     ),
@@ -845,6 +847,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "safwa": MessageLookupByLibrary.simpleMessage("فندق الصفوة"),
     "salaries": MessageLookupByLibrary.simpleMessage("الرواتب والمكافأت"),
     "saleTime": MessageLookupByLibrary.simpleMessage("هذا العرض ينتهي خلال "),
+    "saudi": MessageLookupByLibrary.simpleMessage("سعودي"),
     "saudiArabia": MessageLookupByLibrary.simpleMessage("السعودية"),
     "saveAndPay": MessageLookupByLibrary.simpleMessage("حفظ والدفع"),
     "saveChanges": MessageLookupByLibrary.simpleMessage("حفظ"),

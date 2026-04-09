@@ -8,8 +8,10 @@ import 'package:shaoni/core/constants/colors.dart';
 import 'package:shaoni/core/constants/app_sizes.dart';
 import 'package:shaoni/core/service_locator/service_locator.dart';
 import 'package:shaoni/core/widgets/buttons/d_button.dart';
+import 'package:shaoni/features/navigation/data/model/user_model.dart';
 import 'package:shaoni/features/navigation/presentation/controllers/navigation_cubit.dart';
 import 'package:shaoni/features/profile/presentation/controllers/profile_cubit.dart';
+import '../../core/utils/enums/general_status.dart';
 import '../../generated/l10n.dart';
 import '../auth/presentation/widgets/auth_text_filed.dart';
 import '../navigation/presentation/widgets/custom_side_menu.dart';
@@ -20,15 +22,35 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => serviceLocator<ProfileCubit>(),
+      create: (context) {
+        final cubit = serviceLocator<ProfileCubit>();
+        final navController = context.read<NavigationCubit>();
+        cubit.initWithUser(navController.state.user as UserModel?);
+        return cubit;
+      },
       child: Scaffold(
         backgroundColor: ColorRes.scaffoldBG,
-
         drawer: const CustomSideMenu(),
-        body: BlocBuilder<ProfileCubit, ProfileState>(
+        body: BlocConsumer<ProfileCubit, ProfileState>(
+          listener: (context, state) {
+            if (state.status.isSuccess) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                 SnackBar(
+                  content: Text(state.massage ?? S.current.success),
+                ),
+              );
+            }
+            if (state.status.isError) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: Text(state.massage ?? S.current.error),
+                ),
+              );
+
+            }
+          },
           builder: (context, state) {
             final controller = context.read<ProfileCubit>();
-            final navController = context.read<NavigationCubit>();
             return Column(
               children: [
                 Expanded(
@@ -58,6 +80,7 @@ class ProfileScreen extends StatelessWidget {
                                     color: const Color(0xFFE8B4A8),
                                   ),
                                 ),
+
                                 /// Avatar image
                                 Positioned.fill(
                                   child: CircleAvatar(
@@ -67,14 +90,13 @@ class ProfileScreen extends StatelessWidget {
                                     ),
                                   ),
                                 ),
+
                                 /// Edit badge - bottom left
                                 Positioned(
                                   bottom: 0,
                                   left: 0,
                                   child: GestureDetector(
-                                    onTap: () {
-                                      // TODO: implement image picker
-                                    },
+                                    onTap: () {},
                                     child: Container(
                                       padding: EdgeInsets.all(4.w),
                                       decoration: BoxDecoration(
@@ -86,7 +108,8 @@ class ProfileScreen extends StatelessWidget {
                                         ),
                                         boxShadow: [
                                           BoxShadow(
-                                            color: ColorRes.black.withOpacity(0.15),
+                                            color: ColorRes.black
+                                                .withOpacity(0.15),
                                             blurRadius: 6,
                                           ),
                                         ],
@@ -110,7 +133,9 @@ class ProfileScreen extends StatelessWidget {
                               horizontal: AppSizes.padding / 3,
                             ),
                             child: AuthTextField(
-                              hint: navController.state?.user?.fullName ?? 'Full Name',
+                              hint: controller.nameController.text.isEmpty
+                                  ? 'Full Name'
+                                  : controller.nameController.text,
                               controller: controller.nameController,
                               prefixIcon: const Icon(Icons.person),
                               suffixIcon: Padding(
@@ -128,7 +153,9 @@ class ProfileScreen extends StatelessWidget {
                               horizontal: AppSizes.padding / 3,
                             ),
                             child: AuthTextField(
-                              hint: navController.state?.user?.phoneNumber ?? 'Phone Number',
+                              hint: controller.numberController.text.isEmpty
+                                  ? 'Phone Number'
+                                  : controller.numberController.text,
                               controller: controller.numberController,
                               prefixIcon: const Icon(Icons.phone_android),
                               suffixIcon: Padding(
@@ -146,34 +173,119 @@ class ProfileScreen extends StatelessWidget {
                               horizontal: AppSizes.padding / 3,
                             ),
                             child: AuthTextField(
-                              hint: navController.state?.user?.email ?? 'Email',
+                              readOnly: true,
+                              hint: controller.emailController.text.isEmpty
+                                  ? 'Email'
+                                  : controller.emailController.text,
                               controller: controller.emailController,
                               prefixIcon: const Icon(Icons.email_outlined),
-                              suffixIcon: Padding(
-                                padding: EdgeInsets.all(AppSizes.padding * 0.7),
-                                child: Image.asset(
-                                  AssetRes.editForProfile,
-                                  height: AppSizes.iconMd,
-                                ),
-                              ),
                             ),
                           ),
-                          SizedBox(height: 16.h),
+                          const Sizer(height: 16),
                           Padding(
                             padding: EdgeInsets.symmetric(
                               horizontal: AppSizes.padding / 3,
                             ),
-                            child: AuthTextField(
-                              hint: '**************',
-                              controller: controller.passwordController,
-                              prefixIcon: const Icon(Icons.lock_outline_rounded),
-                              suffixIcon: Padding(
-                                padding: EdgeInsets.all(AppSizes.padding * 0.7),
-                                child: Image.asset(
-                                  AssetRes.editForProfile,
-                                  height: AppSizes.iconMd,
+                            child: Row(
+                              children: [
+                                Expanded(
+                                  child: RadioListTile<int>(
+                                    title: Text(S.current.male),
+                                    value: 1,
+                                    groupValue: state.gender,
+                                    activeColor: ColorRes.primary,
+                                    contentPadding: EdgeInsets.zero,
+                                    onChanged: (value) {
+                                      if (value != null)
+                                        controller.setGender(value);
+                                    },
+                                  ),
                                 ),
-                              ),
+                                Expanded(
+                                  child: RadioListTile<int>(
+                                    title: Text(S.current.female),
+                                    value: 2,
+                                    groupValue: state.gender,
+                                    activeColor: ColorRes.primary,
+                                    contentPadding: EdgeInsets.zero,
+                                    onChanged: (value) {
+                                      if (value != null)
+                                        controller.setGender(value);
+                                    },
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.symmetric(
+                              horizontal: AppSizes.padding / 3,
+                            ),
+                            child: Row(
+                              children: [
+                                Expanded(
+                                  child: RadioListTile<int>(
+                                    title: Text(S.current.saudi ?? 'Saudi'),
+                                    value: 1,
+                                    groupValue: state.nationality,
+                                    activeColor: ColorRes.primary,
+                                    contentPadding: EdgeInsets.zero,
+                                    onChanged: (value) {
+                                      if (value != null)
+                                        controller.setNationality(value);
+                                    },
+                                  ),
+                                ),
+                                Expanded(
+                                  child: RadioListTile<int>(
+                                    title:
+                                        Text(S.current.nonSaudi ?? 'Non-Saudi'),
+                                    value: 2,
+                                    groupValue: state.nationality,
+                                    activeColor: ColorRes.primary,
+                                    contentPadding: EdgeInsets.zero,
+                                    onChanged: (value) {
+                                      if (value != null)
+                                        controller.setNationality(value);
+                                    },
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.symmetric(
+                              horizontal: AppSizes.padding / 3,
+                            ),
+                            child: Row(
+                              children: [
+                                Expanded(
+                                  child: RadioListTile<int>(
+                                    title: Text(S.current.jeddah ?? 'Jeddah'),
+                                    value: 1,
+                                    groupValue: state.city,
+                                    activeColor: ColorRes.primary,
+                                    contentPadding: EdgeInsets.zero,
+                                    onChanged: (value) {
+                                      if (value != null)
+                                        controller.setCity(value);
+                                    },
+                                  ),
+                                ),
+                                Expanded(
+                                  child: RadioListTile<int>(
+                                    title: Text(S.current.makka ?? 'Makka'),
+                                    value: 2,
+                                    groupValue: state.city,
+                                    activeColor: ColorRes.primary,
+                                    contentPadding: EdgeInsets.zero,
+                                    onChanged: (value) {
+                                      if (value != null)
+                                        controller.setCity(value);
+                                    },
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
                         ],
@@ -181,6 +293,7 @@ class ProfileScreen extends StatelessWidget {
                     ),
                   ),
                 ),
+
                 /// Bottom button - fixed at bottom
                 Padding(
                   padding: EdgeInsets.all(AppSizes.padding),
@@ -189,7 +302,7 @@ class ProfileScreen extends StatelessWidget {
                     child: DButton(
                       text: S.current.updateData,
                       onPressed: () {
-                        // TODO: save profile changes
+                        controller.updateProfile();
                       },
                       variant: DButtonVariant.primary,
                       size: DButtonSize.large,
@@ -198,8 +311,9 @@ class ProfileScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-                 Sizer(height: AppSizes.appBarHeight*1.6,)
-
+                Sizer(
+                  height: AppSizes.appBarHeight * 1.6,
+                )
               ],
             );
           },
@@ -208,244 +322,3 @@ class ProfileScreen extends StatelessWidget {
     );
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//
-// import 'package:flutter/material.dart';
-// import 'package:flutter_bloc/flutter_bloc.dart';
-// import 'package:flutter_screenutil/flutter_screenutil.dart';
-// import 'package:shaoni/common/widgets/appbar/appbar.dart';
-// import 'package:shaoni/core/constants/asset_resoures.dart';
-// import 'package:shaoni/core/constants/colors.dart';
-// import 'package:shaoni/core/constants/app_sizes.dart';
-// import 'package:shaoni/core/service_locator/service_locator.dart';
-// import 'package:shaoni/core/widgets/buttons/d_button.dart';
-// import 'package:shaoni/features/navigation/presentation/controllers/navigation_cubit.dart';
-// import 'package:shaoni/features/profile/presentation/controllers/profile_cubit.dart';
-// import '../../generated/l10n.dart';
-// import '../auth/presentation/widgets/auth_text_filed.dart';
-// import '../navigation/presentation/widgets/custom_side_menu.dart';
-//
-// class ProfileScreen extends StatelessWidget {
-//   const ProfileScreen({super.key});
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     return BlocProvider(
-//       create: (context) => serviceLocator<ProfileCubit>(),
-//       child: Scaffold(
-//         backgroundColor: ColorRes.scaffoldBG,
-//         appBar: DAppBar(
-//           showBackArrow: true,
-//         ),
-//         drawer: const CustomSideMenu(),
-//         body: BlocBuilder<ProfileCubit, ProfileState>(
-//           builder: (context, state) {
-//
-//             final controller = context.read<ProfileCubit>();
-//             final navController = context.read<NavigationCubit>();
-//             return Column(
-//               children: [
-//                 SingleChildScrollView(
-//                   padding: EdgeInsets.zero,
-//                   child: Padding(
-//                     padding: EdgeInsets.symmetric(horizontal: AppSizes.padding,vertical: AppSizes.padding*2),
-//                     child: Column(
-//                       crossAxisAlignment: CrossAxisAlignment.center,
-//                       children: [
-//                         /// Avatar with edit badge (bottom-left, olive/gold color)
-//                         SizedBox(
-//                           width: 100.w,
-//                           height: 100.w,
-//                           child: Stack(
-//                             clipBehavior: Clip.none,
-//                             children: [
-//                               /// Red/salmon background circle
-//                               Container(
-//                                 width: 120.w,
-//                                 height: 120.w,
-//                                 decoration: BoxDecoration(
-//                                   shape: BoxShape.circle,
-//                                   color: const Color(
-//                                     0xFFE8B4A8,
-//                                   ), // salmon/peach color behind avatar
-//                                 ),
-//                               ),
-//                               // Avatar image
-//                               Positioned.fill(
-//                                 child: CircleAvatar(
-//                                   backgroundColor: Colors.transparent,
-//                                   backgroundImage: const AssetImage(
-//                                     AssetRes.man1,
-//                                   ),
-//                                 ),
-//                               ),
-//                               /// Edit badge - bottom left
-//                               Positioned(
-//                                 bottom: 0,
-//                                 left: 0,
-//                                 child: GestureDetector(
-//                                   onTap: () {
-//                                     // TODO: implement image picker
-//                                   },
-//                                   child: Container(
-//                                     padding: EdgeInsets.all(4.w),
-//                                     decoration: BoxDecoration(
-//                                       color: ColorRes.yellow,
-//                                       // olive/gold color
-//                                       shape: BoxShape.circle,
-//                                       border: Border.all(
-//                                         color: ColorRes.white,
-//                                         width: 2,
-//                                       ),
-//                                       boxShadow: [
-//                                         BoxShadow(
-//                                           color: ColorRes.black.withOpacity(
-//                                             0.15,
-//                                           ),
-//                                           blurRadius: 6,
-//                                         ),
-//                                       ],
-//                                     ),
-//                                     child: Icon(
-//                                       Icons.edit_outlined,
-//                                       size: 16.sp,
-//                                       color: ColorRes.white,
-//                                     ),
-//                                   ),
-//                                 ),
-//                               ),
-//                             ],
-//                           ),
-//                         ),
-//                         // const Sizer(height: 10),
-//
-//                         /// Form fields - using reusable ProfileField widget
-//                         Padding(
-//                           padding: EdgeInsets.symmetric(horizontal:AppSizes.padding / 3),
-//                           child: AuthTextField(
-//                             hint: navController.state?.user?.fullName??'01000000000',
-//                             controller: controller.nameController,
-//                             prefixIcon: Icon(Icons.person),
-//                             suffixIcon: Padding(
-//                               padding: EdgeInsets.all(AppSizes.padding * 0.7),
-//                               child: Image.asset(
-//                                 AssetRes.editForProfile,
-//                                 height: AppSizes.iconMd,
-//                               ),
-//                             ),
-//                           ),
-//                         ),
-//                         Padding(
-//                           padding: EdgeInsets.symmetric(horizontal:AppSizes.padding / 3),
-//                           child: AuthTextField(
-//                             hint: navController.state?.user?.phoneNumber??'01000000000',
-//                             controller: controller.numberController,
-//                             prefixIcon: Icon(Icons.phone_android),
-//                             suffixIcon: Padding(
-//                               padding: EdgeInsets.all(AppSizes.padding * 0.7),
-//                               child: Image.asset(
-//                                 AssetRes.editForProfile,
-//                                 height: AppSizes.iconMd,
-//                               ),
-//                             ),
-//                           ),
-//                         ),
-//                         Padding(
-//                           padding: EdgeInsets.symmetric(horizontal:AppSizes.padding / 3),
-//
-//                           child: AuthTextField(
-//                             hint: navController.state?.user?.email??'01000000000',
-//                             controller: controller.emailController,
-//                             prefixIcon: Icon(Icons.email_outlined),
-//                             suffixIcon: Padding(
-//                               padding: EdgeInsets.all(AppSizes.padding * 0.7),
-//                               child: Image.asset(
-//                                 AssetRes.editForProfile,
-//                                 height: AppSizes.iconMd,
-//                               ),
-//                             ),
-//                           ),
-//                         ),
-//                         Padding(
-//                           padding: EdgeInsets.symmetric(horizontal:AppSizes.padding / 3),
-//
-//                           child: AuthTextField(
-//                             hint: "**************",
-//                             controller: controller.passwordController,
-//                             prefixIcon: Icon(Icons.lock_outline_rounded),
-//                             suffixIcon: Padding(
-//                               padding: EdgeInsets.all(AppSizes.padding * 0.7),
-//                               child: Image.asset(
-//                                 AssetRes.editForProfile,
-//                                 height: AppSizes.iconMd,
-//                               ),
-//                             ),
-//                           ),
-//                         ),
-//                       ],
-//                     ),
-//                   ),
-//                 ),
-//                 /// Bottom button - fixed at bottom
-//                 Spacer(),
-//                 Padding(
-//                   padding:  EdgeInsets.all(AppSizes.padding),
-//                   child: SafeArea(
-//                     top: false,
-//                     child: DButton(
-//                       text: S.current.updateData,
-//                       onPressed: () {
-//                         // TODO: save profile changes
-//                       },
-//                       variant: DButtonVariant.primary,
-//                       size: DButtonSize.large,
-//                       height: 50.h,
-//                       width: double.infinity,
-//                     ),
-//                   ),
-//                 ),
-//
-//
-//               ],
-//             );
-//           },
-//         ),
-//       ),
-//     );
-//   }
-// }
-

@@ -13,6 +13,7 @@ class UserModel extends UserEntity {
     required super.roleId,
     required super.phoneNumber,
     required super.city,
+    required super.nationality,
     required super.isActive,
     required super.employeeId,
     required super.managerId,
@@ -20,7 +21,7 @@ class UserModel extends UserEntity {
     required super.officeId,
     required super.office,
     required super.departmentId,
-    required super.department,
+    required super.department, required super.gender,
   });
 
 
@@ -32,6 +33,8 @@ class UserModel extends UserEntity {
       userName: json['data']['userName'] ?? '',
       email: json['data']['email'] ?? '',
       role: json['data']['role'] ?? '',
+      nationality: json['data']['nationality'] ?? '',
+      gender: json['data']['gender'] ?? '',
       roleId: json['data']['roleId'] ?? 0,
       phoneNumber: json['data']['phoneNumber'] ?? '',
       city: json['data']['city'] ?? '',
@@ -51,6 +54,7 @@ class UserModel extends UserEntity {
     return {
       'id': id,
       'fullName': fullName,
+      'nationality': nationality,
       'userName': userName,
       'email': email,
       'role': role,
@@ -58,6 +62,7 @@ class UserModel extends UserEntity {
       'phoneNumber': phoneNumber,
       'city': city,
       'isActive': isActive,
+      'gender': gender,
       'employeeId': employeeId,
       'managerId': managerId,
       'managerName': managerName,

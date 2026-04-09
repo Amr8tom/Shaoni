@@ -37,8 +37,8 @@ class Validators {
       return S.current.pleaseEndterValue;
     }
 
-    if (value.length < 3) {
-      return 'Username must be at least 3 characters';
+    if (value.length < 2) {
+      return 'Username must be at least 2 characters';
     }
 
     return null;

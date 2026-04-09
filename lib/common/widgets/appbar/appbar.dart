@@ -18,6 +18,7 @@ class DAppBar extends StatelessWidget implements PreferredSizeWidget {
     super.key,
     this.title,
     this.showBackArrow = false,
+    this.showMenu = false,
     this.centerTitle = true,
     this.leadingWidget,
     this.actions,
@@ -34,6 +35,7 @@ class DAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String? title;
   final bool showBackArrow;
   final bool showBackGroundColor;
+  final bool showMenu;
   final bool centerTitle;
   final double? fontSize;
   final bool arrowBackColor;
@@ -48,18 +50,11 @@ class DAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Make NavigationCubit reading optional - handle cases where it's not in scope
-    NavigationCubit? controller;
-    try {
-      controller = context.read<NavigationCubit>();
-    } catch (e) {
-      // NavigationCubit is not in scope, that's okay
-      controller = null;
-    }
+    // NavigationCubit is required for indx and screens, so we use watch/read directly
+    // but DAppBar is used in screens where NavigationCubit might not be in scope.
+    // The previous error was likely due to DAppBar trying to access NavigationCubit 
+    // when it's not provided in the specific route.
 
-    debugPrint(
-      'DAppBar build: scaffoldKey is ${scaffoldKey == null ? "null" : "not null"}',
-    );
     return Directionality(
       textDirection: TextDirection.rtl,
       child: Stack(
@@ -127,72 +122,34 @@ class DAppBar extends StatelessWidget implements PreferredSizeWidget {
                         isHeader ? const ProfileHeader() : const Sizer(),
                         const Spacer(),
 
-                        /// todo : remove comment form this stack to red point for unreaded notification
-                        Stack(
-                          children: [
-                            // Text("Sdsds"),
-                            // context.read<NavigationCubit>().state.notificationCount > 0
-                            //     ? Text(
-                            //       "${context.read<NavigationCubit>().state.notificationCount}",
-                            //       style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                            //         fontWeight: FontWeight.bold,
-                            //         color: ColorRes.error2,
-                            //
-                            //       ),
-                            //     )
-                            //     :const Sizer(),
-                            GestureDetector(
-                              onTap: () {
-                                context.pushNamed(
-                                  DRoutesName.notificationsRoute,
-                                );
-                              },
-                              child: SvgPicture.asset(
-                                AssetRes.notificationIcon,
-                                color: ColorRes.white,
-                              ),
-                            ),
-                          ],
-                        ),
-                        const Sizer(width: 30),
-
-                        GestureDetector(
-                          onTap: () {
-                            debugPrint('Menu icon tapped');
-                            debugPrint(
-                              'scaffoldKey is null: ${scaffoldKey == null}',
+                        IconButton(
+                          onPressed: () {
+                            context.pushNamed(
+                              DRoutesName.notificationsRoute,
                             );
-                            debugPrint(
-                              'scaffoldKey.currentState: ${scaffoldKey?.currentState}',
-                            );
-
-                            if (scaffoldKey != null &&
-                                scaffoldKey!.currentState != null) {
-                              debugPrint('Using scaffoldKey to open drawer');
-                              scaffoldKey!.currentState!.openDrawer();
-                            } else {
-                              debugPrint(
-                                'ScaffoldKey not available, trying Scaffold.of(context)',
-                              );
-                              // Fallback: Try to find Scaffold in current context
-                              try {
-                                final scaffoldState = Scaffold.maybeOf(context);
-                                if (scaffoldState != null) {
-                                  scaffoldState.openDrawer();
-                                  debugPrint('Drawer opened successfully');
-                                } else {
-                                  debugPrint('No Scaffold found in context');
-                                }
-                              } catch (e) {
-                                debugPrint('Error opening drawer: $e');
-                              }
-                            }
                           },
-                          child: SvgPicture.asset(
-                            AssetRes.menuIcon,
+                          icon: SvgPicture.asset(
+                            AssetRes.notificationIcon,
                             color: ColorRes.white,
                           ),
                         ),
+                        const Sizer(width: 30),
+
+                        showMenu?  IconButton(
+                          onPressed: () {
+                            debugPrint('Menu icon tapped');
+                            if (scaffoldKey != null &&
+                                scaffoldKey!.currentState != null) {
+                              scaffoldKey!.currentState!.openDrawer();
+                            } else {
+                              Scaffold.of(context).openDrawer();
+                            }
+                          },
+                          icon: SvgPicture.asset(
+                            AssetRes.menuIcon,
+                            color: ColorRes.white,
+                          ),
+                        ):Sizer(),
 
                         const Sizer(width: 15),
                       ],

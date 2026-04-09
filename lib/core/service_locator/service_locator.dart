@@ -23,7 +23,7 @@ class DI {
           () => NetworkInfoImpl(serviceLocator()),
     );
     /// home
-    // await HomeServiceLocator.execute(serviceLocator: serviceLocator);
+    await HomeServiceLocator.execute(serviceLocator: serviceLocator);
     /// authentication
     await AuthServiceLocator.execute(serviceLocator: serviceLocator);
     /// navigation

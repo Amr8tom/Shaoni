@@ -11,7 +11,9 @@ class UserEntity extends Equatable {
   final String? fullName;
   final String? userName;
   final String? email;
+  final String? gender;
   final String? role;
+  final String? nationality;
   final int? roleId;
   final String? phoneNumber;
   final String? city;
@@ -28,6 +30,7 @@ class UserEntity extends Equatable {
 
   const UserEntity({
     required this.id,
+    required this.nationality,
     required this.fullName,
     required this.userName,
     required this.email,
@@ -43,6 +46,7 @@ class UserEntity extends Equatable {
     required this.office,
     required this.departmentId,
     required this.department,
+    required this.gender,
   });
 
   @override
@@ -54,6 +58,8 @@ class UserEntity extends Equatable {
     role,
     roleId,
     phoneNumber,
+    gender,
+    nationality,
     city,
     isActive,
     employeeId,

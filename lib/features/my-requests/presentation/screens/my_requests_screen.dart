@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shaoni/common/widgets/sizeboxs/Sizer.dart';
 import 'package:shaoni/features/my-requests/presentation/controller/my_requests_cubit.dart';
 import 'package:shaoni/features/navigation/presentation/controllers/navigation_cubit.dart';
 import '../../../../core/constants/app_sizes.dart';
@@ -26,6 +27,7 @@ class MyRequestsScreen extends StatelessWidget {
               Tab(text: S.current.submittedRequests),
             ],
           ),
+          Sizer(height: 10,),
           Expanded(child:TabBarView(children:
           [
             Padding(

@@ -95,17 +95,20 @@ class StatisticsListView extends StatelessWidget {
       child: Stack(
         children: [
           Padding(
-            padding:  EdgeInsets.only(left:AppSizes.padding,right: AppSizes.padding,top:AppSizes.iconPadding),
+            padding:  EdgeInsets.only(left:AppSizes.padding,right: AppSizes.padding),
             child: Container(
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(
-                    count,
-                    style: Theme.of(context).textTheme.headlineLarge?.copyWith(
-                        color: color,
-                        fontSize: AppSizes.fontSizeXXLg*1.5
-                    )
+                  Padding(
+                    padding:  EdgeInsets.only(bottom:AppSizes.iconPadding*2),
+                    child: Text(
+                      count,
+                      style: Theme.of(context).textTheme.headlineLarge?.copyWith(
+                          color: color,
+                          fontSize: AppSizes.fontSizeXXLg*1.2
+                      )
+                    ),
                   ),
                const  Spacer(),
                   Image.asset(
@@ -120,14 +123,14 @@ class StatisticsListView extends StatelessWidget {
             ),
           ),
           Positioned(
-            bottom: AppSizes.iconPadding/2,
+            bottom: AppSizes.iconPadding/8,
             child: Padding(
               padding: EdgeInsets.all(AppSizes.padding / 2.5),
               child: Text(
                title,
                 style: Theme.of(context).textTheme.headlineLarge?.copyWith(
                   color: color,
-                  fontSize: AppSizes.fontSizeMd * 0.85,
+                  fontSize: AppSizes.fontSizeMd * 0.7,
                 ),
               ),
             ),

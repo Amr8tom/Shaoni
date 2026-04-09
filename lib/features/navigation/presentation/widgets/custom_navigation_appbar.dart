@@ -13,6 +13,7 @@ import '../controllers/navigation_cubit.dart';
 
 PreferredSizeWidget customAppBar({
   final bool isHeader = false,
+  final bool showMenu = false,
   final bool showBackArrow = false,
   final double? height,
   final BuildContext? context,
@@ -22,6 +23,7 @@ PreferredSizeWidget customAppBar({
 
   return DAppBar(
     showBackArrow: showBackArrow,
+    showMenu: showMenu,
     bgColor: ColorRes.transparent,
     appHeight: height ?? DDeviceUtils.getAppBarHeight() * 3,
     actions: [
@@ -55,11 +57,11 @@ PreferredSizeWidget customAppBar({
       ),
       const Sizer(width: 30),
 
-      GestureDetector(
+      showMenu?GestureDetector(
           onTap: (){
             scaffoldKey?.currentState?.openDrawer();
           },
-          child: SvgPicture.asset(AssetRes.menuIcon, color: ColorRes.white)),
+          child: SvgPicture.asset(AssetRes.menuIcon, color: ColorRes.white)):Sizer(),
 
       const Sizer(width: 15),
     ],

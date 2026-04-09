@@ -559,6 +559,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "main": MessageLookupByLibrary.simpleMessage("Main"),
     "mainGroup": MessageLookupByLibrary.simpleMessage("Main Group"),
     "mainMeal": MessageLookupByLibrary.simpleMessage("Main Meals"),
+    "makka": MessageLookupByLibrary.simpleMessage("Makka"),
     "makkah": MessageLookupByLibrary.simpleMessage("Makkah"),
     "male": MessageLookupByLibrary.simpleMessage("Male"),
     "managerApproval": MessageLookupByLibrary.simpleMessage("Manager Approval"),
@@ -632,6 +633,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "noUserFound": MessageLookupByLibrary.simpleMessage(
       "These credentials are not found",
     ),
+    "nonSaudi": MessageLookupByLibrary.simpleMessage("Non-Saudi"),
     "notImplementedYet": MessageLookupByLibrary.simpleMessage(
       "This is not implemented yet",
     ),
@@ -880,6 +882,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "safwa": MessageLookupByLibrary.simpleMessage("Safwa Hotel"),
     "salaries": MessageLookupByLibrary.simpleMessage("Salaries and Bonuses"),
     "saleTime": MessageLookupByLibrary.simpleMessage("The Sale Time ends in"),
+    "saudi": MessageLookupByLibrary.simpleMessage("Saudi"),
     "saudiArabia": MessageLookupByLibrary.simpleMessage("saudiArabia"),
     "saveAndPay": MessageLookupByLibrary.simpleMessage("Save and Pay"),
     "saveChanges": MessageLookupByLibrary.simpleMessage("Save"),

@@ -2,6 +2,8 @@ class URL {
   static const String baseUrl = 'http://47.77.206.229:83/api/v1';
   static const String login = '$baseUrl/Auth/login';
   static const String user = '$baseUrl/User/';
+  static const String updateProfile = '$baseUrl/User/edit-profile';
+  static const String getAllRequestsStatusCount = '$baseUrl/Request/status-counts/all-services';
   static const String forgetPassword = '$baseUrl/Auth/ForgetPassword';
   static const String setPassword = '$baseUrl/Auth/SetPassword';
   static const String resendOtp = '$baseUrl/Auth/ResendOtp';

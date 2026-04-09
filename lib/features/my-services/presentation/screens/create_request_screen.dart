@@ -26,6 +26,7 @@ class RequestCreateDetailsScreen extends StatelessWidget {
       create: (context) => serviceLocator<RequestServiceCubit>(),
       child: Scaffold(
         appBar: customAppBar(
+          showMenu: false,
           showBackArrow: true,
           height: DDeviceUtils.getAppBarHeight() * 3,
         ),

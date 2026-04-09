@@ -8,6 +8,7 @@ import 'package:shaoni/core/constants/colors.dart';
 import 'package:shaoni/core/local_storage/cache_helper.dart';
 import 'package:shaoni/core/service_locator/my_requests_service_locator.dart';
 import 'package:shaoni/core/utils/enums/general_status.dart';
+import 'package:shaoni/features/home/presentation/controller/home_cubit.dart';
 import 'package:shaoni/features/my-requests/presentation/controller/my_requests_cubit.dart';
 import 'package:shaoni/features/navigation/presentation/widgets/custom_navigation_appbar.dart';
 import 'package:upgrader/upgrader.dart';
@@ -30,18 +31,23 @@ class NavigationMenuScreen extends StatelessWidget {
       providers: [
         BlocProvider(create: (context) => serviceLocator<NavigationCubit>()),
         BlocProvider(create: (context) => serviceLocator<MyRequestsCubit>()),
+        BlocProvider(
+          create: (context) => serviceLocator<HomeCubit>()..getAllStatusCounts(),
+        ),
       ],
       child: Builder(
         builder: (context) {
           final controller = context.watch<NavigationCubit>();
-          final requestController = context.watch<MyRequestsCubit>();
+          final requestController = context.read<MyRequestsCubit>(); // Use read instead of watch for listener logic
+
           return UpgradeAlert(
             child: Scaffold(
               appBar: controller.indx == 0
                   ? null
-                  : DAppBar(scaffoldKey: scaffoldKey, isHeader: true),
+                  : DAppBar(scaffoldKey: scaffoldKey, isHeader: true,showMenu: true,),
               key: scaffoldKey,
-              drawer: const CustomSideMenu(),
+              drawer: const CustomSideMenu(
+              ),
               // extendBodyBehindAppBar: true,
               backgroundColor: ColorRes.grey6,
               extendBody: true,
@@ -71,6 +77,7 @@ class NavigationMenuScreen extends StatelessWidget {
                           scaffoldKey: scaffoldKey,
                           context: context,
                           isHeader: true,
+                          showMenu: true,
                           height: AppSizes.appBarHeight * 4.5,
                         ),
                         Column(

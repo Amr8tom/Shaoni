@@ -1,4 +1,5 @@
 import 'package:get_it/get_it.dart';
+import 'package:shaoni/features/home/domain/use_cases/get_all_status_counts_use_case.dart';
 import '../../features/home/data/data_sources/local_data_sources.dart';
 import '../../features/home/data/data_sources/remote_data_sources.dart';
 import '../../features/home/data/repositories/repository.dart';
@@ -13,28 +14,33 @@ class HomeServiceLocator {
     serviceLocator.registerLazySingleton<HomeRemoteDataSources>(
       () => HomeRemoteDataSourcesImp(serviceLocator()),
     );
-    serviceLocator.registerLazySingleton<HomeLocalDataSources>(
-      () => HomeLocalDataSourcesImp(),
-    );
+    // serviceLocator.registerLazySingleton<HomeLocalDataSources>(
+    //   () => HomeLocalDataSourcesImp(),
+    // );
 
     /// repositories
     serviceLocator.registerLazySingleton<HomeRepositories>(
       () => HomeRepositoriesImp(
-        // serviceLocator(),
-        // serviceLocator(),
+        serviceLocator(),
+        serviceLocator(),
         // serviceLocator(),
       ),
     );
 
-    /// use cases
-    serviceLocator.registerLazySingleton<GetUserDataUseCase>(
-      () => GetUserDataUseCase(serviceLocator()),
+    // /// use cases
+    // serviceLocator.registerLazySingleton<GetUserDataUseCase>(
+    //   () => GetUserDataUseCase(serviceLocator()),
+    // );
+   /// use cases
+    serviceLocator.registerLazySingleton<GetAllStatusCountsUseCase>(
+      () => GetAllStatusCountsUseCase(serviceLocator()),
     );
 
 
     /// controller
     serviceLocator.registerFactory<HomeCubit>(
       () => HomeCubit(
+        serviceLocator(),
         serviceLocator()
       ),
     );

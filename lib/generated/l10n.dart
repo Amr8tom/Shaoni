@@ -109,6 +109,26 @@ class S {
     );
   }
 
+  /// `Saudi`
+  String get saudi {
+    return Intl.message('Saudi', name: 'saudi', desc: '', args: []);
+  }
+
+  /// `Non-Saudi`
+  String get nonSaudi {
+    return Intl.message('Non-Saudi', name: 'nonSaudi', desc: '', args: []);
+  }
+
+  /// `Makka`
+  String get makka {
+    return Intl.message('Makka', name: 'makka', desc: '', args: []);
+  }
+
+  /// `Jeddah`
+  String get jeddah {
+    return Intl.message('Jeddah', name: 'jeddah', desc: '', args: []);
+  }
+
   /// `This is not implemented yet`
   String get notImplementedYet {
     return Intl.message(
@@ -2762,11 +2782,6 @@ class S {
   /// `Hilton Hotel`
   String get hilton {
     return Intl.message('Hilton Hotel', name: 'hilton', desc: '', args: []);
-  }
-
-  /// `Jeddah`
-  String get jeddah {
-    return Intl.message('Jeddah', name: 'jeddah', desc: '', args: []);
   }
 
   /// `Residences`
