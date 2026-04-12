@@ -99,6 +99,16 @@ class S {
     );
   }
 
+  /// `User name or password is incorrect`
+  String get authenticationError {
+    return Intl.message(
+      'User name or password is incorrect',
+      name: 'authenticationError',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Request Status`
   String get requestStatus {
     return Intl.message(

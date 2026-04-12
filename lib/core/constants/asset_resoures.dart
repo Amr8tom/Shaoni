@@ -216,7 +216,9 @@ class AssetRes {
   /// services
   static const String study = 'assets/images/pngs/study.png';
   static const String humanResources = 'assets/images/pngs/human_sources.png';
-  static const String man1 = 'assets/images/pngs/man 1.png';
+  static const String man1 = 'assets/images/pngs/man.png';
+  static const String man = 'assets/images/pngs/man 1.png';
+  static const String woman = 'assets/images/pngs/woman.png';
   static const String info = 'assets/images/pngs/information.png';
   static const String salaries = 'assets/images/pngs/salaries.png';
   static const String registration = 'assets/images/pngs/registration.png';

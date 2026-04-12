@@ -85,43 +85,12 @@ class ProfileScreen extends StatelessWidget {
                                 Positioned.fill(
                                   child: CircleAvatar(
                                     backgroundColor: Colors.transparent,
-                                    backgroundImage: const AssetImage(
-                                      AssetRes.man1,
+                                    backgroundImage:  AssetImage(
+                                      state.gender==1 ?AssetRes.man1:AssetRes.woman,
                                     ),
                                   ),
                                 ),
 
-                                /// Edit badge - bottom left
-                                Positioned(
-                                  bottom: 0,
-                                  left: 0,
-                                  child: GestureDetector(
-                                    onTap: () {},
-                                    child: Container(
-                                      padding: EdgeInsets.all(4.w),
-                                      decoration: BoxDecoration(
-                                        color: ColorRes.yellow,
-                                        shape: BoxShape.circle,
-                                        border: Border.all(
-                                          color: ColorRes.white,
-                                          width: 2,
-                                        ),
-                                        boxShadow: [
-                                          BoxShadow(
-                                            color: ColorRes.black
-                                                .withOpacity(0.15),
-                                            blurRadius: 6,
-                                          ),
-                                        ],
-                                      ),
-                                      child: Icon(
-                                        Icons.edit_outlined,
-                                        size: 16.sp,
-                                        color: ColorRes.white,
-                                      ),
-                                    ),
-                                  ),
-                                ),
                               ],
                             ),
                           ),

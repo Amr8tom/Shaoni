@@ -8,6 +8,7 @@ import '../../../../core/constants/asset_resoures.dart';
 import '../../../../core/constants/colors.dart';
 import '../../../../core/routing/route_names.dart';
 import '../../../../core/service_locator/service_locator.dart';
+import '../../../../generated/l10n.dart';
 import '../widgets/login/login_form.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -25,7 +26,7 @@ class LoginScreen extends StatelessWidget {
           if (state.status.isError) {
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(
-                content: Text(state.loginErrorMassage ?? "Error"),
+                content: Text(S.current.authenticationError),
                 backgroundColor: ColorRes.error2.withOpacity(0.5),
                 duration: Duration(seconds: 3),
               ),

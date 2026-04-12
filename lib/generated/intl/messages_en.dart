@@ -93,6 +93,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "asr": MessageLookupByLibrary.simpleMessage("Asr"),
     "attachments": MessageLookupByLibrary.simpleMessage("Attachments"),
+    "authenticationError": MessageLookupByLibrary.simpleMessage(
+      "User name or password is incorrect",
+    ),
     "avaiableToLoan": MessageLookupByLibrary.simpleMessage("avaliable to loan"),
     "avaliableItemCount": MessageLookupByLibrary.simpleMessage(
       "avaliable Itmes",

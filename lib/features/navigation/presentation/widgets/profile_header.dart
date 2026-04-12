@@ -62,10 +62,16 @@ class ProfileHeader extends StatelessWidget {
                   userImage!,
                   fit: BoxFit.cover,
                   errorBuilder: (context, error, stackTrace) {
-                    return _buildDefaultAvatar();
+                    return Image.asset(
+                      controller.state.user?.gender=="Male"? AssetRes.man1:AssetRes.woman,
+                      fit: BoxFit.fill,
+                    );
                   },
                 )
-                    : _buildDefaultAvatar(),
+                    : Image.asset(
+                 controller.state.user?.gender=="Male"? AssetRes.man1:AssetRes.woman,
+                  fit: BoxFit.fill,
+                ),
               ),
             ),
           ),
@@ -108,10 +114,4 @@ class ProfileHeader extends StatelessWidget {
     );
   }
 
-  Widget _buildDefaultAvatar() {
-    return Image.asset(
-      AssetRes.man1,
-      fit: BoxFit.fill,
-    );
-  }
 }

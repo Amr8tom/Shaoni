@@ -7,6 +7,7 @@
   "juzIndex": "Juz Index",
   "requestData": "Request Data",
   "requestNumber": "Request Number",
+    "authenticationError":"User name or password is incorrect",
   "requestStatus": "Request Status",
     "saudi": "Saudi",
     "nonSaudi": "Non-Saudi",

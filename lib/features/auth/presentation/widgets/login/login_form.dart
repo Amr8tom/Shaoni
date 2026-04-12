@@ -16,7 +16,6 @@ class LoginForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller=context.read<LoginCubit>();
-
     return Form(
       key: controller.loginFormKey,
       child: Container(

@@ -91,6 +91,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "asr": MessageLookupByLibrary.simpleMessage("العصر"),
     "attachments": MessageLookupByLibrary.simpleMessage("المرفقات"),
+    "authenticationError": MessageLookupByLibrary.simpleMessage(
+      "اسم المستخدم او كلمه السر غير صحيحه",
+    ),
     "avaiableToLoan": MessageLookupByLibrary.simpleMessage("متاح للقرض"),
     "avaliableItemCount": MessageLookupByLibrary.simpleMessage(
       "عدد الأصناف المتاحة",
@@ -276,7 +279,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "editProduct": MessageLookupByLibrary.simpleMessage("تَــعديـل المُنـتج"),
     "eggs": MessageLookupByLibrary.simpleMessage("عجة بيض + سلطة خضراء + خبز"),
     "egy": MessageLookupByLibrary.simpleMessage("مصري"),
-    "ejad": MessageLookupByLibrary.simpleMessage("شركة ايجاد الحلول الرقية"),
+    "ejad": MessageLookupByLibrary.simpleMessage("شركة ايجاد الحلول الرقمية"),
     "ejadDigitalSolutions": MessageLookupByLibrary.simpleMessage(
       "شركة إجاد للحلول الرقمية",
     ),

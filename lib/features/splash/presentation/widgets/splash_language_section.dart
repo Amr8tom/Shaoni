@@ -19,17 +19,7 @@ class SplashLanguageSection extends StatelessWidget {
         children: [
           Row(
             children: [
-              Expanded(
-                child: DButton(
-                  borderRadius: AppSizes.borderRadiusXXLg,
-                  height: AppSizes.heightcontainer,
-                  text: S.current.languageEnglish,
-                  onPressed: () => onLanguageSelected('en'),
-                  variant: DButtonVariant.secondary,
-                  size: DButtonSize.medium,
-                ),
-              ),
-              const Sizer(width: 8),
+
               Expanded(
                 child: DButton(
                   borderRadius: AppSizes.borderRadiusXXLg,
@@ -39,6 +29,18 @@ class SplashLanguageSection extends StatelessWidget {
                   variant: DButtonVariant.primary,
                   size: DButtonSize.medium,
                   useShadow: true,
+                ),
+              ),
+              const Sizer(width: 8),
+
+              Expanded(
+                child: DButton(
+                  borderRadius: AppSizes.borderRadiusXXLg,
+                  height: AppSizes.heightcontainer,
+                  text: S.current.languageEnglish,
+                  onPressed: () => onLanguageSelected('en'),
+                  variant: DButtonVariant.secondary,
+                  size: DButtonSize.medium,
                 ),
               ),
             ],
