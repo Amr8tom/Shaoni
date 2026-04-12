@@ -24,7 +24,7 @@ class ApproveRequest extends Equatable {
   final String statusNameAr;
   final String statusNameEn;
   final int statusId;
-  final OdooRequest odooResult;
+  final OdooRequest? odooResult;
   final String comment;
 
   const ApproveRequest({

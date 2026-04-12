@@ -12,26 +12,33 @@ class OrderTextCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
+      mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-
-        Text(
-          title+ ": ",
-          style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-            color: ColorRes.black,
-            fontSize: AppSizes.fontSizeSm*0.70,
-            fontWeight: FontWeight.w800,
+        Flexible(
+          flex: 1,
+          child: Text(
+            "${title}: ",
+            style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                  color: ColorRes.black,
+                  fontSize: AppSizes.fontSizeSm * 0.70,
+                  fontWeight: FontWeight.w800,
+                ),
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
           ),
-          overflow: TextOverflow.ellipsis,
         ),
-        const Sizer(height: 2),
-
-        Text(
-          result ,
-          style: Theme.of(
-            context,
-          ).textTheme.bodyMedium?.copyWith(color: ColorRes.grey,
-          fontSize:AppSizes.fontSizeSm*0.86
+        const Sizer(width: 4),
+        Flexible(
+          flex: 2,
+          child: Text(
+            result,
+            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                  color: ColorRes.grey,
+                  fontSize: AppSizes.fontSizeSm * 0.86,
+                ),
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
           ),
         ),
       ],

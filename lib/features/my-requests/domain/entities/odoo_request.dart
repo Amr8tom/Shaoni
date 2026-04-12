@@ -34,16 +34,16 @@ class OdooRequest extends Equatable {
   });
 
   /// fromJson
-  factory OdooRequest.fromJson(Map<String, dynamic> json) {
+  factory OdooRequest.fromJson(Map<String, dynamic>? json) {
     return OdooRequest(
-        success: json['success'],
-        code: json['code'],
-        status: json['status'],
-        message: json['message'],
-        externalId: json['externalId'],
-        externalName: json['externalName'],
-        externalState: json['externalState'],
-        externalStateId: json['externalStateId']);
+        success: json?['success'],
+        code: json?['code'],
+        status: json?['status'],
+        message: json?['message'],
+        externalId: json?['externalId'],
+        externalName: json?['externalName'],
+        externalState: json?['externalState'],
+        externalStateId: json?['externalStateId']);
   }
 
   /// toJson

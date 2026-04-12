@@ -18,7 +18,9 @@ class ApproveRequestModel extends ApproveRequest {
         statusNameAr: json['statusNameAr'],
         statusNameEn: json['statusNameEn'],
         statusId: json['statusId'],
-        odooResult: OdooRequest.fromJson(json['odooResult']),
+        odooResult: json['odooResult'] != null
+            ? OdooRequest.fromJson(json['odooResult'])
+            : null,
         comment: json['comment']);
   }
 
@@ -29,7 +31,7 @@ class ApproveRequestModel extends ApproveRequest {
       'statusNameAr': statusNameAr,
       'statusNameEn': statusNameEn,
       'statusId': statusId,
-      'odooResult': odooResult.toJson(),
+      'odooResult': odooResult?.toJson()??null,
       'comment': comment,
     };
   }

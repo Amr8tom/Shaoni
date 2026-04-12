@@ -54,7 +54,7 @@ class UserRequestsGridView extends StatelessWidget {
                 padding: EdgeInsets.zero,
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 1,
-                  childAspectRatio: 4,
+                  childAspectRatio: 4.2,
                   crossAxisSpacing: 12,
                   mainAxisSpacing: 12,
                 ),
@@ -104,6 +104,7 @@ class UserRequestsGridView extends StatelessWidget {
                             'permissionType': controller.state.itemsUser?[index]
                                 .extraData?.exitPermission?.permissionType
                                 .toString(),
+                            "permissionValue":controller.state.itemsManager?[index].extraData?.exitPermission?.permissionTimeValue.toString()??"",
                             'serviceType': S.current.localeee == "en"
                                 ? controller.state.itemsUser![index].service
                                         ?.nameEn ??
@@ -168,26 +169,28 @@ class UserRequestsGridView extends StatelessWidget {
           ],
         ),
         child: Row(
-          mainAxisSize: MainAxisSize.min,
+          mainAxisSize: MainAxisSize.max,
           crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                OrderTextCard(
-                  title: S.current.orderNumber,
-                  result: orderNumber,
-                ),
-                const Sizer(height: 10),
-                OrderTextCard(title: S.current.orderType, result: type),
-              ],
+            Flexible(
+              flex: 2,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  OrderTextCard(
+                    title: S.current.orderNumber,
+                    result: orderNumber,
+                  ),
+                  const Sizer(height: 10),
+                  OrderTextCard(title: S.current.orderType, result: type),
+                ],
+              ),
             ),
-            //
-            /// Row 2: Order Type
-            const Spacer(),
-
+            // const Spacer(),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
+
               children: [
                 HomeStatusBadge(statusColor: statusColor, status: status),
                 const Sizer(height: 10),

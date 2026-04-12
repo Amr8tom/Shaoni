@@ -35,6 +35,7 @@ class RequestDetailsScreen extends StatelessWidget {
     final String permissionDate = args['permissionDate'] ?? '';
     final String leavesAttachment = args['leavesAttachment'] ?? '';
     final bool isManager = args['isManager'] ;
+    final String permissionValue = args['permissionValue'] ??'';
 
 
     /// Convert date to Hijri format
@@ -142,7 +143,7 @@ class RequestDetailsScreen extends StatelessWidget {
                           const Sizer(width: 10),
                           OrderTextCard(
                             title: S.current.permissionTime,
-                            result: permissionDate,
+                            result: permissionValue,
                           ),
                         ],
                       ),
@@ -174,9 +175,9 @@ class RequestDetailsScreen extends StatelessWidget {
                 ),
               ),
               const Sizer(height: 20),
-            if(status=="new") isManager? const CommentWritingWidget():const Sizer(),
+            if(status.toLowerCase()=="new") isManager? const CommentWritingWidget():const Sizer(),
                RequestStageCard(status: status,),
-              if(status=="new")  isManager?  AcceptRequestButton(requestID: requestID):const Sizer(),
+              if(status.toLowerCase()=="new")  isManager?  AcceptRequestButton(requestID: requestID):const Sizer(),
               const Sizer(height: 40),
             ],
           ),

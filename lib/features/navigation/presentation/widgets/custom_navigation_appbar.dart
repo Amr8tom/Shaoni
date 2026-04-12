@@ -9,6 +9,7 @@ import 'package:shaoni/core/extentions/navigation_extension.dart';
 import 'package:shaoni/core/routing/route_names.dart';
 import 'package:shaoni/features/navigation/presentation/widgets/profile_header.dart';
 import '../../../../core/constants/colors.dart';
+import '../../../../generated/l10n.dart';
 import '../controllers/navigation_cubit.dart';
 
 PreferredSizeWidget customAppBar({
@@ -61,7 +62,10 @@ PreferredSizeWidget customAppBar({
           onTap: (){
             scaffoldKey?.currentState?.openDrawer();
           },
-          child: SvgPicture.asset(AssetRes.menuIcon, color: ColorRes.white)):Sizer(),
+          child: Directionality(
+              textDirection: S.current.localeee=='en'?TextDirection.ltr:TextDirection.rtl,
+
+              child: SvgPicture.asset(AssetRes.menuIcon, color: ColorRes.white))):Sizer(),
 
       const Sizer(width: 15),
     ],

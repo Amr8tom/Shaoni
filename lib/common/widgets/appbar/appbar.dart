@@ -55,135 +55,132 @@ class DAppBar extends StatelessWidget implements PreferredSizeWidget {
     // The previous error was likely due to DAppBar trying to access NavigationCubit 
     // when it's not provided in the specific route.
 
-    return Directionality(
-      textDirection: TextDirection.rtl,
-      child: Stack(
-        children: [
-          Container(
-            decoration: BoxDecoration(
-              color: showBackGroundColor ? Colors.grey[200] : ColorRes.primary,
-              boxShadow: [
-                BoxShadow(
-                  color: ColorRes.gold.withOpacity(0.1),
-                  blurRadius: 10,
-                  spreadRadius: 2,
-                ),
-              ],
-              borderRadius: BorderRadius.only(
-                bottomLeft: Radius.circular(AppSizes.borderRadiusLarge * 1.5),
-                bottomRight: Radius.circular(AppSizes.borderRadiusLarge * 1.5),
+    return Stack(
+      children: [
+        Container(
+          decoration: BoxDecoration(
+            color: showBackGroundColor ? Colors.grey[200] : ColorRes.primary,
+            boxShadow: [
+              BoxShadow(
+                color: ColorRes.gold.withOpacity(0.1),
+                blurRadius: 10,
+                spreadRadius: 2,
               ),
+            ],
+            borderRadius: BorderRadius.only(
+              bottomLeft: Radius.circular(AppSizes.borderRadiusLarge * 1.5),
+              bottomRight: Radius.circular(AppSizes.borderRadiusLarge * 1.5),
             ),
-            height: appHeight ?? AppSizes.appBarHeight * 3,
           ),
-          Container(
-            child: Column(
-              children: [
-                const Sizer(height: 20),
-                AppBar(
-                  elevation: 0.0,
-                  titleTextStyle: TextStyle(
-                    fontWeight: FontWeight.w700,
-                    fontSize: fontSize ?? 24.sp,
-                    color: ColorRes.gold,
-                  ),
-                  backgroundColor: bgColor ?? ColorRes.transparent,
-                  automaticallyImplyLeading: false,
-                  // leadingWidth: 85.w,
-                  leading:
-                      showBackArrow
-                          ? IconButton(
-                            onPressed: () {
-                              if (doSomeThing != null) {
-                                doSomeThing!();
-                              }
-                              context.pop(); // Navigate back
-                            },
-                            icon: Icon(
-                              Icons.arrow_back_ios_rounded,
-                              // Use arrow_back_ios for a more modern look
-                              size: AppSizes.iconMd,
-                              color:
-                                  arrowBackColor
-                                      ? ColorRes.white
-                                      : ColorRes.white,
-                            ),
-                          )
-                          : Padding(
-                            padding: const EdgeInsets.only(right: 20.0),
-                            child: leadingWidget,
-                          ),
-                  title: Text(title ?? ""),
-                  centerTitle: centerTitle,
-                  actions:
-                      actions ??
-                      [
-                        const Sizer(width: 12),
-                        isHeader ? const ProfileHeader() : const Sizer(),
-                        const Spacer(),
-
-                        IconButton(
+          height: appHeight ?? AppSizes.appBarHeight * 3,
+        ),
+        Container(
+          child: Column(
+            children: [
+              const Sizer(height: 20),
+              AppBar(
+                elevation: 0.0,
+                titleTextStyle: TextStyle(
+                  fontWeight: FontWeight.w700,
+                  fontSize: fontSize ?? 24.sp,
+                  color: ColorRes.gold,
+                ),
+                backgroundColor: bgColor ?? ColorRes.transparent,
+                automaticallyImplyLeading: false,
+                // leadingWidth: 85.w,
+                leading:
+                    showBackArrow
+                        ? IconButton(
                           onPressed: () {
-                            context.pushNamed(
-                              DRoutesName.notificationsRoute,
-                            );
-                          },
-                          icon: SvgPicture.asset(
-                            AssetRes.notificationIcon,
-                            color: ColorRes.white,
-                          ),
-                        ),
-                        const Sizer(width: 30),
-
-                        showMenu?  IconButton(
-                          onPressed: () {
-                            debugPrint('Menu icon tapped');
-                            if (scaffoldKey != null &&
-                                scaffoldKey!.currentState != null) {
-                              scaffoldKey!.currentState!.openDrawer();
-                            } else {
-                              Scaffold.of(context).openDrawer();
+                            if (doSomeThing != null) {
+                              doSomeThing!();
                             }
+                            context.pop(); // Navigate back
                           },
-                          icon: SvgPicture.asset(
-                            AssetRes.menuIcon,
-                            color: ColorRes.white,
+                          icon: Icon(
+                            Icons.arrow_back_ios_rounded,
+                            // Use arrow_back_ios for a more modern look
+                            size: AppSizes.iconMd,
+                            color:
+                                arrowBackColor
+                                    ? ColorRes.white
+                                    : ColorRes.white,
                           ),
-                        ):Sizer(),
+                        )
+                        : Padding(
+                          padding: const EdgeInsets.only(right: 20.0),
+                          child: leadingWidget,
+                        ),
+                title: Text(title ?? ""),
+                centerTitle: centerTitle,
+                actions:
+                    actions ??
+                    [
+                      const Sizer(width: 12),
+                      isHeader ? const ProfileHeader() : const Sizer(),
+                      const Spacer(),
 
-                        const Sizer(width: 15),
-                      ],
-                  toolbarHeight: DDeviceUtils.getAppBarHeight().sp * 1,
-                ),
-
-                Container(
-                  height: 3,
-                  decoration: BoxDecoration(
-                    color: ColorRes.error.withOpacity(0.2),
-
-                    boxShadow: [
-                      BoxShadow(
-                        offset: Offset(0, 2),
-                        color: ColorRes.primary.withOpacity(0.2),
-                        blurRadius: 4,
-                        spreadRadius: 0.2,
+                      IconButton(
+                        onPressed: () {
+                          context.pushNamed(
+                            DRoutesName.notificationsRoute,
+                          );
+                        },
+                        icon: SvgPicture.asset(
+                          AssetRes.notificationIcon,
+                          color: ColorRes.white,
+                        ),
                       ),
+                      const Sizer(width: 7),
+
+                      showMenu?  IconButton(
+                        onPressed: () {
+                          debugPrint('Menu icon tapped');
+                          if (scaffoldKey != null &&
+                              scaffoldKey!.currentState != null) {
+                            scaffoldKey!.currentState!.openDrawer();
+                          } else {
+                            Scaffold.of(context).openDrawer();
+                          }
+                        },
+                        icon: SvgPicture.asset(
+                          AssetRes.menuIcon,
+                          color: ColorRes.white,
+                        ),
+                      ):Sizer(),
+
+                      const Sizer(width: 15),
                     ],
-                    gradient: LinearGradient(
-                      begin: Alignment.topLeft,
-                      end: Alignment.bottomRight,
-                      colors: [
-                        ColorRes.primary.withOpacity(0.2),
-                        ColorRes.primary.withOpacity(0.1),
-                      ],
+                toolbarHeight: DDeviceUtils.getAppBarHeight().sp * 1,
+              ),
+
+              Container(
+                height: 3,
+                decoration: BoxDecoration(
+                  color: ColorRes.error.withOpacity(0.2),
+
+                  boxShadow: [
+                    BoxShadow(
+                      offset: Offset(0, 2),
+                      color: ColorRes.primary.withOpacity(0.2),
+                      blurRadius: 4,
+                      spreadRadius: 0.2,
                     ),
+                  ],
+                  gradient: LinearGradient(
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                    colors: [
+                      ColorRes.primary.withOpacity(0.2),
+                      ColorRes.primary.withOpacity(0.1),
+                    ],
                   ),
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 

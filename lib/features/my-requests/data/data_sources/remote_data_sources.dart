@@ -35,7 +35,10 @@ class MyRequestsRemoteDataSourcesImp implements MyRequestsRemoteDataSources {
         URL: URL.getAllRequestsWithStages,
         body: params.toMap(),
       );
-      return AllRequestsWithStages.fromJson(response!);
+      if (response == null) {
+        throw ServerFailure(message: 'Null response from server');
+      }
+      return AllRequestsWithStages.fromJson(response);
     } on ServerFailure {
       rethrow;
     }
@@ -49,7 +52,10 @@ class MyRequestsRemoteDataSourcesImp implements MyRequestsRemoteDataSources {
         URL: URL.getAllRequestsWithStagesByManager,
         body: params.toMap(),
       );
-      return AllRequestsWithStages.fromJson(response!);
+      if (response == null) {
+        throw ServerFailure(message: 'Null response from server');
+      }
+      return AllRequestsWithStages.fromJson(response);
     } on ServerFailure {
       rethrow;
     }

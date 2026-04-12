@@ -43,50 +43,47 @@ class CustomBottomNavigationBar extends StatelessWidget {
       ),
     ];
 
-    return Directionality(
-      textDirection: TextDirection.rtl,
-      child: ClipRect(
-        clipBehavior: Clip.hardEdge,
-        child: BackdropFilter(
-          filter: ImageFilter.blur(sigmaX: 4, sigmaY: 4),
-          child: Container(
-            height: DDeviceUtils.getBottomNavigationBarHeight() * 1.3.sp,
-            margin: EdgeInsets.only(bottom: 0),
-            padding: EdgeInsets.symmetric(
-              horizontal: AppSizes.padding / 3,
-              vertical: AppSizes.padding / 3,
+    return ClipRect(
+      clipBehavior: Clip.hardEdge,
+      child: BackdropFilter(
+        filter: ImageFilter.blur(sigmaX: 4, sigmaY: 4),
+        child: Container(
+          height: DDeviceUtils.getBottomNavigationBarHeight() * 1.3.sp,
+          margin: EdgeInsets.only(bottom: 0),
+          padding: EdgeInsets.symmetric(
+            horizontal: AppSizes.padding / 3,
+            vertical: AppSizes.padding / 3,
+          ),
+          decoration: BoxDecoration(
+            color: ColorRes.primary.withOpacity(0.79),
+            borderRadius: BorderRadius.all(
+              Radius.circular(AppSizes.borderRadiusXXLg * 2),
             ),
-            decoration: BoxDecoration(
-              color: ColorRes.primary.withOpacity(0.79),
-              borderRadius: BorderRadius.all(
-                Radius.circular(AppSizes.borderRadiusXXLg * 2),
-              ),
-            ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: List.generate(items.length, (index) {
-                // if (index == 3) {
-                //   return _buildNavItem(
-                //     context: context,
-                //     item: items[index],
-                //     isActive: false,
-                //     onTap: () {
-                //       context.pushNamed(DRoutesName.profileRoute);
-                //     },
-                //   );
-                // } else {
-                  final isActive = controller.indx == index;
-                  return _buildNavItem(
-                    context: context,
-                    item: items[index],
-                    isActive: isActive,
-                    onTap: () {
-                      context.read<NavigationCubit>().changeIndex(index);
-                    },
-                  );
-                // }
-              }),
-            ),
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: List.generate(items.length, (index) {
+              // if (index == 3) {
+              //   return _buildNavItem(
+              //     context: context,
+              //     item: items[index],
+              //     isActive: false,
+              //     onTap: () {
+              //       context.pushNamed(DRoutesName.profileRoute);
+              //     },
+              //   );
+              // } else {
+                final isActive = controller.indx == index;
+                return _buildNavItem(
+                  context: context,
+                  item: items[index],
+                  isActive: isActive,
+                  onTap: () {
+                    context.read<NavigationCubit>().changeIndex(index);
+                  },
+                );
+              // }
+            }),
           ),
         ),
       ),

@@ -16,18 +16,37 @@ class HomeCubit extends Cubit<HomeState> {
   final GetAllStatusCountsUseCase _allStatusCountsUseCase;
 
   HomeCubit(this._getUserDataUseCase, this._allStatusCountsUseCase)
-      : super(const HomeState());
+      : super(const HomeState(requestsStatus: {})) {
+    getAllStatusCounts();
+  }
 
   Future getAllStatusCounts() async {
-    emit(state.copyWith(status: GeneralStatus.loading));
+    emit(state.copyWith(status: GeneralStatus.loading, requestsStatus: {}));
     final result = await _allStatusCountsUseCase.call(params: NoParams());
     result.fold(
-          (failure) {
+      (failure) {
         emit(state.copyWith(status: GeneralStatus.error));
       },
-          (data) {
+      (data) {
+        final Map<String, String> updatedStatus = {};
+        for (var element in data) {
+          if (element.statusCounts != null) {
+            for (var e in element.statusCounts!) {
+              final name = e.nameEn?.trim();
+              if (name != null && name.isNotEmpty) {
+                print(name);
+                final currentCount = int.tryParse(updatedStatus[name] ?? '0') ?? 0;
+                final newCount = (e.count ?? 0) + currentCount;
+                updatedStatus[name] = newCount.toString();
+              }
+            }
+          }
+        }
         emit(state.copyWith(
-            status: GeneralStatus.success, allStatusCounts: data));
+          status: GeneralStatus.success,
+          allStatusCounts: data,
+          requestsStatus: updatedStatus,
+        ));
       },
     );
   }

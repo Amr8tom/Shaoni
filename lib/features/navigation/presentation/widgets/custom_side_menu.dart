@@ -42,12 +42,12 @@ class CustomSideMenu extends StatelessWidget {
                   context.pop();
                 },
               ),
-              const Divider(color: ColorRes.grey5, thickness: 1),
-              SideMenuItem(
-                icon: AssetRes.sideAboutIcon,
-                title: S.current.aboutApp,
-                onTap: () {},
-              ),
+              // const Divider(color: ColorRes.grey5, thickness: 1),
+              // SideMenuItem(
+              //   icon: AssetRes.sideAboutIcon,
+              //   title: S.current.aboutApp,
+              //   onTap: () {},
+              // ),
               const Divider(color: ColorRes.grey5, thickness: 1),
               SideMenuItem(
                 icon: AssetRes.sidePrivaceyIcon,

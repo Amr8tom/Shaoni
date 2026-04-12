@@ -25,7 +25,7 @@ class HomeRemoteDataSourcesImp implements HomeRemoteDataSources {
       if (response == null) {
         throw ServerFailure(message: 'No Data');
       }
-      return (response.data as List)
+      return (response as List)
           .map((e) => AllStatusCountModel.fromJson(e))
           .toList();
     } on ServerFailure catch (e) {

@@ -32,22 +32,28 @@ class NavigationMenuScreen extends StatelessWidget {
         BlocProvider(create: (context) => serviceLocator<NavigationCubit>()),
         BlocProvider(create: (context) => serviceLocator<MyRequestsCubit>()),
         BlocProvider(
-          create: (context) => serviceLocator<HomeCubit>()..getAllStatusCounts(),
+          create: (context) =>
+              serviceLocator<HomeCubit>(),
         ),
       ],
       child: Builder(
         builder: (context) {
           final controller = context.watch<NavigationCubit>();
-          final requestController = context.read<MyRequestsCubit>(); // Use read instead of watch for listener logic
+          final requestController = context.read<
+              MyRequestsCubit>(); // Use read instead of watch for listener logic
+          // context.read<HomeCubit>().getAllStatusCounts();
 
           return UpgradeAlert(
             child: Scaffold(
               appBar: controller.indx == 0
                   ? null
-                  : DAppBar(scaffoldKey: scaffoldKey, isHeader: true,showMenu: true,),
+                  : DAppBar(
+                      scaffoldKey: scaffoldKey,
+                      isHeader: true,
+                      showMenu: true,
+                    ),
               key: scaffoldKey,
-              drawer: const CustomSideMenu(
-              ),
+              drawer: const CustomSideMenu(),
               // extendBodyBehindAppBar: true,
               backgroundColor: ColorRes.grey6,
               extendBody: true,
@@ -57,6 +63,7 @@ class NavigationMenuScreen extends StatelessWidget {
                     print("employID");
                     print(CacheHelper.getString(key: CacheKeys.employeeId));
                     print(state.user?.employeeId);
+
                     /// if he is employee
                     requestController.getAllUserRequests(
                         employeeId: int.parse(
