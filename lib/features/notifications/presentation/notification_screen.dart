@@ -7,6 +7,7 @@ import 'package:shaoni/features/navigation/presentation/widgets/custom_navigatio
 import 'package:shaoni/features/notifications/presentation/widget/mark_all_checkbox_widget.dart';
 import 'package:shaoni/features/notifications/presentation/widget/notification_card.dart';
 import '../../../common/dummay.dart';
+import '../../../common/widgets/appbar/appbar.dart';
 
 class NotificationScreen extends StatefulWidget {
   const NotificationScreen({super.key});
@@ -22,8 +23,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: ColorRes.scaffoldBG,
-      appBar: customAppBar(
-        height: DDeviceUtils.getAppBarHeight() * 3,
+      appBar: DAppBar(
         showBackArrow: true,
       ),
       extendBodyBehindAppBar: true,

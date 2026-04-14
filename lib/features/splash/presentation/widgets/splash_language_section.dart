@@ -17,33 +17,35 @@ class SplashLanguageSection extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: AppSizes.padding * 2),
       child: ListView(
         children: [
-          Row(
-            children: [
-
-              Expanded(
-                child: DButton(
-                  borderRadius: AppSizes.borderRadiusXXLg,
-                  height: AppSizes.heightcontainer,
-                  text: S.current.languageArabic,
-                  onPressed: () => onLanguageSelected('ar'),
-                  variant: DButtonVariant.primary,
-                  size: DButtonSize.medium,
-                  useShadow: true,
+          Directionality(
+            textDirection: TextDirection.ltr,
+            child: Row(
+              children: [
+                Expanded(
+                  child: DButton(
+                    borderRadius: AppSizes.borderRadiusXXLg,
+                    height: AppSizes.heightcontainer,
+                    text: S.current.languageEnglish,
+                    onPressed: () => onLanguageSelected('en'),
+                    variant: DButtonVariant.secondary,
+                    size: DButtonSize.medium,
+                  ),
                 ),
-              ),
-              const Sizer(width: 8),
-
-              Expanded(
-                child: DButton(
-                  borderRadius: AppSizes.borderRadiusXXLg,
-                  height: AppSizes.heightcontainer,
-                  text: S.current.languageEnglish,
-                  onPressed: () => onLanguageSelected('en'),
-                  variant: DButtonVariant.secondary,
-                  size: DButtonSize.medium,
+                const Sizer(width: 8),
+                Expanded(
+                  child: DButton(
+                    borderRadius: AppSizes.borderRadiusXXLg,
+                    height: AppSizes.heightcontainer,
+                    text: S.current.languageArabic,
+                    onPressed: () => onLanguageSelected('ar'),
+                    variant: DButtonVariant.primary,
+                    size: DButtonSize.medium,
+                    useShadow: true,
+                  ),
                 ),
-              ),
-            ],
+
+              ],
+            ),
           ),
           Sizer(width: double.infinity, height: AppSizes.fullHeight / 16),
           Center(

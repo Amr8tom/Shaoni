@@ -6,6 +6,8 @@ import 'package:shaoni/common/widgets/sizeboxs/Sizer.dart';
 import 'package:shaoni/core/constants/asset_resoures.dart';
 import 'package:shaoni/core/constants/colors.dart';
 import 'package:shaoni/core/constants/app_sizes.dart';
+import 'package:shaoni/core/extentions/navigation_extension.dart';
+import 'package:shaoni/core/routing/route_names.dart';
 import 'package:shaoni/core/service_locator/service_locator.dart';
 import 'package:shaoni/core/widgets/buttons/d_button.dart';
 import 'package:shaoni/features/navigation/data/model/user_model.dart';
@@ -35,10 +37,12 @@ class ProfileScreen extends StatelessWidget {
           listener: (context, state) {
             if (state.status.isSuccess) {
               ScaffoldMessenger.of(context).showSnackBar(
-                 SnackBar(
+                SnackBar(
                   content: Text(state.massage ?? S.current.success),
                 ),
               );
+              context.pushNamedAndRemoveUntil(DRoutesName.navigationMenuRoute,
+                  predicate: (route) => false);
             }
             if (state.status.isError) {
               ScaffoldMessenger.of(context).showSnackBar(
@@ -46,7 +50,6 @@ class ProfileScreen extends StatelessWidget {
                   content: Text(state.massage ?? S.current.error),
                 ),
               );
-
             }
           },
           builder: (context, state) {
@@ -85,12 +88,13 @@ class ProfileScreen extends StatelessWidget {
                                 Positioned.fill(
                                   child: CircleAvatar(
                                     backgroundColor: Colors.transparent,
-                                    backgroundImage:  AssetImage(
-                                      state.gender==1 ?AssetRes.man1:AssetRes.woman,
+                                    backgroundImage: AssetImage(
+                                      state.gender == 1
+                                          ? AssetRes.man1
+                                          : AssetRes.woman,
                                     ),
                                   ),
                                 ),
-
                               ],
                             ),
                           ),

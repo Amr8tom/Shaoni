@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shaoni/common/widgets/appbar/appbar.dart';
 import 'package:shaoni/common/widgets/sizeboxs/Sizer.dart';
 import 'package:shaoni/core/constants/app_sizes.dart';
 import 'package:shaoni/core/constants/colors.dart';
@@ -24,10 +25,8 @@ class RequestCertainService extends StatelessWidget {
       child: Scaffold(
         backgroundColor: ColorRes.grey6,
         extendBodyBehindAppBar: true,
-        appBar: customAppBar(
-          showBackArrow: true,
-          height: DDeviceUtils.getAppBarHeight() * 3,
-        ),
+        appBar: DAppBar(
+          showBackArrow: true,),
         body: Padding(
           padding: EdgeInsets.only(
             left: AppSizes.padding,
@@ -64,7 +63,7 @@ class RequestCertainService extends StatelessWidget {
               Positioned(
                 left: 10,
                 right: 10,
-                bottom: AppSizes.padding * 3,
+                bottom: AppSizes.padding * 5.5,
                 child: GestureDetector(
                   onTap: () {
                     context.pushNamed(DRoutesName.requestCreateDetails);

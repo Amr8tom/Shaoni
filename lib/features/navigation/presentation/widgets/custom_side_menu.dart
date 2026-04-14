@@ -42,23 +42,27 @@ class CustomSideMenu extends StatelessWidget {
                   context.pop();
                 },
               ),
-              // const Divider(color: ColorRes.grey5, thickness: 1),
-              // SideMenuItem(
-              //   icon: AssetRes.sideAboutIcon,
-              //   title: S.current.aboutApp,
-              //   onTap: () {},
-              // ),
+
               const Divider(color: ColorRes.grey5, thickness: 1),
               SideMenuItem(
                 icon: AssetRes.sidePrivaceyIcon,
                 title: S.current.privacyPolicy,
                 onTap: () {
                   context.pushNamed(DRoutesName.termsAndConditionRoute);
-
                 },
               ),
               const Divider(color: ColorRes.grey5, thickness: 1),
-
+              SideMenuItem(
+                isIcon: true,
+                iconData: Icons.security,
+                // icon: AssetRes.,
+                title: S.current.password,
+                onTap: () {
+                  context.pushNamed(DRoutesName.addNewPasswordRoute);
+                },
+                icon: AssetRes.humanResources,
+              ),
+              const Divider(color: ColorRes.grey5, thickness: 1),
               SideMenuItem(
                 icon: AssetRes.sidePrivaceyIcon,
                 title: S.current.logOut,
@@ -69,7 +73,6 @@ class CustomSideMenu extends StatelessWidget {
                 },
               ),
               const Sizer(height: 200),
-
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: AppSizes.padding),
                 child: Row(

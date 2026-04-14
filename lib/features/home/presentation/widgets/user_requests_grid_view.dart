@@ -22,15 +22,16 @@ class UserRequestsGridView extends StatelessWidget {
   Widget build(BuildContext context) {
     final controller = context.watch<MyRequestsCubit>();
     final navController = context.watch<NavigationCubit>();
+
     controller.userScrollController.addListener(() {
       // If we are 200 pixels away from the bottom, fetch more!
       if (controller.state.status.isPageLoading) {
       } else {
         if (controller.userScrollController.position.pixels >=
             controller.userScrollController.position.maxScrollExtent - 160) {
-          // print("employee id in user request grid view ${CacheHelper.getString(key: CacheKeys.employeeId)}");
-          // print(CacheHelper.getString(key: CacheKeys.employeeId));
-          if(controller.state.requests!.totalPages > controller.userPage ){
+
+          if (((controller.state.userRequests?.totalPages) ?? 0) > (controller.userPage-1 ?? 1)) {
+
             controller.getAllUserRequests(
                 employeeId: int.parse(
                     CacheHelper.getString(key: CacheKeys.employeeId) ??

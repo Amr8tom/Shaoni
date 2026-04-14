@@ -15,7 +15,7 @@ class LoginForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller=context.read<LoginCubit>();
+    final controller = context.watch<LoginCubit>();
     return Form(
       key: controller.loginFormKey,
       child: Container(
@@ -77,22 +77,26 @@ class LoginForm extends StatelessWidget {
                       style: Theme.of(
                         context,
                       ).textTheme.bodyMedium?.copyWith(
-                        color: ColorRes.black,
-                        fontWeight: FontWeight.w600,
-                      ),
+                            color: ColorRes.black,
+                            fontWeight: FontWeight.w600,
+                          ),
                     ),
                   ),
                 ],
               ),
               const Sizer(height: 20),
-              AuthButton(
-                text: S.current.login,
-                onPressed: () => controller.login(),
-                width: double.infinity,
-                height: AppSizes.buttonHeight,
-                textColor: ColorRes.white,
-                backgroundColor: ColorRes.primary,
-              ),
+              controller.state.status.isLoggingIn
+                  ? CircularProgressIndicator(
+                      color: ColorRes.primary,
+                    )
+                  : AuthButton(
+                      text: S.current.login,
+                      onPressed: () => controller.login(),
+                      width: double.infinity,
+                      height: AppSizes.buttonHeight,
+                      textColor: ColorRes.white,
+                      backgroundColor: ColorRes.primary,
+                    ),
             ],
           ),
         ),

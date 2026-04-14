@@ -130,6 +130,7 @@ class DAppBar extends StatelessWidget implements PreferredSizeWidget {
                           AssetRes.notificationIcon,
                           color: ColorRes.white,
                         ),
+
                       ),
                       const Sizer(width: 7),
 
@@ -147,6 +148,7 @@ class DAppBar extends StatelessWidget implements PreferredSizeWidget {
                           AssetRes.menuIcon,
                           color: ColorRes.white,
                         ),
+
                       ):Sizer(),
 
                       const Sizer(width: 15),

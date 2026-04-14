@@ -146,7 +146,7 @@ class RequestServiceCubit extends Cubit<RequestServiceState> {
       },
     );
   }
-
+  //
   /// open specific question
   void setExpandedIndex(int? index) {
     if (index == null) {
@@ -155,4 +155,18 @@ class RequestServiceCubit extends Cubit<RequestServiceState> {
       emit(state.copyWith(expandedIndex: index));
     }
   }
+
+  /// delete request
+ void deleteExitPermissionRequest() {
+    todayDateController.clear();
+    permissionDateController.clear();
+    applicantNameController.clear();
+    organizationalUnitController.clear();
+    locationController.clear();
+    permissionTypeController.clear();
+    hijriDateController.clear();
+    durationController.clear();
+    permissionTimeTypeController.clear();
+    // setExpandedIndex(null);
+ }
 }

@@ -77,7 +77,7 @@ class AuthButton extends StatelessWidget {
                         Text(
                           text.toUpperCase(),
                           style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                            color: ColorRes.white,fontSize: fontSize
+                            color:textColor?? ColorRes.white,fontSize: fontSize
                           ),
                         ),
                       ],

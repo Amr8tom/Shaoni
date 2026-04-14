@@ -32,14 +32,6 @@ class MyRequestsCubit extends Cubit<MyRequestsState> {
 
   /// getAllUserRequests with debounce
   Future getAllUserRequests({required int employeeId, bool isFirestTime = true}) async {
-    print("========================= User Request  =========================");
-    print("========================= User Request  =========================");
-    print("========================= User Request  =========================");
-    print("========================= User Request  =========================");
-    print("========================= User Request  =========================");
-    print("========================= User Request  =========================");
-    print("========================= User Request  =========================");
-    print("========================= User Request  =========================");
     if (_isUserDebouncing) return; // Block if debouncing
 
     _isUserDebouncing = true;
@@ -53,7 +45,7 @@ class MyRequestsCubit extends Cubit<MyRequestsState> {
           userId: employeeId,
           requestIds: [0],
           pageNumber: userPage,
-          pageSize: 8),
+          pageSize: 5),
     );
     
     result.fold(
@@ -66,6 +58,7 @@ class MyRequestsCubit extends Cubit<MyRequestsState> {
 
         emit(state.copyWith(
           status: MyRequestsStatus.success,
+          userRequests: requests,
           itemsUser: updatedItems,
         ));
       },
@@ -82,15 +75,7 @@ class MyRequestsCubit extends Cubit<MyRequestsState> {
 
   /// get all manager requests with debounce
   Future getAllManagerRequests({required int managerID, bool isFirestTime = true}) async {
-    print("========================= Manager Request  =========================");
-    print("========================= Manager Request  =========================");
-    print("========================= Manager Request  =========================");
-    print("========================= Manager Request  =========================");
-    print("========================= Manager Request  =========================");
-    print("========================= Manager Request  =========================");
-    print("========================= Manager Request  =========================");
-    print("========================= Manager Request  =========================");
-    if (_isManagerDebouncing) return; // Block if debouncing
+    if (_isManagerDebouncing) return;
 
     _isManagerDebouncing = true;
     
@@ -103,7 +88,7 @@ class MyRequestsCubit extends Cubit<MyRequestsState> {
           userId: managerID,
           requestIds: [0],
           pageNumber: managerPage,
-          pageSize: 30),
+          pageSize: 12),
     );
     
     result.fold(
@@ -116,6 +101,7 @@ class MyRequestsCubit extends Cubit<MyRequestsState> {
         
         emit(state.copyWith(
           status: MyRequestsStatus.success,
+          managerRequests: requests,
           itemsManager: updatedItems,
         ));
       },

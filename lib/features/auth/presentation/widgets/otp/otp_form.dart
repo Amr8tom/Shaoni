@@ -28,7 +28,7 @@ class _OtpFormState extends State<OtpForm> {
 
     if (_errorMessage == null) {
       // OTP is valid, proceed to next screen
-      context.pushNamed(DRoutesName.addNewPasswordRoute);
+      context.pushNamed(DRoutesName.navigationMenuRoute);
     }
   }
 

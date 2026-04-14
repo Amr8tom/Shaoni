@@ -9,7 +9,8 @@ enum LoginStatus {
   loginLoading,
   sendingOTP,
   reSendingOTP,
-
+changePasswordLoading,
+changePasswordLoaded,
   settingPassword,
   passwordSet,
   otpCorrect,
@@ -30,6 +31,10 @@ extension LoginStatusX on LoginStatus {
   // bool get isRegistering => this == LoginStatus.registerLoading;
   //
   // bool get isRegisterError => this == LoginStatus.registerError;
+
+  bool get isChangePasswordLoading => this == LoginStatus.changePasswordLoading;
+
+  bool get isChangePasswordSuccess => this == LoginStatus.changePasswordLoaded;
 
   bool get isLoggedIn => this == LoginStatus.loggedIn;
 
@@ -68,7 +73,7 @@ class LoginState extends Equatable {
   final Map<String, dynamic>? errorsSetPassword;
   final bool? isRegistered;
   final bool isPasswordHidden;
-
+  final String? newPasswordMsg;
   final String? loginErrorMassage;
 
   const LoginState({
@@ -76,6 +81,7 @@ class LoginState extends Equatable {
     this.isRegistered = false,
     this.otpId,
     this.token,
+    this.newPasswordMsg ,
     this.userID,
     // this.errors,
     this.errorsSetPassword,
@@ -89,6 +95,7 @@ class LoginState extends Equatable {
     String? otpId,
     String? token,
     int? userID,
+    String? newPasswordMsg,
     // List<ErrorDetail>? errors,
     bool? isPasswordHidden,
     bool? isRegistered,
@@ -100,6 +107,7 @@ class LoginState extends Equatable {
       otpId: otpId ?? this.otpId,
       token: token ?? this.token,
       userID: userID ?? this.userID,
+      newPasswordMsg: newPasswordMsg ?? this.newPasswordMsg,
       // errors: errors ?? this.errors,
       isPasswordHidden: isPasswordHidden ?? this.isPasswordHidden,
       isRegistered: isRegistered ?? this.isRegistered,
@@ -119,5 +127,6 @@ class LoginState extends Equatable {
     errorsSetPassword,
     loginErrorMassage,
     isPasswordHidden,
+    newPasswordMsg
   ];
 }

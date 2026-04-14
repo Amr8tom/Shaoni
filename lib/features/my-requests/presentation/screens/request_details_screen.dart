@@ -46,7 +46,6 @@ class RequestDetailsScreen extends StatelessWidget {
       child: Scaffold(
         appBar: DAppBar(
           showBackArrow: true,
-          appHeight: DDeviceUtils.getAppBarHeight() * 3,
         ),
         extendBodyBehindAppBar: true,
         backgroundColor: ColorRes.grey6,
@@ -178,7 +177,7 @@ class RequestDetailsScreen extends StatelessWidget {
             if(status.toLowerCase()=="new") isManager? const CommentWritingWidget():const Sizer(),
                RequestStageCard(status: status,),
               if(status.toLowerCase()=="new")  isManager?  AcceptRequestButton(requestID: requestID):const Sizer(),
-              const Sizer(height: 40),
+              const Sizer(height: 65),
             ],
           ),
         ),

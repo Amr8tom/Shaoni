@@ -104,7 +104,7 @@ class CustomBottomNavigationBar extends StatelessWidget {
           AnimatedContainer(
             width: AppSizes.widthcontainer / 3.2,
             height: AppSizes.heightcontainer * 0.8,
-            duration: const Duration(milliseconds: 500),
+            duration: const Duration(milliseconds: 800),
             curve: Curves.easeOutCubic,
             padding: EdgeInsets.symmetric(
               horizontal: 10.w,
@@ -127,7 +127,7 @@ class CustomBottomNavigationBar extends StatelessWidget {
                       : null,
             ),
             child: TweenAnimationBuilder<double>(
-              duration: const Duration(milliseconds: 500),
+              duration: const Duration(milliseconds: 800),
               tween: Tween(begin: 1.0, end: isActive ? 1.15 : 1.0),
               builder: (context, scale, child) {
                 return SvgPicture.asset(

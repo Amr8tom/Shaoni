@@ -2,7 +2,8 @@ part of 'my_requests_cubit.dart';
 
 final class MyRequestsState extends Equatable {
   final MyRequestsStatus status;
-  final AllRequestsWithStages? requests;
+  final AllRequestsWithStages? userRequests;
+  final AllRequestsWithStages? managerRequests;
   final List<RequestWithStage>
       itemsManager; // Keep this non-nullable with a default []
   final List<RequestWithStage>
@@ -12,18 +13,21 @@ final class MyRequestsState extends Equatable {
     this.status = MyRequestsStatus.initialized,
     this.itemsUser = const [], // Default to empty list
     this.itemsManager = const [], // Default to empty list
-    this.requests,
+    this.userRequests,
+    this.managerRequests,
   });
 
   MyRequestsState copyWith({
     MyRequestsStatus? status,
     List<RequestWithStage>? itemsManager, // Nullable here
     List<RequestWithStage>? itemsUser, // Nullable here
-    AllRequestsWithStages? requests,
+    AllRequestsWithStages? managerRequests,
+    AllRequestsWithStages? userRequests,
   }) {
     return MyRequestsState(
       status: status ?? this.status,
-      requests: requests ?? this.requests,
+      userRequests: userRequests ?? this.userRequests,
+      managerRequests: managerRequests ?? this.managerRequests,
       itemsManager: itemsManager ?? this.itemsManager,
       // Only replaces if you explicitly pass a new list
       itemsUser: itemsUser ??
@@ -32,7 +36,7 @@ final class MyRequestsState extends Equatable {
   }
 
   @override
-  List<Object?> get props => [status, requests, itemsManager, itemsUser];
+  List<Object?> get props => [status, userRequests,managerRequests, itemsManager, itemsUser];
 }
 
 enum MyRequestsStatus { initialized, loading, pageLoading, success, error }

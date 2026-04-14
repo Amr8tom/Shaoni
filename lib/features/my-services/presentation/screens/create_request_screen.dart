@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shaoni/common/widgets/appbar/appbar.dart';
 import 'package:shaoni/common/widgets/sizeboxs/Sizer.dart';
 import 'package:shaoni/core/constants/app_sizes.dart';
 import 'package:shaoni/core/constants/colors.dart';
@@ -10,6 +11,7 @@ import 'package:shaoni/features/my-services/presentation/widgets/create_delete_b
 import 'package:shaoni/features/my-services/presentation/widgets/date_data_widget.dart';
 import 'package:shaoni/features/my-services/presentation/widgets/file_upload_widget.dart';
 import 'package:shaoni/features/my-services/presentation/widgets/request_data_widget.dart';
+import 'package:shaoni/features/navigation/presentation/controllers/navigation_cubit.dart';
 import '../../../../common/widgets/dialogs/custom_dialog_img_title_des.dart';
 import '../../../../core/constants/asset_resoures.dart';
 import '../../../../core/routing/route_names.dart';
@@ -25,10 +27,9 @@ class RequestCreateDetailsScreen extends StatelessWidget {
     return BlocProvider(
       create: (context) => serviceLocator<RequestServiceCubit>(),
       child: Scaffold(
-        appBar: customAppBar(
+        appBar: DAppBar(
           showMenu: false,
           showBackArrow: true,
-          height: DDeviceUtils.getAppBarHeight() * 3,
         ),
         extendBodyBehindAppBar: true,
         backgroundColor: ColorRes.grey6,
@@ -119,6 +120,7 @@ class RequestCreateDetailsScreen extends StatelessWidget {
                       CreateDeleteButtons(
                       deleteTab: () {
                         print("test delete button");
+                        controller.deleteExitPermissionRequest();
                       },
                       createTab: () {
                         if(controller.requestFormKey.currentState!.validate()){

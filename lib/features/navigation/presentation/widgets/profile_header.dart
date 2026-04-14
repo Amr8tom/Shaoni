@@ -26,92 +26,124 @@ class ProfileHeader extends StatelessWidget {
       onTap: () {
         controller.changeIndex(3);
       },
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-
-          /// Profile avatar with enhanced design
-          Container(
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              color: Colors.white,
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.black.withValues(alpha: 0.2),
-                  blurRadius: 10,
-                  offset: const Offset(0, 3),
-                ),
-                BoxShadow(
-                  color: Colors.white.withValues(alpha: 0.5),
-                  blurRadius: 8,
-                  offset: const Offset(0, -2),
-                ),
-              ],
-            ),
-            padding: EdgeInsets.all(3.w), // This creates the white border
-            child: Container(
-              // width: 100,
-              // height: 90,
+      child: SizedBox(
+        width: 250,
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+        
+            /// Profile avatar with enhanced design
+            Container(
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                color: ColorRes.primary.withValues(alpha: 0.1),
+                color: Colors.white,
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withValues(alpha: 0.2),
+                    blurRadius: 10,
+                    offset: const Offset(0, 3),
+                  ),
+                  BoxShadow(
+                    color: Colors.white.withValues(alpha: 0.5),
+                    blurRadius: 8,
+                    offset: const Offset(0, -2),
+                  ),
+                ],
               ),
-              child: ClipOval(
-                child: userImage != null
-                    ? Image.network(
-                  userImage!,
-                  fit: BoxFit.cover,
-                  errorBuilder: (context, error, stackTrace) {
-                    return Image.asset(
-                      controller.state.user?.gender=="Male"? AssetRes.man1:AssetRes.woman,
-                      fit: BoxFit.fill,
-                    );
-                  },
-                )
-                    : Image.asset(
-                 controller.state.user?.gender=="Male"? AssetRes.man1:AssetRes.woman,
-                  fit: BoxFit.fill,
+              padding: EdgeInsets.all(3.w), // This creates the white border
+              child: Container(
+                // width: 100,
+                // height: 90,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: ColorRes.primary.withValues(alpha: 0.1),
+                ),
+                child: ClipOval(
+                  child: userImage != null
+                      ? Image.network(
+                    userImage!,
+                    fit: BoxFit.cover,
+                    errorBuilder: (context, error, stackTrace) {
+                      return Image.asset(
+                        controller.state.user?.gender=="Male"? AssetRes.man1:AssetRes.woman,
+                        fit: BoxFit.fill,
+                      );
+                    },
+                  )
+                      : Image.asset(
+                   controller.state.user?.gender=="Male"? AssetRes.man1:AssetRes.woman,
+                    fit: BoxFit.fill,
+                  ),
                 ),
               ),
             ),
-          ),
-
-          Sizer(width: 10),
-          /// User info column
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.center,
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Text(
-                S.current.welcome,
-                style: TextStyle(
-                  color: Colors.white.withValues(alpha: 0.9),
-                  fontSize: AppSizes.fontSizeSm,
-                  fontWeight: FontWeight.w500,
-                  height: 1.3,
-                  letterSpacing: 0.2,
+        
+              Sizer(width: 8),
+              /// User info column
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Text(
+                      S.current.welcome,
+                      style: TextStyle(
+                        color: Colors.white.withValues(alpha: 0.9),
+                        fontSize: AppSizes.fontSizeMd,
+                        fontWeight: FontWeight.w800,
+                        height: 1.3,
+                        letterSpacing: 0.2,
+                      ),
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                    const Sizer(height: 2),
+                    Text(
+                      controller.state.user?.fullName ?? "مصطفى ذكريا محمد",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: AppSizes.fontSizeSm,
+                        fontWeight: FontWeight.w600,
+                        height: 1.2,
+                        letterSpacing: 0.3,
+                      ),
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                    // Text(
+                    //   S.current.welcome,
+                    //   style: TextStyle(
+                    //     color: Colors.white.withValues(alpha: 0.9),
+                    //     fontSize: 10.sp,
+                    //     fontWeight: FontWeight.w500,
+                    //     height: 1.3,
+                    //     letterSpacing: 0.2,
+                    //   ),
+                    //   maxLines: 1,
+                    //   overflow: TextOverflow.ellipsis,
+                    // ),
+                    // const Sizer(height: 2),
+                    // Text(
+                    //   controller.state.user?.fullName ?? "مصطفى ذكريا محمد",
+                    //   style: TextStyle(
+                    //     color: Colors.white,
+                    //     fontSize: 11.sp,
+                    //     fontWeight: FontWeight.w700,
+                    //     height: 1.2,
+                    //     letterSpacing: 0.3,
+                    //   ),
+                    //   maxLines: 1,
+                    //   overflow: TextOverflow.ellipsis,
+                    // ),
+                  ],
                 ),
               ),
-              SizedBox(height: 2.h),
-              Text(
-                controller.state.user?.fullName ?? "مصطفى ذكريا محمد",
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: AppSizes.fontSizeMd,
-                  fontWeight: FontWeight.w700,
-                  height: 1.2,
-                  letterSpacing: 0.3,
-                ),
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-              ),
+        
             ],
           ),
-
-        ],
       ),
-    );
+      );
   }
 
 }

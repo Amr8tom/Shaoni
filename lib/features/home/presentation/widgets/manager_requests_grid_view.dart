@@ -20,26 +20,23 @@ class ManagerRequestsGridView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = context.watch<MyRequestsCubit>();
-    final navController =context.watch<NavigationCubit>();
-    /// Sample data - replace with actual data later
-    ///
+    final navController = context.watch<NavigationCubit>();
 
+    ///
     controller.managerScrollController.addListener(() {
       // If we are 200 pixels away from the bottom, fetch more!
       if (controller.state.status.isPageLoading) {
       } else {
         if (controller.managerScrollController.position.pixels >=
             controller.managerScrollController.position.maxScrollExtent - 160) {
-          // print("employee id in user request grid view ${CacheHelper.getString(key: CacheKeys.employeeId)}");
-          // print(CacheHelper.getString(key: CacheKeys.employeeId));
-          if(controller.state.requests!.totalPages > controller.managerPage ){
-            controller.getAllUserRequests(
-                employeeId: int.parse(
-                    CacheHelper.getString(key: CacheKeys.employeeId) ??
-                        navController.state.user!.employeeId.toString()),
+          if (((controller.state.managerRequests?.totalPages) ?? 0) >
+              (controller.managerPage - 1 ?? 1)) {
+            controller.getAllManagerRequests(
+                managerID: int.parse(
+                    CacheHelper.getString(key: CacheKeys.userId) ??
+                        navController.state.user!.id.toString()),
                 isFirestTime: false);
           }
-
         }
       }
     });
@@ -47,8 +44,9 @@ class ManagerRequestsGridView extends StatelessWidget {
     return SizedBox(
       // height: AppSizes.fullHeight * 0.5,
       child: Skeletonizer(
-        enabled: controller.state.status.isLoading?true:false,
+        enabled: controller.state.status.isLoading ? true : false,
         child: GridView.builder(
+          controller: controller.managerScrollController,
           padding: EdgeInsets.zero,
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 1,
@@ -62,24 +60,61 @@ class ManagerRequestsGridView extends StatelessWidget {
           itemBuilder: (context, index) {
             return _orderCard(
               context,
-              status: controller.state.itemsManager?[index].request?.odooStatus??'',
-              statusColor: controller.state.itemsManager?[index].request?.odooStatus=="new"?ColorRes.staticBlueColor:ColorRes.staticGreenColor,
-              orderNumber: controller.state.itemsManager?[index].request?.requestId.toString()??'',
-              date: controller.state.itemsManager?[index].request?.createdAt?.substring(0,10)??'',
-              type: S.current.localeee=="en"?controller.state.itemsManager![index].service?.nameEn:controller.state.itemsManager?[index].service?.nameAr??'',
-              applicantName: controller.state.itemsManager?[index].requesterFullName??'',
+              status:
+                  controller.state.itemsManager?[index].request?.odooStatus ??
+                      '',
+              statusColor:
+                  controller.state.itemsManager?[index].request?.odooStatus ==
+                          "new"
+                      ? ColorRes.staticBlueColor
+                      : ColorRes.staticGreenColor,
+              orderNumber: controller
+                      .state.itemsManager?[index].request?.requestId
+                      .toString() ??
+                  '',
+              date: controller.state.itemsManager?[index].request?.createdAt
+                      ?.substring(0, 10) ??
+                  '',
+              type: S.current.localeee == "en"
+                  ? controller.state.itemsManager![index].service?.nameEn
+                  : controller.state.itemsManager?[index].service?.nameAr ?? '',
+              applicantName:
+                  controller.state.itemsManager?[index].requesterFullName ?? '',
               onTap: () {
                 context.pushNamed(DRoutesName.requestDetailsRoute, arguments: {
-                  'status': controller.state.itemsManager?[index].request?.odooStatus??'',
-                  'orderNumber': controller.state.itemsManager?[index].request?.requestId.toString()??'',
-                  'date': controller.state.itemsManager?[index].request?.createdAt?.substring(0,10)??'',
-                  'permissionType':controller.state.itemsManager?[index].extraData?.exitPermission?.permissionType.toString(),
-                  'serviceType':S.current.localeee=="en"?controller.state.itemsManager![index].service?.nameEn:controller.state.itemsManager?[index].service?.nameAr??'' ,
-                  'numberOfHours':controller.state.itemsManager?[index].extraData?.exitPermission?.numberOfHours.toString(),
-                  'permissionDate': controller.state.itemsManager?[index].extraData?.exitPermission?.exitDate?.substring(0,10)??'',
-                  'leavesAttachment': controller.state.itemsManager?[index].extraData?.exitPermission?.leavesAttachment??S.current.noData,
-                  'requestID': controller.state.itemsManager?[index].request?.id.toString()??'',
-                  'isManager':navController.state.user?.managerId==0?true:false,
+                  'status': controller
+                          .state.itemsManager?[index].request?.odooStatus ??
+                      '',
+                  'orderNumber': controller
+                          .state.itemsManager?[index].request?.requestId
+                          .toString() ??
+                      '',
+                  'date': controller
+                          .state.itemsManager?[index].request?.createdAt
+                          ?.substring(0, 10) ??
+                      '',
+                  'permissionType': controller.state.itemsManager?[index]
+                      .extraData?.exitPermission?.permissionType
+                      .toString(),
+                  'serviceType': S.current.localeee == "en"
+                      ? controller.state.itemsManager![index].service?.nameEn
+                      : controller.state.itemsManager?[index].service?.nameAr ??
+                          '',
+                  'numberOfHours': controller.state.itemsManager?[index]
+                      .extraData?.exitPermission?.numberOfHours
+                      .toString(),
+                  'permissionDate': controller.state.itemsManager?[index]
+                          .extraData?.exitPermission?.exitDate
+                          ?.substring(0, 10) ??
+                      '',
+                  'leavesAttachment': controller.state.itemsManager?[index]
+                          .extraData?.exitPermission?.leavesAttachment ??
+                      S.current.noData,
+                  'requestID': controller.state.itemsManager?[index].request?.id
+                          .toString() ??
+                      '',
+                  'isManager':
+                      navController.state.user?.managerId == 0 ? true : false,
                 });
               },
             );
@@ -90,15 +125,15 @@ class ManagerRequestsGridView extends StatelessWidget {
   }
 
   Widget _orderCard(
-      BuildContext context, {
-        required String status,
-        required Color statusColor,
-        required String orderNumber,
-        required String date,
-        required String? type,
-         String? applicantName,
-        required final VoidCallback? onTap,
-      }) {
+    BuildContext context, {
+    required String status,
+    required Color statusColor,
+    required String orderNumber,
+    required String date,
+    required String? type,
+    String? applicantName,
+    required final VoidCallback? onTap,
+  }) {
     return GestureDetector(
       onTap: onTap,
       child: Container(
@@ -118,7 +153,6 @@ class ManagerRequestsGridView extends StatelessWidget {
         child: Row(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
-
           children: [
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -128,10 +162,11 @@ class ManagerRequestsGridView extends StatelessWidget {
                   result: orderNumber,
                 ),
                 const Sizer(height: 10),
-                OrderTextCard(title: S.current.orderType, result: type??''),
+                OrderTextCard(title: S.current.orderType, result: type ?? ''),
                 const Sizer(height: 10),
-
-                OrderTextCard(title: S.current.applicantName, result: applicantName??''),
+                OrderTextCard(
+                    title: S.current.applicantName,
+                    result: applicantName ?? ''),
               ],
             ),
             //
