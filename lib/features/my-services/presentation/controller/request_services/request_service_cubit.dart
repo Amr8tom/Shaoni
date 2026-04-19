@@ -31,6 +31,11 @@ class RequestServiceCubit extends Cubit<RequestServiceState> {
   final TextEditingController durationController = TextEditingController();
   final TextEditingController permissionTimeTypeController =
       TextEditingController();
+  final TextEditingController attachmentFileController = TextEditingController();
+  final TextEditingController attachmentFileNameController = TextEditingController();
+  final TextEditingController notesController = TextEditingController();
+
+
   List<DropdownMenuItem<String>> permissionTypeItems = [];
   List<DropdownMenuItem<String>> durationItems = [];
   final GlobalKey<FormState> requestFormKey =GlobalKey<FormState>();
@@ -127,9 +132,9 @@ class RequestServiceCubit extends Cubit<RequestServiceState> {
           exitDate: permissionDateController.text,
           numberOfHours: int.parse(durationController.text),
           stageId: 0,
-          leavesAttachment: "",
-          leavesAttachmentName: "",
-          notes: "test "
+          leavesAttachment: attachmentFileController.text??'',
+          leavesAttachmentName: attachmentFileNameController.text??'',
+          notes: notesController.text??'notes'
       ),
     );
 
@@ -167,6 +172,23 @@ class RequestServiceCubit extends Cubit<RequestServiceState> {
     hijriDateController.clear();
     durationController.clear();
     permissionTimeTypeController.clear();
+    attachmentFileController.clear();
+    attachmentFileNameController.clear();
+    notesController.clear();
     // setExpandedIndex(null);
+ }
+ void dispose() {
+    todayDateController.dispose();
+    permissionDateController.dispose();
+    applicantNameController.dispose();
+    organizationalUnitController.dispose();
+    locationController.dispose();
+    permissionTypeController.dispose();
+    hijriDateController.dispose();
+    durationController.dispose();
+    permissionTimeTypeController.dispose();
+    attachmentFileController.dispose();
+    attachmentFileNameController.dispose();
+    notesController.dispose();
  }
 }

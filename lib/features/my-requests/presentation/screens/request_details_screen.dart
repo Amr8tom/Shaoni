@@ -4,9 +4,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shaoni/common/widgets/appbar/appbar.dart';
 import 'package:shaoni/common/widgets/sizeboxs/Sizer.dart';
 import 'package:shaoni/core/constants/app_sizes.dart';
-import 'package:shaoni/core/device/device_utility.dart';
 import 'package:shaoni/core/service_locator/service_locator.dart';
+import 'package:shaoni/core/utils/helpers/image_from_base64.dart';
 import 'package:shaoni/features/my-requests/presentation/controller/my_requests_cubit.dart';
+import 'package:shaoni/features/my-requests/presentation/widgets/attachements_widget.dart';
 import '../../../../core/utils/helpers/date_converter.dart';
 import '../../../../core/constants/colors.dart';
 import '../../../../generated/l10n.dart';
@@ -34,9 +35,8 @@ class RequestDetailsScreen extends StatelessWidget {
     final String numberOfHours = args['numberOfHours'] ?? '';
     final String permissionDate = args['permissionDate'] ?? '';
     final String leavesAttachment = args['leavesAttachment'] ?? '';
-    final bool isManager = args['isManager'] ;
-    final String permissionValue = args['permissionValue'] ??'';
-
+    final bool isManager = args['isManager'];
+    final String permissionValue = args['permissionValue'] ?? '';
 
     /// Convert date to Hijri format
     final String hijriDate = DateConverter.convertGregorianToHijri(date);
@@ -161,22 +161,24 @@ class RequestDetailsScreen extends StatelessWidget {
                         ],
                       ),
                       const Sizer(height: 12),
-                      Row(
-                        children: [
-                          OrderTextCard(
-                            title: S.current.attachments,
-                            result: leavesAttachment ?? S.current.noData,
-                          ),
-                        ],
-                      ),
+                      leavesAttachment.trim() != ''
+                          ? LeavesAttachmentWidget(
+                              leavesAttachment: leavesAttachment)
+                          : const Sizer()
                     ],
                   ),
                 ),
               ),
               const Sizer(height: 20),
-            if(status.toLowerCase()=="new") isManager? const CommentWritingWidget():const Sizer(),
-               RequestStageCard(status: status,),
-              if(status.toLowerCase()=="new")  isManager?  AcceptRequestButton(requestID: requestID):const Sizer(),
+              if (status.toLowerCase() == "new")
+                isManager ? const CommentWritingWidget() : const Sizer(),
+              RequestStageCard(
+                status: status,
+              ),
+              if (status.toLowerCase() == "new")
+                isManager
+                    ? AcceptRequestButton(requestID: requestID)
+                    : const Sizer(),
               const Sizer(height: 65),
             ],
           ),

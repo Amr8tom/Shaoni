@@ -85,7 +85,9 @@ Future<void> _performLogout(BuildContext context) async {
 
     // Navigate to login screen and clear navigation stack
     if (context.mounted) {
+
       context.pushReplacementNamed(DRoutesName.loginRoute);
+
     }
   } catch (e) {
     if (context.mounted) {

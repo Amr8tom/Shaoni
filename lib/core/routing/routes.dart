@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:shaoni/core/routing/route_names.dart';
 import 'package:shaoni/features/my-services/presentation/screens/request_certain_service.dart';
@@ -7,6 +8,7 @@ import 'package:shaoni/features/profile/profile_screen.dart';
 import '../../features/auth/presentation/screen/login_screen.dart';
 import '../../features/auth/presentation/screen/new_password_screen.dart';
 import '../../features/auth/presentation/screen/otp_screen.dart';
+import '../../features/delete_account/presentation/delete_my_account_screen.dart';
 import '../../features/my-requests/presentation/screens/request_details_screen.dart';
 import '../../features/my-services/presentation/screens/choose_new_request_services_screen.dart';
 import '../../features/my-services/presentation/screens/create_request_screen.dart';
@@ -254,14 +256,14 @@ class RouteGenerator {
       //     settings: settings,
       //   );
       //
-      // /// delete account Screen
-      // case DRoutesName.deleteAccountRoute:
-      //   return PageTransition(
-      //     child: const DeleteMyAccountScreen(),
-      //     type: PageTransitionType.rightToLeft,
-      //     settings: settings,
-      //   );
-      //
+      /// delete account Screen
+      case DRoutesName.deleteAccountRoute:
+        return PageTransition(
+          child: const DeleteMyAccountScreen(),
+          type: PageTransitionType.rightToLeft,
+          settings: settings,
+        );
+
       // // class MapLocationScreen extends StatelessWidget {
       // // final double latitude;
       // // final double longitude;

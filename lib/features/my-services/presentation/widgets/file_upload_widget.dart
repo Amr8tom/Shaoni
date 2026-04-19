@@ -6,6 +6,8 @@ import 'package:shaoni/core/constants/app_sizes.dart';
 import 'package:shaoni/core/constants/colors.dart';
 import 'package:shaoni/generated/l10n.dart';
 import '../controller/request_services/request_service_cubit.dart';
+import 'dart:io';
+import 'dart:convert';
 
 class FileUploadWidget extends StatefulWidget {
   const FileUploadWidget({super.key});
@@ -25,13 +27,32 @@ class _FileUploadWidgetState extends State<FileUploadWidget> {
       );
 
       if (result != null && result.files.single.path != null) {
-        setState(() {
-          _pickedFile = result.files.single;
-        });
+        /// convert to base64
+        _pickedFile = result.files.single;
 
-        // Optional: Update controller with file path
-        final controller = context.read<RequestServiceCubit>();
-        // You can add a method in controller to store file path if needed
+        try {
+          final file = File(_pickedFile!.path!);
+          final fileBytes = await file.readAsBytes();
+          final base64String = base64Encode(fileBytes);
+
+          setState(() {
+            _pickedFile = result.files.single;
+          });
+
+          // Optional: Update controller with file path and base64
+          final controller = context.read<RequestServiceCubit>();
+          controller.attachmentFileController.text = base64String ?? '';
+          controller.attachmentFileNameController.text = _pickedFile!.name ?? '';
+          // You can store base64String if needed
+        } catch (e) {
+          debugPrint('Error converting file to base64: $e');
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text(S.current.error ?? 'Error processing file'),
+              backgroundColor: Colors.red,
+            ),
+          );
+        }
       }
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
@@ -45,6 +66,8 @@ class _FileUploadWidgetState extends State<FileUploadWidget> {
 
   @override
   Widget build(BuildContext context) {
+    final controller = context.read<RequestServiceCubit>()  ;
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [

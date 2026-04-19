@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shaoni/common/custom_ui.dart';
 import 'package:shaoni/common/widgets/appbar/appbar.dart';
 import 'package:shaoni/common/widgets/sizeboxs/Sizer.dart';
 import 'package:shaoni/core/constants/app_sizes.dart';
@@ -22,6 +23,7 @@ import '../widgets/applicant_data_widget.dart';
 
 class RequestCreateDetailsScreen extends StatelessWidget {
   const RequestCreateDetailsScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -37,105 +39,107 @@ class RequestCreateDetailsScreen extends StatelessWidget {
           builder: (context) {
             final controller = context.read<RequestServiceCubit>();
             return BlocConsumer<RequestServiceCubit, RequestServiceState>(
-  listener: (context, state) {
-   if(state.isCreateExitPermissionError){
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(state.errorMassage ?? "Error"),
-          backgroundColor: ColorRes.error.withOpacity(0.5),
-        ),
-      );
-   }
+              listener: (context, state) {
+                if (state.isCreateExitPermissionError) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text(state.errorMassage ?? "Error"),
+                      backgroundColor: ColorRes.error.withOpacity(0.5),
+                    ),
+                  );
+                }
 
-   if(state.isCreateExitPermissionSuccess) {
-     CustomDialogImgTitleDes(
-       button1: S.current.myOrders,
-       button2: S.current.home,
-       onTab2: () {
-         /// navigation screen
-         context.pushNamedAndRemoveUntil(
-           DRoutesName.navigationMenuRoute,
-           predicate: (route) => false,
-         );
-       },
-       onTab1: () {
-         context.pushNamedAndRemoveUntil(
-           DRoutesName.navigationMenuRoute,
-           predicate: (route) => false,
-         );
-       },
-       context: context,
-       title: S.current.requestSentSuccessfully,
-       des: S.current.requestSentSuccessfully,
-       imgPath: AssetRes.doubleCorrect,
-       isSvg: true,
-     );
-   }
+                if (state.isCreateExitPermissionSuccess) {
+                  CustomDialogImgTitleDes(
+                    button1: S.current.myOrders,
+                    button2: S.current.home,
+                    onTab2: () {
+                      /// navigation screen
+                      context.pushNamedAndRemoveUntil(
+                        DRoutesName.navigationMenuRoute,
+                        predicate: (route) => false,
+                      );
+                    },
+                    onTab1: () {
+                      context.pushNamedAndRemoveUntil(
+                        DRoutesName.navigationMenuRoute,
+                        predicate: (route) => false,
+                      );
+                    },
+                    context: context,
+                    title: S.current.requestSentSuccessfully,
+                    des: S.current.requestSentSuccessfully,
+                    imgPath: AssetRes.doubleCorrect,
+                    isSvg: true,
+                  );
+                }
+              },
+              builder: (context, state) {
+                return Form(
+                  key: controller.requestFormKey,
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(
+                        horizontal: AppSizes.padding * 1.5),
+                    child: Stack(
+                      children: [
+                        /// Scrollable content
+                        SingleChildScrollView(
+                          physics: const BouncingScrollPhysics(),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              const Sizer(height: 220),
 
-  },
-  builder: (context, state) {
-    return Form(
-              key: controller.requestFormKey,
-              child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: AppSizes.padding * 1.5),
-                child: Stack(
-                  children: [
-                    /// Scrollable content
-                    SingleChildScrollView(
-                      physics: const BouncingScrollPhysics(),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const Sizer(height: 220),
-              
-                          /// date hijri and birthday
-                          const DateDataWidget(),
-              
-                          /// make size
-                          const Sizer(height: 35),
-              
-                          /// data for request applicant
-                          const ApplicantDataWidget(),
-              
-                          /// request data
-                          const Sizer(height: 35),
-                          Text(
-                            S.current.requestDetails,
-                            style: Theme.of(context).textTheme.headlineMedium,
+                              /// date hijri and birthday
+                              const DateDataWidget(),
+
+                              /// make size
+                              const Sizer(height: 35),
+
+                              /// data for request applicant
+                              const ApplicantDataWidget(),
+
+                              /// request data
+                              const Sizer(height: 35),
+                              Text(
+                                S.current.requestDetails,
+                                style:
+                                    Theme.of(context).textTheme.headlineMedium,
+                              ),
+
+                              const RequestDataWidget(),
+
+                              /// file upload
+                              const Sizer(height: 35),
+                              const FileUploadWidget(),
+
+                              /// Extra space so content doesn't hide behind the floating buttons
+                              const Sizer(height: 120),
+                            ],
                           ),
-              
-                          const RequestDataWidget(),
+                        ),
 
-                          /// file upload
-                          const Sizer(height: 35),
-                          const FileUploadWidget(),
-              
-                          /// Extra space so content doesn't hide behind the floating buttons
-                          const Sizer(height: 120),
-                        ],
-                      ),
+                        /// Floating blur buttons at the bottom
+                        state.isCreateExitPermissionLoading
+                            ? const Sizer()
+                            : CreateDeleteButtons(
+                                deleteTab: () {
+                                  print("test delete button");
+                                  controller.deleteExitPermissionRequest();
+                                },
+                                createTab: () {
+                                  if (controller.requestFormKey.currentState!
+                                      .validate()) {
+                                    controller.createExitPermissionRequest();
+                                  }
+                                },
+                              ),
+                      ],
                     ),
-              
-                    /// Floating blur buttons at the bottom
-                      CreateDeleteButtons(
-                      deleteTab: () {
-                        print("test delete button");
-                        controller.deleteExitPermissionRequest();
-                      },
-                      createTab: () {
-                        if(controller.requestFormKey.currentState!.validate()){
-                          controller.createExitPermissionRequest();
-
-                        }
-
-                      },
-                    ),
-                  ],
-                ),
-              ),
+                  ),
+                );
+              },
             );
-  },
-);
           },
         ),
       ),

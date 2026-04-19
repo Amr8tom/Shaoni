@@ -17,6 +17,7 @@ class URL {
   static const String getAllRequestsWithStages = '$baseUrl/Request/with-stages/paged/by-user';
   static const String getAllRequestsWithStagesByManager = '$baseUrl/Request/with-stages/paged/for-manager';
   static const String approveRequest = '$baseUrl/Request/status/';
+  static const String deleteAccount = "$baseUrl/User/delete";
   static const String getCountUnreadedNotificaion =
       '$baseUrl/getCountUnreadedNotificaion';
   static const String privacyPolicy =

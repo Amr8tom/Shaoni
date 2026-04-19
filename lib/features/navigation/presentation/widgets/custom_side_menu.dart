@@ -63,6 +63,18 @@ class CustomSideMenu extends StatelessWidget {
                 icon: AssetRes.humanResources,
               ),
               const Divider(color: ColorRes.grey5, thickness: 1),
+
+              SideMenuItem(
+                icon: AssetRes.deleteAccountIcon,
+                title: S.current.deleteAccount,
+                onTap: () {
+                  context.pushNamed(
+                    DRoutesName.deleteAccountRoute,
+
+                  );
+                },
+              ),
+              const Divider(color: ColorRes.grey5, thickness: 1),
               SideMenuItem(
                 icon: AssetRes.sidePrivaceyIcon,
                 title: S.current.logOut,

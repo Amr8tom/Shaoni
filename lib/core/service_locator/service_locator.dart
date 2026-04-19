@@ -7,6 +7,7 @@ import '../connection/checkNetwork.dart';
 import '../dio/dio_helper.dart';
 import '../utils/helpers/geolocator.dart';
 import 'auth_service_locator.dart';
+import 'delete_account_service_locator.dart';
 import 'home_service_locator.dart';
 import 'language_service_locator.dart';
 import 'navigation_servise_locator.dart';
@@ -39,8 +40,8 @@ class DI {
 
 
 
-    // /// delete account
-    // await DeleteAccountServiceLocator.execute(serviceLocator: serviceLocator);
+    /// delete account
+    await DeleteAccountServiceLocator.execute(serviceLocator: serviceLocator);
 
   }
 }

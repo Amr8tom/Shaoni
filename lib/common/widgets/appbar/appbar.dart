@@ -77,7 +77,7 @@ class DAppBar extends StatelessWidget implements PreferredSizeWidget {
         Container(
           child: Column(
             children: [
-              const Sizer(height: 20),
+              // const Sizer(height: 20),
               AppBar(
                 elevation: 0.0,
                 titleTextStyle: TextStyle(
