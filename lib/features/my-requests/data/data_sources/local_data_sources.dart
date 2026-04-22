@@ -4,6 +4,7 @@ import 'package:shaoni/core/local_storage/cache_helper.dart';
 import 'package:shaoni/features/my-requests/data/models/approve_request_model.dart';
 import 'package:shaoni/features/my-requests/domain/entities/all_requests_with_stages.dart';
 import '../../../../../core/local_storage/cache_keys.dart';
+import '../../domain/entities/request_with_stage.dart';
 import '../../domain/use_cases/approve_request_use_case.dart';
 
 abstract class MyRequestsLocalDataSources {
@@ -11,6 +12,8 @@ abstract class MyRequestsLocalDataSources {
   Future<AllRequestsWithStages> getAllMyRequests();
   Future cacheAllMyRequestsByManager({required AllRequestsWithStages requests});
   Future<AllRequestsWithStages> getAllMyRequestsByManager();
+  Future cacheRequestDetails({required RequestWithStage requestDetails});
+  Future<RequestWithStage> getRequestDetails();
 }
 
 class MyRequestsLocalDataSourcesImp implements MyRequestsLocalDataSources {
@@ -50,6 +53,21 @@ class MyRequestsLocalDataSourcesImp implements MyRequestsLocalDataSources {
       return AllRequestsWithStages.fromJson(jsonDecode(myRequestsString));
     }
     throw CacheFailure();
+  }
+
+  @override
+  Future cacheRequestDetails({required RequestWithStage requestDetails}) async{
+    final String requestDetailsString = jsonEncode(requestDetails.toJson());
+    await CacheHelper.putString(
+      key: CacheKeys.requestDetails,
+      value: requestDetailsString,
+    );
+  }
+
+  @override
+  Future<RequestWithStage> getRequestDetails() {
+    // TODO: implement getRequestDetails
+    throw UnimplementedError();
   }
 
 

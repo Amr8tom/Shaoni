@@ -27,7 +27,7 @@ class MyRequestsScreen extends StatelessWidget {
               Tab(text: S.current.submittedRequests),
             ],
           ),
-          Sizer(height: 10,),
+          // Sizer(height: 10,),
           Expanded(child:TabBarView(children:
           [
             Padding(

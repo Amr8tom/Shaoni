@@ -24,15 +24,15 @@ class ServiceModel extends Service {
   ];
 
   /// fromJson
-  factory ServiceModel.fromJson(Map<String, dynamic> json) {
+  factory ServiceModel.fromJson(Map<String, dynamic>? json) {
     return ServiceModel(
-      id: json['id'],
-      code: json['code'],
-      nameAr: json['nameAr'],
-      nameEn: json['nameEn'],
-      isActive: json['isActive'],
-      updatedAt: json['updatedAt'],
-      isDeleted: json['isDeleted'],
+      id: json?['id'],
+      code: json?['code'],
+      nameAr: json?['nameAr'],
+      nameEn: json?['nameEn'],
+      isActive: json?['isActive'],
+      updatedAt: json?['updatedAt'],
+      isDeleted: json?['isDeleted'],
     );
   }
 

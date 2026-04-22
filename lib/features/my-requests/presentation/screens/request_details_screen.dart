@@ -5,9 +5,9 @@ import 'package:shaoni/common/widgets/appbar/appbar.dart';
 import 'package:shaoni/common/widgets/sizeboxs/Sizer.dart';
 import 'package:shaoni/core/constants/app_sizes.dart';
 import 'package:shaoni/core/service_locator/service_locator.dart';
-import 'package:shaoni/core/utils/helpers/image_from_base64.dart';
 import 'package:shaoni/features/my-requests/presentation/controller/my_requests_cubit.dart';
 import 'package:shaoni/features/my-requests/presentation/widgets/attachements_widget.dart';
+import 'package:skeletonizer/skeletonizer.dart';
 import '../../../../core/utils/helpers/date_converter.dart';
 import '../../../../core/constants/colors.dart';
 import '../../../../generated/l10n.dart';
@@ -26,30 +26,33 @@ class RequestDetailsScreen extends StatelessWidget {
         ModalRoute.of(context)?.settings.arguments as Map<String, dynamic>? ??
             {};
 
+    final int id = args['id'] ?? '';
     final String status = args['status'] ?? '';
+    final String enStatus = args['en_status'] ?? '';
     final String orderNumber = args['orderNumber'] ?? '';
     final String requestID = args['requestID'] ?? '';
     final String date = args['date'] ?? '';
-    final String permissionType = args['permissionType'] ?? '';
     final String serviceType = args['serviceType'] ?? '';
-    final String numberOfHours = args['numberOfHours'] ?? '';
-    final String permissionDate = args['permissionDate'] ?? '';
-    final String leavesAttachment = args['leavesAttachment'] ?? '';
+
     final bool isManager = args['isManager'];
-    final String permissionValue = args['permissionValue'] ?? '';
 
     /// Convert date to Hijri format
     final String hijriDate = DateConverter.convertGregorianToHijri(date);
 
     return BlocProvider(
-      create: (context) => serviceLocator<MyRequestsCubit>(),
+      create: (context) => serviceLocator<MyRequestsCubit>()..getRequestDetails(requestId: id),
       child: Scaffold(
         appBar: DAppBar(
           showBackArrow: true,
         ),
         extendBodyBehindAppBar: true,
         backgroundColor: ColorRes.grey6,
-        body: SingleChildScrollView(
+        body: BlocBuilder<MyRequestsCubit, MyRequestsState>(
+  builder: (context, state) {
+    final controller = context.watch<MyRequestsCubit>();
+    // final status = controller.state.requestDetails?.currentStatus?.nameAr?.trim() ??
+    //     '';
+    return SingleChildScrollView(
           child: Column(
             children: [
               const Sizer(height: 220),
@@ -79,12 +82,13 @@ class RequestDetailsScreen extends StatelessWidget {
                         children: [
                           OrderTextCard(
                             title: S.current.orderNumber,
-                            result: orderNumber,
+                            result: orderNumber.substring(9),
                           ),
                           const Sizer(width: 20),
                           OrderTextCard(
                             title: S.current.orderStatus,
-                            result: status,
+                            result: status ??
+                                '',
                           ),
                         ],
                       ),
@@ -111,78 +115,84 @@ class RequestDetailsScreen extends StatelessWidget {
                 ),
               ),
               const Sizer(height: 20),
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: AppSizes.padding),
-                child: Container(
-                  padding: EdgeInsets.all(AppSizes.padding),
-                  decoration: BoxDecoration(
-                    border:
-                        Border.all(width: 1, color: ColorRes.greyForBorders),
-                    color: ColorRes.white,
-                    borderRadius:
-                        BorderRadius.circular(AppSizes.borderRadiusLarge),
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        S.current.orderDetails,
-                        style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                              fontWeight: FontWeight.bold,
+              /// request details
+              Skeletonizer(
+                enabled:controller.state.status.isLoading,
+                child: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: AppSizes.padding),
+                  child: Container(
+                    padding: EdgeInsets.all(AppSizes.padding),
+                    decoration: BoxDecoration(
+                      border:
+                          Border.all(width: 1, color: ColorRes.greyForBorders),
+                      color: ColorRes.white,
+                      borderRadius:
+                          BorderRadius.circular(AppSizes.borderRadiusLarge),
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          S.current.orderDetails,
+                          style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                                fontWeight: FontWeight.bold,
+                              ),
+                        ),
+                        Divider(color: ColorRes.grey4),
+                        const Sizer(height: 12),
+                        Row(
+                          children: [
+                            OrderTextCard(
+                              title: S.current.permissionDate,
+                              result: controller.state.requestDetails?.extraData?.exitPermission?.exitDate?.substring(0, 10)??'',
                             ),
-                      ),
-                      Divider(color: ColorRes.grey4),
-                      const Sizer(height: 12),
-                      Row(
-                        children: [
-                          OrderTextCard(
-                            title: S.current.permissionDate,
-                            result: permissionDate,
-                          ),
-                          const Sizer(width: 10),
-                          OrderTextCard(
-                            title: S.current.permissionTime,
-                            result: permissionValue,
-                          ),
-                        ],
-                      ),
-                      const Sizer(height: 12),
-                      Row(
-                        children: [
-                          OrderTextCard(
-                            title: S.current.permissionType,
-                            result: permissionType,
-                          ),
-                          const Sizer(width: 20),
-                          OrderTextCard(
-                            title: S.current.durationInHours,
-                            result: numberOfHours,
-                          ),
-                        ],
-                      ),
-                      const Sizer(height: 12),
-                      leavesAttachment.trim() != ''
-                          ? LeavesAttachmentWidget(
-                              leavesAttachment: leavesAttachment)
-                          : const Sizer()
-                    ],
+                            const Sizer(width: 10),
+                            OrderTextCard(
+                              title: S.current.permissionTime,
+                              result: controller.state.requestDetails?.extraData?.exitPermission?.permissionTimeValue??'',
+                            ),
+                          ],
+                        ),
+                        const Sizer(height: 12),
+                        Row(
+                          children: [
+                            OrderTextCard(
+                              title: S.current.permissionType,
+                              result: controller.state.requestDetails?.extraData?.exitPermission?.permissionTimeValue??'',
+                            ),
+                            const Sizer(width: 20),
+                            OrderTextCard(
+                              title: S.current.durationInHours,
+                              result: controller.state.requestDetails?.extraData?.exitPermission?.numberOfHours.toString() ?? '',
+                            ),
+                          ],
+                        ),
+                         const Sizer(height: 12),
+                         // if (controller.state.requestDetails?.extraData?.exitPermission?.leavesAttachment?.isNotEmpty ?? false)
+                           LeavesAttachmentWidget(
+                             leavesAttachment: controller.state.requestDetails?.extraData?.exitPermission?.leavesAttachment ?? ''
+                           )
+                      ],
+                    ),
                   ),
                 ),
               ),
               const Sizer(height: 20),
-              if (status.toLowerCase() == "new")
+              if (enStatus.toLowerCase() == "new")
                 isManager ? const CommentWritingWidget() : const Sizer(),
               RequestStageCard(
-                status: status,
+                status: enStatus,
               ),
-              if (status.toLowerCase() == "new")
+              if (enStatus.toLowerCase() == "new")
                 isManager
                     ? AcceptRequestButton(requestID: requestID)
                     : const Sizer(),
               const Sizer(height: 65),
             ],
           ),
-        ),
+        );
+  },
+),
       ),
     );
   }

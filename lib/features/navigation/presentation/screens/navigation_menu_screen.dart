@@ -85,11 +85,11 @@ class NavigationMenuScreen extends StatelessWidget {
                           context: context,
                           isHeader: true,
                           showMenu: true,
-                          height: AppSizes.appBarHeight * 4.5,
+                          height: AppSizes.appBarHeight * 3.5,
                         ),
                         Column(
                           children: [
-                            const Sizer(height: 200),
+                            const Sizer(height: 144),
                             Expanded(child: state.screens[controller.indx]),
                           ],
                         ),

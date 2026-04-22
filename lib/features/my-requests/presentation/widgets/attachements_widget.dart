@@ -12,11 +12,10 @@ class LeavesAttachmentWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return   Column(
+    return Column(
       children: [
         Divider(color: ColorRes.grey4),
         const Sizer(height: 16),
-
         /// Attachments Section
         Row(
           children: [
@@ -58,8 +57,9 @@ class LeavesAttachmentWidget extends StatelessWidget {
             child: Center(
               child: ImageFromBase64String(
                   base64String: leavesAttachment,
-                  height: AppSizes.heightcontainer * 2.5,
-                  width: double.infinity),
+                  height: AppSizes.heightcontainer * 7,
+                  width: double.infinity
+              ),
             ),
           ),
         ),

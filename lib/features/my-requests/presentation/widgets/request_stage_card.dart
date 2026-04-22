@@ -16,16 +16,16 @@ class RequestStageCard extends StatelessWidget {
     final lowerStatus = status.toLowerCase();
     
     // New stage is always completed as it's the first stage
-    if (stageName == 'new') {
+    if (stageName == 'new'|| stageName.trim() == 'جديد') {
       return true;
     }
     
-    // Manager approval stage - completed if manager or hr approval is mentioned
+    /// Manager approval stage - completed if manager or hr approval is mentioned
     if (stageName == 'manager') {
       return lowerStatus.contains('manager') || lowerStatus.contains('hr')||lowerStatus.contains('done');
     }
     
-    // HR Manager approval stage - completed if hr approval is mentioned
+    /// HR Manager approval stage - completed if hr approval is mentioned
     if (stageName == 'hr') {
       return lowerStatus.contains('hr');
     }  if (stageName == 'done') {

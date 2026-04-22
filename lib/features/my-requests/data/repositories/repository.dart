@@ -3,9 +3,11 @@ import 'package:shaoni/core/connection/checkNetwork.dart';
 import 'package:shaoni/core/error/failure.dart';
 import 'package:shaoni/features/my-requests/data/models/approve_request_model.dart';
 import 'package:shaoni/features/my-requests/domain/entities/all_requests_with_stages.dart';
+import 'package:shaoni/features/my-requests/domain/entities/request_with_stage.dart';
 import 'package:shaoni/features/my-requests/domain/use_cases/approve_request_use_case.dart';
 import 'package:shaoni/features/my-requests/domain/use_cases/get_all_manager_requests_use_case.dart';
 import 'package:shaoni/features/my-requests/domain/use_cases/get_all_user_requests_use_case.dart';
+import 'package:shaoni/features/my-requests/domain/use_cases/get_request_details_use_case.dart';
 import '../../domain/repositories/repository.dart';
 import '../data_sources/local_data_sources.dart';
 import '../data_sources/remote_data_sources.dart';
@@ -86,4 +88,31 @@ class MyRequestsRepositoryImp extends MyRequestsRepository {
       return Left(CacheFailure());
     }
   }
+
+  @override
+  Future<Either<Failure, RequestWithStage>> getRequestDetails({required GetRequestDetailsParams params}) async{
+
+    if (await _networkInfo.isConnected) {
+      try {
+        final requestDetails = await _remoteDataSources.getRequestDetails(params: params);
+        await _localDataSources.cacheRequestDetails(requestDetails: requestDetails);
+        return Right(requestDetails);
+      } on ServerFailure {
+        return Left(
+          ServerFailure(
+            message: ' ===================== Server Failure ===============',
+          ),
+        );
+      }
+    } else {
+      return Left(CacheFailure());
+      // try {
+      //   final requestDetails = await _localDataSources.getAllMyRequests();
+      //   return Right(requestDetails.requests.firstWhere((request) => request.requestId == params.requestId));
+      // } on CacheFailure {
+      //   return Left(CacheFailure());
+      // }
+    }
+  }
+
 }

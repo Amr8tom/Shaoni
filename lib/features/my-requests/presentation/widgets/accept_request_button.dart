@@ -21,7 +21,7 @@ class AcceptRequestButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocConsumer<MyRequestsCubit, MyRequestsState>(
   builder: (context, state) {
-    if (state.status.isLoading){
+    if (state.status.isSendRequestLoading){
       return const Center(child: CircularProgressIndicator(color: ColorRes.primary,));
     }else {
       return Padding(
@@ -118,7 +118,7 @@ class AcceptRequestButton extends StatelessWidget {
         ),
       );
     }}, listener: (BuildContext context, MyRequestsState state) {
-    if(state.status.isSuccess){
+    if(state.status.isSendRequestSuccess){
       context.pushNamedAndRemoveUntil(DRoutesName.navigationMenuRoute, predicate: (Route<dynamic> route) { return false; });
     }
     },

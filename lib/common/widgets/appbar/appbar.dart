@@ -72,7 +72,7 @@ class DAppBar extends StatelessWidget implements PreferredSizeWidget {
               bottomRight: Radius.circular(AppSizes.borderRadiusLarge * 1.5),
             ),
           ),
-          height: appHeight ?? AppSizes.appBarHeight * 3,
+          height: appHeight ?? AppSizes.appBarHeight * 2.6,
         ),
         Container(
           child: Column(
@@ -116,7 +116,7 @@ class DAppBar extends StatelessWidget implements PreferredSizeWidget {
                 actions:
                     actions ??
                     [
-                      const Sizer(width: 12),
+                      const Sizer(width: 20),
                       isHeader ? const ProfileHeader() : const Sizer(),
                       const Spacer(),
 
@@ -151,7 +151,7 @@ class DAppBar extends StatelessWidget implements PreferredSizeWidget {
 
                       ):Sizer(),
 
-                      const Sizer(width: 15),
+                      const Sizer(width: 20),
                     ],
                 toolbarHeight: DDeviceUtils.getAppBarHeight().sp * 1,
               ),
@@ -160,7 +160,6 @@ class DAppBar extends StatelessWidget implements PreferredSizeWidget {
                 height: 3,
                 decoration: BoxDecoration(
                   color: ColorRes.error.withOpacity(0.2),
-
                   boxShadow: [
                     BoxShadow(
                       offset: Offset(0, 2),

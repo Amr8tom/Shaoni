@@ -14,8 +14,13 @@ class URL {
   static const String exitPermission = '$baseUrl/HrExitPermission/exit';
   static const String getPermissionTypes = '$baseUrl/Integration/get-permission-types';
   static const String getPermissionTime = '$baseUrl/Lookup/GetPermissionTime';
-  static const String getAllRequestsWithStages = '$baseUrl/Request/with-stages/paged/by-user';
-  static const String getAllRequestsWithStagesByManager = '$baseUrl/Request/with-stages/paged/for-manager';
+  // static const String getAllRequestsWithStages = '$baseUrl/Request/with-stages/paged/by-user';
+  static const String getAllRequestsWithStages = '$baseUrl/Request/dashboard/paged/by-user';
+  static const String getRequestDetailsStages = '$baseUrl/Request/';
+  // 75/with-stages';
+  // static const String getRequestDetailsStages = '/with-stages';
+  // static const String getAllRequestsWithStagesByManager = '$baseUrl/Request/with-stages/paged/for-manager';
+  static const String getAllRequestsWithStagesByManager = '$baseUrl/Request/dashboard/paged/for-manager';
   static const String approveRequest = '$baseUrl/Request/status/';
   static const String deleteAccount = "$baseUrl/User/delete";
   static const String getCountUnreadedNotificaion =

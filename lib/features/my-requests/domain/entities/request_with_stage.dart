@@ -2,6 +2,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:shaoni/features/my-requests/domain/entities/request.dart';
 import 'package:shaoni/features/my-services/data/model/service_model.dart';
+import 'current_status.dart';
 import 'extra_data.dart';
 import 'history.dart';
 
@@ -94,6 +95,8 @@ class RequestWithStage extends Equatable {
   final Request? request;
   final ServiceModel? service;
   final List<History>? histories;
+  final CurrentStatus? currentStatus;
+
 
   const RequestWithStage({
     required this.odooStageId,
@@ -103,6 +106,7 @@ class RequestWithStage extends Equatable {
     this.request,
     this.service,
     this.histories,
+     this.currentStatus,
   });
 
   /// from Json
@@ -137,6 +141,7 @@ class RequestWithStage extends Equatable {
       request: json['request'] != null ? Request.fromJson(json['request']) : null,
       service: json['service'] != null ? ServiceModel.fromJson(json['service']) : null,
       histories: parsedHistories,
+      currentStatus: json['currentStatus'] != null ? CurrentStatus.fromJson(json['currentStatus']) : null,
     );
   }
   /// toJson
@@ -148,6 +153,7 @@ class RequestWithStage extends Equatable {
       'managerFullName': managerFullName,
       'request': request?.toJson(),
       'service': service?.toJson(),
+      'currentStatus': currentStatus?.toJson(),
       'histories': histories != null ? List<dynamic>.from(histories!.map((x) => x.toJson())) : null,
     };
   }
@@ -158,6 +164,7 @@ class RequestWithStage extends Equatable {
     extraData,
     requesterFullName,
     managerFullName,
+    currentStatus,
     request,
     service,
     histories,

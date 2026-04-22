@@ -7,6 +7,7 @@ import 'package:shaoni/core/extentions/navigation_extension.dart';
 import 'package:shaoni/core/routing/route_names.dart';
 import 'package:shaoni/features/home/presentation/widgets/home_status_badge.dart';
 import 'package:shaoni/features/home/presentation/widgets/order_text_card.dart';
+import 'package:shaoni/features/home/presentation/widgets/request_card.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 import '../../../../core/local_storage/cache_helper.dart';
 import '../../../../core/local_storage/cache_keys.dart';
@@ -21,6 +22,7 @@ class ManagerRequestsGridView extends StatelessWidget {
   Widget build(BuildContext context) {
     final controller = context.watch<MyRequestsCubit>();
     final navController = context.watch<NavigationCubit>();
+    final validRequests = controller.state.itemsManager.where((request) =>request.request?.requestNumber !=null).toList();
 
     ///
     controller.managerScrollController.addListener(() {
@@ -42,7 +44,6 @@ class ManagerRequestsGridView extends StatelessWidget {
     });
 
     return SizedBox(
-      // height: AppSizes.fullHeight * 0.5,
       child: Skeletonizer(
         enabled: controller.state.status.isLoading ? true : false,
         child: GridView.builder(
@@ -55,62 +56,60 @@ class ManagerRequestsGridView extends StatelessWidget {
             mainAxisSpacing: 12,
           ),
           shrinkWrap: true,
-          // physics: const NeverScrollableScrollPhysics(),
-          itemCount: controller.state.itemsManager?.length,
+          itemCount: validRequests.length,
           itemBuilder: (context, index) {
-            return _orderCard(
-              context,
-              status:
-                  controller.state.itemsManager?[index].request?.odooStatus ??
-                      '',
+            return RequestCard(
+
+              status: S.current.localeee=='en'?validRequests[index].currentStatus?.nameEn ?? '':validRequests[index].currentStatus?.nameAr ?? '',
+
               statusColor:
-                  controller.state.itemsManager?[index].request?.odooStatus ==
+                 validRequests[index].request?.odooStatus ==
                           "new"
                       ? ColorRes.staticBlueColor
                       : ColorRes.staticGreenColor,
-              orderNumber: controller
-                      .state.itemsManager?[index].request?.requestId
-                      .toString() ??
+              orderNumber:validRequests[index].request?.requestNumber ??
                   '',
-              date: controller.state.itemsManager?[index].request?.createdAt
+              date:validRequests[index].request?.createdAt
                       ?.substring(0, 10) ??
                   '',
               type: S.current.localeee == "en"
                   ? controller.state.itemsManager![index].service?.nameEn
-                  : controller.state.itemsManager?[index].service?.nameAr ?? '',
+                  :validRequests[index].service?.nameAr ?? '',
               applicantName:
-                  controller.state.itemsManager?[index].requesterFullName ?? '',
+                 validRequests[index].requesterFullName ?? '',
               onTap: () {
                 context.pushNamed(DRoutesName.requestDetailsRoute, arguments: {
-                  'status': controller
-                          .state.itemsManager?[index].request?.odooStatus ??
+                  'status': S.current.localeee=='en'?validRequests[index].currentStatus?.nameEn ?? '':validRequests[index].currentStatus?.nameAr ?? '',
+
+                  'id':validRequests[index].request?.id ??
                       '',
-                  'orderNumber': controller
-                          .state.itemsManager?[index].request?.requestId
+                  'en_status':
+                  validRequests[index].currentStatus?.nameEn ??
+                      '',
+                  'orderNumber': validRequests[index].request?.requestNumber
                           .toString() ??
                       '',
-                  'date': controller
-                          .state.itemsManager?[index].request?.createdAt
+                  'date': validRequests[index].request?.createdAt
                           ?.substring(0, 10) ??
                       '',
-                  'permissionType': controller.state.itemsManager?[index]
+                  'permissionType':validRequests[index]
                       .extraData?.exitPermission?.permissionType
                       .toString(),
                   'serviceType': S.current.localeee == "en"
                       ? controller.state.itemsManager![index].service?.nameEn
-                      : controller.state.itemsManager?[index].service?.nameAr ??
+                      :validRequests[index].service?.nameAr ??
                           '',
-                  'numberOfHours': controller.state.itemsManager?[index]
+                  'numberOfHours':validRequests[index]
                       .extraData?.exitPermission?.numberOfHours
                       .toString(),
-                  'permissionDate': controller.state.itemsManager?[index]
+                  'permissionDate':validRequests[index]
                           .extraData?.exitPermission?.exitDate
                           ?.substring(0, 10) ??
                       '',
-                  'leavesAttachment': controller.state.itemsManager?[index]
+                  'leavesAttachment':validRequests[index]
                           .extraData?.exitPermission?.leavesAttachment ??
                       S.current.noData,
-                  'requestID': controller.state.itemsManager?[index].request?.id
+                  'requestID':validRequests[index].request?.id
                           .toString() ??
                       '',
                   'isManager':
@@ -124,65 +123,4 @@ class ManagerRequestsGridView extends StatelessWidget {
     );
   }
 
-  Widget _orderCard(
-    BuildContext context, {
-    required String status,
-    required Color statusColor,
-    required String orderNumber,
-    required String date,
-    required String? type,
-    String? applicantName,
-    required final VoidCallback? onTap,
-  }) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Container(
-        padding: EdgeInsets.all(AppSizes.padding * 0.8),
-        decoration: BoxDecoration(
-          color: ColorRes.white,
-          borderRadius: BorderRadius.circular(AppSizes.padding / 2),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.grey.withValues(alpha: 0.08),
-              spreadRadius: 0,
-              blurRadius: 6,
-              offset: const Offset(0, 2),
-            ),
-          ],
-        ),
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                OrderTextCard(
-                  title: S.current.orderNumber,
-                  result: orderNumber,
-                ),
-                const Sizer(height: 10),
-                OrderTextCard(title: S.current.orderType, result: type ?? ''),
-                const Sizer(height: 10),
-                OrderTextCard(
-                    title: S.current.applicantName,
-                    result: applicantName ?? ''),
-              ],
-            ),
-            //
-            /// Row 2: Order Type
-            const Spacer(),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                HomeStatusBadge(statusColor: statusColor, status: status),
-                const Sizer(height: 10),
-                OrderTextCard(title: S.current.orderDate, result: date),
-              ],
-            ),
-          ],
-        ),
-      ),
-    );
-  }
 }
