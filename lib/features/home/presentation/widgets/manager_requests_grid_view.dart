@@ -51,7 +51,7 @@ class ManagerRequestsGridView extends StatelessWidget {
           padding: EdgeInsets.zero,
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 1,
-            childAspectRatio: 3.5,
+            childAspectRatio: 3.2,
             crossAxisSpacing: 12,
             mainAxisSpacing: 12,
           ),

@@ -129,6 +129,11 @@ class S {
     return Intl.message('Non-Saudi', name: 'nonSaudi', desc: '', args: []);
   }
 
+  /// `Orders`
+  String get orders {
+    return Intl.message('Orders', name: 'orders', desc: '', args: []);
+  }
+
   /// `Makka`
   String get makka {
     return Intl.message('Makka', name: 'makka', desc: '', args: []);
@@ -1639,14 +1644,9 @@ class S {
     );
   }
 
-  /// `Applicant Name`
+  /// `Applicant`
   String get applicantName {
-    return Intl.message(
-      'Applicant Name',
-      name: 'applicantName',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Applicant', name: 'applicantName', desc: '', args: []);
   }
 
   /// `Organizational Unit`
@@ -1654,6 +1654,16 @@ class S {
     return Intl.message(
       'Organizational Unit',
       name: 'organizationalUnit',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Download Attachment`
+  String get downloadAttachment {
+    return Intl.message(
+      'Download Attachment',
+      name: 'downloadAttachment',
       desc: '',
       args: [],
     );

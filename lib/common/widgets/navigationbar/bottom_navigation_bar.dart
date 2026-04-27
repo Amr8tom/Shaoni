@@ -34,7 +34,7 @@ class CustomBottomNavigationBar extends StatelessWidget {
       _NavItem(
         icon: AssetRes.groups,
         activeIcon: AssetRes.activeGroups,
-        label: S.current.myOrders,
+        label: S.current.orders,
       ),
       _NavItem(
         icon: AssetRes.profile,

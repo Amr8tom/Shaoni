@@ -83,7 +83,7 @@ class DAppBar extends StatelessWidget implements PreferredSizeWidget {
                 titleTextStyle: TextStyle(
                   fontWeight: FontWeight.w700,
                   fontSize: fontSize ?? 24.sp,
-                  color: ColorRes.gold,
+                  color: ColorRes.white,
                 ),
                 backgroundColor: bgColor ?? ColorRes.transparent,
                 automaticallyImplyLeading: false,
@@ -116,8 +116,11 @@ class DAppBar extends StatelessWidget implements PreferredSizeWidget {
                 actions:
                     actions ??
                     [
-                      const Sizer(width: 20),
-                      isHeader ? const ProfileHeader() : const Sizer(),
+
+                      isHeader ? Padding(
+                        padding:  EdgeInsets.symmetric(horizontal:AppSizes.padding),
+                        child: const ProfileHeader(),
+                      ) : const Sizer(),
                       const Spacer(),
 
                       IconButton(

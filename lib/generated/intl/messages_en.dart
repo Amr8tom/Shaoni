@@ -79,7 +79,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "appLanguage": MessageLookupByLibrary.simpleMessage("App Language"),
     "appName": MessageLookupByLibrary.simpleMessage("teaa"),
     "appTitle": MessageLookupByLibrary.simpleMessage("Teaa Client"),
-    "applicantName": MessageLookupByLibrary.simpleMessage("Applicant Name"),
+    "applicantName": MessageLookupByLibrary.simpleMessage("Applicant"),
     "approvedRequest": MessageLookupByLibrary.simpleMessage("Approved Request"),
     "arabic": MessageLookupByLibrary.simpleMessage("Arabic"),
     "arrDate": MessageLookupByLibrary.simpleMessage("Arrival Date"),
@@ -271,6 +271,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "done": MessageLookupByLibrary.simpleMessage("Done"),
     "dontHaveAccont": MessageLookupByLibrary.simpleMessage(
       "Don’t have an account?",
+    ),
+    "downloadAttachment": MessageLookupByLibrary.simpleMessage(
+      "Download Attachment",
     ),
     "downloadQuranApp": MessageLookupByLibrary.simpleMessage(
       "Download Quran App",
@@ -680,6 +683,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "orderNumber": MessageLookupByLibrary.simpleMessage("Order Number "),
     "orderStatus": MessageLookupByLibrary.simpleMessage("Order Status"),
     "orderType": MessageLookupByLibrary.simpleMessage("Order Type"),
+    "orders": MessageLookupByLibrary.simpleMessage("Orders"),
     "orederPlaced": MessageLookupByLibrary.simpleMessage("Oreder Placed"),
     "orederPlacedBody": MessageLookupByLibrary.simpleMessage(
       "Oreder Placed and we review it ",

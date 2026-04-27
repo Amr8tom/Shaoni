@@ -30,6 +30,7 @@ class AssetRes {
   static const String splash = 'assets/images/pngs/splash.png';
   static const String splashLogo = 'assets/images/svgs/splash.svg';
   static const String logo = 'assets/images/pngs/logo.png';
+  static const String ejadLogo = 'assets/images/pngs/ejad_logo.png';
   static const String sideMenuLogo = 'assets/images/pngs/side_menu_logo.png';
   static const String logoWithName = 'assets/images/pngs/logo_with_name.png';
 

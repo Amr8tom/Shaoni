@@ -18,6 +18,7 @@ class DRoutesName {
   /// Profile && Setting
   static const String deleteAccountRoute = 'delete-account-route';
   static const String profileRoute = 'profile-route';
+  static const String settingsRoute = 'settings-route';
 
   /// location & maps Screen
   static const String mapRoute = 'map-route';

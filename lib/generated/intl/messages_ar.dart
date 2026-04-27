@@ -77,7 +77,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "appLanguage": MessageLookupByLibrary.simpleMessage("لغة التطبيق"),
     "appName": MessageLookupByLibrary.simpleMessage("تيا"),
     "appTitle": MessageLookupByLibrary.simpleMessage("عميل تيا"),
-    "applicantName": MessageLookupByLibrary.simpleMessage("اسم مقدم الطلب"),
+    "applicantName": MessageLookupByLibrary.simpleMessage("مقدم الطلب"),
     "approvedRequest": MessageLookupByLibrary.simpleMessage("طلب معتمد"),
     "arabic": MessageLookupByLibrary.simpleMessage("العربية"),
     "arrDate": MessageLookupByLibrary.simpleMessage("تاريخ الوصول"),
@@ -262,6 +262,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "dontHaveAccont": MessageLookupByLibrary.simpleMessage(
       "لا يـوجد لـديك حســاب ؟",
     ),
+    "downloadAttachment": MessageLookupByLibrary.simpleMessage("تحميل المرفق"),
     "downloadQuranApp": MessageLookupByLibrary.simpleMessage(
       "تحميل تطبيق القرآن الكريم",
     ),
@@ -654,6 +655,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "orderNumber": MessageLookupByLibrary.simpleMessage("رقم الطلب "),
     "orderStatus": MessageLookupByLibrary.simpleMessage("حالة الطلب"),
     "orderType": MessageLookupByLibrary.simpleMessage("نوع الطلب"),
+    "orders": MessageLookupByLibrary.simpleMessage("الطلبات"),
     "orederPlaced": MessageLookupByLibrary.simpleMessage("تم الطلب"),
     "orederPlacedBody": MessageLookupByLibrary.simpleMessage(
       "تم وضع الطلب وسوف نراجعه",

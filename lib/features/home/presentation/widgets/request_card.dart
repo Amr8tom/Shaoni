@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import '../../../../common/widgets/sizeboxs/Sizer.dart';
 import '../../../../core/constants/app_sizes.dart';
 import '../../../../core/constants/colors.dart';
@@ -47,12 +46,13 @@ class RequestCard extends StatelessWidget {
         child: Row(
           mainAxisSize: MainAxisSize.max,
           crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          mainAxisAlignment: MainAxisAlignment.end,
           children: [
-            Flexible(
-              flex: 2,
+            Expanded(
+              flex: 5,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
+
                 children: [
                 OrderTextCard(
                     title: S.current.orderNumber,
@@ -69,14 +69,17 @@ class RequestCard extends StatelessWidget {
                 ],
               ),
             ),
-            // const Spacer(),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                HomeStatusBadge(statusColor: statusColor, status: status),
-                const Sizer(height: 10),
-                OrderTextCard(title: S.current.orderDate, result: date),
-              ],
+            Expanded(
+
+              flex: 6,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  OrderTextCard(title: S.current.orderDate, result: date),
+                  const Sizer(height:12),
+                  HomeStatusBadge(statusColor: statusColor, status: status),
+                ],
+              ),
             ),
           ],
         ),

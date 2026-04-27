@@ -121,7 +121,9 @@ class RequestCreateDetailsScreen extends StatelessWidget {
 
                         /// Floating blur buttons at the bottom
                         state.isCreateExitPermissionLoading
-                            ? const Sizer()
+                            ? CircularProgressIndicator(
+                                color: ColorRes.primary,
+                              )
                             : CreateDeleteButtons(
                                 deleteTab: () {
                                   print("test delete button");

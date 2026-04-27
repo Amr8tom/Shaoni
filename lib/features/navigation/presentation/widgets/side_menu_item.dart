@@ -22,30 +22,66 @@ class SideMenuItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: onTap,
-      child: Padding(
-        padding: EdgeInsets.all(AppSizes.padding / 2),
-        child: Row(
-          children: [
-            const Sizer(width: 20),
-            isIcon
-                ? Icon(iconData,
-                    color: ColorRes.primary, size: AppSizes.iconLg)
-                : Image.asset(
-                    icon,
-                    color: ColorRes.primary,
-                    width: AppSizes.iconLg,
-                    height: AppSizes.iconLg,
-                  ),
-            const Sizer(width: 12),
-            Text(
-              title,
-              style: Theme.of(
-                context,
-              ).textTheme.headlineSmall?.copyWith(color: ColorRes.grey2),
+    return Material(
+      color: Colors.transparent,
+      child: InkWell(
+        onTap: onTap,
+        borderRadius: BorderRadius.circular(AppSizes.borderRadiusLg),
+        child: Container(
+          decoration: BoxDecoration(
+            color: ColorRes.primary.withOpacity(0.06),
+            borderRadius: BorderRadius.circular(AppSizes.borderRadiusLg),
+            border: Border.all(
+              color: ColorRes.primary.withOpacity(0.10),
+              width: 1,
             ),
-          ],
+          ),
+          padding: EdgeInsets.symmetric(
+            horizontal: AppSizes.padding,
+            vertical: AppSizes.padding,
+          ),
+          child: Row(
+            children: [
+              Container(
+                width: AppSizes.iconLg * 1.5,
+                height: AppSizes.iconLg * 1.5,
+                alignment: Alignment.center,
+                decoration: BoxDecoration(
+                  color: ColorRes.primary.withOpacity(0.12),
+                  borderRadius: BorderRadius.circular(AppSizes.borderRadiusMd),
+                ),
+                child: isIcon
+                    ? Icon(
+                        iconData,
+                        color: ColorRes.primary,
+                        size: AppSizes.iconMd,
+                      )
+                    : Image.asset(
+                        icon,
+                        color: ColorRes.primary,
+                        width: AppSizes.iconMd,
+                        height: AppSizes.iconMd,
+                      ),
+              ),
+              const Sizer(width: 14),
+              Expanded(
+                child: Text(
+                  title,
+                  style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+                        color: ColorRes.black,
+                        fontWeight: FontWeight.w700,
+                      ),
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                ),
+              ),
+              Icon(
+                Icons.arrow_forward_ios_rounded,
+                size: AppSizes.iconSm,
+                color: ColorRes.primary.withOpacity(0.6),
+              ),
+            ],
+          ),
         ),
       ),
     );

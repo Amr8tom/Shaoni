@@ -16,12 +16,12 @@ class OrderTextCard extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Flexible(
-          flex: 1,
+          flex: 2,
           child: Text(
             "${title}: ",
             style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                   color: ColorRes.black,
-                  fontSize: AppSizes.fontSizeSm * 0.70,
+                  fontSize: AppSizes.fontSizeSm * 0.80,
                   fontWeight: FontWeight.w800,
                 ),
             maxLines: 1,
@@ -37,7 +37,7 @@ class OrderTextCard extends StatelessWidget {
                   color: ColorRes.grey,
                   fontSize: AppSizes.fontSizeSm * 0.86,
                 ),
-            maxLines: 1,
+            maxLines: 2,
             overflow: TextOverflow.ellipsis,
           ),
         ),

@@ -62,7 +62,7 @@ class StatisticsListView extends StatelessWidget {
             itemBuilder: (context, index) {
               final entry = state.requestsStatus?.entries.elementAt(index);
               final String title = entry?.key ?? '';
-              String statusTitle = S.current.pendingRequest;
+              String statusTitle = S.current.remainingLeaves;
               final String count = entry?.value ?? '0';
 
               // Map titles to existing assets or use a default one
@@ -91,6 +91,10 @@ class StatisticsListView extends StatelessWidget {
                 itemColor = ColorRes.staticBlueColor;
                 statusTitle = S.current.pendingRequest;
               }    else if (title.toLowerCase().contains('id')) {
+                imagePath = AssetRes.waitingIcon;
+                itemColor = ColorRes.staticVioletColor;
+                statusTitle = S.current.localeee=="en"?title:"إضافة وثيقة ثبوتية";
+              }  else if (title.toLowerCase().contains('manager')) {
                 imagePath = AssetRes.waitingIcon;
                 itemColor = ColorRes.staticVioletColor;
                 statusTitle = S.current.localeee=="en"?title:"إضافة وثيقة ثبوتية";

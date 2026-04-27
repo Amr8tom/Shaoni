@@ -125,18 +125,12 @@ class ProfileScreen extends StatelessWidget {
                               horizontal: AppSizes.padding / 3,
                             ),
                             child: AuthTextField(
+                              readOnly: true,
                               hint: controller.numberController.text.isEmpty
                                   ? 'Phone Number'
                                   : controller.numberController.text,
                               controller: controller.numberController,
                               prefixIcon: const Icon(Icons.phone_android),
-                              suffixIcon: Padding(
-                                padding: EdgeInsets.all(AppSizes.padding * 0.7),
-                                child: Image.asset(
-                                  AssetRes.editForProfile,
-                                  height: AppSizes.iconMd,
-                                ),
-                              ),
                             ),
                           ),
                           SizedBox(height: 16.h),
@@ -167,10 +161,12 @@ class ProfileScreen extends StatelessWidget {
                                     groupValue: state.gender,
                                     activeColor: ColorRes.primary,
                                     contentPadding: EdgeInsets.zero,
-                                    onChanged: (value) {
-                                      if (value != null)
-                                        controller.setGender(value);
-                                    },
+                                    onChanged: null,
+
+                                    // onChanged: (value) {
+                                    //   if (value != null)
+                                    //     controller.setGender(value);
+                                    // },
                                   ),
                                 ),
                                 Expanded(
@@ -180,10 +176,12 @@ class ProfileScreen extends StatelessWidget {
                                     groupValue: state.gender,
                                     activeColor: ColorRes.primary,
                                     contentPadding: EdgeInsets.zero,
-                                    onChanged: (value) {
-                                      if (value != null)
-                                        controller.setGender(value);
-                                    },
+                                    onChanged: null,
+
+                                    // onChanged: (value) {
+                                    //   if (value != null)
+                                    //     controller.setGender(value);
+                                    // },
                                   ),
                                 ),
                               ],
@@ -202,10 +200,12 @@ class ProfileScreen extends StatelessWidget {
                                     groupValue: state.nationality,
                                     activeColor: ColorRes.primary,
                                     contentPadding: EdgeInsets.zero,
-                                    onChanged: (value) {
-                                      if (value != null)
-                                        controller.setNationality(value);
-                                    },
+                                    onChanged: null,
+
+                                    // onChanged: (value) {
+                                    //   if (value != null)
+                                    //     controller.setNationality(value);
+                                    // },
                                   ),
                                 ),
                                 Expanded(
@@ -216,10 +216,12 @@ class ProfileScreen extends StatelessWidget {
                                     groupValue: state.nationality,
                                     activeColor: ColorRes.primary,
                                     contentPadding: EdgeInsets.zero,
-                                    onChanged: (value) {
-                                      if (value != null)
-                                        controller.setNationality(value);
-                                    },
+                                    onChanged: null,
+
+                                    // onChanged: (value) {
+                                    //   if (value != null)
+                                    //     controller.setNationality(value);
+                                    // },
                                   ),
                                 ),
                               ],
@@ -238,10 +240,11 @@ class ProfileScreen extends StatelessWidget {
                                     groupValue: state.city,
                                     activeColor: ColorRes.primary,
                                     contentPadding: EdgeInsets.zero,
-                                    onChanged: (value) {
-                                      if (value != null)
-                                        controller.setCity(value);
-                                    },
+                                    onChanged:  null,
+                                    // onChanged: (value) {
+                                    //   if (value != null)
+                                    //     controller.setCity(value);
+                                    // },
                                   ),
                                 ),
                                 Expanded(
@@ -251,10 +254,11 @@ class ProfileScreen extends StatelessWidget {
                                     groupValue: state.city,
                                     activeColor: ColorRes.primary,
                                     contentPadding: EdgeInsets.zero,
-                                    onChanged: (value) {
-                                      if (value != null)
-                                        controller.setCity(value);
-                                    },
+                                    onChanged: null,
+                                    // onChanged: (value) {
+                                    //   if (value != null)
+                                    //     controller.setCity(value);
+                                    // },
                                   ),
                                 ),
                               ],
@@ -267,22 +271,22 @@ class ProfileScreen extends StatelessWidget {
                 ),
 
                 /// Bottom button - fixed at bottom
-                Padding(
-                  padding: EdgeInsets.all(AppSizes.padding),
-                  child: SafeArea(
-                    top: false,
-                    child: DButton(
-                      text: S.current.updateData,
-                      onPressed: () {
-                        controller.updateProfile();
-                      },
-                      variant: DButtonVariant.primary,
-                      size: DButtonSize.large,
-                      height: 50.h,
-                      width: double.infinity,
-                    ),
-                  ),
-                ),
+                // Padding(
+                //   padding: EdgeInsets.all(AppSizes.padding),
+                //   child: SafeArea(
+                //     top: false,
+                //     child: DButton(
+                //       text: S.current.updateData,
+                //       onPressed: () {
+                //         controller.updateProfile();
+                //       },
+                //       variant: DButtonVariant.primary,
+                //       size: DButtonSize.large,
+                //       height: 50.h,
+                //       width: double.infinity,
+                //     ),
+                //   ),
+                // ),
                 Sizer(
                   height: AppSizes.appBarHeight * 1.6,
                 )
