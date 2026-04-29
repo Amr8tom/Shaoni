@@ -52,7 +52,7 @@ class DAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     // NavigationCubit is required for indx and screens, so we use watch/read directly
     // but DAppBar is used in screens where NavigationCubit might not be in scope.
-    // The previous error was likely due to DAppBar trying to access NavigationCubit 
+    // The previous error was likely due to DAppBar trying to access NavigationCubit
     // when it's not provided in the specific route.
 
     return Stack(
@@ -72,7 +72,7 @@ class DAppBar extends StatelessWidget implements PreferredSizeWidget {
               bottomRight: Radius.circular(AppSizes.borderRadiusLarge * 1.5),
             ),
           ),
-          height: appHeight ?? AppSizes.appBarHeight * 2.6,
+          height: appHeight ?? AppSizes.appBarHeight * 2.7,
         ),
         Container(
           child: Column(
@@ -116,13 +116,10 @@ class DAppBar extends StatelessWidget implements PreferredSizeWidget {
                 actions:
                     actions ??
                     [
-
-                      isHeader ? Padding(
-                        padding:  EdgeInsets.symmetric(horizontal:AppSizes.padding),
-                        child: const ProfileHeader(),
-                      ) : const Sizer(),
-                      const Spacer(),
-
+                      const Sizer(width: 10),
+                      isHeader ? const ProfileHeader() : const Sizer(),
+                      // const Spacer(),
+const Sizer(width: 20),
                       IconButton(
                         onPressed: () {
                           context.pushNamed(
@@ -154,7 +151,7 @@ class DAppBar extends StatelessWidget implements PreferredSizeWidget {
 
                       ):Sizer(),
 
-                      const Sizer(width: 20),
+                      const Sizer(width: 10),
                     ],
                 toolbarHeight: DDeviceUtils.getAppBarHeight().sp * 1,
               ),
@@ -190,5 +187,5 @@ class DAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Size get preferredSize =>
-      Size.fromHeight(appHeight ?? AppSizes.appBarHeight * 2);
+      Size.fromHeight(appHeight ?? AppSizes.appBarHeight * 2.7);
 }

@@ -23,8 +23,6 @@ class CustomSideMenu extends StatelessWidget {
       width: DDeviceUtils.getScreenWidth(context) / 1.4,
       child: SafeArea(
         child: Column(
-          /// Stretch makes every row fill the drawer width so the dividers
-          /// visually connect to the rows above and below them.
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             const Sizer(height: 20),
@@ -34,14 +32,7 @@ class CustomSideMenu extends StatelessWidget {
                 width: AppSizes.widthcontainer * 1.5,
               ),
             ),
-
-            /// Calmer breathing room under the brand (was 150 — felt empty).
             const Sizer(height: 32),
-
-            /// Items live inside a shared horizontal gutter so the cards
-            /// don't touch the drawer edges, and are spaced by Sizer gaps
-            /// instead of harsh dividers — the soft tinted backgrounds on
-            /// each card now provide the visual separation.
             Padding(
               padding: EdgeInsets.symmetric(horizontal: AppSizes.padding),
               child: SideMenuItem(
@@ -77,11 +68,21 @@ class CustomSideMenu extends StatelessWidget {
                 },
               ),
             ),
-
-            /// Pushes the footer credit to the very bottom of the drawer
-            /// instead of letting it float right under the last menu item.
+            const Sizer(height: 12),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: AppSizes.padding),
+              child: SideMenuItem(
+                isIcon: true,
+                iconData: Icons.logout_rounded,
+                icon: AssetRes.sidePrivaceyIcon,
+                title: S.current.logOut,
+                onTap: () {
+                  context.pop();
+                  showLogoutDialog(context);
+                },
+              ),
+            ),
             const Spacer(),
-
             const DrawerLogoWidget(),
             const Sizer(height: 12),
           ],

@@ -126,11 +126,11 @@ class _StepItem extends StatelessWidget {
                 dashThickness: 2,
                 dashColor: isCompleted ? activeColor : inactiveColor,
               ),
-            // Container(
-            //   width: 1,
-            //   height: AppSizes.iconXLarge,
-            //   color: isCompleted ? activeColor : inactiveColor,
-            // ),
+            Container(
+              width: 1,
+              height: AppSizes.iconXLarge,
+              color: isCompleted ? activeColor : inactiveColor,
+            ),
           ],
         ),
         Sizer(width: 10),

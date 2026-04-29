@@ -49,8 +49,14 @@ void showLogoutDialog(BuildContext context) {
           /// Logout Button
           TextButton(
             onPressed: () async {
-              Navigator.pop(dialogContext);
-              await _performLogout(context);
+
+              await CacheHelper.removeFromShared(key: CacheKeys.token);
+              await CacheHelper.removeFromShared(key: CacheKeys.userId);
+              await CacheHelper.removeFromShared(key: CacheKeys.employeeId);
+              if (dialogContext.mounted) {
+                Navigator.pop(dialogContext);
+                context.pushReplacementNamed(DRoutesName.loginRoute);
+              }
             },
             child: Text(
               S.current.logOut,
@@ -66,59 +72,3 @@ void showLogoutDialog(BuildContext context) {
   );
 }
 
-/// Perform logout with cleanup and navigation
-Future<void> _performLogout(BuildContext context) async {
-  try {
-    // Show loading
-    if (context.mounted) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(S.current.loading),
-          duration: const Duration(seconds: 2),
-          backgroundColor: ColorRes.primary,
-        ),
-      );
-    }
-
-    // Clear cache and tokens
-    await _clearUserData();
-
-    // Navigate to login screen and clear navigation stack
-    if (context.mounted) {
-
-      context.pushReplacementNamed(DRoutesName.loginRoute);
-
-    }
-  } catch (e) {
-    if (context.mounted) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text('Error during logout: $e'),
-          backgroundColor: Colors.red,
-          duration: const Duration(seconds: 3),
-        ),
-      );
-    }
-  }
-}
-
-/// Clear all user data and cache
-Future<void> _clearUserData() async {
-  try {
-    // TODO: Import and use your CacheHelper/SharedPreferences
-    // Example:
-    await CacheHelper.removeFromShared(key: CacheKeys.token);
-    await CacheHelper.removeFromShared(key: CacheKeys.userId);
-    await CacheHelper.removeFromShared(key: CacheKeys.employeeId);
-    // await CacheHelper.clear(); // Clear all cache if needed
-
-    // If using GetIt for cubits, you can reset them
-    // getIt<AuthCubit>().resetState();
-    // getIt<NavigationCubit>().resetState();
-
-    print('User data cleared successfully');
-  } catch (e) {
-    print('Error clearing user data: $e');
-    rethrow;
-  }
-}
