@@ -105,18 +105,13 @@ class ProfileScreen extends StatelessWidget {
                               horizontal: AppSizes.padding / 3,
                             ),
                             child: AuthTextField(
+                              readOnly: true,
                               hint: controller.nameController.text.isEmpty
                                   ? 'Full Name'
                                   : controller.nameController.text,
                               controller: controller.nameController,
                               prefixIcon: const Icon(Icons.person),
-                              suffixIcon: Padding(
-                                padding: EdgeInsets.all(AppSizes.padding * 0.7),
-                                child: Image.asset(
-                                  AssetRes.editForProfile,
-                                  height: AppSizes.iconMd,
-                                ),
-                              ),
+
                             ),
                           ),
                           SizedBox(height: 16.h),

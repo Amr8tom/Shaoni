@@ -26,7 +26,7 @@ PreferredSizeWidget customAppBar({
     showBackArrow: showBackArrow,
     showMenu: showMenu,
     bgColor: ColorRes.transparent,
-    appHeight: height ?? DDeviceUtils.getAppBarHeight() * 3,
+    appHeight: height ?? DDeviceUtils.getAppBarHeight() ,
     actions: [
       const Sizer(width: 15),
 

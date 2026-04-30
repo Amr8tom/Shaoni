@@ -72,7 +72,7 @@ class DAppBar extends StatelessWidget implements PreferredSizeWidget {
               bottomRight: Radius.circular(AppSizes.borderRadiusLarge * 1.5),
             ),
           ),
-          height: appHeight ?? AppSizes.appBarHeight * 2.7,
+          height:  AppSizes.appBarHeight * 2.7
         ),
         Container(
           child: Column(
@@ -187,5 +187,5 @@ const Sizer(width: 20),
 
   @override
   Size get preferredSize =>
-      Size.fromHeight(appHeight ?? AppSizes.appBarHeight * 2.7);
+      Size.fromHeight(appHeight ?? AppSizes.appBarHeight *1.8);
 }

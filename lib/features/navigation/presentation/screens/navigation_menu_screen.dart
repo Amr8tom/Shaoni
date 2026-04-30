@@ -5,11 +5,11 @@ import 'package:shaoni/common/widgets/sizeboxs/Sizer.dart';
 import 'package:shaoni/core/constants/app_sizes.dart';
 import 'package:shaoni/core/constants/colors.dart';
 import 'package:shaoni/core/local_storage/cache_helper.dart';
-
 import 'package:shaoni/features/home/presentation/controller/home_cubit.dart';
 import 'package:shaoni/features/my-requests/presentation/controller/my_requests_cubit.dart';
 import 'package:shaoni/features/navigation/presentation/widgets/custom_navigation_appbar.dart';
 import 'package:upgrader/upgrader.dart';
+import '../../../../common/widgets/appbar/appbar.dart';
 import '../../../../core/connection/check_for_updates.dart';
 import '../../../../core/local_storage/cache_keys.dart';
 import '../../../../core/service_locator/service_locator.dart';
@@ -43,18 +43,19 @@ class NavigationMenuScreen extends StatelessWidget {
             child: Scaffold(
               appBar: controller.indx == 0
                   ? null
-                  : customAppBar(
+                  :
+              customAppBar(
                       scaffoldKey: scaffoldKey,
                       context: context,
                       isHeader: true,
                       showMenu: true,
-                      height: AppSizes.appBarHeight * 2.7,
+                      height: AppSizes.appBarHeight *1.8,
                     ),
               // DAppBar(
               //         scaffoldKey: scaffoldKey,
               //         isHeader: true,
               //         showMenu: true,
-              //       ),
+                    // ),
               key: scaffoldKey,
               drawer: const CustomSideMenu(),
               // extendBodyBehindAppBar: true,
