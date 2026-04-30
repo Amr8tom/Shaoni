@@ -77,7 +77,6 @@ class CustomSideMenu extends StatelessWidget {
                 icon: AssetRes.sidePrivaceyIcon,
                 title: S.current.logOut,
                 onTap: () {
-                  context.pop();
                   showLogoutDialog(context);
                 },
               ),

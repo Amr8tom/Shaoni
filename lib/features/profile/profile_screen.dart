@@ -30,7 +30,7 @@ class ProfileScreen extends StatelessWidget {
         return cubit;
       },
       child: Scaffold(
-        backgroundColor: ColorRes.scaffoldBG,
+        backgroundColor: ColorRes.grey6,
         drawer: const CustomSideMenu(),
         body: BlocConsumer<ProfileCubit, ProfileState>(
           listener: (context, state) {

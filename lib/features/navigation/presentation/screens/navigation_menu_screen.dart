@@ -49,6 +49,7 @@ class NavigationMenuScreen extends StatelessWidget {
                       context: context,
                       isHeader: true,
                       showMenu: true,
+
                       height: AppSizes.appBarHeight *1.8,
                     ),
               // DAppBar(
