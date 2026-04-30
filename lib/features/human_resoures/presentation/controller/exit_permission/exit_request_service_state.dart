@@ -1,6 +1,6 @@
-part of 'request_service_cubit.dart';
+part of 'exit_request_service_cubit.dart';
 
-extension RequestStateExtension on RequestServiceState {
+extension ExitRequestStateExtension on ExitRequestServiceState {
   bool get isLoading => status == RequestStatus.faqLoading;
 
   bool get isLoaded => status == RequestStatus.faqLoaded;
@@ -63,7 +63,7 @@ enum RequestStatus {
   expanded,
 }
 
-final class RequestServiceState extends Equatable {
+final class ExitRequestServiceState extends Equatable {
   final RequestStatus status;
   final List<RequestServicesEntity> services;
   final List<RequestServicesEntity> filteredServices;
@@ -72,7 +72,7 @@ final class RequestServiceState extends Equatable {
   final int? expandedIndex;
   final String? errorMassage;
 
-  const RequestServiceState({
+  const ExitRequestServiceState({
     this.status = RequestStatus.initialized,
     this.services = const [],
     this.filteredServices = const [],
@@ -82,7 +82,7 @@ final class RequestServiceState extends Equatable {
     this.errorMassage
   });
 
-  RequestServiceState copyWith({
+  ExitRequestServiceState copyWith({
     RequestStatus? status,
     List<RequestServicesEntity>? services,
     List<RequestServicesEntity>? filteredServices,
@@ -92,7 +92,7 @@ final class RequestServiceState extends Equatable {
     List<PermissionTime>? permissionTimes,
     String? errorMessage
   }) {
-    return RequestServiceState(
+    return ExitRequestServiceState(
       status: status ?? this.status,
       services: services ?? this.services,
       filteredServices: filteredServices ?? this.filteredServices,

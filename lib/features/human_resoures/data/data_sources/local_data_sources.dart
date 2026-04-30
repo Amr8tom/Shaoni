@@ -13,13 +13,13 @@ abstract class HRServicesLocalDataSources{
   Future<AllServicesModel> getAllServices();
   /// cache all services
   Future<Unit> cacheAllServices(AllServicesModel allServicesModel);
-  /// cache all permission times
+  /// cache all exit permission times
   Future<Unit> cacheAllPermissionTimes(List<PermissionTimeModel> permissionTimes);
-  /// get all permission times
+  /// get all exit  permission times
  Future<List<PermissionTimeModel>> getAllPermissionTimes();
- /// cache all permission types
+ /// cache all exit permission types
   Future<Unit> cacheAllPermissionTypes(List<PermissionTypeModel> permissionTypes);
-  /// get all permission types
+  /// get all exit permission types
   Future<List<PermissionTypeModel>> getAllPermissionTypes();
 }
 class HRServicesLocalDataSourcesImp implements HRServicesLocalDataSources{

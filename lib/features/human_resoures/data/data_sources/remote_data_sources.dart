@@ -8,14 +8,16 @@ import '../model/permission_time_model.dart';
 import '../model/permission_type_model.dart';
 
 abstract class HRServicesRemoteDataSources {
+  /// get all services
   Future<AllServicesModel> getAllServices();
 
+  /// create exit permission
   Future<ExitPermission> createExitPermission(
     CreateExitPermissionParams params,
   );
-
+  /// get all exit permission types
   Future<List<PermissionTypeModel>> getAllPermissionTypes();
-
+  /// get all exit permission times
   Future<List<PermissionTimeModel>> getAllPermissionTimes();
 }
 

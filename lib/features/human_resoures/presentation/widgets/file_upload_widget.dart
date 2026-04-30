@@ -5,9 +5,10 @@ import 'package:shaoni/common/widgets/sizeboxs/Sizer.dart';
 import 'package:shaoni/core/constants/app_sizes.dart';
 import 'package:shaoni/core/constants/colors.dart';
 import 'package:shaoni/generated/l10n.dart';
-import '../controller/request_services/request_service_cubit.dart';
 import 'dart:io';
 import 'dart:convert';
+
+import '../controller/exit_permission/exit_request_service_cubit.dart';
 
 class FileUploadWidget extends StatefulWidget {
   const FileUploadWidget({super.key});
@@ -40,7 +41,7 @@ class _FileUploadWidgetState extends State<FileUploadWidget> {
           });
 
           // Optional: Update controller with file path and base64
-          final controller = context.read<RequestServiceCubit>();
+          final controller = context.read<ExitRequestServiceCubit>();
           controller.attachmentFileController.text = base64String ?? '';
           controller.attachmentFileNameController.text = _pickedFile!.name ?? '';
           // You can store base64String if needed
@@ -49,7 +50,7 @@ class _FileUploadWidgetState extends State<FileUploadWidget> {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
               content: Text(S.current.error ?? 'Error processing file'),
-              backgroundColor: Colors.red,
+              backgroundColor: ColorRes.error,
             ),
           );
         }
@@ -58,7 +59,7 @@ class _FileUploadWidgetState extends State<FileUploadWidget> {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text(S.current.error ?? 'Error picking file'),
-          backgroundColor: Colors.red,
+          backgroundColor: ColorRes.error,
         ),
       );
     }
@@ -66,7 +67,7 @@ class _FileUploadWidgetState extends State<FileUploadWidget> {
 
   @override
   Widget build(BuildContext context) {
-    final controller = context.read<RequestServiceCubit>()  ;
+    final controller = context.read<ExitRequestServiceCubit>()  ;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,

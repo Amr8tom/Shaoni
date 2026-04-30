@@ -10,19 +10,20 @@ import '../../../../common/widgets/dialogs/custom_dialog_img_title_des.dart';
 import '../../../../core/constants/asset_resoures.dart';
 import '../../../../core/routing/route_names.dart';
 import '../../../../generated/l10n.dart';
-import '../controller/request_services/request_service_cubit.dart';
+import '../controller/exit_permission/exit_request_service_cubit.dart';
 import '../widgets/applicant_data_widget.dart';
 import '../widgets/create_delete_buttons.dart';
 import '../widgets/date_data_widget.dart';
 import '../widgets/file_upload_widget.dart';
+import '../widgets/request_data_widget.dart';
 
-class RequestCreateDetailsScreen extends StatelessWidget {
-  const RequestCreateDetailsScreen({super.key});
+class ExitRequestDetailsScreen extends StatelessWidget {
+  const ExitRequestDetailsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => serviceLocator<RequestServiceCubit>(),
+      create: (context) => serviceLocator<ExitRequestServiceCubit>(),
       child: Scaffold(
         appBar: DAppBar(
           showMenu: false,
@@ -32,8 +33,9 @@ class RequestCreateDetailsScreen extends StatelessWidget {
         backgroundColor: ColorRes.grey6,
         body: Builder(
           builder: (context) {
-            final controller = context.read<RequestServiceCubit>();
-            return BlocConsumer<RequestServiceCubit, RequestServiceState>(
+            final controller = context.read<ExitRequestServiceCubit>();
+            return BlocConsumer<ExitRequestServiceCubit,
+                ExitRequestServiceState>(
               listener: (context, state) {
                 if (state.isCreateExitPermissionError) {
                   ScaffoldMessenger.of(context).showSnackBar(
@@ -101,49 +103,7 @@ class RequestCreateDetailsScreen extends StatelessWidget {
                                 style:
                                     Theme.of(context).textTheme.headlineMedium,
                               ),
-
-                              // const RequestDataWidget(),
-                              /// tilte
-                              Center(child: Text("بيانات الطلب")),
-                              Column(
-                                children: [
-                                  Text('نوع الدراسه'),
-                                  Text('الدراسه المطلوبه '),
-                                  Text('الجهه المقذمه للدراسه المطلوبه '),
-                                  Text('الجهه المقذمه للدراسه المطلوبه '),
-                                ],
-                              ),
-
-                              /// tilte
-                              Center(child: Text("مببرات الطلب")),
-                              Container(
-                                child: Text("تكست عن مببرات الطلب"),
-                              ),
-
-                              /// tilte
-                              Center(child: Text("مده الدراسه")),
-                              Column(
-                                children: [
-                                  Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Text('من تاريخ ميلادي '),
-                                      Text('ميلادي الي تاريخ '),
-                                    ],
-                                  ),
-                                  Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Text('من تاريخ هجزي '),
-                                      Text('هجري الي تاريخ '),
-                                    ],
-                                  ),
-                                  Text(
-                                      'مده الدراسه: المده محسوبه بالايام والشهور  بناء علي البدايه والنهاريه'),
-                                ],
-                              ),
+                              const RequestDataWidget(),
 
                               /// file upload
                               const Sizer(height: 35),

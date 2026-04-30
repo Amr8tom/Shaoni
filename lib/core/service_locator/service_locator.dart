@@ -33,8 +33,8 @@ class DI {
     await LanguageServiceLocator.execute(serviceLocator: serviceLocator);
     /// profile
     await ProfileServiceLocator.execute(serviceLocator: serviceLocator);
-    /// request service
-    await RequestServiceLocator.execute(serviceLocator: serviceLocator);
+    /// HR request service
+    await HRServiceLocator.execute(serviceLocator: serviceLocator);
     /// My-requests
     await MyRequestsServiceLocator.execute(serviceLocator: serviceLocator);
 

@@ -12,10 +12,10 @@ import '../../../domain/entity/request_services_Entity.dart';
 import '../../../domain/use_cases/create_exit_permission_use_case.dart';
 import '../../../domain/use_cases/get_permission_time_use_case.dart';
 import '../../../domain/use_cases/get_permission_types_use_case.dart';
-part 'request_service_state.dart';
+part 'exit_request_service_state.dart';
 
 
-class RequestServiceCubit extends Cubit<RequestServiceState> {
+class ExitRequestServiceCubit extends Cubit<ExitRequestServiceState> {
   final GetPermissionTimeUseCase _getPermissionTimeUseCase;
   final GetPermissionTypesUseCase _getPermissionTypeUseCase;
   final CreateExitPermissionUseCase _createExitPermissionUseCase;
@@ -25,14 +25,14 @@ class RequestServiceCubit extends Cubit<RequestServiceState> {
   final TextEditingController organizationalUnitController =
       TextEditingController();
   final TextEditingController locationController = TextEditingController();
+  final TextEditingController hijriDateController = TextEditingController();
+  final TextEditingController attachmentFileController = TextEditingController();
+  final TextEditingController attachmentFileNameController = TextEditingController();
   final TextEditingController permissionTypeController =
       TextEditingController();
-  final TextEditingController hijriDateController = TextEditingController();
   final TextEditingController durationController = TextEditingController();
   final TextEditingController permissionTimeTypeController =
       TextEditingController();
-  final TextEditingController attachmentFileController = TextEditingController();
-  final TextEditingController attachmentFileNameController = TextEditingController();
   final TextEditingController notesController = TextEditingController();
 
 
@@ -40,11 +40,11 @@ class RequestServiceCubit extends Cubit<RequestServiceState> {
   List<DropdownMenuItem<String>> durationItems = [];
   final GlobalKey<FormState> requestFormKey =GlobalKey<FormState>();
 
-  RequestServiceCubit(
+  ExitRequestServiceCubit(
     this._createExitPermissionUseCase,
     this._getPermissionTimeUseCase,
     this._getPermissionTypeUseCase,
-  ) : super(const RequestServiceState()) {
+  ) : super(const ExitRequestServiceState()) {
     getPermissionTypes();
     getPermissionTimes();
   }

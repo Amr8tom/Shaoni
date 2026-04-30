@@ -8,7 +8,7 @@ import '../../features/auth/presentation/screen/new_password_screen.dart';
 import '../../features/auth/presentation/screen/otp_screen.dart';
 import '../../features/delete_account/presentation/delete_my_account_screen.dart';
 import '../../features/human_resoures/presentation/screens/choose_new_request_services_screen.dart';
-import '../../features/human_resoures/presentation/screens/create_request_screen.dart';
+import '../../features/human_resoures/presentation/screens/exit_request_screen.dart';
 import '../../features/human_resoures/presentation/screens/request_certain_service.dart';
 import '../../features/my-requests/presentation/screens/request_details_screen.dart';
 import '../../features/navigation/presentation/screens/navigation_menu_screen.dart';
@@ -76,7 +76,7 @@ class RouteGenerator {
       ///  request create details screen
       case DRoutesName.requestCreateDetails:
         return PageTransition(
-          child: const RequestCreateDetailsScreen(),
+          child: const ExitRequestDetailsScreen(),
           type: PageTransitionType.rightToLeft,
           settings: settings,
         );

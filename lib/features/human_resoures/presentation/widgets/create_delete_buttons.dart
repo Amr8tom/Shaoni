@@ -1,16 +1,13 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:shaoni/core/extentions/navigation_extension.dart';
-import 'package:shaoni/core/routing/route_names.dart';
-import '../../../../common/widgets/dialogs/custom_dialog_img_title_des.dart';
 import '../../../../common/widgets/sizeboxs/Sizer.dart';
 import '../../../../core/constants/app_sizes.dart';
 import '../../../../core/constants/asset_resoures.dart';
 import '../../../../core/constants/colors.dart';
 import '../../../../generated/l10n.dart';
 import '../../../auth/presentation/widgets/auth_button.dart';
-import '../controller/request_services/request_service_cubit.dart';
+import '../controller/exit_permission/exit_request_service_cubit.dart';
 
 class CreateDeleteButtons extends StatelessWidget {
   final VoidCallback? deleteTab;
@@ -20,7 +17,7 @@ class CreateDeleteButtons extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<RequestServiceCubit, RequestServiceState>(
+    return BlocBuilder<ExitRequestServiceCubit, ExitRequestServiceState>(
       builder: (context, state) {
         return Positioned(
           left: 0,

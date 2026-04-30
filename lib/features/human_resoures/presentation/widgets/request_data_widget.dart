@@ -7,15 +7,15 @@ import '../../../../core/constants/app_sizes.dart';
 import '../../../../core/constants/colors.dart';
 import '../../../../generated/l10n.dart';
 import '../../../auth/presentation/widgets/auth_text_filed.dart';
-import '../controller/request_services/request_service_cubit.dart';
+import '../controller/exit_permission/exit_request_service_cubit.dart';
 
 class RequestDataWidget extends StatelessWidget {
   const RequestDataWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final controller = context.read<RequestServiceCubit>();
-    return BlocBuilder<RequestServiceCubit, RequestServiceState>(
+    final controller = context.read<ExitRequestServiceCubit>();
+    return BlocBuilder<ExitRequestServiceCubit, ExitRequestServiceState>(
       builder: (context, state) {
         return Skeletonizer(
           enabled: (state.isPermissionTimeLoading ||

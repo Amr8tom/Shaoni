@@ -11,7 +11,7 @@ import 'package:shaoni/core/routing/route_names.dart';
 import 'package:shaoni/core/service_locator/service_locator.dart';
 import '../../../../core/device/device_utility.dart';
 import '../../../../generated/l10n.dart';
-import '../controller/request_services/request_service_cubit.dart';
+import '../controller/exit_permission/exit_request_service_cubit.dart';
 import '../widgets/services_information_gridview.dart';
 
 class RequestCertainService extends StatelessWidget {
@@ -20,7 +20,7 @@ class RequestCertainService extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => serviceLocator<RequestServiceCubit>(),
+      create: (context) => serviceLocator<ExitRequestServiceCubit>(),
       child: Scaffold(
         backgroundColor: ColorRes.grey6,
         extendBodyBehindAppBar: true,

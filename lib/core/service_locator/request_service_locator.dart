@@ -9,9 +9,10 @@ import '../../features/human_resoures/domain/use_cases/create_exit_permission_us
 import '../../features/human_resoures/domain/use_cases/get_all_permission_services_use_case.dart';
 import '../../features/human_resoures/domain/use_cases/get_permission_time_use_case.dart';
 import '../../features/human_resoures/domain/use_cases/get_permission_types_use_case.dart';
-import '../../features/human_resoures/presentation/controller/request_services/request_service_cubit.dart';
+import '../../features/human_resoures/presentation/controller/attendance/attendance_cubit.dart';
+import '../../features/human_resoures/presentation/controller/exit_permission/exit_request_service_cubit.dart';
 
-class RequestServiceLocator {
+class HRServiceLocator {
   static Future<void> execute({required GetIt serviceLocator}) async {
     /// data sources
     serviceLocator.registerLazySingleton<HRServicesRemoteDataSources>(
@@ -45,12 +46,15 @@ class RequestServiceLocator {
     );
 
     /// register cubit
-    serviceLocator.registerFactory<RequestServiceCubit>(
-      () => RequestServiceCubit(
+    serviceLocator.registerFactory<ExitRequestServiceCubit>(
+      () => ExitRequestServiceCubit(
         serviceLocator(),
         serviceLocator(),
         serviceLocator(),
       ),
+    );
+    serviceLocator.registerFactory<AttendanceCubit>(
+      () => AttendanceCubit(),
     );
     serviceLocator.registerFactory<HumanResourcesCubit>(
       () => HumanResourcesCubit(serviceLocator()),

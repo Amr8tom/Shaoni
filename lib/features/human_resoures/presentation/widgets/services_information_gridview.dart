@@ -4,7 +4,7 @@ import '../../../../core/constants/app_sizes.dart';
 import '../../../../core/constants/colors.dart';
 import '../../../../generated/l10n.dart';
 import '../../domain/entity/request_services_Entity.dart';
-import '../controller/request_services/request_service_cubit.dart';
+import '../controller/exit_permission/exit_request_service_cubit.dart';
 
 class ServicesInformationGridview extends StatelessWidget {
   const ServicesInformationGridview({super.key});
@@ -33,9 +33,9 @@ class ServicesInformationGridview extends StatelessWidget {
         answer: '00000000000',
       ),
     ];
-    return BlocBuilder<RequestServiceCubit, RequestServiceState>(
+    return BlocBuilder<ExitRequestServiceCubit, ExitRequestServiceState>(
   builder: (context, state) {
-    final controller = context.read<RequestServiceCubit>();
+    final controller = context.read<ExitRequestServiceCubit>();
 
     return ListView.builder(
       padding: EdgeInsets.zero,
