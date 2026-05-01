@@ -20,6 +20,9 @@ class DRoutesName {
   static const String profileRoute = 'profile-route';
   static const String settingsRoute = 'settings-route';
 
+  /// HR
+  static const String attendanceRoute = 'attendance-route';
+
   /// location & maps Screen
   static const String mapRoute = 'map-route';
 
@@ -41,6 +44,9 @@ class DRoutesName {
 
   /// requests
   static const String requestDetailsRoute = 'request-details-route';
+
+  /// human resources
+  static const String missingAttendanceHistory = 'attendance-update-route';
 
   /// More
   static const String termsAndConditionRoute = 'terms-and-conditions-route';

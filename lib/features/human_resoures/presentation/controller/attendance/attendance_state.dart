@@ -1,81 +1,47 @@
 part of 'attendance_cubit.dart';
 
+/// Lifecycle of the Attendance list screen.
+enum AttendanceStatus {
+  initialized,
+  loading,
+  loaded,
+  empty,
+  error,
+}
+
+/// Convenience getters used by the UI to decide which subtree to render
+/// (matches the project's existing `*StateExtension` style).
+extension AttendanceStateExtension on AttendanceState {
+  bool get isInitialized => status == AttendanceStatus.initialized;
+  bool get isLoading => status == AttendanceStatus.loading;
+  bool get isLoaded => status == AttendanceStatus.loaded;
+  bool get isEmpty => status == AttendanceStatus.empty;
+  bool get isError => status == AttendanceStatus.error;
+}
+
 final class AttendanceState extends Equatable {
   final AttendanceStatus status;
+  final List<AttendanceRecord> records;
+  final String? errorMessage;
 
-  const AttendanceState({this.status = AttendanceStatus.initialized});
+  const AttendanceState({
+    this.status = AttendanceStatus.initialized,
+    this.records = const [],
+    this.errorMessage,
+  });
 
-  AttendanceState copyWith({AttendanceStatus? status}) {
+  AttendanceState copyWith({
+    AttendanceStatus? status,
+    List<AttendanceRecord>? records,
+    String? errorMessage,
+  }) {
     return AttendanceState(
       status: status ?? this.status,
+      records: records ?? this.records,
+      errorMessage: errorMessage ?? this.errorMessage,
     );
   }
 
   @override
-  List<Object?> get props => [status];
-}
-
-extension AttendanceStateExtension on AttendanceState {
-  bool get isLoading => status == AttendanceStatus.faqLoading;
-
-  bool get isLoaded => status == AttendanceStatus.faqLoaded;
-
-  bool get isError => status == AttendanceStatus.faqError;
-
-  bool get isFilterSearching => status == AttendanceStatus.filterSearching;
-
-  bool get isFilterSearched => status == AttendanceStatus.filterSearched;
-
-  bool get isFilterEmpty => status == AttendanceStatus.filterEmpty;
-
-  bool get isExpanded => status == AttendanceStatus.expanded;
-
-  bool get isPermissionTimeLoading =>
-      status == AttendanceStatus.permissionTimeLoading;
-
-  bool get isPermissionTimeError =>
-      status == AttendanceStatus.permissionTimeError;
-
-  bool get isPermissionTimeSuccess =>
-      status == AttendanceStatus.permissionTimeSuccess;
-
-  bool get isPermissionTypesLoading =>
-      status == AttendanceStatus.permissionTypesLoading;
-
-  bool get isPermissionTypesError =>
-      status == AttendanceStatus.permissionTypesError;
-
-  bool get isPermissionTypesSuccess =>
-      status == AttendanceStatus.permissionTypesSuccess;
-
-  bool get isInitialized => status == AttendanceStatus.initialized;
-
-  bool get isCreateExitPermissionLoading =>
-      status == AttendanceStatus.createExitPermissionLoading;
-
-  bool get isCreateExitPermissionError =>
-      status == AttendanceStatus.createExitPermissionError;
-
-  bool get isCreateExitPermissionSuccess =>
-      status == AttendanceStatus.createExitPermissionSuccess;
-}
-
-enum AttendanceStatus {
-  initialized,
-  faqLoading,
-  faqLoaded,
-  filterSearching,
-  filterSearched,
-  filterEmpty,
-  faqError,
-  permissionTypesError,
-  permissionTimeError,
-  permissionTimeLoading,
-  permissionTypesLoading,
-  createExitPermissionLoading,
-  permissionTimeSuccess,
-  permissionTypesSuccess,
-  createExitPermissionSuccess,
-  createExitPermissionError,
-  expanded,
+  List<Object?> get props => [status, records, errorMessage];
 }

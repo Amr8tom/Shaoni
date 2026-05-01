@@ -52,7 +52,14 @@ class ChooseNewRequestServicesScreen extends StatelessWidget {
                                 "hr.exit.permission") {
                               context
                                   .pushNamed(DRoutesName.requestCertainService);
-                            } else {
+                            } else if (controllerMyServices
+                                    .state.services![index].nameEn ==
+                                "attendance.update") {
+                              context
+                                  .pushNamed(DRoutesName.missingAttendanceHistory);
+                            }
+
+                            else {
                               ///
                               ScaffoldMessenger.of(context).showSnackBar(
                                   SnackBar(

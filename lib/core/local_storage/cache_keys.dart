@@ -13,6 +13,7 @@ enum CacheKeys {
   passportNumber,
   requestDetails,
   residence,
+  attendanceRecords,
   eventList,
   requests,
   loginData,

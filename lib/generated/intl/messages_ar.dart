@@ -91,10 +91,16 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "asr": MessageLookupByLibrary.simpleMessage("العصر"),
     "attachments": MessageLookupByLibrary.simpleMessage("المرفقات"),
+    "attendance": MessageLookupByLibrary.simpleMessage("الحضور"),
+    "attendanceHistories": MessageLookupByLibrary.simpleMessage("سجلات الحضور"),
+    "attendanceWillAppearHere": MessageLookupByLibrary.simpleMessage(
+      "ستظهر سجلات الحضور ومعلومات تسجيل الدخول الخاصة بك هنا",
+    ),
     "authenticationError": MessageLookupByLibrary.simpleMessage(
       "اسم المستخدم او كلمه السر غير صحيحه",
     ),
     "avaiableToLoan": MessageLookupByLibrary.simpleMessage("متاح للقرض"),
+    "available": MessageLookupByLibrary.simpleMessage("متاح"),
     "avaliableItemCount": MessageLookupByLibrary.simpleMessage(
       "عدد الأصناف المتاحة",
     ),
@@ -145,7 +151,10 @@ class MessageLookup extends MessageLookupByLibrary {
     "change": MessageLookupByLibrary.simpleMessage(" تغيير "),
     "changeColor": MessageLookupByLibrary.simpleMessage("تغيير اللون"),
     "chatUs": MessageLookupByLibrary.simpleMessage("تحدث الينا "),
-    "checkOut": MessageLookupByLibrary.simpleMessage("شراء"),
+    "checkIn": MessageLookupByLibrary.simpleMessage("تسجيل الوصول"),
+    "checkOut": MessageLookupByLibrary.simpleMessage("تسجيل الخروج"),
+    "checkedIn": MessageLookupByLibrary.simpleMessage("تم تسجيل الوصول"),
+    "checkedOut": MessageLookupByLibrary.simpleMessage("تم تسجيل الخروج"),
     "chooseImage": MessageLookupByLibrary.simpleMessage("اختر صورة"),
     "choosePaymentMethod": MessageLookupByLibrary.simpleMessage("طرق الدفع"),
     "city": MessageLookupByLibrary.simpleMessage("مدينة مكة"),
@@ -315,6 +324,7 @@ class MessageLookup extends MessageLookupByLibrary {
       " أدخل اسم الدواء ",
     ),
     "error": MessageLookupByLibrary.simpleMessage("هناك خطأ ما"),
+    "errorOccurred": MessageLookupByLibrary.simpleMessage("حدث خطأ ما"),
     "eveningShift": MessageLookupByLibrary.simpleMessage(
       "رقم الوردية المسائية",
     ),
@@ -595,6 +605,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "newPassword": MessageLookupByLibrary.simpleMessage("كلمة المرور الجديدة"),
     "newProduct": MessageLookupByLibrary.simpleMessage("مٌــنتج جَـدٍيد"),
     "no": MessageLookupByLibrary.simpleMessage("لا"),
+    "noAttendanceRecords": MessageLookupByLibrary.simpleMessage(
+      "لا توجد سجلات حضور",
+    ),
+    "noAttendanceRecordsDesc": MessageLookupByLibrary.simpleMessage(
+      "ستظهر سجلات الحضور الخاصة بك هنا بمجرد تسجيل الدخول",
+    ),
     "noData": MessageLookupByLibrary.simpleMessage(
       "لا يــوجد شـئ في الوقت الحـالي",
     ),
@@ -616,6 +632,11 @@ class MessageLookup extends MessageLookupByLibrary {
       "لم يتم العثور على هذه البيانات",
     ),
     "nonSaudi": MessageLookupByLibrary.simpleMessage("غير سعودي"),
+    "notAvailable": MessageLookupByLibrary.simpleMessage("غير متاح"),
+    "notCheckedIn": MessageLookupByLibrary.simpleMessage("لم يتم تسجيل الوصول"),
+    "notCheckedOut": MessageLookupByLibrary.simpleMessage(
+      "لم يتم تسجيل الخروج",
+    ),
     "notImplementedYet": MessageLookupByLibrary.simpleMessage(
       "هذه الميزة لم يتم تنفيذها بعد",
     ),
@@ -780,12 +801,14 @@ class MessageLookup extends MessageLookupByLibrary {
     "reCharge": MessageLookupByLibrary.simpleMessage("أرسال"),
     "reOrder": MessageLookupByLibrary.simpleMessage("إعادة الطلب"),
     "rec": MessageLookupByLibrary.simpleMessage("Rectangle 44"),
+    "recentRecords": MessageLookupByLibrary.simpleMessage("السجلات الأخيرة"),
     "rechangreWallet": MessageLookupByLibrary.simpleMessage(
       "شحن المحفظه الكترونيآ",
     ),
     "rechangreWalletBody": MessageLookupByLibrary.simpleMessage(
       "عن طريق جميع وسائل الدفع الألكتروني",
     ),
+    "records": MessageLookupByLibrary.simpleMessage("السجلات"),
     "refundReason": MessageLookupByLibrary.simpleMessage("سبب الأرجاع"),
     "refunds": MessageLookupByLibrary.simpleMessage("المرتجعات"),
     "refused": MessageLookupByLibrary.simpleMessage("قــيد الأنتٍــظآر"),

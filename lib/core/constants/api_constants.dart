@@ -10,10 +10,14 @@ class URL {
   static const String resendOtp = '$baseUrl/Auth/ResendOtp';
   static const String sendOtp = '$baseUrl/Auth/PilgrimLoginOtp';
   // static const String feedback = '$baseUrl/feedbacks/CreateFeedback';
+
+  /// human resources
   static const String getAllServices = '$baseUrl/Service/get-all-services';
   static const String exitPermission = '$baseUrl/HrExitPermission/exit';
   static const String getPermissionTypes = '$baseUrl/Integration/get-permission-types';
   static const String getPermissionTime = '$baseUrl/Lookup/GetPermissionTime';
+  static const String getAttendanceRecord = '$baseUrl/Attendance/missing/paged/by-user';
+  static const String createAttendanceRequest = '$baseUrl/Attendance/create';
   // static const String getAllRequestsWithStages = '$baseUrl/Request/with-stages/paged/by-user';
   static const String getAllRequestsWithStages = '$baseUrl/Request/dashboard/paged/by-user';
   static const String getRequestDetailsStages = '$baseUrl/Request/';

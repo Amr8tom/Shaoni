@@ -4914,9 +4914,59 @@ class S {
     return Intl.message('Check Out', name: 'checkOut', desc: '', args: []);
   }
 
+  /// `Check In`
+  String get checkIn {
+    return Intl.message('Check In', name: 'checkIn', desc: '', args: []);
+  }
+
+  /// `checked In`
+  String get checkedIn {
+    return Intl.message('checked In', name: 'checkedIn', desc: '', args: []);
+  }
+
+  /// `checked Out`
+  String get checkedOut {
+    return Intl.message('checked Out', name: 'checkedOut', desc: '', args: []);
+  }
+
+  /// `not checked In`
+  String get notCheckedIn {
+    return Intl.message(
+      'not checked In',
+      name: 'notCheckedIn',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `not checked Out`
+  String get notCheckedOut {
+    return Intl.message(
+      'not checked Out',
+      name: 'notCheckedOut',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Points`
   String get points {
     return Intl.message('Points', name: 'points', desc: '', args: []);
+  }
+
+  /// `Not Available`
+  String get notAvailable {
+    return Intl.message(
+      'Not Available',
+      name: 'notAvailable',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Available`
+  String get available {
+    return Intl.message('Available', name: 'available', desc: '', args: []);
   }
 
   /// `Edit The Product`
@@ -4947,6 +4997,16 @@ class S {
   /// `Company`
   String get company {
     return Intl.message('Company', name: 'company', desc: '', args: []);
+  }
+
+  /// `Attendance History`
+  String get attendanceHistories {
+    return Intl.message(
+      'Attendance History',
+      name: 'attendanceHistories',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Loading...`
@@ -5614,6 +5674,66 @@ class S {
     return Intl.message(
       'home,main,dashboard,start,beginning,initial,first,welcome,homepage,index,overview,summary,lobby,entrance,base,root',
       name: 'homeKeywords',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Attendance`
+  String get attendance {
+    return Intl.message('Attendance', name: 'attendance', desc: '', args: []);
+  }
+
+  /// `Records`
+  String get records {
+    return Intl.message('Records', name: 'records', desc: '', args: []);
+  }
+
+  /// `Recent Records`
+  String get recentRecords {
+    return Intl.message(
+      'Recent Records',
+      name: 'recentRecords',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No Attendance Records`
+  String get noAttendanceRecords {
+    return Intl.message(
+      'No Attendance Records',
+      name: 'noAttendanceRecords',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Your attendance records will appear here once they are checked in`
+  String get noAttendanceRecordsDesc {
+    return Intl.message(
+      'Your attendance records will appear here once they are checked in',
+      name: 'noAttendanceRecordsDesc',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Your attendance records and check-in information will appear here`
+  String get attendanceWillAppearHere {
+    return Intl.message(
+      'Your attendance records and check-in information will appear here',
+      name: 'attendanceWillAppearHere',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `An error occurred`
+  String get errorOccurred {
+    return Intl.message(
+      'An error occurred',
+      name: 'errorOccurred',
       desc: '',
       args: [],
     );

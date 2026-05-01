@@ -1,4 +1,6 @@
 import 'package:get_it/get_it.dart';
+import 'package:shaoni/features/human_resoures/domain/use_cases/get_all_missing_attendance_use_case.dart';
+import 'package:shaoni/features/human_resoures/domain/use_cases/get_all_missing_attendance_use_case.dart';
 import 'package:shaoni/features/human_resoures/presentation/controller/human_resources/human_resources_cubit.dart';
 
 import '../../features/human_resoures/data/data_sources/local_data_sources.dart';
@@ -44,6 +46,9 @@ class HRServiceLocator {
     serviceLocator.registerLazySingleton<GetPermissionTypesUseCase>(
       () => GetPermissionTypesUseCase(serviceLocator()),
     );
+ serviceLocator.registerLazySingleton<GetAllMissingAttendanceUseCase>(
+      () => GetAllMissingAttendanceUseCase(serviceLocator()),
+    );
 
     /// register cubit
     serviceLocator.registerFactory<ExitRequestServiceCubit>(
@@ -54,7 +59,7 @@ class HRServiceLocator {
       ),
     );
     serviceLocator.registerFactory<AttendanceCubit>(
-      () => AttendanceCubit(),
+      () => AttendanceCubit(serviceLocator()),
     );
     serviceLocator.registerFactory<HumanResourcesCubit>(
       () => HumanResourcesCubit(serviceLocator()),

@@ -49,7 +49,6 @@ android {
         }
     }
 
-
     buildTypes {
         release {
             //////////                               note                                 //////////

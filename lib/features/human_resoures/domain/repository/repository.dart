@@ -1,11 +1,13 @@
 import 'package:dartz/dartz.dart';
 import 'package:shaoni/core/error/failure.dart';
 import '../../../../core/utils/usecases/base_usecase.dart';
+import '../entity/all_attendance_record_model.dart';
 import '../entity/all_services.dart';
 import '../entity/exit_permisstion.dart';
 import '../entity/permission_time.dart';
 import '../entity/permission_type.dart';
 import '../use_cases/create_exit_permission_use_case.dart';
+import '../use_cases/get_all_missing_attendance_use_case.dart';
 
 abstract class HRServicesRepository {
   Future<Either<Failure, AllServices>> getAllPermissionServices({
@@ -23,4 +25,7 @@ abstract class HRServicesRepository {
   Future<Either<Failure, List<PermissionTime>>> getAllPermissionTimes({
     required NoParams params,
   });
+
+  Future<Either<Failure, AllAttendanceRecordModel>> getAllMissingAttendance(
+      {required AllMissingAttendanceParams params});
 }

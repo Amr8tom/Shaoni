@@ -93,10 +93,18 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "asr": MessageLookupByLibrary.simpleMessage("Asr"),
     "attachments": MessageLookupByLibrary.simpleMessage("Attachments"),
+    "attendance": MessageLookupByLibrary.simpleMessage("Attendance"),
+    "attendanceHistories": MessageLookupByLibrary.simpleMessage(
+      "Attendance History",
+    ),
+    "attendanceWillAppearHere": MessageLookupByLibrary.simpleMessage(
+      "Your attendance records and check-in information will appear here",
+    ),
     "authenticationError": MessageLookupByLibrary.simpleMessage(
       "User name or password is incorrect",
     ),
     "avaiableToLoan": MessageLookupByLibrary.simpleMessage("avaliable to loan"),
+    "available": MessageLookupByLibrary.simpleMessage("Available"),
     "avaliableItemCount": MessageLookupByLibrary.simpleMessage(
       "avaliable Itmes",
     ),
@@ -153,7 +161,10 @@ class MessageLookup extends MessageLookupByLibrary {
     "change": MessageLookupByLibrary.simpleMessage("change"),
     "changeColor": MessageLookupByLibrary.simpleMessage("Change Color"),
     "chatUs": MessageLookupByLibrary.simpleMessage("Chat US"),
+    "checkIn": MessageLookupByLibrary.simpleMessage("Check In"),
     "checkOut": MessageLookupByLibrary.simpleMessage("Check Out"),
+    "checkedIn": MessageLookupByLibrary.simpleMessage("checked In"),
+    "checkedOut": MessageLookupByLibrary.simpleMessage("checked Out"),
     "chooseImage": MessageLookupByLibrary.simpleMessage("Choose Image"),
     "choosePaymentMethod": MessageLookupByLibrary.simpleMessage(
       "Payment Method",
@@ -333,6 +344,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Enter Pharmaceutical Name",
     ),
     "error": MessageLookupByLibrary.simpleMessage("there is an error"),
+    "errorOccurred": MessageLookupByLibrary.simpleMessage("An error occurred"),
     "eveningShift": MessageLookupByLibrary.simpleMessage(
       "evening shift Number",
     ),
@@ -619,6 +631,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "newPassword": MessageLookupByLibrary.simpleMessage("New Password"),
     "newProduct": MessageLookupByLibrary.simpleMessage("New Product"),
     "no": MessageLookupByLibrary.simpleMessage("No"),
+    "noAttendanceRecords": MessageLookupByLibrary.simpleMessage(
+      "No Attendance Records",
+    ),
+    "noAttendanceRecordsDesc": MessageLookupByLibrary.simpleMessage(
+      "Your attendance records will appear here once they are checked in",
+    ),
     "noData": MessageLookupByLibrary.simpleMessage(
       "There is no data here till now",
     ),
@@ -640,6 +658,9 @@ class MessageLookup extends MessageLookupByLibrary {
       "These credentials are not found",
     ),
     "nonSaudi": MessageLookupByLibrary.simpleMessage("Non-Saudi"),
+    "notAvailable": MessageLookupByLibrary.simpleMessage("Not Available"),
+    "notCheckedIn": MessageLookupByLibrary.simpleMessage("not checked In"),
+    "notCheckedOut": MessageLookupByLibrary.simpleMessage("not checked Out"),
     "notImplementedYet": MessageLookupByLibrary.simpleMessage(
       "This is not implemented yet",
     ),
@@ -817,10 +838,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "reCharge": MessageLookupByLibrary.simpleMessage("Re Change"),
     "reOrder": MessageLookupByLibrary.simpleMessage("Re-Order"),
     "rec": MessageLookupByLibrary.simpleMessage("Rectangle 44"),
+    "recentRecords": MessageLookupByLibrary.simpleMessage("Recent Records"),
     "rechangreWallet": MessageLookupByLibrary.simpleMessage("Recharge Wallet"),
     "rechangreWalletBody": MessageLookupByLibrary.simpleMessage(
       "you can use any payment method",
     ),
+    "records": MessageLookupByLibrary.simpleMessage("Records"),
     "refundReason": MessageLookupByLibrary.simpleMessage("Refund Reason"),
     "refunds": MessageLookupByLibrary.simpleMessage("refunds"),
     "refused": MessageLookupByLibrary.simpleMessage("Pending"),

@@ -3,9 +3,12 @@ import 'package:dartz/dartz.dart';
 import 'package:shaoni/core/error/failure.dart';
 
 import 'package:shaoni/core/utils/usecases/base_usecase.dart';
+import 'package:shaoni/features/human_resoures/domain/entity/attendance_record.dart';
 import 'package:shaoni/features/human_resoures/domain/entity/exit_permisstion.dart';
+import 'package:shaoni/features/human_resoures/domain/use_cases/get_all_missing_attendance_use_case.dart';
 
 import '../../../../core/connection/checkNetwork.dart';
+import '../../domain/entity/all_attendance_record_model.dart';
 import '../../domain/entity/all_services.dart';
 import '../../domain/entity/permission_time.dart';
 import '../../domain/entity/permission_type.dart';
@@ -96,6 +99,26 @@ class HRServicesRepositoryImp extends HRServicesRepository {
     } else {
       try {
         final response = await _local.getAllPermissionTypes();
+        return Right(response);
+      } on CacheFailure catch (e) {
+        return Left(CacheFailure());
+      }
+    }
+  }
+
+  @override
+  Future<Either<Failure, AllAttendanceRecordModel>> getAllMissingAttendance(
+      {required AllMissingAttendanceParams params}) async{
+    if(await _networkInfo.isConnected){
+      try{
+        final response = await _remote.getAllMissingAttendance(params: params);
+        return Right(response);
+      }on ServerFailure catch(e){
+        return Left(ServerFailure(message: e.message));
+      }
+    }else {
+      try {
+        final response = await _local.getAllAttendanceRecords();
         return Right(response);
       } on CacheFailure catch (e) {
         return Left(CacheFailure());

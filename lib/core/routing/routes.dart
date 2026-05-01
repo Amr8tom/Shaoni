@@ -7,6 +7,7 @@ import '../../features/auth/presentation/screen/login_screen.dart';
 import '../../features/auth/presentation/screen/new_password_screen.dart';
 import '../../features/auth/presentation/screen/otp_screen.dart';
 import '../../features/delete_account/presentation/delete_my_account_screen.dart';
+import '../../features/human_resoures/presentation/screens/attendance/missing_attendance_history_screen.dart';
 import '../../features/human_resoures/presentation/screens/choose_new_request_services_screen.dart';
 import '../../features/human_resoures/presentation/screens/exit_request_screen.dart';
 import '../../features/human_resoures/presentation/screens/request_certain_service.dart';
@@ -56,7 +57,6 @@ class RouteGenerator {
           settings: settings,
         );
 
-
       /// Request Services Screen
       case DRoutesName.chooseNewRequestNewService:
         return PageTransition(
@@ -69,6 +69,14 @@ class RouteGenerator {
       case DRoutesName.requestCertainService:
         return PageTransition(
           child: const RequestCertainService(),
+          type: PageTransitionType.rightToLeft,
+          settings: settings,
+        );
+
+      /// Request Certain Services Screen
+      case DRoutesName.missingAttendanceHistory:
+        return PageTransition(
+          child: const MissingAttendanceHistoryScreen(),
           type: PageTransitionType.rightToLeft,
           settings: settings,
         );
@@ -187,7 +195,9 @@ class RouteGenerator {
           child: const ProfileScreen(),
           type: PageTransitionType.rightToLeft,
           settings: settings,
-        );  /// no data
+        );
+
+      /// no data
       case DRoutesName.noDataRoute:
         return PageTransition(
           child: const NoDataScreen(),
@@ -320,11 +330,10 @@ class RouteGenerator {
   /// Un Defined Route
   static Route<dynamic> unDefinedRoute() {
     return MaterialPageRoute(
-      builder:
-          (_) => Scaffold(
-            appBar: AppBar(title: Text('unImplemented screen')),
-            body: Center(child: const Text('404 not found ')),
-          ),
+      builder: (_) => Scaffold(
+        appBar: AppBar(title: Text('unImplemented screen')),
+        body: Center(child: const Text('404 not found ')),
+      ),
     );
   }
 }
