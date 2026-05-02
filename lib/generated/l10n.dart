@@ -5738,6 +5738,81 @@ class S {
       args: [],
     );
   }
+
+  /// `Attendance Statistics`
+  String get attendanceStatistics {
+    return Intl.message(
+      'Attendance Statistics',
+      name: 'attendanceStatistics',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Total Late Hours`
+  String get totalLateHours {
+    return Intl.message(
+      'Total Late Hours',
+      name: 'totalLateHours',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Total Work Hours`
+  String get totalWorkHours {
+    return Intl.message(
+      'Total Work Hours',
+      name: 'totalWorkHours',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Total Early Departure Hours`
+  String get totalEarlyDepartureHours {
+    return Intl.message(
+      'Total Early Departure Hours',
+      name: 'totalEarlyDepartureHours',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Total Overtime Hours`
+  String get totalOvertimeHours {
+    return Intl.message(
+      'Total Overtime Hours',
+      name: 'totalOvertimeHours',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `hour`
+  String get hour {
+    return Intl.message('hour', name: 'hour', desc: '', args: []);
+  }
+
+  /// `Announcement`
+  String get announcement {
+    return Intl.message(
+      'Announcement',
+      name: 'announcement',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Reminder: Please record your attendance and leaving regularly. The deadline for submitting leave requests is next Sunday.`
+  String get attendanceAnnouncementBody {
+    return Intl.message(
+      'Reminder: Please record your attendance and leaving regularly. The deadline for submitting leave requests is next Sunday.',
+      name: 'attendanceAnnouncementBody',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

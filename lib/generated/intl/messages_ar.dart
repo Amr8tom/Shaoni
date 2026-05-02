@@ -325,6 +325,26 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "error": MessageLookupByLibrary.simpleMessage("هناك خطأ ما"),
     "errorOccurred": MessageLookupByLibrary.simpleMessage("حدث خطأ ما"),
+    "attendanceStatistics": MessageLookupByLibrary.simpleMessage(
+      "إحصائيات الحضور",
+    ),
+    "totalLateHours": MessageLookupByLibrary.simpleMessage(
+      "إجمالي ساعات التأخير",
+    ),
+    "totalWorkHours": MessageLookupByLibrary.simpleMessage(
+      "إجمالي ساعات العمل",
+    ),
+    "totalEarlyDepartureHours": MessageLookupByLibrary.simpleMessage(
+      "إجمالي ساعات الخروج المبكر",
+    ),
+    "totalOvertimeHours": MessageLookupByLibrary.simpleMessage(
+      "إجمالي ساعات الوقت الإضافي",
+    ),
+    "hour": MessageLookupByLibrary.simpleMessage("ساعة"),
+    "announcement": MessageLookupByLibrary.simpleMessage("إعلان"),
+    "attendanceAnnouncementBody": MessageLookupByLibrary.simpleMessage(
+      "تذكير: يرجى تسجيل الحضور والانصراف بشكل منتظم. آخر موعد لتقديم طلبات الإجازة هو الأحد القادم.",
+    ),
     "eveningShift": MessageLookupByLibrary.simpleMessage(
       "رقم الوردية المسائية",
     ),
