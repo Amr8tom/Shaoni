@@ -25,32 +25,7 @@ class HomeScreen extends StatelessWidget {
         /// make size
         const Sizer(height: 30),
 
-        /// show all request button and title
-        const ShowAllRequests(),
 
-        /// make size
-        const Sizer(height: 30),
-
-        /// display lastest requests in listView with scrolling
-        Padding(
-          padding: EdgeInsets.symmetric(horizontal: AppSizes.padding),
-          child: SizedBox(
-
-              height: AppSizes.fullHeight * 0.45,
-              child: const UserRequestsGridView()),
-        ),
-        /// make size
-        const Sizer(height: 30),
-        // ShowAllSubmittedRequests(),
-         /// make size
-
-        // /// display lastest requests in listView with scrolling
-        // Padding(
-        //   padding: EdgeInsets.symmetric(horizontal: AppSizes.padding),
-        //   child: SizedBox(
-        //       height: AppSizes.fullHeight * 0.45,
-        //       child: const ManagerRequestsGridView()),
-        // ),
       ],
     );
   }
