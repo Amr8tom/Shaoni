@@ -38,13 +38,27 @@ class AttendanceStatRing extends StatelessWidget {
     return SizedBox(
       width: size,
       height: size,
-      child: CustomPaint(
-        painter: _RingPainter(
-          color: color,
-          progress: progress.clamp(0.0, 1.0),
-          strokeWidth: strokeWidth,
+      /// Animate the arc from 0 → target progress on first build so the
+      /// dashboard feels alive when the user lands on the home screen.
+      /// `TweenAnimationBuilder` naturally re-animates whenever the
+      /// `end` value changes, so refreshed data smoothly transitions too.
+      child: TweenAnimationBuilder<double>(
+        duration: const Duration(milliseconds: 800),
+        curve: Curves.easeOutCubic,
+        tween: Tween<double>(
+          begin: 0,
+          end: progress.clamp(0.0, 1.0),
         ),
-        child: Center(child: child),
+        builder: (context, animatedProgress, _) {
+          return CustomPaint(
+            painter: _RingPainter(
+              color: color,
+              progress: animatedProgress,
+              strokeWidth: strokeWidth,
+            ),
+            child: Center(child: child),
+          );
+        },
       ),
     );
   }

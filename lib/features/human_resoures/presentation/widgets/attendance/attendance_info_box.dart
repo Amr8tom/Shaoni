@@ -46,8 +46,8 @@ class AttendanceInfoBox extends StatelessWidget {
           Text(
             label,
             style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                  color: ColorRes.grey2,
-                  fontWeight: FontWeight.w600,
+                  color: ColorRes.black.withOpacity(0.8),
+                  fontWeight: FontWeight.bold,
                   fontSize: AppSizes.fontSizeSm,
                 ),
             maxLines: 1,
@@ -64,12 +64,12 @@ class AttendanceInfoBox extends StatelessWidget {
 
           /// Detail line (hijri remainder / dash for empty)
           Text(
-            detail,
+            detail.substring(0,15),
             style: Theme.of(context).textTheme.bodySmall?.copyWith(
                   color: valueColor.withOpacity(0.8),
                   fontSize: AppSizes.fontSizeSm * 0.85,
                 ),
-            maxLines: 1,
+            maxLines: 2,
             overflow: TextOverflow.ellipsis,
           ),
         ],

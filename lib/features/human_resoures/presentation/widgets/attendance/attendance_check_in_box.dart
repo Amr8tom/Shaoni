@@ -47,8 +47,8 @@ class AttendanceCheckInBox extends StatelessWidget {
           Text(
             S.current.checkIn,
             style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                  color: ColorRes.grey2,
-                  fontWeight: FontWeight.w600,
+                  color: ColorRes.black.withOpacity(0.8),
+                  fontWeight: FontWeight.bold,
                   fontSize: AppSizes.fontSizeSm,
                 ),
           ),
@@ -71,7 +71,7 @@ class AttendanceCheckInBox extends StatelessWidget {
             ),
           ),
           Text(
-            gregorianDate,
+            gregorianDate.substring(0, 10),
             style: Theme.of(context).textTheme.headlineSmall?.copyWith(
                   color: ColorRes.black,
                   fontWeight: FontWeight.w700,

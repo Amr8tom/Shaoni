@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 
 import '../../../../../common/widgets/sizeboxs/Sizer.dart';
 import '../../../../../core/constants/app_sizes.dart';
@@ -38,67 +39,91 @@ class AttendanceStatsSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        /// Section header
-        _SectionHeader(
-          title: S.current.attendanceStatistics,
-          onViewAll: () =>
-              context.pushNamed(DRoutesName.attendanceRoute),
-        ),
-        const Sizer(height: 12),
+    /// Build the four cards once so we can wrap each in a staggered
+    /// animation slot with a unique [position] index.
+    final cards = <Widget>[
+      AttendanceStatCard(
+        value: _formatNumber(totalLateHours),
+        title: S.current.totalLateHours,
+        color: ColorRes.warning,
+        progress: _safeRatio(totalLateHours, 8),
+      ),
+      AttendanceStatCard(
+        value: _formatNumber(totalWorkHours),
+        title: S.current.totalWorkHours,
+        color: ColorRes.primary,
+        progress: _safeRatio(totalWorkHours, maxWorkHours),
+      ),
+      AttendanceStatCard(
+        value: _formatNumber(totalEarlyDepartureHours),
+        title: S.current.totalEarlyDepartureHours,
+        color: ColorRes.red,
+        progress: _safeRatio(totalEarlyDepartureHours, 8),
+      ),
+      AttendanceStatCard(
+        value: _formatNumber(totalOvertimeHours),
+        title: S.current.totalOvertimeHours,
+        color: ColorRes.success,
+        progress: _safeRatio(totalOvertimeHours, 40),
+      ),
+    ];
 
-        /// 2×2 grid — `IntrinsicHeight` keeps the two cards in a row
-        /// the same height even if one title wraps to two lines.
-        IntrinsicHeight(
-          child: Row(
-            children: [
-              Expanded(
-                child: AttendanceStatCard(
-                  value: _formatNumber(totalLateHours),
-                  title: S.current.totalLateHours,
-                  color: ColorRes.warning,
-                  progress: _safeRatio(totalLateHours, 8),
-                ),
-              ),
-              const Sizer(width: 12),
-              Expanded(
-                child: AttendanceStatCard(
-                  value: _formatNumber(totalWorkHours),
-                  title: S.current.totalWorkHours,
-                  color: ColorRes.primary,
-                  progress: _safeRatio(totalWorkHours, maxWorkHours),
-                ),
-              ),
-            ],
+    return AnimationLimiter(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          /// Section header
+          _SectionHeader(
+            title: S.current.attendanceStatistics,
+            onViewAll: () =>
+                context.pushNamed(DRoutesName.attendanceRoute),
+          ),
+          const Sizer(height: 12),
+
+          /// 2×2 grid — `IntrinsicHeight` keeps the two cards in a row
+          /// the same height even if one title wraps to two lines.
+          /// Each card is wrapped in a staggered slide+fade so they
+          /// fly in one-by-one when the screen first appears.
+          IntrinsicHeight(
+            child: Row(
+              children: [
+                Expanded(child: _animatedSlot(0, cards[0])),
+                const Sizer(width: 12),
+                Expanded(child: _animatedSlot(1, cards[1])),
+              ],
+            ),
+          ),
+          const Sizer(height: 12),
+          IntrinsicHeight(
+            child: Row(
+              children: [
+                Expanded(child: _animatedSlot(2, cards[2])),
+                const Sizer(width: 12),
+                Expanded(child: _animatedSlot(3, cards[3])),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  /// Wraps a stat card in a staggered grid animation so the four cards
+  /// appear sequentially with a slide-up + fade-in effect.
+  Widget _animatedSlot(int position, Widget child) {
+    return AnimationConfiguration.staggeredGrid(
+      position: position,
+      columnCount: 2,
+      duration: const Duration(milliseconds: 800),
+      child: ScaleAnimation(
+        scale: 0.95,
+        child: FadeInAnimation(
+          child: SlideAnimation(
+            verticalOffset: 30,
+            child: child,
           ),
         ),
-        const Sizer(height: 12),
-        IntrinsicHeight(
-          child: Row(
-            children: [
-              Expanded(
-                child: AttendanceStatCard(
-                  value: _formatNumber(totalEarlyDepartureHours),
-                  title: S.current.totalEarlyDepartureHours,
-                  color: ColorRes.red,
-                  progress: _safeRatio(totalEarlyDepartureHours, 8),
-                ),
-              ),
-              const Sizer(width: 12),
-              Expanded(
-                child: AttendanceStatCard(
-                  value: _formatNumber(totalOvertimeHours),
-                  title: S.current.totalOvertimeHours,
-                  color: ColorRes.success,
-                  progress: _safeRatio(totalOvertimeHours, 40),
-                ),
-              ),
-            ],
-          ),
-        ),
-      ],
+      ),
     );
   }
 

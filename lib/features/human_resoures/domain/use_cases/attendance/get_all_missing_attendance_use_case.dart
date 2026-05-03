@@ -5,7 +5,7 @@ import 'package:shaoni/core/error/failure.dart';
 import 'package:shaoni/core/utils/usecases/base_usecase.dart';
 import 'package:shaoni/features/human_resoures/domain/entity/all_attendance_record_model.dart';
 
-import '../repository/repository.dart';
+import '../../repository/repository.dart';
 
 class GetAllMissingAttendanceUseCase extends UseCase<AllAttendanceRecordModel,AllMissingAttendanceParams> {
   final HRServicesRepository _repository;

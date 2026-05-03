@@ -1,6 +1,19 @@
+import 'package:dartz/dartz.dart';
+import 'package:shaoni/core/error/failure.dart';
 import 'package:shaoni/core/utils/usecases/base_usecase.dart';
 
-// class CreateAttendanceUseCase extends UseCase{}
+import '../../repository/repository.dart';
+
+class CreateAttendanceUseCase extends UseCase<String,CreateAttendanceParams>{
+  final HRServicesRepository _repository;
+   CreateAttendanceUseCase(this._repository);
+
+  @override
+  Future<Either<Failure, String>> call({required CreateAttendanceParams params}) async{
+    return await _repository.createAttendance(params: params);
+
+  }
+}
 
 // {
 // "employee":           123,

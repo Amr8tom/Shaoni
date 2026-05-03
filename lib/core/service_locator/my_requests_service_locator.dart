@@ -1,4 +1,5 @@
 import 'package:get_it/get_it.dart';
+import 'package:shaoni/features/human_resoures/presentation/controller/attendance/attendance_cubit.dart';
 import 'package:shaoni/features/my-requests/domain/use_cases/get_request_details_use_case.dart';
 
 import '../../features/my-requests/data/data_sources/local_data_sources.dart';
@@ -45,5 +46,8 @@ class MyRequestsServiceLocator {
     /// controllers
     serviceLocator.registerFactory(() =>
         MyRequestsCubit(serviceLocator(), serviceLocator(), serviceLocator(),serviceLocator()));
+
+
+
   }
 }

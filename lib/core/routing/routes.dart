@@ -7,6 +7,7 @@ import '../../features/auth/presentation/screen/login_screen.dart';
 import '../../features/auth/presentation/screen/new_password_screen.dart';
 import '../../features/auth/presentation/screen/otp_screen.dart';
 import '../../features/delete_account/presentation/delete_my_account_screen.dart';
+import '../../features/human_resoures/presentation/screens/attendance/create_attendance_request.dart';
 import '../../features/human_resoures/presentation/screens/attendance/missing_attendance_history_screen.dart';
 import '../../features/human_resoures/presentation/screens/choose_new_request_services_screen.dart';
 import '../../features/human_resoures/presentation/screens/exit_request_screen.dart';
@@ -317,6 +318,15 @@ class RouteGenerator {
       case DRoutesName.settingsRoute:
         return PageTransition(
           child: const SettingsScreen(),
+          type: PageTransitionType.rightToLeft,
+          settings: settings,
+        );
+  /// create attendance Route
+      case DRoutesName.createAttendanceRoute:
+        final Map<String, dynamic> args =
+        settings.arguments as Map<String, dynamic>;
+        return PageTransition(
+          child:  CreateAttendanceRequest(attendanceID: args['attendanceID']),
           type: PageTransitionType.rightToLeft,
           settings: settings,
         );

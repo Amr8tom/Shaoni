@@ -1,12 +1,13 @@
 import 'package:get_it/get_it.dart';
-import 'package:shaoni/features/human_resoures/domain/use_cases/get_all_missing_attendance_use_case.dart';
-import 'package:shaoni/features/human_resoures/domain/use_cases/get_all_missing_attendance_use_case.dart';
+import 'package:shaoni/features/human_resoures/domain/use_cases/attendance/get_all_missing_attendance_use_case.dart';
+import 'package:shaoni/features/human_resoures/domain/use_cases/attendance/get_attendance_lookup_use_case.dart';
+import 'package:shaoni/features/human_resoures/domain/use_cases/attendance/get_forget_reason_use_case.dart';
 import 'package:shaoni/features/human_resoures/presentation/controller/human_resources/human_resources_cubit.dart';
-
 import '../../features/human_resoures/data/data_sources/local_data_sources.dart';
 import '../../features/human_resoures/data/data_sources/remote_data_sources.dart';
 import '../../features/human_resoures/data/repositories/repository.dart';
 import '../../features/human_resoures/domain/repository/repository.dart';
+import '../../features/human_resoures/domain/use_cases/attendance/create_attendance_use_case.dart';
 import '../../features/human_resoures/domain/use_cases/create_exit_permission_use_case.dart';
 import '../../features/human_resoures/domain/use_cases/get_all_permission_services_use_case.dart';
 import '../../features/human_resoures/domain/use_cases/get_permission_time_use_case.dart';
@@ -46,8 +47,19 @@ class HRServiceLocator {
     serviceLocator.registerLazySingleton<GetPermissionTypesUseCase>(
       () => GetPermissionTypesUseCase(serviceLocator()),
     );
- serviceLocator.registerLazySingleton<GetAllMissingAttendanceUseCase>(
+
+    /// ============================= attendance  =============================
+    serviceLocator.registerLazySingleton<GetAllMissingAttendanceUseCase>(
       () => GetAllMissingAttendanceUseCase(serviceLocator()),
+    );
+    serviceLocator.registerLazySingleton<CreateAttendanceUseCase>(
+      () => CreateAttendanceUseCase(serviceLocator()),
+    );
+    serviceLocator.registerLazySingleton<GetAttendanceLookupUseCase>(
+      () => GetAttendanceLookupUseCase(serviceLocator()),
+    );
+    serviceLocator.registerLazySingleton<GetForgetReasonUseCase>(
+      () => GetForgetReasonUseCase(serviceLocator()),
     );
 
     /// register cubit
@@ -59,7 +71,7 @@ class HRServiceLocator {
       ),
     );
     serviceLocator.registerFactory<AttendanceCubit>(
-      () => AttendanceCubit(serviceLocator()),
+      () => AttendanceCubit(serviceLocator(), serviceLocator(),serviceLocator(), serviceLocator()),
     );
     serviceLocator.registerFactory<HumanResourcesCubit>(
       () => HumanResourcesCubit(serviceLocator()),

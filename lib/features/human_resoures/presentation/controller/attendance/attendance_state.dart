@@ -4,6 +4,7 @@ part of 'attendance_cubit.dart';
 enum AttendanceStatus {
   initialized,
   loading,
+  CreateAttendanceRequestLoading,
   loaded,
   empty,
   error,
@@ -14,6 +15,7 @@ enum AttendanceStatus {
 extension AttendanceStateExtension on AttendanceState {
   bool get isInitialized => status == AttendanceStatus.initialized;
   bool get isLoading => status == AttendanceStatus.loading;
+  bool get isCreateAttendanceRequestLoading => status == AttendanceStatus.CreateAttendanceRequestLoading;
   bool get isLoaded => status == AttendanceStatus.loaded;
   bool get isEmpty => status == AttendanceStatus.empty;
   bool get isError => status == AttendanceStatus.error;

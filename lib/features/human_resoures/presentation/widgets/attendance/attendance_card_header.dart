@@ -34,6 +34,7 @@ class AttendanceCardHeader extends StatelessWidget {
         ),
       ),
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
 
           /// Employee pill — white-translucent badge with person icon
@@ -42,20 +43,13 @@ class AttendanceCardHeader extends StatelessWidget {
           const Spacer(),
 
           /// Title + date stacked on the right
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.end,
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Text(
-                title,
-                style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                      color: ColorRes.white,
-                      fontWeight: FontWeight.w700,
-                      fontSize: AppSizes.fontSizeMd,
-                    ),
-              ),
-              const Sizer(height: 4),
-            ],
+          Text(
+            title,
+            style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                  color: ColorRes.white,
+                  fontWeight: FontWeight.w700,
+              fontSize: AppSizes.fontSizeSm ,
+                ),
           ),
           const Sizer(width: 8,),
           Icon(
@@ -63,6 +57,7 @@ class AttendanceCardHeader extends StatelessWidget {
             color: ColorRes.white.withOpacity(0.9),
             size: AppSizes.iconMd,
           ),
+          const Sizer(width: 8)
         ],
       ),
     );
@@ -84,7 +79,7 @@ class _EmployeePill extends StatelessWidget {
       ),
       decoration: BoxDecoration(
         color: ColorRes.white.withOpacity(0.18),
-        borderRadius: BorderRadius.circular(AppSizes.borderRadiusLg),
+        borderRadius: BorderRadius.circular(AppSizes.borderRadiusSm),
         border: Border.all(
           color: ColorRes.white.withOpacity(0.30),
           width: 1,
@@ -93,19 +88,21 @@ class _EmployeePill extends StatelessWidget {
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Text(
-            name,
-            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                  color: ColorRes.white,
-                  fontWeight: FontWeight.w700,
-                  fontSize: AppSizes.fontSizeSm,
-                ),
-          ),
-          const Sizer(width: 6),
           Icon(
             Icons.person_rounded,
             color: ColorRes.white,
             size: AppSizes.iconSm,
+          ),
+          const Sizer(width: 6),
+          Flexible(
+            child: Text(
+              name,
+              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                    color: ColorRes.white,
+                    fontWeight: FontWeight.w700,
+                    fontSize: AppSizes.fontSizeSm * 0.8,
+                  ),
+            ),
           ),
         ],
       ),

@@ -16,13 +16,6 @@ class DateDataWidget extends StatelessWidget {
     HijriCalendar.setLocal('ar');
 
 
-    final hijriDate=DateConverter.convertGregorianToHijri(
-      DateFormat('dd-MM-yyyy', 'ar').format(DateTime(
-        DateTime.now().year,
-        DateTime.now().month,
-        DateTime.now().day,
-      )).toString(),
-    );
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [

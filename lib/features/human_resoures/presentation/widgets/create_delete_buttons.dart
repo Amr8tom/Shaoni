@@ -17,69 +17,65 @@ class CreateDeleteButtons extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<ExitRequestServiceCubit, ExitRequestServiceState>(
-      builder: (context, state) {
-        return Positioned(
-          left: 0,
-          right: 0,
-          bottom: AppSizes.padding * 3,
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(AppSizes.borderRadiusXXLg),
-            child: BackdropFilter(
-              filter: ImageFilter.blur(sigmaX: 4, sigmaY: 4),
-              child: Container(
-                padding: EdgeInsets.symmetric(
-                  horizontal: AppSizes.padding,
-                  vertical: AppSizes.padding * 0.8,
-                ),
-                decoration: BoxDecoration(
-                  color: Colors.transparent,
-                  borderRadius: BorderRadius.circular(
-                    AppSizes.borderRadiusXXLg,
-                  ),
-                ),
-                child: Row(
-                  children: [
-                    Flexible(
-                      flex: 7,
-                      child: AuthButton(
-                        backgroundColor: ColorRes.primary,
-                        fontSize: AppSizes.fontSizeMd,
-                        text: S.current.submitRequest,
-                        onPressed: createTab,
-                      ),
-                    ),
-                    const Sizer(width: 15),
-                    Expanded(
-                      flex: 2,
-                      child: GestureDetector(
-                        onTap: deleteTab,
-                        child: Container(
-                          padding: EdgeInsets.symmetric(
-                            horizontal: AppSizes.padding * 1.4,
-                            vertical: AppSizes.padding * 0.6,
-                          ),
-                          decoration: BoxDecoration(
-                            color: ColorRes.grey.withOpacity(0.7),
-                            borderRadius: BorderRadius.circular(
-                              AppSizes.borderRadiusXXLg,
-                            ),
-                          ),
-                          child: Image.asset(
-                            AssetRes.trashIcon,
-                            width: AppSizes.iconLg,
-                            height: AppSizes.iconLg,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
+    return Positioned(
+      left: 0,
+      right: 0,
+      bottom: AppSizes.padding * 3,
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(AppSizes.borderRadiusXXLg),
+        child: BackdropFilter(
+          filter: ImageFilter.blur(sigmaX: 4, sigmaY: 4),
+          child: Container(
+            padding: EdgeInsets.symmetric(
+              horizontal: AppSizes.padding,
+              vertical: AppSizes.padding * 0.8,
+            ),
+            decoration: BoxDecoration(
+              color: Colors.transparent,
+              borderRadius: BorderRadius.circular(
+                AppSizes.borderRadiusXXLg,
               ),
             ),
+            child: Row(
+              children: [
+                Flexible(
+                  flex: 7,
+                  child: AuthButton(
+                    backgroundColor: ColorRes.primary,
+                    fontSize: AppSizes.fontSizeMd,
+                    text: S.current.submitRequest,
+                    onPressed: createTab,
+                  ),
+                ),
+                const Sizer(width: 15),
+                Expanded(
+                  flex: 2,
+                  child: GestureDetector(
+                    onTap: deleteTab,
+                    child: Container(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: AppSizes.padding * 1.4,
+                        vertical: AppSizes.padding * 0.6,
+                      ),
+                      decoration: BoxDecoration(
+                        color: ColorRes.grey.withOpacity(0.7),
+                        borderRadius: BorderRadius.circular(
+                          AppSizes.borderRadiusXXLg,
+                        ),
+                      ),
+                      child: Image.asset(
+                        AssetRes.trashIcon,
+                        width: AppSizes.iconLg,
+                        height: AppSizes.iconLg,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ),
-        );
-      },
+        ),
+      ),
     );
   }
 }

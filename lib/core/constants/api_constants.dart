@@ -16,11 +16,17 @@ class URL {
   static const String exitPermission = '$baseUrl/HrExitPermission/exit';
   static const String getPermissionTypes = '$baseUrl/Integration/get-permission-types';
   static const String getPermissionTime = '$baseUrl/Lookup/GetPermissionTime';
+  /// ============================ attendance  ============================
   static const String getAttendanceRecord = '$baseUrl/Attendance/missing/paged/by-user';
   static const String createAttendanceRequest = '$baseUrl/Attendance/create';
+  static const String getAttendanceLookUp = '$baseUrl/Lookup/GetAttendanceLookup';
+  static const String getAttendanceForgetReason = '$baseUrl/Lookup/GetForgetReasons';
+  /// ============================ exit permmison  ============================
   // static const String getAllRequestsWithStages = '$baseUrl/Request/with-stages/paged/by-user';
+
   static const String getAllRequestsWithStages = '$baseUrl/Request/dashboard/paged/by-user';
   static const String getRequestDetailsStages = '$baseUrl/Request/';
+
   // 75/with-stages';
   // static const String getRequestDetailsStages = '/with-stages';
   // static const String getAllRequestsWithStagesByManager = '$baseUrl/Request/with-stages/paged/for-manager';
