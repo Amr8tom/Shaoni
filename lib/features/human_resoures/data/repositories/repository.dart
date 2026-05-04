@@ -145,7 +145,7 @@ class HRServicesRepositoryImp extends HRServicesRepository {
   }
 
   @override
-  Future<Either<Failure, AttendanceLookup>> getAttendanceLookup(
+  Future<Either<Failure, List<AttendanceLookup>>> getAttendanceLookup(
       {required NoParams params}) async {
     if (await _networkInfo.isConnected) {
       try {

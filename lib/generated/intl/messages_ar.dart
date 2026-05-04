@@ -74,6 +74,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "amount": MessageLookupByLibrary.simpleMessage("المبلغ"),
     "angleDevice": MessageLookupByLibrary.simpleMessage("زاوية الجهاز"),
     "angleQibla": MessageLookupByLibrary.simpleMessage("زاوية القبلة"),
+    "announcement": MessageLookupByLibrary.simpleMessage("إعلان"),
     "appLanguage": MessageLookupByLibrary.simpleMessage("لغة التطبيق"),
     "appName": MessageLookupByLibrary.simpleMessage("تيا"),
     "appTitle": MessageLookupByLibrary.simpleMessage("عميل تيا"),
@@ -92,7 +93,14 @@ class MessageLookup extends MessageLookupByLibrary {
     "asr": MessageLookupByLibrary.simpleMessage("العصر"),
     "attachments": MessageLookupByLibrary.simpleMessage("المرفقات"),
     "attendance": MessageLookupByLibrary.simpleMessage("الحضور"),
+    "attendanceAnnouncementBody": MessageLookupByLibrary.simpleMessage(
+      "تذكير: يرجى تسجيل الحضور والانصراف بشكل منتظم. آخر موعد لتقديم طلبات الإجازة هو الأحد القادم.",
+    ),
     "attendanceHistories": MessageLookupByLibrary.simpleMessage("سجلات الحضور"),
+    "attendanceStatistics": MessageLookupByLibrary.simpleMessage(
+      "إحصائيات الحضور",
+    ),
+    "attendanceType": MessageLookupByLibrary.simpleMessage("نوع إثبات البصمة"),
     "attendanceWillAppearHere": MessageLookupByLibrary.simpleMessage(
       "ستظهر سجلات الحضور ومعلومات تسجيل الدخول الخاصة بك هنا",
     ),
@@ -325,26 +333,6 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "error": MessageLookupByLibrary.simpleMessage("هناك خطأ ما"),
     "errorOccurred": MessageLookupByLibrary.simpleMessage("حدث خطأ ما"),
-    "attendanceStatistics": MessageLookupByLibrary.simpleMessage(
-      "إحصائيات الحضور",
-    ),
-    "totalLateHours": MessageLookupByLibrary.simpleMessage(
-      "إجمالي ساعات التأخير",
-    ),
-    "totalWorkHours": MessageLookupByLibrary.simpleMessage(
-      "إجمالي ساعات العمل",
-    ),
-    "totalEarlyDepartureHours": MessageLookupByLibrary.simpleMessage(
-      "إجمالي ساعات الخروج المبكر",
-    ),
-    "totalOvertimeHours": MessageLookupByLibrary.simpleMessage(
-      "إجمالي ساعات الوقت الإضافي",
-    ),
-    "hour": MessageLookupByLibrary.simpleMessage("ساعة"),
-    "announcement": MessageLookupByLibrary.simpleMessage("إعلان"),
-    "attendanceAnnouncementBody": MessageLookupByLibrary.simpleMessage(
-      "تذكير: يرجى تسجيل الحضور والانصراف بشكل منتظم. آخر موعد لتقديم طلبات الإجازة هو الأحد القادم.",
-    ),
     "eveningShift": MessageLookupByLibrary.simpleMessage(
       "رقم الوردية المسائية",
     ),
@@ -413,6 +401,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "forgetPasswordTitle": MessageLookupByLibrary.simpleMessage(
       "نسيت كلمة المرور",
     ),
+    "forgetReason": MessageLookupByLibrary.simpleMessage("سبب النسيان"),
     "foul": MessageLookupByLibrary.simpleMessage("فول و فلافل"),
     "found": MessageLookupByLibrary.simpleMessage("المفقودات"),
     "full": MessageLookupByLibrary.simpleMessage("الاسم الكامل"),
@@ -477,6 +466,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "homeKeywords": MessageLookupByLibrary.simpleMessage(
       "الرئيسية,رئيسي,الصفحة الرئيسية,البداية,أول,اول,البدء,مرحبا,ترحيب,فهرس,نظرة عامة,ملخص,مدخل,بوابة,قاعدة,أساس,اساس,صفحة البداية,الواجهة,القائمة الرئيسية,اللوبي,المدخل,الاستقبال",
     ),
+    "hour": MessageLookupByLibrary.simpleMessage("ساعة"),
     "hours": MessageLookupByLibrary.simpleMessage("ساعات"),
     "how": MessageLookupByLibrary.simpleMessage("كيف أستخدم التطبيق"),
     "hrManagerApproval": MessageLookupByLibrary.simpleMessage(
@@ -945,6 +935,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "اختر نمط القراءة",
     ),
     "selectRegion": MessageLookupByLibrary.simpleMessage(" المنطقــة "),
+    "selectTime": MessageLookupByLibrary.simpleMessage("حدد الوقت"),
     "send": MessageLookupByLibrary.simpleMessage("أرسال"),
     "sendFeed": MessageLookupByLibrary.simpleMessage("ارسل رأيك"),
     "sendOtp": MessageLookupByLibrary.simpleMessage("تاكيد رمز التحقق"),
@@ -1052,6 +1043,18 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "today": MessageLookupByLibrary.simpleMessage("إشعارات اليوم"),
     "total": MessageLookupByLibrary.simpleMessage("الاجمالي"),
+    "totalEarlyDepartureHours": MessageLookupByLibrary.simpleMessage(
+      "إجمالي ساعات الخروج المبكر",
+    ),
+    "totalLateHours": MessageLookupByLibrary.simpleMessage(
+      "إجمالي ساعات التأخير",
+    ),
+    "totalOvertimeHours": MessageLookupByLibrary.simpleMessage(
+      "إجمالي ساعات الوقت الإضافي",
+    ),
+    "totalWorkHours": MessageLookupByLibrary.simpleMessage(
+      "إجمالي ساعات العمل",
+    ),
     "tourDetails": MessageLookupByLibrary.simpleMessage("تفاصيل الرحلة"),
     "tourForm": MessageLookupByLibrary.simpleMessage("بيانات نموذج الرحلة"),
     "tours": MessageLookupByLibrary.simpleMessage("الرحـلات"),

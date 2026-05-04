@@ -34,7 +34,7 @@ abstract class HRServicesRepository {
   Future<Either<Failure, String>> createAttendance({
     required CreateAttendanceParams params,
   });
-  Future<Either<Failure, AttendanceLookup>> getAttendanceLookup({
+  Future<Either<Failure, List<AttendanceLookup>>> getAttendanceLookup({
     required NoParams params,
   });  Future<Either<Failure, List<ForgetReason>>> getForgetReason({
     required NoParams params,

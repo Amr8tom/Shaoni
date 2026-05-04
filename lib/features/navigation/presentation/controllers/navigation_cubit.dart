@@ -38,6 +38,9 @@ class NavigationCubit extends Cubit<NavigationState> {
         print('================= employeeId =============');
         print(user.employeeId);
         await CacheHelper.putString(key: CacheKeys.employeeId, value:user.employeeId.toString());
+        await CacheHelper.putString(key: CacheKeys.userName, value:user.fullName.toString());
+        await CacheHelper.putString(key: CacheKeys.organizationName, value:user.office?.name.toString()??'');
+        await CacheHelper.putString(key: CacheKeys.departmentAddress, value:user.department?.nameAr.toString()??'');
         emit(state.copyWith(status: NavigationStatus.success, user: user));
         },
     );

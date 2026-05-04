@@ -1,24 +1,35 @@
 import 'package:equatable/equatable.dart';
 
-// "department": {
-// "id": 7,
-// "name": "الجودة",
-// "parent_department_id": "1",
-// "parent_department_name": "الإدارة"
-// }
+
 class DepartmentEntity extends Equatable {
   final int id;
-  final String name;
-  final String parentDepartmentId;
-  final String parentDepartmentName;
+  final String nameEn;
+  final String nameAr;
+  final String parent_department_id;
+  final String parent_department_name;
+  final bool isActive;
+  final String updatedAt;
+  final bool isDeleted;
 
-  DepartmentEntity({
-    required this.id,
-    required this.name,
-    required this.parentDepartmentId,
-    required this.parentDepartmentName,
-  });
+  const DepartmentEntity(
+      {required this.id,
+      required this.nameEn,
+      required this.nameAr,
+      required this.parent_department_id,
+      required this.parent_department_name,
+      required this.isActive,
+      required this.updatedAt,
+      required this.isDeleted});
 
   @override
-  List<Object?> get props => [];
+  List<Object?> get props => [
+        id,
+        nameEn,
+        nameAr,
+        parent_department_id,
+        parent_department_name,
+        isActive,
+        isDeleted,
+        updatedAt,
+      ];
 }

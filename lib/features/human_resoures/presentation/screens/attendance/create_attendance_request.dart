@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shaoni/core/extentions/navigation_extension.dart';
+import 'package:shaoni/features/human_resoures/presentation/screens/attendance/widget/attendance_request_data_widget.dart';
 import '../../../../../common/widgets/appbar/appbar.dart';
 import '../../../../../common/widgets/dialogs/custom_dialog_img_title_des.dart';
 import '../../../../../common/widgets/sizeboxs/Sizer.dart';
@@ -47,7 +48,7 @@ class CreateAttendanceRequest extends StatelessWidget {
                   );
                 }
 
-                if (state.isLoaded) {
+                if (state.isSuccess) {
                   CustomDialogImgTitleDes(
                     button1: S.current.myOrders,
                     button2: S.current.home,
@@ -89,13 +90,16 @@ class CreateAttendanceRequest extends StatelessWidget {
                               const Sizer(height: 220),
 
                               /// date hijri and birthday
-                              const DateDataWidget(),
+                               DateDataWidget(),
 
                               /// make size
                               const Sizer(height: 35),
 
                               /// data for request applicant
-                              const ApplicantDataWidget(),
+                               ApplicantDataWidget(
+                                 useEnhancedDesign: true,
+
+                               ),
 
                               /// request data
                               const Sizer(height: 35),
@@ -104,50 +108,7 @@ class CreateAttendanceRequest extends StatelessWidget {
                                 style:
                                 Theme.of(context).textTheme.headlineMedium,
                               ),
-
-                              // const RequestDataWidget(),
-                              /// tilte
-                              Center(child: Text("بيانات الطلب")),
-                              Column(
-                                children: [
-                                  Text('نوع الدراسه'),
-                                  Text('الدراسه المطلوبه '),
-                                  Text('الجهه المقذمه للدراسه المطلوبه '),
-                                  Text('الجهه المقذمه للدراسه المطلوبه '),
-                                ],
-                              ),
-
-                              /// tilte
-                              Center(child: Text("مببرات الطلب")),
-                              Container(
-                                child: Text("تكست عن مببرات الطلب"),
-                              ),
-
-                              /// tilte
-                              Center(child: Text("مده الدراسه")),
-                              Column(
-                                children: [
-                                  Row(
-                                    mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Text('من تاريخ ميلادي '),
-                                      Text('ميلادي الي تاريخ '),
-                                    ],
-                                  ),
-                                  Row(
-                                    mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Text('من تاريخ هجزي '),
-                                      Text('هجري الي تاريخ '),
-                                    ],
-                                  ),
-                                  Text(
-                                      'مده الدراسه: المده محسوبه بالايام والشهور  بناء علي البدايه والنهاريه'),
-                                ],
-                              ),
-
+                             const AttendanceRequestDataWidget(),
                               /// file upload
                               const Sizer(height: 35),
                               // const FileUploadWidget(),

@@ -45,7 +45,7 @@ class UserModel extends UserEntity {
       officeId: json['data']['officeId'] ?? 0,
       office: OfficeModel.fromJson(json['data']['office']),
       departmentId: json['data']['departmentId'] ?? 0,
-      department: DepartmentModel.fromJson(json['department']),
+      department: DepartmentModel.fromJson(json['data']['department']),
     );
   }
 

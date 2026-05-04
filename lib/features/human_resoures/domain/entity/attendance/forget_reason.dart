@@ -5,8 +5,8 @@ import 'package:equatable/equatable.dart';
 
 class ForgetReason extends Equatable{
   final int id;
-  final String name;
-  final String nameEn;
+  final String? name;
+  final String? nameEn;
 
   const ForgetReason({
     required this.id,

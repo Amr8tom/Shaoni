@@ -76,6 +76,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "amount": MessageLookupByLibrary.simpleMessage("The amount"),
     "angleDevice": MessageLookupByLibrary.simpleMessage("Device Angle"),
     "angleQibla": MessageLookupByLibrary.simpleMessage("Qibla Angle"),
+    "announcement": MessageLookupByLibrary.simpleMessage("Announcement"),
     "appLanguage": MessageLookupByLibrary.simpleMessage("App Language"),
     "appName": MessageLookupByLibrary.simpleMessage("teaa"),
     "appTitle": MessageLookupByLibrary.simpleMessage("Teaa Client"),
@@ -94,9 +95,16 @@ class MessageLookup extends MessageLookupByLibrary {
     "asr": MessageLookupByLibrary.simpleMessage("Asr"),
     "attachments": MessageLookupByLibrary.simpleMessage("Attachments"),
     "attendance": MessageLookupByLibrary.simpleMessage("Attendance"),
+    "attendanceAnnouncementBody": MessageLookupByLibrary.simpleMessage(
+      "Reminder: Please record your attendance and leaving regularly. The deadline for submitting leave requests is next Sunday.",
+    ),
     "attendanceHistories": MessageLookupByLibrary.simpleMessage(
       "Attendance History",
     ),
+    "attendanceStatistics": MessageLookupByLibrary.simpleMessage(
+      "Attendance Statistics",
+    ),
+    "attendanceType": MessageLookupByLibrary.simpleMessage("Attendance Type"),
     "attendanceWillAppearHere": MessageLookupByLibrary.simpleMessage(
       "Your attendance records and check-in information will appear here",
     ),
@@ -415,6 +423,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "forgetPasswordTitle": MessageLookupByLibrary.simpleMessage(
       "Forget Password",
     ),
+    "forgetReason": MessageLookupByLibrary.simpleMessage("Forget Reason"),
     "foul": MessageLookupByLibrary.simpleMessage("Foul and Falafel"),
     "found": MessageLookupByLibrary.simpleMessage("Lost & found"),
     "full": MessageLookupByLibrary.simpleMessage("Full Name"),
@@ -479,6 +488,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "homeKeywords": MessageLookupByLibrary.simpleMessage(
       "home,main,dashboard,start,beginning,initial,first,welcome,homepage,index,overview,summary,lobby,entrance,base,root",
     ),
+    "hour": MessageLookupByLibrary.simpleMessage("hour"),
     "hours": MessageLookupByLibrary.simpleMessage("Hours"),
     "how": MessageLookupByLibrary.simpleMessage("How I use app"),
     "hrManagerApproval": MessageLookupByLibrary.simpleMessage(
@@ -966,6 +976,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Select Reading Theme",
     ),
     "selectRegion": MessageLookupByLibrary.simpleMessage("Select region"),
+    "selectTime": MessageLookupByLibrary.simpleMessage("select time"),
     "send": MessageLookupByLibrary.simpleMessage("Send"),
     "sendFeed": MessageLookupByLibrary.simpleMessage("Send Feedback"),
     "sendOtp": MessageLookupByLibrary.simpleMessage("verify OTP"),
@@ -1082,6 +1093,14 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "today": MessageLookupByLibrary.simpleMessage("Today Notifications"),
     "total": MessageLookupByLibrary.simpleMessage("Total"),
+    "totalEarlyDepartureHours": MessageLookupByLibrary.simpleMessage(
+      "Total Early Departure Hours",
+    ),
+    "totalLateHours": MessageLookupByLibrary.simpleMessage("Total Late Hours"),
+    "totalOvertimeHours": MessageLookupByLibrary.simpleMessage(
+      "Total Overtime Hours",
+    ),
+    "totalWorkHours": MessageLookupByLibrary.simpleMessage("Total Work Hours"),
     "tourDetails": MessageLookupByLibrary.simpleMessage("Tour Details"),
     "tourForm": MessageLookupByLibrary.simpleMessage("Tour Form data"),
     "tours": MessageLookupByLibrary.simpleMessage("Tours"),

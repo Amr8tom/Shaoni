@@ -5,12 +5,12 @@ import 'package:shaoni/features/human_resoures/domain/entity/attendance/attendan
 
 import '../../repository/repository.dart';
 
-class GetAttendanceLookupUseCase extends UseCase<AttendanceLookup,NoParams>{
+class GetAttendanceLookupUseCase extends UseCase<List<AttendanceLookup>,NoParams>{
   final HRServicesRepository _repository;
     GetAttendanceLookupUseCase(this._repository);
     
   @override
-  Future<Either<Failure, AttendanceLookup>> call({required NoParams params}) async{
+  Future<Either<Failure, List<AttendanceLookup>>> call({required NoParams params}) async{
     return await _repository.getAttendanceLookup(params: NoParams());
     
 

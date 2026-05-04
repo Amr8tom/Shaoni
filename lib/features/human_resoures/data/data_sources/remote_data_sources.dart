@@ -34,7 +34,7 @@ abstract class HRServicesRemoteDataSources {
 
   Future<String> createAttendance({required CreateAttendanceParams params});
 
-  Future<AttendanceLookUpModel> getAttendanceLookup({
+  Future<List<AttendanceLookUpModel>> getAttendanceLookup({
     required NoParams params,
   });
 
@@ -149,13 +149,14 @@ class HRServicesRemoteDataSourcesImp implements HRServicesRemoteDataSources {
   }
 
   @override
-  Future<AttendanceLookUpModel> getAttendanceLookup(
+  Future<List<AttendanceLookUpModel>>getAttendanceLookup(
       {required NoParams params}) async {
     try {
-      final response = await _dio.getData(URL: URL.getAttendanceLookUp);
+      final List response = await _dio.getData(URL: URL.getAttendanceLookUp);
       if (response != null) {
+
         /// Extract the data field from the response Map
-        return AttendanceLookUpModel.fromJson(response);
+        return response.map((e){return AttendanceLookUpModel.fromJson(e);}).toList() ;
       } else {
         throw ServerFailure(message: 'server failure');
       }
@@ -171,7 +172,7 @@ class HRServicesRemoteDataSourcesImp implements HRServicesRemoteDataSources {
       final response = await _dio.getData(URL: URL.getAttendanceForgetReason);
       if (response != null) {
         /// Extract the data field from the response Map
-        final List data = response['data'] as List;
+        final List data = response as List;
         return data.map((e) => ForgetReasonModel.fromJson(e)).toList();
       } else {
         throw ServerFailure(message: 'server failure');

@@ -1,6 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:shaoni/features/human_resoures/domain/use_cases/attendance/create_attendance_use_case.dart';
 import 'package:shaoni/features/human_resoures/domain/use_cases/attendance/get_all_missing_attendance_use_case.dart';
 import 'package:shaoni/features/human_resoures/domain/use_cases/attendance/get_attendance_lookup_use_case.dart';
@@ -8,10 +9,11 @@ import 'package:shaoni/features/human_resoures/domain/use_cases/attendance/get_f
 import '../../../../../core/local_storage/cache_helper.dart';
 import '../../../../../core/local_storage/cache_keys.dart';
 import '../../../../../core/utils/usecases/base_usecase.dart';
+import '../../../../../generated/l10n.dart';
 import '../../../domain/entity/attendance_record.dart';
 
-part 'attendance_state.dart';
 
+part 'attendance_state.dart';
 class AttendanceCubit extends Cubit<AttendanceState> {
   final GetAllMissingAttendanceUseCase _getAllMissingAttendanceUseCase;
   final CreateAttendanceUseCase _createAttendanceUseCase;
@@ -19,26 +21,25 @@ class AttendanceCubit extends Cubit<AttendanceState> {
   final GetForgetReasonUseCase _getForgetReasonUseCase;
   final requestFormKey = GlobalKey<FormState>();
   final TextEditingController todayDateController = TextEditingController();
-  final TextEditingController permissionDateController =
+  final TextEditingController attendanceTimeController =
       TextEditingController();
   final TextEditingController applicantNameController = TextEditingController();
   final TextEditingController organizationalUnitController =
       TextEditingController();
-  final TextEditingController locationController = TextEditingController();
-  final TextEditingController hijriDateController = TextEditingController();
   final TextEditingController attachmentFileController =
       TextEditingController();
   final TextEditingController attachmentFileNameController =
       TextEditingController();
-  final TextEditingController permissionTypeController =
-      TextEditingController();
+
   final TextEditingController durationController = TextEditingController();
-  final TextEditingController permissionTimeTypeController =
-      TextEditingController();
+
+  final TextEditingController attendanceTypeController = TextEditingController();
+  final TextEditingController forgetReasonController = TextEditingController();
   final TextEditingController orderReasonController = TextEditingController();
 
-  // List<DropdownMenuItem<String>> permissionTypeItems = [];
-  // List<DropdownMenuItem<String>> durationItems = [];
+
+  List<DropdownMenuItem<String>> attendanceTypeItems = [];
+  List<DropdownMenuItem<String>> forgetReasonItems = [];
 
   AttendanceCubit(
       this._getAllMissingAttendanceUseCase,
@@ -46,9 +47,9 @@ class AttendanceCubit extends Cubit<AttendanceState> {
       this._getAttendanceLookupUseCase,
       this._getForgetReasonUseCase)
       : super(const AttendanceState()) {
+    getAttendanceRecords();
     getAttendanceLookup();
     getForgetReason();
-    getAttendanceRecords();
   }
 
   /// Loads the attendance records and emits success / error / empty states.
@@ -76,21 +77,60 @@ class AttendanceCubit extends Cubit<AttendanceState> {
   }
   /// get attendance lookup data
   Future<void> getAttendanceLookup() async {
-      emit(state.copyWith(status: AttendanceStatus.loading));
+      emit(state.copyWith(status: AttendanceStatus.lookupsLoading));
       final result = await _getAttendanceLookupUseCase.call(params: NoParams());
-    // result.fold(
-    //   (failure) => emit(state.copyWith(status: AttendanceStatus.error, errorMessage: failure.message)),
-    //   (lookupData) => emit(state.copyWith(status: AttendanceStatus.loaded, lookupData: lookupData)),
-    // );
+      result.fold(
+            (failure) =>
+            emit(state.copyWith(status: AttendanceStatus.lookupsError)),
+            (permission) {
+              attendanceTypeItems =
+              permission
+                  .map(
+                    (attendanceType) => DropdownMenuItem(
+                  value:S.current.localeee=="ar"? attendanceType.nameAr:attendanceType.nameEn ?? '3',
+                  child: Text(
+                    S.current.localeee=="ar"? attendanceType.nameAr:attendanceType.nameEn ?? '3',
+                    style: const TextStyle(fontSize: 12),
+                  ),
+                ),
+              )
+                  .toList();
+          emit(
+            state.copyWith(
+              status: AttendanceStatus.lookupsLoaded,
+            ),
+          );
+        },
+      );
   }
 
   Future<void> getForgetReason() async {
-      emit(state.copyWith(status: AttendanceStatus.loading));
+      emit(state.copyWith(status: AttendanceStatus.forgetLoading));
       final result = await _getForgetReasonUseCase.call(params: NoParams());
-    // result.fold(
-    //   (failure) => emit(state.copyWith(status: AttendanceStatus.error, errorMessage: failure.message)),
-    //   (forgetReasons) => emit(state.copyWith(status: AttendanceStatus.loaded, forgetReasons: forgetReasons)),
-    // );
+      result.fold(
+            (failure) =>
+            emit(state.copyWith(status: AttendanceStatus.forgetError)),
+            (permission) {
+          forgetReasonItems =
+              permission
+                  .map(
+                    (Reasons) => DropdownMenuItem(
+                  value:(S.current.localeee=="ar"? Reasons.name:Reasons.nameEn )?? '3',
+                  child: Text(
+                    (S.current.localeee=="ar"? Reasons.name:Reasons.nameEn) ?? '3',
+                    style: const TextStyle(fontSize: 12),
+                  ),
+                ),
+              )
+                  .toList();
+          emit(
+            state.copyWith(
+              status: AttendanceStatus.forgetLoaded,
+            ),
+          );
+        },
+      );
+
   }
 
   /// delete attendance request

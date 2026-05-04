@@ -6,9 +6,9 @@ class AttendanceLookUpModel extends AttendanceLookup {
   AttendanceLookUpModel(
       {required super.id,
       required super.nameAr,
-      required super.nameEn,
-      required super.odooId,
-      required super.code});
+      required super.nameEn
+
+  });
 
   /// from json
   factory AttendanceLookUpModel.fromJson(Map<String, dynamic> json) {
@@ -16,8 +16,7 @@ class AttendanceLookUpModel extends AttendanceLookup {
       id: json['id'],
       nameAr: json['nameAr'],
       nameEn: json['nameEn'],
-      odooId: json['odooId'],
-      code: json['code'],
+
     );
   }
 }

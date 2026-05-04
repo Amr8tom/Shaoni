@@ -3,6 +3,12 @@ part of 'attendance_cubit.dart';
 /// Lifecycle of the Attendance list screen.
 enum AttendanceStatus {
   initialized,
+  forgetLoading,
+  lookupsLoading,
+  forgetError,
+  lookupsError,
+  forgetLoaded,
+  lookupsLoaded,
   loading,
   CreateAttendanceRequestLoading,
   loaded,
@@ -14,10 +20,26 @@ enum AttendanceStatus {
 /// (matches the project's existing `*StateExtension` style).
 extension AttendanceStateExtension on AttendanceState {
   bool get isInitialized => status == AttendanceStatus.initialized;
+
   bool get isLoading => status == AttendanceStatus.loading;
-  bool get isCreateAttendanceRequestLoading => status == AttendanceStatus.CreateAttendanceRequestLoading;
-  bool get isLoaded => status == AttendanceStatus.loaded;
+
+  bool get isForgetLoading => status == AttendanceStatus.forgetLoading;
+
+  bool get isLookupsLoading => status == AttendanceStatus.lookupsLoading;
+
+  bool get isCreateAttendanceRequestLoading =>
+      status == AttendanceStatus.CreateAttendanceRequestLoading;
+
+  bool get isSuccess => status == AttendanceStatus.loaded;
+
+  bool get isForgetSuccess => status == AttendanceStatus.forgetLoaded;
+
+  bool get isLookupSuccess => status == AttendanceStatus.lookupsLoaded;
+
   bool get isEmpty => status == AttendanceStatus.empty;
+
+  bool get isForgetError => status == AttendanceStatus.forgetError;
+  bool get isLookupError => status == AttendanceStatus.lookupsError;
   bool get isError => status == AttendanceStatus.error;
 }
 

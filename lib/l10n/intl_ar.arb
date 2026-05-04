@@ -549,7 +549,9 @@
   "OUTMODEL": "خارج الخدمة",
       "checkedIn": "تم تسجيل الوصول",
         "attendanceHistories":"سجلات الحضور",
-
+  "attendanceType": "نوع إثبات البصمة",
+    "forgetReason":"سبب النسيان",
+    "selectTime":"حدد الوقت",
       "notCheckedIn": "لم يتم تسجيل الوصول",
       "notCheckedOut": "لم يتم تسجيل الخروج",
   "checkedOut": "تم تسجيل الخروج",

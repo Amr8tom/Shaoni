@@ -32,5 +32,8 @@ enum CacheKeys {
   myRequests,
   myRequestsByManager,
   email,
-  allGroups
+  userName,
+  organizationName,
+  departmentAddress
+
 }
