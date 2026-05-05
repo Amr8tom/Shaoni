@@ -56,7 +56,7 @@ class RequestCard extends StatelessWidget {
                 children: [
                 OrderTextCard(
                     title: S.current.orderNumber,
-                    result: orderNumber.substring(9)??' ',
+                    result: orderNumber.length>=9?orderNumber.substring(9):orderNumber??' ',
                   ),
                   const Sizer(height: 10),
                   OrderTextCard(title: S.current.orderType, result: type ?? ''),

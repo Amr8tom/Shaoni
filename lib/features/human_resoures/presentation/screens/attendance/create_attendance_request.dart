@@ -108,7 +108,20 @@ class CreateAttendanceRequest extends StatelessWidget {
                                 style:
                                 Theme.of(context).textTheme.headlineMedium,
                               ),
-                             const AttendanceRequestDataWidget(),
+                              const Sizer(height: 16),
+
+                              /// Find the matching attendance record from
+                              /// the cubit's loaded list (returns null if
+                              /// the list hasn't loaded yet — the widget
+                              /// handles that with safe placeholders).
+                              AttendanceRequestDataWidget(
+                                record: state.records
+                                    .cast<dynamic>()
+                                    .firstWhere(
+                                      (r) => r.id == attendanceID,
+                                      orElse: () => null,
+                                    ),
+                              ),
                               /// file upload
                               const Sizer(height: 35),
                               // const FileUploadWidget(),
@@ -123,10 +136,8 @@ class CreateAttendanceRequest extends StatelessWidget {
                         state.isCreateAttendanceRequestLoading
                             ? CircularProgressIndicator(
                           color: ColorRes.primary,
-                        )
-                            : CreateDeleteButtons(
+                        ): CreateDeleteButtons(
                           deleteTab: () {
-                            print("test delete button");
                             controller.deleteAttendanceRequest();
                           },
                           createTab: () {

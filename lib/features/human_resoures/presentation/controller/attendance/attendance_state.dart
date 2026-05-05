@@ -10,7 +10,8 @@ enum AttendanceStatus {
   forgetLoaded,
   lookupsLoaded,
   loading,
-  CreateAttendanceRequestLoading,
+  createAttendanceRequestLoading,
+  createAttendanceRequestLoaded,
   loaded,
   empty,
   error,
@@ -28,7 +29,10 @@ extension AttendanceStateExtension on AttendanceState {
   bool get isLookupsLoading => status == AttendanceStatus.lookupsLoading;
 
   bool get isCreateAttendanceRequestLoading =>
-      status == AttendanceStatus.CreateAttendanceRequestLoading;
+      status == AttendanceStatus.createAttendanceRequestLoading;
+
+  bool get isCreateAttendanceRequestLoaded =>
+      status == AttendanceStatus.createAttendanceRequestLoaded;
 
   bool get isSuccess => status == AttendanceStatus.loaded;
 

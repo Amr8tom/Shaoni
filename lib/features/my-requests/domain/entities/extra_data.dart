@@ -1,8 +1,9 @@
 import 'package:equatable/equatable.dart';
 
 import '../../../human_resoures/domain/entity/exit_permisstion.dart';
+import '../../data/models/attendance_request_details_model.dart';
 class ExtraData extends Equatable {
-  final String? attendance;
+  final AttendanceRequestDetailsModel? attendance;
   final String? study;
   final String? outsideWorking;
   final String? visaRequest;
@@ -18,7 +19,7 @@ class ExtraData extends Equatable {
   /// fromJson
   factory ExtraData.fromJson(Map<String, dynamic> json) {
     return ExtraData(
-      attendance: json['attendance'],
+      attendance: json['attendance'] !=null ? AttendanceRequestDetailsModel.fromJson(json['attendance']) : null,
       study: json['study'],
       outsideWorking: json['outsideWorking'],
       visaRequest: json['visaRequest'],
@@ -30,7 +31,7 @@ class ExtraData extends Equatable {
   /// to json
   Map<String, dynamic> toJson() {
     return {
-      'attendance': attendance,
+      'attendance': attendance?.toJson(),
       'study': study,
       'outsideWorking': outsideWorking,
       'visaRequest': visaRequest,

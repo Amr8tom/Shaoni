@@ -21,6 +21,12 @@ class AttendanceCubit extends Cubit<AttendanceState> {
   final GetForgetReasonUseCase _getForgetReasonUseCase;
   final requestFormKey = GlobalKey<FormState>();
   final TextEditingController todayDateController = TextEditingController();
+
+  /// Gregorian date the user picks via the date picker (`yyyy-MM-dd`).
+  final TextEditingController attendanceDateController =
+      TextEditingController();
+
+  /// Time-of-day the user picks via the time picker (`HH:mm`).
   final TextEditingController attendanceTimeController =
       TextEditingController();
   final TextEditingController applicantNameController = TextEditingController();
@@ -138,16 +144,23 @@ class AttendanceCubit extends Cubit<AttendanceState> {
 
   /// create attendance request
   Future<void> createAttendanceRequest() async {
-    emit(state.copyWith(status: AttendanceStatus.loading));
+    emit(state.copyWith(status: AttendanceStatus.createAttendanceRequestLoading));
     final result = await _createAttendanceUseCase.call(
         params: CreateAttendanceParams(
-            employee: 6,
-            attendanceType: '',
-            updateDate: '',
-            attendanceId: 2,
+            employee: int.parse(
+                CacheHelper.getString(key: CacheKeys.employeeId) ?? "1"),
+            attendanceType: attendanceTypeController.text ==S.current.checkedIn  ? "check_in" : "check_out",
+            updateDate: '${attendanceDateController.text} ${attendanceTimeController.text}',
+            attendanceId:(int.parse(state.records.first.odooId))??0,
             orderReason: orderReasonController.text,
-            forgetReasonsIds: 2,
+            forgetReasonsIds: forgetReasonItems.indexWhere((item) => item.value == forgetReasonController.text) + 1,
+
             date: ''));
+    result.fold(
+      (failure) => emit(state.copyWith(
+          status: AttendanceStatus.error, errorMessage: failure.message)),
+      (success) => emit(state.copyWith(status: AttendanceStatus.createAttendanceRequestLoaded)),
+    );
   }
 
   /// Pull-to-refresh entry point — same flow as initial load.

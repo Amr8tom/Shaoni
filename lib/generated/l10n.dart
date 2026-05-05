@@ -5838,6 +5838,76 @@ class S {
       args: [],
     );
   }
+
+  /// `Check-In Time (from record)`
+  String get checkInFromRecord {
+    return Intl.message(
+      'Check-In Time (from record)',
+      name: 'checkInFromRecord',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Check-Out Time (from record)`
+  String get checkOutFromRecord {
+    return Intl.message(
+      'Check-Out Time (from record)',
+      name: 'checkOutFromRecord',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Check-In Mode`
+  String get checkInMode {
+    return Intl.message(
+      'Check-In Mode',
+      name: 'checkInMode',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Check-Out Mode`
+  String get checkOutMode {
+    return Intl.message(
+      'Check-Out Mode',
+      name: 'checkOutMode',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Fingerprint Record`
+  String get fingerprintRecord {
+    return Intl.message(
+      'Fingerprint Record',
+      name: 'fingerprintRecord',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Hours Worked`
+  String get hoursWorked {
+    return Intl.message(
+      'Hours Worked',
+      name: 'hoursWorked',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Overtime`
+  String get overtime {
+    return Intl.message('Overtime', name: 'overtime', desc: '', args: []);
+  }
+
+  /// `Time`
+  String get timeOfDay {
+    return Intl.message('Time', name: 'timeOfDay', desc: '', args: []);
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

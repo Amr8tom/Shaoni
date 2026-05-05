@@ -7,18 +7,22 @@ import '../../../../generated/l10n.dart';
 //
 
 class AttendanceRecordModel extends AttendanceRecord {
-  const AttendanceRecordModel(
-      {required super.id,
-      required super.employeeId,
-      required super.employeeName,
-      required super.gregorianDate,
-      required super.hijriDate,
-      required super.checkInTime,
-      required super.isCheckedIn,
-      required super.checkOutTime,
-      required super.isCheckedOut,
-      required super.outMode
-      });
+  const AttendanceRecordModel({
+    required super.id,
+    required super.odooId,
+    required super.employeeId,
+    required super.employeeName,
+    required super.gregorianDate,
+    required super.hijriDate,
+    required super.checkInTime,
+    required super.isCheckedIn,
+    required super.checkOutTime,
+    required super.isCheckedOut,
+    required super.outMode,
+    super.displayName,
+    super.hijriCheckOutDisplay,
+    super.inMode,
+  });
 
 // {
 // "id":                          1,
@@ -40,10 +44,14 @@ class AttendanceRecordModel extends AttendanceRecord {
     factory AttendanceRecordModel.fromJson(Map<String, dynamic> json) {
       return AttendanceRecordModel(
         id: json['id'].toString(),
+        odooId: json['odooId'].toString(),
         employeeId: json['employeeId'].toString(),
         employeeName: json['employeeName'] ?? S.current.notAvailable,
+        displayName: json['displayName'],
         gregorianDate: json['checkDate'] ?? S.current.notAvailable,
         hijriDate: json['hijriCheckInDisplay'] ?? S.current.notAvailable,
+        hijriCheckOutDisplay: json['hijriCheckOutDisplay'],
+        inMode: json['inMode'],
         checkInTime: json['checkIn'] != null
             ? DateTime.parse(json['checkIn']).toLocal().toString().substring(11, 16) + ' ص'
             : null,
@@ -60,6 +68,7 @@ class AttendanceRecordModel extends AttendanceRecord {
   Map<String, dynamic> toJson() {
     return {
       'id': id,
+      'odooId': odooId,
       'employeeName': employeeName,
       'checkDate': gregorianDate,
       'hijriCheckInDisplay': hijriDate,

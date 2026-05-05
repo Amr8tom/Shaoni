@@ -14,13 +14,25 @@ import 'package:equatable/equatable.dart';
 class AttendanceRecord extends Equatable {
   final String id;
   final String employeeId;
+  final String odooId;
   final String employeeName;
+
+  /// Display name returned by the API — e.g. `من 03:00:00 ص`.
+  /// Shown as the "سجل البصمة" / fingerprint-record value on the form.
+  final String? displayName;
 
   /// Gregorian date in `yyyy-MM-dd` format (matches API response).
   final String gregorianDate;
 
   /// Hijri date already-formatted for display, e.g. `١ رجب ١٤٤٧`.
   final String hijriDate;
+
+  /// Hijri date for the check-out moment — may be empty / null when the
+  /// user hasn't checked out yet.
+  final String? hijriCheckOutDisplay;
+
+  /// Mode used when the check-in was registered (e.g. `manual`, `system`).
+  final String? inMode;
 
   /// `07:30 ص` style — null when the user hasn't checked in yet.
   final String? checkInTime;
@@ -36,20 +48,25 @@ class AttendanceRecord extends Equatable {
 
   const AttendanceRecord({
     required this.id,
+    required this.odooId,
     required this.employeeId,
     required this.employeeName,
     required this.gregorianDate,
     required this.hijriDate,
-   required this.checkInTime,
+    required this.checkInTime,
     required this.isCheckedIn,
     required this.checkOutTime,
-    required this.isCheckedOut ,
+    required this.isCheckedOut,
     required this.outMode,
+    this.displayName,
+    this.hijriCheckOutDisplay,
+    this.inMode,
   });
 
   @override
   List<Object?> get props => [
         id,
+    odooId,
         employeeName,
         gregorianDate,
         hijriDate,

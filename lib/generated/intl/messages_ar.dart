@@ -333,6 +333,18 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "error": MessageLookupByLibrary.simpleMessage("هناك خطأ ما"),
     "errorOccurred": MessageLookupByLibrary.simpleMessage("حدث خطأ ما"),
+    "checkInFromRecord": MessageLookupByLibrary.simpleMessage(
+      "وقت الحضور (من السجل)",
+    ),
+    "checkOutFromRecord": MessageLookupByLibrary.simpleMessage(
+      "وقت الانصراف (من السجل)",
+    ),
+    "checkInMode": MessageLookupByLibrary.simpleMessage("وضع الحضور"),
+    "checkOutMode": MessageLookupByLibrary.simpleMessage("وضع الانصراف"),
+    "fingerprintRecord": MessageLookupByLibrary.simpleMessage("سجل البصمة"),
+    "hoursWorked": MessageLookupByLibrary.simpleMessage("ساعات العمل المقضية"),
+    "overtime": MessageLookupByLibrary.simpleMessage("وقت إضافي"),
+    "timeOfDay": MessageLookupByLibrary.simpleMessage("الوقت"),
     "eveningShift": MessageLookupByLibrary.simpleMessage(
       "رقم الوردية المسائية",
     ),
