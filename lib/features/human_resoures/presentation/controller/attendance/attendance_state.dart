@@ -1,5 +1,40 @@
 part of 'attendance_cubit.dart';
 
+
+final class AttendanceState extends Equatable {
+  final AttendanceStatus status;
+  final List<AttendanceRecord> records;
+  final String? errorMessage;
+  final String? successMessage;
+  final String? requestNumber;
+
+  const AttendanceState({
+    this.status = AttendanceStatus.initialized,
+    this.records = const [],
+    this.errorMessage,
+    this.successMessage,
+    this.requestNumber,
+  });
+
+  AttendanceState copyWith({
+    AttendanceStatus? status,
+    List<AttendanceRecord>? records,
+    String? errorMessage,
+    String? successMessage,
+    String? requestNumber,
+  }) {
+    return AttendanceState(
+      status: status ?? this.status,
+      records: records ?? this.records,
+      errorMessage: errorMessage ?? this.errorMessage,
+      successMessage: successMessage ?? this.successMessage,
+      requestNumber: requestNumber ?? this.requestNumber,
+    );
+  }
+
+  @override
+  List<Object?> get props => [status, records, errorMessage,successMessage,requestNumber];
+}
 /// Lifecycle of the Attendance list screen.
 enum AttendanceStatus {
   initialized,
@@ -45,31 +80,4 @@ extension AttendanceStateExtension on AttendanceState {
   bool get isForgetError => status == AttendanceStatus.forgetError;
   bool get isLookupError => status == AttendanceStatus.lookupsError;
   bool get isError => status == AttendanceStatus.error;
-}
-
-final class AttendanceState extends Equatable {
-  final AttendanceStatus status;
-  final List<AttendanceRecord> records;
-  final String? errorMessage;
-
-  const AttendanceState({
-    this.status = AttendanceStatus.initialized,
-    this.records = const [],
-    this.errorMessage,
-  });
-
-  AttendanceState copyWith({
-    AttendanceStatus? status,
-    List<AttendanceRecord>? records,
-    String? errorMessage,
-  }) {
-    return AttendanceState(
-      status: status ?? this.status,
-      records: records ?? this.records,
-      errorMessage: errorMessage ?? this.errorMessage,
-    );
-  }
-
-  @override
-  List<Object?> get props => [status, records, errorMessage];
 }

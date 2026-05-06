@@ -5,9 +5,9 @@ import '../../../../../core/constants/app_sizes.dart';
 import '../../../../../core/constants/colors.dart';
 import '../../../../../generated/l10n.dart';
 import '../../../domain/entity/attendance_record.dart';
-import 'attendance_card_header.dart';
+import '../widget/attendance_card_header.dart';
 import 'attendance_check_in_box.dart';
-import 'attendance_info_box.dart';
+import '../widget/attendance_info_box.dart';
 
 class AttendanceRecordCard extends StatelessWidget {
   const AttendanceRecordCard({super.key, required this.record,required this.onTap});

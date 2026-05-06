@@ -13,6 +13,7 @@ void CustomDialogImgTitleDes({
   required BuildContext context,
   required String title,
   required String des,
+  String? orderNumber,
   required String imgPath,
   String? button1,
   button2,
@@ -75,7 +76,7 @@ void CustomDialogImgTitleDes({
                   ),
                   const Sizer(height: 8),
                   Text(
-                    des,
+                    orderNumber ==null?des:   "${S.current.orderNumber} ${orderNumber ?? ''}",
                     style: Theme.of(
                       context,
                     ).textTheme.bodyMedium?.copyWith(color: ColorRes.grey2),

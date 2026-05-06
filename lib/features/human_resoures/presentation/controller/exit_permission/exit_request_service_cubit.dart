@@ -6,12 +6,13 @@ import 'package:flutter/material.dart';
 import 'package:shaoni/core/local_storage/cache_helper.dart';
 import 'package:shaoni/core/local_storage/cache_keys.dart';
 import 'package:shaoni/core/utils/usecases/base_usecase.dart';
+import 'package:shaoni/features/human_resoures/domain/entity/exit_permisstion.dart';
 import '../../../domain/entity/permission_time.dart';
 import '../../../domain/entity/permission_type.dart';
 import '../../../domain/entity/request_services_Entity.dart';
-import '../../../domain/use_cases/create_exit_permission_use_case.dart';
-import '../../../domain/use_cases/get_permission_time_use_case.dart';
-import '../../../domain/use_cases/get_permission_types_use_case.dart';
+import '../../../domain/use_cases/exit/create_exit_permission_use_case.dart';
+import '../../../domain/use_cases/exit/get_permission_time_use_case.dart';
+import '../../../domain/use_cases/exit/get_permission_types_use_case.dart';
 part 'exit_request_service_state.dart';
 
 
@@ -147,7 +148,7 @@ class ExitRequestServiceCubit extends Cubit<ExitRequestServiceState> {
         ));
       },
       (permission) {
-        emit(state.copyWith(status: RequestStatus.createExitPermissionSuccess));
+        emit(state.copyWith(status: RequestStatus.createExitPermissionSuccess,successPermission: permission));
       },
     );
   }

@@ -40,6 +40,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "according": MessageLookupByLibrary.simpleMessage("حسب التوقيت المحلي ل"),
     "accountDeleted": MessageLookupByLibrary.simpleMessage("تم حذف الحساب "),
+    "accounting_course": MessageLookupByLibrary.simpleMessage("كورس محاسبة"),
     "acg": MessageLookupByLibrary.simpleMessage("دليل النشاط"),
     "actMeal": MessageLookupByLibrary.simpleMessage("وجبات الأنشطة"),
     "activities": MessageLookupByLibrary.simpleMessage("الأنشطة"),
@@ -160,7 +161,15 @@ class MessageLookup extends MessageLookupByLibrary {
     "changeColor": MessageLookupByLibrary.simpleMessage("تغيير اللون"),
     "chatUs": MessageLookupByLibrary.simpleMessage("تحدث الينا "),
     "checkIn": MessageLookupByLibrary.simpleMessage("تسجيل الوصول"),
+    "checkInFromRecord": MessageLookupByLibrary.simpleMessage(
+      "وقت الحضور (من السجل)",
+    ),
+    "checkInMode": MessageLookupByLibrary.simpleMessage("وضع الحضور"),
     "checkOut": MessageLookupByLibrary.simpleMessage("تسجيل الخروج"),
+    "checkOutFromRecord": MessageLookupByLibrary.simpleMessage(
+      "وقت الانصراف (من السجل)",
+    ),
+    "checkOutMode": MessageLookupByLibrary.simpleMessage("وضع الانصراف"),
     "checkedIn": MessageLookupByLibrary.simpleMessage("تم تسجيل الوصول"),
     "checkedOut": MessageLookupByLibrary.simpleMessage("تم تسجيل الخروج"),
     "chooseImage": MessageLookupByLibrary.simpleMessage("اختر صورة"),
@@ -206,6 +215,16 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "coontinue": MessageLookupByLibrary.simpleMessage("متابعة"),
     "cost": MessageLookupByLibrary.simpleMessage("التكلفة"),
+    "course_duration_months": MessageLookupByLibrary.simpleMessage(
+      "مدة الدورة (أشهر)",
+    ),
+    "course_end_date": MessageLookupByLibrary.simpleMessage(
+      "تاريخ نهاية الدورة",
+    ),
+    "course_name": MessageLookupByLibrary.simpleMessage("اسم الدورة *"),
+    "course_start_date": MessageLookupByLibrary.simpleMessage(
+      "تاريخ بداية الدورة",
+    ),
     "createAccount": MessageLookupByLibrary.simpleMessage("انشئ حساب"),
     "createNewPassword": MessageLookupByLibrary.simpleMessage(
       "انشئ كلمة مرور جديدة",
@@ -333,18 +352,6 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "error": MessageLookupByLibrary.simpleMessage("هناك خطأ ما"),
     "errorOccurred": MessageLookupByLibrary.simpleMessage("حدث خطأ ما"),
-    "checkInFromRecord": MessageLookupByLibrary.simpleMessage(
-      "وقت الحضور (من السجل)",
-    ),
-    "checkOutFromRecord": MessageLookupByLibrary.simpleMessage(
-      "وقت الانصراف (من السجل)",
-    ),
-    "checkInMode": MessageLookupByLibrary.simpleMessage("وضع الحضور"),
-    "checkOutMode": MessageLookupByLibrary.simpleMessage("وضع الانصراف"),
-    "fingerprintRecord": MessageLookupByLibrary.simpleMessage("سجل البصمة"),
-    "hoursWorked": MessageLookupByLibrary.simpleMessage("ساعات العمل المقضية"),
-    "overtime": MessageLookupByLibrary.simpleMessage("وقت إضافي"),
-    "timeOfDay": MessageLookupByLibrary.simpleMessage("الوقت"),
     "eveningShift": MessageLookupByLibrary.simpleMessage(
       "رقم الوردية المسائية",
     ),
@@ -399,6 +406,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "fingerprintProofRequest": MessageLookupByLibrary.simpleMessage(
       "طلب إثبات بصمة",
     ),
+    "fingerprintRecord": MessageLookupByLibrary.simpleMessage("سجل البصمة"),
     "firstName": MessageLookupByLibrary.simpleMessage("الاسم الأول"),
     "flashTodaySale": MessageLookupByLibrary.simpleMessage("عِـــروٌض الــيوم"),
     "followOeder": MessageLookupByLibrary.simpleMessage("تتبع الطلب"),
@@ -480,6 +488,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "hour": MessageLookupByLibrary.simpleMessage("ساعة"),
     "hours": MessageLookupByLibrary.simpleMessage("ساعات"),
+    "hoursWorked": MessageLookupByLibrary.simpleMessage("ساعات العمل المقضية"),
     "how": MessageLookupByLibrary.simpleMessage("كيف أستخدم التطبيق"),
     "hrManagerApproval": MessageLookupByLibrary.simpleMessage(
       "موافقة مدير الموارد البشرية",
@@ -653,6 +662,15 @@ class MessageLookup extends MessageLookupByLibrary {
     "noUserFound": MessageLookupByLibrary.simpleMessage(
       "لم يتم العثور على هذه البيانات",
     ),
+    "nomination_end_date": MessageLookupByLibrary.simpleMessage(
+      "تاريخ نهاية الترشيح",
+    ),
+    "nomination_period_days": MessageLookupByLibrary.simpleMessage(
+      "فترة الترشيح (أيام)",
+    ),
+    "nomination_start_date": MessageLookupByLibrary.simpleMessage(
+      "تاريخ بداية الترشيح",
+    ),
     "nonSaudi": MessageLookupByLibrary.simpleMessage("غير سعودي"),
     "notAvailable": MessageLookupByLibrary.simpleMessage("غير متاح"),
     "notCheckedIn": MessageLookupByLibrary.simpleMessage("لم يتم تسجيل الوصول"),
@@ -715,6 +733,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "ourOffers": MessageLookupByLibrary.simpleMessage("عروضنا"),
     "ourTours": MessageLookupByLibrary.simpleMessage("رحلاتنا"),
+    "overtime": MessageLookupByLibrary.simpleMessage("وقت إضافي"),
     "overtimeRequest": MessageLookupByLibrary.simpleMessage(
       "طلب وقت عمل إضافي",
     ),
@@ -1050,6 +1069,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "time": MessageLookupByLibrary.simpleMessage("الوقت: "),
     "time09": MessageLookupByLibrary.simpleMessage("09:30 ص"),
     "timeNowIS": MessageLookupByLibrary.simpleMessage("حان وقت"),
+    "timeOfDay": MessageLookupByLibrary.simpleMessage("الوقت"),
     "toAccessAiHelperLog": MessageLookupByLibrary.simpleMessage(
       "للوصول إلى ميزة المساعد الذكي، يرجى تسجيل الدخول أو إنشاء حساب",
     ),
@@ -1070,6 +1090,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "tourDetails": MessageLookupByLibrary.simpleMessage("تفاصيل الرحلة"),
     "tourForm": MessageLookupByLibrary.simpleMessage("بيانات نموذج الرحلة"),
     "tours": MessageLookupByLibrary.simpleMessage("الرحـلات"),
+    "training_course_data": MessageLookupByLibrary.simpleMessage(
+      "بيانات الدورات التدريبية",
+    ),
     "tryAgain": MessageLookupByLibrary.simpleMessage(" حاول مرة أخرى"),
     "tryLater": MessageLookupByLibrary.simpleMessage(
       "الرجاء المحاولة مرة اخري فيما بعد",
@@ -1097,6 +1120,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "هنــاك تحـديث جديد من TEAA التحــديث للاستمرار",
     ),
     "updateData": MessageLookupByLibrary.simpleMessage("تحديث البيانات"),
+    "uploadFileSelect": MessageLookupByLibrary.simpleMessage(" اختر ملف للرفع"),
     "userName": MessageLookupByLibrary.simpleMessage("أسم المستخدم"),
     "userPolicy": MessageLookupByLibrary.simpleMessage("سياسة المستخدم"),
     "ut": MessageLookupByLibrary.simpleMessage(

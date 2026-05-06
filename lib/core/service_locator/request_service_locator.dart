@@ -8,10 +8,10 @@ import '../../features/human_resoures/data/data_sources/remote_data_sources.dart
 import '../../features/human_resoures/data/repositories/repository.dart';
 import '../../features/human_resoures/domain/repository/repository.dart';
 import '../../features/human_resoures/domain/use_cases/attendance/create_attendance_use_case.dart';
-import '../../features/human_resoures/domain/use_cases/create_exit_permission_use_case.dart';
+import '../../features/human_resoures/domain/use_cases/exit/create_exit_permission_use_case.dart';
 import '../../features/human_resoures/domain/use_cases/get_all_permission_services_use_case.dart';
-import '../../features/human_resoures/domain/use_cases/get_permission_time_use_case.dart';
-import '../../features/human_resoures/domain/use_cases/get_permission_types_use_case.dart';
+import '../../features/human_resoures/domain/use_cases/exit/get_permission_time_use_case.dart';
+import '../../features/human_resoures/domain/use_cases/exit/get_permission_types_use_case.dart';
 import '../../features/human_resoures/presentation/controller/attendance/attendance_cubit.dart';
 import '../../features/human_resoures/presentation/controller/exit_permission/exit_request_service_cubit.dart';
 

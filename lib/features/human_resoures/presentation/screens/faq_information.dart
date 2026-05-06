@@ -12,10 +12,10 @@ import 'package:shaoni/core/service_locator/service_locator.dart';
 import '../../../../core/device/device_utility.dart';
 import '../../../../generated/l10n.dart';
 import '../controller/exit_permission/exit_request_service_cubit.dart';
-import '../widgets/services_information_gridview.dart';
+import '../exit/widgets/services_information_gridview.dart';
 
-class RequestCertainService extends StatelessWidget {
-  const RequestCertainService({super.key});
+class FAQInformation extends StatelessWidget {
+  const FAQInformation({super.key});
 
   @override
   Widget build(BuildContext context) {

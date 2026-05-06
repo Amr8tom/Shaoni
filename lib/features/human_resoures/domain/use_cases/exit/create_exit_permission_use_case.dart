@@ -4,7 +4,7 @@ import 'package:shaoni/core/error/failure.dart';
 import 'package:shaoni/core/utils/usecases/base_usecase.dart';
 import 'package:shaoni/features/human_resoures/domain/entity/exit_permisstion.dart';
 
-import '../repository/repository.dart';
+import '../../repository/repository.dart';
 
 class CreateExitPermissionUseCase
     extends UseCase<ExitPermission, CreateExitPermissionParams> {

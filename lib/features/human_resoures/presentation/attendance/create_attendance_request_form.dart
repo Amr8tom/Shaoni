@@ -1,29 +1,31 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:shaoni/common/widgets/appbar/appbar.dart';
-import 'package:shaoni/common/widgets/sizeboxs/Sizer.dart';
-import 'package:shaoni/core/constants/app_sizes.dart';
-import 'package:shaoni/core/constants/colors.dart';
 import 'package:shaoni/core/extentions/navigation_extension.dart';
-import 'package:shaoni/core/service_locator/service_locator.dart';
-import '../../../../common/widgets/dialogs/custom_dialog_img_title_des.dart';
-import '../../../../core/constants/asset_resoures.dart';
-import '../../../../core/routing/route_names.dart';
-import '../../../../generated/l10n.dart';
-import '../controller/exit_permission/exit_request_service_cubit.dart';
-import '../widgets/applicant_data_widget.dart';
-import '../widgets/create_delete_buttons.dart';
-import '../widgets/date_data_widget.dart';
-import '../widgets/file_upload_widget.dart';
-import '../widgets/request_data_widget.dart';
+import 'package:shaoni/features/human_resoures/presentation/attendance/widget/attendance_request_data_widget.dart';
+import '../../../../../common/widgets/appbar/appbar.dart';
+import '../../../../../common/widgets/dialogs/custom_dialog_img_title_des.dart';
+import '../../../../../common/widgets/sizeboxs/Sizer.dart';
+import '../../../../../core/constants/app_sizes.dart';
+import '../../../../../core/constants/asset_resoures.dart';
+import '../../../../../core/constants/colors.dart';
+import '../../../../../core/routing/route_names.dart';
+import '../../../../../core/service_locator/service_locator.dart';
+import '../../../../../generated/l10n.dart';
+import '../controller/attendance/attendance_cubit.dart';
+import '../widgets/general_request_templates/applicant_data_widget.dart';
+import '../widgets/general_request_templates/create_delete_buttons.dart';
+import '../widgets/general_request_templates/date_data_widget.dart';
+import '../widgets/general_request_templates/file_upload_widget.dart';
 
-class ExitRequestDetailsScreen extends StatelessWidget {
-  const ExitRequestDetailsScreen({super.key});
+class CreateAttendanceRequestForm extends StatelessWidget {
+  final String attendanceID;
+
+  const CreateAttendanceRequestForm({super.key, required this.attendanceID});
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => serviceLocator<ExitRequestServiceCubit>(),
+      create: (context) => serviceLocator<AttendanceCubit>(),
       child: Scaffold(
         appBar: DAppBar(
           showMenu: false,
@@ -33,20 +35,19 @@ class ExitRequestDetailsScreen extends StatelessWidget {
         backgroundColor: ColorRes.grey6,
         body: Builder(
           builder: (context) {
-            final controller = context.read<ExitRequestServiceCubit>();
-            return BlocConsumer<ExitRequestServiceCubit,
-                ExitRequestServiceState>(
+            final controller = context.read<AttendanceCubit>();
+            return BlocConsumer<AttendanceCubit, AttendanceState>(
               listener: (context, state) {
-                if (state.isCreateExitPermissionError) {
+                if (state.isError) {
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(
-                      content: Text(state.errorMassage ?? "Error"),
+                      content: Text(state.errorMessage ?? "Error"),
                       backgroundColor: ColorRes.error.withOpacity(0.5),
                     ),
                   );
                 }
 
-                if (state.isCreateExitPermissionSuccess) {
+                if (state.isCreateAttendanceRequestLoaded) {
                   CustomDialogImgTitleDes(
                     button1: S.current.myOrders,
                     button2: S.current.home,
@@ -66,6 +67,7 @@ class ExitRequestDetailsScreen extends StatelessWidget {
                     context: context,
                     title: S.current.requestSentSuccessfully,
                     des: S.current.requestSentSuccessfully,
+                    orderNumber: state.requestNumber ?? "2",
                     imgPath: AssetRes.doubleCorrect,
                     isSvg: true,
                   );
@@ -94,7 +96,9 @@ class ExitRequestDetailsScreen extends StatelessWidget {
                               const Sizer(height: 35),
 
                               /// data for request applicant
-                              const ApplicantDataWidget(),
+                              ApplicantDataWidget(
+                                useEnhancedDesign: true,
+                              ),
 
                               /// request data
                               const Sizer(height: 35),
@@ -103,11 +107,30 @@ class ExitRequestDetailsScreen extends StatelessWidget {
                                 style:
                                     Theme.of(context).textTheme.headlineMedium,
                               ),
-                              const RequestDataWidget(),
+                              const Sizer(height: 16),
+
+                              /// Find the matching attendance record from
+                              /// the cubit's loaded list (returns null if
+                              /// the list hasn't loaded yet — the widget
+                              /// handles that with safe placeholders).
+                              AttendanceRequestDataWidget(
+                                record:
+                                    state.records.cast<dynamic>().firstWhere(
+                                          (r) => r.id == attendanceID,
+                                          orElse: () => null,
+                                        ),
+                              ),
 
                               /// file upload
                               const Sizer(height: 35),
-                              const FileUploadWidget(),
+                              FileUploadWidget(
+                                onPickedFile: (name, base64) {
+                                  controller.attachmentFileController.text =
+                                      base64 ?? '';
+                                  controller.attachmentFileNameController.text =
+                                      name ?? '';
+                                },
+                              ),
 
                               /// Extra space so content doesn't hide behind the floating buttons
                               const Sizer(height: 120),
@@ -116,19 +139,18 @@ class ExitRequestDetailsScreen extends StatelessWidget {
                         ),
 
                         /// Floating blur buttons at the bottom
-                        state.isCreateExitPermissionLoading
+                        state.isCreateAttendanceRequestLoading
                             ? CircularProgressIndicator(
                                 color: ColorRes.primary,
                               )
                             : CreateDeleteButtons(
                                 deleteTab: () {
-                                  print("test delete button");
-                                  controller.deleteExitPermissionRequest();
+                                  controller.deleteAttendanceRequest();
                                 },
                                 createTab: () {
                                   if (controller.requestFormKey.currentState!
                                       .validate()) {
-                                    controller.createExitPermissionRequest();
+                                    controller.createAttendanceRequest();
                                   }
                                 },
                               ),

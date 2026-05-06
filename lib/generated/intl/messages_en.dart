@@ -42,6 +42,9 @@ class MessageLookup extends MessageLookupByLibrary {
       "According to the local time of ",
     ),
     "accountDeleted": MessageLookupByLibrary.simpleMessage("Account Deleted"),
+    "accounting_course": MessageLookupByLibrary.simpleMessage(
+      "Accounting Course",
+    ),
     "acg": MessageLookupByLibrary.simpleMessage("Activity Guide"),
     "actMeal": MessageLookupByLibrary.simpleMessage("Activities Meals"),
     "activities": MessageLookupByLibrary.simpleMessage("Activities"),
@@ -170,7 +173,15 @@ class MessageLookup extends MessageLookupByLibrary {
     "changeColor": MessageLookupByLibrary.simpleMessage("Change Color"),
     "chatUs": MessageLookupByLibrary.simpleMessage("Chat US"),
     "checkIn": MessageLookupByLibrary.simpleMessage("Check In"),
+    "checkInFromRecord": MessageLookupByLibrary.simpleMessage(
+      "Check-In Time (from record)",
+    ),
+    "checkInMode": MessageLookupByLibrary.simpleMessage("Check-In Mode"),
     "checkOut": MessageLookupByLibrary.simpleMessage("Check Out"),
+    "checkOutFromRecord": MessageLookupByLibrary.simpleMessage(
+      "Check-Out Time (from record)",
+    ),
+    "checkOutMode": MessageLookupByLibrary.simpleMessage("Check-Out Mode"),
     "checkedIn": MessageLookupByLibrary.simpleMessage("checked In"),
     "checkedOut": MessageLookupByLibrary.simpleMessage("checked Out"),
     "chooseImage": MessageLookupByLibrary.simpleMessage("Choose Image"),
@@ -218,6 +229,14 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "coontinue": MessageLookupByLibrary.simpleMessage("Continue"),
     "cost": MessageLookupByLibrary.simpleMessage("The Cost"),
+    "course_duration_months": MessageLookupByLibrary.simpleMessage(
+      "Course Duration (months)",
+    ),
+    "course_end_date": MessageLookupByLibrary.simpleMessage("Course End Date"),
+    "course_name": MessageLookupByLibrary.simpleMessage("Course Name *"),
+    "course_start_date": MessageLookupByLibrary.simpleMessage(
+      "Course Start Date",
+    ),
     "createAccount": MessageLookupByLibrary.simpleMessage("New "),
     "createNewPassword": MessageLookupByLibrary.simpleMessage(
       "Create New Password",
@@ -411,6 +430,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "fingerprintProofRequest": MessageLookupByLibrary.simpleMessage(
       "Fingerprint Verification Request",
     ),
+    "fingerprintRecord": MessageLookupByLibrary.simpleMessage(
+      "Fingerprint Record",
+    ),
     "firstName": MessageLookupByLibrary.simpleMessage("First Name "),
     "flashTodaySale": MessageLookupByLibrary.simpleMessage("Today Sale"),
     "followOeder": MessageLookupByLibrary.simpleMessage("Follow Order"),
@@ -490,6 +512,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "hour": MessageLookupByLibrary.simpleMessage("hour"),
     "hours": MessageLookupByLibrary.simpleMessage("Hours"),
+    "hoursWorked": MessageLookupByLibrary.simpleMessage("Hours Worked"),
     "how": MessageLookupByLibrary.simpleMessage("How I use app"),
     "hrManagerApproval": MessageLookupByLibrary.simpleMessage(
       "HR Manager Approval",
@@ -667,6 +690,15 @@ class MessageLookup extends MessageLookupByLibrary {
     "noUserFound": MessageLookupByLibrary.simpleMessage(
       "These credentials are not found",
     ),
+    "nomination_end_date": MessageLookupByLibrary.simpleMessage(
+      "Nomination End Date",
+    ),
+    "nomination_period_days": MessageLookupByLibrary.simpleMessage(
+      "Nomination Period (days)",
+    ),
+    "nomination_start_date": MessageLookupByLibrary.simpleMessage(
+      "Nomination Start Date",
+    ),
     "nonSaudi": MessageLookupByLibrary.simpleMessage("Non-Saudi"),
     "notAvailable": MessageLookupByLibrary.simpleMessage("Not Available"),
     "notCheckedIn": MessageLookupByLibrary.simpleMessage("not checked In"),
@@ -731,6 +763,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "ourOffers": MessageLookupByLibrary.simpleMessage("Our Offers"),
     "ourTours": MessageLookupByLibrary.simpleMessage("Our Tours"),
+    "overtime": MessageLookupByLibrary.simpleMessage("Overtime"),
     "overtimeRequest": MessageLookupByLibrary.simpleMessage("Overtime Request"),
     "package": MessageLookupByLibrary.simpleMessage("Package: "),
     "packing": MessageLookupByLibrary.simpleMessage("packing"),
@@ -1088,6 +1121,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "time": MessageLookupByLibrary.simpleMessage("Time: "),
     "time09": MessageLookupByLibrary.simpleMessage("09:30 AM"),
     "timeNowIS": MessageLookupByLibrary.simpleMessage("Time now is "),
+    "timeOfDay": MessageLookupByLibrary.simpleMessage("Time"),
     "toAccessAiHelperLog": MessageLookupByLibrary.simpleMessage(
       "To access the AI Helper feature please log in or create an account",
     ),
@@ -1104,6 +1138,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "tourDetails": MessageLookupByLibrary.simpleMessage("Tour Details"),
     "tourForm": MessageLookupByLibrary.simpleMessage("Tour Form data"),
     "tours": MessageLookupByLibrary.simpleMessage("Tours"),
+    "training_course_data": MessageLookupByLibrary.simpleMessage(
+      "Training Course Data",
+    ),
     "tryAgain": MessageLookupByLibrary.simpleMessage(
       "Please try again or sign up",
     ),
@@ -1131,6 +1168,9 @@ class MessageLookup extends MessageLookupByLibrary {
       "A new version of the TEAA is available. Please update to continue",
     ),
     "updateData": MessageLookupByLibrary.simpleMessage("Update Data"),
+    "uploadFileSelect": MessageLookupByLibrary.simpleMessage(
+      "Select File to Upload",
+    ),
     "userName": MessageLookupByLibrary.simpleMessage("User Name"),
     "userPolicy": MessageLookupByLibrary.simpleMessage("User Policy"),
     "ut": MessageLookupByLibrary.simpleMessage(

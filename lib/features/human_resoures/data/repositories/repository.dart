@@ -1,24 +1,23 @@
 import 'package:dartz/dartz.dart';
-
 import 'package:shaoni/core/error/failure.dart';
-
 import 'package:shaoni/core/utils/usecases/base_usecase.dart';
 import 'package:shaoni/features/human_resoures/domain/entity/attendance/attendance_lookup.dart';
 import 'package:shaoni/features/human_resoures/domain/entity/attendance/forget_reason.dart';
-import 'package:shaoni/features/human_resoures/domain/entity/attendance_record.dart';
 import 'package:shaoni/features/human_resoures/domain/entity/exit_permisstion.dart';
 import 'package:shaoni/features/human_resoures/domain/use_cases/attendance/create_attendance_use_case.dart';
 import 'package:shaoni/features/human_resoures/domain/use_cases/attendance/get_all_missing_attendance_use_case.dart';
-
 import '../../../../core/connection/checkNetwork.dart';
 import '../../domain/entity/all_attendance_record_model.dart';
 import '../../domain/entity/all_services.dart';
 import '../../domain/entity/permission_time.dart';
 import '../../domain/entity/permission_type.dart';
 import '../../domain/repository/repository.dart';
-import '../../domain/use_cases/create_exit_permission_use_case.dart';
+import '../../domain/use_cases/exit/create_exit_permission_use_case.dart';
 import '../data_sources/local_data_sources.dart';
 import '../data_sources/remote_data_sources.dart';
+import '../model/attendance/attendance_model.dart';
+
+
 
 class HRServicesRepositoryImp extends HRServicesRepository {
   final HRServicesLocalDataSources _local;
@@ -130,7 +129,7 @@ class HRServicesRepositoryImp extends HRServicesRepository {
   }
 
   @override
-  Future<Either<Failure, String>> createAttendance(
+  Future<Either<Failure, AttendanceModel>> createAttendance(
       {required CreateAttendanceParams params}) async {
     if (await _networkInfo.isConnected) {
       try {

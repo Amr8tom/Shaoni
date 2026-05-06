@@ -21,11 +21,9 @@ class AttendanceCubit extends Cubit<AttendanceState> {
   final GetForgetReasonUseCase _getForgetReasonUseCase;
   final requestFormKey = GlobalKey<FormState>();
   final TextEditingController todayDateController = TextEditingController();
-
   /// Gregorian date the user picks via the date picker (`yyyy-MM-dd`).
   final TextEditingController attendanceDateController =
       TextEditingController();
-
   /// Time-of-day the user picks via the time picker (`HH:mm`).
   final TextEditingController attendanceTimeController =
       TextEditingController();
@@ -36,9 +34,7 @@ class AttendanceCubit extends Cubit<AttendanceState> {
       TextEditingController();
   final TextEditingController attachmentFileNameController =
       TextEditingController();
-
   final TextEditingController durationController = TextEditingController();
-
   final TextEditingController attendanceTypeController = TextEditingController();
   final TextEditingController forgetReasonController = TextEditingController();
   final TextEditingController orderReasonController = TextEditingController();
@@ -140,7 +136,15 @@ class AttendanceCubit extends Cubit<AttendanceState> {
   }
 
   /// delete attendance request
-  Future<void> deleteAttendanceRequest() async {}
+  Future<void> deleteAttendanceRequest() async {
+    attendanceDateController.clear();
+    attendanceTimeController.clear();
+    attendanceTypeController.clear();
+    orderReasonController.clear();
+    forgetReasonController.clear();
+    durationController.clear();
+
+  }
 
   /// create attendance request
   Future<void> createAttendanceRequest() async {
@@ -159,7 +163,7 @@ class AttendanceCubit extends Cubit<AttendanceState> {
     result.fold(
       (failure) => emit(state.copyWith(
           status: AttendanceStatus.error, errorMessage: failure.message)),
-      (success) => emit(state.copyWith(status: AttendanceStatus.createAttendanceRequestLoaded)),
+      (success) => emit(state.copyWith(status: AttendanceStatus.createAttendanceRequestLoaded,successMessage: success.message,requestNumber:success.requestNumber)),
     );
   }
 

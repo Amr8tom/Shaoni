@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:shaoni/common/widgets/sizeboxs/Sizer.dart';
 import 'package:shaoni/core/constants/app_sizes.dart';
@@ -8,10 +7,12 @@ import 'package:shaoni/generated/l10n.dart';
 import 'dart:io';
 import 'dart:convert';
 
-import '../controller/exit_permission/exit_request_service_cubit.dart';
-
 class FileUploadWidget extends StatefulWidget {
-  const FileUploadWidget({super.key});
+  /// Callback to return the file name and base64 string to the parent.
+  /// Returns null when the user removes the file.
+  final void Function(String? fileName, String? base64String)? onPickedFile;
+
+  const FileUploadWidget({super.key, this.onPickedFile});
 
   @override
   State<FileUploadWidget> createState() => _FileUploadWidgetState();
@@ -20,55 +21,8 @@ class FileUploadWidget extends StatefulWidget {
 class _FileUploadWidgetState extends State<FileUploadWidget> {
   PlatformFile? _pickedFile;
 
-  Future<void> _pickFile() async {
-    try {
-      final result = await FilePicker.platform.pickFiles(
-        type: FileType.custom,
-        allowedExtensions: ['pdf', 'doc', 'docx', 'jpg', 'jpeg', 'png', 'xlsx', 'xls'],
-      );
-
-      if (result != null && result.files.single.path != null) {
-        /// convert to base64
-        _pickedFile = result.files.single;
-
-        try {
-          final file = File(_pickedFile!.path!);
-          final fileBytes = await file.readAsBytes();
-          final base64String = base64Encode(fileBytes);
-
-          setState(() {
-            _pickedFile = result.files.single;
-          });
-
-          // Optional: Update controller with file path and base64
-          final controller = context.read<ExitRequestServiceCubit>();
-          controller.attachmentFileController.text = base64String ?? '';
-          controller.attachmentFileNameController.text = _pickedFile!.name ?? '';
-          // You can store base64String if needed
-        } catch (e) {
-          debugPrint('Error converting file to base64: $e');
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text(S.current.error ?? 'Error processing file'),
-              backgroundColor: ColorRes.error,
-            ),
-          );
-        }
-      }
-    } catch (e) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(S.current.error ?? 'Error picking file'),
-          backgroundColor: ColorRes.error,
-        ),
-      );
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
-    final controller = context.read<ExitRequestServiceCubit>()  ;
-
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -81,7 +35,49 @@ class _FileUploadWidgetState extends State<FileUploadWidget> {
 
         /// Upload box
         GestureDetector(
-          onTap: _pickFile,
+          onTap: () async {
+            try {
+              final result = await FilePicker.platform.pickFiles(
+                type: FileType.custom,
+                allowedExtensions: [
+                  'pdf', 'doc', 'docx', 'jpg', 'jpeg', 'png', 'xlsx', 'xls'
+                ],
+              );
+
+              if (result != null && result.files.single.path != null) {
+                try {
+                  final file = File(result.files.single.path!);
+                  final fileBytes = await file.readAsBytes();
+                  final base64String = base64Encode(fileBytes);
+
+                  setState(() {
+                    _pickedFile = result.files.single;
+                  });
+
+                  // RETURN DATA TO PARENT WIDGET HERE
+                  if (widget.onPickedFile != null) {
+                    widget.onPickedFile!(_pickedFile!.name, base64String);
+                  }
+
+                } catch (e) {
+                  debugPrint('Error converting file to base64: $e');
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text(S.current.error ?? 'Error processing file'),
+                      backgroundColor: ColorRes.error,
+                    ),
+                  );
+                }
+              }
+            } catch (e) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: Text(S.current.error ?? 'Error picking file'),
+                  backgroundColor: ColorRes.error,
+                ),
+              );
+            }
+          },
           child: Container(
             width: double.infinity,
             padding: EdgeInsets.all(AppSizes.padding * 1.5),
@@ -97,17 +93,14 @@ class _FileUploadWidgetState extends State<FileUploadWidget> {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                /// Upload icon
                 Icon(
                   Icons.cloud_upload_outlined,
                   size: 48,
                   color: ColorRes.primary,
                 ),
                 const Sizer(height: 12),
-
-                /// Upload text
                 Text(
-                    'Select File to Upload',
+                  S.current.uploadFileSelect,
                   style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                     color: ColorRes.primary,
                     fontWeight: FontWeight.w600,
@@ -116,14 +109,6 @@ class _FileUploadWidgetState extends State<FileUploadWidget> {
                 ),
                 const Sizer(height: 8),
 
-                /// Support formats
-                // Text(
-                //   S.current.supportedFormats ?? 'PDF, DOC, DOCX, JPG, PNG, XLSX',
-                //   style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                //     color: ColorRes.grey2.withOpacity(0.6),
-                //   ),
-                //   textAlign: TextAlign.center,
-                // ),
               ],
             ),
           ),
@@ -143,20 +128,16 @@ class _FileUploadWidgetState extends State<FileUploadWidget> {
             ),
             child: Row(
               children: [
-                /// File icon
                 Icon(
                   _getFileIcon(_pickedFile!.extension ?? ''),
                   color: ColorRes.primary,
                   size: 32,
                 ),
                 const Sizer(width: 12),
-
-                /// File info
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      /// File name
                       Text(
                         _pickedFile!.name,
                         style: Theme.of(context).textTheme.bodyLarge?.copyWith(
@@ -165,8 +146,6 @@ class _FileUploadWidgetState extends State<FileUploadWidget> {
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                       ),
-
-                      /// File size
                       Text(
                         _formatFileSize(_pickedFile!.size),
                         style: Theme.of(context).textTheme.bodySmall?.copyWith(
@@ -176,13 +155,17 @@ class _FileUploadWidgetState extends State<FileUploadWidget> {
                     ],
                   ),
                 ),
-
                 /// Remove button
                 GestureDetector(
                   onTap: () {
                     setState(() {
                       _pickedFile = null;
                     });
+
+                    /// NOTIFY PARENT THAT FILE WAS REMOVED
+                    if (widget.onPickedFile != null) {
+                      widget.onPickedFile!(null, null);
+                    }
                   },
                   child: Icon(
                     Icons.close,
@@ -197,35 +180,23 @@ class _FileUploadWidgetState extends State<FileUploadWidget> {
     );
   }
 
-  /// Get appropriate icon based on file extension
   IconData _getFileIcon(String extension) {
     switch (extension.toLowerCase()) {
-      case 'pdf':
-        return Icons.picture_as_pdf;
+      case 'pdf': return Icons.picture_as_pdf;
       case 'doc':
-      case 'docx':
-        return Icons.description;
+      case 'docx': return Icons.description;
       case 'jpg':
       case 'jpeg':
-      case 'png':
-        return Icons.image;
+      case 'png': return Icons.image;
       case 'xlsx':
-      case 'xls':
-        return Icons.table_chart;
-      default:
-        return Icons.attach_file;
+      case 'xls': return Icons.table_chart;
+      default: return Icons.attach_file;
     }
   }
 
-  /// Format file size to readable format
   String _formatFileSize(int bytes) {
-    if (bytes < 1024) {
-      return '$bytes B';
-    } else if (bytes < 1024 * 1024) {
-      return '${(bytes / 1024).toStringAsFixed(2)} KB';
-    } else {
-      return '${(bytes / (1024 * 1024)).toStringAsFixed(2)} MB';
-    }
+    if (bytes < 1024) return '$bytes B';
+    if (bytes < 1024 * 1024) return '${(bytes / 1024).toStringAsFixed(2)} KB';
+    return '${(bytes / (1024 * 1024)).toStringAsFixed(2)} MB';
   }
 }
-

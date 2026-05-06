@@ -1,4 +1,5 @@
 import 'package:shaoni/features/human_resoures/data/model/attendance/attendance_look_up_model.dart';
+import 'package:shaoni/features/human_resoures/data/model/attendance/attendance_model.dart';
 import 'package:shaoni/features/human_resoures/data/model/attendance/forget_reason_model.dart';
 import 'package:shaoni/features/human_resoures/data/model/attendance_record_model.dart';
 import 'package:shaoni/features/human_resoures/domain/use_cases/attendance/create_attendance_use_case.dart';
@@ -9,7 +10,7 @@ import '../../../../core/error/failure.dart';
 import '../../../../core/utils/usecases/base_usecase.dart';
 import '../../domain/entity/all_attendance_record_model.dart';
 import '../../domain/entity/exit_permisstion.dart';
-import '../../domain/use_cases/create_exit_permission_use_case.dart';
+import '../../domain/use_cases/exit/create_exit_permission_use_case.dart';
 import '../../domain/use_cases/attendance/get_all_missing_attendance_use_case.dart';
 import '../model/all_services_model.dart';
 import '../model/permission_time_model.dart';
@@ -32,7 +33,7 @@ abstract class HRServicesRemoteDataSources {
   Future<AllAttendanceRecordModel> getAllMissingAttendance(
       {required AllMissingAttendanceParams params});
 
-  Future<String> createAttendance({required CreateAttendanceParams params});
+  Future<AttendanceModel> createAttendance({required CreateAttendanceParams params});
 
   Future<List<AttendanceLookUpModel>> getAttendanceLookup({
     required NoParams params,
@@ -132,14 +133,14 @@ class HRServicesRemoteDataSourcesImp implements HRServicesRemoteDataSources {
   }
 
   @override
-  Future<String> createAttendance(
+  Future<AttendanceModel> createAttendance(
       {required CreateAttendanceParams params}) async {
     try {
       final response = await _dio.postData(
           URL: URL.createAttendanceRequest, body: params.toMap());
       if (response != null) {
         /// Extract the data field from the response Map
-        return response as String;
+        return AttendanceModel.fromJson(response);
       } else {
         throw ServerFailure(message: 'server failure');
       }

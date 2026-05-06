@@ -31,7 +31,9 @@ extension ExitRequestStateExtension on ExitRequestServiceState {
 
   bool get isPermissionTypesSuccess =>
       status == RequestStatus.permissionTypesSuccess;
+
   bool get isInitialized => status == RequestStatus.initialized;
+
   bool get isCreateExitPermissionLoading =>
       status == RequestStatus.createExitPermissionLoading;
 
@@ -40,7 +42,6 @@ extension ExitRequestStateExtension on ExitRequestServiceState {
 
   bool get isCreateExitPermissionSuccess =>
       status == RequestStatus.createExitPermissionSuccess;
-
 }
 
 enum RequestStatus {
@@ -65,6 +66,7 @@ enum RequestStatus {
 
 final class ExitRequestServiceState extends Equatable {
   final RequestStatus status;
+  final ExitPermission? successPermission;
   final List<RequestServicesEntity> services;
   final List<RequestServicesEntity> filteredServices;
   final List<PermissionType> permissionTypes;
@@ -72,36 +74,36 @@ final class ExitRequestServiceState extends Equatable {
   final int? expandedIndex;
   final String? errorMassage;
 
-  const ExitRequestServiceState({
-    this.status = RequestStatus.initialized,
-    this.services = const [],
-    this.filteredServices = const [],
-    this.expandedIndex,
-    this.permissionTypes = const [],
-    this.permissionTimes = const [],
-    this.errorMassage
-  });
+  const ExitRequestServiceState(
+      {this.status = RequestStatus.initialized,
+      this.services = const [],
+      this.filteredServices = const [],
+      this.expandedIndex,
+      this.successPermission,
+      this.permissionTypes = const [],
+      this.permissionTimes = const [],
+      this.errorMassage});
 
-  ExitRequestServiceState copyWith({
-    RequestStatus? status,
-    List<RequestServicesEntity>? services,
-    List<RequestServicesEntity>? filteredServices,
-    int? expandedIndex,
-    bool clearExpandedIndex = false,
-    List<PermissionType>? permissionTypes,
-    List<PermissionTime>? permissionTimes,
-    String? errorMessage
-  }) {
+  ExitRequestServiceState copyWith(
+      {RequestStatus? status,
+      List<RequestServicesEntity>? services,
+      List<RequestServicesEntity>? filteredServices,
+      int? expandedIndex,
+      ExitPermission? successPermission,
+      bool clearExpandedIndex = false,
+      List<PermissionType>? permissionTypes,
+      List<PermissionTime>? permissionTimes,
+      String? errorMessage}) {
     return ExitRequestServiceState(
-      status: status ?? this.status,
-      services: services ?? this.services,
-      filteredServices: filteredServices ?? this.filteredServices,
-      expandedIndex:
-          clearExpandedIndex ? null : (expandedIndex ?? this.expandedIndex),
-      permissionTypes: permissionTypes ?? this.permissionTypes,
-      permissionTimes: permissionTimes ?? this.permissionTimes,
-      errorMassage: errorMessage ?? this.errorMassage
-    );
+        status: status ?? this.status,
+        services: services ?? this.services,
+        successPermission: successPermission ?? this.successPermission,
+        filteredServices: filteredServices ?? this.filteredServices,
+        expandedIndex:
+            clearExpandedIndex ? null : (expandedIndex ?? this.expandedIndex),
+        permissionTypes: permissionTypes ?? this.permissionTypes,
+        permissionTimes: permissionTimes ?? this.permissionTimes,
+        errorMassage: errorMessage ?? this.errorMassage);
   }
 
   @override
@@ -110,9 +112,9 @@ final class ExitRequestServiceState extends Equatable {
         services,
         filteredServices,
         expandedIndex,
+        successPermission,
         permissionTypes,
         permissionTimes,
         errorMassage,
-
       ];
 }

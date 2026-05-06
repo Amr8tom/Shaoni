@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:shaoni/core/local_storage/cache_keys.dart';
-import '../../../../common/widgets/sizeboxs/Sizer.dart';
-import '../../../../core/constants/app_sizes.dart';
-import '../../../../core/constants/colors.dart';
-import '../../../../core/local_storage/cache_helper.dart';
-import '../../../../generated/l10n.dart';
-import '../../../auth/presentation/widgets/auth_text_filed.dart';
+import '../../../../../common/widgets/sizeboxs/Sizer.dart';
+import '../../../../../core/constants/app_sizes.dart';
+import '../../../../../core/constants/colors.dart';
+import '../../../../../core/local_storage/cache_helper.dart';
+import '../../../../../generated/l10n.dart';
+import '../../../../auth/presentation/widgets/auth_text_filed.dart';
 
 class ApplicantDataWidget extends StatelessWidget {
   final bool useEnhancedDesign;

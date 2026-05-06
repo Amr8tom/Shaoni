@@ -11,9 +11,8 @@ import 'package:shaoni/features/human_resoures/presentation/controller/human_res
 import 'package:skeletonizer/skeletonizer.dart';
 import '../../../../generated/l10n.dart';
 
-class ChooseNewRequestServicesScreen extends StatelessWidget {
-  const ChooseNewRequestServicesScreen({super.key});
-
+class AllHumanResourcesRequests extends StatelessWidget {
+  const AllHumanResourcesRequests({super.key});
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -21,7 +20,6 @@ class ChooseNewRequestServicesScreen extends StatelessWidget {
           serviceLocator<HumanResourcesCubit>()..getAllServices(),
       child: Scaffold(
         appBar: DAppBar(showBackArrow: true),
-        // appBar: AppBar(),
         body: BlocBuilder<HumanResourcesCubit, HumanResourcesState>(
           builder: (context, state) {
             final controllerMyServices = context.watch<HumanResourcesCubit>();
@@ -52,11 +50,17 @@ class ChooseNewRequestServicesScreen extends StatelessWidget {
                                 "hr.exit.permission") {
                               context
                                   .pushNamed(DRoutesName.requestCertainService);
-                            } else if (controllerMyServices
+                            }
+                            else if (controllerMyServices
                                     .state.services![index].nameEn ==
                                 "attendance.update") {
                               context
                                   .pushNamed(DRoutesName.missingAttendanceHistory);
+                            }      else if (controllerMyServices
+                                    .state.services![index].nameEn ==
+                                "study.request") {
+                              context
+                                  .pushNamed(DRoutesName.createStudyRequestRoute);
                             }
 
                             else {

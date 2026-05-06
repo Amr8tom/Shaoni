@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:shaoni/core/routing/route_names.dart';
+import 'package:shaoni/features/human_resoures/presentation/study/create_study_request_form.dart';
 import 'package:shaoni/features/profile/profile_screen.dart';
 import '../../features/auth/presentation/screen/login_screen.dart';
 import '../../features/auth/presentation/screen/new_password_screen.dart';
 import '../../features/auth/presentation/screen/otp_screen.dart';
 import '../../features/delete_account/presentation/delete_my_account_screen.dart';
-import '../../features/human_resoures/presentation/screens/attendance/create_attendance_request.dart';
-import '../../features/human_resoures/presentation/screens/attendance/missing_attendance_history_screen.dart';
-import '../../features/human_resoures/presentation/screens/choose_new_request_services_screen.dart';
-import '../../features/human_resoures/presentation/screens/exit_request_screen.dart';
-import '../../features/human_resoures/presentation/screens/request_certain_service.dart';
+import '../../features/human_resoures/presentation/attendance/create_attendance_request_form.dart';
+import '../../features/human_resoures/presentation/attendance/missing_attendance_history_screen.dart';
+import '../../features/human_resoures/presentation/screens/all_human_resources_requests.dart';
+import '../../features/human_resoures/presentation/exit/create_exit_request_form.dart';
+import '../../features/human_resoures/presentation/screens/faq_information.dart';
 import '../../features/my-requests/presentation/screens/request_details_screen.dart';
 import '../../features/navigation/presentation/screens/navigation_menu_screen.dart';
 import '../../features/notifications/presentation/notification_screen.dart';
@@ -58,30 +58,29 @@ class RouteGenerator {
           settings: settings,
         );
 
-      /// Request Services Screen
+      /// show all human resources requests Screen
       case DRoutesName.chooseNewRequestNewService:
         return PageTransition(
-          child: const ChooseNewRequestServicesScreen(),
+          child: const AllHumanResourcesRequests(),
           type: PageTransitionType.rightToLeft,
           settings: settings,
         );
 
-      /// Request Certain Services Screen
+      /// faq information Screen
       case DRoutesName.requestCertainService:
         return PageTransition(
-          child: const RequestCertainService(),
+          child: const FAQInformation(),
           type: PageTransitionType.rightToLeft,
           settings: settings,
         );
 
-      /// Request Certain Services Screen
+      /// show all attendance requests Screen
       case DRoutesName.missingAttendanceHistory:
         return PageTransition(
           child: const MissingAttendanceHistoryScreen(),
           type: PageTransitionType.rightToLeft,
           settings: settings,
         );
-
       ///  request create details screen
       case DRoutesName.requestCreateDetails:
         return PageTransition(
@@ -89,6 +88,14 @@ class RouteGenerator {
           type: PageTransitionType.rightToLeft,
           settings: settings,
         );
+     /// create study request screen
+      case DRoutesName.createStudyRequestRoute:
+        return PageTransition(
+          child: const CreateStudyRequestForm(),
+          type: PageTransitionType.rightToLeft,
+          settings: settings,
+        );
+
       // /// juz screen
       // case DRoutesName.juzRoute:
       //   return PageTransition(
@@ -326,7 +333,7 @@ class RouteGenerator {
         final Map<String, dynamic> args =
         settings.arguments as Map<String, dynamic>;
         return PageTransition(
-          child:  CreateAttendanceRequest(attendanceID: args['attendanceID']),
+          child:  CreateAttendanceRequestForm(attendanceID: args['attendanceID']),
           type: PageTransitionType.rightToLeft,
           settings: settings,
         );

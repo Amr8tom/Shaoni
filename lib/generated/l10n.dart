@@ -349,6 +349,106 @@ class S {
     );
   }
 
+  /// `Select File to Upload`
+  String get uploadFileSelect {
+    return Intl.message(
+      'Select File to Upload',
+      name: 'uploadFileSelect',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Training Course Data`
+  String get training_course_data {
+    return Intl.message(
+      'Training Course Data',
+      name: 'training_course_data',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Course Name *`
+  String get course_name {
+    return Intl.message(
+      'Course Name *',
+      name: 'course_name',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Accounting Course`
+  String get accounting_course {
+    return Intl.message(
+      'Accounting Course',
+      name: 'accounting_course',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Course Start Date`
+  String get course_start_date {
+    return Intl.message(
+      'Course Start Date',
+      name: 'course_start_date',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Course End Date`
+  String get course_end_date {
+    return Intl.message(
+      'Course End Date',
+      name: 'course_end_date',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Nomination Start Date`
+  String get nomination_start_date {
+    return Intl.message(
+      'Nomination Start Date',
+      name: 'nomination_start_date',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Nomination End Date`
+  String get nomination_end_date {
+    return Intl.message(
+      'Nomination End Date',
+      name: 'nomination_end_date',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Course Duration (months)`
+  String get course_duration_months {
+    return Intl.message(
+      'Course Duration (months)',
+      name: 'course_duration_months',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Nomination Period (days)`
+  String get nomination_period_days {
+    return Intl.message(
+      'Nomination Period (days)',
+      name: 'nomination_period_days',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Waiting`
   String get waiting {
     return Intl.message('Waiting', name: 'waiting', desc: '', args: []);
@@ -5094,6 +5194,76 @@ class S {
     );
   }
 
+  /// `Check-In Time (from record)`
+  String get checkInFromRecord {
+    return Intl.message(
+      'Check-In Time (from record)',
+      name: 'checkInFromRecord',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Check-Out Time (from record)`
+  String get checkOutFromRecord {
+    return Intl.message(
+      'Check-Out Time (from record)',
+      name: 'checkOutFromRecord',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Check-In Mode`
+  String get checkInMode {
+    return Intl.message(
+      'Check-In Mode',
+      name: 'checkInMode',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Check-Out Mode`
+  String get checkOutMode {
+    return Intl.message(
+      'Check-Out Mode',
+      name: 'checkOutMode',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Fingerprint Record`
+  String get fingerprintRecord {
+    return Intl.message(
+      'Fingerprint Record',
+      name: 'fingerprintRecord',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Hours Worked`
+  String get hoursWorked {
+    return Intl.message(
+      'Hours Worked',
+      name: 'hoursWorked',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Overtime`
+  String get overtime {
+    return Intl.message('Overtime', name: 'overtime', desc: '', args: []);
+  }
+
+  /// `Time`
+  String get timeOfDay {
+    return Intl.message('Time', name: 'timeOfDay', desc: '', args: []);
+  }
+
   /// `Attendance History`
   String get attendanceHistories {
     return Intl.message(
@@ -5837,76 +6007,6 @@ class S {
       desc: '',
       args: [],
     );
-  }
-
-  /// `Check-In Time (from record)`
-  String get checkInFromRecord {
-    return Intl.message(
-      'Check-In Time (from record)',
-      name: 'checkInFromRecord',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Check-Out Time (from record)`
-  String get checkOutFromRecord {
-    return Intl.message(
-      'Check-Out Time (from record)',
-      name: 'checkOutFromRecord',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Check-In Mode`
-  String get checkInMode {
-    return Intl.message(
-      'Check-In Mode',
-      name: 'checkInMode',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Check-Out Mode`
-  String get checkOutMode {
-    return Intl.message(
-      'Check-Out Mode',
-      name: 'checkOutMode',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Fingerprint Record`
-  String get fingerprintRecord {
-    return Intl.message(
-      'Fingerprint Record',
-      name: 'fingerprintRecord',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Hours Worked`
-  String get hoursWorked {
-    return Intl.message(
-      'Hours Worked',
-      name: 'hoursWorked',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Overtime`
-  String get overtime {
-    return Intl.message('Overtime', name: 'overtime', desc: '', args: []);
-  }
-
-  /// `Time`
-  String get timeOfDay {
-    return Intl.message('Time', name: 'timeOfDay', desc: '', args: []);
   }
 }
 

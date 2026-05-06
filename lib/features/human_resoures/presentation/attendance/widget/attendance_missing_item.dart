@@ -3,8 +3,8 @@ import 'package:shaoni/core/extentions/navigation_extension.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 import '../../../../../../core/constants/app_sizes.dart';
 import '../../../../../../core/routing/route_names.dart';
-import '../../../controller/attendance/attendance_cubit.dart';
-import '../../../widgets/attendance/attendance_record_card.dart';
+import '../../controller/attendance/attendance_cubit.dart';
+import 'attendance_record_card.dart';
 
 class AttendanceMissingItem extends StatelessWidget {
   const AttendanceMissingItem({super.key, required this.state});

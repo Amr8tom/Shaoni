@@ -23,6 +23,7 @@ class DRoutesName {
   /// HR
   static const String attendanceRoute = 'attendance-route';
   static const String createAttendanceRoute = 'attendance-route';
+  static const String createStudyRequestRoute = 'create-study-form-route';
 
   /// location & maps Screen
   static const String mapRoute = 'map-route';
