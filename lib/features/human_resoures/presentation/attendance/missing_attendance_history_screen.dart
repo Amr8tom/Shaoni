@@ -24,15 +24,7 @@ class MissingAttendanceHistoryScreen extends StatelessWidget {
           fontSize: AppSizes.fontSizeMd,
           actions: const [],
         ),
-        body: BlocBuilder<AttendanceCubit, AttendanceState>(
-          builder: (context, state) {
-            return RefreshIndicator(
-              color: ColorRes.primary,
-              onRefresh: () => context.read<AttendanceCubit>().refresh(),
-              child: AttendanceMissingItem(state: state),
-            );
-          },
-        ),
+        body: const  AttendanceMissingItem(),
       ),
     );
   }

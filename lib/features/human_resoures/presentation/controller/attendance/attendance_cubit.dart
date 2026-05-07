@@ -50,8 +50,8 @@ class AttendanceCubit extends Cubit<AttendanceState> {
       this._getForgetReasonUseCase)
       : super(const AttendanceState()) {
     getAttendanceRecords();
-    getAttendanceLookup();
-    getForgetReason();
+    // getAttendanceLookup();
+    // getForgetReason();
   }
 
   /// Loads the attendance records and emits success / error / empty states.
@@ -76,6 +76,8 @@ class AttendanceCubit extends Cubit<AttendanceState> {
         }
       },
     );
+
+
   }
   /// get attendance lookup data
   Future<void> getAttendanceLookup() async {

@@ -24,21 +24,6 @@ class AttendanceRecordModel extends AttendanceRecord {
     super.inMode,
   });
 
-// {
-// "id":                          1,
-// "odooId":                      456,
-// "employeeId":                  123,
-// "employeeName":                "محمد علي",
-// "displayName":                 "Attendance 2026-01-26",
-// "checkDate":                   "2026-01-26",
-// "checkIn":                     "2026-01-26 07:30:00",
-// "checkOut":                    null,
-// "inMode":                      "manual",
-// "outMode":                     null,
-// "hijriCheckInDisplay":         "٢٦ رجب ١٤٤٧",
-// "hijriCheckOutDisplay":        null,
-// "updateAttendanceRequestCount": 0
-// }
   /// from Json
 
     factory AttendanceRecordModel.fromJson(Map<String, dynamic> json) {

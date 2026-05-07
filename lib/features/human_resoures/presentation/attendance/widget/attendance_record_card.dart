@@ -22,6 +22,7 @@ class AttendanceRecordCard extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
           color: ColorRes.white,
+
           borderRadius: BorderRadius.circular(AppSizes.borderRadiusLg),
           border: Border.all(color: ColorRes.grey5, width: 1),
           boxShadow: [
@@ -44,38 +45,33 @@ class AttendanceRecordCard extends StatelessWidget {
 
             /// 2) Body — check-in + checkout/outmode row
             Padding(
-              padding: EdgeInsets.all(AppSizes.padding),
-              child: Column(
+              padding: EdgeInsets.symmetric(horizontal:AppSizes.padding,vertical: AppSizes.padding ),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Sizer(height: 12),
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      /// CHECK-IN box
-                      Expanded(
-                        child: AttendanceCheckInBox(
-                          time: record.checkInTime,
-                          gregorianDate: record.gregorianDate,
-                          hijriDate: record.hijriDate,
-                          isCheckedIn: record.isCheckedIn,
-                        ),
-                      ),
-                      const Sizer(width: 12),
+                  /// CHECK-IN box
+                  Expanded(
+                    child: AttendanceCheckInBox(
+                      time: record.checkInTime,
+                      gregorianDate: record.gregorianDate,
+                      hijriDate: record.hijriDate,
+                      isCheckedIn: record.isCheckedIn,
+                    ),
+                  ),
+                  const Sizer(width: 12),
 
-                      /// CHECK-OUT box
-                      Expanded(
-                        child: AttendanceInfoBox(
-                          label: S.current.checkOut,
-                          value: record.isCheckedOut
-                              ? (record.checkOutTime ?? '—')
-                              : S.current.notAvailable,
-                          detail: record.isCheckedOut
-                              ? '${record.hijriDate} – ${record.checkOutTime ?? "—"}'
-                              : '${record.hijriDate} – ${S.current.notAvailable}',
-                          isAvailable: record.isCheckedOut,
-                        ),
-                      ),
-                    ],
+                  /// CHECK-OUT box
+                  Expanded(
+                    child: AttendanceInfoBox(
+                      label: S.current.checkOut,
+                      value: record.isCheckedOut
+                          ? (record.checkOutTime ?? '—')
+                          : S.current.notAvailable,
+                      detail: record.isCheckedOut
+                          ? '${record.hijriDate} – ${record.checkOutTime ?? "—"}'
+                          : '${record.hijriDate} – ${S.current.notAvailable}',
+                      isAvailable: record.isCheckedOut,
+                    ),
                   ),
                 ],
               ),

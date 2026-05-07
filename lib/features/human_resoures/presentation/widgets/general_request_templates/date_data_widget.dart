@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hijri/hijri_calendar.dart';
 import 'package:intl/intl.dart';
+import '../../../../../common/widgets/sizeboxs/Sizer.dart';
 import '../../../../../core/constants/app_sizes.dart';
 import '../../../../../core/constants/colors.dart';
 import '../../../../../generated/l10n.dart';
@@ -14,18 +15,22 @@ class DateDataWidget extends StatelessWidget {
     HijriCalendar _today = HijriCalendar.now();
     HijriCalendar.setLocal('ar');
 
-
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         /// dates titles and text fields
         Text(
           S.current.date,
-          style: Theme.of(context).textTheme.headlineMedium,
+          style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                fontWeight: FontWeight.w600,
+                fontSize: 14,
+              ),
         ),
+        const Sizer(height: 8),
+
         /// date
         Row(
-          spacing: 10,
+          spacing: 8,
           children: [
             /// birthDate time
             Flexible(
@@ -34,7 +39,8 @@ class DateDataWidget extends StatelessWidget {
                 hint: S.current.dateBirth,
                 suffixIcon: Icon(
                   Icons.date_range,
-                  color: ColorRes.grey2.withOpacity(0.5),
+                  size: 18,
+                  color: ColorRes.grey2.withValues(alpha: 0.5),
                 ),
                 controller: TextEditingController(
                   text: DateFormat('dd/MM/yyyy', S.current.localeee).format(DateTime.now()),
@@ -55,11 +61,11 @@ class DateDataWidget extends StatelessWidget {
                 hint: S.current.hijriDate,
                 suffixIcon: Icon(
                   Icons.date_range,
-                  color: ColorRes.grey2.withOpacity(0.5),
+                  size: 18,
+                  color: ColorRes.grey2.withValues(alpha: 0.5),
                 ),
                 controller: TextEditingController(
-                  text:    _today.toFormat("yyyy/MMMM/dd",)
-                  ,
+                  text: _today.toFormat("yyyy/MMMM/dd"),
                 ),
                 readOnly: true,
                 validator: (value) {

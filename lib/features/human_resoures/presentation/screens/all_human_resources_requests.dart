@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
+import 'package:shaoni/common/custom_ui.dart';
 import 'package:shaoni/common/widgets/appbar/appbar.dart';
 import 'package:shaoni/core/constants/app_sizes.dart';
 import 'package:shaoni/core/constants/colors.dart';
@@ -7,109 +9,110 @@ import 'package:shaoni/core/extentions/navigation_extension.dart';
 import 'package:shaoni/core/routing/route_names.dart';
 import 'package:shaoni/core/service_locator/service_locator.dart';
 import 'package:shaoni/core/utils/enums/general_status.dart';
+import 'package:shaoni/features/human_resoures/domain/entity/service.dart';
 import 'package:shaoni/features/human_resoures/presentation/controller/human_resources/human_resources_cubit.dart';
 import 'package:skeletonizer/skeletonizer.dart';
+
 import '../../../../generated/l10n.dart';
+import '../widgets/all_services/service_grid_card.dart';
 
 class AllHumanResourcesRequests extends StatelessWidget {
   const AllHumanResourcesRequests({super.key});
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) =>
-          serviceLocator<HumanResourcesCubit>()..getAllServices(),
+      create: (_) => serviceLocator<HumanResourcesCubit>()..getAllServices(),
       child: Scaffold(
-        appBar: DAppBar(showBackArrow: true),
-        body: BlocBuilder<HumanResourcesCubit, HumanResourcesState>(
-          builder: (context, state) {
-            final controllerMyServices = context.watch<HumanResourcesCubit>();
-            return SafeArea(
-              child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: AppSizes.padding),
-                child: Container(
-                  child: Skeletonizer(
-                    enabled: controllerMyServices.state.status.isLoading
-                        ? true
-                        : false,
-                    containersColor: ColorRes.black.withOpacity(0.1),
-                    child: GridView.builder(
-                      padding: EdgeInsets.only(top: AppSizes.padding * 2),
-                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 1,
-                        crossAxisSpacing: 12,
-                        mainAxisSpacing: 14,
-                        childAspectRatio: 7,
-                      ),
-                      itemCount: controllerMyServices.state.services?.length,
-                      itemBuilder: (BuildContext context, int index) {
-                        return GestureDetector(
-                          onTap: () {
-                            /// navigate to hr.exit.permission by its name not id cuz problem in ids and conflict between diffrent partners
-                            if (controllerMyServices
-                                    .state.services![index].nameEn ==
-                                "hr.exit.permission") {
-                              context
-                                  .pushNamed(DRoutesName.requestCertainService);
-                            }
-                            else if (controllerMyServices
-                                    .state.services![index].nameEn ==
-                                "attendance.update") {
-                              context
-                                  .pushNamed(DRoutesName.missingAttendanceHistory);
-                            }      else if (controllerMyServices
-                                    .state.services![index].nameEn ==
-                                "study.request") {
-                              context
-                                  .pushNamed(DRoutesName.createStudyRequestRoute);
-                            }
-
-                            else {
-                              ///
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                  SnackBar(
-                                      content:
-                                          Text(S.current.notImplementedYet)));
-                            }
-                          },
-                          child: Container(
-                            padding: EdgeInsets.symmetric(
-                              horizontal: AppSizes.padding * 2,
-                            ),
-                            alignment: Alignment.centerRight,
-                            decoration: BoxDecoration(
-                              border: Border.all(
-                                color: ColorRes.greyForBorders,
-                                width: 1,
-                              ),
-                              color: ColorRes.white,
-                              borderRadius: BorderRadius.circular(
-                                AppSizes.borderRadiusMd,
-                              ),
-                            ),
-                            child: Text(
-                              S.current.localeee == "en"
-                                  ? controllerMyServices
-                                          .state.services![index].nameEn ??
-                                      ""
-                                  : controllerMyServices
-                                          .state.services?[index].nameAr ??
-                                      "",
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .bodyLarge
-                                  ?.copyWith(color: ColorRes.black),
-                            ),
-                          ),
-                        );
-                      },
+        backgroundColor: ColorRes.grey6,
+        appBar: DAppBar(
+          showBackArrow: true,
+          title: S.current.humanResources,
+          fontSize: AppSizes.fontSizeMd,
+          actions: const [],
+        ),
+        body: SafeArea(
+          child: BlocBuilder<HumanResourcesCubit, HumanResourcesState>(
+            builder: (context, state) {
+              final services = state.services ?? const [];
+              return RefreshIndicator(
+                color: ColorRes.primary,
+                onRefresh: () =>
+                    context.read<HumanResourcesCubit>().getAllServices(),
+                child: Padding(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: AppSizes.padding,
                     ),
-                  ),
-                ),
-              ),
-            );
-          },
+                    child: AnimationLimiter(
+                      child: GridView.builder(
+                        physics: const AlwaysScrollableScrollPhysics(
+                          parent: BouncingScrollPhysics(),
+                        ),
+                        padding:
+                            EdgeInsets.only(bottom: AppSizes.padding * 2),
+                        gridDelegate:
+                            SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 2,
+                          mainAxisSpacing: 12,
+                          crossAxisSpacing: 12,
+                          childAspectRatio: 1.1,
+                        ),
+                        itemCount: services.length,
+                        itemBuilder: (context, index) {
+                          if (services.isEmpty)
+                            return CustomUI.emptyData(
+                                message: S.current.noData);
+                          final service = services[index];
+                          return Skeletonizer(
+                            enabled: state.status.isLoading,
+                            child: AnimationConfiguration.staggeredGrid(
+                              position: index,
+                              columnCount: 2,
+                              duration: const Duration(milliseconds: 400),
+                              child: ScaleAnimation(
+                                scale: 0.95,
+                                child: FadeInAnimation(
+                                  child: ServiceGridCard(
+                                    service: service,
+                                    onTap: () =>
+                                        _onServiceTap(context, service),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          );
+                        },
+                      ),
+                    )),
+              );
+            },
+          ),
         ),
       ),
     );
+  }
+
+  static void _onServiceTap(BuildContext context, Service service) {
+    final code = service.nameEn ?? '';
+    switch (code) {
+      case 'hr.exit.permission':
+        context.pushNamed(DRoutesName.requestCertainService);
+        return;
+      case 'attendance.update':
+        context.pushNamed(DRoutesName.missingAttendanceHistory);
+        return;
+      case 'study.request':
+        context.pushNamed(DRoutesName.createStudyRequestRoute);
+        return;
+      default:
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(S.current.notImplementedYet),
+            backgroundColor: ColorRes.grey2,
+            behavior: SnackBarBehavior.floating,
+            duration: const Duration(seconds: 2),
+          ),
+        );
+    }
   }
 }
