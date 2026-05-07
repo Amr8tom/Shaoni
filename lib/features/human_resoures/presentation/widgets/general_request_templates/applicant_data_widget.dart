@@ -14,9 +14,9 @@ class ApplicantDataWidget extends StatelessWidget {
     super.key,
     this.useEnhancedDesign = false,
   });
-
   @override
   Widget build(BuildContext context) {
+
     if (useEnhancedDesign) {
       return _buildEnhancedDesign(context);
     }

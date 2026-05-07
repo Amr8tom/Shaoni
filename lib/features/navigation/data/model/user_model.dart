@@ -19,6 +19,7 @@ class UserModel extends UserEntity {
     required super.managerId,
     required super.managerName,
     required super.officeId,
+    required super.officeIds,
     required super.office,
     required super.departmentId,
     required super.department, required super.gender,
@@ -44,6 +45,9 @@ class UserModel extends UserEntity {
       managerName: json['data']['managerName'] ?? '',
       officeId: json['data']['officeId'] ?? 0,
       office: OfficeModel.fromJson(json['data']['office']),
+      officeIds: (json['data']['office_ids'] as List<dynamic>?)
+          ?.map((officeJson) => OfficeModel.fromJson(officeJson))
+          .toList(),
       departmentId: json['data']['departmentId'] ?? 0,
       department: DepartmentModel.fromJson(json['data']['department']),
     );
@@ -67,6 +71,7 @@ class UserModel extends UserEntity {
       'managerId': managerId,
       'managerName': managerName,
       'officeId': officeId,
+      'office_ids': officeIds?.map((office) => office.toJson()).toList(),
       'office': office?.toJson(),
       'departmentId': departmentId,
       'department': department?.toJson(),

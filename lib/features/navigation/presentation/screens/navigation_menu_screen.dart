@@ -9,7 +9,6 @@ import 'package:shaoni/features/home/presentation/controller/home_cubit.dart';
 import 'package:shaoni/features/my-requests/presentation/controller/my_requests_cubit.dart';
 import 'package:shaoni/features/navigation/presentation/widgets/custom_navigation_appbar.dart';
 import 'package:upgrader/upgrader.dart';
-import '../../../../common/widgets/appbar/appbar.dart';
 import '../../../../core/connection/check_for_updates.dart';
 import '../../../../core/local_storage/cache_keys.dart';
 import '../../../../core/service_locator/service_locator.dart';

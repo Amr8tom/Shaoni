@@ -34,7 +34,9 @@ class AllHumanResourcesRequests extends StatelessWidget {
         body: SafeArea(
           child: BlocBuilder<HumanResourcesCubit, HumanResourcesState>(
             builder: (context, state) {
-              final services = state.services ?? const [];
+              final services = state.status.isLoading?List.filled(6,
+              Service(id: 1, nameEn: 'hr.exit.permission', nameAr: 'إذن خروج')
+              ): state.services ?? const [];
               return RefreshIndicator(
                 color: ColorRes.primary,
                 onRefresh: () =>

@@ -22,6 +22,7 @@ class UserEntity extends Equatable {
   final int? managerId;
   final String? managerName;
   final int? officeId;
+  final List<OfficeModel>? officeIds;
 
   final OfficeModel? office;
   final int? departmentId;
@@ -44,6 +45,7 @@ class UserEntity extends Equatable {
     required this.managerName,
     required this.officeId,
     required this.office,
+    required this.officeIds,
     required this.departmentId,
     required this.department,
     required this.gender,
@@ -66,6 +68,7 @@ class UserEntity extends Equatable {
     managerId,
     managerName,
     officeId,
+    officeIds,
     office,
     departmentId,
     department,
