@@ -31,7 +31,8 @@ class ServiceGridCard extends StatelessWidget {
         onTap: onTap,
         borderRadius: BorderRadius.circular(AppSizes.borderRadiusLg),
         child: Container(
-          padding: EdgeInsets.all(AppSizes.padding * 0.6),
+          width: double.infinity,
+          height: AppSizes.heightcontainer * 1.2,
           decoration: BoxDecoration(
             color: ColorRes.white,
             borderRadius: BorderRadius.circular(AppSizes.borderRadiusLg),
@@ -47,49 +48,52 @@ class ServiceGridCard extends StatelessWidget {
           child: Column(
             // crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-
               const Sizer(height: 6),
 
               /// Big tinted icon — the focal point of each tile.
-              Center(
-                child: Container(
-                  width: AppSizes.iconXLarge * 1.7,
-                  height: AppSizes.iconXLarge * 1.7,
-                  alignment: Alignment.center,
-                  decoration: BoxDecoration(
-                    color: visuals.color.withValues(alpha: 0.12),
-                    borderRadius:
-                        BorderRadius.circular(AppSizes.borderRadiusLg),
-                    border: Border.all(
-                      color: visuals.color.withValues(alpha: 0.25),
-                      width: 1.5,
+              Flexible(
+                flex: 2,
+                child: Center(
+                  child: Container(
+                    width: AppSizes.iconXLarge * 1.7,
+                    height: AppSizes.iconXLarge * 1.7,
+                    alignment: Alignment.center,
+                    decoration: BoxDecoration(
+                      color: visuals.color.withValues(alpha: 0.12),
+                      borderRadius:
+                          BorderRadius.circular(AppSizes.borderRadiusLg),
+                      border: Border.all(
+                        color: visuals.color.withValues(alpha: 0.25),
+                        width: 1.5,
+                      ),
                     ),
-                  ),
-                  child: Icon(
-                    visuals.icon,
-                    color: visuals.color,
-                    size: AppSizes.iconXLarge ,
+                    child: Icon(
+                      visuals.icon,
+                      color: visuals.color,
+                      size: AppSizes.iconXLarge,
+                    ),
                   ),
                 ),
               ),
-
-              const Sizer(height: 8),
 
               /// Localized title — bold, centered, max 2 lines.
               Flexible(
-                child: Text(
-                  title,
-                  textAlign: TextAlign.center,
-                  maxLines: 2,
-                  overflow: TextOverflow.ellipsis,
-                  style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                        color: ColorRes.black,
-                        fontWeight: FontWeight.w700,
-
-                      ),
+                flex: 1,
+                child: Padding(
+                  padding:
+                      EdgeInsets.symmetric(horizontal: AppSizes.padding / 2),
+                  child: Text(
+                    title,
+                    textAlign: TextAlign.center,
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                    style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                          color: ColorRes.black,
+                          fontWeight: FontWeight.w700,
+                        ),
+                  ),
                 ),
               ),
-
             ],
           ),
         ),
