@@ -352,6 +352,16 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "error": MessageLookupByLibrary.simpleMessage("هناك خطأ ما"),
     "errorOccurred": MessageLookupByLibrary.simpleMessage("حدث خطأ ما"),
+    "carBrand": MessageLookupByLibrary.simpleMessage("ماركة السيارة"),
+    "selectCarBrand": MessageLookupByLibrary.simpleMessage(
+      "اختر ماركة السيارة",
+    ),
+    "carColor": MessageLookupByLibrary.simpleMessage("لون السيارة"),
+    "selectCarColor": MessageLookupByLibrary.simpleMessage(
+      "اختر لون السيارة",
+    ),
+    "carNumber": MessageLookupByLibrary.simpleMessage("رقم السيارة"),
+    "carNumberHint": MessageLookupByLibrary.simpleMessage("مثال: أ ب ج 1234"),
     "eveningShift": MessageLookupByLibrary.simpleMessage(
       "رقم الوردية المسائية",
     ),

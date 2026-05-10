@@ -59,7 +59,7 @@ class ServiceVisuals {
       return ServiceVisuals(
         icon: Icons.directions_car_rounded,
         color: ColorRes.staticVioletColor,
-        isAvailable: false,
+        isAvailable: true,
       );
     }
 

@@ -21,6 +21,11 @@ class URL {
   static const String createAttendanceRequest = '$baseUrl/Attendance/create';
   static const String getAttendanceLookUp = '$baseUrl/Lookup/GetAttendanceLookup';
   static const String getAttendanceForgetReason = '$baseUrl/Lookup/GetForgetReasons';
+
+  /// ============================ car permission ============================
+  static const String getCarColors = '$baseUrl/Lookup/GetCarColors';
+  static const String getCarBrands = '$baseUrl/Lookup/GetCarBrands';
+  static const String createCarPermission = '$baseUrl/CarPermission';
   /// ============================ exit permmison  ============================
   // static const String getAllRequestsWithStages = '$baseUrl/Request/with-stages/paged/by-user';
 

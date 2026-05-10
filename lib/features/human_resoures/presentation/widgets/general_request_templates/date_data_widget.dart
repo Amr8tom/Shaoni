@@ -21,9 +21,9 @@ class DateDataWidget extends StatelessWidget {
         /// dates titles and text fields
         Text(
           S.current.date,
-          style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                fontWeight: FontWeight.w600,
-                fontSize: 14,
+          style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                fontWeight: FontWeight.w900,
+
               ),
         ),
         const Sizer(height: 8),

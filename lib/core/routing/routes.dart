@@ -8,6 +8,7 @@ import '../../features/auth/presentation/screen/new_password_screen.dart';
 import '../../features/auth/presentation/screen/otp_screen.dart';
 import '../../features/delete_account/presentation/delete_my_account_screen.dart';
 import '../../features/human_resoures/presentation/attendance/create_attendance_request_form.dart';
+import '../../features/human_resoures/presentation/car_permission/create_car_permission_screen.dart';
 import '../../features/human_resoures/presentation/attendance/missing_attendance_history_screen.dart';
 import '../../features/human_resoures/presentation/screens/all_human_resources_requests.dart';
 import '../../features/human_resoures/presentation/exit/create_exit_request_form.dart';
@@ -92,6 +93,14 @@ class RouteGenerator {
       case DRoutesName.createStudyRequestRoute:
         return PageTransition(
           child: const CreateStudyRequestForm(),
+          type: PageTransitionType.rightToLeft,
+          settings: settings,
+        );
+
+     /// create car permission request screen
+      case DRoutesName.createCarPermissionRoute:
+        return PageTransition(
+          child: const CreateCarPermissionScreen(),
           type: PageTransitionType.rightToLeft,
           settings: settings,
         );

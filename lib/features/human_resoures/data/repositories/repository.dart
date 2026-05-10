@@ -1,11 +1,15 @@
 import 'package:dartz/dartz.dart';
 import 'package:shaoni/core/error/failure.dart';
 import 'package:shaoni/core/utils/usecases/base_usecase.dart';
+import 'package:shaoni/features/human_resoures/data/model/car_permission/create_car_permission_model.dart';
 import 'package:shaoni/features/human_resoures/domain/entity/attendance/attendance_lookup.dart';
 import 'package:shaoni/features/human_resoures/domain/entity/attendance/forget_reason.dart';
+import 'package:shaoni/features/human_resoures/domain/entity/car_permission/car_brand.dart';
+import 'package:shaoni/features/human_resoures/domain/entity/car_permission/car_color.dart';
 import 'package:shaoni/features/human_resoures/domain/entity/exit_permisstion.dart';
 import 'package:shaoni/features/human_resoures/domain/use_cases/attendance/create_attendance_use_case.dart';
 import 'package:shaoni/features/human_resoures/domain/use_cases/attendance/get_all_missing_attendance_use_case.dart';
+import 'package:shaoni/features/human_resoures/domain/use_cases/car_permission/create_car_permission_use_case.dart';
 import '../../../../core/connection/checkNetwork.dart';
 import '../../domain/entity/all_attendance_record_model.dart';
 import '../../domain/entity/all_services.dart';
@@ -16,8 +20,6 @@ import '../../domain/use_cases/exit/create_exit_permission_use_case.dart';
 import '../data_sources/local_data_sources.dart';
 import '../data_sources/remote_data_sources.dart';
 import '../model/attendance/attendance_model.dart';
-
-
 
 class HRServicesRepositoryImp extends HRServicesRepository {
   final HRServicesLocalDataSources _local;
@@ -176,12 +178,53 @@ class HRServicesRepositoryImp extends HRServicesRepository {
       }
     } else {
       throw CacheFailure();
-      // try {
-      //   final response = await _local.getForgetReason();
-      //   return Right(response);
-      // } on CacheFailure catch (e) {
-      //   return Left(CacheFailure());
-      // }
+    }
+  }
+
+  /// ===================== car permission =====================
+
+  @override
+  Future<Either<Failure, List<CarColor>>> getCarColors(
+      {required NoParams params}) async {
+    if (await _networkInfo.isConnected) {
+      try {
+        final response = await _remote.getCarColors(params: params);
+        return Right(response);
+      } on ServerFailure catch (e) {
+        return Left(ServerFailure(message: e.message));
+      }
+    } else {
+      return Left(CacheFailure());
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<CarBrand>>> getCarBrands(
+      {required NoParams params}) async {
+    if (await _networkInfo.isConnected) {
+      try {
+        final response = await _remote.getCarBrands(params: params);
+        return Right(response);
+      } on ServerFailure catch (e) {
+        return Left(ServerFailure(message: e.message));
+      }
+    } else {
+      return Left(CacheFailure());
+    }
+  }
+
+  @override
+  Future<Either<Failure, CreateCarPermissionModel>> createCarPermission(
+      {required CreateCarPermissionParams params}) async{
+    if (await _networkInfo.isConnected) {
+      try {
+        final response = await _remote.createCarPermission(params: params);
+        return Right(response);
+      } on ServerFailure catch (e) {
+        return Left(ServerFailure(message: e.message));
+      }
+    } else {
+      return Left(CacheFailure());
     }
   }
 }

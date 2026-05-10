@@ -6008,6 +6008,51 @@ class S {
       args: [],
     );
   }
+
+  /// `Car Brand`
+  String get carBrand {
+    return Intl.message('Car Brand', name: 'carBrand', desc: '', args: []);
+  }
+
+  /// `Select Car Brand`
+  String get selectCarBrand {
+    return Intl.message(
+      'Select Car Brand',
+      name: 'selectCarBrand',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Car Color`
+  String get carColor {
+    return Intl.message('Car Color', name: 'carColor', desc: '', args: []);
+  }
+
+  /// `Select Car Color`
+  String get selectCarColor {
+    return Intl.message(
+      'Select Car Color',
+      name: 'selectCarColor',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Car Number`
+  String get carNumber {
+    return Intl.message('Car Number', name: 'carNumber', desc: '', args: []);
+  }
+
+  /// `e.g. ABC 1234`
+  String get carNumberHint {
+    return Intl.message(
+      'e.g. ABC 1234',
+      name: 'carNumberHint',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

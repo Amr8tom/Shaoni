@@ -106,6 +106,9 @@ class AllHumanResourcesRequests extends StatelessWidget {
       case 'study.request':
         context.pushNamed(DRoutesName.createStudyRequestRoute);
         return;
+      case 'car.permission':
+        context.pushNamed(DRoutesName.createCarPermissionRoute);
+        return;
       default:
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(

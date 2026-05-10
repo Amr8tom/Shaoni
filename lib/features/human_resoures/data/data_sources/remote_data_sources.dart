@@ -2,6 +2,9 @@ import 'package:shaoni/features/human_resoures/data/model/attendance/attendance_
 import 'package:shaoni/features/human_resoures/data/model/attendance/attendance_model.dart';
 import 'package:shaoni/features/human_resoures/data/model/attendance/forget_reason_model.dart';
 import 'package:shaoni/features/human_resoures/data/model/attendance_record_model.dart';
+import 'package:shaoni/features/human_resoures/data/model/car_permission/car_brand_model.dart';
+import 'package:shaoni/features/human_resoures/data/model/car_permission/car_color_model.dart';
+import 'package:shaoni/features/human_resoures/data/model/car_permission/create_car_permission_model.dart';
 import 'package:shaoni/features/human_resoures/domain/use_cases/attendance/create_attendance_use_case.dart';
 
 import '../../../../core/constants/api_constants.dart';
@@ -10,6 +13,7 @@ import '../../../../core/error/failure.dart';
 import '../../../../core/utils/usecases/base_usecase.dart';
 import '../../domain/entity/all_attendance_record_model.dart';
 import '../../domain/entity/exit_permisstion.dart';
+import '../../domain/use_cases/car_permission/create_car_permission_use_case.dart';
 import '../../domain/use_cases/exit/create_exit_permission_use_case.dart';
 import '../../domain/use_cases/attendance/get_all_missing_attendance_use_case.dart';
 import '../model/all_services_model.dart';
@@ -41,6 +45,14 @@ abstract class HRServicesRemoteDataSources {
 
   Future<List<ForgetReasonModel>> getForgetReason({
     required NoParams params,
+  });
+
+  /// ============================= car permission =============================
+  Future<List<CarColorModel>> getCarColors({required NoParams params});
+
+  Future<List<CarBrandModel>> getCarBrands({required NoParams params});
+  Future<CreateCarPermissionModel> createCarPermission({
+    required CreateCarPermissionParams params,
   });
 }
 
@@ -175,6 +187,52 @@ class HRServicesRemoteDataSourcesImp implements HRServicesRemoteDataSources {
         /// Extract the data field from the response Map
         final List data = response as List;
         return data.map((e) => ForgetReasonModel.fromJson(e)).toList();
+      } else {
+        throw ServerFailure(message: 'server failure');
+      }
+    } on ServerFailure catch (e) {
+      throw ServerFailure(message: e.message);
+    }
+  }
+
+  /// ============================= car permission =============================
+
+  @override
+  Future<List<CarColorModel>> getCarColors({required NoParams params}) async {
+    try {
+      final response = await _dio.getData(URL: URL.getCarColors);
+      if (response != null) {
+        final List data = response as List;
+        return data.map((e) => CarColorModel.fromJson(e)).toList();
+      } else {
+        throw ServerFailure(message: 'server failure');
+      }
+    } on ServerFailure catch (e) {
+      throw ServerFailure(message: e.message);
+    }
+  }
+
+  @override
+  Future<List<CarBrandModel>> getCarBrands({required NoParams params}) async {
+    try {
+      final response = await _dio.getData(URL: URL.getCarBrands);
+      if (response != null) {
+        final List data = response as List;
+        return data.map((e) => CarBrandModel.fromJson(e)).toList();
+      } else {
+        throw ServerFailure(message: 'server failure');
+      }
+    } on ServerFailure catch (e) {
+      throw ServerFailure(message: e.message);
+    }
+  }
+
+  @override
+  Future<CreateCarPermissionModel> createCarPermission({required CreateCarPermissionParams params}) async{
+    try {
+      final response = await _dio.postData(URL: URL.createCarPermission, body: params.toMap());
+      if (response != null) {
+        return CreateCarPermissionModel.fromJson(response);
       } else {
         throw ServerFailure(message: 'server failure');
       }
