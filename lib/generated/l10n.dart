@@ -6053,6 +6053,31 @@ class S {
       args: [],
     );
   }
+
+  /// `Car Type (Brand)`
+  String get carType {
+    return Intl.message(
+      'Car Type (Brand)',
+      name: 'carType',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Plate Number`
+  String get plateNumber {
+    return Intl.message(
+      'Plate Number',
+      name: 'plateNumber',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Status`
+  String get requestState {
+    return Intl.message('Status', name: 'requestState', desc: '', args: []);
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

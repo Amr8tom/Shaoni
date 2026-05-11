@@ -1,4 +1,6 @@
+
 import 'package:equatable/equatable.dart';
+import 'package:shaoni/features/my-requests/domain/entities/car_permission/car_permission.dart';
 
 import '../../../human_resoures/domain/entity/exit_permisstion.dart';
 import '../../data/models/attendance_request_details_model.dart';
@@ -8,8 +10,10 @@ class ExtraData extends Equatable {
   final String? outsideWorking;
   final String? visaRequest;
   final ExitPermission? exitPermission;
+  final CarPermission? carPermission ;
 
   const ExtraData({
+    this.carPermission,
     this.attendance,
     this.study,
     this.outsideWorking,
@@ -23,6 +27,10 @@ class ExtraData extends Equatable {
       study: json['study'],
       outsideWorking: json['outsideWorking'],
       visaRequest: json['visaRequest'],
+      carPermission: json['carPermission'] != null
+          ? CarPermission.fromJson(json['carPermission'])
+          : null,
+
       exitPermission: json['exitPermission'] != null
           ? ExitPermission.fromJson(json['exitPermission'])
           : null,
@@ -36,12 +44,14 @@ class ExtraData extends Equatable {
       'outsideWorking': outsideWorking,
       'visaRequest': visaRequest,
       'exitPermission': exitPermission?.toJson(),
+        'carPermission': carPermission?.toJson(),
     };
   }
 
   @override
   List<Object?> get props => [
     attendance,
+    carPermission,
     study,
     outsideWorking,
     visaRequest,

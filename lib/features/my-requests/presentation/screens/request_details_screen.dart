@@ -12,7 +12,9 @@ import '../../../../core/utils/helpers/date_converter.dart';
 import '../../../../core/constants/colors.dart';
 import '../../../../generated/l10n.dart';
 import '../widgets/accept_request_button.dart';
+import '../widgets/car_permission_details_widget.dart';
 import '../widgets/comment_writing_widget.dart';
+import '../widgets/exit_permission_details_widget.dart';
 import '../widgets/request_stage_card.dart';
 import '../../../home/presentation/widgets/order_text_card.dart';
 
@@ -50,7 +52,6 @@ class RequestDetailsScreen extends StatelessWidget {
         backgroundColor: ColorRes.grey6,
         body: BlocBuilder<MyRequestsCubit, MyRequestsState>(
           builder: (context, state) {
-            final controller = context.watch<MyRequestsCubit>();
             // final status = controller.state.requestDetails?.currentStatus?.nameAr?.trim() ??
             //     '';
             return SingleChildScrollView(
@@ -91,7 +92,7 @@ class RequestDetailsScreen extends StatelessWidget {
                               ),
                               // const Sizer(width: 20),
                               orderNumber.length >= 9
-                                  ?  const Sizer(width: 20)
+                                  ? const Sizer(width: 20)
                                   : const Sizer(width: 0),
                               OrderTextCard(
                                 title: S.current.orderStatus,
@@ -125,98 +126,10 @@ class RequestDetailsScreen extends StatelessWidget {
                   const Sizer(height: 20),
 
                   /// request details
-                  Skeletonizer(
-                    enabled: controller.state.status.isLoading,
-                    child: Padding(
-                      padding:
-                          EdgeInsets.symmetric(horizontal: AppSizes.padding),
-                      child: Container(
-                        padding: EdgeInsets.all(AppSizes.padding),
-                        decoration: BoxDecoration(
-                          border: Border.all(
-                              width: 1, color: ColorRes.greyForBorders),
-                          color: ColorRes.white,
-                          borderRadius:
-                              BorderRadius.circular(AppSizes.borderRadiusLarge),
-                        ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              S.current.orderDetails,
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .bodyLarge
-                                  ?.copyWith(
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                            ),
-                            Divider(color: ColorRes.grey4),
-                            const Sizer(height: 12),
-                            Row(
-                              children: [
-                                OrderTextCard(
-                                  title: S.current.permissionDate,
-                                  result: controller.state.requestDetails
-                                          ?.extraData?.exitPermission?.exitDate
-                                          ?.substring(0, 10) ??
-                                      '',
-                                ),
-                                const Sizer(width: 10),
-                                OrderTextCard(
-                                  title: S.current.permissionTime,
-                                  result: controller
-                                          .state
-                                          .requestDetails
-                                          ?.extraData
-                                          ?.exitPermission
-                                          ?.permissionTimeValue ??
-                                      '',
-                                ),
-                              ],
-                            ),
-                            const Sizer(height: 12),
-                            Row(
-                              children: [
-                                OrderTextCard(
-                                  title: S.current.permissionType,
-                                  result: controller
-                                          .state
-                                          .requestDetails
-                                          ?.extraData
-                                          ?.exitPermission
-                                          ?.permissionTimeValue ??
-                                      '',
-                                ),
-                                const Sizer(width: 20),
-                                OrderTextCard(
-                                  title: S.current.durationInHours,
-                                  result: controller
-                                          .state
-                                          .requestDetails
-                                          ?.extraData
-                                          ?.exitPermission
-                                          ?.numberOfHours
-                                          .toString() ??
-                                      '',
-                                ),
-                              ],
-                            ),
-                            const Sizer(height: 12),
-                            // if (controller.state.requestDetails?.extraData?.exitPermission?.leavesAttachment?.isNotEmpty ?? false)
-                            LeavesAttachmentWidget(
-                                leavesAttachment: controller
-                                        .state
-                                        .requestDetails
-                                        ?.extraData
-                                        ?.exitPermission
-                                        ?.leavesAttachment ??
-                                    '')
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
+                  serviceType == "car.permission"
+                      ? const CarPermissionDetailsWidget()
+                      : const ExitPermissionDetailsWidget(),
+
                   const Sizer(height: 20),
                   if (enStatus.toLowerCase() == "new")
                     isManager ? const CommentWritingWidget() : const Sizer(),

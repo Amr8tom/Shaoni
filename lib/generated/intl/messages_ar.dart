@@ -362,6 +362,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "carNumber": MessageLookupByLibrary.simpleMessage("رقم السيارة"),
     "carNumberHint": MessageLookupByLibrary.simpleMessage("مثال: أ ب ج 1234"),
+    "carType": MessageLookupByLibrary.simpleMessage("نوع السيارة (الماركة)"),
+    "plateNumber": MessageLookupByLibrary.simpleMessage("رقم اللوحة"),
+    "requestState": MessageLookupByLibrary.simpleMessage("الحالة"),
     "eveningShift": MessageLookupByLibrary.simpleMessage(
       "رقم الوردية المسائية",
     ),
