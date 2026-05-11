@@ -12,33 +12,30 @@ import '../../../../../core/utils/usecases/base_usecase.dart';
 import '../../../../../generated/l10n.dart';
 import '../../../domain/entity/attendance_record.dart';
 
-
 part 'attendance_state.dart';
+
 class AttendanceCubit extends Cubit<AttendanceState> {
   final GetAllMissingAttendanceUseCase _getAllMissingAttendanceUseCase;
   final CreateAttendanceUseCase _createAttendanceUseCase;
   final GetAttendanceLookupUseCase _getAttendanceLookupUseCase;
   final GetForgetReasonUseCase _getForgetReasonUseCase;
   final requestFormKey = GlobalKey<FormState>();
-  final TextEditingController todayDateController = TextEditingController();
-  /// Gregorian date the user picks via the date picker (`yyyy-MM-dd`).
-  final TextEditingController attendanceDateController =
-      TextEditingController();
-  /// Time-of-day the user picks via the time picker (`HH:mm`).
-  final TextEditingController attendanceTimeController =
-      TextEditingController();
-  final TextEditingController applicantNameController = TextEditingController();
-  final TextEditingController organizationalUnitController =
-      TextEditingController();
-  final TextEditingController attachmentFileController =
-      TextEditingController();
-  final TextEditingController attachmentFileNameController =
-      TextEditingController();
-  final TextEditingController durationController = TextEditingController();
-  final TextEditingController attendanceTypeController = TextEditingController();
-  final TextEditingController forgetReasonController = TextEditingController();
-  final TextEditingController orderReasonController = TextEditingController();
+  final todayDateController = TextEditingController();
 
+  /// Gregorian date the user picks via the date picker (`yyyy-MM-dd`).
+  final attendanceDateController = TextEditingController();
+
+  /// Time-of-day the user picks via the time picker (`HH:mm`).
+  final attendanceTimeController = TextEditingController();
+  final applicantNameController = TextEditingController();
+  final organizationalUnitController = TextEditingController();
+  final attachmentFileController = TextEditingController();
+  final attachmentFileNameController = TextEditingController();
+  final officeIDController = TextEditingController();
+  final durationController = TextEditingController();
+  final attendanceTypeController = TextEditingController();
+  final forgetReasonController = TextEditingController();
+  final orderReasonController = TextEditingController();
 
   List<DropdownMenuItem<String>> attendanceTypeItems = [];
   List<DropdownMenuItem<String>> forgetReasonItems = [];
@@ -76,65 +73,69 @@ class AttendanceCubit extends Cubit<AttendanceState> {
         }
       },
     );
-
-
   }
+
   /// get attendance lookup data
   Future<void> getAttendanceLookup() async {
-      emit(state.copyWith(status: AttendanceStatus.lookupsLoading));
-      final result = await _getAttendanceLookupUseCase.call(params: NoParams());
-      result.fold(
-            (failure) =>
-            emit(state.copyWith(status: AttendanceStatus.lookupsError)),
-            (permission) {
-              attendanceTypeItems =
-              permission
-                  .map(
-                    (attendanceType) => DropdownMenuItem(
-                  value:S.current.localeee=="ar"? attendanceType.nameAr:attendanceType.nameEn ?? '3',
-                  child: Text(
-                    S.current.localeee=="ar"? attendanceType.nameAr:attendanceType.nameEn ?? '3',
-                    style: const TextStyle(fontSize: 12),
-                  ),
+    emit(state.copyWith(status: AttendanceStatus.lookupsLoading));
+    final result = await _getAttendanceLookupUseCase.call(params: NoParams());
+    result.fold(
+      (failure) => emit(state.copyWith(status: AttendanceStatus.lookupsError)),
+      (permission) {
+        attendanceTypeItems = permission
+            .map(
+              (attendanceType) => DropdownMenuItem(
+                value: S.current.localeee == "ar"
+                    ? attendanceType.nameAr
+                    : attendanceType.nameEn ?? '3',
+                child: Text(
+                  S.current.localeee == "ar"
+                      ? attendanceType.nameAr
+                      : attendanceType.nameEn ?? '3',
+                  style: const TextStyle(fontSize: 12),
                 ),
-              )
-                  .toList();
-          emit(
-            state.copyWith(
-              status: AttendanceStatus.lookupsLoaded,
-            ),
-          );
-        },
-      );
+              ),
+            )
+            .toList();
+        emit(
+          state.copyWith(
+            status: AttendanceStatus.lookupsLoaded,
+          ),
+        );
+      },
+    );
   }
 
   Future<void> getForgetReason() async {
-      emit(state.copyWith(status: AttendanceStatus.forgetLoading));
-      final result = await _getForgetReasonUseCase.call(params: NoParams());
-      result.fold(
-            (failure) =>
-            emit(state.copyWith(status: AttendanceStatus.forgetError)),
-            (permission) {
-          forgetReasonItems =
-              permission
-                  .map(
-                    (Reasons) => DropdownMenuItem(
-                  value:(S.current.localeee=="ar"? Reasons.name:Reasons.nameEn )?? '3',
-                  child: Text(
-                    (S.current.localeee=="ar"? Reasons.name:Reasons.nameEn) ?? '3',
-                    style: const TextStyle(fontSize: 12),
-                  ),
+    emit(state.copyWith(status: AttendanceStatus.forgetLoading));
+    final result = await _getForgetReasonUseCase.call(params: NoParams());
+    result.fold(
+      (failure) => emit(state.copyWith(status: AttendanceStatus.forgetError)),
+      (permission) {
+        forgetReasonItems = permission
+            .map(
+              (Reasons) => DropdownMenuItem(
+                value: (S.current.localeee == "ar"
+                        ? Reasons.name
+                        : Reasons.nameEn) ??
+                    '3',
+                child: Text(
+                  (S.current.localeee == "ar"
+                          ? Reasons.name
+                          : Reasons.nameEn) ??
+                      '3',
+                  style: const TextStyle(fontSize: 12),
                 ),
-              )
-                  .toList();
-          emit(
-            state.copyWith(
-              status: AttendanceStatus.forgetLoaded,
-            ),
-          );
-        },
-      );
-
+              ),
+            )
+            .toList();
+        emit(
+          state.copyWith(
+            status: AttendanceStatus.forgetLoaded,
+          ),
+        );
+      },
+    );
   }
 
   /// delete attendance request
@@ -145,27 +146,35 @@ class AttendanceCubit extends Cubit<AttendanceState> {
     orderReasonController.clear();
     forgetReasonController.clear();
     durationController.clear();
-
   }
 
   /// create attendance request
   Future<void> createAttendanceRequest() async {
-    emit(state.copyWith(status: AttendanceStatus.createAttendanceRequestLoading));
+    emit(state.copyWith(
+        status: AttendanceStatus.createAttendanceRequestLoading));
     final result = await _createAttendanceUseCase.call(
         params: CreateAttendanceParams(
             employee: int.parse(
                 CacheHelper.getString(key: CacheKeys.employeeId) ?? "1"),
-            attendanceType: attendanceTypeController.text ==S.current.checkedIn  ? "check_in" : "check_out",
-            updateDate: '${attendanceDateController.text} ${attendanceTimeController.text}',
-            attendanceId:(int.parse(state.records.first.odooId))??0,
+            attendanceType: attendanceTypeController.text == S.current.checkedIn
+                ? "check_in"
+                : "check_out",
+            updateDate:
+                '${attendanceDateController.text} ${attendanceTimeController.text}',
+            attendanceId: (int.parse(state.records.first.odooId)) ?? 0,
+            officeId:officeIDController.text.isEmpty? 0 : int.parse(officeIDController.text),
             orderReason: orderReasonController.text,
-            forgetReasonsIds: forgetReasonItems.indexWhere((item) => item.value == forgetReasonController.text) + 1,
-
+            forgetReasonsIds: forgetReasonItems.indexWhere(
+                    (item) => item.value == forgetReasonController.text) +
+                1,
             date: ''));
     result.fold(
       (failure) => emit(state.copyWith(
           status: AttendanceStatus.error, errorMessage: failure.message)),
-      (success) => emit(state.copyWith(status: AttendanceStatus.createAttendanceRequestLoaded,successMessage: success.message,requestNumber:success.requestNumber)),
+      (success) => emit(state.copyWith(
+          status: AttendanceStatus.createAttendanceRequestLoaded,
+          successMessage: success.message,
+          requestNumber: success.requestNumber)),
     );
   }
 

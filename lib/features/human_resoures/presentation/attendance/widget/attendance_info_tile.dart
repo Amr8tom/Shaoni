@@ -32,7 +32,7 @@ class AttendanceInfoTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.end,
+      crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisSize: MainAxisSize.min,
       children: [
         /// Tiny grey label above the pill — e.g. "وقت الحضور (من السجل)".

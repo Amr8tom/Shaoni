@@ -28,8 +28,8 @@ class ExitRequestDetailsScreen extends StatelessWidget {
         appBar: DAppBar(
           showMenu: false,
           showBackArrow: true,
+          title: S.current.exitPermissionRequest,
         ),
-        extendBodyBehindAppBar: true,
         backgroundColor: ColorRes.grey6,
         body: Builder(
           builder: (context) {
@@ -86,8 +86,6 @@ class ExitRequestDetailsScreen extends StatelessWidget {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              const Sizer(height: 220),
-
                               /// date hijri and birthday
                               const DateDataWidget(),
 
@@ -108,10 +106,12 @@ class ExitRequestDetailsScreen extends StatelessWidget {
 
                               /// file upload
                               const Sizer(height: 35),
-                               FileUploadWidget(
+                              FileUploadWidget(
                                 onPickedFile: (name, base64) {
-                                  controller.attachmentFileController.text = base64 ?? '';
-                                  controller.attachmentFileNameController.text = name ?? '';
+                                  controller.attachmentFileController.text =
+                                      base64 ?? '';
+                                  controller.attachmentFileNameController.text =
+                                      name ?? '';
                                 },
                               ),
 

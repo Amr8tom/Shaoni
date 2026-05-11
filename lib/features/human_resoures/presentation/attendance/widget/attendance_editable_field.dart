@@ -4,21 +4,15 @@ import '../../../../../../common/widgets/sizeboxs/Sizer.dart';
 import '../../../../../../core/constants/app_sizes.dart';
 import '../../../../../../core/constants/colors.dart';
 
-/// Editable counterpart of `AttendanceInfoTile`.
-///
-/// Used for the user-input fields (date / time of day / duration) — same
-/// visual rhythm as the read-only tiles so the form stays cohesive, but
-/// with a tappable surface, an `onTap` callback (for showing pickers),
-/// and an optional validator that integrates with the surrounding
-/// `Form(key: requestFormKey)`.
-class AttendanceEditableField extends StatelessWidget {
-  const AttendanceEditableField({
+class DEditableField extends StatelessWidget {
+  const DEditableField({
     super.key,
     required this.label,
     required this.controller,
     required this.icon,
     required this.hint,
     this.onTap,
+    this.iconColor,
     this.readOnly = true,
     this.validator,
     this.keyboardType,
@@ -26,6 +20,7 @@ class AttendanceEditableField extends StatelessWidget {
 
   final String label;
   final String hint;
+  final Color? iconColor;
   final IconData icon;
   final TextEditingController controller;
   final VoidCallback? onTap;
@@ -36,7 +31,7 @@ class AttendanceEditableField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.end,
+      crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisSize: MainAxisSize.min,
       children: [
         Text(
@@ -51,9 +46,6 @@ class AttendanceEditableField extends StatelessWidget {
           overflow: TextOverflow.ellipsis,
         ),
         const Sizer(height: 6),
-
-        /// Form field — shares visuals with the read-only tile but is
-        /// tappable / editable.
         TextFormField(
           controller: controller,
           readOnly: readOnly,
@@ -76,7 +68,7 @@ class AttendanceEditableField extends StatelessWidget {
             prefixIcon: Icon(
               icon,
               size: AppSizes.iconSm,
-              color: ColorRes.primary,
+              color: iconColor??ColorRes.primary,
             ),
             prefixIconConstraints: BoxConstraints(
               minWidth: AppSizes.iconLg,

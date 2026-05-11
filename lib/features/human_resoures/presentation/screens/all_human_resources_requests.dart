@@ -34,7 +34,7 @@ class AllHumanResourcesRequests extends StatelessWidget {
         body: SafeArea(
           child: BlocBuilder<HumanResourcesCubit, HumanResourcesState>(
             builder: (context, state) {
-              final services = state.status.isLoading?List.filled(6,
+              final services = state.status.isLoading?List.filled(10,
               Service(id: 1, nameEn: 'hr.exit.permission', nameAr: 'إذن خروج')
               ): state.services ?? const [];
               return RefreshIndicator(
@@ -98,7 +98,7 @@ class AllHumanResourcesRequests extends StatelessWidget {
     final code = service.nameEn ?? '';
     switch (code) {
       case 'hr.exit.permission':
-        context.pushNamed(DRoutesName.requestCertainService);
+        context.pushNamed(DRoutesName.requestCertainService,);
         return;
       case 'attendance.update':
         context.pushNamed(DRoutesName.missingAttendanceHistory);

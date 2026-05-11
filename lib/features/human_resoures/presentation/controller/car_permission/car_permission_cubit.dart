@@ -23,27 +23,23 @@ class CarPermissionCubit extends Cubit<CarPermissionState> {
   final requestFormKey = GlobalKey<FormState>();
 
   /// ============== applicant + date controllers ==============
-  final TextEditingController todayDateController = TextEditingController();
-  final TextEditingController hijriDateController = TextEditingController();
-  final TextEditingController applicantNameController =
-      TextEditingController();
-  final TextEditingController organizationalUnitController =
-      TextEditingController();
-  final TextEditingController locationController = TextEditingController();
+  final todayDateController = TextEditingController();
+  final hijriDateController = TextEditingController();
+  final applicantNameController = TextEditingController();
+  final organizationalUnitController = TextEditingController();
+  final officeIdController = TextEditingController();
 
   /// ============== request data controllers ==============
-  final TextEditingController carBrandController = TextEditingController();
-  final TextEditingController carColorController = TextEditingController();
-  final TextEditingController carNumberController = TextEditingController();
+  final carBrandController = TextEditingController();
+  final carColorController = TextEditingController();
+  final carNumberController = TextEditingController();
 
   /// Notes / extra justification (kept for parity with the other forms).
-  final TextEditingController notesController = TextEditingController();
+  final notesController = TextEditingController();
 
   /// ============== attachment controllers (same as Study) ==============
-  final TextEditingController attachmentFileController =
-      TextEditingController();
-  final TextEditingController attachmentFileNameController =
-      TextEditingController();
+  final attachmentFileController = TextEditingController();
+  final attachmentFileNameController = TextEditingController();
 
   /// Pre-mapped dropdown items the widget can render directly.
   List<DropdownMenuItem<String>> carBrandItems = [];
@@ -62,6 +58,7 @@ class CarPermissionCubit extends Cubit<CarPermissionState> {
     getCarBrands();
     getCarColors();
   }
+
   Future<void> getCarBrands() async {
     emit(state.copyWith(status: CarPermissionStatus.brandsLoading));
     final result = await _getCarBrandsUseCase.call(params: NoParams());
@@ -121,8 +118,7 @@ class CarPermissionCubit extends Cubit<CarPermissionState> {
   int? get selectedBrandId {
     if (carBrandController.text.isEmpty) return null;
     final selected = _brands.where(
-      (b) =>
-          _localizedName(b.nameAr, b.nameEn) == carBrandController.text,
+      (b) => _localizedName(b.nameAr, b.nameEn) == carBrandController.text,
     );
     return selected.isEmpty ? null : selected.first.id;
   }
@@ -130,8 +126,7 @@ class CarPermissionCubit extends Cubit<CarPermissionState> {
   int? get selectedColorId {
     if (carColorController.text.isEmpty) return null;
     final selected = _colors.where(
-      (c) =>
-          _localizedName(c.nameAr, c.nameEn) == carColorController.text,
+      (c) => _localizedName(c.nameAr, c.nameEn) == carColorController.text,
     );
     return selected.isEmpty ? null : selected.first.id;
   }
@@ -147,18 +142,20 @@ class CarPermissionCubit extends Cubit<CarPermissionState> {
     emit(state.copyWith(
       status: CarPermissionStatus.createRequestLoading,
     ));
-    todayDateController.text=DateTime.now().toString().split(' ').first;
-    final result =await _createCarPermissionUseCase.call(
+    todayDateController.text = DateTime.now().toString().split(' ').first;
+    final result = await _createCarPermissionUseCase.call(
       params: CreateCarPermissionParams(
-        employeeId: int.parse(CacheHelper.getString(key: CacheKeys.employeeId) ?? "1" ),
+        employeeId:
+            int.parse(CacheHelper.getString(key: CacheKeys.employeeId) ?? "1"),
         carBrandId: selectedBrandId,
         carColorId: selectedColorId,
-        carNumber: carNumberController.text.isEmpty
-            ? null
-            : carNumberController.text,
-        date: todayDateController.text.isEmpty
-            ? null
-            : todayDateController.text,
+        officeId: officeIdController.text.isEmpty
+            ? 0
+            : int.tryParse(officeIdController.text),
+        carNumber:
+            carNumberController.text.isEmpty ? null : carNumberController.text,
+        date:
+            todayDateController.text.isEmpty ? null : todayDateController.text,
         note: notesController.text.isEmpty ? "" : notesController.text,
         attachments: attachmentFileController.text.isEmpty
             ? ""
@@ -187,7 +184,7 @@ class CarPermissionCubit extends Cubit<CarPermissionState> {
     hijriDateController.clear();
     applicantNameController.clear();
     organizationalUnitController.clear();
-    locationController.clear();
+    officeIdController.clear();
     carBrandController.clear();
     carColorController.clear();
     carNumberController.clear();
@@ -197,7 +194,9 @@ class CarPermissionCubit extends Cubit<CarPermissionState> {
   }
 
   String _localizedName(String ar, String en) {
-    return S.current.localeee == 'en' ? (en.isEmpty ? ar : en) : (ar.isEmpty ? en : ar);
+    return S.current.localeee == 'en'
+        ? (en.isEmpty ? ar : en)
+        : (ar.isEmpty ? en : ar);
   }
 
   @override
@@ -206,7 +205,7 @@ class CarPermissionCubit extends Cubit<CarPermissionState> {
     hijriDateController.dispose();
     applicantNameController.dispose();
     organizationalUnitController.dispose();
-    locationController.dispose();
+    officeIdController.dispose();
     carBrandController.dispose();
     carColorController.dispose();
     carNumberController.dispose();

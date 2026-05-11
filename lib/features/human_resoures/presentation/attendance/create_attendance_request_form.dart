@@ -30,8 +30,8 @@ class CreateAttendanceRequestForm extends StatelessWidget {
         appBar: DAppBar(
           showMenu: false,
           showBackArrow: true,
+          title: S.current.attendance,
         ),
-        extendBodyBehindAppBar: true,
         backgroundColor: ColorRes.grey6,
         body: Builder(
           builder: (context) {
@@ -87,8 +87,6 @@ class CreateAttendanceRequestForm extends StatelessWidget {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              const Sizer(height: 220),
-
                               /// date hijri and birthday
                               const DateDataWidget(),
 
@@ -97,7 +95,10 @@ class CreateAttendanceRequestForm extends StatelessWidget {
 
                               /// data for request applicant
                               ApplicantDataWidget(
-                                useEnhancedDesign: true,
+                                onOfficeChanged: (id, name) {
+                                  controller.officeIDController.text =
+                                      id.toString();
+                                },
                               ),
 
                               /// request data
@@ -109,10 +110,7 @@ class CreateAttendanceRequestForm extends StatelessWidget {
                               ),
                               const Sizer(height: 16),
 
-                              /// Find the matching attendance record from
-                              /// the cubit's loaded list (returns null if
-                              /// the list hasn't loaded yet — the widget
-                              /// handles that with safe placeholders).
+                              /// request data widget (attendance type, reason, forget reason, duration)
                               AttendanceRequestDataWidget(
                                 record:
                                     state.records.cast<dynamic>().firstWhere(

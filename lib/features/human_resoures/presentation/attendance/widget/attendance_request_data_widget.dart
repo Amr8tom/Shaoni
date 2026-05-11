@@ -11,24 +11,12 @@ import 'attendance_dropdown_field.dart';
 import 'attendance_editable_field.dart';
 import 'attendance_info_tile.dart';
 
-/// "بيانات الطلب" section of the create-attendance-request screen.
-///
-/// Two zones:
-///   1. Read-only API data (six tiles) — fingerprint record, in/out
-///      modes, check-in/out times, plus a placeholder for overtime and
-///      worked-hours totals (not yet returned by the API).
-///   2. User input — date picker + time-of-day picker + duration field
-///      + attendance-type / forget-reason dropdowns. The validators are
-///      hooked into the existing `controller.requestFormKey` form.
+
 class AttendanceRequestDataWidget extends StatelessWidget {
   const AttendanceRequestDataWidget({
     super.key,
     this.record,
   });
-
-  /// Optional attendance record returned by the API for the day the user
-  /// is editing. When `null`, the read-only tiles fall back to safe
-  /// placeholders so the form still renders during initial load.
   final AttendanceRecord? record;
 
   @override
@@ -53,8 +41,7 @@ class AttendanceRequestDataWidget extends StatelessWidget {
   // Read-only data tiles populated from `record` (API response).
   // -------------------------------------------------------------------
   Widget _buildReadOnlySection(BuildContext context) {
-    /// Fallback placeholder for any missing field (matches the screenshot's
-    /// "00:00" / "manual" defaults).
+
     const String empty = '00:00';
 
     final String fingerprint = record?.displayName ?? empty;
@@ -63,9 +50,6 @@ class AttendanceRequestDataWidget extends StatelessWidget {
     final String inMode = record?.inMode ?? S.current.notAvailable;
     final String outMode = record?.outMode ?? S.current.notAvailable;
 
-    /// Overtime + worked hours aren't returned by the API yet — we keep
-    /// the placeholder so the layout matches the design and we can plug
-    /// in the real values later without touching the widget.
     const String overtime = empty;
     const String workedHours = empty;
 
@@ -140,7 +124,7 @@ class AttendanceRequestDataWidget extends StatelessWidget {
       children: [
         /// Row: date  |  time (HH:mm)
         _PairRow(
-          right: AttendanceEditableField(
+          right: DEditableField(
             label: S.current.dateBirth,
             hint: S.current.selectDate,
             icon: Icons.calendar_today_rounded,
@@ -148,7 +132,7 @@ class AttendanceRequestDataWidget extends StatelessWidget {
             onTap: () => _pickDate(context, controller),
             validator: _requiredValidator,
           ),
-          left: AttendanceEditableField(
+          left: DEditableField(
             label: S.current.timeOfDay,
             hint: S.current.selectTime,
             icon: Icons.access_time_rounded,
@@ -160,7 +144,7 @@ class AttendanceRequestDataWidget extends StatelessWidget {
         const Sizer(height: 14),
 
         /// Row: duration (hours)  |  attendance type
-        AttendanceDropdownField(
+        DDropdownField(
           label: S.current.attendanceType,
           hint: S.current.attendanceType,
           icon: Icons.list_alt_rounded,
@@ -176,7 +160,7 @@ class AttendanceRequestDataWidget extends StatelessWidget {
         const Sizer(height: 14),
 
         /// Full-width: forget reason
-        AttendanceDropdownField(
+        DDropdownField(
           label: S.current.forgetReason,
           hint: S.current.forgetReason,
           icon: Icons.help_outline_rounded,

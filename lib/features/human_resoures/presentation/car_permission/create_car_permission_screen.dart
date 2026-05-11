@@ -27,10 +27,11 @@ class CreateCarPermissionScreen extends StatelessWidget {
       create: (_) => serviceLocator<CarPermissionCubit>(),
       child: Scaffold(
         appBar: DAppBar(
+          title: S.current.carPermitRequest,
           showMenu: false,
           showBackArrow: true,
         ),
-        extendBodyBehindAppBar: true,
+        // extendBodyBehindAppBar: true,
         backgroundColor: ColorRes.grey6,
         body: Builder(
           builder: (context) {
@@ -86,14 +87,14 @@ class CreateCarPermissionScreen extends StatelessWidget {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              const Sizer(height: 220),
 
                               /// Date — gregorian + hijri
                               const DateDataWidget(),
                               const Sizer(height: 35),
 
                               /// Applicant data — name / unit / location
-                              const ApplicantDataWidget(),
+                               ApplicantDataWidget(onOfficeChanged: (id,officeName){
+                                  controller.officeIdController.text = id.toString();},),
                               const Sizer(height: 35),
 
                               /// Request details title

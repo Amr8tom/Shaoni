@@ -23,6 +23,7 @@ class CreateCarPermissionParams {
   final int employeeId;
   final int? carBrandId;
   final int? carColorId;
+  final int? officeId;
   final String? carNumber;
   final String? date;
   final String? note;
@@ -31,6 +32,7 @@ class CreateCarPermissionParams {
 
   CreateCarPermissionParams({
     required this.employeeId,
+    required this.officeId,
     required this.carBrandId,
     required this.carColorId,
     required this.carNumber,
@@ -49,6 +51,7 @@ class CreateCarPermissionParams {
       'car_number': carNumber,
       'date': date,
       'note': note,
+      'office_id': officeId,
       'attachment_ids': [
         {
           'name': attachmentsName,

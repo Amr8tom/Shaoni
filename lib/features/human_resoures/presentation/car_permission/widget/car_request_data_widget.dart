@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../../common/widgets/sizeboxs/Sizer.dart';
 import '../../../../../../generated/l10n.dart';
+import '../../../../../core/constants/colors.dart';
 import '../../attendance/widget/attendance_dropdown_field.dart';
 import '../../attendance/widget/attendance_editable_field.dart';
 import '../../controller/car_permission/car_permission_cubit.dart';
@@ -30,7 +31,7 @@ class CarRequestDataWidget extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Expanded(
-                child: AttendanceDropdownField(
+                child: DDropdownField(
                   label: S.current.carBrand,
                   hint: S.current.selectCarBrand,
                   icon: Icons.directions_car_rounded,
@@ -46,7 +47,7 @@ class CarRequestDataWidget extends StatelessWidget {
               ),
               const Sizer(width: 14),
               Expanded(
-                child: AttendanceDropdownField(
+                child: DDropdownField(
                   label: S.current.carColor,
                   hint: S.current.selectCarColor,
                   icon: Icons.color_lens_rounded,
@@ -66,10 +67,11 @@ class CarRequestDataWidget extends StatelessWidget {
         const Sizer(height: 14),
 
         /// ─── Full-width: car plate number ────────────────────────────
-        AttendanceEditableField(
+        DEditableField(
           label: S.current.carNumber,
           hint: S.current.carNumberHint,
           icon: Icons.confirmation_number_rounded,
+          iconColor: ColorRes.black,
           controller: controller.carNumberController,
           readOnly: false,
           keyboardType: TextInputType.text,

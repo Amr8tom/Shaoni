@@ -18,6 +18,7 @@ class CreateAttendanceUseCase extends UseCase<AttendanceModel,CreateAttendancePa
 
 class CreateAttendanceParams {
   final int employee;
+  final int officeId;
   final String attendanceType;
   final String updateDate;
   final String date;
@@ -27,6 +28,7 @@ class CreateAttendanceParams {
 
   CreateAttendanceParams({
     required this.employee,
+    required this.officeId,
     required this.attendanceType,
     required this.updateDate,
     required this.date,
@@ -45,6 +47,7 @@ class CreateAttendanceParams {
       "attendance_id": this.attendanceId,
       "order_reason": this.orderReason,
       "forget_reasons_ids": this.forgetReasonsIds,
+      "office_id":this.officeId,
       // "request_attachment_ids": this.requestAttachmentIds.map((e) => e.toMap()).toList(),
       "fields": [
         "id",
@@ -57,7 +60,6 @@ class CreateAttendanceParams {
         "stage_id",
         "employee",
         "department_id",
-        "office_id",
         "resource_calendar_id",
         "forget_reasons_ids",
         "attendance_id",

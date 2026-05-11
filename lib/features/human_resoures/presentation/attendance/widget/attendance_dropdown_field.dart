@@ -4,12 +4,8 @@ import '../../../../../../common/widgets/sizeboxs/Sizer.dart';
 import '../../../../../../core/constants/app_sizes.dart';
 import '../../../../../../core/constants/colors.dart';
 
-/// Modernised dropdown field used by [AttendanceRequestDataWidget] for
-/// the "attendance type" and "forget reason" pickers — same visual
-/// vocabulary as [AttendanceEditableField] / [AttendanceInfoTile] so
-/// the form reads as one consistent surface.
-class AttendanceDropdownField extends StatelessWidget {
-  const AttendanceDropdownField({
+class DDropdownField extends StatelessWidget {
+  const DDropdownField({
     super.key,
     required this.label,
     required this.hint,
@@ -20,7 +16,7 @@ class AttendanceDropdownField extends StatelessWidget {
     this.validator,
   });
 
-  final String label;
+  final String? label;
   final String hint;
   final IconData icon;
   final List<DropdownMenuItem<String>> items;
@@ -31,11 +27,11 @@ class AttendanceDropdownField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.end,
+      crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisSize: MainAxisSize.min,
       children: [
-        Text(
-          label,
+        label?.trim()==''?const Sizer():Text(
+          label!,
           textAlign: TextAlign.end,
           style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                 color: ColorRes.grey2,
@@ -45,7 +41,7 @@ class AttendanceDropdownField extends StatelessWidget {
           maxLines: 1,
           overflow: TextOverflow.ellipsis,
         ),
-        const Sizer(height: 6),
+        // const Sizer(height: 6),
 
         DropdownButtonFormField<String>(
           value: (value != null && value!.isNotEmpty) ? value : null,
@@ -72,10 +68,13 @@ class AttendanceDropdownField extends StatelessWidget {
                   color: ColorRes.grey2.withOpacity(0.6),
                   fontSize: AppSizes.fontSizeSm,
                 ),
-            prefixIcon: Icon(
-              icon,
-              size: AppSizes.iconSm,
-              color: ColorRes.primary,
+            prefixIcon: Padding(
+              padding:  EdgeInsets.symmetric(horizontal: AppSizes.padding * 0.8),
+              child: Icon(
+                icon,
+                size: AppSizes.iconMd,
+                // color: ColorRes.primary,
+              ),
             ),
             prefixIconConstraints: BoxConstraints(
               minWidth: AppSizes.iconLg,

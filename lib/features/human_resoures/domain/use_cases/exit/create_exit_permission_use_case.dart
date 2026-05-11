@@ -23,6 +23,7 @@ class CreateExitPermissionUseCase
 class CreateExitPermissionParams extends Equatable {
   final int employeeId;
   final int permissionType;
+  final int officeID;
   final String type;
   final String exitDate;
   final int numberOfHours;
@@ -33,6 +34,7 @@ class CreateExitPermissionParams extends Equatable {
 
   const CreateExitPermissionParams({
     required this.employeeId,
+    required this.officeID,
     required this.permissionType,
     required this.type,
     required this.exitDate,
@@ -43,32 +45,31 @@ class CreateExitPermissionParams extends Equatable {
     this.leavesAttachmentName,
   });
 
-
-
   ///  to map
   Map<String, dynamic> toMap() {
-   return {
-    "employee_id": employeeId,
-    "permission_type": permissionType,
-    "type":type,
-    "exit_date": exitDate,
-    "number_of_hours": numberOfHours,
-    "notes": notes,
-    "stage_id": 0,
-    "leaves_attachment": leavesAttachment,
-    "leaves_attachment_name":leavesAttachmentName
-  };
-   return{
-    "employee_id": 2,
-    "permission_type": 1,
-    "type": "first",
-    "exit_date":"2026-9-14",
-    "number_of_hours": 1,
-    "notes": "tests test stat ",
-    "stage_id": 0,
-    "leaves_attachment": "",
-    "leaves_attachment_name": ""
-  };
+    return {
+      "employee_id": employeeId,
+      "permission_type": permissionType,
+      "office_id": officeID,
+      "type": type,
+      "exit_date": exitDate,
+      "number_of_hours": numberOfHours,
+      "notes": notes,
+      "stage_id": 0,
+      "leaves_attachment": leavesAttachment,
+      "leaves_attachment_name": leavesAttachmentName
+    };
+    return {
+      "employee_id": 2,
+      "permission_type": 1,
+      "type": "first",
+      "exit_date": "2026-9-14",
+      "number_of_hours": 1,
+      "notes": "tests test stat ",
+      "stage_id": 0,
+      "leaves_attachment": "",
+      "leaves_attachment_name": ""
+    };
 
     return {
       'employee_id': employeeId,
@@ -83,17 +84,16 @@ class CreateExitPermissionParams extends Equatable {
     };
   }
 
-
   @override
   List<Object?> get props => [
-    employeeId,
-    permissionType,
-    type,
-    exitDate,
-    numberOfHours,
-    notes,
-    stageId,
-    leavesAttachment,
-    leavesAttachmentName,
-  ];
+        employeeId,
+        permissionType,
+        type,
+        exitDate,
+        numberOfHours,
+        notes,
+        stageId,
+        leavesAttachment,
+        leavesAttachmentName,
+      ];
 }

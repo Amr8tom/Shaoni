@@ -1,242 +1,115 @@
+import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:shaoni/core/local_storage/cache_keys.dart';
+import 'package:shaoni/features/auth/data/model/office_model.dart';
 import '../../../../../common/widgets/sizeboxs/Sizer.dart';
 import '../../../../../core/constants/app_sizes.dart';
-import '../../../../../core/constants/colors.dart';
 import '../../../../../core/local_storage/cache_helper.dart';
 import '../../../../../generated/l10n.dart';
 import '../../../../auth/presentation/widgets/auth_text_filed.dart';
+import '../../attendance/widget/attendance_dropdown_field.dart';
 
-class ApplicantDataWidget extends StatelessWidget {
-  final bool useEnhancedDesign;
+class ApplicantDataWidget extends StatefulWidget {
+  final void Function(int officeId, String officeName)? onOfficeChanged;
+  final int? initialOfficeId;
 
   const ApplicantDataWidget({
     super.key,
-    this.useEnhancedDesign = false,
+    this.onOfficeChanged,
+    this.initialOfficeId,
   });
+
+  @override
+  State<ApplicantDataWidget> createState() => _ApplicantDataWidgetState();
+}
+
+class _ApplicantDataWidgetState extends State<ApplicantDataWidget> {
+  List<OfficeModel> _offices = [];
+  String? _selectedOfficeName;
+
+  void _loadOfficesFromCache() {
+    try {
+      final decoded =
+          jsonDecode(CacheHelper.getString(key: CacheKeys.officesList) ?? '[]');
+      if (decoded is! List) return;
+
+      _offices = (decoded as List)
+          .where((o) => o is Map<String, dynamic>)
+          .map((o) => OfficeModel.fromJson(o as Map<String, dynamic>))
+          .toList();
+
+      if (_selectedOfficeName == null && widget.initialOfficeId != null) {
+        try {
+          _selectedOfficeName =
+              _offices.firstWhere((o) => o.id == widget.initialOfficeId).name;
+        } catch (e) {
+          // Initial office ID not found in list
+        }
+      }
+
+      if (_selectedOfficeName != null &&
+          !_offices.any((o) => o.name == _selectedOfficeName)) {
+        _selectedOfficeName = null;
+      }
+    } catch (e) {
+      debugPrint('Error parsing offices: $e');
+      _offices = [];
+    }
+  }
+
+  List<DropdownMenuItem<String>> get _officeItems => _offices
+      .map((o) => DropdownMenuItem<String>(value: o.name, child: Text(o.name)))
+      .toList();
+
+  void _onOfficeSelected(String? value) {
+    if (value == null) return;
+    setState(() => _selectedOfficeName = value);
+    try {
+      final selected = _offices.firstWhere((o) => o.name == value);
+      widget.onOfficeChanged?.call(selected.id, selected.name);
+    } catch (e) {
+      // Office not found
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-
-    if (useEnhancedDesign) {
-      return _buildEnhancedDesign(context);
-    }
-    return _buildDefaultDesign(context);
-  }
-
-  /// Enhanced card design matching the screenshot
-  Widget _buildEnhancedDesign(BuildContext context) {
-    final userName = CacheHelper.getString(key: CacheKeys.userName)??'';
-    final orgName = CacheHelper.getString(key: CacheKeys.organizationName)??'';
-    final location = CacheHelper.getString(key: CacheKeys.departmentAddress)??'';
-
+    _loadOfficesFromCache();
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        /// Header
-        Text(
-          S.current.requestApplicantData,
-          style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-            fontWeight: FontWeight.w700,
-            color: ColorRes.black,
-            fontSize: 20,
-          ),
-          textAlign: TextAlign.right,
+        Text(S.current.requestApplicantData,
+            style: Theme.of(context).textTheme.headlineMedium),
+        AuthTextField(
+          hint: S.current.applicantName,
+          readOnly: true,
+          controller: TextEditingController(
+              text: CacheHelper.getString(key: CacheKeys.userName)),
+          borderRadius: AppSizes.borderRadiusMd,
+          prefixIcon: const Icon(Icons.person),
+          validator: (value) =>
+              (value?.isEmpty ?? true) ? S.current.pleaseEndterValue : null,
         ),
-        const Sizer(height: 20),
-
-        /// Employee Card with light cyan background
-        _buildApplicantCardWithBackground(
-          context: context,
-          title: S.current.applicantName,
-          value: userName,
-          icon: Icons.person_rounded,
-          iconBgColor: ColorRes.primary,
-          cardBgColor: const Color(0xFFE0F4F1),
-          isFirstCard: true,
+        AuthTextField(
+          hint: S.current.organizationalUnit,
+          readOnly: true,
+          controller: TextEditingController(
+              text: CacheHelper.getString(key: CacheKeys.departmentAddress)),
+          borderRadius: AppSizes.borderRadiusMd,
+          prefixIcon: const Icon(Icons.home_work),
+          validator: (value) =>
+              (value?.isEmpty ?? true) ? S.current.pleaseEndterValue : null,
         ),
-
-        Row(
-          children: [
-            Flexible(
-              flex: 2,
-              child: _buildApplicantCardWithBackground(
-                context: context,
-                title: S.current.organizationalUnit,
-                value: orgName,
-                icon: Icons.home_work_rounded,
-                iconBgColor: ColorRes.primary,
-                cardBgColor: Colors.white,
-                isFirstCard: false,
-              ),
-            ),
-
-            /// Location Card
-            Flexible(
-              flex: 1,
-              child: _buildApplicantCardWithBackground(
-                context: context,
-                title: S.current.location,
-                value: location,
-                icon: Icons.work_outline_rounded,
-                iconBgColor: ColorRes.primary,
-                cardBgColor: Colors.white,
-                isFirstCard: false,
-              ),
-            ),
-          ],
-        ),
-        /// Organization Card
-
-      ],
-    );
-  }
-
-  /// Helper to build individual applicant card with background
-  Widget _buildApplicantCardWithBackground({
-    required BuildContext context,
-    required String title,
-    required String value,
-    required IconData icon,
-    required Color iconBgColor,
-    required Color cardBgColor,
-    required bool isFirstCard,
-  }) {
-    return Container(
-      decoration: BoxDecoration(
-        color: cardBgColor,
-        borderRadius: BorderRadius.circular(AppSizes.borderRadiusLg),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withValues(alpha: 0.05),
-            blurRadius: 8,
-            offset: const Offset(0, 2),
-          ),
-        ],
-        border: isFirstCard
-          ? Border.all(color: ColorRes.primary.withValues(alpha: 0.2), width: 1)
-          : Border.all(color: ColorRes.grey2.withValues(alpha: 0.1), width: 1),
-      ),
-      child: Padding(
-        padding: EdgeInsets.symmetric(
-          horizontal: AppSizes.padding/2,
-          vertical: AppSizes.padding/2,
-        ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            /// Icon with background
-            Container(
-              width: AppSizes.iconXLarge,
-              height: AppSizes.iconXLarge,
-              decoration: BoxDecoration(
-                color: iconBgColor.withValues(alpha: 0.15),
-                borderRadius: BorderRadius.circular(AppSizes.blurSmall),
-              ),
-              child: Center(
-                child: Icon(
-                  icon,
-                  color: iconBgColor,
-                  size: AppSizes.iconMedium,
-                ),
-              ),
-            ),
-            const Sizer(width: 8),
-            /// Text information
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  title,
-                  style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                    color: ColorRes.grey2.withValues(alpha: 0.7),
-                    fontWeight: FontWeight.w500,
-                    fontSize: 12,
-                  ),
-                  maxLines: 2,
-                  overflow: TextOverflow.ellipsis,
-                  textAlign: TextAlign.right,
-                ),
-                const Sizer(height: 6),
-                Text(
-                  value,
-                  style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                    fontWeight: FontWeight.w600,
-                    color: ColorRes.black,
-                    fontSize: 15,
-                  ),
-                  maxLines: 2,
-                  overflow: TextOverflow.ellipsis,
-                  textAlign: TextAlign.right,
-                ),
-              ],
-            ),
-
-          ],
-        ),
-      ),
-    );
-  }
-
-  /// Default design with form fields
-  Widget _buildDefaultDesign(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          S.current.requestApplicantData,
-          style: Theme.of(context).textTheme.headlineMedium,
-        ),
-        const Sizer(height: 12),
-        Column(
-          children: [
-            /// name
-            AuthTextField(
-              hint: S.current.applicantName,
-              readOnly: true,
-              controller: TextEditingController(text: CacheHelper.getString(key: CacheKeys.userName)),
-              borderRadius: AppSizes.borderRadiusMd,
-              prefixIcon: const Icon(Icons.person),
-              validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return S.current.pleaseEndterValue;
-                }
-                return null;
-              },
-            ),
-            const Sizer(height: 12),
-
-            /// organization
-            AuthTextField(
-              hint: S.current.organizationalUnit,
-              readOnly: true,
-              controller: TextEditingController(text: CacheHelper.getString(key: CacheKeys.organizationName)),
-              borderRadius: AppSizes.borderRadiusMd,
-              prefixIcon: const Icon(Icons.home_work),
-              validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return S.current.pleaseEndterValue;
-                }
-                return null;
-              },
-            ),
-            const Sizer(height: 12),
-
-            /// location
-            AuthTextField(
-              hint: S.current.location,
-              readOnly: true,
-              controller: TextEditingController(text: CacheHelper.getString(key: CacheKeys.departmentAddress)),
-              borderRadius: AppSizes.borderRadiusMd,
-              prefixIcon: const Icon(Icons.location_on),
-              validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return S.current.pleaseEndterValue;
-                }
-                return null;
-              },
-            ),
-          ],
+        const Sizer(height: 18),
+        DDropdownField(
+          label: '',
+          hint: S.current.location,
+          icon: Icons.work_outline_rounded,
+          value: _selectedOfficeName,
+          items: _officeItems,
+          onChanged: _onOfficeSelected,
+          validator: (value) =>
+              (value?.isEmpty ?? true) ? S.current.pleaseEndterValue : null,
         ),
       ],
     );
