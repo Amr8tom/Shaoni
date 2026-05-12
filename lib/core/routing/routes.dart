@@ -9,6 +9,7 @@ import '../../features/auth/presentation/screen/otp_screen.dart';
 import '../../features/delete_account/presentation/delete_my_account_screen.dart';
 import '../../features/human_resoures/presentation/attendance/create_attendance_request_form.dart';
 import '../../features/human_resoures/presentation/car_permission/create_car_permission_screen.dart';
+import '../../features/human_resoures/presentation/complaint_request/create_complaint_request_screen.dart';
 import '../../features/human_resoures/presentation/attendance/missing_attendance_history_screen.dart';
 import '../../features/human_resoures/presentation/screens/all_human_resources_requests.dart';
 import '../../features/human_resoures/presentation/exit/create_exit_request_form.dart';
@@ -101,6 +102,14 @@ class RouteGenerator {
       case DRoutesName.createCarPermissionRoute:
         return PageTransition(
           child: const CreateCarPermissionScreen(),
+          type: PageTransitionType.rightToLeft,
+          settings: settings,
+        );
+
+      /// create complaint request screen
+      case DRoutesName.createComplaintRequestRoute:
+        return PageTransition(
+          child: const CreateComplaintRequestScreen(),
           type: PageTransitionType.rightToLeft,
           settings: settings,
         );

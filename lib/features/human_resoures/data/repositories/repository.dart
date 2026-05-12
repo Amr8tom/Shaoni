@@ -6,10 +6,14 @@ import 'package:shaoni/features/human_resoures/domain/entity/attendance/attendan
 import 'package:shaoni/features/human_resoures/domain/entity/attendance/forget_reason.dart';
 import 'package:shaoni/features/human_resoures/domain/entity/car_permission/car_brand.dart';
 import 'package:shaoni/features/human_resoures/domain/entity/car_permission/car_color.dart';
+import 'package:shaoni/features/human_resoures/domain/entity/complaint_request/complaint_reason.dart';
+import 'package:shaoni/features/human_resoures/domain/entity/complaint_request/complaint_type.dart';
 import 'package:shaoni/features/human_resoures/domain/entity/exit_permisstion.dart';
 import 'package:shaoni/features/human_resoures/domain/use_cases/attendance/create_attendance_use_case.dart';
 import 'package:shaoni/features/human_resoures/domain/use_cases/attendance/get_all_missing_attendance_use_case.dart';
 import 'package:shaoni/features/human_resoures/domain/use_cases/car_permission/create_car_permission_use_case.dart';
+import 'package:shaoni/features/human_resoures/domain/use_cases/complaint_request/create_complaint_request_use_case.dart';
+import '../model/complaint_request/create_complaint_request_model.dart';
 import '../../../../core/connection/checkNetwork.dart';
 import '../../domain/entity/all_attendance_record_model.dart';
 import '../../domain/entity/all_services.dart';
@@ -219,6 +223,53 @@ class HRServicesRepositoryImp extends HRServicesRepository {
     if (await _networkInfo.isConnected) {
       try {
         final response = await _remote.createCarPermission(params: params);
+        return Right(response);
+      } on ServerFailure catch (e) {
+        return Left(ServerFailure(message: e.message));
+      }
+    } else {
+      return Left(CacheFailure());
+    }
+  }
+
+  /// ===================== complaint request =====================
+
+  @override
+  Future<Either<Failure, List<ComplaintType>>> getComplaintTypes(
+      {required NoParams params}) async {
+    if (await _networkInfo.isConnected) {
+      try {
+        final response = await _remote.getComplaintTypes(params: params);
+        return Right(response);
+      } on ServerFailure catch (e) {
+        return Left(ServerFailure(message: e.message));
+      }
+    } else {
+      return Left(CacheFailure());
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<ComplaintReason>>> getComplaintReasons(
+      {required NoParams params}) async {
+    if (await _networkInfo.isConnected) {
+      try {
+        final response = await _remote.getComplaintReasons(params: params);
+        return Right(response);
+      } on ServerFailure catch (e) {
+        return Left(ServerFailure(message: e.message));
+      }
+    } else {
+      return Left(CacheFailure());
+    }
+  }
+
+  @override
+  Future<Either<Failure, CreateComplaintRequestModel>> createComplaintRequest(
+      {required CreateComplaintRequestParams params}) async {
+    if (await _networkInfo.isConnected) {
+      try {
+        final response = await _remote.createComplaintRequest(params: params);
         return Right(response);
       } on ServerFailure catch (e) {
         return Left(ServerFailure(message: e.message));

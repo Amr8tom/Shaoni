@@ -26,6 +26,11 @@ class URL {
   static const String getCarColors = '$baseUrl/Lookup/GetCarColors';
   static const String getCarBrands = '$baseUrl/Lookup/GetCarBrands';
   static const String createCarPermission = '$baseUrl/CarPermission';
+
+  /// ============================ complaint request ============================
+  static const String getComplaintTypes = '$baseUrl/Lookup/GetComplaintTypes';
+  static const String getComplaintReasons = '$baseUrl/Lookup/GetComplaintReasons';
+  static const String createComplaintRequest = '$baseUrl/ComplaintRequest';
   /// ============================ exit permmison  ============================
   // static const String getAllRequestsWithStages = '$baseUrl/Request/with-stages/paged/by-user';
 

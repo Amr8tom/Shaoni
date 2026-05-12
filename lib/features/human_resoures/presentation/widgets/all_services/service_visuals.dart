@@ -63,6 +63,15 @@ class ServiceVisuals {
       );
     }
 
+    /// Complaint requests.
+    if (c.contains('complaint')) {
+      return ServiceVisuals(
+        icon: Icons.report_rounded,
+        color: ColorRes.error,
+        isAvailable: true,
+      );
+    }
+
     /// Loans.
     if (c.contains('loan')) {
       return ServiceVisuals(

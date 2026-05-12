@@ -13,6 +13,7 @@ import '../../../../core/constants/colors.dart';
 import '../../../../generated/l10n.dart';
 import '../widgets/accept_request_button.dart';
 import '../widgets/car_permission_details_widget.dart';
+import '../widgets/complaint_request_details_widget.dart';
 import '../widgets/comment_writing_widget.dart';
 import '../widgets/exit_permission_details_widget.dart';
 import '../widgets/request_stage_card.dart';
@@ -128,7 +129,9 @@ class RequestDetailsScreen extends StatelessWidget {
                   /// request details
                   serviceType == "car.permission"
                       ? const CarPermissionDetailsWidget()
-                      : const ExitPermissionDetailsWidget(),
+                      : serviceType == "complaint.request"
+                          ? const ComplaintRequestDetailsWidget()
+                          : const ExitPermissionDetailsWidget(),
 
                   const Sizer(height: 20),
                   if (enStatus.toLowerCase() == "new")

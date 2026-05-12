@@ -25,6 +25,7 @@ class DRoutesName {
   static const String createAttendanceRoute = 'attendance-route';
   static const String createStudyRequestRoute = 'create-study-form-route';
   static const String createCarPermissionRoute = 'create-car-permission-route';
+  static const String createComplaintRequestRoute = 'create-complaint-request-route';
 
   /// location & maps Screen
   static const String mapRoute = 'map-route';

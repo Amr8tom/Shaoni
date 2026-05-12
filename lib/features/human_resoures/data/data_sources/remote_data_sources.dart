@@ -5,7 +5,11 @@ import 'package:shaoni/features/human_resoures/data/model/attendance_record_mode
 import 'package:shaoni/features/human_resoures/data/model/car_permission/car_brand_model.dart';
 import 'package:shaoni/features/human_resoures/data/model/car_permission/car_color_model.dart';
 import 'package:shaoni/features/human_resoures/data/model/car_permission/create_car_permission_model.dart';
+import 'package:shaoni/features/human_resoures/data/model/complaint_request/complaint_reason_model.dart';
+import 'package:shaoni/features/human_resoures/data/model/complaint_request/complaint_type_model.dart';
+import 'package:shaoni/features/human_resoures/data/model/complaint_request/create_complaint_request_model.dart';
 import 'package:shaoni/features/human_resoures/domain/use_cases/attendance/create_attendance_use_case.dart';
+import 'package:shaoni/features/human_resoures/domain/use_cases/complaint_request/create_complaint_request_use_case.dart';
 
 import '../../../../core/constants/api_constants.dart';
 import '../../../../core/dio/dio_helper.dart';
@@ -53,6 +57,15 @@ abstract class HRServicesRemoteDataSources {
   Future<List<CarBrandModel>> getCarBrands({required NoParams params});
   Future<CreateCarPermissionModel> createCarPermission({
     required CreateCarPermissionParams params,
+  });
+
+  /// ============================= complaint request =============================
+  Future<List<ComplaintTypeModel>> getComplaintTypes({required NoParams params});
+
+  Future<List<ComplaintReasonModel>> getComplaintReasons({required NoParams params});
+
+  Future<CreateComplaintRequestModel> createComplaintRequest({
+    required CreateComplaintRequestParams params,
   });
 }
 
@@ -233,6 +246,52 @@ class HRServicesRemoteDataSourcesImp implements HRServicesRemoteDataSources {
       final response = await _dio.postData(URL: URL.createCarPermission, body: params.toMap());
       if (response != null) {
         return CreateCarPermissionModel.fromJson(response);
+      } else {
+        throw ServerFailure(message: 'server failure');
+      }
+    } on ServerFailure catch (e) {
+      throw ServerFailure(message: e.message);
+    }
+  }
+
+  /// ============================= complaint request =============================
+
+  @override
+  Future<List<ComplaintTypeModel>> getComplaintTypes({required NoParams params}) async {
+    try {
+      final response = await _dio.getData(URL: URL.getComplaintTypes);
+      if (response != null) {
+        final List data = response as List;
+        return data.map((e) => ComplaintTypeModel.fromJson(e)).toList();
+      } else {
+        throw ServerFailure(message: 'server failure');
+      }
+    } on ServerFailure catch (e) {
+      throw ServerFailure(message: e.message);
+    }
+  }
+
+  @override
+  Future<List<ComplaintReasonModel>> getComplaintReasons({required NoParams params}) async {
+    try {
+      final response = await _dio.getData(URL: URL.getComplaintReasons);
+      if (response != null) {
+        final List data = response as List;
+        return data.map((e) => ComplaintReasonModel.fromJson(e)).toList();
+      } else {
+        throw ServerFailure(message: 'server failure');
+      }
+    } on ServerFailure catch (e) {
+      throw ServerFailure(message: e.message);
+    }
+  }
+
+  @override
+  Future<CreateComplaintRequestModel> createComplaintRequest({required CreateComplaintRequestParams params}) async {
+    try {
+      final response = await _dio.postData(URL: URL.createComplaintRequest, body: params.toMap());
+      if (response != null) {
+        return CreateComplaintRequestModel.fromJson(response);
       } else {
         throw ServerFailure(message: 'server failure');
       }

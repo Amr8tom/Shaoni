@@ -6078,6 +6078,116 @@ class S {
   String get requestState {
     return Intl.message('Status', name: 'requestState', desc: '', args: []);
   }
+
+  /// `Complaint Request`
+  String get complaintRequest {
+    return Intl.message(
+      'Complaint Request',
+      name: 'complaintRequest',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Complaint Type`
+  String get complaintType {
+    return Intl.message(
+      'Complaint Type',
+      name: 'complaintType',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Select Complaint Type`
+  String get selectComplaintType {
+    return Intl.message(
+      'Select Complaint Type',
+      name: 'selectComplaintType',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Complaint Reason`
+  String get complaintReason {
+    return Intl.message(
+      'Complaint Reason',
+      name: 'complaintReason',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Select Complaint Reason`
+  String get selectComplaintReason {
+    return Intl.message(
+      'Select Complaint Reason',
+      name: 'selectComplaintReason',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Complaint Description`
+  String get complaintDescription {
+    return Intl.message(
+      'Complaint Description',
+      name: 'complaintDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Describe your complaint in detail...`
+  String get complaintDescriptionHint {
+    return Intl.message(
+      'Describe your complaint in detail...',
+      name: 'complaintDescriptionHint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Complaint Details`
+  String get complaintRequestDetails {
+    return Intl.message(
+      'Complaint Details',
+      name: 'complaintRequestDetails',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Complaint Type`
+  String get complaintTypeLabel {
+    return Intl.message(
+      'Complaint Type',
+      name: 'complaintTypeLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Complaint Reason`
+  String get complaintReasonLabel {
+    return Intl.message(
+      'Complaint Reason',
+      name: 'complaintReasonLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Description`
+  String get complaintDescriptionLabel {
+    return Intl.message(
+      'Description',
+      name: 'complaintDescriptionLabel',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

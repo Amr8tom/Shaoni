@@ -795,5 +795,17 @@
   "noAttendanceRecords": "No Attendance Records",
   "noAttendanceRecordsDesc": "Your attendance records will appear here once they are checked in",
   "attendanceWillAppearHere": "Your attendance records and check-in information will appear here",
-  "errorOccurred": "An error occurred"
+  "errorOccurred": "An error occurred",
+
+  "complaintRequest": "Complaint Request",
+  "complaintType": "Complaint Type",
+  "selectComplaintType": "Select Complaint Type",
+  "complaintReason": "Complaint Reason",
+  "selectComplaintReason": "Select Complaint Reason",
+  "complaintDescription": "Complaint Description",
+  "complaintDescriptionHint": "Describe your complaint in detail...",
+  "complaintRequestDetails": "Complaint Details",
+  "complaintTypeLabel": "Complaint Type",
+  "complaintReasonLabel": "Complaint Reason",
+  "complaintDescriptionLabel": "Description"
 }

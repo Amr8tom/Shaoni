@@ -801,5 +801,17 @@
   "noAttendanceRecords": "لا توجد سجلات حضور",
   "noAttendanceRecordsDesc": "ستظهر سجلات الحضور الخاصة بك هنا بمجرد تسجيل الدخول",
   "attendanceWillAppearHere": "ستظهر سجلات الحضور ومعلومات تسجيل الدخول الخاصة بك هنا",
-  "errorOccurred": "حدث خطأ ما"
+  "errorOccurred": "حدث خطأ ما",
+
+  "complaintRequest": "طلب شكوى",
+  "complaintType": "نوع الشكوى",
+  "selectComplaintType": "اختر نوع الشكوى",
+  "complaintReason": "سبب الشكوى",
+  "selectComplaintReason": "اختر سبب الشكوى",
+  "complaintDescription": "وصف الشكوى",
+  "complaintDescriptionHint": "اكتب تفاصيل شكواك هنا...",
+  "complaintRequestDetails": "تفاصيل الشكوى",
+  "complaintTypeLabel": "نوع الشكوى",
+  "complaintReasonLabel": "سبب الشكوى",
+  "complaintDescriptionLabel": "الوصف"
 }

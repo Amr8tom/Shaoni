@@ -1269,5 +1269,16 @@ class MessageLookup extends MessageLookupByLibrary {
     "writetitleHere": MessageLookupByLibrary.simpleMessage("write title here"),
     "yes": MessageLookupByLibrary.simpleMessage("Yes"),
     "youHave": MessageLookupByLibrary.simpleMessage("you have : "),
+    "complaintRequest": MessageLookupByLibrary.simpleMessage("Complaint Request"),
+    "complaintType": MessageLookupByLibrary.simpleMessage("Complaint Type"),
+    "selectComplaintType": MessageLookupByLibrary.simpleMessage("Select Complaint Type"),
+    "complaintReason": MessageLookupByLibrary.simpleMessage("Complaint Reason"),
+    "selectComplaintReason": MessageLookupByLibrary.simpleMessage("Select Complaint Reason"),
+    "complaintDescription": MessageLookupByLibrary.simpleMessage("Complaint Description"),
+    "complaintDescriptionHint": MessageLookupByLibrary.simpleMessage("Describe your complaint in detail..."),
+    "complaintRequestDetails": MessageLookupByLibrary.simpleMessage("Complaint Details"),
+    "complaintTypeLabel": MessageLookupByLibrary.simpleMessage("Complaint Type"),
+    "complaintReasonLabel": MessageLookupByLibrary.simpleMessage("Complaint Reason"),
+    "complaintDescriptionLabel": MessageLookupByLibrary.simpleMessage("Description"),
   };
 }

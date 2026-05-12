@@ -4,7 +4,11 @@ import 'package:shaoni/features/human_resoures/domain/use_cases/attendance/get_a
 import 'package:shaoni/features/human_resoures/domain/use_cases/attendance/get_forget_reason_use_case.dart';
 import 'package:shaoni/features/human_resoures/domain/use_cases/car_permission/get_car_brands_use_case.dart';
 import 'package:shaoni/features/human_resoures/domain/use_cases/car_permission/get_car_colors_use_case.dart';
+import 'package:shaoni/features/human_resoures/domain/use_cases/complaint_request/create_complaint_request_use_case.dart';
+import 'package:shaoni/features/human_resoures/domain/use_cases/complaint_request/get_complaint_reasons_use_case.dart';
+import 'package:shaoni/features/human_resoures/domain/use_cases/complaint_request/get_complaint_types_use_case.dart';
 import 'package:shaoni/features/human_resoures/presentation/controller/car_permission/car_permission_cubit.dart';
+import 'package:shaoni/features/human_resoures/presentation/controller/complaint_request/complaint_request_cubit.dart';
 import 'package:shaoni/features/human_resoures/presentation/controller/human_resources/human_resources_cubit.dart';
 import '../../features/human_resoures/data/data_sources/local_data_sources.dart';
 import '../../features/human_resoures/data/data_sources/remote_data_sources.dart';
@@ -78,6 +82,17 @@ class HRServiceLocator {
       () => CreateCarPermissionUseCase(serviceLocator()),
     );
 
+    /// ============================= complaint request =============================
+    serviceLocator.registerLazySingleton<GetComplaintTypesUseCase>(
+      () => GetComplaintTypesUseCase(serviceLocator()),
+    );
+    serviceLocator.registerLazySingleton<GetComplaintReasonsUseCase>(
+      () => GetComplaintReasonsUseCase(serviceLocator()),
+    );
+    serviceLocator.registerLazySingleton<CreateComplaintRequestUseCase>(
+      () => CreateComplaintRequestUseCase(serviceLocator()),
+    );
+
     /// register cubit
     serviceLocator.registerFactory<ExitRequestServiceCubit>(
       () => ExitRequestServiceCubit(
@@ -95,6 +110,10 @@ class HRServiceLocator {
     );
     serviceLocator.registerFactory<CarPermissionCubit>(
       () => CarPermissionCubit(
+          serviceLocator(), serviceLocator(), serviceLocator()),
+    );
+    serviceLocator.registerFactory<ComplaintRequestCubit>(
+      () => ComplaintRequestCubit(
           serviceLocator(), serviceLocator(), serviceLocator()),
     );
     serviceLocator.registerFactory<StudyCubit>(
