@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shaoni/common/custom_ui.dart';
 import 'package:shaoni/core/extentions/navigation_extension.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 import '../../../../../../core/constants/app_sizes.dart';
@@ -35,7 +36,8 @@ class AttendanceMissingItem extends StatelessWidget {
                     outMode: null))
             : state.records ?? [];
 
-        return Container(
+        return state.isEmpty ?CustomUI.noData():
+        Container(
           child: ListView.builder(
             physics: const AlwaysScrollableScrollPhysics(
               parent: BouncingScrollPhysics(),

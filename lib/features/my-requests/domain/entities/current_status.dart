@@ -4,9 +4,11 @@ class CurrentStatus extends Equatable{
   final String? nameAr;
   final String? nameEn;
   final String? colorHex;
+  final String? techName;
   const CurrentStatus({
     this.nameAr,
     this.nameEn,
+    this.techName,
     this.colorHex,
   });
 
@@ -15,6 +17,7 @@ class CurrentStatus extends Equatable{
     return CurrentStatus(
       nameAr: json['nameAr'],
       nameEn: json['nameEn'],
+      techName: json['techName'],
       colorHex: json['colorHex'],
     );
 
@@ -25,10 +28,11 @@ class CurrentStatus extends Equatable{
     return {
       'nameAr': nameAr,
       'nameEn': nameEn,
+      'techName': techName,
       'colorHex': colorHex,
     };
   }
 
   @override
-  List<Object?> get props => [nameAr, colorHex, nameEn];
+  List<Object?> get props => [nameAr, colorHex, nameEn, techName];
 }

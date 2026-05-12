@@ -123,9 +123,11 @@ class ExitRequestDetailsScreen extends StatelessWidget {
 
                         /// Floating blur buttons at the bottom
                         state.isCreateExitPermissionLoading
-                            ? CircularProgressIndicator(
-                                color: ColorRes.primary,
-                              )
+                            ? Center(
+                              child: CircularProgressIndicator(
+                                  color: ColorRes.primary,
+                                ),
+                            )
                             : CreateDeleteButtons(
                                 deleteTab: () {
                                   controller.deleteExitPermissionRequest();

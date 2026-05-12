@@ -64,7 +64,7 @@ class AttendanceCubit extends Cubit<AttendanceState> {
       (failure) => emit(state.copyWith(
           status: AttendanceStatus.error, errorMessage: failure.message)),
       (records) {
-        if (records.attendanceRecords.isEmpty) {
+        if (records.attendanceRecords.length==0) {
           emit(state.copyWith(status: AttendanceStatus.empty));
         } else {
           emit(state.copyWith(

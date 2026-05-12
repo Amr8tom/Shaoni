@@ -91,8 +91,17 @@ class UserRequestsGridView extends StatelessWidget {
                               'en_status':
                                   validRequests[index].currentStatus?.nameEn ??
                                       '',
-                              'status': S.current.localeee=='en'?validRequests[index].currentStatus?.nameEn ?? '':validRequests[index].currentStatus?.nameAr ?? '',
-
+                              'status': S.current.localeee == 'en'
+                                  ? validRequests[index]
+                                          .currentStatus
+                                          ?.nameEn ??
+                                      ''
+                                  : validRequests[index]
+                                          .currentStatus
+                                          ?.nameAr ??
+                                      '',
+                              'currentStatus':
+                                  validRequests[index].currentStatus,
                               'orderNumber': validRequests[index]
                                       .request
                                       ?.requestNumber

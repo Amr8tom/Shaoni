@@ -119,9 +119,11 @@ class CreateStudyRequestForm extends StatelessWidget {
 
                         /// Floating blur buttons at the bottom
                         state.isCreateStudyRequestLoading
-                            ? CircularProgressIndicator(
-                                color: ColorRes.primary,
-                              )
+                            ? Center(
+                              child: CircularProgressIndicator(
+                                  color: ColorRes.primary,
+                                ),
+                            )
                             : CreateDeleteButtons(
                                 deleteTab: () {
                                   controller.deleteStudyRequest();
