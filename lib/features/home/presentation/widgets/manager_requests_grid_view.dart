@@ -119,6 +119,7 @@ class ManagerRequestsGridView extends StatelessWidget {
                       validRequests[index].request?.id.toString() ?? '',
                   'isManager':
                       navController.state.user?.managerId == 0 ? true : false,
+                  'isEmployeeRequest':false,
                 });
               },
             );

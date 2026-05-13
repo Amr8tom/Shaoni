@@ -10,6 +10,7 @@ import '../../../../core/utils/helpers/date_converter.dart';
 import '../../../../core/constants/colors.dart';
 import '../../../../generated/l10n.dart';
 import '../../domain/enums_and_extentions/request_enums.dart';
+import '../helpers/get_request_details_widget.dart';
 import '../widgets/accept_request_button.dart';
 import '../widgets/update_request_button.dart';
 import '../widgets/car_permission_details_widget.dart';
@@ -67,28 +68,26 @@ class RequestDetailsScreen extends StatelessWidget {
                   const Sizer(height: 20),
 
                   /// request details
-                  serviceCode == "car.permission"
-                      ? const CarPermissionDetailsWidget()
-                      : serviceCode == "complaint.request"
-                          ? const ComplaintRequestDetailsWidget()
-                          : const ExitPermissionDetailsWidget(),
+                  GetRequestDetailsWidget(serviceCode: serviceCode),
 
                   const Sizer(height: 20),
                   if (currentStatus.getRequestStatusEnum ==
-                      RequestStatusEnum.newRequest)
+                      RequestStatusEnum.managerApproval)
                     isManager ? const CommentWritingWidget() : const Sizer(),
                   RequestStageCard(
                     status: currentStatus,
+                    serviceType: serviceCode,
                   ),
                   if (currentStatus.getRequestStatusEnum ==
-                      RequestStatusEnum.newRequest)
+                      RequestStatusEnum.managerApproval)
                     isManager
                         ? AcceptRequestButton(requestID: requestID)
                         : const Sizer(),
                   const Sizer(height: 20),
                   if (isEmployeeRequest)
-                    currentStatus.getRequestStatusEnum() ==
-                            RequestStatusEnum.newRequest
+                    currentStatus.getRequestStatusEnum(
+                                serviceType: serviceCode) ==
+                            RequestStatusEnum.managerApproval
                         ? UpdateRequestButton(
                             requestID: requestID,
                             serviceType: serviceCode,
