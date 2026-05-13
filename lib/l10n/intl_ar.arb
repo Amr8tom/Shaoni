@@ -813,5 +813,8 @@
   "complaintRequestDetails": "تفاصيل الشكوى",
   "complaintTypeLabel": "نوع الشكوى",
   "complaintReasonLabel": "سبب الشكوى",
-  "complaintDescriptionLabel": "الوصف"
+  "complaintDescriptionLabel": "الوصف",
+  "editRequest": "تعديل الطلب",
+  "requestUpdatedSuccessfully": "تم تعديل الطلب بنجاح",
+  "updateRequest": "تعديل الطلب"
 }

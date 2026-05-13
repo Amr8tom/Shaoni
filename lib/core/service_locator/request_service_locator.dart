@@ -16,7 +16,10 @@ import '../../features/human_resoures/data/repositories/repository.dart';
 import '../../features/human_resoures/domain/repository/repository.dart';
 import '../../features/human_resoures/domain/use_cases/attendance/create_attendance_use_case.dart';
 import '../../features/human_resoures/domain/use_cases/car_permission/create_car_permission_use_case.dart';
+import '../../features/human_resoures/domain/use_cases/car_permission/update_car_permission_use_case.dart';
+import '../../features/human_resoures/domain/use_cases/attendance/update_attendance_use_case.dart';
 import '../../features/human_resoures/domain/use_cases/exit/create_exit_permission_use_case.dart';
+import '../../features/human_resoures/domain/use_cases/exit/update_exit_permission_use_case.dart';
 import '../../features/human_resoures/domain/use_cases/get_all_permission_services_use_case.dart';
 import '../../features/human_resoures/domain/use_cases/exit/get_permission_time_use_case.dart';
 import '../../features/human_resoures/domain/use_cases/exit/get_permission_types_use_case.dart';
@@ -56,8 +59,14 @@ class HRServiceLocator {
     serviceLocator.registerLazySingleton<GetPermissionTypesUseCase>(
       () => GetPermissionTypesUseCase(serviceLocator()),
     );
+    serviceLocator.registerLazySingleton<UpdateExitPermissionUseCase>(
+      () => UpdateExitPermissionUseCase(serviceLocator()),
+    );
 
     /// ============================= attendance  =============================
+    serviceLocator.registerLazySingleton<UpdateAttendanceUseCase>(
+      () => UpdateAttendanceUseCase(serviceLocator()),
+    );
     serviceLocator.registerLazySingleton<GetAllMissingAttendanceUseCase>(
       () => GetAllMissingAttendanceUseCase(serviceLocator()),
     );
@@ -81,6 +90,9 @@ class HRServiceLocator {
     serviceLocator.registerLazySingleton<CreateCarPermissionUseCase>(
       () => CreateCarPermissionUseCase(serviceLocator()),
     );
+    serviceLocator.registerLazySingleton<UpdateCarPermissionUseCase>(
+      () => UpdateCarPermissionUseCase(serviceLocator()),
+    );
 
     /// ============================= complaint request =============================
     serviceLocator.registerLazySingleton<GetComplaintTypesUseCase>(
@@ -99,18 +111,19 @@ class HRServiceLocator {
         serviceLocator(),
         serviceLocator(),
         serviceLocator(),
+        serviceLocator(),
       ),
     );
     serviceLocator.registerFactory<AttendanceCubit>(
       () => AttendanceCubit(serviceLocator(), serviceLocator(),
-          serviceLocator(), serviceLocator()),
+          serviceLocator(), serviceLocator(), serviceLocator()),
     );
     serviceLocator.registerFactory<HumanResourcesCubit>(
       () => HumanResourcesCubit(serviceLocator()),
     );
     serviceLocator.registerFactory<CarPermissionCubit>(
       () => CarPermissionCubit(
-          serviceLocator(), serviceLocator(), serviceLocator()),
+          serviceLocator(), serviceLocator(), serviceLocator(), serviceLocator()),
     );
     serviceLocator.registerFactory<ComplaintRequestCubit>(
       () => ComplaintRequestCubit(

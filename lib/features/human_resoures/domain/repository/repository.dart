@@ -9,6 +9,7 @@ import 'package:shaoni/features/human_resoures/domain/entity/complaint_request/c
 import '../../../../core/utils/usecases/base_usecase.dart';
 import '../../data/model/attendance/attendance_model.dart';
 import '../../data/model/car_permission/create_car_permission_model.dart';
+import '../../data/model/car_permission/update_car_permission_model.dart';
 import '../../data/model/complaint_request/create_complaint_request_model.dart';
 import '../entity/all_attendance_record_model.dart';
 import '../entity/all_services.dart';
@@ -17,6 +18,11 @@ import '../entity/permission_time.dart';
 import '../entity/permission_type.dart';
 import '../use_cases/attendance/create_attendance_use_case.dart';
 import '../use_cases/car_permission/create_car_permission_use_case.dart';
+import '../use_cases/car_permission/update_car_permission_use_case.dart';
+import '../use_cases/attendance/update_attendance_use_case.dart';
+import '../entity/attendance/update_attendance.dart';
+import '../use_cases/exit/update_exit_permission_use_case.dart';
+import '../entity/exit_permission/update_exit_permission.dart';
 import '../use_cases/complaint_request/create_complaint_request_use_case.dart';
 import '../use_cases/exit/create_exit_permission_use_case.dart';
 import '../use_cases/attendance/get_all_missing_attendance_use_case.dart';
@@ -28,6 +34,10 @@ abstract class HRServicesRepository {
 
   Future<Either<Failure, ExitPermission>> createExitPermission({
     required CreateExitPermissionParams params,
+  });
+
+  Future<Either<Failure, UpdateExitPermission>> updateExitPermission({
+    required UpdateExitPermissionParams params,
   });
 
   Future<Either<Failure, List<PermissionType>>> getAllPermissionTypes({
@@ -42,6 +52,10 @@ abstract class HRServicesRepository {
       {required AllMissingAttendanceParams params});
   Future<Either<Failure, AttendanceModel>> createAttendance({
     required CreateAttendanceParams params,
+  });
+
+  Future<Either<Failure, UpdateAttendance>> updateAttendance({
+    required UpdateAttendanceParams params,
   });
   Future<Either<Failure, List<AttendanceLookup>>> getAttendanceLookup({
     required NoParams params,
@@ -59,6 +73,10 @@ abstract class HRServicesRepository {
   });
   Future<Either<Failure, CreateCarPermissionModel>> createCarPermission({
     required CreateCarPermissionParams params,
+  });
+
+  Future<Either<Failure, UpdateCarPermissionModel>> updateCarPermission({
+    required UpdateCarPermissionParams params,
   });
 
   /// ///////////////////////////////////// complaint request /////////////////////////////////////////////////////

@@ -42,6 +42,27 @@ extension ExitRequestStateExtension on ExitRequestServiceState {
 
   bool get isCreateExitPermissionSuccess =>
       status == RequestStatus.createExitPermissionSuccess;
+
+  bool get isUpdateExitPermissionLoading =>
+      status == RequestStatus.updateExitPermissionLoading;
+
+  bool get isUpdateExitPermissionError =>
+      status == RequestStatus.updateExitPermissionError;
+
+  bool get isUpdateExitPermissionSuccess =>
+      status == RequestStatus.updateExitPermissionSuccess;
+
+  bool get isSubmitting =>
+      status == RequestStatus.createExitPermissionLoading ||
+      status == RequestStatus.updateExitPermissionLoading;
+
+  bool get isSubmitSucceeded =>
+      status == RequestStatus.createExitPermissionSuccess ||
+      status == RequestStatus.updateExitPermissionSuccess;
+
+  bool get isSubmitFailed =>
+      status == RequestStatus.createExitPermissionError ||
+      status == RequestStatus.updateExitPermissionError;
 }
 
 enum RequestStatus {
@@ -61,6 +82,9 @@ enum RequestStatus {
   permissionTypesSuccess,
   createExitPermissionSuccess,
   createExitPermissionError,
+  updateExitPermissionLoading,
+  updateExitPermissionSuccess,
+  updateExitPermissionError,
   expanded,
 }
 

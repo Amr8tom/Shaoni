@@ -18,7 +18,11 @@ import '../widgets/general_request_templates/date_data_widget.dart';
 import 'widgets/request_data_widget.dart';
 
 class ExitRequestDetailsScreen extends StatelessWidget {
-  const ExitRequestDetailsScreen({super.key});
+  final int? requestId;
+
+  const ExitRequestDetailsScreen({super.key, this.requestId});
+
+  bool get _isEditMode => requestId != null;
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +32,9 @@ class ExitRequestDetailsScreen extends StatelessWidget {
         appBar: DAppBar(
           showMenu: false,
           showBackArrow: true,
-          title: S.current.exitPermissionRequest,
+          title: _isEditMode
+              ? S.current.editRequest
+              : S.current.exitPermissionRequest,
         ),
         backgroundColor: ColorRes.grey6,
         body: Builder(
@@ -37,7 +43,7 @@ class ExitRequestDetailsScreen extends StatelessWidget {
             return BlocConsumer<ExitRequestServiceCubit,
                 ExitRequestServiceState>(
               listener: (context, state) {
-                if (state.isCreateExitPermissionError) {
+                if (state.isSubmitFailed) {
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(
                       content: Text(state.errorMassage ?? "Error"),
@@ -46,12 +52,11 @@ class ExitRequestDetailsScreen extends StatelessWidget {
                   );
                 }
 
-                if (state.isCreateExitPermissionSuccess) {
+                if (state.isSubmitSucceeded) {
                   CustomDialogImgTitleDes(
                     button1: S.current.myOrders,
                     button2: S.current.home,
                     onTab2: () {
-                      /// navigation screen
                       context.pushNamedAndRemoveUntil(
                         DRoutesName.navigationMenuRoute,
                         predicate: (route) => false,
@@ -64,9 +69,12 @@ class ExitRequestDetailsScreen extends StatelessWidget {
                       );
                     },
                     context: context,
-                    title: S.current.requestSentSuccessfully,
-                    des: S.current.requestSentSuccessfully,
-                    // orderNumber: state.successPermission.,
+                    title: _isEditMode
+                        ? S.current.requestUpdatedSuccessfully
+                        : S.current.requestSentSuccessfully,
+                    des: _isEditMode
+                        ? S.current.requestUpdatedSuccessfully
+                        : S.current.requestSentSuccessfully,
                     imgPath: AssetRes.doubleCorrect,
                     isSvg: true,
                   );
@@ -122,12 +130,12 @@ class ExitRequestDetailsScreen extends StatelessWidget {
                         ),
 
                         /// Floating blur buttons at the bottom
-                        state.isCreateExitPermissionLoading
+                        state.isSubmitting
                             ? Center(
-                              child: CircularProgressIndicator(
+                                child: CircularProgressIndicator(
                                   color: ColorRes.primary,
                                 ),
-                            )
+                              )
                             : CreateDeleteButtons(
                                 deleteTab: () {
                                   controller.deleteExitPermissionRequest();
@@ -135,7 +143,12 @@ class ExitRequestDetailsScreen extends StatelessWidget {
                                 createTab: () {
                                   if (controller.requestFormKey.currentState!
                                       .validate()) {
-                                    controller.createExitPermissionRequest();
+                                    if (_isEditMode) {
+                                      controller.updateExitPermissionRequest(
+                                          requestId: requestId!);
+                                    } else {
+                                      controller.createExitPermissionRequest();
+                                    }
                                   }
                                 },
                               ),

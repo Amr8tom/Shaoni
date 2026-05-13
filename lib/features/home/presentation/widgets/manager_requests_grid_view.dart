@@ -22,7 +22,9 @@ class ManagerRequestsGridView extends StatelessWidget {
   Widget build(BuildContext context) {
     final controller = context.watch<MyRequestsCubit>();
     final navController = context.watch<NavigationCubit>();
-    final validRequests = controller.state.itemsManager.where((request) =>request.request?.requestNumber !=null).toList();
+    final validRequests = controller.state.itemsManager
+        .where((request) => request.request?.requestNumber != null)
+        .toList();
 
     ///
     controller.managerScrollController.addListener(() {
@@ -59,59 +61,62 @@ class ManagerRequestsGridView extends StatelessWidget {
           itemCount: validRequests.length,
           itemBuilder: (context, index) {
             return RequestCard(
-
-              status: S.current.localeee=='en'?validRequests[index].currentStatus?.nameEn ?? '':validRequests[index].currentStatus?.nameAr ?? '',
-
-              statusColor:
-                 validRequests[index].request?.odooStatus ==
-                          "new"
-                      ? ColorRes.staticBlueColor
-                      : ColorRes.staticGreenColor,
-              orderNumber:validRequests[index].request?.requestNumber ??
-                  '',
-              date:validRequests[index].request?.createdAt
-                      ?.substring(0, 10) ??
+              status: S.current.localeee == 'en'
+                  ? validRequests[index].currentStatus?.nameEn ?? ''
+                  : validRequests[index].currentStatus?.nameAr ?? '',
+              statusColor: validRequests[index].request?.odooStatus == "new"
+                  ? ColorRes.staticBlueColor
+                  : ColorRes.staticGreenColor,
+              orderNumber: validRequests[index].request?.requestNumber ?? '',
+              date: validRequests[index].request?.createdAt?.substring(0, 10) ??
                   '',
               type: S.current.localeee == "en"
                   ? controller.state.itemsManager![index].service?.nameEn
-                  :validRequests[index].service?.nameAr ?? '',
-              applicantName:
-                 validRequests[index].requesterFullName ?? '',
+                  : validRequests[index].service?.nameAr ?? '',
+              applicantName: validRequests[index].requesterFullName ?? '',
               onTap: () {
                 context.pushNamed(DRoutesName.requestDetailsRoute, arguments: {
-                  'status': S.current.localeee=='en'?validRequests[index].currentStatus?.nameEn ?? '':validRequests[index].currentStatus?.nameAr ?? '',
-
-                  'id':validRequests[index].request?.id ??
-                      '',
-                  'en_status':
-                  validRequests[index].currentStatus?.nameEn ??
-                      '',
-                  'orderNumber': validRequests[index].request?.requestNumber
-                          .toString() ??
-                      '',
-                  'date': validRequests[index].request?.createdAt
+                  'status': S.current.localeee == 'en'
+                      ? validRequests[index].currentStatus?.nameEn ?? ''
+                      : validRequests[index].currentStatus?.nameAr ?? '',
+                  'id': validRequests[index].request?.id ?? '',
+                  'en_status': validRequests[index].currentStatus?.nameEn ?? '',
+                  "currentStatus": validRequests[index].currentStatus,
+                  'orderNumber':
+                      validRequests[index].request?.requestNumber.toString() ??
+                          '',
+                  'date': validRequests[index]
+                          .request
+                          ?.createdAt
                           ?.substring(0, 10) ??
                       '',
-                  'permissionType':validRequests[index]
-                      .extraData?.exitPermission?.permissionType
+                  'permissionType': validRequests[index]
+                      .extraData
+                      ?.exitPermission
+                      ?.permissionType
                       .toString(),
                   'serviceType': S.current.localeee == "en"
                       ? controller.state.itemsManager![index].service?.nameEn
-                      :validRequests[index].service?.nameAr ??
-                          '',
-                  'numberOfHours':validRequests[index]
-                      .extraData?.exitPermission?.numberOfHours
+                      : validRequests[index].service?.nameAr ?? '',
+                  'serviceCode': validRequests[index].service?.code ?? '',
+                  'numberOfHours': validRequests[index]
+                      .extraData
+                      ?.exitPermission
+                      ?.numberOfHours
                       .toString(),
-                  'permissionDate':validRequests[index]
-                          .extraData?.exitPermission?.exitDate
+                  'permissionDate': validRequests[index]
+                          .extraData
+                          ?.exitPermission
+                          ?.exitDate
                           ?.substring(0, 10) ??
                       '',
-                  'leavesAttachment':validRequests[index]
-                          .extraData?.exitPermission?.leavesAttachment ??
+                  'leavesAttachment': validRequests[index]
+                          .extraData
+                          ?.exitPermission
+                          ?.leavesAttachment ??
                       S.current.noData,
-                  'requestID':validRequests[index].request?.id
-                          .toString() ??
-                      '',
+                  'requestID':
+                      validRequests[index].request?.id.toString() ?? '',
                   'isManager':
                       navController.state.user?.managerId == 0 ? true : false,
                 });
@@ -122,5 +127,4 @@ class ManagerRequestsGridView extends StatelessWidget {
       ),
     );
   }
-
 }

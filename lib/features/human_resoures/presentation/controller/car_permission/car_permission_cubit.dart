@@ -11,6 +11,7 @@ import '../../../domain/entity/car_permission/car_color.dart';
 import '../../../domain/use_cases/car_permission/create_car_permission_use_case.dart';
 import '../../../domain/use_cases/car_permission/get_car_brands_use_case.dart';
 import '../../../domain/use_cases/car_permission/get_car_colors_use_case.dart';
+import '../../../domain/use_cases/car_permission/update_car_permission_use_case.dart';
 
 part 'car_permission_state.dart';
 
@@ -18,6 +19,7 @@ class CarPermissionCubit extends Cubit<CarPermissionState> {
   final GetCarColorsUseCase _getCarColorsUseCase;
   final GetCarBrandsUseCase _getCarBrandsUseCase;
   final CreateCarPermissionUseCase _createCarPermissionUseCase;
+  final UpdateCarPermissionUseCase _updateCarPermissionUseCase;
 
   /// Form key
   final requestFormKey = GlobalKey<FormState>();
@@ -34,10 +36,10 @@ class CarPermissionCubit extends Cubit<CarPermissionState> {
   final carColorController = TextEditingController();
   final carNumberController = TextEditingController();
 
-  /// Notes / extra justification (kept for parity with the other forms).
+  /// Notes / extra justification.
   final notesController = TextEditingController();
 
-  /// ============== attachment controllers (same as Study) ==============
+  /// ============== attachment controllers ==============
   final attachmentFileController = TextEditingController();
   final attachmentFileNameController = TextEditingController();
 
@@ -45,8 +47,8 @@ class CarPermissionCubit extends Cubit<CarPermissionState> {
   List<DropdownMenuItem<String>> carBrandItems = [];
   List<DropdownMenuItem<String>> carColorItems = [];
 
-  /// Raw lookup lists (kept around so we can resolve a selected name back
-  /// to its `id` when sending the create request to the API).
+  /// Raw lookup lists (kept so we can resolve a selected name back to its
+  /// `id` when sending the create/update request to the API).
   List<CarBrand> _brands = [];
   List<CarColor> _colors = [];
 
@@ -54,6 +56,7 @@ class CarPermissionCubit extends Cubit<CarPermissionState> {
     this._getCarColorsUseCase,
     this._getCarBrandsUseCase,
     this._createCarPermissionUseCase,
+    this._updateCarPermissionUseCase,
   ) : super(const CarPermissionState()) {
     getCarBrands();
     getCarColors();
@@ -112,7 +115,7 @@ class CarPermissionCubit extends Cubit<CarPermissionState> {
   }
 
   // -----------------------------------------------------------------
-  // Helpers used by the screen on submit (resolve name → id for the API)
+  // Helpers — resolve selected display name back to its API id
   // -----------------------------------------------------------------
 
   int? get selectedBrandId {
@@ -132,16 +135,11 @@ class CarPermissionCubit extends Cubit<CarPermissionState> {
   }
 
   // -----------------------------------------------------------------
-  // Submit / reset
+  // Create
   // -----------------------------------------------------------------
 
-  /// Placeholder until the create-car-permission use case + endpoint
-  /// payload are agreed with the backend. The shape mirrors the create
-  /// attendance flow (loading → loaded / error).
   Future<void> createCarPermissionRequest() async {
-    emit(state.copyWith(
-      status: CarPermissionStatus.createRequestLoading,
-    ));
+    emit(state.copyWith(status: CarPermissionStatus.createRequestLoading));
     todayDateController.text = DateTime.now().toString().split(' ').first;
     final result = await _createCarPermissionUseCase.call(
       params: CreateCarPermissionParams(
@@ -178,7 +176,53 @@ class CarPermissionCubit extends Cubit<CarPermissionState> {
     );
   }
 
-  /// Clears every controller — bound to the "delete" floating button.
+  // -----------------------------------------------------------------
+  // Update  (PUT /CarPermission/update/{requestId})
+  // -----------------------------------------------------------------
+
+  Future<void> updateCarPermissionRequest({required int requestId}) async {
+    emit(state.copyWith(status: CarPermissionStatus.updateRequestLoading));
+    todayDateController.text = DateTime.now().toString().split(' ').first;
+    final result = await _updateCarPermissionUseCase.call(
+      params: UpdateCarPermissionParams(
+        requestId: requestId,
+        employeeId:
+            int.parse(CacheHelper.getString(key: CacheKeys.employeeId) ?? "1"),
+        carBrandId: selectedBrandId,
+        carColorId: selectedColorId,
+        officeId: officeIdController.text.isEmpty
+            ? 0
+            : int.tryParse(officeIdController.text),
+        carNumber:
+            carNumberController.text.isEmpty ? null : carNumberController.text,
+        date:
+            todayDateController.text.isEmpty ? null : todayDateController.text,
+        note: notesController.text.isEmpty ? "" : notesController.text,
+        attachments: attachmentFileController.text.isEmpty
+            ? ""
+            : attachmentFileController.text,
+        attachmentsName: attachmentFileNameController.text.isEmpty
+            ? ""
+            : attachmentFileNameController.text,
+      ),
+    );
+    result.fold(
+      (failure) => emit(state.copyWith(
+        status: CarPermissionStatus.updateRequestError,
+        errorMessage: failure.message,
+      )),
+      (response) => emit(state.copyWith(
+        status: CarPermissionStatus.updateRequestLoaded,
+        successMessage: response.message,
+        requestNumber: response.requestId.toString(),
+      )),
+    );
+  }
+
+  // -----------------------------------------------------------------
+  // Reset
+  // -----------------------------------------------------------------
+
   void deleteCarPermissionRequest() {
     todayDateController.clear();
     hijriDateController.clear();

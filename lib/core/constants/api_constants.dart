@@ -14,11 +14,13 @@ class URL {
   /// human resources
   static const String getAllServices = '$baseUrl/Service/get-all-services';
   static const String exitPermission = '$baseUrl/HrExitPermission/exit';
+  static const String updateExitPermission = '$baseUrl/HrExitPermission/update/';
   static const String getPermissionTypes = '$baseUrl/Integration/get-permission-types';
   static const String getPermissionTime = '$baseUrl/Lookup/GetPermissionTime';
   /// ============================ attendance  ============================
   static const String getAttendanceRecord = '$baseUrl/Attendance/missing/paged/by-user';
   static const String createAttendanceRequest = '$baseUrl/Attendance/create';
+  static const String updateAttendanceRequest = '$baseUrl/Attendance/update/';
   static const String getAttendanceLookUp = '$baseUrl/Lookup/GetAttendanceLookup';
   static const String getAttendanceForgetReason = '$baseUrl/Lookup/GetForgetReasons';
 
@@ -26,6 +28,7 @@ class URL {
   static const String getCarColors = '$baseUrl/Lookup/GetCarColors';
   static const String getCarBrands = '$baseUrl/Lookup/GetCarBrands';
   static const String createCarPermission = '$baseUrl/CarPermission';
+  static const String updateCarPermission = '$baseUrl/CarPermission/update/';
 
   /// ============================ complaint request ============================
   static const String getComplaintTypes = '$baseUrl/Lookup/GetComplaintTypes';

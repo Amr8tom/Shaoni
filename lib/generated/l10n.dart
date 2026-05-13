@@ -6188,6 +6188,26 @@ class S {
       args: [],
     );
   }
+
+  /// `Edit Request`
+  String get editRequest {
+    return Intl.message('Edit Request', name: 'editRequest', desc: '', args: []);
+  }
+
+  /// `Request Updated Successfully`
+  String get requestUpdatedSuccessfully {
+    return Intl.message(
+      'Request Updated Successfully',
+      name: 'requestUpdatedSuccessfully',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Update Request`
+  String get updateRequest {
+    return Intl.message('Update Request', name: 'updateRequest', desc: '', args: []);
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

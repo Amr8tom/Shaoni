@@ -6,6 +6,7 @@ import 'package:shaoni/features/human_resoures/domain/use_cases/attendance/creat
 import 'package:shaoni/features/human_resoures/domain/use_cases/attendance/get_all_missing_attendance_use_case.dart';
 import 'package:shaoni/features/human_resoures/domain/use_cases/attendance/get_attendance_lookup_use_case.dart';
 import 'package:shaoni/features/human_resoures/domain/use_cases/attendance/get_forget_reason_use_case.dart';
+import 'package:shaoni/features/human_resoures/domain/use_cases/attendance/update_attendance_use_case.dart';
 import '../../../../../core/local_storage/cache_helper.dart';
 import '../../../../../core/local_storage/cache_keys.dart';
 import '../../../../../core/utils/usecases/base_usecase.dart';
@@ -19,6 +20,7 @@ class AttendanceCubit extends Cubit<AttendanceState> {
   final CreateAttendanceUseCase _createAttendanceUseCase;
   final GetAttendanceLookupUseCase _getAttendanceLookupUseCase;
   final GetForgetReasonUseCase _getForgetReasonUseCase;
+  final UpdateAttendanceUseCase _updateAttendanceUseCase;
   final requestFormKey = GlobalKey<FormState>();
   final todayDateController = TextEditingController();
 
@@ -44,7 +46,8 @@ class AttendanceCubit extends Cubit<AttendanceState> {
       this._getAllMissingAttendanceUseCase,
       this._createAttendanceUseCase,
       this._getAttendanceLookupUseCase,
-      this._getForgetReasonUseCase)
+      this._getForgetReasonUseCase,
+      this._updateAttendanceUseCase)
       : super(const AttendanceState()) {
     getAttendanceRecords();
     // getAttendanceLookup();
@@ -175,6 +178,43 @@ class AttendanceCubit extends Cubit<AttendanceState> {
           status: AttendanceStatus.createAttendanceRequestLoaded,
           successMessage: success.message,
           requestNumber: success.requestNumber)),
+    );
+  }
+
+  /// update attendance request
+  Future<void> updateAttendanceRequest({required int requestId}) async {
+    emit(state.copyWith(status: AttendanceStatus.updateAttendanceRequestLoading));
+    final result = await _updateAttendanceUseCase.call(
+      params: UpdateAttendanceParams(
+        requestId: requestId,
+        employee: int.parse(
+            CacheHelper.getString(key: CacheKeys.employeeId) ?? "1"),
+        officeId: officeIDController.text.isEmpty
+            ? 0
+            : int.parse(officeIDController.text),
+        attendanceType: attendanceTypeController.text == S.current.checkedIn
+            ? "check_in"
+            : "check_out",
+        updateDate:
+            '${attendanceDateController.text} ${attendanceTimeController.text}',
+        date: attendanceDateController.text,
+        attendanceId: state.records.isNotEmpty
+            ? (int.tryParse(state.records.first.odooId) ?? 0)
+            : 0,
+        orderReason: orderReasonController.text,
+        forgetReasonsIds: forgetReasonItems.indexWhere(
+                (item) => item.value == forgetReasonController.text) +
+            1,
+        attachmentName: attachmentFileNameController.text,
+        attachment: attachmentFileController.text,
+      ),
+    );
+    result.fold(
+      (failure) => emit(state.copyWith(
+          status: AttendanceStatus.updateAttendanceRequestError,
+          errorMessage: failure.message)),
+      (success) => emit(state.copyWith(
+          status: AttendanceStatus.updateAttendanceRequestLoaded)),
     );
   }
 

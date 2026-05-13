@@ -83,10 +83,12 @@ class RouteGenerator {
           type: PageTransitionType.rightToLeft,
           settings: settings,
         );
-      ///  request create details screen
+      ///  request create details screen (create or edit)
       case DRoutesName.requestCreateDetails:
+        final args = settings.arguments as Map<String, dynamic>?;
+        final int? requestId = args?['requestId'] as int?;
         return PageTransition(
-          child: const ExitRequestDetailsScreen(),
+          child: ExitRequestDetailsScreen(requestId: requestId),
           type: PageTransitionType.rightToLeft,
           settings: settings,
         );
@@ -98,10 +100,12 @@ class RouteGenerator {
           settings: settings,
         );
 
-     /// create car permission request screen
+     /// create / edit car permission request screen
       case DRoutesName.createCarPermissionRoute:
+        final args = settings.arguments as Map<String, dynamic>?;
+        final int? requestId = args?['requestId'] as int?;
         return PageTransition(
-          child: const CreateCarPermissionScreen(),
+          child: CreateCarPermissionScreen(requestId: requestId),
           type: PageTransitionType.rightToLeft,
           settings: settings,
         );
@@ -346,12 +350,15 @@ class RouteGenerator {
           type: PageTransitionType.rightToLeft,
           settings: settings,
         );
-  /// create attendance Route
+  /// create / edit attendance Route
       case DRoutesName.createAttendanceRoute:
         final Map<String, dynamic> args =
-        settings.arguments as Map<String, dynamic>;
+            settings.arguments as Map<String, dynamic>;
         return PageTransition(
-          child:  CreateAttendanceRequestForm(attendanceID: args['attendanceID']),
+          child: CreateAttendanceRequestForm(
+            attendanceID: args['attendanceID'] ?? '',
+            requestId: args['requestId'] as int?,
+          ),
           type: PageTransitionType.rightToLeft,
           settings: settings,
         );

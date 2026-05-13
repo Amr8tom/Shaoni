@@ -5,10 +5,16 @@ import 'package:shaoni/features/human_resoures/data/model/attendance_record_mode
 import 'package:shaoni/features/human_resoures/data/model/car_permission/car_brand_model.dart';
 import 'package:shaoni/features/human_resoures/data/model/car_permission/car_color_model.dart';
 import 'package:shaoni/features/human_resoures/data/model/car_permission/create_car_permission_model.dart';
+import 'package:shaoni/features/human_resoures/data/model/car_permission/update_car_permission_model.dart';
 import 'package:shaoni/features/human_resoures/data/model/complaint_request/complaint_reason_model.dart';
 import 'package:shaoni/features/human_resoures/data/model/complaint_request/complaint_type_model.dart';
 import 'package:shaoni/features/human_resoures/data/model/complaint_request/create_complaint_request_model.dart';
 import 'package:shaoni/features/human_resoures/domain/use_cases/attendance/create_attendance_use_case.dart';
+import 'package:shaoni/features/human_resoures/data/model/attendance/update_attendance_model.dart';
+import 'package:shaoni/features/human_resoures/data/model/exit_permission/update_exit_permission_model.dart';
+import 'package:shaoni/features/human_resoures/domain/use_cases/car_permission/update_car_permission_use_case.dart';
+import 'package:shaoni/features/human_resoures/domain/use_cases/attendance/update_attendance_use_case.dart';
+import 'package:shaoni/features/human_resoures/domain/use_cases/exit/update_exit_permission_use_case.dart';
 import 'package:shaoni/features/human_resoures/domain/use_cases/complaint_request/create_complaint_request_use_case.dart';
 
 import '../../../../core/constants/api_constants.dart';
@@ -33,6 +39,10 @@ abstract class HRServicesRemoteDataSources {
     CreateExitPermissionParams params,
   );
 
+  Future<UpdateExitPermissionModel> updateExitPermission({
+    required UpdateExitPermissionParams params,
+  });
+
   Future<List<PermissionTypeModel>> getAllPermissionTypes();
 
   Future<List<PermissionTimeModel>> getAllPermissionTimes();
@@ -42,6 +52,10 @@ abstract class HRServicesRemoteDataSources {
       {required AllMissingAttendanceParams params});
 
   Future<AttendanceModel> createAttendance({required CreateAttendanceParams params});
+
+  Future<UpdateAttendanceModel> updateAttendance({
+    required UpdateAttendanceParams params,
+  });
 
   Future<List<AttendanceLookUpModel>> getAttendanceLookup({
     required NoParams params,
@@ -57,6 +71,10 @@ abstract class HRServicesRemoteDataSources {
   Future<List<CarBrandModel>> getCarBrands({required NoParams params});
   Future<CreateCarPermissionModel> createCarPermission({
     required CreateCarPermissionParams params,
+  });
+
+  Future<UpdateCarPermissionModel> updateCarPermission({
+    required UpdateCarPermissionParams params,
   });
 
   /// ============================= complaint request =============================
@@ -104,6 +122,26 @@ class HRServicesRemoteDataSourcesImp implements HRServicesRemoteDataSources {
       }
     } on ServerFailure {
       rethrow;
+    }
+  }
+
+  @override
+  Future<UpdateExitPermissionModel> updateExitPermission({
+    required UpdateExitPermissionParams params,
+  }) async {
+    try {
+      final response = await _dio.putData(
+        URL: '${URL.updateExitPermission}${params.requestId}',
+        body: params.toMap(),
+      );
+      if (response.statusCode == 200 || response.statusCode == 201) {
+        return UpdateExitPermissionModel.fromJson(
+            response.data as Map<String, dynamic>);
+      } else {
+        throw ServerFailure(message: 'server failure');
+      }
+    } on ServerFailure catch (e) {
+      throw ServerFailure(message: e.message);
     }
   }
 
@@ -166,6 +204,26 @@ class HRServicesRemoteDataSourcesImp implements HRServicesRemoteDataSources {
       if (response != null) {
         /// Extract the data field from the response Map
         return AttendanceModel.fromJson(response);
+      } else {
+        throw ServerFailure(message: 'server failure');
+      }
+    } on ServerFailure catch (e) {
+      throw ServerFailure(message: e.message);
+    }
+  }
+
+  @override
+  Future<UpdateAttendanceModel> updateAttendance({
+    required UpdateAttendanceParams params,
+  }) async {
+    try {
+      final response = await _dio.putData(
+        URL: '${URL.updateAttendanceRequest}${params.requestId}',
+        body: params.toMap(),
+      );
+      if (response.statusCode == 200 || response.statusCode == 201) {
+        return UpdateAttendanceModel.fromJson(
+            response.data as Map<String, dynamic>);
       } else {
         throw ServerFailure(message: 'server failure');
       }
@@ -246,6 +304,23 @@ class HRServicesRemoteDataSourcesImp implements HRServicesRemoteDataSources {
       final response = await _dio.postData(URL: URL.createCarPermission, body: params.toMap());
       if (response != null) {
         return CreateCarPermissionModel.fromJson(response);
+      } else {
+        throw ServerFailure(message: 'server failure');
+      }
+    } on ServerFailure catch (e) {
+      throw ServerFailure(message: e.message);
+    }
+  }
+
+  @override
+  Future<UpdateCarPermissionModel> updateCarPermission({required UpdateCarPermissionParams params}) async {
+    try {
+      final response = await _dio.putData(
+        URL: '${URL.updateCarPermission}${params.requestId}',
+        body: params.toMap(),
+      );
+      if (response.statusCode == 200 || response.statusCode == 201) {
+        return UpdateCarPermissionModel.fromJson(response.data as Map<String, dynamic>);
       } else {
         throw ServerFailure(message: 'server failure');
       }

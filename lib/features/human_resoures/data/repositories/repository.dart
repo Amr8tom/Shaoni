@@ -12,7 +12,13 @@ import 'package:shaoni/features/human_resoures/domain/entity/exit_permisstion.da
 import 'package:shaoni/features/human_resoures/domain/use_cases/attendance/create_attendance_use_case.dart';
 import 'package:shaoni/features/human_resoures/domain/use_cases/attendance/get_all_missing_attendance_use_case.dart';
 import 'package:shaoni/features/human_resoures/domain/use_cases/car_permission/create_car_permission_use_case.dart';
+import 'package:shaoni/features/human_resoures/domain/use_cases/car_permission/update_car_permission_use_case.dart';
+import 'package:shaoni/features/human_resoures/domain/use_cases/attendance/update_attendance_use_case.dart';
+import 'package:shaoni/features/human_resoures/domain/entity/attendance/update_attendance.dart';
+import 'package:shaoni/features/human_resoures/domain/use_cases/exit/update_exit_permission_use_case.dart';
+import 'package:shaoni/features/human_resoures/domain/entity/exit_permission/update_exit_permission.dart';
 import 'package:shaoni/features/human_resoures/domain/use_cases/complaint_request/create_complaint_request_use_case.dart';
+import '../model/car_permission/update_car_permission_model.dart';
 import '../model/complaint_request/create_complaint_request_model.dart';
 import '../../../../core/connection/checkNetwork.dart';
 import '../../domain/entity/all_attendance_record_model.dart';
@@ -185,6 +191,38 @@ class HRServicesRepositoryImp extends HRServicesRepository {
     }
   }
 
+  @override
+  Future<Either<Failure, UpdateAttendance>> updateAttendance({
+    required UpdateAttendanceParams params,
+  }) async {
+    if (await _networkInfo.isConnected) {
+      try {
+        final response = await _remote.updateAttendance(params: params);
+        return Right(response);
+      } on ServerFailure catch (e) {
+        return Left(ServerFailure(message: e.message));
+      }
+    } else {
+      return Left(CacheFailure());
+    }
+  }
+
+  @override
+  Future<Either<Failure, UpdateExitPermission>> updateExitPermission({
+    required UpdateExitPermissionParams params,
+  }) async {
+    if (await _networkInfo.isConnected) {
+      try {
+        final response = await _remote.updateExitPermission(params: params);
+        return Right(response);
+      } on ServerFailure catch (e) {
+        return Left(ServerFailure(message: e.message));
+      }
+    } else {
+      return Left(CacheFailure());
+    }
+  }
+
   /// ===================== car permission =====================
 
   @override
@@ -270,6 +308,21 @@ class HRServicesRepositoryImp extends HRServicesRepository {
     if (await _networkInfo.isConnected) {
       try {
         final response = await _remote.createComplaintRequest(params: params);
+        return Right(response);
+      } on ServerFailure catch (e) {
+        return Left(ServerFailure(message: e.message));
+      }
+    } else {
+      return Left(CacheFailure());
+    }
+  }
+
+  @override
+  Future<Either<Failure, UpdateCarPermissionModel>> updateCarPermission(
+      {required UpdateCarPermissionParams params}) async {
+    if (await _networkInfo.isConnected) {
+      try {
+        final response = await _remote.updateCarPermission(params: params);
         return Right(response);
       } on ServerFailure catch (e) {
         return Left(ServerFailure(message: e.message));

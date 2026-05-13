@@ -17,40 +17,48 @@ import '../widgets/general_request_templates/create_delete_buttons.dart';
 import '../widgets/general_request_templates/date_data_widget.dart';
 import '../widgets/general_request_templates/file_upload_widget.dart';
 
-
-
 class CreateCarPermissionScreen extends StatelessWidget {
-  const CreateCarPermissionScreen({super.key});
+  /// When [requestId] is provided the screen runs in **edit mode** and calls
+  /// PUT /CarPermission/update/{requestId} instead of the create endpoint.
+  final int? requestId;
+
+  const CreateCarPermissionScreen({super.key, this.requestId});
+
+  bool get _isEditMode => requestId != null;
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (_) => serviceLocator<CarPermissionCubit>(),
       child: Scaffold(
         appBar: DAppBar(
-          title: S.current.carPermitRequest,
+          title: _isEditMode
+              ? S.current.editRequest
+              : S.current.carPermitRequest,
           showMenu: false,
           showBackArrow: true,
         ),
-        // extendBodyBehindAppBar: true,
         backgroundColor: ColorRes.grey6,
         body: Builder(
           builder: (context) {
             final controller = context.read<CarPermissionCubit>();
             return BlocConsumer<CarPermissionCubit, CarPermissionState>(
               listener: (context, state) {
+                // ── Errors ──────────────────────────────────────────────────
                 if (state.isError ||
                     state.isCreateRequestError ||
+                    state.isUpdateRequestError ||
                     state.isBrandsError ||
                     state.isColorsError) {
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(
                       content: Text(state.errorMessage ?? S.current.error),
                       backgroundColor: ColorRes.error.withOpacity(0.5),
-
                     ),
                   );
                 }
 
+                // ── Create success ───────────────────────────────────────────
                 if (state.isCreateRequestLoaded) {
                   CustomDialogImgTitleDes(
                     button1: S.current.myOrders,
@@ -71,6 +79,28 @@ class CreateCarPermissionScreen extends StatelessWidget {
                     isSvg: true,
                   );
                 }
+
+                // ── Update success ───────────────────────────────────────────
+                if (state.isUpdateRequestLoaded) {
+                  CustomDialogImgTitleDes(
+                    button1: S.current.myOrders,
+                    button2: S.current.home,
+                    orderNumber: state.requestNumber ?? '',
+                    onTab2: () => context.pushNamedAndRemoveUntil(
+                      DRoutesName.navigationMenuRoute,
+                      predicate: (route) => false,
+                    ),
+                    onTab1: () => context.pushNamedAndRemoveUntil(
+                      DRoutesName.navigationMenuRoute,
+                      predicate: (route) => false,
+                    ),
+                    context: context,
+                    title: S.current.requestUpdatedSuccessfully,
+                    des: S.current.requestUpdatedSuccessfully,
+                    imgPath: AssetRes.doubleCorrect,
+                    isSvg: true,
+                  );
+                }
               },
               builder: (context, state) {
                 return Form(
@@ -87,14 +117,17 @@ class CreateCarPermissionScreen extends StatelessWidget {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-
                               /// Date — gregorian + hijri
                               const DateDataWidget(),
                               const Sizer(height: 35),
 
                               /// Applicant data — name / unit / location
-                               ApplicantDataWidget(onOfficeChanged: (id,officeName){
-                                  controller.officeIdController.text = id.toString();},),
+                              ApplicantDataWidget(
+                                onOfficeChanged: (id, officeName) {
+                                  controller.officeIdController.text =
+                                      id.toString();
+                                },
+                              ),
                               const Sizer(height: 35),
 
                               /// Request details title
@@ -113,8 +146,7 @@ class CreateCarPermissionScreen extends StatelessWidget {
                               /// File upload — base64 saved to the cubit
                               FileUploadWidget(
                                 onPickedFile: (fileName, base64String) {
-                                  controller
-                                      .attachmentFileNameController
+                                  controller.attachmentFileNameController
                                       .text = fileName ?? '';
                                   controller.attachmentFileController.text =
                                       base64String ?? '';
@@ -128,8 +160,8 @@ class CreateCarPermissionScreen extends StatelessWidget {
                           ),
                         ),
 
-                        /// Floating create / delete buttons
-                        state.isCreateRequestLoading
+                        /// Floating create / update / delete buttons
+                        state.isSubmitting
                             ? Center(
                                 child: CircularProgressIndicator(
                                   color: ColorRes.primary,
@@ -139,10 +171,15 @@ class CreateCarPermissionScreen extends StatelessWidget {
                                 deleteTab: () =>
                                     controller.deleteCarPermissionRequest(),
                                 createTab: () {
-                                  if (controller.requestFormKey
-                                      .currentState!
+                                  if (controller.requestFormKey.currentState!
                                       .validate()) {
-                                    controller.createCarPermissionRequest();
+                                    if (_isEditMode) {
+                                      controller
+                                          .updateCarPermissionRequest(
+                                              requestId: requestId!);
+                                    } else {
+                                      controller.createCarPermissionRequest();
+                                    }
                                   }
                                 },
                               ),

@@ -13,6 +13,7 @@ import '../../../domain/entity/request_services_Entity.dart';
 import '../../../domain/use_cases/exit/create_exit_permission_use_case.dart';
 import '../../../domain/use_cases/exit/get_permission_time_use_case.dart';
 import '../../../domain/use_cases/exit/get_permission_types_use_case.dart';
+import '../../../domain/use_cases/exit/update_exit_permission_use_case.dart';
 
 part 'exit_request_service_state.dart';
 
@@ -20,6 +21,7 @@ class ExitRequestServiceCubit extends Cubit<ExitRequestServiceState> {
   final GetPermissionTimeUseCase _getPermissionTimeUseCase;
   final GetPermissionTypesUseCase _getPermissionTypeUseCase;
   final CreateExitPermissionUseCase _createExitPermissionUseCase;
+  final UpdateExitPermissionUseCase _updateExitPermissionUseCase;
   final todayDateController = TextEditingController();
   final permissionDateController = TextEditingController();
   final applicantNameController = TextEditingController();
@@ -42,6 +44,7 @@ class ExitRequestServiceCubit extends Cubit<ExitRequestServiceState> {
     this._createExitPermissionUseCase,
     this._getPermissionTimeUseCase,
     this._getPermissionTypeUseCase,
+    this._updateExitPermissionUseCase,
   ) : super(const ExitRequestServiceState()) {
     getPermissionTypes();
     getPermissionTimes();
@@ -149,6 +152,46 @@ class ExitRequestServiceCubit extends Cubit<ExitRequestServiceState> {
         emit(state.copyWith(
             status: RequestStatus.createExitPermissionSuccess,
             successPermission: permission));
+      },
+    );
+  }
+
+  /// update exit permission request
+  Future updateExitPermissionRequest({required int requestId}) async {
+    emit(state.copyWith(status: RequestStatus.updateExitPermissionLoading));
+
+    final result = await _updateExitPermissionUseCase.call(
+      params: UpdateExitPermissionParams(
+        requestId: requestId,
+        employeeId: int.parse(
+            CacheHelper.getString(key: CacheKeys.employeeId) ?? "1"),
+        officeId: officeIDController.text.isEmpty
+            ? 0
+            : int.parse(officeIDController.text),
+        permissionType: permissionTypeItems.indexWhere(
+                (item) => item.value == permissionTypeController.text) +
+            1,
+        type: permissionTimeTypeController.text,
+        exitDate: permissionDateController.text,
+        numberOfHours: int.parse(durationController.text),
+        stageId: 0,
+        leavesAttachment: attachmentFileController.text,
+        leavesAttachmentName: attachmentFileNameController.text,
+        notes: notesController.text,
+      ),
+    );
+
+    result.fold(
+      (failure) {
+        emit(state.copyWith(
+          status: RequestStatus.updateExitPermissionError,
+          errorMessage: failure.message,
+        ));
+      },
+      (permission) {
+        emit(state.copyWith(
+          status: RequestStatus.updateExitPermissionSuccess,
+        ));
       },
     );
   }

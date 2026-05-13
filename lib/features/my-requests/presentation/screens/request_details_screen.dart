@@ -11,6 +11,7 @@ import '../../../../core/constants/colors.dart';
 import '../../../../generated/l10n.dart';
 import '../../domain/enums_and_extentions/request_enums.dart';
 import '../widgets/accept_request_button.dart';
+import '../widgets/update_request_button.dart';
 import '../widgets/car_permission_details_widget.dart';
 import '../widgets/complaint_request_details_widget.dart';
 import '../widgets/comment_writing_widget.dart';
@@ -22,11 +23,9 @@ class RequestDetailsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    /// Extract arguments from navigation
     final Map<String, dynamic> args =
         ModalRoute.of(context)?.settings.arguments as Map<String, dynamic>? ??
             {};
-
     final int id = args['id'] ?? '';
     final String status = args['status'] ?? '';
     final String enStatus = args['en_status'] ?? '';
@@ -34,9 +33,10 @@ class RequestDetailsScreen extends StatelessWidget {
     final String orderNumber = args['orderNumber'] ?? '';
     final String requestID = args['requestID'] ?? '';
     final String date = args['date'] ?? '';
-    final String serviceType = args['serviceType'] ?? '';
-
+    final String serviceName = args['serviceName'] ?? '';
+    final String serviceCode = args['serviceCode'] ?? '';
     final bool isManager = args['isManager'];
+    final bool isEmployeeRequest = args['isEmployeeRequest'];
 
     /// Convert date to Hijri format
     final String hijriDate = DateConverter.convertGregorianToHijri(date);
@@ -61,28 +61,40 @@ class RequestDetailsScreen extends StatelessWidget {
                   RequestNumberAndDateWidget(
                       orderNumber: orderNumber,
                       status: status,
-                      serviceType: serviceType,
+                      serviceType: serviceName,
                       date: date,
                       hijriDate: hijriDate),
                   const Sizer(height: 20),
 
                   /// request details
-                  serviceType == "car.permission"
+                  serviceCode == "car.permission"
                       ? const CarPermissionDetailsWidget()
-                      : serviceType == "complaint.request"
+                      : serviceCode == "complaint.request"
                           ? const ComplaintRequestDetailsWidget()
                           : const ExitPermissionDetailsWidget(),
 
                   const Sizer(height: 20),
-                  if (currentStatus.getRequestStatusEnum== RequestStatusEnum.newRequest)
+                  if (currentStatus.getRequestStatusEnum ==
+                      RequestStatusEnum.newRequest)
                     isManager ? const CommentWritingWidget() : const Sizer(),
                   RequestStageCard(
                     status: currentStatus,
                   ),
-                  if (currentStatus.getRequestStatusEnum== RequestStatusEnum.newRequest)
+                  if (currentStatus.getRequestStatusEnum ==
+                      RequestStatusEnum.newRequest)
                     isManager
                         ? AcceptRequestButton(requestID: requestID)
                         : const Sizer(),
+                  const Sizer(height: 20),
+                  if (isEmployeeRequest)
+                    currentStatus.getRequestStatusEnum() ==
+                            RequestStatusEnum.newRequest
+                        ? UpdateRequestButton(
+                            requestID: requestID,
+                            serviceType: serviceCode,
+                          )
+                        : const Sizer(),
+
                   const Sizer(height: 65),
                 ],
               ),

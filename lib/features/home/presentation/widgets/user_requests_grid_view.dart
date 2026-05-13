@@ -5,6 +5,7 @@ import 'package:shaoni/core/constants/colors.dart';
 import 'package:shaoni/core/extentions/navigation_extension.dart';
 import 'package:shaoni/core/routing/route_names.dart';
 import 'package:shaoni/features/home/presentation/widgets/request_card.dart';
+import 'package:shaoni/features/my-requests/domain/entities/request_with_stage.dart';
 import 'package:shaoni/features/my-requests/presentation/controller/my_requests_cubit.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 import '../../../../core/local_storage/cache_helper.dart';
@@ -19,9 +20,15 @@ class UserRequestsGridView extends StatelessWidget {
   Widget build(BuildContext context) {
     final controller = context.watch<MyRequestsCubit>();
     final navController = context.watch<NavigationCubit>();
-    final validRequests = controller.state.itemsUser
-        .where((request) => request.request?.requestNumber != null)
-        .toList();
+    final List<RequestWithStage> validRequests =
+        controller.state.status.isLoading
+            ? List.filled(
+                6,
+                RequestWithStage(
+                    odooStageId: 1, requesterFullName: '', managerFullName: ''))
+            : controller.state.itemsUser
+                .where((request) => request.request?.requestNumber != null)
+                .toList();
 
     controller.userScrollController.addListener(() {
       /// If we are 160 pixels away from the bottom, fetch more!
@@ -117,17 +124,11 @@ class UserRequestsGridView extends StatelessWidget {
                                   ?.exitPermission
                                   ?.permissionType
                                   .toString(),
-                              // "permissionValue": controller
-                              //         .state
-                              //         .itemsUser?[index]
-                              //         .extraData
-                              //         ?.exitPermission
-                              //         ?.permissionTimeValue
-                              //         .toString() ??
-                              //     "",
-                              'serviceType': S.current.localeee == "en"
+                              'serviceName': S.current.localeee == "en"
                                   ? validRequests[index].service?.nameEn ?? ''
                                   : validRequests[index].service?.nameAr ?? '',
+                              'serviceCode':
+                                  validRequests[index].service?.nameEn ?? '',
                               'numberOfHours': validRequests[index]
                                   .extraData
                                   ?.exitPermission
@@ -151,6 +152,7 @@ class UserRequestsGridView extends StatelessWidget {
                                   navController.state.user?.managerId == 0
                                       ? true
                                       : false,
+                              "isEmployeeRequest": true,
                             });
                       },
                     );

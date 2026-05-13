@@ -376,6 +376,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "complaintTypeLabel": MessageLookupByLibrary.simpleMessage("نوع الشكوى"),
     "complaintReasonLabel": MessageLookupByLibrary.simpleMessage("سبب الشكوى"),
     "complaintDescriptionLabel": MessageLookupByLibrary.simpleMessage("الوصف"),
+    "editRequest": MessageLookupByLibrary.simpleMessage("تعديل الطلب"),
+    "requestUpdatedSuccessfully": MessageLookupByLibrary.simpleMessage("تم تعديل الطلب بنجاح"),
+    "updateRequest": MessageLookupByLibrary.simpleMessage("تعديل الطلب"),
     "eveningShift": MessageLookupByLibrary.simpleMessage(
       "رقم الوردية المسائية",
     ),

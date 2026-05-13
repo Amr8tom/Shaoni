@@ -807,5 +807,8 @@
   "complaintRequestDetails": "Complaint Details",
   "complaintTypeLabel": "Complaint Type",
   "complaintReasonLabel": "Complaint Reason",
-  "complaintDescriptionLabel": "Description"
+  "complaintDescriptionLabel": "Description",
+  "editRequest": "Edit Request",
+  "requestUpdatedSuccessfully": "Request Updated Successfully",
+  "updateRequest": "Update Request"
 }

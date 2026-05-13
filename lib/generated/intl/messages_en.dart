@@ -1280,5 +1280,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "complaintTypeLabel": MessageLookupByLibrary.simpleMessage("Complaint Type"),
     "complaintReasonLabel": MessageLookupByLibrary.simpleMessage("Complaint Reason"),
     "complaintDescriptionLabel": MessageLookupByLibrary.simpleMessage("Description"),
+    "editRequest": MessageLookupByLibrary.simpleMessage("Edit Request"),
+    "requestUpdatedSuccessfully": MessageLookupByLibrary.simpleMessage("Request Updated Successfully"),
+    "updateRequest": MessageLookupByLibrary.simpleMessage("Update Request"),
   };
 }

@@ -47,6 +47,9 @@ enum AttendanceStatus {
   loading,
   createAttendanceRequestLoading,
   createAttendanceRequestLoaded,
+  updateAttendanceRequestLoading,
+  updateAttendanceRequestLoaded,
+  updateAttendanceRequestError,
   loaded,
   empty,
   error,
@@ -68,6 +71,27 @@ extension AttendanceStateExtension on AttendanceState {
 
   bool get isCreateAttendanceRequestLoaded =>
       status == AttendanceStatus.createAttendanceRequestLoaded;
+
+  bool get isUpdateAttendanceRequestLoading =>
+      status == AttendanceStatus.updateAttendanceRequestLoading;
+
+  bool get isUpdateAttendanceRequestLoaded =>
+      status == AttendanceStatus.updateAttendanceRequestLoaded;
+
+  bool get isUpdateAttendanceRequestError =>
+      status == AttendanceStatus.updateAttendanceRequestError;
+
+  bool get isSubmitting =>
+      status == AttendanceStatus.createAttendanceRequestLoading ||
+      status == AttendanceStatus.updateAttendanceRequestLoading;
+
+  bool get isSubmitSucceeded =>
+      status == AttendanceStatus.createAttendanceRequestLoaded ||
+      status == AttendanceStatus.updateAttendanceRequestLoaded;
+
+  bool get isSubmitFailed =>
+      status == AttendanceStatus.error ||
+      status == AttendanceStatus.updateAttendanceRequestError;
 
   bool get isSuccess => status == AttendanceStatus.loaded;
 

@@ -19,8 +19,15 @@ import '../widgets/general_request_templates/file_upload_widget.dart';
 
 class CreateAttendanceRequestForm extends StatelessWidget {
   final String attendanceID;
+  final int? requestId;
 
-  const CreateAttendanceRequestForm({super.key, required this.attendanceID});
+  const CreateAttendanceRequestForm({
+    super.key,
+    required this.attendanceID,
+    this.requestId,
+  });
+
+  bool get _isEditMode => requestId != null;
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +37,7 @@ class CreateAttendanceRequestForm extends StatelessWidget {
         appBar: DAppBar(
           showMenu: false,
           showBackArrow: true,
-          title: S.current.attendance,
+          title: _isEditMode ? S.current.editRequest : S.current.attendance,
         ),
         backgroundColor: ColorRes.grey6,
         body: Builder(
@@ -38,7 +45,7 @@ class CreateAttendanceRequestForm extends StatelessWidget {
             final controller = context.read<AttendanceCubit>();
             return BlocConsumer<AttendanceCubit, AttendanceState>(
               listener: (context, state) {
-                if (state.isError) {
+                if (state.isSubmitFailed) {
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(
                       content: Text(state.errorMessage ?? "Error"),
@@ -47,12 +54,11 @@ class CreateAttendanceRequestForm extends StatelessWidget {
                   );
                 }
 
-                if (state.isCreateAttendanceRequestLoaded) {
+                if (state.isSubmitSucceeded) {
                   CustomDialogImgTitleDes(
                     button1: S.current.myOrders,
                     button2: S.current.home,
                     onTab2: () {
-                      /// navigation screen
                       context.pushNamedAndRemoveUntil(
                         DRoutesName.navigationMenuRoute,
                         predicate: (route) => false,
@@ -65,9 +71,13 @@ class CreateAttendanceRequestForm extends StatelessWidget {
                       );
                     },
                     context: context,
-                    title: S.current.requestSentSuccessfully,
-                    des: S.current.requestSentSuccessfully,
-                    orderNumber: state.requestNumber ?? "2",
+                    title: _isEditMode
+                        ? S.current.requestUpdatedSuccessfully
+                        : S.current.requestSentSuccessfully,
+                    des: _isEditMode
+                        ? S.current.requestUpdatedSuccessfully
+                        : S.current.requestSentSuccessfully,
+                    orderNumber: _isEditMode ? '' : (state.requestNumber ?? ''),
                     imgPath: AssetRes.doubleCorrect,
                     isSvg: true,
                   );
@@ -137,9 +147,11 @@ class CreateAttendanceRequestForm extends StatelessWidget {
                         ),
 
                         /// Floating blur buttons at the bottom
-                        state.isCreateAttendanceRequestLoading
-                            ? CircularProgressIndicator(
-                                color: ColorRes.primary,
+                        state.isSubmitting
+                            ? Center(
+                                child: CircularProgressIndicator(
+                                  color: ColorRes.primary,
+                                ),
                               )
                             : CreateDeleteButtons(
                                 deleteTab: () {
@@ -148,7 +160,12 @@ class CreateAttendanceRequestForm extends StatelessWidget {
                                 createTab: () {
                                   if (controller.requestFormKey.currentState!
                                       .validate()) {
-                                    controller.createAttendanceRequest();
+                                    if (_isEditMode) {
+                                      controller.updateAttendanceRequest(
+                                          requestId: requestId!);
+                                    } else {
+                                      controller.createAttendanceRequest();
+                                    }
                                   }
                                 },
                               ),

@@ -51,7 +51,7 @@ class MyRequestsCubit extends Cubit<MyRequestsState> {
           userId: employeeId,
           requestIds: [0],
           pageNumber: userPage,
-          pageSize: 5),
+          pageSize: 12),
     );
 
     result.fold(

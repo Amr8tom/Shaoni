@@ -17,11 +17,15 @@ enum CarPermissionStatus {
   createRequestLoaded,
   createRequestError,
 
+  /// Update request
+  updateRequestLoading,
+  updateRequestLoaded,
+  updateRequestError,
+
   error,
 }
 
-/// Convenience getters used by the UI to decide which subtree to render
-/// — same pattern as `AttendanceStateExtension` / `StudyStateExtension`.
+/// Convenience getters used by the UI to decide which subtree to render.
 extension CarPermissionStateExtension on CarPermissionState {
   bool get isInitialized => status == CarPermissionStatus.initialized;
 
@@ -39,6 +43,25 @@ extension CarPermissionStateExtension on CarPermissionState {
       status == CarPermissionStatus.createRequestLoaded;
   bool get isCreateRequestError =>
       status == CarPermissionStatus.createRequestError;
+
+  bool get isUpdateRequestLoading =>
+      status == CarPermissionStatus.updateRequestLoading;
+  bool get isUpdateRequestLoaded =>
+      status == CarPermissionStatus.updateRequestLoaded;
+  bool get isUpdateRequestError =>
+      status == CarPermissionStatus.updateRequestError;
+
+  /// True while any submit is in-flight (create or update).
+  bool get isSubmitting =>
+      isCreateRequestLoading || isUpdateRequestLoading;
+
+  /// True when any submit succeeded.
+  bool get isSubmitSucceeded =>
+      isCreateRequestLoaded || isUpdateRequestLoaded;
+
+  /// True when any submit failed.
+  bool get isSubmitFailed =>
+      isCreateRequestError || isUpdateRequestError;
 
   bool get isError => status == CarPermissionStatus.error;
 }
