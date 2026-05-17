@@ -44,9 +44,8 @@ class RequestDetailsScreen extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (_) =>
-              serviceLocator<MyRequestsCubit>()
-                ..getRequestDetails(requestId: id),
+          create: (_) => serviceLocator<MyRequestsCubit>()
+            ..getRequestDetails(requestId: id),
         ),
         BlocProvider(
           create: (_) => serviceLocator<EditCubit>(),
@@ -80,10 +79,12 @@ class RequestDetailsScreen extends StatelessWidget {
 
                   /// comment field — shown to manager when request is pending approval
                   if (isManagerApproval && isManager)
-                     CommentWritingWidget(onCommentSubmit: (comment){
-                       context.read<EditCubit>().editNotesController.text = comment;
-
-                     })
+                    CommentWritingWidget(onCommentSubmit: (comment) {
+                      context.read<EditCubit>().editNotesController.text =
+                          comment;
+                      context.read<MyRequestsCubit>().commentController.text =
+                          comment;
+                    })
                   else
                     const Sizer(),
 
@@ -97,14 +98,16 @@ class RequestDetailsScreen extends StatelessWidget {
 
                   /// manager: accept/reject + edit
                   if (isManagerApproval && isManager) ...[
-                    AcceptRequestButton(requestID: requestID),
+                    AcceptRejecttButton(
+                      requestID: requestID,
+                    ),
                     const Sizer(height: 12),
                     EditRequestButton(
                       requestID: requestID,
                       serviceCode: serviceCode,
                     ),
 
-                  /// employee: update their own request
+                    /// employee: update their own request
                   ] else if (isEmployeeRequest && isManagerApproval)
                     UpdateRequestButton(
                       requestID: requestID,

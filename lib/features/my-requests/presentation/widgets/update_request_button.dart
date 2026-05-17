@@ -74,19 +74,11 @@ class UpdateRequestButton extends StatelessWidget {
         context.pushNamed(
           DRoutesName.createAttendanceRoute,
           arguments: {
-            'attendanceID': '',
             'requestId': int.tryParse(requestID),
           },
         );
         break;
 
-      // Add more service-type cases here as you implement their update APIs.
-      // case 'complaint.request':
-      //   context.pushNamed(
-      //     DRoutesName.createComplaintRequestRoute,
-      //     arguments: {'requestId': int.tryParse(requestID)},
-      //   );
-      //   break;
 
       default:
         ScaffoldMessenger.of(context).showSnackBar(

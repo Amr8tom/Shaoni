@@ -52,7 +52,7 @@ class RequestCard extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // ── Top row: order number + date ──────────────────────────────
+            /// ── Top row: order number + date ──────────────────────────────
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -95,7 +95,7 @@ class RequestCard extends StatelessWidget {
               ],
             ),
 
-            // ── Manager section: applicant name ───────────────────────────
+            /// ── Manager section: applicant name ───────────────────────────
             if (applicantName != null) ...[
               Padding(
                 padding: EdgeInsets.symmetric(vertical: AppSizes.padding * 0.6),
