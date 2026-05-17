@@ -30,6 +30,18 @@ class ExitPermission extends Equatable {
     this.leavesAttachment,
   });
 
+  factory ExitPermission.fromJson(Map<String, dynamic> json) {
+    return ExitPermission(
+      id: json['id'] as int?,
+      exitDate: json['exitDate'] as String?,
+      numberOfHours: json['numberOfHours'] as int?,
+      permissionTimeValue: json['permissionTimeValue'] as String?,
+      permissionType: json['permissionType'] as int?,
+      notes: json['notes'] as String?,
+      leavesAttachment: json['leavesAttachment'] as String?,
+    );
+  }
+
   @override
   List<Object?> get props =>
       [

@@ -3,10 +3,14 @@ import 'package:shaoni/core/connection/checkNetwork.dart';
 import 'package:shaoni/core/error/failure.dart';
 import 'package:shaoni/features/my-requests/data/models/approve_request_model.dart';
 import 'package:shaoni/features/my-requests/domain/entities/all_requests_with_stages.dart';
+import 'package:shaoni/features/my-requests/domain/entities/edit/edit_response.dart';
 import 'package:shaoni/features/my-requests/domain/entities/request_with_stage.dart';
 import 'package:shaoni/features/my-requests/domain/use_cases/approve_request_use_case.dart';
 import 'package:shaoni/features/my-requests/domain/use_cases/get_all_manager_requests_use_case.dart';
 import 'package:shaoni/features/my-requests/domain/use_cases/get_all_user_requests_use_case.dart';
+import 'package:shaoni/features/my-requests/domain/use_cases/get_attendance_edit_use_case.dart';
+import 'package:shaoni/features/my-requests/domain/use_cases/get_car_permission_edit_use_case.dart';
+import 'package:shaoni/features/my-requests/domain/use_cases/get_exit_permission_edit_use_case.dart';
 import 'package:shaoni/features/my-requests/domain/use_cases/get_request_details_use_case.dart';
 import '../../domain/repositories/repository.dart';
 import '../data_sources/local_data_sources.dart';
@@ -16,11 +20,13 @@ class MyRequestsRepositoryImp extends MyRequestsRepository {
   final MyRequestsRemoteDataSources _remoteDataSources;
   final MyRequestsLocalDataSources _localDataSources;
   final NetworkInfo _networkInfo;
+
   MyRequestsRepositoryImp(
     this._remoteDataSources,
     this._localDataSources,
     this._networkInfo,
   );
+
   @override
   Future<Either<Failure, AllRequestsWithStages>> getAllUserRequests({
     required GetAllUserRequestsParams params,
@@ -48,6 +54,7 @@ class MyRequestsRepositoryImp extends MyRequestsRepository {
       }
     }
   }
+
   @override
   Future<Either<Failure, AllRequestsWithStages>> getAllManagerRequests(
       {required GetAllManagerRequestsParams params}) async {
@@ -74,6 +81,7 @@ class MyRequestsRepositoryImp extends MyRequestsRepository {
       }
     }
   }
+
   @override
   Future<Either<Failure, ApproveRequestModel>> acceptRequest(
       {required AcceptRequestParams params}) async {
@@ -90,12 +98,14 @@ class MyRequestsRepositoryImp extends MyRequestsRepository {
   }
 
   @override
-  Future<Either<Failure, RequestWithStage>> getRequestDetails({required GetRequestDetailsParams params}) async{
-
+  Future<Either<Failure, RequestWithStage>> getRequestDetails(
+      {required GetRequestDetailsParams params}) async {
     if (await _networkInfo.isConnected) {
       try {
-        final requestDetails = await _remoteDataSources.getRequestDetails(params: params);
-        await _localDataSources.cacheRequestDetails(requestDetails: requestDetails);
+        final requestDetails =
+            await _remoteDataSources.getRequestDetails(params: params);
+        await _localDataSources.cacheRequestDetails(
+            requestDetails: requestDetails);
         return Right(requestDetails);
       } on ServerFailure {
         return Left(
@@ -106,13 +116,59 @@ class MyRequestsRepositoryImp extends MyRequestsRepository {
       }
     } else {
       return Left(CacheFailure());
-      // try {
-      //   final requestDetails = await _localDataSources.getAllMyRequests();
-      //   return Right(requestDetails.requests.firstWhere((request) => request.requestId == params.requestId));
-      // } on CacheFailure {
-      //   return Left(CacheFailure());
-      // }
     }
   }
 
+  /// ============================ edit ============================
+
+  @override
+  Future<Either<Failure, EditResponse>> getCarPermissionEdit({
+    required GetCarPermissionEditParams params,
+  }) async {
+    if (await _networkInfo.isConnected) {
+      try {
+        final result =
+            await _remoteDataSources.getCarPermissionEdit(params: params);
+        return Right(result);
+      } on ServerFailure catch (e) {
+        return Left(ServerFailure(message: e.message));
+      }
+    } else {
+      return Left(CacheFailure());
+    }
+  }
+
+  @override
+  Future<Either<Failure, EditResponse>> getExitPermissionEdit({
+    required GetExitPermissionEditParams params,
+  }) async {
+    if (await _networkInfo.isConnected) {
+      try {
+        final result =
+            await _remoteDataSources.getExitPermissionEdit(params: params);
+        return Right(result);
+      } on ServerFailure catch (e) {
+        return Left(ServerFailure(message: e.message));
+      }
+    } else {
+      return Left(CacheFailure());
+    }
+  }
+
+  @override
+  Future<Either<Failure, EditResponse>> getAttendanceEdit({
+    required GetAttendanceEditParams params,
+  }) async {
+    if (await _networkInfo.isConnected) {
+      try {
+        final result =
+            await _remoteDataSources.getAttendanceEdit(params: params);
+        return Right(result);
+      } on ServerFailure catch (e) {
+        return Left(ServerFailure(message: e.message));
+      }
+    } else {
+      return Left(CacheFailure());
+    }
+  }
 }

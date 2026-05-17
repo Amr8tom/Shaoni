@@ -1,3 +1,4 @@
+
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
@@ -5,7 +6,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:shaoni/core/extentions/navigation_extension.dart';
 import 'package:shaoni/core/local_storage/cache_helper.dart';
 import 'package:shaoni/core/local_storage/cache_keys.dart';
-import 'package:shaoni/features/auth/domain/entities/new_password.dart';
 import 'package:shaoni/features/auth/domain/usecases/change_password_use_case.dart';
 import 'package:shaoni/features/auth/domain/usecases/login_use_case.dart';
 
@@ -17,7 +17,7 @@ class LoginCubit extends Cubit<LoginState> {
   final LoginUseCase _loginUseCase;
   final ChangePasswordUseCase _changePasswordUseCase;
 
-  // final SendOtpUseCase _sendOtpUseCase;
+  /// final SendOtpUseCase _sendOtpUseCase;
   final nameController = TextEditingController();
   final passwordController = TextEditingController();
   final otpController = TextEditingController();

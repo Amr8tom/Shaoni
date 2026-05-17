@@ -32,9 +32,8 @@ class CreateCarPermissionScreen extends StatelessWidget {
       create: (_) => serviceLocator<CarPermissionCubit>(),
       child: Scaffold(
         appBar: DAppBar(
-          title: _isEditMode
-              ? S.current.editRequest
-              : S.current.carPermitRequest,
+          title:
+              _isEditMode ? S.current.editRequest : S.current.carPermitRequest,
           showMenu: false,
           showBackArrow: true,
         ),
@@ -44,7 +43,7 @@ class CreateCarPermissionScreen extends StatelessWidget {
             final controller = context.read<CarPermissionCubit>();
             return BlocConsumer<CarPermissionCubit, CarPermissionState>(
               listener: (context, state) {
-                // ── Errors ──────────────────────────────────────────────────
+                /// ── Errors ──────────────────────────────────────────────────
                 if (state.isError ||
                     state.isCreateRequestError ||
                     state.isUpdateRequestError ||
@@ -58,7 +57,7 @@ class CreateCarPermissionScreen extends StatelessWidget {
                   );
                 }
 
-                // ── Create success ───────────────────────────────────────────
+                /// ── Create success ───────────────────────────────────────────
                 if (state.isCreateRequestLoaded) {
                   CustomDialogImgTitleDes(
                     button1: S.current.myOrders,
@@ -80,7 +79,7 @@ class CreateCarPermissionScreen extends StatelessWidget {
                   );
                 }
 
-                // ── Update success ───────────────────────────────────────────
+                /// ── Update success ───────────────────────────────────────────
                 if (state.isUpdateRequestLoaded) {
                   CustomDialogImgTitleDes(
                     button1: S.current.myOrders,
@@ -133,9 +132,8 @@ class CreateCarPermissionScreen extends StatelessWidget {
                               /// Request details title
                               Text(
                                 S.current.requestDetails,
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .headlineMedium,
+                                style:
+                                    Theme.of(context).textTheme.headlineMedium,
                               ),
                               const Sizer(height: 16),
 
@@ -146,8 +144,8 @@ class CreateCarPermissionScreen extends StatelessWidget {
                               /// File upload — base64 saved to the cubit
                               FileUploadWidget(
                                 onPickedFile: (fileName, base64String) {
-                                  controller.attachmentFileNameController
-                                      .text = fileName ?? '';
+                                  controller.attachmentFileNameController.text =
+                                      fileName ?? '';
                                   controller.attachmentFileController.text =
                                       base64String ?? '';
                                 },
@@ -174,9 +172,8 @@ class CreateCarPermissionScreen extends StatelessWidget {
                                   if (controller.requestFormKey.currentState!
                                       .validate()) {
                                     if (_isEditMode) {
-                                      controller
-                                          .updateCarPermissionRequest(
-                                              requestId: requestId!);
+                                      controller.updateCarPermissionRequest(
+                                          requestId: requestId!);
                                     } else {
                                       controller.createCarPermissionRequest();
                                     }

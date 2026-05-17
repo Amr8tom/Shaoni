@@ -6,8 +6,12 @@ import 'package:shaoni/features/my-requests/domain/use_cases/approve_request_use
 import '../../../../../core/error/failure.dart';
 import '../../domain/use_cases/get_all_manager_requests_use_case.dart';
 import '../../domain/use_cases/get_all_user_requests_use_case.dart';
+import '../../domain/use_cases/get_attendance_edit_use_case.dart';
+import '../../domain/use_cases/get_car_permission_edit_use_case.dart';
+import '../../domain/use_cases/get_exit_permission_edit_use_case.dart';
 import '../../domain/use_cases/get_request_details_use_case.dart';
 import '../models/approve_request_model.dart';
+import '../models/edit_response_model.dart';
 
 abstract class MyRequestsRemoteDataSources {
   Future<AllRequestsWithStages> getAllUserRequests({
@@ -23,6 +27,19 @@ abstract class MyRequestsRemoteDataSources {
 
   Future<ApproveRequestModel> acceptRequest({
     required AcceptRequestParams params,
+  });
+
+  /// ============================ edit ============================
+  Future<EditResponseModel> getCarPermissionEdit({
+    required GetCarPermissionEditParams params,
+  });
+
+  Future<EditResponseModel> getExitPermissionEdit({
+    required GetExitPermissionEditParams params,
+  });
+
+  Future<EditResponseModel> getAttendanceEdit({
+    required GetAttendanceEditParams params,
   });
 }
 
@@ -91,6 +108,62 @@ class MyRequestsRemoteDataSourcesImp implements MyRequestsRemoteDataSources {
         throw ServerFailure(message: 'Null response from server');
       }
       return RequestWithStage.fromJson(response);
+    } on ServerFailure {
+      rethrow;
+    }
+  }
+
+  /// ============================ edit ============================
+
+  @override
+  Future<EditResponseModel> getCarPermissionEdit({
+    required GetCarPermissionEditParams params,
+  }) async {
+    try {
+      final response = await _dio.putData(
+        URL: '${URL.getCarPermissionEdit}${params.requestId}',
+        body: params.toMap(),
+      );
+      if (response == null) {
+        throw ServerFailure(message: 'Null response from server');
+      }
+      return EditResponseModel.fromJson(response.data as Map<String, dynamic>);
+    } on ServerFailure {
+      rethrow;
+    }
+  }
+
+  @override
+  Future<EditResponseModel> getExitPermissionEdit({
+    required GetExitPermissionEditParams params,
+  }) async {
+    try {
+      final response = await _dio.putData(
+        URL: '${URL.getExitPermissionEdit}${params.requestId}',
+        body: params.toMap(),
+      );
+      if (response == null) {
+        throw ServerFailure(message: 'Null response from server');
+      }
+      return EditResponseModel.fromJson(response.data as Map<String, dynamic>);
+    } on ServerFailure {
+      rethrow;
+    }
+  }
+
+  @override
+  Future<EditResponseModel> getAttendanceEdit({
+    required GetAttendanceEditParams params,
+  }) async {
+    try {
+      final response = await _dio.putData(
+        URL: '${URL.getAttendanceEdit}${params.requestId}',
+        body: params.toMap(),
+      );
+      if (response == null) {
+        throw ServerFailure(message: 'Null response from server');
+      }
+      return EditResponseModel.fromJson(response.data as Map<String, dynamic>);
     } on ServerFailure {
       rethrow;
     }
