@@ -10,7 +10,7 @@ import '../../../../core/local_storage/cache_helper.dart';
 import '../../../../core/local_storage/cache_keys.dart';
 import '../../../auth/domain/entities/user_entity.dart';
 import '../../../home/home_screen.dart';
-import '../../../my-requests/presentation/screens/my_requests_screen.dart';
+import '../../../details_and_edit_for_requests/presentation/screens/my_requests_screen.dart';
 import '../../../profile/profile_screen.dart';
 import '../../../services/services_screen.dart';
 

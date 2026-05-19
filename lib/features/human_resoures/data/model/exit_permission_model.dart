@@ -1,5 +1,5 @@
 
-import '../../../my-requests/domain/entities/exit_permission.dart';
+import '../../../details_and_edit_for_requests/domain/entities/exit_permission/exit_permission.dart';
 
 
 

@@ -8,7 +8,7 @@ import 'package:skeletonizer/skeletonizer.dart';
 import '../../../../core/local_storage/cache_helper.dart';
 import '../../../../core/local_storage/cache_keys.dart';
 import '../../../../generated/l10n.dart';
-import '../../../my-requests/presentation/controller/my_requests_cubit.dart';
+import '../../../details_and_edit_for_requests/presentation/controller/my_requests_cubit.dart';
 import '../../../navigation/presentation/controllers/navigation_cubit.dart';
 
 class ManagerRequestsGridView extends StatelessWidget {

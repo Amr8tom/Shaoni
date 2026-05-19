@@ -30,6 +30,7 @@ import '../use_cases/complaint_request/create_complaint_request_use_case.dart';
 import '../use_cases/exit/create_exit_permission_use_case.dart';
 import '../use_cases/attendance/get_all_missing_attendance_use_case.dart';
 import '../use_cases/study/create_study_use_case.dart';
+import '../use_cases/study/update_study_use_case.dart';
 
 abstract class HRServicesRepository {
   Future<Either<Failure, AllServices>> getAllPermissionServices({
@@ -107,5 +108,9 @@ abstract class HRServicesRepository {
 
   Future<Either<Failure, CreateStudyResponse>> createStudyRequest({
     required CreateStudyParams params,
+  });
+
+  Future<Either<Failure, CreateStudyResponse>> updateStudyRequest({
+    required UpdateStudyParams params,
   });
 }

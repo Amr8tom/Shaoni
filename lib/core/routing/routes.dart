@@ -14,7 +14,7 @@ import '../../features/human_resoures/presentation/attendance/missing_attendance
 import '../../features/human_resoures/presentation/screens/all_human_resources_requests.dart';
 import '../../features/human_resoures/presentation/exit/create_exit_request_form.dart';
 import '../../features/human_resoures/presentation/screens/faq_information.dart';
-import '../../features/my-requests/presentation/screens/request_details_screen.dart';
+import '../../features/details_and_edit_for_requests/presentation/screens/request_details_screen.dart';
 import '../../features/navigation/presentation/screens/navigation_menu_screen.dart';
 import '../../features/notifications/presentation/notification_screen.dart';
 import '../../features/onboarding/presentation/screens/onboarding_screen.dart';
@@ -94,8 +94,10 @@ class RouteGenerator {
         );
      /// create study request screen
       case DRoutesName.createStudyRequestRoute:
+        final args = settings.arguments as Map<String, dynamic>?;
+        final int? requestId = args?['requestId'] as int?;
         return PageTransition(
-          child: const CreateStudyRequestForm(),
+          child: CreateStudyRequestForm(requestId: requestId),
           type: PageTransitionType.rightToLeft,
           settings: settings,
         );

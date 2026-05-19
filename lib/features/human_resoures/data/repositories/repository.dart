@@ -22,6 +22,7 @@ import 'package:shaoni/features/human_resoures/domain/entity/study/study_destina
 import 'package:shaoni/features/human_resoures/domain/entity/study/study_type.dart';
 import 'package:shaoni/features/human_resoures/domain/use_cases/complaint_request/create_complaint_request_use_case.dart';
 import 'package:shaoni/features/human_resoures/domain/use_cases/study/create_study_use_case.dart';
+import 'package:shaoni/features/human_resoures/domain/use_cases/study/update_study_use_case.dart';
 import '../model/car_permission/update_car_permission_model.dart';
 import '../model/complaint_request/create_complaint_request_model.dart';
 import '../../../../core/connection/checkNetwork.dart';
@@ -377,6 +378,22 @@ class HRServicesRepositoryImp extends HRServicesRepository {
     if (await _networkInfo.isConnected) {
       try {
         final response = await _remote.createStudyRequest(params: params);
+        return Right(response);
+      } on ServerFailure catch (e) {
+        return Left(ServerFailure(message: e.message));
+      }
+    } else {
+      return Left(CacheFailure());
+    }
+  }
+
+  @override
+  Future<Either<Failure, CreateStudyResponse>> updateStudyRequest({
+    required UpdateStudyParams params,
+  }) async {
+    if (await _networkInfo.isConnected) {
+      try {
+        final response = await _remote.updateStudyRequest(params: params);
         return Right(response);
       } on ServerFailure catch (e) {
         return Left(ServerFailure(message: e.message));

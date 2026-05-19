@@ -37,6 +37,8 @@ class URL {
   static const String getStudyTypes = '$baseUrl/Lookup/GetStudyTypes';
   static const String getStudyDestinations = '$baseUrl/Integration/get-study-Destinations';
   static const String createStudyRequest = '$baseUrl/StudyRequest/create';
+  static const String updateStudyRequest = '$baseUrl/StudyRequest/update/';
+  static const String getStudyEdit = '$baseUrl/StudyRequest/edit/';
 
   /// ============================ complaint request ============================
   static const String getComplaintTypes = '$baseUrl/Lookup/GetComplaintTypes';

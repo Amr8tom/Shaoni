@@ -28,6 +28,7 @@ import '../../features/human_resoures/presentation/controller/exit_permission/ex
 import '../../features/human_resoures/domain/use_cases/study/create_study_use_case.dart';
 import '../../features/human_resoures/domain/use_cases/study/get_study_destinations_use_case.dart';
 import '../../features/human_resoures/domain/use_cases/study/get_study_types_use_case.dart';
+import '../../features/human_resoures/domain/use_cases/study/update_study_use_case.dart';
 import '../../features/human_resoures/presentation/controller/study/study_cubit.dart';
 
 class HRServiceLocator {
@@ -142,8 +143,12 @@ class HRServiceLocator {
     serviceLocator.registerLazySingleton<CreateStudyUseCase>(
       () => CreateStudyUseCase(serviceLocator()),
     );
+    serviceLocator.registerLazySingleton<UpdateStudyUseCase>(
+      () => UpdateStudyUseCase(serviceLocator()),
+    );
     serviceLocator.registerFactory<StudyCubit>(
       () => StudyCubit(
+        serviceLocator(),
         serviceLocator(),
         serviceLocator(),
         serviceLocator(),

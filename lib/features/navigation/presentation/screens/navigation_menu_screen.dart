@@ -6,7 +6,7 @@ import 'package:shaoni/core/constants/app_sizes.dart';
 import 'package:shaoni/core/constants/colors.dart';
 import 'package:shaoni/core/local_storage/cache_helper.dart';
 import 'package:shaoni/features/home/presentation/controller/home_cubit.dart';
-import 'package:shaoni/features/my-requests/presentation/controller/my_requests_cubit.dart';
+import 'package:shaoni/features/details_and_edit_for_requests/presentation/controller/my_requests_cubit.dart';
 import 'package:shaoni/features/navigation/presentation/widgets/custom_navigation_appbar.dart';
 import 'package:upgrader/upgrader.dart';
 import '../../../../core/connection/check_for_updates.dart';

@@ -9,6 +9,7 @@ import 'package:shaoni/features/human_resoures/domain/entity/study/study_type.da
 import 'package:shaoni/features/human_resoures/domain/use_cases/study/create_study_use_case.dart';
 import 'package:shaoni/features/human_resoures/domain/use_cases/study/get_study_destinations_use_case.dart';
 import 'package:shaoni/features/human_resoures/domain/use_cases/study/get_study_types_use_case.dart';
+import 'package:shaoni/features/human_resoures/domain/use_cases/study/update_study_use_case.dart';
 import 'package:shaoni/generated/l10n.dart';
 
 part 'study_state.dart';
@@ -17,6 +18,7 @@ class StudyCubit extends Cubit<StudyState> {
   final GetStudyTypesUseCase _getStudyTypesUseCase;
   final GetStudyDestinationsUseCase _getStudyDestinationsUseCase;
   final CreateStudyUseCase _createStudyUseCase;
+  final UpdateStudyUseCase _updateStudyUseCase;
 
   /// Form key
   final requestFormKey = GlobalKey<FormState>();
@@ -55,6 +57,7 @@ class StudyCubit extends Cubit<StudyState> {
     this._getStudyTypesUseCase,
     this._getStudyDestinationsUseCase,
     this._createStudyUseCase,
+    this._updateStudyUseCase,
   ) : super(const StudyState()) {
     _loadLookups();
   }
@@ -160,6 +163,50 @@ class StudyCubit extends Cubit<StudyState> {
         attachment: attachmentFileController.text.isEmpty
             ? ''
             : attachmentFileController.text.trim(),
+      ),
+    );
+
+    result.fold(
+      (failure) => emit(state.copyWith(
+        status: StudyStatus.createStudyRequestError,
+        errorMessage: failure.message,
+      )),
+      (response) => emit(state.copyWith(
+        status: StudyStatus.createStudyRequestLoaded,
+        requestNumber: response.requestId.toString(),
+      )),
+    );
+  }
+
+  /// ── Reset ────────────────────────────────────────────────────────────────
+
+  /// ── Update ───────────────────────────────────────────────────────────────
+
+  Future<void> updateStudyRequest({required int requestId}) async {
+    emit(state.copyWith(status: StudyStatus.createStudyRequestLoading));
+
+    final result = await _updateStudyUseCase.call(
+      params: UpdateStudyParams(
+        requestId: requestId,
+        data: CreateStudyParams(
+          employeeId: int.tryParse(
+                  CacheHelper.getString(key: CacheKeys.employeeId) ?? '1') ??
+              1,
+          officeId: int.tryParse(officeIdController.text) ?? 0,
+          requestType: _selectedStudyTypeCode,
+          study: requiredStudyController.text.trim(),
+          studyDestinationId: _selectedDestinationId ?? 0,
+          studyStartDate: courseStartDateController.text.trim(),
+          studyEndDate: courseEndDateController.text.trim(),
+          note: noteController.text.trim(),
+          reason: reasonController.text.trim(),
+          attachmentName: attachmentFileNameController.text.isEmpty
+              ? ''
+              : attachmentFileNameController.text.trim(),
+          attachment: attachmentFileController.text.isEmpty
+              ? ''
+              : attachmentFileController.text.trim(),
+        ),
       ),
     );
 

@@ -50,8 +50,14 @@ class AttendanceCubit extends Cubit<AttendanceState> {
       this._updateAttendanceUseCase)
       : super(const AttendanceState()) {
     getAttendanceRecords();
-    // getAttendanceLookup();
-    // getForgetReason();
+    _loadLookups();
+  }
+
+  Future<void> _loadLookups() async {
+    await Future.wait([
+      getAttendanceLookup(),
+      getForgetReason(),
+    ]);
   }
 
   /// Loads the attendance records and emits success / error / empty states.
@@ -67,7 +73,7 @@ class AttendanceCubit extends Cubit<AttendanceState> {
       (failure) => emit(state.copyWith(
           status: AttendanceStatus.error, errorMessage: failure.message)),
       (records) {
-        if (records.attendanceRecords.length==0) {
+        if (records.attendanceRecords.length == 0) {
           emit(state.copyWith(status: AttendanceStatus.empty));
         } else {
           emit(state.copyWith(
@@ -165,7 +171,9 @@ class AttendanceCubit extends Cubit<AttendanceState> {
             updateDate:
                 '${attendanceDateController.text} ${attendanceTimeController.text}',
             attendanceId: (int.parse(state.records.first.odooId)) ?? 0,
-            officeId:officeIDController.text.isEmpty? 0 : int.parse(officeIDController.text),
+            officeId: officeIDController.text.isEmpty
+                ? 0
+                : int.parse(officeIDController.text),
             orderReason: orderReasonController.text,
             forgetReasonsIds: forgetReasonItems.indexWhere(
                     (item) => item.value == forgetReasonController.text) +
@@ -183,12 +191,13 @@ class AttendanceCubit extends Cubit<AttendanceState> {
 
   /// update attendance request
   Future<void> updateAttendanceRequest({required int requestId}) async {
-    emit(state.copyWith(status: AttendanceStatus.updateAttendanceRequestLoading));
+    emit(state.copyWith(
+        status: AttendanceStatus.updateAttendanceRequestLoading));
     final result = await _updateAttendanceUseCase.call(
       params: UpdateAttendanceParams(
         requestId: requestId,
-        employee: int.parse(
-            CacheHelper.getString(key: CacheKeys.employeeId) ?? "1"),
+        employee:
+            int.parse(CacheHelper.getString(key: CacheKeys.employeeId) ?? "1"),
         officeId: officeIDController.text.isEmpty
             ? 0
             : int.parse(officeIDController.text),

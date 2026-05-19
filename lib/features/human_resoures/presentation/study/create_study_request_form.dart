@@ -18,7 +18,11 @@ import '../widgets/general_request_templates/create_delete_buttons.dart';
 import '../widgets/general_request_templates/date_data_widget.dart';
 
 class CreateStudyRequestForm extends StatelessWidget {
-  const CreateStudyRequestForm({super.key});
+  final int? requestId;
+
+  const CreateStudyRequestForm({super.key, this.requestId});
+
+  bool get _isEditMode => requestId != null;
 
   @override
   Widget build(BuildContext context) {
@@ -28,6 +32,7 @@ class CreateStudyRequestForm extends StatelessWidget {
         appBar: DAppBar(
           showMenu: false,
           showBackArrow: true,
+          title: _isEditMode ? S.current.editRequest : null,
         ),
         extendBodyBehindAppBar: true,
         backgroundColor: ColorRes.grey6,
@@ -50,7 +55,7 @@ class CreateStudyRequestForm extends StatelessWidget {
                   CustomDialogImgTitleDes(
                     button1: S.current.myOrders,
                     button2: S.current.home,
-                    orderNumber: state.requestNumber ?? '',
+                    orderNumber: _isEditMode ? '' : (state.requestNumber ?? ''),
                     onTab2: () {
                       context.pushNamedAndRemoveUntil(
                         DRoutesName.navigationMenuRoute,
@@ -64,8 +69,12 @@ class CreateStudyRequestForm extends StatelessWidget {
                       );
                     },
                     context: context,
-                    title: S.current.requestSentSuccessfully,
-                    des: S.current.requestSentSuccessfully,
+                    title: _isEditMode
+                        ? S.current.requestUpdatedSuccessfully
+                        : S.current.requestSentSuccessfully,
+                    des: _isEditMode
+                        ? S.current.requestUpdatedSuccessfully
+                        : S.current.requestSentSuccessfully,
                     imgPath: AssetRes.doubleCorrect,
                     isSvg: true,
                   );
@@ -151,7 +160,12 @@ class CreateStudyRequestForm extends StatelessWidget {
                                 createTab: () {
                                   if (controller.requestFormKey.currentState!
                                       .validate()) {
-                                    controller.createStudyRequest();
+                                    if (_isEditMode) {
+                                      controller.updateStudyRequest(
+                                          requestId: requestId!);
+                                    } else {
+                                      controller.createStudyRequest();
+                                    }
                                   }
                                 },
                               ),

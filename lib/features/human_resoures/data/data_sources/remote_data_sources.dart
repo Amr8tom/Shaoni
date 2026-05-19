@@ -20,6 +20,7 @@ import 'package:shaoni/features/human_resoures/data/model/study/study_destinatio
 import 'package:shaoni/features/human_resoures/data/model/study/study_type_model.dart';
 import 'package:shaoni/features/human_resoures/domain/use_cases/complaint_request/create_complaint_request_use_case.dart';
 import 'package:shaoni/features/human_resoures/domain/use_cases/study/create_study_use_case.dart';
+import 'package:shaoni/features/human_resoures/domain/use_cases/study/update_study_use_case.dart';
 
 import '../../../../core/constants/api_constants.dart';
 import '../../../../core/dio/dio_helper.dart';
@@ -99,6 +100,10 @@ abstract class HRServicesRemoteDataSources {
 
   Future<CreateStudyModel> createStudyRequest({
     required CreateStudyParams params,
+  });
+
+  Future<CreateStudyModel> updateStudyRequest({
+    required UpdateStudyParams params,
   });
 }
 
@@ -270,9 +275,11 @@ class HRServicesRemoteDataSourcesImp implements HRServicesRemoteDataSources {
     try {
       final response = await _dio.getData(URL: URL.getAttendanceForgetReason);
       if (response != null) {
-        /// Extract the data field from the response Map
-        final List data = response as List;
-        return data.map((e) => ForgetReasonModel.fromJson(e)).toList();
+        /// Handle both a plain List response and a wrapped {data: [...]} response.
+        final List raw = response is List
+            ? response
+            : (response as Map<String, dynamic>)['data'] as List;
+        return raw.map((e) => ForgetReasonModel.fromJson(e)).toList();
       } else {
         throw ServerFailure(message: 'server failure');
       }
@@ -437,6 +444,22 @@ class HRServicesRemoteDataSourcesImp implements HRServicesRemoteDataSources {
       } else {
         throw ServerFailure(message: 'server failure');
       }
+    } on ServerFailure catch (e) {
+      throw ServerFailure(message: e.message);
+    }
+  }
+
+  @override
+  Future<CreateStudyModel> updateStudyRequest({
+    required UpdateStudyParams params,
+  }) async {
+    try {
+      final response = await _dio.putData(
+        URL: '${URL.updateStudyRequest}${params.requestId}',
+        body: params.toMap(),
+      );
+      if (response == null) throw ServerFailure(message: 'server failure');
+      return CreateStudyModel.fromJson(response.data as Map<String, dynamic>);
     } on ServerFailure catch (e) {
       throw ServerFailure(message: e.message);
     }
