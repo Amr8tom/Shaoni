@@ -810,5 +810,19 @@
   "complaintDescriptionLabel": "Description",
   "editRequest": "Edit Request",
   "requestUpdatedSuccessfully": "Request Updated Successfully",
-  "updateRequest": "Update Request"
+  "updateRequest": "Update Request",
+
+  "studyType": "Study Type",
+  "selectStudyType": "Select study type",
+  "studyTypeRequired": "Study type is required",
+  "requiredStudy": "Required Study",
+  "requiredStudyHint": "e.g. Physics",
+  "studyDestination": "Destination / Entity",
+  "selectStudyDestination": "Select destination",
+  "destinationRequired": "Destination is required",
+  "startDate": "Start Date",
+  "endDate": "End Date",
+  "orderReason": "Request Justification",
+  "orderReasonHint": "Enter the reason for this request",
+  "thisFieldRequired": "This field is required"
 }

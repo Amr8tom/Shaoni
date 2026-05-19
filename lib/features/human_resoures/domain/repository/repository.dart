@@ -23,9 +23,13 @@ import '../use_cases/attendance/update_attendance_use_case.dart';
 import '../entity/attendance/update_attendance.dart';
 import '../use_cases/exit/update_exit_permission_use_case.dart';
 import '../entity/exit_permission/update_exit_permission.dart';
+import '../entity/study/create_study_response.dart';
+import '../entity/study/study_destination.dart';
+import '../entity/study/study_type.dart';
 import '../use_cases/complaint_request/create_complaint_request_use_case.dart';
 import '../use_cases/exit/create_exit_permission_use_case.dart';
 import '../use_cases/attendance/get_all_missing_attendance_use_case.dart';
+import '../use_cases/study/create_study_use_case.dart';
 
 abstract class HRServicesRepository {
   Future<Either<Failure, AllServices>> getAllPermissionServices({
@@ -90,5 +94,18 @@ abstract class HRServicesRepository {
 
   Future<Either<Failure, CreateComplaintRequestModel>> createComplaintRequest({
     required CreateComplaintRequestParams params,
+  });
+
+  /// ///////////////////////////////////// study request /////////////////////////////////////////////////////
+  Future<Either<Failure, List<StudyType>>> getStudyTypes({
+    required NoParams params,
+  });
+
+  Future<Either<Failure, List<StudyDestination>>> getStudyDestinations({
+    required NoParams params,
+  });
+
+  Future<Either<Failure, CreateStudyResponse>> createStudyRequest({
+    required CreateStudyParams params,
   });
 }

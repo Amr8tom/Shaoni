@@ -154,9 +154,14 @@ class MessageLookup extends MessageLookupByLibrary {
     "cancleOrderBody": MessageLookupByLibrary.simpleMessage(
       "are you sure that you want to cancle this order",
     ),
+    "carBrand": MessageLookupByLibrary.simpleMessage("Car Brand"),
+    "carColor": MessageLookupByLibrary.simpleMessage("Car Color"),
+    "carNumber": MessageLookupByLibrary.simpleMessage("Car Number"),
+    "carNumberHint": MessageLookupByLibrary.simpleMessage("e.g. ABC 1234"),
     "carPermitRequest": MessageLookupByLibrary.simpleMessage(
       "Car Permit Request",
     ),
+    "carType": MessageLookupByLibrary.simpleMessage("Car Type (Brand)"),
     "cart": MessageLookupByLibrary.simpleMessage("Cart"),
     "cashBack": MessageLookupByLibrary.simpleMessage("Cash Back"),
     "cashOnDelivery": MessageLookupByLibrary.simpleMessage("Cash on Delivery"),
@@ -206,6 +211,29 @@ class MessageLookup extends MessageLookupByLibrary {
     "company": MessageLookupByLibrary.simpleMessage("Company"),
     "comparePrice": MessageLookupByLibrary.simpleMessage("Compare Price"),
     "compass": MessageLookupByLibrary.simpleMessage("compass"),
+    "complaintDescription": MessageLookupByLibrary.simpleMessage(
+      "Complaint Description",
+    ),
+    "complaintDescriptionHint": MessageLookupByLibrary.simpleMessage(
+      "Describe your complaint in detail...",
+    ),
+    "complaintDescriptionLabel": MessageLookupByLibrary.simpleMessage(
+      "Description",
+    ),
+    "complaintReason": MessageLookupByLibrary.simpleMessage("Complaint Reason"),
+    "complaintReasonLabel": MessageLookupByLibrary.simpleMessage(
+      "Complaint Reason",
+    ),
+    "complaintRequest": MessageLookupByLibrary.simpleMessage(
+      "Complaint Request",
+    ),
+    "complaintRequestDetails": MessageLookupByLibrary.simpleMessage(
+      "Complaint Details",
+    ),
+    "complaintType": MessageLookupByLibrary.simpleMessage("Complaint Type"),
+    "complaintTypeLabel": MessageLookupByLibrary.simpleMessage(
+      "Complaint Type",
+    ),
     "completed": MessageLookupByLibrary.simpleMessage("Completed"),
     "confirm": MessageLookupByLibrary.simpleMessage("Confirm "),
     "confirmAddress": MessageLookupByLibrary.simpleMessage("Confirm Address"),
@@ -292,6 +320,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "designDevelopment": MessageLookupByLibrary.simpleMessage(
       "Design & Development",
     ),
+    "destinationRequired": MessageLookupByLibrary.simpleMessage(
+      "Destination is required",
+    ),
     "details": MessageLookupByLibrary.simpleMessage("Details"),
     "deviceAngle": MessageLookupByLibrary.simpleMessage("Device Angle"),
     "dhuhr": MessageLookupByLibrary.simpleMessage("Dhuhr"),
@@ -328,6 +359,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "eMail": MessageLookupByLibrary.simpleMessage("E-mail"),
     "editProduct": MessageLookupByLibrary.simpleMessage("Edit The Product"),
+    "editRequest": MessageLookupByLibrary.simpleMessage("Edit Request"),
     "eggs": MessageLookupByLibrary.simpleMessage(
       "Omelets eggs + green salad + Bread",
     ),
@@ -341,6 +373,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "emailPasswordSend": MessageLookupByLibrary.simpleMessage(
       "The Reset Code is Sent",
     ),
+    "endDate": MessageLookupByLibrary.simpleMessage("End Date"),
     "endOfServiceRequest": MessageLookupByLibrary.simpleMessage(
       "End of Service Request",
     ),
@@ -744,6 +777,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "orderDetails": MessageLookupByLibrary.simpleMessage("Order Details"),
     "orderExecution": MessageLookupByLibrary.simpleMessage("Order Execution"),
     "orderNumber": MessageLookupByLibrary.simpleMessage("Order Number "),
+    "orderReason": MessageLookupByLibrary.simpleMessage(
+      "Request Justification",
+    ),
+    "orderReasonHint": MessageLookupByLibrary.simpleMessage(
+      "Enter the reason for this request",
+    ),
     "orderStatus": MessageLookupByLibrary.simpleMessage("Order Status"),
     "orderType": MessageLookupByLibrary.simpleMessage("Order Type"),
     "orders": MessageLookupByLibrary.simpleMessage("Orders"),
@@ -799,6 +838,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "placeName": MessageLookupByLibrary.simpleMessage("Place Name"),
     "placeNumber": MessageLookupByLibrary.simpleMessage("Place Number"),
+    "plateNumber": MessageLookupByLibrary.simpleMessage("Plate Number"),
     "please": MessageLookupByLibrary.simpleMessage(
       "Please enable Location service",
     ),
@@ -925,12 +965,18 @@ class MessageLookup extends MessageLookupByLibrary {
       "Your request has been sent successfully",
     ),
     "requestStage": MessageLookupByLibrary.simpleMessage("Request Stage"),
+    "requestState": MessageLookupByLibrary.simpleMessage("Status"),
     "requestStatus": MessageLookupByLibrary.simpleMessage("Request Status"),
     "requestSuccessfully": MessageLookupByLibrary.simpleMessage(
       "Your request is sent successfully",
     ),
     "requestType": MessageLookupByLibrary.simpleMessage("Request Type"),
+    "requestUpdatedSuccessfully": MessageLookupByLibrary.simpleMessage(
+      "Request Updated Successfully",
+    ),
     "requests": MessageLookupByLibrary.simpleMessage("Requests"),
+    "requiredStudy": MessageLookupByLibrary.simpleMessage("Required Study"),
+    "requiredStudyHint": MessageLookupByLibrary.simpleMessage("e.g. Physics"),
     "requirements": MessageLookupByLibrary.simpleMessage("requirements"),
     "res": MessageLookupByLibrary.simpleMessage("Residencies"),
     "resLocation": MessageLookupByLibrary.simpleMessage("Residence Location"),
@@ -985,8 +1031,16 @@ class MessageLookup extends MessageLookupByLibrary {
       "Please Select Address first",
     ),
     "selectArr": MessageLookupByLibrary.simpleMessage("select arrival city"),
+    "selectCarBrand": MessageLookupByLibrary.simpleMessage("Select Car Brand"),
+    "selectCarColor": MessageLookupByLibrary.simpleMessage("Select Car Color"),
     "selectCategory": MessageLookupByLibrary.simpleMessage("Select Category"),
     "selectCity": MessageLookupByLibrary.simpleMessage("choose your city"),
+    "selectComplaintReason": MessageLookupByLibrary.simpleMessage(
+      "Select Complaint Reason",
+    ),
+    "selectComplaintType": MessageLookupByLibrary.simpleMessage(
+      "Select Complaint Type",
+    ),
     "selectCountry": MessageLookupByLibrary.simpleMessage("Select Country"),
     "selectDate": MessageLookupByLibrary.simpleMessage("Select Date"),
     "selectDep": MessageLookupByLibrary.simpleMessage("select departure city"),
@@ -1009,6 +1063,12 @@ class MessageLookup extends MessageLookupByLibrary {
       "Select Reading Theme",
     ),
     "selectRegion": MessageLookupByLibrary.simpleMessage("Select region"),
+    "selectStudyDestination": MessageLookupByLibrary.simpleMessage(
+      "Select destination",
+    ),
+    "selectStudyType": MessageLookupByLibrary.simpleMessage(
+      "Select study type",
+    ),
     "selectTime": MessageLookupByLibrary.simpleMessage("select time"),
     "send": MessageLookupByLibrary.simpleMessage("Send"),
     "sendFeed": MessageLookupByLibrary.simpleMessage("Send Feedback"),
@@ -1061,11 +1121,19 @@ class MessageLookup extends MessageLookupByLibrary {
     "stagnantItems": MessageLookupByLibrary.simpleMessage(
       "Stagnant Items.......You can upload your stagnant items to your account and they will be rotated and resold on your behalf",
     ),
+    "startDate": MessageLookupByLibrary.simpleMessage("Start Date"),
     "startSearch": MessageLookupByLibrary.simpleMessage("Starting Search"),
     "status": MessageLookupByLibrary.simpleMessage("Status"),
     "stoning": MessageLookupByLibrary.simpleMessage("Stoning Devil in Mina"),
     "streetName": MessageLookupByLibrary.simpleMessage("Street Name"),
     "study": MessageLookupByLibrary.simpleMessage("Training and Education"),
+    "studyDestination": MessageLookupByLibrary.simpleMessage(
+      "Destination / Entity",
+    ),
+    "studyType": MessageLookupByLibrary.simpleMessage("Study Type"),
+    "studyTypeRequired": MessageLookupByLibrary.simpleMessage(
+      "Study type is required",
+    ),
     "subActivityRequest": MessageLookupByLibrary.simpleMessage(
       "Sub Activity Request",
     ),
@@ -1118,6 +1186,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "themeNightMode": MessageLookupByLibrary.simpleMessage("Night Mode"),
     "themeSoftRose": MessageLookupByLibrary.simpleMessage("Soft Rose"),
     "themeVintageSepia": MessageLookupByLibrary.simpleMessage("Vintage Sepia"),
+    "thisFieldRequired": MessageLookupByLibrary.simpleMessage(
+      "This field is required",
+    ),
     "time": MessageLookupByLibrary.simpleMessage("Time: "),
     "time09": MessageLookupByLibrary.simpleMessage("09:30 AM"),
     "timeNowIS": MessageLookupByLibrary.simpleMessage("Time now is "),
@@ -1168,6 +1239,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "A new version of the TEAA is available. Please update to continue",
     ),
     "updateData": MessageLookupByLibrary.simpleMessage("Update Data"),
+    "updateRequest": MessageLookupByLibrary.simpleMessage("Update Request"),
     "uploadFileSelect": MessageLookupByLibrary.simpleMessage(
       "Select File to Upload",
     ),
@@ -1269,19 +1341,5 @@ class MessageLookup extends MessageLookupByLibrary {
     "writetitleHere": MessageLookupByLibrary.simpleMessage("write title here"),
     "yes": MessageLookupByLibrary.simpleMessage("Yes"),
     "youHave": MessageLookupByLibrary.simpleMessage("you have : "),
-    "complaintRequest": MessageLookupByLibrary.simpleMessage("Complaint Request"),
-    "complaintType": MessageLookupByLibrary.simpleMessage("Complaint Type"),
-    "selectComplaintType": MessageLookupByLibrary.simpleMessage("Select Complaint Type"),
-    "complaintReason": MessageLookupByLibrary.simpleMessage("Complaint Reason"),
-    "selectComplaintReason": MessageLookupByLibrary.simpleMessage("Select Complaint Reason"),
-    "complaintDescription": MessageLookupByLibrary.simpleMessage("Complaint Description"),
-    "complaintDescriptionHint": MessageLookupByLibrary.simpleMessage("Describe your complaint in detail..."),
-    "complaintRequestDetails": MessageLookupByLibrary.simpleMessage("Complaint Details"),
-    "complaintTypeLabel": MessageLookupByLibrary.simpleMessage("Complaint Type"),
-    "complaintReasonLabel": MessageLookupByLibrary.simpleMessage("Complaint Reason"),
-    "complaintDescriptionLabel": MessageLookupByLibrary.simpleMessage("Description"),
-    "editRequest": MessageLookupByLibrary.simpleMessage("Edit Request"),
-    "requestUpdatedSuccessfully": MessageLookupByLibrary.simpleMessage("Request Updated Successfully"),
-    "updateRequest": MessageLookupByLibrary.simpleMessage("Update Request"),
   };
 }

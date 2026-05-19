@@ -15,7 +15,11 @@ import 'package:shaoni/features/human_resoures/data/model/exit_permission/update
 import 'package:shaoni/features/human_resoures/domain/use_cases/car_permission/update_car_permission_use_case.dart';
 import 'package:shaoni/features/human_resoures/domain/use_cases/attendance/update_attendance_use_case.dart';
 import 'package:shaoni/features/human_resoures/domain/use_cases/exit/update_exit_permission_use_case.dart';
+import 'package:shaoni/features/human_resoures/data/model/study/create_study_model.dart';
+import 'package:shaoni/features/human_resoures/data/model/study/study_destination_model.dart';
+import 'package:shaoni/features/human_resoures/data/model/study/study_type_model.dart';
 import 'package:shaoni/features/human_resoures/domain/use_cases/complaint_request/create_complaint_request_use_case.dart';
+import 'package:shaoni/features/human_resoures/domain/use_cases/study/create_study_use_case.dart';
 
 import '../../../../core/constants/api_constants.dart';
 import '../../../../core/dio/dio_helper.dart';
@@ -84,6 +88,17 @@ abstract class HRServicesRemoteDataSources {
 
   Future<CreateComplaintRequestModel> createComplaintRequest({
     required CreateComplaintRequestParams params,
+  });
+
+  /// ============================= study request =============================
+  Future<List<StudyTypeModel>> getStudyTypes({required NoParams params});
+
+  Future<List<StudyDestinationModel>> getStudyDestinations({
+    required NoParams params,
+  });
+
+  Future<CreateStudyModel> createStudyRequest({
+    required CreateStudyParams params,
   });
 }
 
@@ -367,6 +382,58 @@ class HRServicesRemoteDataSourcesImp implements HRServicesRemoteDataSources {
       final response = await _dio.postData(URL: URL.createComplaintRequest, body: params.toMap());
       if (response != null) {
         return CreateComplaintRequestModel.fromJson(response);
+      } else {
+        throw ServerFailure(message: 'server failure');
+      }
+    } on ServerFailure catch (e) {
+      throw ServerFailure(message: e.message);
+    }
+  }
+
+  /// ============================= study request =============================
+
+  @override
+  Future<List<StudyTypeModel>> getStudyTypes({required NoParams params}) async {
+    try {
+      final List response = await _dio.getData(URL: URL.getStudyTypes);
+      if (response != null) {
+        return response.map((e) => StudyTypeModel.fromJson(e)).toList();
+      } else {
+        throw ServerFailure(message: 'server failure');
+      }
+    } on ServerFailure catch (e) {
+      throw ServerFailure(message: e.message);
+    }
+  }
+
+  @override
+  Future<List<StudyDestinationModel>> getStudyDestinations({
+    required NoParams params,
+  }) async {
+    try {
+      final response = await _dio.getData(URL: URL.getStudyDestinations);
+      if (response != null) {
+        final List data = response['data'] as List;
+        return data.map((e) => StudyDestinationModel.fromJson(e)).toList();
+      } else {
+        throw ServerFailure(message: 'server failure');
+      }
+    } on ServerFailure catch (e) {
+      throw ServerFailure(message: e.message);
+    }
+  }
+
+  @override
+  Future<CreateStudyModel> createStudyRequest({
+    required CreateStudyParams params,
+  }) async {
+    try {
+      final response = await _dio.postData(
+        URL: URL.createStudyRequest,
+        body: params.toMap(),
+      );
+      if (response != null) {
+        return CreateStudyModel.fromJson(response);
       } else {
         throw ServerFailure(message: 'server failure');
       }

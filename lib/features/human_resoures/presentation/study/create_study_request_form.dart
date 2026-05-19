@@ -50,8 +50,8 @@ class CreateStudyRequestForm extends StatelessWidget {
                   CustomDialogImgTitleDes(
                     button1: S.current.myOrders,
                     button2: S.current.home,
+                    orderNumber: state.requestNumber ?? '',
                     onTab2: () {
-                      /// navigation screen
                       context.pushNamedAndRemoveUntil(
                         DRoutesName.navigationMenuRoute,
                         predicate: (route) => false,
@@ -59,7 +59,7 @@ class CreateStudyRequestForm extends StatelessWidget {
                     },
                     onTab1: () {
                       context.pushNamedAndRemoveUntil(
-                        DRoutesName.navigationMenuRoute,
+                        DRoutesName.requestRoutes,
                         predicate: (route) => false,
                       );
                     },
@@ -68,6 +68,14 @@ class CreateStudyRequestForm extends StatelessWidget {
                     des: S.current.requestSentSuccessfully,
                     imgPath: AssetRes.doubleCorrect,
                     isSvg: true,
+                  );
+                }
+                if (state.isCreateStudyRequestError || state.isLookupsError) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text(state.errorMessage ?? S.current.error),
+                      backgroundColor: ColorRes.error.withOpacity(0.5),
+                    ),
                   );
                 }
               },
@@ -94,7 +102,12 @@ class CreateStudyRequestForm extends StatelessWidget {
                               const Sizer(height: 35),
 
                               /// data for request applicant
-                              const ApplicantDataWidget(),
+                              ApplicantDataWidget(
+                                onOfficeChanged: (id, officeName) {
+                                  controller.officeIdController.text =
+                                      id.toString();
+                                },
+                              ),
 
                               /// request data
                               const Sizer(height: 35),
@@ -109,7 +122,14 @@ class CreateStudyRequestForm extends StatelessWidget {
 
                               /// file upload
                               const Sizer(height: 35),
-                              const FileUploadWidget(),
+                              FileUploadWidget(
+                                onPickedFile: (fileName, base64String) {
+                                  controller.attachmentFileNameController
+                                      .text = fileName ?? '';
+                                  controller.attachmentFileController.text =
+                                      base64String ?? '';
+                                },
+                              ),
 
                               /// Extra space so content doesn't hide behind the floating buttons
                               const Sizer(height: 120),

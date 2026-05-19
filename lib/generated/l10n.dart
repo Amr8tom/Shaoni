@@ -5194,6 +5194,76 @@ class S {
     );
   }
 
+  /// `Car Brand`
+  String get carBrand {
+    return Intl.message('Car Brand', name: 'carBrand', desc: '', args: []);
+  }
+
+  /// `Select Car Brand`
+  String get selectCarBrand {
+    return Intl.message(
+      'Select Car Brand',
+      name: 'selectCarBrand',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Car Color`
+  String get carColor {
+    return Intl.message('Car Color', name: 'carColor', desc: '', args: []);
+  }
+
+  /// `Select Car Color`
+  String get selectCarColor {
+    return Intl.message(
+      'Select Car Color',
+      name: 'selectCarColor',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Car Number`
+  String get carNumber {
+    return Intl.message('Car Number', name: 'carNumber', desc: '', args: []);
+  }
+
+  /// `e.g. ABC 1234`
+  String get carNumberHint {
+    return Intl.message(
+      'e.g. ABC 1234',
+      name: 'carNumberHint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Car Type (Brand)`
+  String get carType {
+    return Intl.message(
+      'Car Type (Brand)',
+      name: 'carType',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Plate Number`
+  String get plateNumber {
+    return Intl.message(
+      'Plate Number',
+      name: 'plateNumber',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Status`
+  String get requestState {
+    return Intl.message('Status', name: 'requestState', desc: '', args: []);
+  }
+
   /// `Check-In Time (from record)`
   String get checkInFromRecord {
     return Intl.message(
@@ -6009,76 +6079,6 @@ class S {
     );
   }
 
-  /// `Car Brand`
-  String get carBrand {
-    return Intl.message('Car Brand', name: 'carBrand', desc: '', args: []);
-  }
-
-  /// `Select Car Brand`
-  String get selectCarBrand {
-    return Intl.message(
-      'Select Car Brand',
-      name: 'selectCarBrand',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Car Color`
-  String get carColor {
-    return Intl.message('Car Color', name: 'carColor', desc: '', args: []);
-  }
-
-  /// `Select Car Color`
-  String get selectCarColor {
-    return Intl.message(
-      'Select Car Color',
-      name: 'selectCarColor',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Car Number`
-  String get carNumber {
-    return Intl.message('Car Number', name: 'carNumber', desc: '', args: []);
-  }
-
-  /// `e.g. ABC 1234`
-  String get carNumberHint {
-    return Intl.message(
-      'e.g. ABC 1234',
-      name: 'carNumberHint',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Car Type (Brand)`
-  String get carType {
-    return Intl.message(
-      'Car Type (Brand)',
-      name: 'carType',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Plate Number`
-  String get plateNumber {
-    return Intl.message(
-      'Plate Number',
-      name: 'plateNumber',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Status`
-  String get requestState {
-    return Intl.message('Status', name: 'requestState', desc: '', args: []);
-  }
-
   /// `Complaint Request`
   String get complaintRequest {
     return Intl.message(
@@ -6191,7 +6191,12 @@ class S {
 
   /// `Edit Request`
   String get editRequest {
-    return Intl.message('Edit Request', name: 'editRequest', desc: '', args: []);
+    return Intl.message(
+      'Edit Request',
+      name: 'editRequest',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Request Updated Successfully`
@@ -6206,7 +6211,127 @@ class S {
 
   /// `Update Request`
   String get updateRequest {
-    return Intl.message('Update Request', name: 'updateRequest', desc: '', args: []);
+    return Intl.message(
+      'Update Request',
+      name: 'updateRequest',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Study Type`
+  String get studyType {
+    return Intl.message('Study Type', name: 'studyType', desc: '', args: []);
+  }
+
+  /// `Select study type`
+  String get selectStudyType {
+    return Intl.message(
+      'Select study type',
+      name: 'selectStudyType',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Study type is required`
+  String get studyTypeRequired {
+    return Intl.message(
+      'Study type is required',
+      name: 'studyTypeRequired',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Required Study`
+  String get requiredStudy {
+    return Intl.message(
+      'Required Study',
+      name: 'requiredStudy',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `e.g. Physics`
+  String get requiredStudyHint {
+    return Intl.message(
+      'e.g. Physics',
+      name: 'requiredStudyHint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Destination / Entity`
+  String get studyDestination {
+    return Intl.message(
+      'Destination / Entity',
+      name: 'studyDestination',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Select destination`
+  String get selectStudyDestination {
+    return Intl.message(
+      'Select destination',
+      name: 'selectStudyDestination',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Destination is required`
+  String get destinationRequired {
+    return Intl.message(
+      'Destination is required',
+      name: 'destinationRequired',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Start Date`
+  String get startDate {
+    return Intl.message('Start Date', name: 'startDate', desc: '', args: []);
+  }
+
+  /// `End Date`
+  String get endDate {
+    return Intl.message('End Date', name: 'endDate', desc: '', args: []);
+  }
+
+  /// `Request Justification`
+  String get orderReason {
+    return Intl.message(
+      'Request Justification',
+      name: 'orderReason',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter the reason for this request`
+  String get orderReasonHint {
+    return Intl.message(
+      'Enter the reason for this request',
+      name: 'orderReasonHint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `This field is required`
+  String get thisFieldRequired {
+    return Intl.message(
+      'This field is required',
+      name: 'thisFieldRequired',
+      desc: '',
+      args: [],
+    );
   }
 }
 

@@ -25,6 +25,9 @@ import '../../features/human_resoures/domain/use_cases/exit/get_permission_time_
 import '../../features/human_resoures/domain/use_cases/exit/get_permission_types_use_case.dart';
 import '../../features/human_resoures/presentation/controller/attendance/attendance_cubit.dart';
 import '../../features/human_resoures/presentation/controller/exit_permission/exit_request_service_cubit.dart';
+import '../../features/human_resoures/domain/use_cases/study/create_study_use_case.dart';
+import '../../features/human_resoures/domain/use_cases/study/get_study_destinations_use_case.dart';
+import '../../features/human_resoures/domain/use_cases/study/get_study_types_use_case.dart';
 import '../../features/human_resoures/presentation/controller/study/study_cubit.dart';
 
 class HRServiceLocator {
@@ -129,9 +132,22 @@ class HRServiceLocator {
       () => ComplaintRequestCubit(
           serviceLocator(), serviceLocator(), serviceLocator()),
     );
+    /// ============================= study request =============================
+    serviceLocator.registerLazySingleton<GetStudyTypesUseCase>(
+      () => GetStudyTypesUseCase(serviceLocator()),
+    );
+    serviceLocator.registerLazySingleton<GetStudyDestinationsUseCase>(
+      () => GetStudyDestinationsUseCase(serviceLocator()),
+    );
+    serviceLocator.registerLazySingleton<CreateStudyUseCase>(
+      () => CreateStudyUseCase(serviceLocator()),
+    );
     serviceLocator.registerFactory<StudyCubit>(
       () => StudyCubit(
-          ),
+        serviceLocator(),
+        serviceLocator(),
+        serviceLocator(),
+      ),
     );
   }
 }

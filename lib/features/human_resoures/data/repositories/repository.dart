@@ -17,7 +17,11 @@ import 'package:shaoni/features/human_resoures/domain/use_cases/attendance/updat
 import 'package:shaoni/features/human_resoures/domain/entity/attendance/update_attendance.dart';
 import 'package:shaoni/features/human_resoures/domain/use_cases/exit/update_exit_permission_use_case.dart';
 import 'package:shaoni/features/human_resoures/domain/entity/exit_permission/update_exit_permission.dart';
+import 'package:shaoni/features/human_resoures/domain/entity/study/create_study_response.dart';
+import 'package:shaoni/features/human_resoures/domain/entity/study/study_destination.dart';
+import 'package:shaoni/features/human_resoures/domain/entity/study/study_type.dart';
 import 'package:shaoni/features/human_resoures/domain/use_cases/complaint_request/create_complaint_request_use_case.dart';
+import 'package:shaoni/features/human_resoures/domain/use_cases/study/create_study_use_case.dart';
 import '../model/car_permission/update_car_permission_model.dart';
 import '../model/complaint_request/create_complaint_request_model.dart';
 import '../../../../core/connection/checkNetwork.dart';
@@ -332,4 +336,53 @@ class HRServicesRepositoryImp extends HRServicesRepository {
     }
   }
 
+  /// ===================== study request =====================
+
+  @override
+  Future<Either<Failure, List<StudyType>>> getStudyTypes({
+    required NoParams params,
+  }) async {
+    if (await _networkInfo.isConnected) {
+      try {
+        final response = await _remote.getStudyTypes(params: params);
+        return Right(response);
+      } on ServerFailure catch (e) {
+        return Left(ServerFailure(message: e.message));
+      }
+    } else {
+      return Left(CacheFailure());
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<StudyDestination>>> getStudyDestinations({
+    required NoParams params,
+  }) async {
+    if (await _networkInfo.isConnected) {
+      try {
+        final response = await _remote.getStudyDestinations(params: params);
+        return Right(response);
+      } on ServerFailure catch (e) {
+        return Left(ServerFailure(message: e.message));
+      }
+    } else {
+      return Left(CacheFailure());
+    }
+  }
+
+  @override
+  Future<Either<Failure, CreateStudyResponse>> createStudyRequest({
+    required CreateStudyParams params,
+  }) async {
+    if (await _networkInfo.isConnected) {
+      try {
+        final response = await _remote.createStudyRequest(params: params);
+        return Right(response);
+      } on ServerFailure catch (e) {
+        return Left(ServerFailure(message: e.message));
+      }
+    } else {
+      return Left(CacheFailure());
+    }
+  }
 }

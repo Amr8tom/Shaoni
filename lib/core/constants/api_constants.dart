@@ -33,6 +33,11 @@ class URL {
   static const String updateCarPermission = '$baseUrl/CarPermission/update/';
   static const String getCarPermissionEdit = '$baseUrl/CarPermission/edit/';
 
+  /// ============================ study request ============================
+  static const String getStudyTypes = '$baseUrl/Lookup/GetStudyTypes';
+  static const String getStudyDestinations = '$baseUrl/Integration/get-study-Destinations';
+  static const String createStudyRequest = '$baseUrl/StudyRequest/create';
+
   /// ============================ complaint request ============================
   static const String getComplaintTypes = '$baseUrl/Lookup/GetComplaintTypes';
   static const String getComplaintReasons = '$baseUrl/Lookup/GetComplaintReasons';

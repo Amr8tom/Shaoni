@@ -816,5 +816,19 @@
   "complaintDescriptionLabel": "الوصف",
   "editRequest": "تعديل الطلب",
   "requestUpdatedSuccessfully": "تم تعديل الطلب بنجاح",
-  "updateRequest": "تعديل الطلب"
+  "updateRequest": "تعديل الطلب",
+
+  "studyType": "نوع الدراسة",
+  "selectStudyType": "اختر نوع الدراسة",
+  "studyTypeRequired": "نوع الدراسة مطلوب",
+  "requiredStudy": "الدراسة المطلوبة",
+  "requiredStudyHint": "مثال: Physics",
+  "studyDestination": "الجهة / الوجهة",
+  "selectStudyDestination": "اختر الجهة",
+  "destinationRequired": "الجهة مطلوبة",
+  "startDate": "تاريخ البداية",
+  "endDate": "تاريخ الانتهاء",
+  "orderReason": "مبررات الطلب",
+  "orderReasonHint": "أدخل سبب هذا الطلب",
+  "thisFieldRequired": "هذا الحقل مطلوب"
 }
