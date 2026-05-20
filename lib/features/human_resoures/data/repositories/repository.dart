@@ -32,6 +32,10 @@ import 'package:shaoni/features/human_resoures/domain/entity/experience_certific
 import 'package:shaoni/features/human_resoures/domain/entity/experience_certificate/create_experience_certificate_response.dart';
 import 'package:shaoni/features/human_resoures/domain/use_cases/experience_certificate/create_experience_certificate_use_case.dart';
 import 'package:shaoni/features/human_resoures/domain/use_cases/experience_certificate/update_experience_certificate_use_case.dart';
+import 'package:shaoni/features/human_resoures/domain/entity/id_document/department.dart';
+import 'package:shaoni/features/human_resoures/domain/entity/id_document/id_renewal_request_type.dart';
+import 'package:shaoni/features/human_resoures/domain/entity/id_document/create_id_document_response.dart';
+import 'package:shaoni/features/human_resoures/domain/use_cases/id_document/create_id_document_use_case.dart';
 import '../model/car_permission/update_car_permission_model.dart';
 import '../model/complaint_request/create_complaint_request_model.dart';
 import '../../../../core/connection/checkNetwork.dart';
@@ -523,6 +527,56 @@ class HRServicesRepositoryImp extends HRServicesRepository {
       try {
         final response =
             await _remote.updateExperienceCertificate(params: params);
+        return Right(response);
+      } on ServerFailure catch (e) {
+        return Left(ServerFailure(message: e.message));
+      }
+    } else {
+      return Left(CacheFailure());
+    }
+  }
+
+  /// ===================== id document =====================
+
+  @override
+  Future<Either<Failure, List<Department>>> getDepartments({
+    required NoParams params,
+  }) async {
+    if (await _networkInfo.isConnected) {
+      try {
+        final response = await _remote.getDepartments(params: params);
+        return Right(response);
+      } on ServerFailure catch (e) {
+        return Left(ServerFailure(message: e.message));
+      }
+    } else {
+      return Left(CacheFailure());
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<IDRenewalRequestType>>> getIDRenewalRequestTypes({
+    required NoParams params,
+  }) async {
+    if (await _networkInfo.isConnected) {
+      try {
+        final response = await _remote.getIDRenewalRequestTypes(params: params);
+        return Right(response);
+      } on ServerFailure catch (e) {
+        return Left(ServerFailure(message: e.message));
+      }
+    } else {
+      return Left(CacheFailure());
+    }
+  }
+
+  @override
+  Future<Either<Failure, CreateIDDocumentResponse>> createIDDocument({
+    required CreateIDDocumentParams params,
+  }) async {
+    if (await _networkInfo.isConnected) {
+      try {
+        final response = await _remote.createIDDocument(params: params);
         return Right(response);
       } on ServerFailure catch (e) {
         return Left(ServerFailure(message: e.message));

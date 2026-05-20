@@ -39,6 +39,10 @@ import '../../features/human_resoures/domain/use_cases/experience_certificate/ge
 import '../../features/human_resoures/domain/use_cases/experience_certificate/create_experience_certificate_use_case.dart';
 import '../../features/human_resoures/domain/use_cases/experience_certificate/update_experience_certificate_use_case.dart';
 import '../../features/human_resoures/presentation/controller/experience_certificate/experience_certificate_cubit.dart';
+import '../../features/human_resoures/domain/use_cases/id_document/get_departments_use_case.dart';
+import '../../features/human_resoures/domain/use_cases/id_document/get_id_renewal_request_types_use_case.dart';
+import '../../features/human_resoures/domain/use_cases/id_document/create_id_document_use_case.dart';
+import '../../features/human_resoures/presentation/controller/id_document/id_document_cubit.dart';
 
 class HRServiceLocator {
   static Future<void> execute({required GetIt serviceLocator}) async {
@@ -198,6 +202,24 @@ class HRServiceLocator {
     );
     serviceLocator.registerFactory<ExperienceCertificateCubit>(
       () => ExperienceCertificateCubit(
+        serviceLocator(),
+        serviceLocator(),
+        serviceLocator(),
+      ),
+    );
+
+    /// ============================= id document =============================
+    serviceLocator.registerLazySingleton<GetDepartmentsUseCase>(
+      () => GetDepartmentsUseCase(serviceLocator()),
+    );
+    serviceLocator.registerLazySingleton<GetIDRenewalRequestTypesUseCase>(
+      () => GetIDRenewalRequestTypesUseCase(serviceLocator()),
+    );
+    serviceLocator.registerLazySingleton<CreateIDDocumentUseCase>(
+      () => CreateIDDocumentUseCase(serviceLocator()),
+    );
+    serviceLocator.registerFactory<IDDocumentCubit>(
+      () => IDDocumentCubit(
         serviceLocator(),
         serviceLocator(),
         serviceLocator(),

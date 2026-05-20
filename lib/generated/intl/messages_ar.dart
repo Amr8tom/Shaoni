@@ -154,6 +154,12 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "selectCertificateReason":
         MessageLookupByLibrary.simpleMessage("اختر السبب"),
+    "selectDocumentType":
+        MessageLookupByLibrary.simpleMessage("اختر النوع"),
+    "selectIssuingCountry":
+        MessageLookupByLibrary.simpleMessage("اختر دولة الإصدار"),
+    "selectRequestType":
+        MessageLookupByLibrary.simpleMessage("اختر نوع الطلب"),
     "cashBack": MessageLookupByLibrary.simpleMessage("كاش باك"),
     "cashOnDelivery": MessageLookupByLibrary.simpleMessage(
       "الدفع عند الاستلام",
@@ -380,6 +386,25 @@ class MessageLookup extends MessageLookupByLibrary {
     "errorOccurred": MessageLookupByLibrary.simpleMessage("حدث خطأ ما"),
     "experienceCertificate":
         MessageLookupByLibrary.simpleMessage("شهادة الخبرة"),
+    "documentData": MessageLookupByLibrary.simpleMessage("بيانات الوثيقة"),
+    "documentNumber": MessageLookupByLibrary.simpleMessage("رقم المستند"),
+    "documentType": MessageLookupByLibrary.simpleMessage("النوع"),
+    "drivingLicenseNumber":
+        MessageLookupByLibrary.simpleMessage("رقم رخصة سياقة"),
+    "endDate": MessageLookupByLibrary.simpleMessage("النهاية م"),
+    "familyCardNumber":
+        MessageLookupByLibrary.simpleMessage("رقم بطاقة عائلية"),
+    "hasKafala": MessageLookupByLibrary.simpleMessage("هل علي كفالة"),
+    "idRenewalDocument":
+        MessageLookupByLibrary.simpleMessage("طلب تجديد / إضافة وثيقة ثبوتية"),
+    "issueDate": MessageLookupByLibrary.simpleMessage("تاريخ الإصدار م"),
+    "issueNumber": MessageLookupByLibrary.simpleMessage("رقم الإصدار"),
+    "issuingCountry": MessageLookupByLibrary.simpleMessage("دولة الإصدار"),
+    "kafeelName": MessageLookupByLibrary.simpleMessage("اسم الكفيل"),
+    "passportAddress": MessageLookupByLibrary.simpleMessage("عنوان جواز السفر"),
+    "passportNumber": MessageLookupByLibrary.simpleMessage("رقم جواز السفر"),
+    "requestType": MessageLookupByLibrary.simpleMessage("نوع الطلب"),
+    "tabaq": MessageLookupByLibrary.simpleMessage("طبق"),
     "eveningShift": MessageLookupByLibrary.simpleMessage(
       "رقم الوردية المسائية",
     ),

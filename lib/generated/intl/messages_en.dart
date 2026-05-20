@@ -168,6 +168,12 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "selectCertificateReason":
         MessageLookupByLibrary.simpleMessage("Select reason"),
+    "selectDocumentType":
+        MessageLookupByLibrary.simpleMessage("Select document type"),
+    "selectIssuingCountry":
+        MessageLookupByLibrary.simpleMessage("Select issuing country"),
+    "selectRequestType":
+        MessageLookupByLibrary.simpleMessage("Select request type"),
     "cashBack": MessageLookupByLibrary.simpleMessage("Cash Back"),
     "cashOnDelivery": MessageLookupByLibrary.simpleMessage("Cash on Delivery"),
     "cashOnDeliveryScreen": MessageLookupByLibrary.simpleMessage(
@@ -412,6 +418,25 @@ class MessageLookup extends MessageLookupByLibrary {
     "errorOccurred": MessageLookupByLibrary.simpleMessage("An error occurred"),
     "experienceCertificate":
         MessageLookupByLibrary.simpleMessage("Experience Certificate"),
+    "documentData": MessageLookupByLibrary.simpleMessage("Document Data"),
+    "documentNumber": MessageLookupByLibrary.simpleMessage("Document Number"),
+    "documentType": MessageLookupByLibrary.simpleMessage("Document Type"),
+    "drivingLicenseNumber":
+        MessageLookupByLibrary.simpleMessage("Driving License Number"),
+    "endDate": MessageLookupByLibrary.simpleMessage("End Date"),
+    "familyCardNumber":
+        MessageLookupByLibrary.simpleMessage("Family Card Number"),
+    "hasKafala": MessageLookupByLibrary.simpleMessage("Under Sponsorship"),
+    "idRenewalDocument":
+        MessageLookupByLibrary.simpleMessage("ID Document Add / Renewal Request"),
+    "issueDate": MessageLookupByLibrary.simpleMessage("Issue Date"),
+    "issueNumber": MessageLookupByLibrary.simpleMessage("Issue Number"),
+    "issuingCountry": MessageLookupByLibrary.simpleMessage("Issuing Country"),
+    "kafeelName": MessageLookupByLibrary.simpleMessage("Sponsor Name"),
+    "passportAddress": MessageLookupByLibrary.simpleMessage("Passport Address"),
+    "passportNumber": MessageLookupByLibrary.simpleMessage("Passport Number"),
+    "requestType": MessageLookupByLibrary.simpleMessage("Request Type"),
+    "tabaq": MessageLookupByLibrary.simpleMessage("Matched"),
     "eveningShift": MessageLookupByLibrary.simpleMessage(
       "evening shift Number",
     ),

@@ -45,7 +45,7 @@ class ExperienceCertificateDetailsWidget extends StatelessWidget {
               /// Certificate reason
               OrderTextCard(
                 title: S.current.certificateReason,
-                result: cert?.certificateReason ?? '',
+                result: cert?.certificateReasonName ?? '',
               ),
               const Sizer(height: 12),
 

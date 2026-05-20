@@ -2,6 +2,7 @@ import 'package:equatable/equatable.dart';
 import 'package:shaoni/features/details_and_edit_for_requests/data/models/study_model.dart';
 import 'package:shaoni/features/details_and_edit_for_requests/data/models/start_work_model.dart';
 import 'package:shaoni/features/details_and_edit_for_requests/data/models/experience_certificate_model.dart';
+import 'package:shaoni/features/details_and_edit_for_requests/data/models/id_document_model.dart';
 import 'package:shaoni/features/details_and_edit_for_requests/domain/entities/car_permission/car_permission.dart';
 import 'package:shaoni/features/details_and_edit_for_requests/domain/entities/complaint_request/complaint_request_details.dart';
 
@@ -13,6 +14,7 @@ class ExtraData extends Equatable {
   final StudyModel? study;
   final StartWorkModel? startWork;
   final ExperienceCertificateModel? experienceCertificate;
+  final IDDocumentModel? idDocument;
   final String? outsideWorking;
   final String? visaRequest;
   final ExitPermission? exitPermission;
@@ -25,6 +27,7 @@ class ExtraData extends Equatable {
     this.study,
     this.startWork,
     this.experienceCertificate,
+    this.idDocument,
     this.outsideWorking,
     this.visaRequest,
     this.exitPermission,
@@ -43,6 +46,9 @@ class ExtraData extends Equatable {
           : null,
       experienceCertificate: json['experienceCertificate'] != null
           ? ExperienceCertificateModel.fromJson(json['experienceCertificate'])
+          : null,
+      idDocument: json['idDocument'] != null
+          ? IDDocumentModel.fromJson(json['idDocument'])
           : null,
       outsideWorking: json['outsideWorking'],
       visaRequest: json['visaRequest'],
@@ -65,6 +71,7 @@ class ExtraData extends Equatable {
       'study': study,
       'startWork': startWork?.toJson(),
       'experienceCertificate': experienceCertificate?.toJson(),
+      'idDocument': idDocument?.toJson(),
       'outsideWorking': outsideWorking,
       'visaRequest': visaRequest,
       'exitPermission': exitPermission?.toJson(),
@@ -81,6 +88,7 @@ class ExtraData extends Equatable {
         study,
         startWork,
         experienceCertificate,
+        idDocument,
         outsideWorking,
         visaRequest,
         exitPermission,

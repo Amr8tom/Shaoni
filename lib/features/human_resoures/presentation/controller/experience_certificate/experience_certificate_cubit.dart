@@ -102,7 +102,7 @@ class ExperienceCertificateCubit extends Cubit<ExperienceCertificateState> {
       certificateReasonId: _selectedReasonId ?? 0,
       reason: reasonController.text.trim(),
       note: noteController.text.trim(),
-      date: DateFormat('yyyy-MM-dd').format(DateTime.now()),
+      date: DateFormat('yyyy-MM-dd',"en").format(DateTime.now()),
       attachmentIds: [],
     );
   }

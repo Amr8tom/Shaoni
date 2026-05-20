@@ -46,6 +46,14 @@ class URL {
   static const String updateExperienceCertificate = '$baseUrl/ExperienceCertificate/update/';
   static const String getExperienceCertificateEdit = '$baseUrl/ExperienceCertificate/edit/';
 
+  /// ============================ id document ============================
+  static const String getDepartments = '$baseUrl/Lookup/GetDepartments';
+  static const String getIDRenewalRequestTypes = '$baseUrl/Lookup/GetIDRenewalRequestTypes';
+  // createIDDocument URL TBD by backend developer
+  static const String createIDDocument = '$baseUrl/IDDocument';
+  static const String updateIDDocument = '$baseUrl/IDDocument/update/';
+  static const String getIDDocumentEdit = '$baseUrl/IDDocument/edit/';
+
   /// ============================ start work ============================
   static const String getStartWorkTypes = '$baseUrl/Lookup/GetStartWorkingTypes';
   static const String getEmployees = '$baseUrl/Lookup/GetEmployees';

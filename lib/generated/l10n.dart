@@ -6423,6 +6423,176 @@ class S {
       args: [],
     );
   }
+
+  /// `ID Document Add / Renewal Request`
+  String get idRenewalDocument {
+    return Intl.message(
+      'ID Document Add / Renewal Request',
+      name: 'idRenewalDocument',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Select request type`
+  String get selectRequestType {
+    return Intl.message(
+      'Select request type',
+      name: 'selectRequestType',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Document Type`
+  String get documentType {
+    return Intl.message(
+      'Document Type',
+      name: 'documentType',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Select document type`
+  String get selectDocumentType {
+    return Intl.message(
+      'Select document type',
+      name: 'selectDocumentType',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Issuing Country`
+  String get issuingCountry {
+    return Intl.message(
+      'Issuing Country',
+      name: 'issuingCountry',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Select issuing country`
+  String get selectIssuingCountry {
+    return Intl.message(
+      'Select issuing country',
+      name: 'selectIssuingCountry',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Document Number`
+  String get documentNumber {
+    return Intl.message(
+      'Document Number',
+      name: 'documentNumber',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Issue Number`
+  String get issueNumber {
+    return Intl.message(
+      'Issue Number',
+      name: 'issueNumber',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Issue Date`
+  String get issueDate {
+    return Intl.message(
+      'Issue Date',
+      name: 'issueDate',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Matched`
+  String get tabaq {
+    return Intl.message(
+      'Matched',
+      name: 'tabaq',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Under Sponsorship`
+  String get hasKafala {
+    return Intl.message(
+      'Under Sponsorship',
+      name: 'hasKafala',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sponsor Name`
+  String get kafeelName {
+    return Intl.message(
+      'Sponsor Name',
+      name: 'kafeelName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Passport Number`
+  String get passportNumber {
+    return Intl.message(
+      'Passport Number',
+      name: 'passportNumber',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Passport Address`
+  String get passportAddress {
+    return Intl.message(
+      'Passport Address',
+      name: 'passportAddress',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Family Card Number`
+  String get familyCardNumber {
+    return Intl.message(
+      'Family Card Number',
+      name: 'familyCardNumber',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Driving License Number`
+  String get drivingLicenseNumber {
+    return Intl.message(
+      'Driving License Number',
+      name: 'drivingLicenseNumber',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Document Data`
+  String get documentData {
+    return Intl.message(
+      'Document Data',
+      name: 'documentData',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -28,6 +28,7 @@ class DRoutesName {
   static const String createComplaintRequestRoute = 'create-complaint-request-route';
   static const String createStartWorkRoute = 'create-start-work-route';
   static const String createExperienceCertificateRoute = 'create-experience-certificate-route';
+  static const String createIDDocumentRoute = 'create-id-document-route';
 
   /// location & maps Screen
   static const String mapRoute = 'map-route';

@@ -40,6 +40,10 @@ import '../entity/experience_certificate/certificate_reason.dart';
 import '../entity/experience_certificate/create_experience_certificate_response.dart';
 import '../use_cases/experience_certificate/create_experience_certificate_use_case.dart';
 import '../use_cases/experience_certificate/update_experience_certificate_use_case.dart';
+import '../entity/id_document/department.dart';
+import '../entity/id_document/id_renewal_request_type.dart';
+import '../entity/id_document/create_id_document_response.dart';
+import '../use_cases/id_document/create_id_document_use_case.dart';
 
 abstract class HRServicesRepository {
   Future<Either<Failure, AllServices>> getAllPermissionServices({
@@ -153,5 +157,18 @@ abstract class HRServicesRepository {
   Future<Either<Failure, CreateExperienceCertificateResponse>>
       updateExperienceCertificate({
     required UpdateExperienceCertificateParams params,
+  });
+
+  /// ///////////////////////////////////// id document /////////////////////////////////////////////////////
+  Future<Either<Failure, List<Department>>> getDepartments({
+    required NoParams params,
+  });
+
+  Future<Either<Failure, List<IDRenewalRequestType>>> getIDRenewalRequestTypes({
+    required NoParams params,
+  });
+
+  Future<Either<Failure, CreateIDDocumentResponse>> createIDDocument({
+    required CreateIDDocumentParams params,
   });
 }

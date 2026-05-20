@@ -27,6 +27,10 @@ import 'package:shaoni/features/human_resoures/data/model/experience_certificate
 import 'package:shaoni/features/human_resoures/data/model/experience_certificate/create_experience_certificate_model.dart';
 import 'package:shaoni/features/human_resoures/domain/use_cases/experience_certificate/create_experience_certificate_use_case.dart';
 import 'package:shaoni/features/human_resoures/domain/use_cases/experience_certificate/update_experience_certificate_use_case.dart';
+import 'package:shaoni/features/human_resoures/data/model/id_document/department_model.dart';
+import 'package:shaoni/features/human_resoures/data/model/id_document/id_renewal_request_type_model.dart';
+import 'package:shaoni/features/human_resoures/data/model/id_document/create_id_document_model.dart';
+import 'package:shaoni/features/human_resoures/domain/use_cases/id_document/create_id_document_use_case.dart';
 import 'package:shaoni/features/human_resoures/domain/use_cases/complaint_request/create_complaint_request_use_case.dart';
 import 'package:shaoni/features/human_resoures/domain/use_cases/study/create_study_use_case.dart';
 import 'package:shaoni/features/human_resoures/domain/use_cases/study/update_study_use_case.dart';
@@ -143,6 +147,17 @@ abstract class HRServicesRemoteDataSources {
 
   Future<CreateExperienceCertificateModel> updateExperienceCertificate({
     required UpdateExperienceCertificateParams params,
+  });
+
+  /// ============================= id document =============================
+  Future<List<DepartmentModel>> getDepartments({required NoParams params});
+
+  Future<List<IDRenewalRequestTypeModel>> getIDRenewalRequestTypes({
+    required NoParams params,
+  });
+
+  Future<CreateIDDocumentModel> createIDDocument({
+    required CreateIDDocumentParams params,
   });
 }
 
@@ -613,6 +628,54 @@ class HRServicesRemoteDataSourcesImp implements HRServicesRemoteDataSources {
       if (response == null) throw ServerFailure(message: 'server failure');
       return CreateExperienceCertificateModel.fromJson(
           response.data as Map<String, dynamic>);
+    } on ServerFailure catch (e) {
+      throw ServerFailure(message: e.message);
+    }
+  }
+
+  /// ============================= id document =============================
+
+  @override
+  Future<List<DepartmentModel>> getDepartments({
+    required NoParams params,
+  }) async {
+    try {
+      final response = await _dio.getData(URL: URL.getDepartments);
+      if (response == null) throw ServerFailure(message: 'server failure');
+      final List raw =
+          response is List ? response : (response as Map<String, dynamic>)['data'] as List;
+      return raw.map((e) => DepartmentModel.fromJson(e)).toList();
+    } on ServerFailure catch (e) {
+      throw ServerFailure(message: e.message);
+    }
+  }
+
+  @override
+  Future<List<IDRenewalRequestTypeModel>> getIDRenewalRequestTypes({
+    required NoParams params,
+  }) async {
+    try {
+      final response = await _dio.getData(URL: URL.getIDRenewalRequestTypes);
+      if (response == null) throw ServerFailure(message: 'server failure');
+      final List raw =
+          response is List ? response : (response as Map<String, dynamic>)['data'] as List;
+      return raw.map((e) => IDRenewalRequestTypeModel.fromJson(e)).toList();
+    } on ServerFailure catch (e) {
+      throw ServerFailure(message: e.message);
+    }
+  }
+
+  @override
+  Future<CreateIDDocumentModel> createIDDocument({
+    required CreateIDDocumentParams params,
+  }) async {
+    try {
+      final response = await _dio.postData(
+        URL: URL.createIDDocument,
+        body: params.toMap(),
+      );
+      if (response == null) throw ServerFailure(message: 'server failure');
+      return CreateIDDocumentModel.fromJson(response);
     } on ServerFailure catch (e) {
       throw ServerFailure(message: e.message);
     }
