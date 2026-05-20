@@ -830,5 +830,8 @@
   "selectStartWorkType": "Select start work type",
   "employee": "Employee",
   "selectEmployee": "Select Employee",
-  "writeNoteHere": "Write note here..."
+  "writeNoteHere": "Write note here...",
+  "experienceCertificate": "Experience Certificate",
+  "certificateReason": "Reason for Certificate Request",
+  "selectCertificateReason": "Select reason"
 }

@@ -836,5 +836,8 @@
   "selectStartWorkType": "اختر نوع بدء العمل",
   "employee": "الموظف",
   "selectEmployee": "اختر الموظف",
-  "writeNoteHere": "اكتب الملاحظة هنا..."
+  "writeNoteHere": "اكتب الملاحظة هنا...",
+  "experienceCertificate": "شهادة الخبرة",
+  "certificateReason": "سبب طلب شهادة الخبرة",
+  "selectCertificateReason": "اختر السبب"
 }

@@ -1,29 +1,14 @@
 import '../entities/current_status.dart';
 
-enum RequestStatusEnum {
-  newRequest,
-  managerApproval,
-  hrApproval,
-  hrManager,
-  rejected,
-  confirmed,
-  approved,
-  authorityHolder,
-  notValid,
-  cancel,
-  done,
-  none,
-}
-
 extension RequestStatusExtension on CurrentStatus {
   RequestStatusEnum getRequestStatusEnum({required String? serviceType}) {
     final tech = techName?.toLowerCase() ?? '';
     final ServiceType = serviceType?.toLowerCase() ?? '';
 
-    // ────────────────────────────────────────────────────────────────
-    // 1) Service-specific overrides — wins when present.
-    //    Add a new branch here when a service has unusual tech names.
-    // ────────────────────────────────────────────────────────────────
+    /// ────────────────────────────────────────────────────────────────
+    /// 1) Service-specific overrides — wins when present.
+    ///    Add a new branch here when a service has unusual tech names.
+    /// ────────────────────────────────────────────────────────────────
     switch (ServiceType) {
       case 'hr.exit.permission':
         switch (tech) {
@@ -123,6 +108,30 @@ extension RequestStatusExtension on CurrentStatus {
             return RequestStatusEnum.approved;
         }
         break;
+      case 'id.renewal.request':
+        switch (tech) {
+          case 'draft':
+            return RequestStatusEnum.newRequest;
+          case 'hr_manager':
+            return RequestStatusEnum.hrManager;
+          case 'approve':
+            return RequestStatusEnum.approved;
+          case 'reject':
+            return RequestStatusEnum.rejected;
+        }
+        break;
+      case 'experience.certificate':
+        switch (tech) {
+          case 'new':
+            return RequestStatusEnum.newRequest;
+          case 'confirm':
+            return RequestStatusEnum.hrManager;
+          case 'reject':
+            return RequestStatusEnum.rejected;
+          case 'approve':
+            return RequestStatusEnum.approved;
+        }
+        break;
     }
 
     if (tech.contains('reject') || tech.contains('cancel')) {
@@ -153,4 +162,19 @@ extension RequestStatusExtension on CurrentStatus {
 
     return RequestStatusEnum.none;
   }
+}
+
+enum RequestStatusEnum {
+  newRequest,
+  managerApproval,
+  hrApproval,
+  hrManager,
+  rejected,
+  confirmed,
+  approved,
+  authorityHolder,
+  notValid,
+  cancel,
+  done,
+  none,
 }

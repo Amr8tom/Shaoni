@@ -149,6 +149,11 @@ class MessageLookup extends MessageLookupByLibrary {
     "carPermitRequest": MessageLookupByLibrary.simpleMessage("طلب تصريح سيارة"),
     "carType": MessageLookupByLibrary.simpleMessage("نوع السيارة (الماركة)"),
     "cart": MessageLookupByLibrary.simpleMessage("العربة"),
+    "certificateReason": MessageLookupByLibrary.simpleMessage(
+      "سبب طلب شهادة الخبرة",
+    ),
+    "selectCertificateReason":
+        MessageLookupByLibrary.simpleMessage("اختر السبب"),
     "cashBack": MessageLookupByLibrary.simpleMessage("كاش باك"),
     "cashOnDelivery": MessageLookupByLibrary.simpleMessage(
       "الدفع عند الاستلام",
@@ -373,6 +378,8 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "error": MessageLookupByLibrary.simpleMessage("هناك خطأ ما"),
     "errorOccurred": MessageLookupByLibrary.simpleMessage("حدث خطأ ما"),
+    "experienceCertificate":
+        MessageLookupByLibrary.simpleMessage("شهادة الخبرة"),
     "eveningShift": MessageLookupByLibrary.simpleMessage(
       "رقم الوردية المسائية",
     ),

@@ -10,8 +10,8 @@ class StartWorkTypeModel extends StartWorkType {
   factory StartWorkTypeModel.fromJson(Map<String, dynamic> json) {
     return StartWorkTypeModel(
       id: json['id'] ?? 0,
-      nameAr: json['nameAr'] ?? '',
-      nameEn: json['nameEn'] ?? '',
+      nameAr: json['name'] ?? '',
+      nameEn: json['name'] ?? '',
     );
   }
 }

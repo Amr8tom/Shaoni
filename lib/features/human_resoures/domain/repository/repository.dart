@@ -36,6 +36,10 @@ import '../entity/start_work/employee.dart';
 import '../entity/start_work/create_start_work_response.dart';
 import '../use_cases/start_work/create_start_work_use_case.dart';
 import '../use_cases/start_work/update_start_work_use_case.dart';
+import '../entity/experience_certificate/certificate_reason.dart';
+import '../entity/experience_certificate/create_experience_certificate_response.dart';
+import '../use_cases/experience_certificate/create_experience_certificate_use_case.dart';
+import '../use_cases/experience_certificate/update_experience_certificate_use_case.dart';
 
 abstract class HRServicesRepository {
   Future<Either<Failure, AllServices>> getAllPermissionServices({
@@ -134,5 +138,20 @@ abstract class HRServicesRepository {
 
   Future<Either<Failure, CreateStartWorkResponse>> updateStartWorkRequest({
     required UpdateStartWorkParams params,
+  });
+
+  /// ///////////////////////////////////// experience certificate /////////////////////////////////////////////////////
+  Future<Either<Failure, List<CertificateReason>>> getCertificateReasons({
+    required NoParams params,
+  });
+
+  Future<Either<Failure, CreateExperienceCertificateResponse>>
+      createExperienceCertificate({
+    required CreateExperienceCertificateParams params,
+  });
+
+  Future<Either<Failure, CreateExperienceCertificateResponse>>
+      updateExperienceCertificate({
+    required UpdateExperienceCertificateParams params,
   });
 }

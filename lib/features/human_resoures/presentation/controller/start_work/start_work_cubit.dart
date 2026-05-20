@@ -1,6 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:shaoni/core/local_storage/cache_helper.dart';
 import 'package:shaoni/core/local_storage/cache_keys.dart';
 import 'package:shaoni/core/utils/usecases/base_usecase.dart';
@@ -24,7 +25,6 @@ class StartWorkCubit extends Cubit<StartWorkState> {
   final requestFormKey = GlobalKey<FormState>();
 
   /// ── Applicant controllers ────────────────────────────────────────────────
-  final todayDateController = TextEditingController();
   final applicantNameController = TextEditingController();
   final organizationalUnitController = TextEditingController();
   final officeIdController = TextEditingController();
@@ -132,7 +132,18 @@ class StartWorkCubit extends Cubit<StartWorkState> {
     emit(state.copyWith(status: StartWorkStatus.createLoading));
 
     final result = await _createStartWorkUseCase.call(
-      params: _buildParams(),
+      params: CreateStartWorkParams(
+        date: DateFormat('yyyy-MM-dd', 'en').format(DateTime.now()),
+        employee: _selectedEmployeeId ?? 0,
+        managerId: int.tryParse(
+                CacheHelper.getString(key: CacheKeys.employeeId) ?? '0') ??
+            0,
+        officeId: int.tryParse(officeIdController.text) ?? 0,
+        startDate: startDateController.text.trim(),
+        typeId: _selectedTypeId ?? 0,
+        note: noteController.text.trim(),
+        attachment: attachmentFileController.text.trim(),
+      ),
     );
 
     result.fold(
@@ -155,7 +166,18 @@ class StartWorkCubit extends Cubit<StartWorkState> {
     final result = await _updateStartWorkUseCase.call(
       params: UpdateStartWorkParams(
         requestId: requestId,
-        data: _buildParams(),
+        data: CreateStartWorkParams(
+          date: DateFormat('yyyy-MM-dd', 'en').format(DateTime.now()),
+          employee: _selectedEmployeeId ?? 0,
+          managerId: int.tryParse(
+              CacheHelper.getString(key: CacheKeys.employeeId) ?? '0') ??
+              0,
+          officeId: int.tryParse(officeIdController.text) ?? 0,
+          startDate: startDateController.text.trim(),
+          typeId: _selectedTypeId ?? 0,
+          note: noteController.text.trim(),
+          attachment: attachmentFileController.text.trim(),
+        ),
       ),
     );
 
@@ -174,7 +196,6 @@ class StartWorkCubit extends Cubit<StartWorkState> {
   /// ── Reset ────────────────────────────────────────────────────────────────
 
   void deleteStartWorkRequest() {
-    todayDateController.clear();
     applicantNameController.clear();
     organizationalUnitController.clear();
     officeIdController.clear();
@@ -187,20 +208,7 @@ class StartWorkCubit extends Cubit<StartWorkState> {
 
   /// ── Private helpers ──────────────────────────────────────────────────────
 
-  CreateStartWorkParams _buildParams() {
-    return CreateStartWorkParams(
-      date: todayDateController.text.trim(),
-      employee: _selectedEmployeeId ?? 0,
-      managerId: int.tryParse(
-              CacheHelper.getString(key: CacheKeys.employeeId) ?? '0') ??
-          0,
-      officeId: int.tryParse(officeIdController.text) ?? 0,
-      startDate: startDateController.text.trim(),
-      typeId: _selectedTypeId ?? 0,
-      note: noteController.text.trim(),
-      attachment: attachmentFileController.text.trim(),
-    );
-  }
+
 
   String _localizedName(String ar, String en) {
     return S.current.localeee == 'en'
@@ -210,7 +218,6 @@ class StartWorkCubit extends Cubit<StartWorkState> {
 
   @override
   Future<void> close() {
-    todayDateController.dispose();
     applicantNameController.dispose();
     organizationalUnitController.dispose();
     officeIdController.dispose();
@@ -222,3 +229,8 @@ class StartWorkCubit extends Cubit<StartWorkState> {
     return super.close();
   }
 }
+
+
+
+
+

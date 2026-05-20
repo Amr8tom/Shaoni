@@ -6393,6 +6393,36 @@ class S {
       args: [],
     );
   }
+
+  /// `Experience Certificate`
+  String get experienceCertificate {
+    return Intl.message(
+      'Experience Certificate',
+      name: 'experienceCertificate',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Reason for Certificate Request`
+  String get certificateReason {
+    return Intl.message(
+      'Reason for Certificate Request',
+      name: 'certificateReason',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Select reason`
+  String get selectCertificateReason {
+    return Intl.message(
+      'Select reason',
+      name: 'selectCertificateReason',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

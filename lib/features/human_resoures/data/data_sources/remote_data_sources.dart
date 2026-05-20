@@ -23,6 +23,10 @@ import 'package:shaoni/features/human_resoures/data/model/start_work/employee_mo
 import 'package:shaoni/features/human_resoures/data/model/start_work/create_start_work_model.dart';
 import 'package:shaoni/features/human_resoures/domain/use_cases/start_work/create_start_work_use_case.dart';
 import 'package:shaoni/features/human_resoures/domain/use_cases/start_work/update_start_work_use_case.dart';
+import 'package:shaoni/features/human_resoures/data/model/experience_certificate/certificate_reason_model.dart';
+import 'package:shaoni/features/human_resoures/data/model/experience_certificate/create_experience_certificate_model.dart';
+import 'package:shaoni/features/human_resoures/domain/use_cases/experience_certificate/create_experience_certificate_use_case.dart';
+import 'package:shaoni/features/human_resoures/domain/use_cases/experience_certificate/update_experience_certificate_use_case.dart';
 import 'package:shaoni/features/human_resoures/domain/use_cases/complaint_request/create_complaint_request_use_case.dart';
 import 'package:shaoni/features/human_resoures/domain/use_cases/study/create_study_use_case.dart';
 import 'package:shaoni/features/human_resoures/domain/use_cases/study/update_study_use_case.dart';
@@ -126,6 +130,19 @@ abstract class HRServicesRemoteDataSources {
 
   Future<CreateStartWorkModel> updateStartWorkRequest({
     required UpdateStartWorkParams params,
+  });
+
+  /// ============================= experience certificate =============================
+  Future<List<CertificateReasonModel>> getCertificateReasons({
+    required NoParams params,
+  });
+
+  Future<CreateExperienceCertificateModel> createExperienceCertificate({
+    required CreateExperienceCertificateParams params,
+  });
+
+  Future<CreateExperienceCertificateModel> updateExperienceCertificate({
+    required UpdateExperienceCertificateParams params,
   });
 }
 
@@ -546,6 +563,56 @@ class HRServicesRemoteDataSourcesImp implements HRServicesRemoteDataSources {
       );
       if (response == null) throw ServerFailure(message: 'server failure');
       return CreateStartWorkModel.fromJson(response.data as Map<String, dynamic>);
+    } on ServerFailure catch (e) {
+      throw ServerFailure(message: e.message);
+    }
+  }
+
+  /// ============================= experience certificate =============================
+
+  @override
+  Future<List<CertificateReasonModel>> getCertificateReasons({
+    required NoParams params,
+  }) async {
+    try {
+      final response = await _dio.getData(URL: URL.getCertificateReasons);
+      if (response == null) throw ServerFailure(message: 'server failure');
+      final List raw =
+          response is List ? response : (response as Map<String, dynamic>)['data'] as List;
+      return raw.map((e) => CertificateReasonModel.fromJson(e)).toList();
+    } on ServerFailure catch (e) {
+      throw ServerFailure(message: e.message);
+    }
+  }
+
+  @override
+  Future<CreateExperienceCertificateModel> createExperienceCertificate({
+    required CreateExperienceCertificateParams params,
+  }) async {
+    try {
+      final response = await _dio.postData(
+        URL: URL.createExperienceCertificate,
+        body: params.toMap(),
+      );
+      if (response == null) throw ServerFailure(message: 'server failure');
+      return CreateExperienceCertificateModel.fromJson(response);
+    } on ServerFailure catch (e) {
+      throw ServerFailure(message: e.message);
+    }
+  }
+
+  @override
+  Future<CreateExperienceCertificateModel> updateExperienceCertificate({
+    required UpdateExperienceCertificateParams params,
+  }) async {
+    try {
+      final response = await _dio.putData(
+        URL: '${URL.updateExperienceCertificate}${params.requestId}',
+        body: params.toMap(),
+      );
+      if (response == null) throw ServerFailure(message: 'server failure');
+      return CreateExperienceCertificateModel.fromJson(
+          response.data as Map<String, dynamic>);
     } on ServerFailure catch (e) {
       throw ServerFailure(message: e.message);
     }

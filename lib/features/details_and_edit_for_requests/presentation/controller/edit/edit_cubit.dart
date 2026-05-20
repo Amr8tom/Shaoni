@@ -7,6 +7,7 @@ import 'package:shaoni/features/details_and_edit_for_requests/domain/use_cases/g
 import 'package:shaoni/features/details_and_edit_for_requests/domain/use_cases/get_exit_permission_edit_use_case.dart';
 import 'package:shaoni/features/details_and_edit_for_requests/domain/use_cases/get_study_edit_use_case.dart';
 import 'package:shaoni/features/details_and_edit_for_requests/domain/use_cases/get_start_work_edit_use_case.dart';
+import 'package:shaoni/features/details_and_edit_for_requests/domain/use_cases/get_experience_certificate_edit_use_case.dart';
 
 part 'edit_state.dart';
 
@@ -16,6 +17,7 @@ class EditCubit extends Cubit<EditState> {
   final GetAttendanceEditUseCase _getAttendanceEditUseCase;
   final GetStudyEditUseCase _getStudyEditUseCase;
   final GetStartWorkEditUseCase _getStartWorkEditUseCase;
+  final GetExperienceCertificateEditUseCase _getExperienceCertificateEditUseCase;
   final editNotesController = TextEditingController();
 
   EditCubit(
@@ -24,6 +26,7 @@ class EditCubit extends Cubit<EditState> {
     this._getAttendanceEditUseCase,
     this._getStudyEditUseCase,
     this._getStartWorkEditUseCase,
+    this._getExperienceCertificateEditUseCase,
   ) : super(const EditState());
 
   Future<void> editRequest({
@@ -45,6 +48,9 @@ class EditCubit extends Cubit<EditState> {
         break;
       case 'start.working':
         await _getStartWorkEdit(requestId: requestId);
+        break;
+      case 'experience.certificate':
+        await _getExperienceCertificateEdit(requestId: requestId);
         break;
       default:
         emit(state.copyWith(
@@ -152,6 +158,28 @@ class EditCubit extends Cubit<EditState> {
     emit(state.copyWith(status: EditStatus.loading));
     final result = await _getStartWorkEditUseCase.call(
       params: GetStartWorkEditParams(
+        requestId: requestId,
+        editReasons: editNotesController.text,
+      ),
+    );
+    result.fold(
+      (failure) => emit(state.copyWith(
+        status: EditStatus.error,
+        errorMessage: failure.message,
+      )),
+      (response) => emit(state.copyWith(
+        status: EditStatus.editRequestLoaded,
+        editResponse: response,
+      )),
+    );
+  }
+
+  /// ── Experience Certificate ────────────────────────────────────────────────
+
+  Future<void> _getExperienceCertificateEdit({required int requestId}) async {
+    emit(state.copyWith(status: EditStatus.loading));
+    final result = await _getExperienceCertificateEditUseCase.call(
+      params: GetExperienceCertificateEditParams(
         requestId: requestId,
         editReasons: editNotesController.text,
       ),

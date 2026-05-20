@@ -13,6 +13,7 @@ import '../../features/details_and_edit_for_requests/domain/use_cases/get_car_pe
 import '../../features/details_and_edit_for_requests/domain/use_cases/get_exit_permission_edit_use_case.dart';
 import '../../features/details_and_edit_for_requests/domain/use_cases/get_study_edit_use_case.dart';
 import '../../features/details_and_edit_for_requests/domain/use_cases/get_start_work_edit_use_case.dart';
+import '../../features/details_and_edit_for_requests/domain/use_cases/get_experience_certificate_edit_use_case.dart';
 import '../../features/details_and_edit_for_requests/presentation/controller/edit/edit_cubit.dart';
 import '../../features/details_and_edit_for_requests/presentation/controller/my_requests_cubit.dart';
 
@@ -62,12 +63,16 @@ class MyRequestsServiceLocator {
     serviceLocator.registerLazySingleton<GetStartWorkEditUseCase>(
       () => GetStartWorkEditUseCase(serviceLocator()),
     );
+    serviceLocator.registerLazySingleton<GetExperienceCertificateEditUseCase>(
+      () => GetExperienceCertificateEditUseCase(serviceLocator()),
+    );
 
     /// controllers
     serviceLocator.registerFactory(() => MyRequestsCubit(
         serviceLocator(), serviceLocator(), serviceLocator(), serviceLocator()));
     serviceLocator.registerFactory<EditCubit>(
       () => EditCubit(
+        serviceLocator(),
         serviceLocator(),
         serviceLocator(),
         serviceLocator(),

@@ -14,6 +14,7 @@ import '../use_cases/get_exit_permission_edit_use_case.dart';
 import '../use_cases/get_request_details_use_case.dart';
 import '../use_cases/get_study_edit_use_case.dart';
 import '../use_cases/get_start_work_edit_use_case.dart';
+import '../use_cases/get_experience_certificate_edit_use_case.dart';
 
 abstract class MyRequestsRepository {
   /// get
@@ -45,5 +46,9 @@ abstract class MyRequestsRepository {
 
   Future<Either<Failure, EditResponse>> getStartWorkEdit({
     required GetStartWorkEditParams params,
+  });
+
+  Future<Either<Failure, EditResponse>> getExperienceCertificateEdit({
+    required GetExperienceCertificateEditParams params,
   });
 }

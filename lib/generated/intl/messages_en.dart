@@ -163,6 +163,11 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "carType": MessageLookupByLibrary.simpleMessage("Car Type (Brand)"),
     "cart": MessageLookupByLibrary.simpleMessage("Cart"),
+    "certificateReason": MessageLookupByLibrary.simpleMessage(
+      "Reason for Certificate Request",
+    ),
+    "selectCertificateReason":
+        MessageLookupByLibrary.simpleMessage("Select reason"),
     "cashBack": MessageLookupByLibrary.simpleMessage("Cash Back"),
     "cashOnDelivery": MessageLookupByLibrary.simpleMessage("Cash on Delivery"),
     "cashOnDeliveryScreen": MessageLookupByLibrary.simpleMessage(
@@ -405,6 +410,8 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "error": MessageLookupByLibrary.simpleMessage("there is an error"),
     "errorOccurred": MessageLookupByLibrary.simpleMessage("An error occurred"),
+    "experienceCertificate":
+        MessageLookupByLibrary.simpleMessage("Experience Certificate"),
     "eveningShift": MessageLookupByLibrary.simpleMessage(
       "evening shift Number",
     ),

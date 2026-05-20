@@ -28,6 +28,10 @@ import 'package:shaoni/features/human_resoures/domain/entity/start_work/employee
 import 'package:shaoni/features/human_resoures/domain/entity/start_work/create_start_work_response.dart';
 import 'package:shaoni/features/human_resoures/domain/use_cases/start_work/create_start_work_use_case.dart';
 import 'package:shaoni/features/human_resoures/domain/use_cases/start_work/update_start_work_use_case.dart';
+import 'package:shaoni/features/human_resoures/domain/entity/experience_certificate/certificate_reason.dart';
+import 'package:shaoni/features/human_resoures/domain/entity/experience_certificate/create_experience_certificate_response.dart';
+import 'package:shaoni/features/human_resoures/domain/use_cases/experience_certificate/create_experience_certificate_use_case.dart';
+import 'package:shaoni/features/human_resoures/domain/use_cases/experience_certificate/update_experience_certificate_use_case.dart';
 import '../model/car_permission/update_car_permission_model.dart';
 import '../model/complaint_request/create_complaint_request_model.dart';
 import '../../../../core/connection/checkNetwork.dart';
@@ -465,6 +469,60 @@ class HRServicesRepositoryImp extends HRServicesRepository {
     if (await _networkInfo.isConnected) {
       try {
         final response = await _remote.updateStartWorkRequest(params: params);
+        return Right(response);
+      } on ServerFailure catch (e) {
+        return Left(ServerFailure(message: e.message));
+      }
+    } else {
+      return Left(CacheFailure());
+    }
+  }
+
+  /// ===================== experience certificate =====================
+
+  @override
+  Future<Either<Failure, List<CertificateReason>>> getCertificateReasons({
+    required NoParams params,
+  }) async {
+    if (await _networkInfo.isConnected) {
+      try {
+        final response = await _remote.getCertificateReasons(params: params);
+        return Right(response);
+      } on ServerFailure catch (e) {
+        return Left(ServerFailure(message: e.message));
+      }
+    } else {
+      return Left(CacheFailure());
+    }
+  }
+
+  @override
+  Future<Either<Failure, CreateExperienceCertificateResponse>>
+      createExperienceCertificate({
+    required CreateExperienceCertificateParams params,
+  }) async {
+    if (await _networkInfo.isConnected) {
+      try {
+        final response =
+            await _remote.createExperienceCertificate(params: params);
+        return Right(response);
+      } on ServerFailure catch (e) {
+        return Left(ServerFailure(message: e.message));
+      }
+    } else {
+      return Left(CacheFailure());
+    }
+  }
+
+  @override
+  Future<Either<Failure, CreateExperienceCertificateResponse>>
+      updateExperienceCertificate({
+    required UpdateExperienceCertificateParams params,
+  }) async {
+    if (await _networkInfo.isConnected) {
+      try {
+        final response =
+            await _remote.updateExperienceCertificate(params: params);
         return Right(response);
       } on ServerFailure catch (e) {
         return Left(ServerFailure(message: e.message));

@@ -93,6 +93,13 @@ class UpdateRequestButton extends StatelessWidget {
         );
         break;
 
+      case 'experience.certificate':
+        context.pushNamed(
+          DRoutesName.createExperienceCertificateRoute,
+          arguments: {'requestId': int.tryParse(requestID)},
+        );
+        break;
+
       default:
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(

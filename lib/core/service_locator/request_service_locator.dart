@@ -35,6 +35,10 @@ import '../../features/human_resoures/domain/use_cases/start_work/get_employees_
 import '../../features/human_resoures/domain/use_cases/start_work/create_start_work_use_case.dart';
 import '../../features/human_resoures/domain/use_cases/start_work/update_start_work_use_case.dart';
 import '../../features/human_resoures/presentation/controller/start_work/start_work_cubit.dart';
+import '../../features/human_resoures/domain/use_cases/experience_certificate/get_certificate_reasons_use_case.dart';
+import '../../features/human_resoures/domain/use_cases/experience_certificate/create_experience_certificate_use_case.dart';
+import '../../features/human_resoures/domain/use_cases/experience_certificate/update_experience_certificate_use_case.dart';
+import '../../features/human_resoures/presentation/controller/experience_certificate/experience_certificate_cubit.dart';
 
 class HRServiceLocator {
   static Future<void> execute({required GetIt serviceLocator}) async {
@@ -176,6 +180,24 @@ class HRServiceLocator {
     serviceLocator.registerFactory<StartWorkCubit>(
       () => StartWorkCubit(
         serviceLocator(),
+        serviceLocator(),
+        serviceLocator(),
+        serviceLocator(),
+      ),
+    );
+
+    /// ============================= experience certificate =============================
+    serviceLocator.registerLazySingleton<GetCertificateReasonsUseCase>(
+      () => GetCertificateReasonsUseCase(serviceLocator()),
+    );
+    serviceLocator.registerLazySingleton<CreateExperienceCertificateUseCase>(
+      () => CreateExperienceCertificateUseCase(serviceLocator()),
+    );
+    serviceLocator.registerLazySingleton<UpdateExperienceCertificateUseCase>(
+      () => UpdateExperienceCertificateUseCase(serviceLocator()),
+    );
+    serviceLocator.registerFactory<ExperienceCertificateCubit>(
+      () => ExperienceCertificateCubit(
         serviceLocator(),
         serviceLocator(),
         serviceLocator(),

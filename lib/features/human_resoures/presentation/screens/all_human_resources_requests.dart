@@ -120,6 +120,9 @@ class AllHumanResourcesRequests extends StatelessWidget {
       case 'start.work':
         context.pushNamed(DRoutesName.createStartWorkRoute);
         return;
+      case 'experience.certificate':
+        context.pushNamed(DRoutesName.createExperienceCertificateRoute);
+        return;
       default:
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(

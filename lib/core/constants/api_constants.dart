@@ -40,6 +40,12 @@ class URL {
   static const String updateStudyRequest = '$baseUrl/StudyRequest/update/';
   static const String getStudyEdit = '$baseUrl/StudyRequest/edit/';
 
+  /// ============================ experience certificate ============================
+  static const String getCertificateReasons = '$baseUrl/Lookup/GetCertificateReasons';
+  static const String createExperienceCertificate = '$baseUrl/ExperienceCertificate';
+  static const String updateExperienceCertificate = '$baseUrl/ExperienceCertificate/update/';
+  static const String getExperienceCertificateEdit = '$baseUrl/ExperienceCertificate/edit/';
+
   /// ============================ start work ============================
   static const String getStartWorkTypes = '$baseUrl/Lookup/GetStartWorkingTypes';
   static const String getEmployees = '$baseUrl/Lookup/GetEmployees';

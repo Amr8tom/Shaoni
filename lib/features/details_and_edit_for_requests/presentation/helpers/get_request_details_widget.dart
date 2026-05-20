@@ -7,6 +7,7 @@ import '../widgets/complaint_request_details_widget.dart';
 import '../widgets/exit_permission_details_widget.dart';
 import '../widgets/study_request_details_widget.dart';
 import '../widgets/start_work_request_details_widget.dart';
+import '../widgets/experience_certificate_details_widget.dart';
 
 Widget GetRequestDetailsWidget({required String serviceCode}) {
   switch (serviceCode) {
@@ -22,6 +23,8 @@ Widget GetRequestDetailsWidget({required String serviceCode}) {
       return const StudyRequestDetailsWidget();
     case 'start.working':
       return const StartWorkRequestDetailsWidget();
+    case 'experience.certificate':
+      return const ExperienceCertificateDetailsWidget();
     default:
       return const Sizer();
   }
