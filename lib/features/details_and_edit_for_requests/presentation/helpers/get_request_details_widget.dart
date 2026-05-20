@@ -6,6 +6,7 @@ import '../widgets/car_permission_details_widget.dart';
 import '../widgets/complaint_request_details_widget.dart';
 import '../widgets/exit_permission_details_widget.dart';
 import '../widgets/study_request_details_widget.dart';
+import '../widgets/start_work_request_details_widget.dart';
 
 Widget GetRequestDetailsWidget({required String serviceCode}) {
   switch (serviceCode) {
@@ -19,6 +20,8 @@ Widget GetRequestDetailsWidget({required String serviceCode}) {
       return const AttendanceRequestDetailsWidget();
     case 'study.request':
       return const StudyRequestDetailsWidget();
+    case 'start.working':
+      return const StartWorkRequestDetailsWidget();
     default:
       return const Sizer();
   }

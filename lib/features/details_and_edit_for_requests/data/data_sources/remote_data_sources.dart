@@ -11,6 +11,7 @@ import '../../domain/use_cases/get_car_permission_edit_use_case.dart';
 import '../../domain/use_cases/get_exit_permission_edit_use_case.dart';
 import '../../domain/use_cases/get_request_details_use_case.dart';
 import '../../domain/use_cases/get_study_edit_use_case.dart';
+import '../../domain/use_cases/get_start_work_edit_use_case.dart';
 import '../models/approve_request_model.dart';
 import '../models/edit_response_model.dart';
 
@@ -45,6 +46,10 @@ abstract class MyRequestsRemoteDataSources {
 
   Future<EditResponseModel> getStudyEdit({
     required GetStudyEditParams params,
+  });
+
+  Future<EditResponseModel> getStartWorkEdit({
+    required GetStartWorkEditParams params,
   });
 }
 
@@ -181,6 +186,24 @@ class MyRequestsRemoteDataSourcesImp implements MyRequestsRemoteDataSources {
     try {
       final response = await _dio.putData(
         URL: '${URL.getStudyEdit}${params.requestId}',
+        body: params.toMap(),
+      );
+      if (response == null) {
+        throw ServerFailure(message: 'Null response from server');
+      }
+      return EditResponseModel.fromJson(response.data as Map<String, dynamic>);
+    } on ServerFailure {
+      rethrow;
+    }
+  }
+
+  @override
+  Future<EditResponseModel> getStartWorkEdit({
+    required GetStartWorkEditParams params,
+  }) async {
+    try {
+      final response = await _dio.putData(
+        URL: '${URL.getStartWorkEdit}${params.requestId}',
         body: params.toMap(),
       );
       if (response == null) {

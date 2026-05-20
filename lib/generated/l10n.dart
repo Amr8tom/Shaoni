@@ -6333,6 +6333,66 @@ class S {
       args: [],
     );
   }
+
+  /// `Start Work`
+  String get startWork {
+    return Intl.message(
+      'Start Work',
+      name: 'startWork',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Start Work Type`
+  String get startWorkType {
+    return Intl.message(
+      'Start Work Type',
+      name: 'startWorkType',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Select start work type`
+  String get selectStartWorkType {
+    return Intl.message(
+      'Select start work type',
+      name: 'selectStartWorkType',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Employee`
+  String get employee {
+    return Intl.message(
+      'Employee',
+      name: 'employee',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Select Employee`
+  String get selectEmployee {
+    return Intl.message(
+      'Select Employee',
+      name: 'selectEmployee',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Write note here...`
+  String get writeNoteHere {
+    return Intl.message(
+      'Write note here...',
+      name: 'writeNoteHere',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

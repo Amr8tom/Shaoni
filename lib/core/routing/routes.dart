@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:shaoni/core/routing/route_names.dart';
 import 'package:shaoni/features/human_resoures/presentation/study/create_study_request_form.dart';
+import 'package:shaoni/features/human_resoures/presentation/start_work/create_start_work_form.dart';
 import 'package:shaoni/features/profile/profile_screen.dart';
 import '../../features/auth/presentation/screen/login_screen.dart';
 import '../../features/auth/presentation/screen/new_password_screen.dart';
@@ -92,6 +93,16 @@ class RouteGenerator {
           type: PageTransitionType.rightToLeft,
           settings: settings,
         );
+     /// create start work request screen
+      case DRoutesName.createStartWorkRoute:
+        final args = settings.arguments as Map<String, dynamic>?;
+        final int? requestId = args?['requestId'] as int?;
+        return PageTransition(
+          child: CreateStartWorkForm(requestId: requestId),
+          type: PageTransitionType.rightToLeft,
+          settings: settings,
+        );
+
      /// create study request screen
       case DRoutesName.createStudyRequestRoute:
         final args = settings.arguments as Map<String, dynamic>?;

@@ -23,6 +23,11 @@ import 'package:shaoni/features/human_resoures/domain/entity/study/study_type.da
 import 'package:shaoni/features/human_resoures/domain/use_cases/complaint_request/create_complaint_request_use_case.dart';
 import 'package:shaoni/features/human_resoures/domain/use_cases/study/create_study_use_case.dart';
 import 'package:shaoni/features/human_resoures/domain/use_cases/study/update_study_use_case.dart';
+import 'package:shaoni/features/human_resoures/domain/entity/start_work/start_work_type.dart';
+import 'package:shaoni/features/human_resoures/domain/entity/start_work/employee.dart';
+import 'package:shaoni/features/human_resoures/domain/entity/start_work/create_start_work_response.dart';
+import 'package:shaoni/features/human_resoures/domain/use_cases/start_work/create_start_work_use_case.dart';
+import 'package:shaoni/features/human_resoures/domain/use_cases/start_work/update_start_work_use_case.dart';
 import '../model/car_permission/update_car_permission_model.dart';
 import '../model/complaint_request/create_complaint_request_model.dart';
 import '../../../../core/connection/checkNetwork.dart';
@@ -394,6 +399,72 @@ class HRServicesRepositoryImp extends HRServicesRepository {
     if (await _networkInfo.isConnected) {
       try {
         final response = await _remote.updateStudyRequest(params: params);
+        return Right(response);
+      } on ServerFailure catch (e) {
+        return Left(ServerFailure(message: e.message));
+      }
+    } else {
+      return Left(CacheFailure());
+    }
+  }
+
+  /// ===================== start work =====================
+
+  @override
+  Future<Either<Failure, List<StartWorkType>>> getStartWorkTypes({
+    required NoParams params,
+  }) async {
+    if (await _networkInfo.isConnected) {
+      try {
+        final response = await _remote.getStartWorkTypes(params: params);
+        return Right(response);
+      } on ServerFailure catch (e) {
+        return Left(ServerFailure(message: e.message));
+      }
+    } else {
+      return Left(CacheFailure());
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<Employee>>> getEmployees({
+    required NoParams params,
+  }) async {
+    if (await _networkInfo.isConnected) {
+      try {
+        final response = await _remote.getEmployees(params: params);
+        return Right(response);
+      } on ServerFailure catch (e) {
+        return Left(ServerFailure(message: e.message));
+      }
+    } else {
+      return Left(CacheFailure());
+    }
+  }
+
+  @override
+  Future<Either<Failure, CreateStartWorkResponse>> createStartWorkRequest({
+    required CreateStartWorkParams params,
+  }) async {
+    if (await _networkInfo.isConnected) {
+      try {
+        final response = await _remote.createStartWorkRequest(params: params);
+        return Right(response);
+      } on ServerFailure catch (e) {
+        return Left(ServerFailure(message: e.message));
+      }
+    } else {
+      return Left(CacheFailure());
+    }
+  }
+
+  @override
+  Future<Either<Failure, CreateStartWorkResponse>> updateStartWorkRequest({
+    required UpdateStartWorkParams params,
+  }) async {
+    if (await _networkInfo.isConnected) {
+      try {
+        final response = await _remote.updateStartWorkRequest(params: params);
         return Right(response);
       } on ServerFailure catch (e) {
         return Left(ServerFailure(message: e.message));

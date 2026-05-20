@@ -30,6 +30,11 @@ import '../../features/human_resoures/domain/use_cases/study/get_study_destinati
 import '../../features/human_resoures/domain/use_cases/study/get_study_types_use_case.dart';
 import '../../features/human_resoures/domain/use_cases/study/update_study_use_case.dart';
 import '../../features/human_resoures/presentation/controller/study/study_cubit.dart';
+import '../../features/human_resoures/domain/use_cases/start_work/get_start_work_types_use_case.dart';
+import '../../features/human_resoures/domain/use_cases/start_work/get_employees_use_case.dart';
+import '../../features/human_resoures/domain/use_cases/start_work/create_start_work_use_case.dart';
+import '../../features/human_resoures/domain/use_cases/start_work/update_start_work_use_case.dart';
+import '../../features/human_resoures/presentation/controller/start_work/start_work_cubit.dart';
 
 class HRServiceLocator {
   static Future<void> execute({required GetIt serviceLocator}) async {
@@ -148,6 +153,28 @@ class HRServiceLocator {
     );
     serviceLocator.registerFactory<StudyCubit>(
       () => StudyCubit(
+        serviceLocator(),
+        serviceLocator(),
+        serviceLocator(),
+        serviceLocator(),
+      ),
+    );
+
+    /// ============================= start work =============================
+    serviceLocator.registerLazySingleton<GetStartWorkTypesUseCase>(
+      () => GetStartWorkTypesUseCase(serviceLocator()),
+    );
+    serviceLocator.registerLazySingleton<GetEmployeesUseCase>(
+      () => GetEmployeesUseCase(serviceLocator()),
+    );
+    serviceLocator.registerLazySingleton<CreateStartWorkUseCase>(
+      () => CreateStartWorkUseCase(serviceLocator()),
+    );
+    serviceLocator.registerLazySingleton<UpdateStartWorkUseCase>(
+      () => UpdateStartWorkUseCase(serviceLocator()),
+    );
+    serviceLocator.registerFactory<StartWorkCubit>(
+      () => StartWorkCubit(
         serviceLocator(),
         serviceLocator(),
         serviceLocator(),

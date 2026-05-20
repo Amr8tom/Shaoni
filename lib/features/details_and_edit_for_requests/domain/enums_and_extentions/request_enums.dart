@@ -109,6 +109,20 @@ extension RequestStatusExtension on CurrentStatus {
             return RequestStatusEnum.rejected;
         }
         break;
+      case 'start.work':
+        switch (tech) {
+          case 'new':
+            return RequestStatusEnum.newRequest;
+          case 'confirm':
+            return RequestStatusEnum.managerApproval;
+          case 'hr_manager':
+            return RequestStatusEnum.hrManager;
+          case 'reject':
+            return RequestStatusEnum.rejected;
+          case 'approved':
+            return RequestStatusEnum.approved;
+        }
+        break;
     }
 
     if (tech.contains('reject') || tech.contains('cancel')) {

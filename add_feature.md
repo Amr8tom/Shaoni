@@ -38,7 +38,6 @@ if (state.status == "loaded") { ... } // ❌
 The same for stages coming from the API — `RequestStatusEnum` (new / managerApproval /
 hrApproval / done / rejected) maps service-specific tech names to a unified UI status.
 
-If your IDE marks the comparison red, you mistyped. Strings would let typos slip.
 
 ---
 

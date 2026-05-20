@@ -6,6 +6,7 @@ import 'package:shaoni/features/details_and_edit_for_requests/domain/use_cases/g
 import 'package:shaoni/features/details_and_edit_for_requests/domain/use_cases/get_car_permission_edit_use_case.dart';
 import 'package:shaoni/features/details_and_edit_for_requests/domain/use_cases/get_exit_permission_edit_use_case.dart';
 import 'package:shaoni/features/details_and_edit_for_requests/domain/use_cases/get_study_edit_use_case.dart';
+import 'package:shaoni/features/details_and_edit_for_requests/domain/use_cases/get_start_work_edit_use_case.dart';
 
 part 'edit_state.dart';
 
@@ -14,6 +15,7 @@ class EditCubit extends Cubit<EditState> {
   final GetExitPermissionEditUseCase _getExitPermissionEditUseCase;
   final GetAttendanceEditUseCase _getAttendanceEditUseCase;
   final GetStudyEditUseCase _getStudyEditUseCase;
+  final GetStartWorkEditUseCase _getStartWorkEditUseCase;
   final editNotesController = TextEditingController();
 
   EditCubit(
@@ -21,37 +23,29 @@ class EditCubit extends Cubit<EditState> {
     this._getExitPermissionEditUseCase,
     this._getAttendanceEditUseCase,
     this._getStudyEditUseCase,
+    this._getStartWorkEditUseCase,
   ) : super(const EditState());
 
-  /// Single entry point called from the UI.
-  /// Notes are read from [editNotesController] which the UI sets via callback.
-  /// Switches on [serviceCode] and fires the matching use case.
   Future<void> editRequest({
     required int requestId,
     required String serviceCode,
   }) async {
     switch (serviceCode.toLowerCase().trim()) {
       case 'car.permission':
-        await _getCarPermissionEdit(
-          requestId: requestId,
-        );
+        await _getCarPermissionEdit(requestId: requestId);
         break;
       case 'hr.exit.permission':
-        await _getExitPermissionEdit(
-          requestId: requestId,
-        );
+        await _getExitPermissionEdit(requestId: requestId);
         break;
       case 'attendance.update':
-        await _getAttendanceEdit(
-          requestId: requestId,
-        );
+        await _getAttendanceEdit(requestId: requestId);
         break;
       case 'study.request':
-        await _getStudyEdit(
-          requestId: requestId,
-        );
+        await _getStudyEdit(requestId: requestId);
         break;
-      // New services are added here as new cases.
+      case 'start.working':
+        await _getStartWorkEdit(requestId: requestId);
+        break;
       default:
         emit(state.copyWith(
           status: EditStatus.error,
@@ -60,41 +54,15 @@ class EditCubit extends Cubit<EditState> {
     }
   }
 
-  /// ── Car Permission ──────────────────────────────────────────────────────────
+  /// ── Car Permission ─────────────────────────────────────────────────────────
 
-  Future<void> _getCarPermissionEdit({
-    required int requestId,
-  }) async {
+  Future<void> _getCarPermissionEdit({required int requestId}) async {
     emit(state.copyWith(status: EditStatus.loading));
     final result = await _getCarPermissionEditUseCase.call(
       params: GetCarPermissionEditParams(
-          requestId: requestId,
-          notes: editNotesController.text,
-          editReasons: editNotesController.text),
-    );
-    result.fold(
-      (failure) => emit(state.copyWith(
-        status: EditStatus.error,
-        errorMessage: failure.message,
-      )),
-      (response) => emit(state.copyWith(
-        status: EditStatus.editRequestLoaded,
-        editResponse: response,
-      )),
-    );
-  }
-
-  /// ── Exit Permission ─────────────────────────────────────────────────────────
-
-  Future<void> _getExitPermissionEdit({
-    required int requestId,
-  }) async {
-    emit(state.copyWith(status: EditStatus.loading));
-    final result = await _getExitPermissionEditUseCase.call(
-      params: GetExitPermissionEditParams(
-          requestId: requestId,
-      editReasons: editNotesController.text,
-        notes: editNotesController.text
+        requestId: requestId,
+        notes: editNotesController.text,
+        editReasons: editNotesController.text,
       ),
     );
     result.fold(
@@ -109,11 +77,32 @@ class EditCubit extends Cubit<EditState> {
     );
   }
 
-  /// ── Study Request ────────────────────────────────────────────────────────────
+  /// ── Exit Permission ────────────────────────────────────────────────────────
 
-  Future<void> _getStudyEdit({
-    required int requestId,
-  }) async {
+  Future<void> _getExitPermissionEdit({required int requestId}) async {
+    emit(state.copyWith(status: EditStatus.loading));
+    final result = await _getExitPermissionEditUseCase.call(
+      params: GetExitPermissionEditParams(
+        requestId: requestId,
+        editReasons: editNotesController.text,
+        notes: editNotesController.text,
+      ),
+    );
+    result.fold(
+      (failure) => emit(state.copyWith(
+        status: EditStatus.error,
+        errorMessage: failure.message,
+      )),
+      (response) => emit(state.copyWith(
+        status: EditStatus.editRequestLoaded,
+        editResponse: response,
+      )),
+    );
+  }
+
+  /// ── Study Request ──────────────────────────────────────────────────────────
+
+  Future<void> _getStudyEdit({required int requestId}) async {
     emit(state.copyWith(status: EditStatus.loading));
     final result = await _getStudyEditUseCase.call(
       params: GetStudyEditParams(
@@ -134,17 +123,37 @@ class EditCubit extends Cubit<EditState> {
     );
   }
 
-  /// ── Attendance ──────────────────────────────────────────────────────────────
+  /// ── Attendance ────────────────────────────────────────────────────────────
 
-  Future<void> _getAttendanceEdit({
-    required int requestId,
-  }) async {
+  Future<void> _getAttendanceEdit({required int requestId}) async {
     emit(state.copyWith(status: EditStatus.loading));
     final result = await _getAttendanceEditUseCase.call(
       params: GetAttendanceEditParams(
         requestId: requestId,
         note: editNotesController.text,
-         editReasons: editNotesController.text,
+        editReasons: editNotesController.text,
+      ),
+    );
+    result.fold(
+      (failure) => emit(state.copyWith(
+        status: EditStatus.error,
+        errorMessage: failure.message,
+      )),
+      (response) => emit(state.copyWith(
+        status: EditStatus.editRequestLoaded,
+        editResponse: response,
+      )),
+    );
+  }
+
+  /// ── Start Work ────────────────────────────────────────────────────────────
+
+  Future<void> _getStartWorkEdit({required int requestId}) async {
+    emit(state.copyWith(status: EditStatus.loading));
+    final result = await _getStartWorkEditUseCase.call(
+      params: GetStartWorkEditParams(
+        requestId: requestId,
+        editReasons: editNotesController.text,
       ),
     );
     result.fold(

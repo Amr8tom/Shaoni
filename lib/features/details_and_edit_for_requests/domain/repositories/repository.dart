@@ -13,6 +13,7 @@ import '../use_cases/get_car_permission_edit_use_case.dart';
 import '../use_cases/get_exit_permission_edit_use_case.dart';
 import '../use_cases/get_request_details_use_case.dart';
 import '../use_cases/get_study_edit_use_case.dart';
+import '../use_cases/get_start_work_edit_use_case.dart';
 
 abstract class MyRequestsRepository {
   /// get
@@ -40,5 +41,9 @@ abstract class MyRequestsRepository {
 
   Future<Either<Failure, EditResponse>> getStudyEdit({
     required GetStudyEditParams params,
+  });
+
+  Future<Either<Failure, EditResponse>> getStartWorkEdit({
+    required GetStartWorkEditParams params,
   });
 }

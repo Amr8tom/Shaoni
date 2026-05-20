@@ -824,5 +824,11 @@
   "endDate": "End Date",
   "orderReason": "Request Justification",
   "orderReasonHint": "Enter the reason for this request",
-  "thisFieldRequired": "This field is required"
+  "thisFieldRequired": "This field is required",
+  "startWork": "Start Work",
+  "startWorkType": "Start Work Type",
+  "selectStartWorkType": "Select start work type",
+  "employee": "Employee",
+  "selectEmployee": "Select Employee",
+  "writeNoteHere": "Write note here..."
 }

@@ -18,6 +18,11 @@ import 'package:shaoni/features/human_resoures/domain/use_cases/exit/update_exit
 import 'package:shaoni/features/human_resoures/data/model/study/create_study_model.dart';
 import 'package:shaoni/features/human_resoures/data/model/study/study_destination_model.dart';
 import 'package:shaoni/features/human_resoures/data/model/study/study_type_model.dart';
+import 'package:shaoni/features/human_resoures/data/model/start_work/start_work_type_model.dart';
+import 'package:shaoni/features/human_resoures/data/model/start_work/employee_model.dart';
+import 'package:shaoni/features/human_resoures/data/model/start_work/create_start_work_model.dart';
+import 'package:shaoni/features/human_resoures/domain/use_cases/start_work/create_start_work_use_case.dart';
+import 'package:shaoni/features/human_resoures/domain/use_cases/start_work/update_start_work_use_case.dart';
 import 'package:shaoni/features/human_resoures/domain/use_cases/complaint_request/create_complaint_request_use_case.dart';
 import 'package:shaoni/features/human_resoures/domain/use_cases/study/create_study_use_case.dart';
 import 'package:shaoni/features/human_resoures/domain/use_cases/study/update_study_use_case.dart';
@@ -104,6 +109,23 @@ abstract class HRServicesRemoteDataSources {
 
   Future<CreateStudyModel> updateStudyRequest({
     required UpdateStudyParams params,
+  });
+
+  /// ============================= start work =============================
+  Future<List<StartWorkTypeModel>> getStartWorkTypes({
+    required NoParams params,
+  });
+
+  Future<List<EmployeeModel>> getEmployees({
+    required NoParams params,
+  });
+
+  Future<CreateStartWorkModel> createStartWorkRequest({
+    required CreateStartWorkParams params,
+  });
+
+  Future<CreateStartWorkModel> updateStartWorkRequest({
+    required UpdateStartWorkParams params,
   });
 }
 
@@ -460,6 +482,70 @@ class HRServicesRemoteDataSourcesImp implements HRServicesRemoteDataSources {
       );
       if (response == null) throw ServerFailure(message: 'server failure');
       return CreateStudyModel.fromJson(response.data as Map<String, dynamic>);
+    } on ServerFailure catch (e) {
+      throw ServerFailure(message: e.message);
+    }
+  }
+
+  /// ============================= start work =============================
+
+  @override
+  Future<List<StartWorkTypeModel>> getStartWorkTypes({
+    required NoParams params,
+  }) async {
+    try {
+      final response = await _dio.getData(URL: URL.getStartWorkTypes);
+      if (response == null) throw ServerFailure(message: 'server failure');
+      final List raw =
+          response is List ? response : (response as Map<String, dynamic>)['data'] as List;
+      return raw.map((e) => StartWorkTypeModel.fromJson(e)).toList();
+    } on ServerFailure catch (e) {
+      throw ServerFailure(message: e.message);
+    }
+  }
+
+  @override
+  Future<List<EmployeeModel>> getEmployees({
+    required NoParams params,
+  }) async {
+    try {
+      final response = await _dio.getData(URL: URL.getEmployees);
+      if (response == null) throw ServerFailure(message: 'server failure');
+      final List raw =
+          response is List ? response : (response as Map<String, dynamic>)['data'] as List;
+      return raw.map((e) => EmployeeModel.fromJson(e)).toList();
+    } on ServerFailure catch (e) {
+      throw ServerFailure(message: e.message);
+    }
+  }
+
+  @override
+  Future<CreateStartWorkModel> createStartWorkRequest({
+    required CreateStartWorkParams params,
+  }) async {
+    try {
+      final response = await _dio.postData(
+        URL: URL.createStartWork,
+        body: params.toMap(),
+      );
+      if (response == null) throw ServerFailure(message: 'server failure');
+      return CreateStartWorkModel.fromJson(response);
+    } on ServerFailure catch (e) {
+      throw ServerFailure(message: e.message);
+    }
+  }
+
+  @override
+  Future<CreateStartWorkModel> updateStartWorkRequest({
+    required UpdateStartWorkParams params,
+  }) async {
+    try {
+      final response = await _dio.putData(
+        URL: '${URL.updateStartWork}${params.requestId}',
+        body: params.toMap(),
+      );
+      if (response == null) throw ServerFailure(message: 'server failure');
+      return CreateStartWorkModel.fromJson(response.data as Map<String, dynamic>);
     } on ServerFailure catch (e) {
       throw ServerFailure(message: e.message);
     }

@@ -31,6 +31,11 @@ import '../use_cases/exit/create_exit_permission_use_case.dart';
 import '../use_cases/attendance/get_all_missing_attendance_use_case.dart';
 import '../use_cases/study/create_study_use_case.dart';
 import '../use_cases/study/update_study_use_case.dart';
+import '../entity/start_work/start_work_type.dart';
+import '../entity/start_work/employee.dart';
+import '../entity/start_work/create_start_work_response.dart';
+import '../use_cases/start_work/create_start_work_use_case.dart';
+import '../use_cases/start_work/update_start_work_use_case.dart';
 
 abstract class HRServicesRepository {
   Future<Either<Failure, AllServices>> getAllPermissionServices({
@@ -112,5 +117,22 @@ abstract class HRServicesRepository {
 
   Future<Either<Failure, CreateStudyResponse>> updateStudyRequest({
     required UpdateStudyParams params,
+  });
+
+  /// ///////////////////////////////////// start work /////////////////////////////////////////////////////
+  Future<Either<Failure, List<StartWorkType>>> getStartWorkTypes({
+    required NoParams params,
+  });
+
+  Future<Either<Failure, List<Employee>>> getEmployees({
+    required NoParams params,
+  });
+
+  Future<Either<Failure, CreateStartWorkResponse>> createStartWorkRequest({
+    required CreateStartWorkParams params,
+  });
+
+  Future<Either<Failure, CreateStartWorkResponse>> updateStartWorkRequest({
+    required UpdateStartWorkParams params,
   });
 }

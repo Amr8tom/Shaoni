@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:shaoni/features/details_and_edit_for_requests/data/models/study_model.dart';
+import 'package:shaoni/features/details_and_edit_for_requests/data/models/start_work_model.dart';
 import 'package:shaoni/features/details_and_edit_for_requests/domain/entities/car_permission/car_permission.dart';
 import 'package:shaoni/features/details_and_edit_for_requests/domain/entities/complaint_request/complaint_request_details.dart';
 
@@ -9,6 +10,7 @@ import '../../data/models/attendance_request_details_model.dart';
 class ExtraData extends Equatable {
   final AttendanceRequestDetailsModel? attendance;
   final StudyModel? study;
+  final StartWorkModel? startWork;
   final String? outsideWorking;
   final String? visaRequest;
   final ExitPermission? exitPermission;
@@ -19,6 +21,7 @@ class ExtraData extends Equatable {
     this.carPermission,
     this.attendance,
     this.study,
+    this.startWork,
     this.outsideWorking,
     this.visaRequest,
     this.exitPermission,
@@ -32,6 +35,9 @@ class ExtraData extends Equatable {
           ? AttendanceRequestDetailsModel.fromJson(json['attendance'])
           : null,
       study: json['study'] != null ? StudyModel.fromJson(json['study']) : null,
+      startWork: json['startWork'] != null
+          ? StartWorkModel.fromJson(json['startWork'])
+          : null,
       outsideWorking: json['outsideWorking'],
       visaRequest: json['visaRequest'],
       carPermission: json['carPermission'] != null
@@ -51,6 +57,7 @@ class ExtraData extends Equatable {
     return {
       'attendance': attendance?.toJson(),
       'study': study,
+      'startWork': startWork?.toJson(),
       'outsideWorking': outsideWorking,
       'visaRequest': visaRequest,
       'exitPermission': exitPermission?.toJson(),
@@ -65,6 +72,7 @@ class ExtraData extends Equatable {
         carPermission,
         complaintRequest,
         study,
+        startWork,
         outsideWorking,
         visaRequest,
         exitPermission,

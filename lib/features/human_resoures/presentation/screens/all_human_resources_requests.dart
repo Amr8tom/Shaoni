@@ -34,9 +34,14 @@ class AllHumanResourcesRequests extends StatelessWidget {
         body: SafeArea(
           child: BlocBuilder<HumanResourcesCubit, HumanResourcesState>(
             builder: (context, state) {
-              final services = state.status.isLoading?List.filled(10,
-              Service(id: 1, nameEn: 'hr.exit.permission', nameAr: 'إذن خروج')
-              ): state.services ?? const [];
+              final services = state.status.isLoading
+                  ? List.filled(
+                      10,
+                      Service(
+                          id: 1,
+                          nameEn: 'hr.exit.permission',
+                          nameAr: 'إذن خروج'))
+                  : state.services ?? const [];
               return RefreshIndicator(
                 color: ColorRes.primary,
                 onRefresh: () =>
@@ -50,10 +55,8 @@ class AllHumanResourcesRequests extends StatelessWidget {
                         physics: const AlwaysScrollableScrollPhysics(
                           parent: BouncingScrollPhysics(),
                         ),
-                        padding:
-                            EdgeInsets.only(bottom: AppSizes.padding * 2),
-                        gridDelegate:
-                            SliverGridDelegateWithFixedCrossAxisCount(
+                        padding: EdgeInsets.only(bottom: AppSizes.padding * 2),
+                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                           crossAxisCount: 2,
                           mainAxisSpacing: 12,
                           crossAxisSpacing: 12,
@@ -98,7 +101,9 @@ class AllHumanResourcesRequests extends StatelessWidget {
     final code = service.nameEn ?? '';
     switch (code) {
       case 'hr.exit.permission':
-        context.pushNamed(DRoutesName.requestCertainService,);
+        context.pushNamed(
+          DRoutesName.requestCertainService,
+        );
         return;
       case 'attendance.update':
         context.pushNamed(DRoutesName.missingAttendanceHistory);
@@ -111,6 +116,9 @@ class AllHumanResourcesRequests extends StatelessWidget {
         return;
       case 'complaint.request':
         context.pushNamed(DRoutesName.createComplaintRequestRoute);
+        return;
+      case 'start.work':
+        context.pushNamed(DRoutesName.createStartWorkRoute);
         return;
       default:
         ScaffoldMessenger.of(context).showSnackBar(

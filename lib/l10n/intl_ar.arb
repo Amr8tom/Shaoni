@@ -830,5 +830,11 @@
   "endDate": "تاريخ الانتهاء",
   "orderReason": "مبررات الطلب",
   "orderReasonHint": "أدخل سبب هذا الطلب",
-  "thisFieldRequired": "هذا الحقل مطلوب"
+  "thisFieldRequired": "هذا الحقل مطلوب",
+  "startWork": "بدء العمل",
+  "startWorkType": "نوع بدء العمل",
+  "selectStartWorkType": "اختر نوع بدء العمل",
+  "employee": "الموظف",
+  "selectEmployee": "اختر الموظف",
+  "writeNoteHere": "اكتب الملاحظة هنا..."
 }

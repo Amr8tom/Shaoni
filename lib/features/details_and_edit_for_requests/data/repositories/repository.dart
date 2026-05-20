@@ -10,6 +10,7 @@ import 'package:shaoni/features/details_and_edit_for_requests/domain/use_cases/g
 import 'package:shaoni/features/details_and_edit_for_requests/domain/use_cases/get_all_user_requests_use_case.dart';
 import 'package:shaoni/features/details_and_edit_for_requests/domain/use_cases/get_attendance_edit_use_case.dart';
 import 'package:shaoni/features/details_and_edit_for_requests/domain/use_cases/get_study_edit_use_case.dart';
+import 'package:shaoni/features/details_and_edit_for_requests/domain/use_cases/get_start_work_edit_use_case.dart';
 import 'package:shaoni/features/details_and_edit_for_requests/domain/use_cases/get_car_permission_edit_use_case.dart';
 import 'package:shaoni/features/details_and_edit_for_requests/domain/use_cases/get_exit_permission_edit_use_case.dart';
 import 'package:shaoni/features/details_and_edit_for_requests/domain/use_cases/get_request_details_use_case.dart';
@@ -180,6 +181,23 @@ class MyRequestsRepositoryImp extends MyRequestsRepository {
     if (await _networkInfo.isConnected) {
       try {
         final result = await _remoteDataSources.getStudyEdit(params: params);
+        return Right(result);
+      } on ServerFailure catch (e) {
+        return Left(ServerFailure(message: e.message));
+      }
+    } else {
+      return Left(CacheFailure());
+    }
+  }
+
+  @override
+  Future<Either<Failure, EditResponse>> getStartWorkEdit({
+    required GetStartWorkEditParams params,
+  }) async {
+    if (await _networkInfo.isConnected) {
+      try {
+        final result =
+            await _remoteDataSources.getStartWorkEdit(params: params);
         return Right(result);
       } on ServerFailure catch (e) {
         return Left(ServerFailure(message: e.message));
