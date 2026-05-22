@@ -132,6 +132,18 @@ extension RequestStatusExtension on CurrentStatus {
             return RequestStatusEnum.approved;
         }
         break;
+      case 'upgrade.medical.insurance':
+        switch (tech) {
+          case 'new':
+            return RequestStatusEnum.newRequest;
+          case 'confirm':
+            return RequestStatusEnum.hrManager;
+          case 'reject':
+            return RequestStatusEnum.rejected;
+          case 'approve':
+            return RequestStatusEnum.approved;
+        }
+        break;
     }
 
     if (tech.contains('reject') || tech.contains('cancel')) {

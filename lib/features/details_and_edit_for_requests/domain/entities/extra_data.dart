@@ -3,6 +3,7 @@ import 'package:shaoni/features/details_and_edit_for_requests/data/models/study_
 import 'package:shaoni/features/details_and_edit_for_requests/data/models/start_work_model.dart';
 import 'package:shaoni/features/details_and_edit_for_requests/data/models/experience_certificate_model.dart';
 import 'package:shaoni/features/details_and_edit_for_requests/data/models/id_document_model.dart';
+import 'package:shaoni/features/details_and_edit_for_requests/data/models/medical_insurance_model.dart';
 import 'package:shaoni/features/details_and_edit_for_requests/domain/entities/car_permission/car_permission.dart';
 import 'package:shaoni/features/details_and_edit_for_requests/domain/entities/complaint_request/complaint_request_details.dart';
 
@@ -15,6 +16,7 @@ class ExtraData extends Equatable {
   final StartWorkModel? startWork;
   final ExperienceCertificateModel? experienceCertificate;
   final IDDocumentModel? idDocument;
+  final MedicalInsuranceModel? medicalInsurance;
   final String? outsideWorking;
   final String? visaRequest;
   final ExitPermission? exitPermission;
@@ -28,6 +30,7 @@ class ExtraData extends Equatable {
     this.startWork,
     this.experienceCertificate,
     this.idDocument,
+    this.medicalInsurance,
     this.outsideWorking,
     this.visaRequest,
     this.exitPermission,
@@ -41,14 +44,17 @@ class ExtraData extends Equatable {
           ? AttendanceRequestDetailsModel.fromJson(json['attendance'])
           : null,
       study: json['study'] != null ? StudyModel.fromJson(json['study']) : null,
-      startWork: json['startWork'] != null
-          ? StartWorkModel.fromJson(json['startWork'])
+      startWork: json['startWorking'] != null
+          ? StartWorkModel.fromJson(json['startWorking'])
           : null,
       experienceCertificate: json['experienceCertificate'] != null
           ? ExperienceCertificateModel.fromJson(json['experienceCertificate'])
           : null,
       idDocument: json['idDocument'] != null
           ? IDDocumentModel.fromJson(json['idDocument'])
+          : null,
+      medicalInsurance: json['medicalInsurance'] != null
+          ? MedicalInsuranceModel.fromJson(json['medicalInsurance'])
           : null,
       outsideWorking: json['outsideWorking'],
       visaRequest: json['visaRequest'],
@@ -72,6 +78,7 @@ class ExtraData extends Equatable {
       'startWork': startWork?.toJson(),
       'experienceCertificate': experienceCertificate?.toJson(),
       'idDocument': idDocument?.toJson(),
+      'medicalInsurance': medicalInsurance?.toJson(),
       'outsideWorking': outsideWorking,
       'visaRequest': visaRequest,
       'exitPermission': exitPermission?.toJson(),
@@ -89,6 +96,7 @@ class ExtraData extends Equatable {
         startWork,
         experienceCertificate,
         idDocument,
+        medicalInsurance,
         outsideWorking,
         visaRequest,
         exitPermission,

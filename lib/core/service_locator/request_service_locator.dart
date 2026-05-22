@@ -43,6 +43,11 @@ import '../../features/human_resoures/domain/use_cases/id_document/get_departmen
 import '../../features/human_resoures/domain/use_cases/id_document/get_id_renewal_request_types_use_case.dart';
 import '../../features/human_resoures/domain/use_cases/id_document/create_id_document_use_case.dart';
 import '../../features/human_resoures/presentation/controller/id_document/id_document_cubit.dart';
+import '../../features/human_resoures/domain/use_cases/medical_insurance/get_medical_insurance_classes_use_case.dart';
+import '../../features/human_resoures/domain/use_cases/medical_insurance/get_employee_relatives_use_case.dart';
+import '../../features/human_resoures/domain/use_cases/medical_insurance/create_medical_insurance_use_case.dart';
+import '../../features/human_resoures/domain/use_cases/medical_insurance/update_medical_insurance_use_case.dart';
+import '../../features/human_resoures/presentation/controller/medical_insurance/medical_insurance_cubit.dart';
 
 class HRServiceLocator {
   static Future<void> execute({required GetIt serviceLocator}) async {
@@ -220,6 +225,28 @@ class HRServiceLocator {
     );
     serviceLocator.registerFactory<IDDocumentCubit>(
       () => IDDocumentCubit(
+        serviceLocator(),
+        serviceLocator(),
+        serviceLocator(),
+      ),
+    );
+
+    /// ============================= medical insurance =============================
+    serviceLocator.registerLazySingleton<GetMedicalInsuranceClassesUseCase>(
+      () => GetMedicalInsuranceClassesUseCase(serviceLocator()),
+    );
+    serviceLocator.registerLazySingleton<GetEmployeeRelativesUseCase>(
+      () => GetEmployeeRelativesUseCase(serviceLocator()),
+    );
+    serviceLocator.registerLazySingleton<CreateMedicalInsuranceUseCase>(
+      () => CreateMedicalInsuranceUseCase(serviceLocator()),
+    );
+    serviceLocator.registerLazySingleton<UpdateMedicalInsuranceUseCase>(
+      () => UpdateMedicalInsuranceUseCase(serviceLocator()),
+    );
+    serviceLocator.registerFactory<MedicalInsuranceCubit>(
+      () => MedicalInsuranceCubit(
+        serviceLocator(),
         serviceLocator(),
         serviceLocator(),
         serviceLocator(),

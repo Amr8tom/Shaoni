@@ -107,6 +107,13 @@ class UpdateRequestButton extends StatelessWidget {
         );
         break;
 
+      case 'upgrade.medical.insurance':
+        context.pushNamed(
+          DRoutesName.createMedicalInsuranceRoute,
+          arguments: {'requestId': int.tryParse(requestID)},
+        );
+        break;
+
       default:
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(

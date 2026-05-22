@@ -31,6 +31,12 @@ import 'package:shaoni/features/human_resoures/data/model/id_document/department
 import 'package:shaoni/features/human_resoures/data/model/id_document/id_renewal_request_type_model.dart';
 import 'package:shaoni/features/human_resoures/data/model/id_document/create_id_document_model.dart';
 import 'package:shaoni/features/human_resoures/domain/use_cases/id_document/create_id_document_use_case.dart';
+import 'package:shaoni/features/human_resoures/data/model/medical_insurance/medical_insurance_class_model.dart';
+import 'package:shaoni/features/human_resoures/data/model/medical_insurance/employee_relative_model.dart';
+import 'package:shaoni/features/human_resoures/data/model/medical_insurance/create_medical_insurance_model.dart';
+import 'package:shaoni/features/human_resoures/domain/use_cases/medical_insurance/get_employee_relatives_use_case.dart';
+import 'package:shaoni/features/human_resoures/domain/use_cases/medical_insurance/create_medical_insurance_use_case.dart';
+import 'package:shaoni/features/human_resoures/domain/use_cases/medical_insurance/update_medical_insurance_use_case.dart';
 import 'package:shaoni/features/human_resoures/domain/use_cases/complaint_request/create_complaint_request_use_case.dart';
 import 'package:shaoni/features/human_resoures/domain/use_cases/study/create_study_use_case.dart';
 import 'package:shaoni/features/human_resoures/domain/use_cases/study/update_study_use_case.dart';
@@ -158,6 +164,23 @@ abstract class HRServicesRemoteDataSources {
 
   Future<CreateIDDocumentModel> createIDDocument({
     required CreateIDDocumentParams params,
+  });
+
+  /// ============================= medical insurance =============================
+  Future<List<MedicalInsuranceClassModel>> getMedicalInsuranceClasses({
+    required NoParams params,
+  });
+
+  Future<List<EmployeeRelativeModel>> getEmployeeRelatives({
+    required GetEmployeeRelativesParams params,
+  });
+
+  Future<CreateMedicalInsuranceModel> createMedicalInsurance({
+    required CreateMedicalInsuranceParams params,
+  });
+
+  Future<CreateMedicalInsuranceModel> updateMedicalInsurance({
+    required UpdateMedicalInsuranceParams params,
   });
 }
 
@@ -676,6 +699,75 @@ class HRServicesRemoteDataSourcesImp implements HRServicesRemoteDataSources {
       );
       if (response == null) throw ServerFailure(message: 'server failure');
       return CreateIDDocumentModel.fromJson(response);
+    } on ServerFailure catch (e) {
+      throw ServerFailure(message: e.message);
+    }
+  }
+
+  /// ============================= medical insurance =============================
+
+  @override
+  Future<List<MedicalInsuranceClassModel>> getMedicalInsuranceClasses({
+    required NoParams params,
+  }) async {
+    try {
+      final response = await _dio.getData(URL: URL.getMedicalInsuranceClasses);
+      if (response == null) throw ServerFailure(message: 'server failure');
+      final List raw =
+          response is List ? response : (response as Map<String, dynamic>)['data'] as List;
+      return raw.map((e) => MedicalInsuranceClassModel.fromJson(e)).toList();
+    } on ServerFailure catch (e) {
+      throw ServerFailure(message: e.message);
+    }
+  }
+
+  @override
+  Future<List<EmployeeRelativeModel>> getEmployeeRelatives({
+    required GetEmployeeRelativesParams params,
+  }) async {
+    try {
+      final response = await _dio.getData(
+        URL: '${URL.getEmployeeRelatives}${params.employeeId}',
+      );
+      if (response == null) throw ServerFailure(message: 'server failure');
+      // API returns: {code, message, count, body: [...]}
+      final List raw = response is List
+          ? response
+          : (response as Map<String, dynamic>)['body'] as List;
+      return raw.map((e) => EmployeeRelativeModel.fromJson(e)).toList();
+    } on ServerFailure catch (e) {
+      throw ServerFailure(message: e.message);
+    }
+  }
+
+  @override
+  Future<CreateMedicalInsuranceModel> createMedicalInsurance({
+    required CreateMedicalInsuranceParams params,
+  }) async {
+    try {
+      final response = await _dio.postData(
+        URL: URL.createMedicalInsurance,
+        body: params.toMap(),
+      );
+      if (response == null) throw ServerFailure(message: 'server failure');
+      return CreateMedicalInsuranceModel.fromJson(response);
+    } on ServerFailure catch (e) {
+      throw ServerFailure(message: e.message);
+    }
+  }
+
+  @override
+  Future<CreateMedicalInsuranceModel> updateMedicalInsurance({
+    required UpdateMedicalInsuranceParams params,
+  }) async {
+    try {
+      final response = await _dio.putData(
+        URL: '${URL.updateMedicalInsurance}${params.requestId}',
+        body: params.toMap(),
+      );
+      if (response == null) throw ServerFailure(message: 'server failure');
+      return CreateMedicalInsuranceModel.fromJson(
+          response.data as Map<String, dynamic>);
     } on ServerFailure catch (e) {
       throw ServerFailure(message: e.message);
     }

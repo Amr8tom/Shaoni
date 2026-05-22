@@ -61,6 +61,13 @@ class URL {
   static const String updateStartWork = '$baseUrl/StartWorking/update/';
   static const String getStartWorkEdit = '$baseUrl/StartWorking/edit/';
 
+  /// ============================ medical insurance ============================
+  static const String getMedicalInsuranceClasses = '$baseUrl/Lookup/GetMedicalInsuranceClasses';
+  static const String getEmployeeRelatives = '$baseUrl/Lookup/GetEmployeeRelatives/';
+  static const String createMedicalInsurance = '$baseUrl/MedicalInsurance';
+  static const String updateMedicalInsurance = '$baseUrl/MedicalInsurance/update/';
+  static const String getMedicalInsuranceEdit = '$baseUrl/MedicalInsurance/edit/';
+
   /// ============================ complaint request ============================
   static const String getComplaintTypes = '$baseUrl/Lookup/GetComplaintTypes';
   static const String getComplaintReasons = '$baseUrl/Lookup/GetComplaintReasons';

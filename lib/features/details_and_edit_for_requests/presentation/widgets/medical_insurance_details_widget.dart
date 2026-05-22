@@ -9,13 +9,13 @@ import '../../../../generated/l10n.dart';
 import '../../../home/presentation/widgets/order_text_card.dart';
 import '../controller/my_requests_cubit.dart';
 
-class StartWorkRequestDetailsWidget extends StatelessWidget {
-  const StartWorkRequestDetailsWidget({super.key});
+class MedicalInsuranceDetailsWidget extends StatelessWidget {
+  const MedicalInsuranceDetailsWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
     final controller = context.watch<MyRequestsCubit>();
-    final startWork = controller.state.requestDetails?.extraData?.startWork;
+    final mi = controller.state.requestDetails?.extraData?.medicalInsurance;
 
     return Skeletonizer(
       enabled: controller.state.status.isLoading,
@@ -41,78 +41,65 @@ class StartWorkRequestDetailsWidget extends StatelessWidget {
               Divider(color: ColorRes.grey4),
               const Sizer(height: 12),
 
-              /// Row 1 — request number + request date
-              Row(
-                children: [
-                  Expanded(
-                    child: OrderTextCard(
-                      title: S.current.requestNumber,
-                      result: startWork?.externalName ?? '',
-                    ),
-                  ),
-                  const Sizer(width: 10),
-                  Expanded(
-                    child: OrderTextCard(
-                      title: S.current.date,
-                      result: _formatDate(startWork?.date),
-                    ),
-                  ),
-                ],
-              ),
-              const Sizer(height: 12),
-
-              /// Row 2 — start work type + start date
-              Row(
-                children: [
-                  Expanded(
-                    child: OrderTextCard(
-                      title: S.current.startWorkType,
-                      result: startWork?.typeName ?? '',
-                    ),
-                  ),
-                  const Sizer(width: 10),
-                  Expanded(
-                    child: OrderTextCard(
-                      title: S.current.startDate,
-                      result: _formatDate(startWork?.startDate),
-                    ),
-                  ),
-                ],
-              ),
-              const Sizer(height: 12),
-
-              /// Manager name (conditional)
-              if ((startWork?.managerName?.isNotEmpty ?? false)) ...[
+              /// Insurance class name
+              if ((mi?.insuranceClassName?.isNotEmpty ?? false)) ...[
                 OrderTextCard(
-                  title: S.current.manager,
-                  result: startWork?.managerName ?? '',
+                  title: S.current.insuranceClass,
+                  result: mi?.insuranceClassName ?? '',
                 ),
                 const Sizer(height: 12),
               ],
 
-              /// Note (full-width, conditional)
-              if ((startWork?.note?.isNotEmpty ?? false)) ...[
+              /// Date
+              if ((mi?.date?.isNotEmpty ?? false)) ...[
+                OrderTextCard(
+                  title: S.current.startDate,
+                  result: _formatDate(mi?.date),
+                ),
+                const Sizer(height: 12),
+              ],
+
+              /// Include family member
+              OrderTextCard(
+                title: S.current.includeFamilyMembers,
+                result: (mi?.includeFamilyMember ?? false)
+                    ? S.current.yes
+                    : S.current.no,
+              ),
+              const Sizer(height: 12),
+
+              /// Reason for upgrade (full-width)
+              if ((mi?.reasonForUpgrade?.isNotEmpty ?? false)) ...[
+                _FullWidthTextBlock(
+                  label: S.current.reasonForUpgrade,
+                  value: mi!.reasonForUpgrade!,
+                ),
+                const Sizer(height: 12),
+              ],
+
+              /// Note (full-width)
+              if ((mi?.note?.isNotEmpty ?? false)) ...[
                 _FullWidthTextBlock(
                   label: S.current.notes,
-                  value: startWork!.note!,
+                  value: mi!.note!,
                 ),
                 const Sizer(height: 12),
               ],
 
               /// Edit reasons (full-width, conditional)
-              if ((startWork?.editReasons?.isNotEmpty ?? false)) ...[
+              if ((mi?.editReasons?.isNotEmpty ?? false)) ...[
                 _FullWidthTextBlock(
                   label: S.current.editReasons,
-                  value: startWork!.editReasons!,
+                  value: mi!.editReasons!,
                 ),
                 const Sizer(height: 12),
               ],
 
               /// Reject reasons (full-width, conditional)
-              if ((startWork?.rejectReasons?.isNotEmpty ?? false)) ...[
+              if ((mi?.rejectReasons?.isNotEmpty ?? false)) ...[
                 _FullWidthTextBlock(
                   label: S.current.rejectReasons,
-                  value: startWork!.rejectReasons!,
+                  value: mi!.rejectReasons!,
                 ),
                 const Sizer(height: 12),
               ],

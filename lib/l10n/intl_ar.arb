@@ -150,6 +150,7 @@
   "requestStage": "مرحلة الطلب",
 
   "managerApproval": "موافقة المدير",
+  "manager": "المدير",
   "hrManagerApproval": "موافقة مدير الموارد البشرية",
 
   "pendingRequest": "طلب قيد الانتظار",
@@ -815,6 +816,8 @@
   "complaintReasonLabel": "سبب الشكوى",
   "complaintDescriptionLabel": "الوصف",
   "editRequest": "تعديل الطلب",
+  "editReasons": "أسباب التعديل",
+  "rejectReasons": "أسباب الرفض",
   "requestUpdatedSuccessfully": "تم تعديل الطلب بنجاح",
   "updateRequest": "تعديل الطلب",
 
@@ -858,5 +861,14 @@
   "passportAddress": "عنوان جواز السفر",
   "familyCardNumber": "رقم بطاقة عائلية",
   "drivingLicenseNumber": "رقم رخصة سياقة",
-  "documentData": "بيانات الوثيقة"
+  "documentData": "بيانات الوثيقة",
+  "medicalInsurance": "طلب ترقية التأمين الطبي",
+  "insuranceClass": "فئة التأمين",
+  "selectInsuranceClass": "اختر فئة التأمين",
+  "includeFamilyMembers": "تضمين أفراد الأسرة",
+  "familyMembers": "أفراد الأسرة",
+  "noFamilyMembersFound": "لا يوجد أفراد أسرة",
+  "reasonForUpgrade": "سبب طلب الترقية",
+  "reasonForUpgradeHint": "أدخل سبب الترقية",
+  "notesHint": "أدخل الملاحظات (اختياري)"
 }

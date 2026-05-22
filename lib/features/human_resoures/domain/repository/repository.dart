@@ -44,6 +44,12 @@ import '../entity/id_document/department.dart';
 import '../entity/id_document/id_renewal_request_type.dart';
 import '../entity/id_document/create_id_document_response.dart';
 import '../use_cases/id_document/create_id_document_use_case.dart';
+import '../entity/medical_insurance/medical_insurance_class.dart';
+import '../entity/medical_insurance/employee_relative.dart';
+import '../entity/medical_insurance/create_medical_insurance_response.dart';
+import '../use_cases/medical_insurance/get_employee_relatives_use_case.dart';
+import '../use_cases/medical_insurance/create_medical_insurance_use_case.dart';
+import '../use_cases/medical_insurance/update_medical_insurance_use_case.dart';
 
 abstract class HRServicesRepository {
   Future<Either<Failure, AllServices>> getAllPermissionServices({
@@ -170,5 +176,22 @@ abstract class HRServicesRepository {
 
   Future<Either<Failure, CreateIDDocumentResponse>> createIDDocument({
     required CreateIDDocumentParams params,
+  });
+
+  /// ///////////////////////////////////// medical insurance /////////////////////////////////////////////////////
+  Future<Either<Failure, List<MedicalInsuranceClass>>> getMedicalInsuranceClasses({
+    required NoParams params,
+  });
+
+  Future<Either<Failure, List<EmployeeRelative>>> getEmployeeRelatives({
+    required GetEmployeeRelativesParams params,
+  });
+
+  Future<Either<Failure, CreateMedicalInsuranceResponse>> createMedicalInsurance({
+    required CreateMedicalInsuranceParams params,
+  });
+
+  Future<Either<Failure, CreateMedicalInsuranceResponse>> updateMedicalInsurance({
+    required UpdateMedicalInsuranceParams params,
   });
 }

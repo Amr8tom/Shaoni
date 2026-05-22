@@ -249,6 +249,16 @@ class S {
     );
   }
 
+  /// `Manager`
+  String get manager {
+    return Intl.message(
+      'Manager',
+      name: 'manager',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Submitted Requests`
   String get submittedRequests {
     return Intl.message(
@@ -6199,6 +6209,26 @@ class S {
     );
   }
 
+  /// `Edit Reasons`
+  String get editReasons {
+    return Intl.message(
+      'Edit Reasons',
+      name: 'editReasons',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Rejection Reasons`
+  String get rejectReasons {
+    return Intl.message(
+      'Rejection Reasons',
+      name: 'rejectReasons',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Request Updated Successfully`
   String get requestUpdatedSuccessfully {
     return Intl.message(
@@ -6589,6 +6619,96 @@ class S {
     return Intl.message(
       'Document Data',
       name: 'documentData',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Medical Insurance Upgrade`
+  String get medicalInsurance {
+    return Intl.message(
+      'Medical Insurance Upgrade',
+      name: 'medicalInsurance',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Insurance Class`
+  String get insuranceClass {
+    return Intl.message(
+      'Insurance Class',
+      name: 'insuranceClass',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Select insurance class`
+  String get selectInsuranceClass {
+    return Intl.message(
+      'Select insurance class',
+      name: 'selectInsuranceClass',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Include Family Members`
+  String get includeFamilyMembers {
+    return Intl.message(
+      'Include Family Members',
+      name: 'includeFamilyMembers',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Family Members`
+  String get familyMembers {
+    return Intl.message(
+      'Family Members',
+      name: 'familyMembers',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No family members found`
+  String get noFamilyMembersFound {
+    return Intl.message(
+      'No family members found',
+      name: 'noFamilyMembersFound',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Reason for Upgrade`
+  String get reasonForUpgrade {
+    return Intl.message(
+      'Reason for Upgrade',
+      name: 'reasonForUpgrade',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter the reason for upgrade`
+  String get reasonForUpgradeHint {
+    return Intl.message(
+      'Enter the reason for upgrade',
+      name: 'reasonForUpgradeHint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter notes (optional)`
+  String get notesHint {
+    return Intl.message(
+      'Enter notes (optional)',
+      name: 'notesHint',
       desc: '',
       args: [],
     );

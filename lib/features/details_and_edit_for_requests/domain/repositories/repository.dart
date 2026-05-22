@@ -15,6 +15,8 @@ import '../use_cases/get_request_details_use_case.dart';
 import '../use_cases/get_study_edit_use_case.dart';
 import '../use_cases/get_start_work_edit_use_case.dart';
 import '../use_cases/get_experience_certificate_edit_use_case.dart';
+import '../use_cases/get_id_document_edit_use_case.dart';
+import '../use_cases/get_medical_insurance_edit_use_case.dart';
 
 abstract class MyRequestsRepository {
   /// get
@@ -50,5 +52,13 @@ abstract class MyRequestsRepository {
 
   Future<Either<Failure, EditResponse>> getExperienceCertificateEdit({
     required GetExperienceCertificateEditParams params,
+  });
+
+  Future<Either<Failure, EditResponse>> getIDDocumentEdit({
+    required GetIDDocumentEditParams params,
+  });
+
+  Future<Either<Failure, EditResponse>> getMedicalInsuranceEdit({
+    required GetMedicalInsuranceEditParams params,
   });
 }

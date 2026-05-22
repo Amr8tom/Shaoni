@@ -5,6 +5,7 @@ import 'package:shaoni/features/human_resoures/presentation/study/create_study_r
 import 'package:shaoni/features/human_resoures/presentation/start_work/create_start_work_form.dart';
 import 'package:shaoni/features/human_resoures/presentation/experience_certificate/create_experience_certificate_form.dart';
 import 'package:shaoni/features/human_resoures/presentation/id_document/create_id_document_form.dart';
+import 'package:shaoni/features/human_resoures/presentation/medical_insurance/create_medical_insurance_form.dart';
 import 'package:shaoni/features/profile/profile_screen.dart';
 import '../../features/auth/presentation/screen/login_screen.dart';
 import '../../features/auth/presentation/screen/new_password_screen.dart';
@@ -111,6 +112,16 @@ class RouteGenerator {
         final int? requestId = args?['requestId'] as int?;
         return PageTransition(
           child: CreateIDDocumentForm(requestId: requestId),
+          type: PageTransitionType.rightToLeft,
+          settings: settings,
+        );
+
+     /// create / edit medical insurance screen
+      case DRoutesName.createMedicalInsuranceRoute:
+        final args = settings.arguments as Map<String, dynamic>?;
+        final int? requestId = args?['requestId'] as int?;
+        return PageTransition(
+          child: CreateMedicalInsuranceForm(requestId: requestId),
           type: PageTransitionType.rightToLeft,
           settings: settings,
         );

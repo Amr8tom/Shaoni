@@ -371,6 +371,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "eMail": MessageLookupByLibrary.simpleMessage("E-mail"),
     "editProduct": MessageLookupByLibrary.simpleMessage("Edit The Product"),
     "editRequest": MessageLookupByLibrary.simpleMessage("Edit Request"),
+    "editReasons": MessageLookupByLibrary.simpleMessage("Edit Reasons"),
+    "rejectReasons": MessageLookupByLibrary.simpleMessage("Rejection Reasons"),
     "eggs": MessageLookupByLibrary.simpleMessage(
       "Omelets eggs + green salad + Bread",
     ),
@@ -679,6 +681,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "makkah": MessageLookupByLibrary.simpleMessage("Makkah"),
     "male": MessageLookupByLibrary.simpleMessage("Male"),
     "managerApproval": MessageLookupByLibrary.simpleMessage("Manager Approval"),
+    "manager": MessageLookupByLibrary.simpleMessage("Manager"),
     "markAll": MessageLookupByLibrary.simpleMessage("Mark all as read"),
     "meCo": MessageLookupByLibrary.simpleMessage("Meal Components "),
     "meal": MessageLookupByLibrary.simpleMessage("Meal"),
@@ -1381,5 +1384,14 @@ class MessageLookup extends MessageLookupByLibrary {
     "writetitleHere": MessageLookupByLibrary.simpleMessage("write title here"),
     "yes": MessageLookupByLibrary.simpleMessage("Yes"),
     "youHave": MessageLookupByLibrary.simpleMessage("you have : "),
+    "medicalInsurance": MessageLookupByLibrary.simpleMessage("Medical Insurance Upgrade"),
+    "insuranceClass": MessageLookupByLibrary.simpleMessage("Insurance Class"),
+    "selectInsuranceClass": MessageLookupByLibrary.simpleMessage("Select insurance class"),
+    "includeFamilyMembers": MessageLookupByLibrary.simpleMessage("Include Family Members"),
+    "familyMembers": MessageLookupByLibrary.simpleMessage("Family Members"),
+    "noFamilyMembersFound": MessageLookupByLibrary.simpleMessage("No family members found"),
+    "reasonForUpgrade": MessageLookupByLibrary.simpleMessage("Reason for Upgrade"),
+    "reasonForUpgradeHint": MessageLookupByLibrary.simpleMessage("Enter the reason for upgrade"),
+    "notesHint": MessageLookupByLibrary.simpleMessage("Enter notes (optional)"),
   };
 }

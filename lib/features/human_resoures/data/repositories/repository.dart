@@ -36,6 +36,12 @@ import 'package:shaoni/features/human_resoures/domain/entity/id_document/departm
 import 'package:shaoni/features/human_resoures/domain/entity/id_document/id_renewal_request_type.dart';
 import 'package:shaoni/features/human_resoures/domain/entity/id_document/create_id_document_response.dart';
 import 'package:shaoni/features/human_resoures/domain/use_cases/id_document/create_id_document_use_case.dart';
+import 'package:shaoni/features/human_resoures/domain/entity/medical_insurance/medical_insurance_class.dart';
+import 'package:shaoni/features/human_resoures/domain/entity/medical_insurance/employee_relative.dart';
+import 'package:shaoni/features/human_resoures/domain/entity/medical_insurance/create_medical_insurance_response.dart';
+import 'package:shaoni/features/human_resoures/domain/use_cases/medical_insurance/get_employee_relatives_use_case.dart';
+import 'package:shaoni/features/human_resoures/domain/use_cases/medical_insurance/create_medical_insurance_use_case.dart';
+import 'package:shaoni/features/human_resoures/domain/use_cases/medical_insurance/update_medical_insurance_use_case.dart';
 import '../model/car_permission/update_car_permission_model.dart';
 import '../model/complaint_request/create_complaint_request_model.dart';
 import '../../../../core/connection/checkNetwork.dart';
@@ -577,6 +583,72 @@ class HRServicesRepositoryImp extends HRServicesRepository {
     if (await _networkInfo.isConnected) {
       try {
         final response = await _remote.createIDDocument(params: params);
+        return Right(response);
+      } on ServerFailure catch (e) {
+        return Left(ServerFailure(message: e.message));
+      }
+    } else {
+      return Left(CacheFailure());
+    }
+  }
+
+  /// ===================== medical insurance =====================
+
+  @override
+  Future<Either<Failure, List<MedicalInsuranceClass>>> getMedicalInsuranceClasses({
+    required NoParams params,
+  }) async {
+    if (await _networkInfo.isConnected) {
+      try {
+        final response = await _remote.getMedicalInsuranceClasses(params: params);
+        return Right(response);
+      } on ServerFailure catch (e) {
+        return Left(ServerFailure(message: e.message));
+      }
+    } else {
+      return Left(CacheFailure());
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<EmployeeRelative>>> getEmployeeRelatives({
+    required GetEmployeeRelativesParams params,
+  }) async {
+    if (await _networkInfo.isConnected) {
+      try {
+        final response = await _remote.getEmployeeRelatives(params: params);
+        return Right(response);
+      } on ServerFailure catch (e) {
+        return Left(ServerFailure(message: e.message));
+      }
+    } else {
+      return Left(CacheFailure());
+    }
+  }
+
+  @override
+  Future<Either<Failure, CreateMedicalInsuranceResponse>> createMedicalInsurance({
+    required CreateMedicalInsuranceParams params,
+  }) async {
+    if (await _networkInfo.isConnected) {
+      try {
+        final response = await _remote.createMedicalInsurance(params: params);
+        return Right(response);
+      } on ServerFailure catch (e) {
+        return Left(ServerFailure(message: e.message));
+      }
+    } else {
+      return Left(CacheFailure());
+    }
+  }
+
+  @override
+  Future<Either<Failure, CreateMedicalInsuranceResponse>> updateMedicalInsurance({
+    required UpdateMedicalInsuranceParams params,
+  }) async {
+    if (await _networkInfo.isConnected) {
+      try {
+        final response = await _remote.updateMedicalInsurance(params: params);
         return Right(response);
       } on ServerFailure catch (e) {
         return Left(ServerFailure(message: e.message));

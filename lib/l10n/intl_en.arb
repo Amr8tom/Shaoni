@@ -26,6 +26,7 @@
   "logoutQuestion": "Are you sure you want to logout?",
   "requestType":"Request Type",
   "managerApproval": "Manager Approval",
+  "manager": "Manager",
   "submittedRequests":"Submitted Requests",
   "hrManagerApproval": "HR Manager Approval",
   "quranKarem": "Quran Kareem",
@@ -809,6 +810,8 @@
   "complaintReasonLabel": "Complaint Reason",
   "complaintDescriptionLabel": "Description",
   "editRequest": "Edit Request",
+  "editReasons": "Edit Reasons",
+  "rejectReasons": "Rejection Reasons",
   "requestUpdatedSuccessfully": "Request Updated Successfully",
   "updateRequest": "Update Request",
 
@@ -852,5 +855,14 @@
   "passportAddress": "Passport Address",
   "familyCardNumber": "Family Card Number",
   "drivingLicenseNumber": "Driving License Number",
-  "documentData": "Document Data"
+  "documentData": "Document Data",
+  "medicalInsurance": "Medical Insurance Upgrade",
+  "insuranceClass": "Insurance Class",
+  "selectInsuranceClass": "Select insurance class",
+  "includeFamilyMembers": "Include Family Members",
+  "familyMembers": "Family Members",
+  "noFamilyMembersFound": "No family members found",
+  "reasonForUpgrade": "Reason for Upgrade",
+  "reasonForUpgradeHint": "Enter the reason for upgrade",
+  "notesHint": "Enter notes (optional)"
 }
