@@ -42,6 +42,10 @@ import 'package:shaoni/features/human_resoures/domain/entity/medical_insurance/c
 import 'package:shaoni/features/human_resoures/domain/use_cases/medical_insurance/get_employee_relatives_use_case.dart';
 import 'package:shaoni/features/human_resoures/domain/use_cases/medical_insurance/create_medical_insurance_use_case.dart';
 import 'package:shaoni/features/human_resoures/domain/use_cases/medical_insurance/update_medical_insurance_use_case.dart';
+import 'package:shaoni/features/human_resoures/domain/entity/training_request/course.dart';
+import 'package:shaoni/features/human_resoures/domain/entity/training_request/create_training_response.dart';
+import 'package:shaoni/features/human_resoures/domain/use_cases/training_request/create_training_request_use_case.dart';
+import 'package:shaoni/features/human_resoures/domain/use_cases/training_request/update_training_request_use_case.dart';
 import '../model/car_permission/update_car_permission_model.dart';
 import '../model/complaint_request/create_complaint_request_model.dart';
 import '../../../../core/connection/checkNetwork.dart';
@@ -649,6 +653,54 @@ class HRServicesRepositoryImp extends HRServicesRepository {
     if (await _networkInfo.isConnected) {
       try {
         final response = await _remote.updateMedicalInsurance(params: params);
+        return Right(response);
+      } on ServerFailure catch (e) {
+        return Left(ServerFailure(message: e.message));
+      }
+    } else {
+      return Left(CacheFailure());
+    }
+  }
+
+  /// ===================== training request =====================
+
+  @override
+  Future<Either<Failure, List<Course>>> getCourses() async {
+    if (await _networkInfo.isConnected) {
+      try {
+        final response = await _remote.getCourses();
+        return Right(response);
+      } on ServerFailure catch (e) {
+        return Left(ServerFailure(message: e.message));
+      }
+    } else {
+      return Left(CacheFailure());
+    }
+  }
+
+  @override
+  Future<Either<Failure, CreateTrainingResponse>> createTrainingRequest({
+    required CreateTrainingRequestParams params,
+  }) async {
+    if (await _networkInfo.isConnected) {
+      try {
+        final response = await _remote.createTrainingRequest(params: params);
+        return Right(response);
+      } on ServerFailure catch (e) {
+        return Left(ServerFailure(message: e.message));
+      }
+    } else {
+      return Left(CacheFailure());
+    }
+  }
+
+  @override
+  Future<Either<Failure, CreateTrainingResponse>> updateTrainingRequest({
+    required UpdateTrainingRequestParams params,
+  }) async {
+    if (await _networkInfo.isConnected) {
+      try {
+        final response = await _remote.updateTrainingRequest(params: params);
         return Right(response);
       } on ServerFailure catch (e) {
         return Left(ServerFailure(message: e.message));

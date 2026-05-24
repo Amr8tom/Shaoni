@@ -48,6 +48,10 @@ import '../../features/human_resoures/domain/use_cases/medical_insurance/get_emp
 import '../../features/human_resoures/domain/use_cases/medical_insurance/create_medical_insurance_use_case.dart';
 import '../../features/human_resoures/domain/use_cases/medical_insurance/update_medical_insurance_use_case.dart';
 import '../../features/human_resoures/presentation/controller/medical_insurance/medical_insurance_cubit.dart';
+import '../../features/human_resoures/domain/use_cases/training_request/get_courses_use_case.dart';
+import '../../features/human_resoures/domain/use_cases/training_request/create_training_request_use_case.dart';
+import '../../features/human_resoures/domain/use_cases/training_request/update_training_request_use_case.dart';
+import '../../features/human_resoures/presentation/controller/training_request/training_request_cubit.dart';
 
 class HRServiceLocator {
   static Future<void> execute({required GetIt serviceLocator}) async {
@@ -247,6 +251,24 @@ class HRServiceLocator {
     serviceLocator.registerFactory<MedicalInsuranceCubit>(
       () => MedicalInsuranceCubit(
         serviceLocator(),
+        serviceLocator(),
+        serviceLocator(),
+        serviceLocator(),
+      ),
+    );
+
+    /// ============================= training request =============================
+    serviceLocator.registerLazySingleton<GetCoursesUseCase>(
+      () => GetCoursesUseCase(serviceLocator()),
+    );
+    serviceLocator.registerLazySingleton<CreateTrainingRequestUseCase>(
+      () => CreateTrainingRequestUseCase(serviceLocator()),
+    );
+    serviceLocator.registerLazySingleton<UpdateTrainingRequestUseCase>(
+      () => UpdateTrainingRequestUseCase(serviceLocator()),
+    );
+    serviceLocator.registerFactory<TrainingRequestCubit>(
+      () => TrainingRequestCubit(
         serviceLocator(),
         serviceLocator(),
         serviceLocator(),

@@ -6713,6 +6713,86 @@ class S {
       args: [],
     );
   }
+
+  /// `Training Request`
+  String get trainingRequest {
+    return Intl.message(
+      'Training Request',
+      name: 'trainingRequest',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Course`
+  String get course {
+    return Intl.message(
+      'Course',
+      name: 'course',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Select a course`
+  String get selectCourse {
+    return Intl.message(
+      'Select a course',
+      name: 'selectCourse',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Course Details`
+  String get courseDetails {
+    return Intl.message(
+      'Course Details',
+      name: 'courseDetails',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Nomination Start Date`
+  String get nominationStartDate {
+    return Intl.message(
+      'Nomination Start Date',
+      name: 'nominationStartDate',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Nomination End Date`
+  String get nominationEndDate {
+    return Intl.message(
+      'Nomination End Date',
+      name: 'nominationEndDate',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Course Period (Months)`
+  String get coursePeriodMonths {
+    return Intl.message(
+      'Course Period (Months)',
+      name: 'coursePeriodMonths',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Nomination Period (Days)`
+  String get nominationPeriodDays {
+    return Intl.message(
+      'Nomination Period (Days)',
+      name: 'nominationPeriodDays',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

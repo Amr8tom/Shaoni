@@ -1393,5 +1393,13 @@ class MessageLookup extends MessageLookupByLibrary {
     "reasonForUpgrade": MessageLookupByLibrary.simpleMessage("Reason for Upgrade"),
     "reasonForUpgradeHint": MessageLookupByLibrary.simpleMessage("Enter the reason for upgrade"),
     "notesHint": MessageLookupByLibrary.simpleMessage("Enter notes (optional)"),
+    "trainingRequest": MessageLookupByLibrary.simpleMessage("Training Request"),
+    "course": MessageLookupByLibrary.simpleMessage("Course"),
+    "selectCourse": MessageLookupByLibrary.simpleMessage("Select a course"),
+    "courseDetails": MessageLookupByLibrary.simpleMessage("Course Details"),
+    "nominationStartDate": MessageLookupByLibrary.simpleMessage("Nomination Start Date"),
+    "nominationEndDate": MessageLookupByLibrary.simpleMessage("Nomination End Date"),
+    "coursePeriodMonths": MessageLookupByLibrary.simpleMessage("Course Period (Months)"),
+    "nominationPeriodDays": MessageLookupByLibrary.simpleMessage("Nomination Period (Days)"),
   };
 }

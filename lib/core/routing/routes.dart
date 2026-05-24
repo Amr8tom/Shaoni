@@ -6,6 +6,7 @@ import 'package:shaoni/features/human_resoures/presentation/start_work/create_st
 import 'package:shaoni/features/human_resoures/presentation/experience_certificate/create_experience_certificate_form.dart';
 import 'package:shaoni/features/human_resoures/presentation/id_document/create_id_document_form.dart';
 import 'package:shaoni/features/human_resoures/presentation/medical_insurance/create_medical_insurance_form.dart';
+import 'package:shaoni/features/human_resoures/presentation/training_request/create_training_request_form.dart';
 import 'package:shaoni/features/profile/profile_screen.dart';
 import '../../features/auth/presentation/screen/login_screen.dart';
 import '../../features/auth/presentation/screen/new_password_screen.dart';
@@ -112,6 +113,16 @@ class RouteGenerator {
         final int? requestId = args?['requestId'] as int?;
         return PageTransition(
           child: CreateIDDocumentForm(requestId: requestId),
+          type: PageTransitionType.rightToLeft,
+          settings: settings,
+        );
+
+     /// create / edit training request screen
+      case DRoutesName.createTrainingRequestRoute:
+        final args = settings.arguments as Map<String, dynamic>?;
+        final int? requestId = args?['requestId'] as int?;
+        return PageTransition(
+          child: CreateTrainingRequestForm(requestId: requestId),
           type: PageTransitionType.rightToLeft,
           settings: settings,
         );

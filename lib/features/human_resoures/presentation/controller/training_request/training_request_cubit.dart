@@ -1,0 +1,173 @@
+import 'package:bloc/bloc.dart';
+import 'package:equatable/equatable.dart';
+import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+import 'package:shaoni/core/local_storage/cache_helper.dart';
+import 'package:shaoni/core/local_storage/cache_keys.dart';
+import 'package:shaoni/core/utils/usecases/base_usecase.dart';
+import 'package:shaoni/features/human_resoures/domain/entity/training_request/course.dart';
+import 'package:shaoni/features/human_resoures/domain/use_cases/training_request/get_courses_use_case.dart';
+import 'package:shaoni/features/human_resoures/domain/use_cases/training_request/create_training_request_use_case.dart';
+import 'package:shaoni/features/human_resoures/domain/use_cases/training_request/update_training_request_use_case.dart';
+
+part 'training_request_state.dart';
+
+class TrainingRequestCubit extends Cubit<TrainingRequestState> {
+  final GetCoursesUseCase _getCoursesUseCase;
+  final CreateTrainingRequestUseCase _createTrainingRequestUseCase;
+  final UpdateTrainingRequestUseCase _updateTrainingRequestUseCase;
+
+  /// Form key
+  final requestFormKey = GlobalKey<FormState>();
+
+  /// Applicant & date controllers
+  final officeIdController = TextEditingController();
+  final todayDateController = TextEditingController();
+  final applicantNameController = TextEditingController();
+  final organizationalUnitController = TextEditingController();
+
+  /// Request-specific controllers
+  final courseController = TextEditingController();
+  final noteController = TextEditingController();
+
+  /// Attachment controllers
+  final attachmentFileController = TextEditingController();
+  final attachmentFileNameController = TextEditingController();
+
+  /// Dropdown items
+  List<DropdownMenuItem<String>> courseItems = [];
+
+  /// Raw courses list for ID resolution
+  List<Course> _courses = [];
+
+  TrainingRequestCubit(
+    this._getCoursesUseCase,
+    this._createTrainingRequestUseCase,
+    this._updateTrainingRequestUseCase,
+  ) : super(const TrainingRequestState()) {
+    _loadCourses();
+  }
+
+  // ── Lookups ──────────────────────────────────────────────────────────────
+
+  Future<void> _loadCourses() async {
+    emit(state.copyWith(status: TrainingRequestStatus.lookupsLoading));
+    final result = await _getCoursesUseCase.call(params: NoParams());
+    result.fold(
+      (failure) => emit(state.copyWith(
+        status: TrainingRequestStatus.lookupsError,
+        errorMessage: failure.message,
+      )),
+      (courses) {
+        _courses = courses;
+        courseItems = courses
+            .map((c) => DropdownMenuItem<String>(
+                  value: c.name,
+                  child: Text(c.name, style: const TextStyle(fontSize: 12)),
+                ))
+            .toList();
+        emit(state.copyWith(status: TrainingRequestStatus.lookupsLoaded));
+      },
+    );
+  }
+
+  // ── Course selection ─────────────────────────────────────────────────────
+
+  void selectCourse(String? courseName) {
+    if (courseName == null) {
+      emit(state.copyWith(clearSelectedCourse: true));
+      return;
+    }
+    final match = _courses.where((c) => c.name == courseName);
+    if (match.isNotEmpty) {
+      emit(state.copyWith(selectedCourse: match.first));
+    }
+  }
+
+  // ── Helpers ──────────────────────────────────────────────────────────────
+
+  int? get _selectedCourseId {
+    if (courseController.text.isEmpty) return null;
+    final match = _courses.where((c) => c.name == courseController.text);
+    return match.isEmpty ? null : match.first.id;
+  }
+
+  CreateTrainingRequestParams _buildParams() {
+    final empId =
+        int.tryParse(CacheHelper.getString(key: CacheKeys.employeeId) ?? '0') ?? 0;
+    return CreateTrainingRequestParams(
+      employeeId: empId,
+      officeId: int.tryParse(officeIdController.text) ?? 0,
+      date: DateFormat('yyyy-MM-dd', 'en').format(DateTime.now()),
+      courseId: _selectedCourseId ?? 0,
+      note: noteController.text.trim(),
+      attachmentIds: [],
+    );
+  }
+
+  // ── Create ───────────────────────────────────────────────────────────────
+
+  Future<void> createTrainingRequest() async {
+    emit(state.copyWith(status: TrainingRequestStatus.createLoading));
+    final result = await _createTrainingRequestUseCase.call(params: _buildParams());
+    result.fold(
+      (failure) => emit(state.copyWith(
+        status: TrainingRequestStatus.createError,
+        errorMessage: failure.message,
+      )),
+      (response) => emit(state.copyWith(
+        status: TrainingRequestStatus.createLoaded,
+        requestNumber: response.trainingRequestName ?? response.trainingRequestId?.toString() ?? '',
+      )),
+    );
+  }
+
+  // ── Update ───────────────────────────────────────────────────────────────
+
+  Future<void> updateTrainingRequest({required int requestId}) async {
+    emit(state.copyWith(status: TrainingRequestStatus.createLoading));
+    final result = await _updateTrainingRequestUseCase.call(
+      params: UpdateTrainingRequestParams(
+        requestId: requestId,
+        data: _buildParams(),
+      ),
+    );
+    result.fold(
+      (failure) => emit(state.copyWith(
+        status: TrainingRequestStatus.createError,
+        errorMessage: failure.message,
+      )),
+      (response) => emit(state.copyWith(
+        status: TrainingRequestStatus.createLoaded,
+        requestNumber: response.trainingRequestName ?? '',
+      )),
+    );
+  }
+
+  // ── Reset ────────────────────────────────────────────────────────────────
+
+  void resetForm() {
+    officeIdController.clear();
+    todayDateController.clear();
+    applicantNameController.clear();
+    organizationalUnitController.clear();
+    courseController.clear();
+    noteController.clear();
+    attachmentFileController.clear();
+    attachmentFileNameController.clear();
+    emit(state.copyWith(clearSelectedCourse: true));
+  }
+
+  @override
+  Future<void> close() {
+    officeIdController.dispose();
+    todayDateController.dispose();
+    applicantNameController.dispose();
+    organizationalUnitController.dispose();
+    courseController.dispose();
+    noteController.dispose();
+    attachmentFileController.dispose();
+    attachmentFileNameController.dispose();
+    return super.close();
+  }
+}

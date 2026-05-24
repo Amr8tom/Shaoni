@@ -125,6 +125,8 @@ class AllHumanResourcesRequests extends StatelessWidget {
         return;
       case 'upgrade.medical.insurance':
         context.pushNamed(DRoutesName.createMedicalInsuranceRoute);
+      case 'training.request':
+        context.pushNamed(DRoutesName.createTrainingRequestRoute);
         return;
       default:
         ScaffoldMessenger.of(context).showSnackBar(

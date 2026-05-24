@@ -1323,5 +1323,13 @@ class MessageLookup extends MessageLookupByLibrary {
     "reasonForUpgrade": MessageLookupByLibrary.simpleMessage("سبب طلب الترقية"),
     "reasonForUpgradeHint": MessageLookupByLibrary.simpleMessage("أدخل سبب الترقية"),
     "notesHint": MessageLookupByLibrary.simpleMessage("أدخل الملاحظات (اختياري)"),
+    "trainingRequest": MessageLookupByLibrary.simpleMessage("طلب تدريب"),
+    "course": MessageLookupByLibrary.simpleMessage("الدورة التدريبية"),
+    "selectCourse": MessageLookupByLibrary.simpleMessage("اختر الدورة التدريبية"),
+    "courseDetails": MessageLookupByLibrary.simpleMessage("تفاصيل الدورة"),
+    "nominationStartDate": MessageLookupByLibrary.simpleMessage("تاريخ بدء الترشيح"),
+    "nominationEndDate": MessageLookupByLibrary.simpleMessage("تاريخ انتهاء الترشيح"),
+    "coursePeriodMonths": MessageLookupByLibrary.simpleMessage("مدة الدورة (بالأشهر)"),
+    "nominationPeriodDays": MessageLookupByLibrary.simpleMessage("فترة الترشيح (بالأيام)"),
   };
 }

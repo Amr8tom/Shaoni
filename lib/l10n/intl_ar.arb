@@ -870,5 +870,13 @@
   "noFamilyMembersFound": "لا يوجد أفراد أسرة",
   "reasonForUpgrade": "سبب طلب الترقية",
   "reasonForUpgradeHint": "أدخل سبب الترقية",
-  "notesHint": "أدخل الملاحظات (اختياري)"
+  "notesHint": "أدخل الملاحظات (اختياري)",
+  "trainingRequest": "طلب تدريب",
+  "course": "الدورة التدريبية",
+  "selectCourse": "اختر الدورة التدريبية",
+  "courseDetails": "تفاصيل الدورة",
+  "nominationStartDate": "تاريخ بدء الترشيح",
+  "nominationEndDate": "تاريخ انتهاء الترشيح",
+  "coursePeriodMonths": "مدة الدورة (بالأشهر)",
+  "nominationPeriodDays": "فترة الترشيح (بالأيام)"
 }

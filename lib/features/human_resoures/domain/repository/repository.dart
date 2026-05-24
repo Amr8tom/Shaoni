@@ -50,6 +50,10 @@ import '../entity/medical_insurance/create_medical_insurance_response.dart';
 import '../use_cases/medical_insurance/get_employee_relatives_use_case.dart';
 import '../use_cases/medical_insurance/create_medical_insurance_use_case.dart';
 import '../use_cases/medical_insurance/update_medical_insurance_use_case.dart';
+import '../entity/training_request/course.dart';
+import '../entity/training_request/create_training_response.dart';
+import '../use_cases/training_request/create_training_request_use_case.dart';
+import '../use_cases/training_request/update_training_request_use_case.dart';
 
 abstract class HRServicesRepository {
   Future<Either<Failure, AllServices>> getAllPermissionServices({
@@ -193,5 +197,16 @@ abstract class HRServicesRepository {
 
   Future<Either<Failure, CreateMedicalInsuranceResponse>> updateMedicalInsurance({
     required UpdateMedicalInsuranceParams params,
+  });
+
+  /// ///////////////////////////////////// training request /////////////////////////////////////////////////////
+  Future<Either<Failure, List<Course>>> getCourses();
+
+  Future<Either<Failure, CreateTrainingResponse>> createTrainingRequest({
+    required CreateTrainingRequestParams params,
+  });
+
+  Future<Either<Failure, CreateTrainingResponse>> updateTrainingRequest({
+    required UpdateTrainingRequestParams params,
   });
 }

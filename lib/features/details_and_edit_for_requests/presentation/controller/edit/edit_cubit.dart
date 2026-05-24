@@ -10,6 +10,7 @@ import 'package:shaoni/features/details_and_edit_for_requests/domain/use_cases/g
 import 'package:shaoni/features/details_and_edit_for_requests/domain/use_cases/get_experience_certificate_edit_use_case.dart';
 import 'package:shaoni/features/details_and_edit_for_requests/domain/use_cases/get_id_document_edit_use_case.dart';
 import 'package:shaoni/features/details_and_edit_for_requests/domain/use_cases/get_medical_insurance_edit_use_case.dart';
+import 'package:shaoni/features/details_and_edit_for_requests/domain/use_cases/get_training_request_edit_use_case.dart';
 
 part 'edit_state.dart';
 
@@ -22,6 +23,7 @@ class EditCubit extends Cubit<EditState> {
   final GetExperienceCertificateEditUseCase _getExperienceCertificateEditUseCase;
   final GetIDDocumentEditUseCase _getIDDocumentEditUseCase;
   final GetMedicalInsuranceEditUseCase _getMedicalInsuranceEditUseCase;
+  final GetTrainingRequestEditUseCase _getTrainingRequestEditUseCase;
   final editNotesController = TextEditingController();
 
   EditCubit(
@@ -33,6 +35,7 @@ class EditCubit extends Cubit<EditState> {
     this._getExperienceCertificateEditUseCase,
     this._getIDDocumentEditUseCase,
     this._getMedicalInsuranceEditUseCase,
+    this._getTrainingRequestEditUseCase,
   ) : super(const EditState());
 
   Future<void> editRequest({
@@ -63,6 +66,9 @@ class EditCubit extends Cubit<EditState> {
         break;
       case 'upgrade.medical.insurance':
         await _getMedicalInsuranceEdit(requestId: requestId);
+        break;
+      case 'training.request':
+        await _getTrainingRequestEdit(requestId: requestId);
         break;
       default:
         emit(state.copyWith(
@@ -214,6 +220,28 @@ class EditCubit extends Cubit<EditState> {
     emit(state.copyWith(status: EditStatus.loading));
     final result = await _getIDDocumentEditUseCase.call(
       params: GetIDDocumentEditParams(
+        requestId: requestId,
+        editReasons: editNotesController.text,
+      ),
+    );
+    result.fold(
+      (failure) => emit(state.copyWith(
+        status: EditStatus.error,
+        errorMessage: failure.message,
+      )),
+      (response) => emit(state.copyWith(
+        status: EditStatus.editRequestLoaded,
+        editResponse: response,
+      )),
+    );
+  }
+
+  /// ── Training Request ──────────────────────────────────────────────────────
+
+  Future<void> _getTrainingRequestEdit({required int requestId}) async {
+    emit(state.copyWith(status: EditStatus.loading));
+    final result = await _getTrainingRequestEditUseCase.call(
+      params: GetTrainingRequestEditParams(
         requestId: requestId,
         editReasons: editNotesController.text,
       ),

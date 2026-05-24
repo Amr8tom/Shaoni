@@ -30,6 +30,7 @@ class DRoutesName {
   static const String createExperienceCertificateRoute = 'create-experience-certificate-route';
   static const String createIDDocumentRoute = 'create-id-document-route';
   static const String createMedicalInsuranceRoute = 'create-medical-insurance-route';
+  static const String createTrainingRequestRoute = 'create-training-request-route';
 
   /// location & maps Screen
   static const String mapRoute = 'map-route';

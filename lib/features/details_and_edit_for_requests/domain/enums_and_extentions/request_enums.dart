@@ -144,6 +144,18 @@ extension RequestStatusExtension on CurrentStatus {
             return RequestStatusEnum.approved;
         }
         break;
+      case 'training.request':
+        switch (tech) {
+          case 'draft':
+            return RequestStatusEnum.newRequest;
+          case 'confirm':
+            return RequestStatusEnum.managerApproval;
+          case 'approve':
+            return RequestStatusEnum.approved;
+          case 'reject':
+            return RequestStatusEnum.rejected;
+        }
+        break;
     }
 
     if (tech.contains('reject') || tech.contains('cancel')) {

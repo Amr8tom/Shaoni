@@ -864,5 +864,13 @@
   "noFamilyMembersFound": "No family members found",
   "reasonForUpgrade": "Reason for Upgrade",
   "reasonForUpgradeHint": "Enter the reason for upgrade",
-  "notesHint": "Enter notes (optional)"
+  "notesHint": "Enter notes (optional)",
+  "trainingRequest": "Training Request",
+  "course": "Course",
+  "selectCourse": "Select a course",
+  "courseDetails": "Course Details",
+  "nominationStartDate": "Nomination Start Date",
+  "nominationEndDate": "Nomination End Date",
+  "coursePeriodMonths": "Course Period (Months)",
+  "nominationPeriodDays": "Nomination Period (Days)"
 }
