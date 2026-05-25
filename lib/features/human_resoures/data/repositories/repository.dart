@@ -46,6 +46,12 @@ import 'package:shaoni/features/human_resoures/domain/entity/training_request/co
 import 'package:shaoni/features/human_resoures/domain/entity/training_request/create_training_response.dart';
 import 'package:shaoni/features/human_resoures/domain/use_cases/training_request/create_training_request_use_case.dart';
 import 'package:shaoni/features/human_resoures/domain/use_cases/training_request/update_training_request_use_case.dart';
+import 'package:shaoni/features/human_resoures/domain/entity/product_order/product_category.dart';
+import 'package:shaoni/features/human_resoures/domain/entity/product_order/product.dart';
+import 'package:shaoni/features/human_resoures/domain/entity/product_order/create_product_order_response.dart';
+import 'package:shaoni/features/human_resoures/domain/use_cases/product_order/get_products_by_category_use_case.dart';
+import 'package:shaoni/features/human_resoures/domain/use_cases/product_order/create_product_order_use_case.dart';
+import 'package:shaoni/features/human_resoures/domain/use_cases/product_order/update_product_order_use_case.dart';
 import '../model/car_permission/update_car_permission_model.dart';
 import '../model/complaint_request/create_complaint_request_model.dart';
 import '../../../../core/connection/checkNetwork.dart';
@@ -701,6 +707,70 @@ class HRServicesRepositoryImp extends HRServicesRepository {
     if (await _networkInfo.isConnected) {
       try {
         final response = await _remote.updateTrainingRequest(params: params);
+        return Right(response);
+      } on ServerFailure catch (e) {
+        return Left(ServerFailure(message: e.message));
+      }
+    } else {
+      return Left(CacheFailure());
+    }
+  }
+
+  /// ===================== product order =====================
+
+  @override
+  Future<Either<Failure, List<ProductCategory>>> getProductCategories() async {
+    if (await _networkInfo.isConnected) {
+      try {
+        final response = await _remote.getProductCategories();
+        return Right(response);
+      } on ServerFailure catch (e) {
+        return Left(ServerFailure(message: e.message));
+      }
+    } else {
+      return Left(CacheFailure());
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<OdooProduct>>> getProductsByCategory({
+    required GetProductsByCategoryParams params,
+  }) async {
+    if (await _networkInfo.isConnected) {
+      try {
+        final response = await _remote.getProductsByCategory(params: params);
+        return Right(response);
+      } on ServerFailure catch (e) {
+        return Left(ServerFailure(message: e.message));
+      }
+    } else {
+      return Left(CacheFailure());
+    }
+  }
+
+  @override
+  Future<Either<Failure, CreateProductOrderResponse>> createProductOrder({
+    required CreateProductOrderParams params,
+  }) async {
+    if (await _networkInfo.isConnected) {
+      try {
+        final response = await _remote.createProductOrder(params: params);
+        return Right(response);
+      } on ServerFailure catch (e) {
+        return Left(ServerFailure(message: e.message));
+      }
+    } else {
+      return Left(CacheFailure());
+    }
+  }
+
+  @override
+  Future<Either<Failure, CreateProductOrderResponse>> updateProductOrder({
+    required UpdateProductOrderParams params,
+  }) async {
+    if (await _networkInfo.isConnected) {
+      try {
+        final response = await _remote.updateProductOrder(params: params);
         return Right(response);
       } on ServerFailure catch (e) {
         return Left(ServerFailure(message: e.message));

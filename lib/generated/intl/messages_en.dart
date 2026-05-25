@@ -1401,5 +1401,16 @@ class MessageLookup extends MessageLookupByLibrary {
     "nominationEndDate": MessageLookupByLibrary.simpleMessage("Nomination End Date"),
     "coursePeriodMonths": MessageLookupByLibrary.simpleMessage("Course Period (Months)"),
     "nominationPeriodDays": MessageLookupByLibrary.simpleMessage("Nomination Period (Days)"),
+    "productOrder": MessageLookupByLibrary.simpleMessage("Product Order"),
+    "productCategory": MessageLookupByLibrary.simpleMessage("Product Category"),
+    "selectProductCategory": MessageLookupByLibrary.simpleMessage("Select a product category"),
+    "product": MessageLookupByLibrary.simpleMessage("Product"),
+    "selectProduct": MessageLookupByLibrary.simpleMessage("Select a product"),
+    "requestLines": MessageLookupByLibrary.simpleMessage("Order Lines"),
+    "addLine": MessageLookupByLibrary.simpleMessage("Add Line"),
+    "invalidQuantity": MessageLookupByLibrary.simpleMessage("Please enter a valid quantity"),
+    "reason": MessageLookupByLibrary.simpleMessage("Reason"),
+    "reasonHint": MessageLookupByLibrary.simpleMessage("Enter the reason for this request"),
+    "isGift": MessageLookupByLibrary.simpleMessage("Is Gift"),
   };
 }

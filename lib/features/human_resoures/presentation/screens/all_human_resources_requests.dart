@@ -128,6 +128,9 @@ class AllHumanResourcesRequests extends StatelessWidget {
       case 'training.request':
         context.pushNamed(DRoutesName.createTrainingRequestRoute);
         return;
+      case 'product.request':
+        context.pushNamed(DRoutesName.createProductOrderRoute);
+        return;
       default:
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(

@@ -156,6 +156,24 @@ extension RequestStatusExtension on CurrentStatus {
             return RequestStatusEnum.rejected;
         }
         break;
+      case 'product.request':
+        switch (tech) {
+          case 'draft':
+            return RequestStatusEnum.newRequest;
+          case 'confirmed':
+            return RequestStatusEnum.managerApproval;
+          case 'specifications':
+            return RequestStatusEnum.approved;
+          case 'reject':
+            return RequestStatusEnum.rejected;
+          case 'approve':
+            return RequestStatusEnum.approved;
+          case 'cancel':
+            return RequestStatusEnum.cancel;
+          case 'close':
+            return RequestStatusEnum.closed;
+        }
+        break;
     }
 
     if (tech.contains('reject') || tech.contains('cancel')) {
@@ -196,9 +214,11 @@ enum RequestStatusEnum {
   rejected,
   confirmed,
   approved,
+  specifications,
   authorityHolder,
   notValid,
   cancel,
+  closed,
   done,
   none,
 }

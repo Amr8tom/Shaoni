@@ -7,6 +7,7 @@ import 'package:shaoni/features/human_resoures/presentation/experience_certifica
 import 'package:shaoni/features/human_resoures/presentation/id_document/create_id_document_form.dart';
 import 'package:shaoni/features/human_resoures/presentation/medical_insurance/create_medical_insurance_form.dart';
 import 'package:shaoni/features/human_resoures/presentation/training_request/create_training_request_form.dart';
+import 'package:shaoni/features/human_resoures/presentation/product_order/create_product_order_form.dart';
 import 'package:shaoni/features/profile/profile_screen.dart';
 import '../../features/auth/presentation/screen/login_screen.dart';
 import '../../features/auth/presentation/screen/new_password_screen.dart';
@@ -123,6 +124,16 @@ class RouteGenerator {
         final int? requestId = args?['requestId'] as int?;
         return PageTransition(
           child: CreateTrainingRequestForm(requestId: requestId),
+          type: PageTransitionType.rightToLeft,
+          settings: settings,
+        );
+
+     /// create / edit product order screen
+      case DRoutesName.createProductOrderRoute:
+        final args = settings.arguments as Map<String, dynamic>?;
+        final int? requestId = args?['requestId'] as int?;
+        return PageTransition(
+          child: CreateProductOrderForm(requestId: requestId),
           type: PageTransitionType.rightToLeft,
           settings: settings,
         );

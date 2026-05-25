@@ -52,6 +52,11 @@ import '../../features/human_resoures/domain/use_cases/training_request/get_cour
 import '../../features/human_resoures/domain/use_cases/training_request/create_training_request_use_case.dart';
 import '../../features/human_resoures/domain/use_cases/training_request/update_training_request_use_case.dart';
 import '../../features/human_resoures/presentation/controller/training_request/training_request_cubit.dart';
+import '../../features/human_resoures/domain/use_cases/product_order/get_product_categories_use_case.dart';
+import '../../features/human_resoures/domain/use_cases/product_order/get_products_by_category_use_case.dart';
+import '../../features/human_resoures/domain/use_cases/product_order/create_product_order_use_case.dart';
+import '../../features/human_resoures/domain/use_cases/product_order/update_product_order_use_case.dart';
+import '../../features/human_resoures/presentation/controller/product_order/product_order_cubit.dart';
 
 class HRServiceLocator {
   static Future<void> execute({required GetIt serviceLocator}) async {
@@ -269,6 +274,28 @@ class HRServiceLocator {
     );
     serviceLocator.registerFactory<TrainingRequestCubit>(
       () => TrainingRequestCubit(
+        serviceLocator(),
+        serviceLocator(),
+        serviceLocator(),
+      ),
+    );
+
+    /// ============================= product order =============================
+    serviceLocator.registerLazySingleton<GetProductCategoriesUseCase>(
+      () => GetProductCategoriesUseCase(serviceLocator()),
+    );
+    serviceLocator.registerLazySingleton<GetProductsByCategoryUseCase>(
+      () => GetProductsByCategoryUseCase(serviceLocator()),
+    );
+    serviceLocator.registerLazySingleton<CreateProductOrderUseCase>(
+      () => CreateProductOrderUseCase(serviceLocator()),
+    );
+    serviceLocator.registerLazySingleton<UpdateProductOrderUseCase>(
+      () => UpdateProductOrderUseCase(serviceLocator()),
+    );
+    serviceLocator.registerFactory<ProductOrderCubit>(
+      () => ProductOrderCubit(
+        serviceLocator(),
         serviceLocator(),
         serviceLocator(),
         serviceLocator(),

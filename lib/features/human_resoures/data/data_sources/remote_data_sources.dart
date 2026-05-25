@@ -41,6 +41,12 @@ import 'package:shaoni/features/human_resoures/data/model/training_request/cours
 import 'package:shaoni/features/human_resoures/data/model/training_request/create_training_response_model.dart';
 import 'package:shaoni/features/human_resoures/domain/use_cases/training_request/create_training_request_use_case.dart';
 import 'package:shaoni/features/human_resoures/domain/use_cases/training_request/update_training_request_use_case.dart';
+import 'package:shaoni/features/human_resoures/data/model/product_order/product_category_model.dart';
+import 'package:shaoni/features/human_resoures/data/model/product_order/product_model.dart';
+import 'package:shaoni/features/human_resoures/data/model/product_order/create_product_order_response_model.dart';
+import 'package:shaoni/features/human_resoures/domain/use_cases/product_order/get_products_by_category_use_case.dart';
+import 'package:shaoni/features/human_resoures/domain/use_cases/product_order/create_product_order_use_case.dart';
+import 'package:shaoni/features/human_resoures/domain/use_cases/product_order/update_product_order_use_case.dart';
 import 'package:shaoni/features/human_resoures/domain/use_cases/complaint_request/create_complaint_request_use_case.dart';
 import 'package:shaoni/features/human_resoures/domain/use_cases/study/create_study_use_case.dart';
 import 'package:shaoni/features/human_resoures/domain/use_cases/study/update_study_use_case.dart';
@@ -196,6 +202,21 @@ abstract class HRServicesRemoteDataSources {
 
   Future<CreateTrainingResponseModel> updateTrainingRequest({
     required UpdateTrainingRequestParams params,
+  });
+
+  /// ============================= product order =============================
+  Future<List<ProductCategoryModel>> getProductCategories();
+
+  Future<List<OdooProductModel>> getProductsByCategory({
+    required GetProductsByCategoryParams params,
+  });
+
+  Future<CreateProductOrderResponseModel> createProductOrder({
+    required CreateProductOrderParams params,
+  });
+
+  Future<CreateProductOrderResponseModel> updateProductOrder({
+    required UpdateProductOrderParams params,
   });
 }
 
@@ -830,6 +851,72 @@ class HRServicesRemoteDataSourcesImp implements HRServicesRemoteDataSources {
       );
       if (response == null) throw ServerFailure(message: 'server failure');
       return CreateTrainingResponseModel.fromJson(
+          response.data as Map<String, dynamic>);
+    } on ServerFailure catch (e) {
+      throw ServerFailure(message: e.message);
+    }
+  }
+
+  /// ============================= product order =============================
+
+  @override
+  Future<List<ProductCategoryModel>> getProductCategories() async {
+    try {
+      final response = await _dio.getData(URL: URL.getProductCategories);
+      if (response == null) throw ServerFailure(message: 'server failure');
+      final List raw =
+          response is List ? response : (response as Map<String, dynamic>)['data'] as List;
+      return raw.map((e) => ProductCategoryModel.fromJson(e)).toList();
+    } on ServerFailure catch (e) {
+      throw ServerFailure(message: e.message);
+    }
+  }
+
+  @override
+  Future<List<OdooProductModel>> getProductsByCategory({
+    required GetProductsByCategoryParams params,
+  }) async {
+    try {
+      final url = params.categoryId != null
+          ? '${URL.getProductsByCategory}?categId=${params.categoryId}'
+          : URL.getProductsByCategory;
+      final response = await _dio.getData(URL: url);
+      if (response == null) throw ServerFailure(message: 'server failure');
+      final List raw =
+          response is List ? response : (response as Map<String, dynamic>)['data'] as List;
+      return raw.map((e) => OdooProductModel.fromJson(e)).toList();
+    } on ServerFailure catch (e) {
+      throw ServerFailure(message: e.message);
+    }
+  }
+
+  @override
+  Future<CreateProductOrderResponseModel> createProductOrder({
+    required CreateProductOrderParams params,
+  }) async {
+    try {
+      final response = await _dio.postData(
+        URL: URL.createProductOrder,
+        body: params.toMap(),
+      );
+      if (response == null) throw ServerFailure(message: 'server failure');
+      return CreateProductOrderResponseModel.fromJson(response);
+    } on ServerFailure catch (e) {
+      throw ServerFailure(message: e.message);
+    }
+  }
+
+  @override
+  Future<CreateProductOrderResponseModel> updateProductOrder({
+    required UpdateProductOrderParams params,
+  }) async {
+    try {
+      final response = await _dio.putData(
+        URL: '${URL.updateProductOrder}${params.requestId}',
+        body: params.data.toMap(),
+      );
+      if (response == null) throw ServerFailure(message: 'server failure');
+      return CreateProductOrderResponseModel.fromJson(
           response.data as Map<String, dynamic>);
     } on ServerFailure catch (e) {
       throw ServerFailure(message: e.message);

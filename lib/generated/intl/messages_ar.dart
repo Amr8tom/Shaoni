@@ -1331,5 +1331,16 @@ class MessageLookup extends MessageLookupByLibrary {
     "nominationEndDate": MessageLookupByLibrary.simpleMessage("تاريخ انتهاء الترشيح"),
     "coursePeriodMonths": MessageLookupByLibrary.simpleMessage("مدة الدورة (بالأشهر)"),
     "nominationPeriodDays": MessageLookupByLibrary.simpleMessage("فترة الترشيح (بالأيام)"),
+    "productOrder": MessageLookupByLibrary.simpleMessage("طلب منتج"),
+    "productCategory": MessageLookupByLibrary.simpleMessage("فئة المنتج"),
+    "selectProductCategory": MessageLookupByLibrary.simpleMessage("اختر فئة المنتج"),
+    "product": MessageLookupByLibrary.simpleMessage("المنتج"),
+    "selectProduct": MessageLookupByLibrary.simpleMessage("اختر منتجاً"),
+    "requestLines": MessageLookupByLibrary.simpleMessage("بنود الطلب"),
+    "addLine": MessageLookupByLibrary.simpleMessage("إضافة بند"),
+    "invalidQuantity": MessageLookupByLibrary.simpleMessage("يرجى إدخال كمية صحيحة"),
+    "reason": MessageLookupByLibrary.simpleMessage("السبب"),
+    "reasonHint": MessageLookupByLibrary.simpleMessage("أدخل سبب الطلب"),
+    "isGift": MessageLookupByLibrary.simpleMessage("هدية"),
   };
 }

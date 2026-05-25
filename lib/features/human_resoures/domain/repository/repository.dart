@@ -54,6 +54,12 @@ import '../entity/training_request/course.dart';
 import '../entity/training_request/create_training_response.dart';
 import '../use_cases/training_request/create_training_request_use_case.dart';
 import '../use_cases/training_request/update_training_request_use_case.dart';
+import '../entity/product_order/product_category.dart';
+import '../entity/product_order/product.dart';
+import '../entity/product_order/create_product_order_response.dart';
+import '../use_cases/product_order/get_products_by_category_use_case.dart';
+import '../use_cases/product_order/create_product_order_use_case.dart';
+import '../use_cases/product_order/update_product_order_use_case.dart';
 
 abstract class HRServicesRepository {
   Future<Either<Failure, AllServices>> getAllPermissionServices({
@@ -208,5 +214,20 @@ abstract class HRServicesRepository {
 
   Future<Either<Failure, CreateTrainingResponse>> updateTrainingRequest({
     required UpdateTrainingRequestParams params,
+  });
+
+  /// ///////////////////////////////////// product order /////////////////////////////////////////////////////
+  Future<Either<Failure, List<ProductCategory>>> getProductCategories();
+
+  Future<Either<Failure, List<OdooProduct>>> getProductsByCategory({
+    required GetProductsByCategoryParams params,
+  });
+
+  Future<Either<Failure, CreateProductOrderResponse>> createProductOrder({
+    required CreateProductOrderParams params,
+  });
+
+  Future<Either<Failure, CreateProductOrderResponse>> updateProductOrder({
+    required UpdateProductOrderParams params,
   });
 }

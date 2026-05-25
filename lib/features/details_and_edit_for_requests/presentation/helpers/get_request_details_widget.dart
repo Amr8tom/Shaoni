@@ -10,6 +10,7 @@ import '../widgets/experience_certificate_details_widget.dart';
 import '../widgets/id_document_details_widget.dart';
 import '../widgets/medical_insurance_details_widget.dart';
 import '../widgets/training_request_details_widget.dart';
+import '../widgets/product_order_details_widget.dart';
 
 Widget GetRequestDetailsWidget({required String serviceCode}) {
   switch (serviceCode) {
@@ -33,6 +34,8 @@ Widget GetRequestDetailsWidget({required String serviceCode}) {
       return const MedicalInsuranceDetailsWidget();
     case 'training.request':
       return const TrainingRequestDetailsWidget();
+    case 'product.request':
+      return const ProductOrderDetailsWidget();
     default:
       return const Sizer();
   }

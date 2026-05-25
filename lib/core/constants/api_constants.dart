@@ -61,6 +61,13 @@ class URL {
   static const String updateStartWork = '$baseUrl/StartWorking/update/';
   static const String getStartWorkEdit = '$baseUrl/StartWorking/edit/';
 
+  /// ============================ product order ============================
+  static const String getProductCategories = '$baseUrl/Lookup/GetProductCategories';
+  static const String getProductsByCategory = '$baseUrl/Lookup/GetOdooProductsByFilter';
+  static const String createProductOrder = '$baseUrl/ProductOrder';
+  static const String updateProductOrder = '$baseUrl/ProductOrder/update/';
+  static const String getProductOrderEdit = '$baseUrl/ProductOrder/edit/';
+
   /// ============================ training request ============================
   static const String getCourses = '$baseUrl/Lookup/GetCourses';
   static const String createTrainingRequest = '$baseUrl/Training/create';

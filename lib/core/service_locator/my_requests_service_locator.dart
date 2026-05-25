@@ -17,6 +17,7 @@ import '../../features/details_and_edit_for_requests/domain/use_cases/get_experi
 import '../../features/details_and_edit_for_requests/domain/use_cases/get_id_document_edit_use_case.dart';
 import '../../features/details_and_edit_for_requests/domain/use_cases/get_medical_insurance_edit_use_case.dart';
 import '../../features/details_and_edit_for_requests/domain/use_cases/get_training_request_edit_use_case.dart';
+import '../../features/details_and_edit_for_requests/domain/use_cases/get_product_order_edit_use_case.dart';
 import '../../features/details_and_edit_for_requests/presentation/controller/edit/edit_cubit.dart';
 import '../../features/details_and_edit_for_requests/presentation/controller/my_requests_cubit.dart';
 
@@ -78,12 +79,16 @@ class MyRequestsServiceLocator {
     serviceLocator.registerLazySingleton<GetTrainingRequestEditUseCase>(
       () => GetTrainingRequestEditUseCase(serviceLocator()),
     );
+    serviceLocator.registerLazySingleton<GetProductOrderEditUseCase>(
+      () => GetProductOrderEditUseCase(serviceLocator()),
+    );
 
     /// controllers
     serviceLocator.registerFactory(() => MyRequestsCubit(
         serviceLocator(), serviceLocator(), serviceLocator(), serviceLocator()));
     serviceLocator.registerFactory<EditCubit>(
       () => EditCubit(
+        serviceLocator(),
         serviceLocator(),
         serviceLocator(),
         serviceLocator(),

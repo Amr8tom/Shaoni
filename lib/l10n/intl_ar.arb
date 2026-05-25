@@ -468,9 +468,7 @@
   "later": "لاحقا",
   "orderDetails": "تفاصيل الطلب",
   "confirmExitMessage": "هل أنت متأكد أنك تريد الخروج من التطبيق؟",
-  "no": "لا",
   "onbordingMsg": "أنا المساعد الذكي هنا لمساعدتك عبر التطبيق",
-  "yes": "نعم",
   "favoriteItems": "اصنافي المفضلة   ما ترغب في شرائه لاحقا",
   "selectQuantitiy": "حـــدد الكِمــية أولاً ",
   "invalidEmail": " أدخـل بـريد الكــتروني صَحـيح ",
@@ -878,5 +876,16 @@
   "nominationStartDate": "تاريخ بدء الترشيح",
   "nominationEndDate": "تاريخ انتهاء الترشيح",
   "coursePeriodMonths": "مدة الدورة (بالأشهر)",
-  "nominationPeriodDays": "فترة الترشيح (بالأيام)"
+  "nominationPeriodDays": "فترة الترشيح (بالأيام)",
+  "productOrder": "طلب منتج",
+  "productCategory": "فئة المنتج",
+  "selectProductCategory": "اختر فئة المنتج",
+  "product": "المنتج",
+  "selectProduct": "اختر منتجاً",
+  "requestLines": "بنود الطلب",
+  "addLine": "إضافة بند",
+  "invalidQuantity": "يرجى إدخال كمية صحيحة",
+  "reason": "السبب",
+  "reasonHint": "أدخل سبب الطلب",
+  "isGift": "هدية"
 }

@@ -121,6 +121,13 @@ class UpdateRequestButton extends StatelessWidget {
         );
         break;
 
+      case 'product.request':
+        context.pushNamed(
+          DRoutesName.createProductOrderRoute,
+          arguments: {'requestId': int.tryParse(requestID)},
+        );
+        break;
+
       default:
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(

@@ -5,6 +5,7 @@ import 'package:shaoni/features/details_and_edit_for_requests/data/models/experi
 import 'package:shaoni/features/details_and_edit_for_requests/data/models/id_document_model.dart';
 import 'package:shaoni/features/details_and_edit_for_requests/data/models/medical_insurance_model.dart';
 import 'package:shaoni/features/details_and_edit_for_requests/data/models/training_request_model.dart';
+import 'package:shaoni/features/details_and_edit_for_requests/data/models/product_order_model.dart';
 import 'package:shaoni/features/details_and_edit_for_requests/domain/entities/car_permission/car_permission.dart';
 import 'package:shaoni/features/details_and_edit_for_requests/domain/entities/complaint_request/complaint_request_details.dart';
 
@@ -19,6 +20,7 @@ class ExtraData extends Equatable {
   final IDDocumentModel? idDocument;
   final MedicalInsuranceModel? medicalInsurance;
   final TrainingRequestModel? trainingRequest;
+  final ProductOrderModel? productOrder;
   final String? outsideWorking;
   final String? visaRequest;
   final ExitPermission? exitPermission;
@@ -34,6 +36,7 @@ class ExtraData extends Equatable {
     this.idDocument,
     this.medicalInsurance,
     this.trainingRequest,
+    this.productOrder,
     this.outsideWorking,
     this.visaRequest,
     this.exitPermission,
@@ -62,6 +65,9 @@ class ExtraData extends Equatable {
       trainingRequest: json['trainingRequest'] != null
           ? TrainingRequestModel.fromJson(json['trainingRequest'])
           : null,
+      productOrder: json['productOrder'] != null
+          ? ProductOrderModel.fromJson(json['productOrder'])
+          : null,
       outsideWorking: json['outsideWorking'],
       visaRequest: json['visaRequest'],
       carPermission: json['carPermission'] != null
@@ -86,6 +92,7 @@ class ExtraData extends Equatable {
       'idDocument': idDocument?.toJson(),
       'medicalInsurance': medicalInsurance?.toJson(),
       'trainingRequest': trainingRequest?.toJson(),
+      'productOrder': productOrder?.toJson(),
       'outsideWorking': outsideWorking,
       'visaRequest': visaRequest,
       'exitPermission': exitPermission?.toJson(),
@@ -105,6 +112,7 @@ class ExtraData extends Equatable {
         idDocument,
         medicalInsurance,
         trainingRequest,
+        productOrder,
         outsideWorking,
         visaRequest,
         exitPermission,

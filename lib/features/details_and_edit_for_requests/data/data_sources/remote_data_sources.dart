@@ -16,6 +16,7 @@ import '../../domain/use_cases/get_experience_certificate_edit_use_case.dart';
 import '../../domain/use_cases/get_id_document_edit_use_case.dart';
 import '../../domain/use_cases/get_medical_insurance_edit_use_case.dart';
 import '../../domain/use_cases/get_training_request_edit_use_case.dart';
+import '../../domain/use_cases/get_product_order_edit_use_case.dart';
 import '../models/approve_request_model.dart';
 import '../models/edit_response_model.dart';
 
@@ -70,6 +71,10 @@ abstract class MyRequestsRemoteDataSources {
 
   Future<EditResponseModel> getTrainingRequestEdit({
     required GetTrainingRequestEditParams params,
+  });
+
+  Future<EditResponseModel> getProductOrderEdit({
+    required GetProductOrderEditParams params,
   });
 }
 
@@ -296,6 +301,24 @@ class MyRequestsRemoteDataSourcesImp implements MyRequestsRemoteDataSources {
     try {
       final response = await _dio.putData(
         URL: '${URL.getTrainingRequestEdit}${params.requestId}',
+        body: params.toMap(),
+      );
+      if (response == null) {
+        throw ServerFailure(message: 'Null response from server');
+      }
+      return EditResponseModel.fromJson(response.data as Map<String, dynamic>);
+    } on ServerFailure {
+      rethrow;
+    }
+  }
+
+  @override
+  Future<EditResponseModel> getProductOrderEdit({
+    required GetProductOrderEditParams params,
+  }) async {
+    try {
+      final response = await _dio.putData(
+        URL: '${URL.getProductOrderEdit}${params.requestId}',
         body: params.toMap(),
       );
       if (response == null) {
