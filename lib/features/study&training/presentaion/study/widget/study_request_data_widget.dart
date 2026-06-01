@@ -5,8 +5,8 @@ import 'package:shaoni/core/constants/app_sizes.dart';
 import 'package:shaoni/core/constants/colors.dart';
 import 'package:shaoni/features/human_resoures/presentation/attendance/widget/attendance_dropdown_field.dart';
 import 'package:shaoni/features/human_resoures/presentation/attendance/widget/attendance_editable_field.dart';
-import 'package:shaoni/features/human_resoures/presentation/controller/study/study_cubit.dart';
-import 'package:shaoni/features/human_resoures/presentation/study/widget/study_date_picker_field.dart';
+import 'package:shaoni/features/study&training/presentaion/controller/study/study_cubit.dart';
+import 'package:shaoni/features/study&training/presentaion/study/widget/study_date_picker_field.dart';
 import 'package:shaoni/generated/l10n.dart';
 
 class StudyRequestDataWidget extends StatelessWidget {

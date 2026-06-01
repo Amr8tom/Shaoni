@@ -23,11 +23,6 @@ import '../../features/human_resoures/domain/use_cases/exit/get_permission_time_
 import '../../features/human_resoures/domain/use_cases/exit/get_permission_types_use_case.dart';
 import '../../features/human_resoures/presentation/controller/attendance/attendance_cubit.dart';
 import '../../features/human_resoures/presentation/controller/exit_permission/exit_request_service_cubit.dart';
-import '../../features/human_resoures/domain/use_cases/study/create_study_use_case.dart';
-import '../../features/human_resoures/domain/use_cases/study/get_study_destinations_use_case.dart';
-import '../../features/human_resoures/domain/use_cases/study/get_study_types_use_case.dart';
-import '../../features/human_resoures/domain/use_cases/study/update_study_use_case.dart';
-import '../../features/human_resoures/presentation/controller/study/study_cubit.dart';
 import '../../features/human_resoures/domain/use_cases/start_work/get_start_work_types_use_case.dart';
 import '../../features/human_resoures/domain/use_cases/start_work/get_employees_use_case.dart';
 import '../../features/human_resoures/domain/use_cases/start_work/create_start_work_use_case.dart';
@@ -46,10 +41,6 @@ import '../../features/human_resoures/domain/use_cases/medical_insurance/get_emp
 import '../../features/human_resoures/domain/use_cases/medical_insurance/create_medical_insurance_use_case.dart';
 import '../../features/human_resoures/domain/use_cases/medical_insurance/update_medical_insurance_use_case.dart';
 import '../../features/human_resoures/presentation/controller/medical_insurance/medical_insurance_cubit.dart';
-import '../../features/human_resoures/domain/use_cases/training_request/get_courses_use_case.dart';
-import '../../features/human_resoures/domain/use_cases/training_request/create_training_request_use_case.dart';
-import '../../features/human_resoures/domain/use_cases/training_request/update_training_request_use_case.dart';
-import '../../features/human_resoures/presentation/controller/training_request/training_request_cubit.dart';
 import '../../features/human_resoures/domain/use_cases/product_order/get_product_categories_use_case.dart';
 import '../../features/human_resoures/domain/use_cases/product_order/get_products_by_category_use_case.dart';
 import '../../features/human_resoures/domain/use_cases/product_order/create_product_order_use_case.dart';
@@ -154,28 +145,6 @@ class HRServiceLocator {
           serviceLocator(), serviceLocator(), serviceLocator()),
     );
 
-    /// ============================= study request =============================
-    serviceLocator.registerLazySingleton<GetStudyTypesUseCase>(
-      () => GetStudyTypesUseCase(serviceLocator()),
-    );
-    serviceLocator.registerLazySingleton<GetStudyDestinationsUseCase>(
-      () => GetStudyDestinationsUseCase(serviceLocator()),
-    );
-    serviceLocator.registerLazySingleton<CreateStudyUseCase>(
-      () => CreateStudyUseCase(serviceLocator()),
-    );
-    serviceLocator.registerLazySingleton<UpdateStudyUseCase>(
-      () => UpdateStudyUseCase(serviceLocator()),
-    );
-    serviceLocator.registerFactory<StudyCubit>(
-      () => StudyCubit(
-        serviceLocator(),
-        serviceLocator(),
-        serviceLocator(),
-        serviceLocator(),
-      ),
-    );
-
     /// ============================= start work =============================
     serviceLocator.registerLazySingleton<GetStartWorkTypesUseCase>(
       () => GetStartWorkTypesUseCase(serviceLocator()),
@@ -250,24 +219,6 @@ class HRServiceLocator {
     serviceLocator.registerFactory<MedicalInsuranceCubit>(
       () => MedicalInsuranceCubit(
         serviceLocator(),
-        serviceLocator(),
-        serviceLocator(),
-        serviceLocator(),
-      ),
-    );
-
-    /// ============================= training request =============================
-    serviceLocator.registerLazySingleton<GetCoursesUseCase>(
-      () => GetCoursesUseCase(serviceLocator()),
-    );
-    serviceLocator.registerLazySingleton<CreateTrainingRequestUseCase>(
-      () => CreateTrainingRequestUseCase(serviceLocator()),
-    );
-    serviceLocator.registerLazySingleton<UpdateTrainingRequestUseCase>(
-      () => UpdateTrainingRequestUseCase(serviceLocator()),
-    );
-    serviceLocator.registerFactory<TrainingRequestCubit>(
-      () => TrainingRequestCubit(
         serviceLocator(),
         serviceLocator(),
         serviceLocator(),

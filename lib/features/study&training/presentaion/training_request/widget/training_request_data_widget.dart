@@ -5,7 +5,7 @@ import 'package:shaoni/core/constants/app_sizes.dart';
 import 'package:shaoni/core/constants/colors.dart';
 import 'package:shaoni/features/human_resoures/presentation/attendance/widget/attendance_dropdown_field.dart';
 import 'package:shaoni/features/human_resoures/presentation/attendance/widget/attendance_editable_field.dart';
-import 'package:shaoni/features/human_resoures/presentation/controller/training_request/training_request_cubit.dart';
+import 'package:shaoni/features/study&training/presentaion/controller/training_request/training_request_cubit.dart';
 import 'package:shaoni/generated/l10n.dart';
 
 class TrainingRequestDataWidget extends StatelessWidget {

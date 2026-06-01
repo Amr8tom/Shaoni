@@ -5,10 +5,10 @@ import 'package:intl/intl.dart';
 import 'package:shaoni/core/local_storage/cache_helper.dart';
 import 'package:shaoni/core/local_storage/cache_keys.dart';
 import 'package:shaoni/core/utils/usecases/base_usecase.dart';
-import 'package:shaoni/features/human_resoures/domain/entity/training_request/course.dart';
-import 'package:shaoni/features/human_resoures/domain/use_cases/training_request/get_courses_use_case.dart';
-import 'package:shaoni/features/human_resoures/domain/use_cases/training_request/create_training_request_use_case.dart';
-import 'package:shaoni/features/human_resoures/domain/use_cases/training_request/update_training_request_use_case.dart';
+import 'package:shaoni/features/study&training/domain/entities/training_request/course.dart';
+import 'package:shaoni/features/study&training/domain/use_cases/training_request/get_courses_use_case.dart';
+import 'package:shaoni/features/study&training/domain/use_cases/training_request/create_training_request_use_case.dart';
+import 'package:shaoni/features/study&training/domain/use_cases/training_request/update_training_request_use_case.dart';
 
 part 'training_request_state.dart';
 
@@ -109,7 +109,8 @@ class TrainingRequestCubit extends Cubit<TrainingRequestState> {
 
   Future<void> createTrainingRequest() async {
     emit(state.copyWith(status: TrainingRequestStatus.createLoading));
-    final result = await _createTrainingRequestUseCase.call(params: _buildParams());
+    final result =
+        await _createTrainingRequestUseCase.call(params: _buildParams());
     result.fold(
       (failure) => emit(state.copyWith(
         status: TrainingRequestStatus.createError,
@@ -117,7 +118,9 @@ class TrainingRequestCubit extends Cubit<TrainingRequestState> {
       )),
       (response) => emit(state.copyWith(
         status: TrainingRequestStatus.createLoaded,
-        requestNumber: response.trainingRequestName ?? response.trainingRequestId?.toString() ?? '',
+        requestNumber: response.trainingRequestName ??
+            response.trainingRequestId?.toString() ??
+            '',
       )),
     );
   }

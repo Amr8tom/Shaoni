@@ -4,12 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:shaoni/core/local_storage/cache_helper.dart';
 import 'package:shaoni/core/local_storage/cache_keys.dart';
 import 'package:shaoni/core/utils/usecases/base_usecase.dart';
-import 'package:shaoni/features/human_resoures/domain/entity/study/study_destination.dart';
-import 'package:shaoni/features/human_resoures/domain/entity/study/study_type.dart';
-import 'package:shaoni/features/human_resoures/domain/use_cases/study/create_study_use_case.dart';
-import 'package:shaoni/features/human_resoures/domain/use_cases/study/get_study_destinations_use_case.dart';
-import 'package:shaoni/features/human_resoures/domain/use_cases/study/get_study_types_use_case.dart';
-import 'package:shaoni/features/human_resoures/domain/use_cases/study/update_study_use_case.dart';
+import 'package:shaoni/features/study&training/domain/entities/study/study_destination.dart';
+import 'package:shaoni/features/study&training/domain/entities/study/study_type.dart';
+import 'package:shaoni/features/study&training/domain/use_cases/study/create_study_use_case.dart';
+import 'package:shaoni/features/study&training/domain/use_cases/study/get_study_destinations_use_case.dart';
+import 'package:shaoni/features/study&training/domain/use_cases/study/get_study_types_use_case.dart';
+import 'package:shaoni/features/study&training/domain/use_cases/study/update_study_use_case.dart';
 import 'package:shaoni/generated/l10n.dart';
 
 part 'study_state.dart';
@@ -37,7 +37,7 @@ class StudyCubit extends Cubit<StudyState> {
   final courseStartHijriController = TextEditingController();
   final courseEndDateController = TextEditingController();
   final courseEndHijriController = TextEditingController();
-  final durationController = TextEditingController(); // computed display
+  final durationController = TextEditingController();
   final noteController = TextEditingController();
   final reasonController = TextEditingController();
 
@@ -62,7 +62,7 @@ class StudyCubit extends Cubit<StudyState> {
     _loadLookups();
   }
 
-  /// ── Lookups ──────────────────────────────────────────────────────────────
+  // ── Lookups ──────────────────────────────────────────────────────────────
 
   Future<void> _loadLookups() async {
     emit(state.copyWith(status: StudyStatus.lookupsLoading));
@@ -71,8 +71,7 @@ class StudyCubit extends Cubit<StudyState> {
   }
 
   Future<void> _fetchStudyTypes() async {
-    final result =
-        await _getStudyTypesUseCase.call(params: NoParams());
+    final result = await _getStudyTypesUseCase.call(params: NoParams());
     result.fold(
       (failure) => emit(state.copyWith(
         status: StudyStatus.lookupsError,
@@ -94,8 +93,7 @@ class StudyCubit extends Cubit<StudyState> {
   }
 
   Future<void> _fetchStudyDestinations() async {
-    final result =
-        await _getStudyDestinationsUseCase.call(params: NoParams());
+    final result = await _getStudyDestinationsUseCase.call(params: NoParams());
     result.fold(
       (failure) => emit(state.copyWith(
         status: StudyStatus.lookupsError,
@@ -113,7 +111,7 @@ class StudyCubit extends Cubit<StudyState> {
     );
   }
 
-  /// ── Helpers: resolve selected name → ID ──────────────────────────────────
+  // ── Helpers ───────────────────────────────────────────────────────────────
 
   int? get _selectedStudyTypeId {
     if (studyTypeController.text.isEmpty) return null;
@@ -139,11 +137,10 @@ class StudyCubit extends Cubit<StudyState> {
     return match.isEmpty ? null : match.first.id;
   }
 
-  /// ── Create ───────────────────────────────────────────────────────────────
+  // ── Create ───────────────────────────────────────────────────────────────
 
   Future<void> createStudyRequest() async {
     emit(state.copyWith(status: StudyStatus.createStudyRequestLoading));
-
     final result = await _createStudyUseCase.call(
       params: CreateStudyParams(
         employeeId: int.tryParse(
@@ -157,15 +154,10 @@ class StudyCubit extends Cubit<StudyState> {
         studyEndDate: courseEndDateController.text.trim(),
         note: noteController.text.trim(),
         reason: reasonController.text.trim(),
-        attachmentName: attachmentFileNameController.text.isEmpty
-            ? ''
-            : attachmentFileNameController.text.trim(),
-        attachment: attachmentFileController.text.isEmpty
-            ? ''
-            : attachmentFileController.text.trim(),
+        attachmentName: attachmentFileNameController.text.trim(),
+        attachment: attachmentFileController.text.trim(),
       ),
     );
-
     result.fold(
       (failure) => emit(state.copyWith(
         status: StudyStatus.createStudyRequestError,
@@ -178,13 +170,10 @@ class StudyCubit extends Cubit<StudyState> {
     );
   }
 
-  /// ── Reset ────────────────────────────────────────────────────────────────
-
-  /// ── Update ───────────────────────────────────────────────────────────────
+  // ── Update ───────────────────────────────────────────────────────────────
 
   Future<void> updateStudyRequest({required int requestId}) async {
     emit(state.copyWith(status: StudyStatus.createStudyRequestLoading));
-
     final result = await _updateStudyUseCase.call(
       params: UpdateStudyParams(
         requestId: requestId,
@@ -200,16 +189,11 @@ class StudyCubit extends Cubit<StudyState> {
           studyEndDate: courseEndDateController.text.trim(),
           note: noteController.text.trim(),
           reason: reasonController.text.trim(),
-          attachmentName: attachmentFileNameController.text.isEmpty
-              ? ''
-              : attachmentFileNameController.text.trim(),
-          attachment: attachmentFileController.text.isEmpty
-              ? ''
-              : attachmentFileController.text.trim(),
+          attachmentName: attachmentFileNameController.text.trim(),
+          attachment: attachmentFileController.text.trim(),
         ),
       ),
     );
-
     result.fold(
       (failure) => emit(state.copyWith(
         status: StudyStatus.createStudyRequestError,
@@ -222,7 +206,7 @@ class StudyCubit extends Cubit<StudyState> {
     );
   }
 
-  /// ── Reset ────────────────────────────────────────────────────────────────
+  // ── Reset ────────────────────────────────────────────────────────────────
 
   void deleteStudyRequest() {
     todayDateController.clear();

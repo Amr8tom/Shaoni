@@ -15,9 +15,6 @@ import 'package:shaoni/features/human_resoures/data/model/exit_permission/update
 import 'package:shaoni/features/human_resoures/domain/use_cases/car_permission/update_car_permission_use_case.dart';
 import 'package:shaoni/features/human_resoures/domain/use_cases/attendance/update_attendance_use_case.dart';
 import 'package:shaoni/features/human_resoures/domain/use_cases/exit/update_exit_permission_use_case.dart';
-import 'package:shaoni/features/human_resoures/data/model/study/create_study_model.dart';
-import 'package:shaoni/features/human_resoures/data/model/study/study_destination_model.dart';
-import 'package:shaoni/features/human_resoures/data/model/study/study_type_model.dart';
 import 'package:shaoni/features/human_resoures/data/model/start_work/start_work_type_model.dart';
 import 'package:shaoni/features/human_resoures/data/model/start_work/employee_model.dart';
 import 'package:shaoni/features/human_resoures/data/model/start_work/create_start_work_model.dart';
@@ -37,10 +34,6 @@ import 'package:shaoni/features/human_resoures/data/model/medical_insurance/crea
 import 'package:shaoni/features/human_resoures/domain/use_cases/medical_insurance/get_employee_relatives_use_case.dart';
 import 'package:shaoni/features/human_resoures/domain/use_cases/medical_insurance/create_medical_insurance_use_case.dart';
 import 'package:shaoni/features/human_resoures/domain/use_cases/medical_insurance/update_medical_insurance_use_case.dart';
-import 'package:shaoni/features/human_resoures/data/model/training_request/course_model.dart';
-import 'package:shaoni/features/human_resoures/data/model/training_request/create_training_response_model.dart';
-import 'package:shaoni/features/human_resoures/domain/use_cases/training_request/create_training_request_use_case.dart';
-import 'package:shaoni/features/human_resoures/domain/use_cases/training_request/update_training_request_use_case.dart';
 import 'package:shaoni/features/human_resoures/data/model/product_order/product_category_model.dart';
 import 'package:shaoni/features/human_resoures/data/model/product_order/product_model.dart';
 import 'package:shaoni/features/human_resoures/data/model/product_order/create_product_order_response_model.dart';
@@ -48,9 +41,6 @@ import 'package:shaoni/features/human_resoures/domain/use_cases/product_order/ge
 import 'package:shaoni/features/human_resoures/domain/use_cases/product_order/create_product_order_use_case.dart';
 import 'package:shaoni/features/human_resoures/domain/use_cases/product_order/update_product_order_use_case.dart';
 import 'package:shaoni/features/human_resoures/domain/use_cases/complaint_request/create_complaint_request_use_case.dart';
-import 'package:shaoni/features/human_resoures/domain/use_cases/study/create_study_use_case.dart';
-import 'package:shaoni/features/human_resoures/domain/use_cases/study/update_study_use_case.dart';
-
 import '../../../../core/constants/api_constants.dart';
 import '../../../../core/dio/dio_helper.dart';
 import '../../../../core/error/failure.dart';
@@ -118,21 +108,6 @@ abstract class HRServicesRemoteDataSources {
     required CreateComplaintRequestParams params,
   });
 
-  /// ============================= study request =============================
-  Future<List<StudyTypeModel>> getStudyTypes({required NoParams params});
-
-  Future<List<StudyDestinationModel>> getStudyDestinations({
-    required NoParams params,
-  });
-
-  Future<CreateStudyModel> createStudyRequest({
-    required CreateStudyParams params,
-  });
-
-  Future<CreateStudyModel> updateStudyRequest({
-    required UpdateStudyParams params,
-  });
-
   /// ============================= start work =============================
   Future<List<StartWorkTypeModel>> getStartWorkTypes({
     required NoParams params,
@@ -189,17 +164,6 @@ abstract class HRServicesRemoteDataSources {
 
   Future<CreateMedicalInsuranceModel> updateMedicalInsurance({
     required UpdateMedicalInsuranceParams params,
-  });
-
-  /// ============================= training request =============================
-  Future<List<CourseModel>> getCourses();
-
-  Future<CreateTrainingResponseModel> createTrainingRequest({
-    required CreateTrainingRequestParams params,
-  });
-
-  Future<CreateTrainingResponseModel> updateTrainingRequest({
-    required UpdateTrainingRequestParams params,
   });
 
   /// ============================= product order =============================
@@ -495,74 +459,6 @@ class HRServicesRemoteDataSourcesImp implements HRServicesRemoteDataSources {
     }
   }
 
-  /// ============================= study request =============================
-
-  @override
-  Future<List<StudyTypeModel>> getStudyTypes({required NoParams params}) async {
-    try {
-      final List response = await _dio.getData(URL: URL.getStudyTypes);
-      if (response != null) {
-        return response.map((e) => StudyTypeModel.fromJson(e)).toList();
-      } else {
-        throw ServerFailure(message: 'server failure');
-      }
-    } on ServerFailure catch (e) {
-      throw ServerFailure(message: e.message);
-    }
-  }
-
-  @override
-  Future<List<StudyDestinationModel>> getStudyDestinations({
-    required NoParams params,
-  }) async {
-    try {
-      final response = await _dio.getData(URL: URL.getStudyDestinations);
-      if (response != null) {
-        final List data = response['data'] as List;
-        return data.map((e) => StudyDestinationModel.fromJson(e)).toList();
-      } else {
-        throw ServerFailure(message: 'server failure');
-      }
-    } on ServerFailure catch (e) {
-      throw ServerFailure(message: e.message);
-    }
-  }
-
-  @override
-  Future<CreateStudyModel> createStudyRequest({
-    required CreateStudyParams params,
-  }) async {
-    try {
-      final response = await _dio.postData(
-        URL: URL.createStudyRequest,
-        body: params.toMap(),
-      );
-      if (response != null) {
-        return CreateStudyModel.fromJson(response);
-      } else {
-        throw ServerFailure(message: 'server failure');
-      }
-    } on ServerFailure catch (e) {
-      throw ServerFailure(message: e.message);
-    }
-  }
-
-  @override
-  Future<CreateStudyModel> updateStudyRequest({
-    required UpdateStudyParams params,
-  }) async {
-    try {
-      final response = await _dio.putData(
-        URL: '${URL.updateStudyRequest}${params.requestId}',
-        body: params.toMap(),
-      );
-      if (response == null) throw ServerFailure(message: 'server failure');
-      return CreateStudyModel.fromJson(response.data as Map<String, dynamic>);
-    } on ServerFailure catch (e) {
-      throw ServerFailure(message: e.message);
-    }
-  }
-
   /// ============================= start work =============================
 
   @override
@@ -788,54 +684,6 @@ class HRServicesRemoteDataSourcesImp implements HRServicesRemoteDataSources {
       );
       if (response == null) throw ServerFailure(message: 'server failure');
       return CreateMedicalInsuranceModel.fromJson(
-          response.data as Map<String, dynamic>);
-    } on ServerFailure catch (e) {
-      throw ServerFailure(message: e.message);
-    }
-  }
-
-  /// ============================= training request =============================
-
-  @override
-  Future<List<CourseModel>> getCourses() async {
-    try {
-      final response = await _dio.getData(URL: URL.getCourses);
-      if (response == null) throw ServerFailure(message: 'server failure');
-      final List raw =
-          response is List ? response : (response as Map<String, dynamic>)['data'] as List;
-      return raw.map((e) => CourseModel.fromJson(e)).toList();
-    } on ServerFailure catch (e) {
-      throw ServerFailure(message: e.message);
-    }
-  }
-
-  @override
-  Future<CreateTrainingResponseModel> createTrainingRequest({
-    required CreateTrainingRequestParams params,
-  }) async {
-    try {
-      final response = await _dio.postData(
-        URL: URL.createTrainingRequest,
-        body: params.toMap(),
-      );
-      if (response == null) throw ServerFailure(message: 'server failure');
-      return CreateTrainingResponseModel.fromJson(response);
-    } on ServerFailure catch (e) {
-      throw ServerFailure(message: e.message);
-    }
-  }
-
-  @override
-  Future<CreateTrainingResponseModel> updateTrainingRequest({
-    required UpdateTrainingRequestParams params,
-  }) async {
-    try {
-      final response = await _dio.putData(
-        URL: '${URL.updateTrainingRequest}${params.requestId}',
-        body: params.data.toMap(),
-      );
-      if (response == null) throw ServerFailure(message: 'server failure');
-      return CreateTrainingResponseModel.fromJson(
           response.data as Map<String, dynamic>);
     } on ServerFailure catch (e) {
       throw ServerFailure(message: e.message);

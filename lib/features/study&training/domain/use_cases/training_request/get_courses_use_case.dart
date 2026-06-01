@@ -1,11 +1,11 @@
 import 'package:dartz/dartz.dart';
 import 'package:shaoni/core/error/failure.dart';
 import 'package:shaoni/core/utils/usecases/base_usecase.dart';
-import 'package:shaoni/features/human_resoures/domain/entity/training_request/course.dart';
-import 'package:shaoni/features/human_resoures/domain/repository/repository.dart';
+import '../../entities/training_request/course.dart';
+import '../../repository/repository.dart';
 
 class GetCoursesUseCase extends UseCase<List<Course>, NoParams> {
-  final HRServicesRepository _repository;
+  final StudyServicesRepository _repository;
 
   GetCoursesUseCase(this._repository);
 

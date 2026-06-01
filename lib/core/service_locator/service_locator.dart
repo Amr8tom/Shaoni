@@ -4,6 +4,7 @@ import 'package:shaoni/core/service_locator/my_requests_service_locator.dart';
 import 'package:shaoni/core/service_locator/profile_service_locator.dart';
 import 'package:shaoni/core/service_locator/request_service_locator.dart';
 import 'package:shaoni/core/service_locator/services_service_locator.dart';
+import 'package:shaoni/core/service_locator/study_training_service_locator.dart';
 import '../connection/checkNetwork.dart';
 import '../dio/dio_helper.dart';
 import '../utils/helpers/geolocator.dart';
@@ -45,6 +46,9 @@ class DI {
 
     /// HR request service
     await HRServiceLocator.execute(serviceLocator: serviceLocator);
+
+    /// Study & training
+    await StudyTrainingServiceLocator.execute(serviceLocator: serviceLocator);
 
     /// delete account
     await DeleteAccountServiceLocator.execute(serviceLocator: serviceLocator);

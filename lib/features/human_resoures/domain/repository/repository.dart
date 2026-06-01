@@ -22,14 +22,9 @@ import '../use_cases/attendance/update_attendance_use_case.dart';
 import '../entity/attendance/update_attendance.dart';
 import '../use_cases/exit/update_exit_permission_use_case.dart';
 import '../entity/exit_permission/update_exit_permission.dart';
-import '../entity/study/create_study_response.dart';
-import '../entity/study/study_destination.dart';
-import '../entity/study/study_type.dart';
 import '../use_cases/complaint_request/create_complaint_request_use_case.dart';
 import '../use_cases/exit/create_exit_permission_use_case.dart';
 import '../use_cases/attendance/get_all_missing_attendance_use_case.dart';
-import '../use_cases/study/create_study_use_case.dart';
-import '../use_cases/study/update_study_use_case.dart';
 import '../entity/start_work/start_work_type.dart';
 import '../entity/start_work/employee.dart';
 import '../entity/start_work/create_start_work_response.dart';
@@ -49,10 +44,6 @@ import '../entity/medical_insurance/create_medical_insurance_response.dart';
 import '../use_cases/medical_insurance/get_employee_relatives_use_case.dart';
 import '../use_cases/medical_insurance/create_medical_insurance_use_case.dart';
 import '../use_cases/medical_insurance/update_medical_insurance_use_case.dart';
-import '../entity/training_request/course.dart';
-import '../entity/training_request/create_training_response.dart';
-import '../use_cases/training_request/create_training_request_use_case.dart';
-import '../use_cases/training_request/update_training_request_use_case.dart';
 import '../entity/product_order/product_category.dart';
 import '../entity/product_order/product.dart';
 import '../entity/product_order/create_product_order_response.dart';
@@ -123,23 +114,6 @@ abstract class HRServicesRepository {
     required CreateComplaintRequestParams params,
   });
 
-  /// ///////////////////////////////////// study request /////////////////////////////////////////////////////
-  Future<Either<Failure, List<StudyType>>> getStudyTypes({
-    required NoParams params,
-  });
-
-  Future<Either<Failure, List<StudyDestination>>> getStudyDestinations({
-    required NoParams params,
-  });
-
-  Future<Either<Failure, CreateStudyResponse>> createStudyRequest({
-    required CreateStudyParams params,
-  });
-
-  Future<Either<Failure, CreateStudyResponse>> updateStudyRequest({
-    required UpdateStudyParams params,
-  });
-
   /// ///////////////////////////////////// start work /////////////////////////////////////////////////////
   Future<Either<Failure, List<StartWorkType>>> getStartWorkTypes({
     required NoParams params,
@@ -200,17 +174,6 @@ abstract class HRServicesRepository {
 
   Future<Either<Failure, CreateMedicalInsuranceResponse>> updateMedicalInsurance({
     required UpdateMedicalInsuranceParams params,
-  });
-
-  /// ///////////////////////////////////// training request /////////////////////////////////////////////////////
-  Future<Either<Failure, List<Course>>> getCourses();
-
-  Future<Either<Failure, CreateTrainingResponse>> createTrainingRequest({
-    required CreateTrainingRequestParams params,
-  });
-
-  Future<Either<Failure, CreateTrainingResponse>> updateTrainingRequest({
-    required UpdateTrainingRequestParams params,
   });
 
   /// ///////////////////////////////////// product order /////////////////////////////////////////////////////

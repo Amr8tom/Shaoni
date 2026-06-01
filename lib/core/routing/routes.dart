@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:shaoni/core/routing/route_names.dart';
-import 'package:shaoni/features/human_resoures/presentation/study/create_study_request_form.dart';
+import 'package:shaoni/features/study&training/presentaion/study/create_study_request_form.dart';
 import 'package:shaoni/features/human_resoures/presentation/start_work/create_start_work_form.dart';
 import 'package:shaoni/features/human_resoures/presentation/experience_certificate/create_experience_certificate_form.dart';
 import 'package:shaoni/features/human_resoures/presentation/id_document/create_id_document_form.dart';
 import 'package:shaoni/features/human_resoures/presentation/medical_insurance/create_medical_insurance_form.dart';
-import 'package:shaoni/features/human_resoures/presentation/training_request/create_training_request_form.dart';
+import 'package:shaoni/features/study&training/presentaion/training_request/create_training_request_form.dart';
 import 'package:shaoni/features/human_resoures/presentation/product_order/create_product_order_form.dart';
 import 'package:shaoni/features/profile/profile_screen.dart';
 import 'package:shaoni/features/services/presentation/screens/category_details_screen.dart';

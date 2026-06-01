@@ -45,10 +45,12 @@ class TrainingRequestState extends Equatable {
       status: status ?? this.status,
       errorMessage: errorMessage ?? this.errorMessage,
       requestNumber: requestNumber ?? this.requestNumber,
-      selectedCourse: clearSelectedCourse ? null : (selectedCourse ?? this.selectedCourse),
+      selectedCourse:
+          clearSelectedCourse ? null : (selectedCourse ?? this.selectedCourse),
     );
   }
 
   @override
-  List<Object?> get props => [status, errorMessage, requestNumber, selectedCourse];
+  List<Object?> get props =>
+      [status, errorMessage, requestNumber, selectedCourse];
 }
