@@ -1,6 +1,7 @@
 import 'package:equatable/equatable.dart';
 
 import '../../../human_resoures/data/model/service_model.dart';
+import '../../../services/data/model/service_model.dart';
 import 'history.dart';
 
 class Request extends Equatable {

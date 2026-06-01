@@ -56,7 +56,6 @@ import '../model/car_permission/update_car_permission_model.dart';
 import '../model/complaint_request/create_complaint_request_model.dart';
 import '../../../../core/connection/checkNetwork.dart';
 import '../../domain/entity/all_attendance_record_model.dart';
-import '../../domain/entity/all_services.dart';
 import '../../domain/entity/permission_time.dart';
 import '../../domain/entity/permission_type.dart';
 import '../../domain/repository/repository.dart';
@@ -88,27 +87,6 @@ class HRServicesRepositoryImp extends HRServicesRepository {
     }
   }
 
-  @override
-  Future<Either<Failure, AllServices>> getAllPermissionServices({
-    required NoParams params,
-  }) async {
-    if (await _networkInfo.isConnected) {
-      try {
-        final response = await _remote.getAllServices();
-        await _local.cacheAllServices(response);
-        return Right(response);
-      } on ServerFailure catch (e) {
-        return Left(ServerFailure(message: e.message));
-      }
-    } else {
-      try {
-        final response = await _local.getAllServices();
-        return Right(response);
-      } on CacheFailure catch (e) {
-        return Left(CacheFailure());
-      }
-    }
-  }
 
   @override
   Future<Either<Failure, List<PermissionTime>>> getAllPermissionTimes({

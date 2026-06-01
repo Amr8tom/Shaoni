@@ -12,11 +12,7 @@ import '../model/permission_time_model.dart';
 import '../model/permission_type_model.dart';
 
 abstract class HRServicesLocalDataSources {
-  /// get all services
-  Future<AllServicesModel> getAllServices();
 
-  /// cache all services
-  Future<Unit> cacheAllServices(AllServicesModel alServicesModel);
 
   /// cache all exit permission times
   Future<Unit> cacheAllPermissionTimes(
@@ -60,12 +56,6 @@ class HRServicesLocalDataSourcesImp implements HRServicesLocalDataSources {
     return Future.value(unit);
   }
 
-  @override
-  Future<Unit> cacheAllServices(AllServicesModel allServicesModel) async {
-    final String allServices = jsonEncode(allServicesModel.toJson());
-    CacheHelper.putString(key: CacheKeys.allServices, value: allServices);
-    return Future.value(unit);
-  }
 
   @override
   Future<List<PermissionTimeModel>> getAllPermissionTimes() async {
@@ -93,16 +83,7 @@ class HRServicesLocalDataSourcesImp implements HRServicesLocalDataSources {
     }
   }
 
-  @override
-  Future<AllServicesModel> getAllServices() async {
-    final String? allServices =
-        CacheHelper.getString(key: CacheKeys.allServices);
-    if (allServices != null) {
-      return AllServicesModel.fromJson(jsonDecode(allServices));
-    } else {
-      return Future.value(AllServicesModel(services: []));
-    }
-  }
+
 
   @override
   Future<Unit> cacheAllAttendanceRecords(

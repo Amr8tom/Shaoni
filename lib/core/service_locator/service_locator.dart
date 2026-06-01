@@ -3,6 +3,7 @@ import 'package:get_it/get_it.dart';
 import 'package:shaoni/core/service_locator/my_requests_service_locator.dart';
 import 'package:shaoni/core/service_locator/profile_service_locator.dart';
 import 'package:shaoni/core/service_locator/request_service_locator.dart';
+import 'package:shaoni/core/service_locator/services_service_locator.dart';
 import '../connection/checkNetwork.dart';
 import '../dio/dio_helper.dart';
 import '../utils/helpers/geolocator.dart';
@@ -21,24 +22,34 @@ class DI {
     serviceLocator.registerLazySingleton(() => DataConnectionChecker());
     // serviceLocator.registerLazySingleton(() => GeolocatorService());
     serviceLocator.registerLazySingleton<NetworkInfo>(
-          () => NetworkInfoImpl(serviceLocator()),
+      () => NetworkInfoImpl(serviceLocator()),
     );
+
     /// home
     await HomeServiceLocator.execute(serviceLocator: serviceLocator);
+
     /// authentication
     await AuthServiceLocator.execute(serviceLocator: serviceLocator);
+
     /// navigation
     await NavigationServiseLocator.execute(serviceLocator: serviceLocator);
+
     /// language
     await LanguageServiceLocator.execute(serviceLocator: serviceLocator);
+
     /// profile
     await ProfileServiceLocator.execute(serviceLocator: serviceLocator);
+
     /// My-requests
     await MyRequestsServiceLocator.execute(serviceLocator: serviceLocator);
+
     /// HR request service
     await HRServiceLocator.execute(serviceLocator: serviceLocator);
+
     /// delete account
     await DeleteAccountServiceLocator.execute(serviceLocator: serviceLocator);
 
+    /// services
+    await ServicesServiceLocator.execute(serviceLocator: serviceLocator);
   }
 }

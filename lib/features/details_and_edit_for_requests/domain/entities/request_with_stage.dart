@@ -2,6 +2,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:shaoni/features/details_and_edit_for_requests/domain/entities/request.dart';
 import '../../../human_resoures/data/model/service_model.dart';
+import '../../../services/data/model/service_model.dart';
 import 'current_status.dart';
 import 'extra_data.dart';
 import 'history.dart';

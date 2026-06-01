@@ -12,7 +12,6 @@ import '../../data/model/car_permission/create_car_permission_model.dart';
 import '../../data/model/car_permission/update_car_permission_model.dart';
 import '../../data/model/complaint_request/create_complaint_request_model.dart';
 import '../entity/all_attendance_record_model.dart';
-import '../entity/all_services.dart';
 import '../entity/exit_permisstion.dart';
 import '../entity/permission_time.dart';
 import '../entity/permission_type.dart';
@@ -62,9 +61,7 @@ import '../use_cases/product_order/create_product_order_use_case.dart';
 import '../use_cases/product_order/update_product_order_use_case.dart';
 
 abstract class HRServicesRepository {
-  Future<Either<Failure, AllServices>> getAllPermissionServices({
-    required NoParams params,
-  });
+
 
   Future<Either<Failure, ExitPermission>> createExitPermission({
     required CreateExitPermissionParams params,

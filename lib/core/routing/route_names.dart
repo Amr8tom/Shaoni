@@ -14,6 +14,8 @@ class DRoutesName {
   static const String webViewRoute = 'webView-route';
   static const String splashSRoute = 'Splash-Screen-route';
   static const String onBoardingRoute = 'on-boarding-route';
+  static const String categoryDetailsRoute = 'category-details-route';
+
 
   /// Profile && Setting
   static const String deleteAccountRoute = 'delete-account-route';

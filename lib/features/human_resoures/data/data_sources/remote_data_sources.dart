@@ -65,8 +65,6 @@ import '../model/permission_time_model.dart';
 import '../model/permission_type_model.dart';
 
 abstract class HRServicesRemoteDataSources {
-  /// get all services
-  Future<AllServicesModel> getAllServices();
 
   /// ============================= exit permission  =============================
   Future<ExitPermission> createExitPermission(
@@ -225,19 +223,6 @@ class HRServicesRemoteDataSourcesImp implements HRServicesRemoteDataSources {
 
   const HRServicesRemoteDataSourcesImp(this._dio);
 
-  @override
-  Future<AllServicesModel> getAllServices() async {
-    try {
-      final response = await _dio.getData(URL: URL.getAllServices);
-      if (response != null) {
-        return AllServicesModel.fromJson(response);
-      } else {
-        throw ServerFailure(message: 'server failure');
-      }
-    } on ServerFailure catch (e) {
-      throw ServerFailure(message: e.message);
-    }
-  }
 
   @override
   Future<ExitPermission> createExitPermission(

@@ -9,7 +9,6 @@ import 'package:shaoni/features/human_resoures/domain/use_cases/complaint_reques
 import 'package:shaoni/features/human_resoures/domain/use_cases/complaint_request/get_complaint_types_use_case.dart';
 import 'package:shaoni/features/human_resoures/presentation/controller/car_permission/car_permission_cubit.dart';
 import 'package:shaoni/features/human_resoures/presentation/controller/complaint_request/complaint_request_cubit.dart';
-import 'package:shaoni/features/human_resoures/presentation/controller/human_resources/human_resources_cubit.dart';
 import '../../features/human_resoures/data/data_sources/local_data_sources.dart';
 import '../../features/human_resoures/data/data_sources/remote_data_sources.dart';
 import '../../features/human_resoures/data/repositories/repository.dart';
@@ -20,7 +19,6 @@ import '../../features/human_resoures/domain/use_cases/car_permission/update_car
 import '../../features/human_resoures/domain/use_cases/attendance/update_attendance_use_case.dart';
 import '../../features/human_resoures/domain/use_cases/exit/create_exit_permission_use_case.dart';
 import '../../features/human_resoures/domain/use_cases/exit/update_exit_permission_use_case.dart';
-import '../../features/human_resoures/domain/use_cases/get_all_permission_services_use_case.dart';
 import '../../features/human_resoures/domain/use_cases/exit/get_permission_time_use_case.dart';
 import '../../features/human_resoures/domain/use_cases/exit/get_permission_types_use_case.dart';
 import '../../features/human_resoures/presentation/controller/attendance/attendance_cubit.dart';
@@ -78,9 +76,6 @@ class HRServiceLocator {
     );
 
     /// use Cases
-    serviceLocator.registerLazySingleton<GetAllPermissionServicesUseCase>(
-      () => GetAllPermissionServicesUseCase(serviceLocator()),
-    );
     serviceLocator.registerLazySingleton<CreateExitPermissionUseCase>(
       () => CreateExitPermissionUseCase(serviceLocator()),
     );
@@ -149,17 +144,16 @@ class HRServiceLocator {
       () => AttendanceCubit(serviceLocator(), serviceLocator(),
           serviceLocator(), serviceLocator(), serviceLocator()),
     );
-    serviceLocator.registerFactory<HumanResourcesCubit>(
-      () => HumanResourcesCubit(serviceLocator()),
-    );
+
     serviceLocator.registerFactory<CarPermissionCubit>(
-      () => CarPermissionCubit(
-          serviceLocator(), serviceLocator(), serviceLocator(), serviceLocator()),
+      () => CarPermissionCubit(serviceLocator(), serviceLocator(),
+          serviceLocator(), serviceLocator()),
     );
     serviceLocator.registerFactory<ComplaintRequestCubit>(
       () => ComplaintRequestCubit(
           serviceLocator(), serviceLocator(), serviceLocator()),
     );
+
     /// ============================= study request =============================
     serviceLocator.registerLazySingleton<GetStudyTypesUseCase>(
       () => GetStudyTypesUseCase(serviceLocator()),

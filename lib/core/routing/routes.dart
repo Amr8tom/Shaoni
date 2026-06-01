@@ -9,6 +9,7 @@ import 'package:shaoni/features/human_resoures/presentation/medical_insurance/cr
 import 'package:shaoni/features/human_resoures/presentation/training_request/create_training_request_form.dart';
 import 'package:shaoni/features/human_resoures/presentation/product_order/create_product_order_form.dart';
 import 'package:shaoni/features/profile/profile_screen.dart';
+import 'package:shaoni/features/services/presentation/screens/category_details_screen.dart';
 import '../../features/auth/presentation/screen/login_screen.dart';
 import '../../features/auth/presentation/screen/new_password_screen.dart';
 import '../../features/auth/presentation/screen/otp_screen.dart';
@@ -24,7 +25,7 @@ import '../../features/details_and_edit_for_requests/presentation/screens/reques
 import '../../features/navigation/presentation/screens/navigation_menu_screen.dart';
 import '../../features/notifications/presentation/notification_screen.dart';
 import '../../features/onboarding/presentation/screens/onboarding_screen.dart';
-import '../../features/services/no_data_screen.dart';
+import '../../features/services/presentation/no_data_screen.dart';
 import '../../features/settings/presentation/screens/settings_screen.dart';
 import '../../features/splash/presentation/screens/splash_screen.dart';
 import '../../features/terms_conditions/presentation/terms_conditions_screen.dart';
@@ -66,10 +67,13 @@ class RouteGenerator {
           settings: settings,
         );
 
-      /// show all human resources requests Screen
-      case DRoutesName.chooseNewRequestNewService:
+
+
+      /// show  category service details Screen
+      case DRoutesName.categoryDetailsRoute:
+        final args = settings.arguments as Map<String, dynamic>;
         return PageTransition(
-          child: const AllHumanResourcesRequests(),
+          child:  CategoryDetailsScreen(title: args['title'], services: args['services'] ?? []),
           type: PageTransitionType.rightToLeft,
           settings: settings,
         );
