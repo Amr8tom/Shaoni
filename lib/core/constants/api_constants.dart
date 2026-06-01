@@ -48,11 +48,12 @@ class URL {
 
   /// ============================ id document ============================
   static const String getDepartments = '$baseUrl/Lookup/GetDepartments';
+  static const String getCountries = '$baseUrl/Lookup/GetCountries';
   static const String getIDRenewalRequestTypes = '$baseUrl/Lookup/GetIDRenewalRequestTypes';
   // createIDDocument URL TBD by backend developer
-  static const String createIDDocument = '$baseUrl/IDDocument';
-  static const String updateIDDocument = '$baseUrl/IDDocument/update/';
-  static const String getIDDocumentEdit = '$baseUrl/IDDocument/edit/';
+  static const String createIDDocument = '$baseUrl/IDRenewal/create';
+  static const String updateIDDocument = '$baseUrl/IDRenewal/update/';
+  static const String getIDDocumentEdit = '$baseUrl/IDRenewal/edit/';
 
   /// ============================ start work ============================
   static const String getStartWorkTypes = '$baseUrl/Lookup/GetStartWorkingTypes';

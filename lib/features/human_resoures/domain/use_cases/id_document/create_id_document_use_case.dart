@@ -20,46 +20,62 @@ class CreateIDDocumentUseCase
 }
 
 class CreateIDDocumentParams extends Equatable {
-  final int employee;
+  final int employeeId;
   final int officeId;
   final String date;
 
-  /// Request type: 'update' or 'new'
-  final int requestTypeId;
+  /// Request type code: 'new' or 'update'
+  final String requestTypes;
 
   /// Document type code: national_id | residency | passport | family_card | driving_license
-  final String documentTypeCode;
+  final String identificationType;
 
-  /// Document data fields (used when requestType == 'new')
-  final String? issuingCountry;
-  final String? documentNumber;
+  /// Country of issue — integer ID from /Lookup/GetCountries
+  final int? countryOfIssue;
+
+  /// رقم المستند / identification number
+  final String? identificationId;
+
+  /// رقم الإصدار
   final String? issueNumber;
-  final String? issueDate;
+
+  /// تاريخ الإصدار (issuer_date in API)
+  final String? issuerDate;
+
+  /// تاريخ الانتهاء
   final String? endDate;
-  final bool tabaq;
+
+  /// طبق (apply in API)
+  final bool apply;
+
+  /// هل علي كفالة
   final bool kafala;
   final String? kafeelName;
 
-  /// Type-specific extras
+  /// Passport extras
   final String? passportNumber;
   final String? passportAddress;
+
+  /// Family Card extra
   final String? familyCardNumber;
+
+  /// Driving License extra
   final String? drivingLicenseNumber;
 
   final List<Map<String, dynamic>> attachmentIds;
 
   const CreateIDDocumentParams({
-    required this.employee,
+    required this.employeeId,
     required this.officeId,
     required this.date,
-    required this.requestTypeId,
-    required this.documentTypeCode,
-    this.issuingCountry,
-    this.documentNumber,
+    required this.requestTypes,
+    required this.identificationType,
+    this.countryOfIssue,
+    this.identificationId,
     this.issueNumber,
-    this.issueDate,
+    this.issuerDate,
     this.endDate,
-    this.tabaq = false,
+    this.apply = false,
     this.kafala = false,
     this.kafeelName,
     this.passportNumber,
@@ -69,40 +85,65 @@ class CreateIDDocumentParams extends Equatable {
     this.attachmentIds = const [],
   });
 
-  Map<String, dynamic> toMap() => {
-        'employee': employee,
-        'office_id': officeId,
-        'date': date,
-        'request_type_id': requestTypeId,
-        'document_type_code': documentTypeCode,
-        'issuing_country': issuingCountry,
-        'document_number': documentNumber,
-        'issue_number': issueNumber,
-        'issue_date': issueDate,
-        'end_date': endDate,
-        'tabaq': tabaq,
-        'kafala': kafala,
-        'kafeel_name': kafeelName,
-        'passport_number': passportNumber,
-        'passport_address': passportAddress,
-        'family_card_number': familyCardNumber,
-        'driving_license_number': drivingLicenseNumber,
-        'attachment_ids': attachmentIds,
-      };
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{
+      'employee_id': employeeId,
+      'office_id': officeId,
+      'date': date,
+      'request_types': requestTypes,
+      'identification_type': identificationType,
+      'apply': apply,
+    };
+
+    if (countryOfIssue != null) map['country_of_issue'] = countryOfIssue;
+    if (identificationId != null && identificationId!.isNotEmpty) {
+      map['identification_id'] = identificationId;
+    }
+    if (issueNumber != null && issueNumber!.isNotEmpty) {
+      map['issue_number'] = issueNumber;
+    }
+    if (issuerDate != null && issuerDate!.isNotEmpty) {
+      map['issuer_date'] = issuerDate;
+    }
+    if (endDate != null && endDate!.isNotEmpty) {
+      map['end_date'] = endDate;
+    }
+    if (kafala) {
+      map['kafala'] = kafala;
+      if (kafeelName != null && kafeelName!.isNotEmpty) {
+        map['kafeel_name'] = kafeelName;
+      }
+    }
+    if (passportNumber != null && passportNumber!.isNotEmpty) {
+      map['passport_number'] = passportNumber;
+    }
+    if (passportAddress != null && passportAddress!.isNotEmpty) {
+      map['passport_address'] = passportAddress;
+    }
+    if (familyCardNumber != null && familyCardNumber!.isNotEmpty) {
+      map['family_card_number'] = familyCardNumber;
+    }
+    if (drivingLicenseNumber != null && drivingLicenseNumber!.isNotEmpty) {
+      map['driving_license_number'] = drivingLicenseNumber;
+    }
+    if (attachmentIds.isNotEmpty) map['attachment_ids'] = attachmentIds;
+
+    return map;
+  }
 
   @override
   List<Object?> get props => [
-        employee,
+        employeeId,
         officeId,
         date,
-        requestTypeId,
-        documentTypeCode,
-        issuingCountry,
-        documentNumber,
+        requestTypes,
+        identificationType,
+        countryOfIssue,
+        identificationId,
         issueNumber,
-        issueDate,
+        issuerDate,
         endDate,
-        tabaq,
+        apply,
         kafala,
         kafeelName,
         passportNumber,

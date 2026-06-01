@@ -20,12 +20,6 @@ class ShaoniApp extends StatelessWidget {
         BlocProvider<LanguageCubit>(
           create: (context) => serviceLocator<LanguageCubit>(),
         ),
-        // BlocProvider<LoginCubit>(
-        //   create: (context) => serviceLocator<LoginCubit>(),
-        // ),
-        // BlocProvider<RegisterCubit>(
-        //   create: (context) => serviceLocator<RegisterCubit>(),
-        // ),
       ],
       child: ScreenUtilInit(
         designSize: const Size(430, 932),

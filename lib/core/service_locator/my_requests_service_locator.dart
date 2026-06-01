@@ -1,6 +1,5 @@
 import 'package:get_it/get_it.dart';
 import 'package:shaoni/features/details_and_edit_for_requests/domain/use_cases/get_request_details_use_case.dart';
-
 import '../../features/details_and_edit_for_requests/data/data_sources/local_data_sources.dart';
 import '../../features/details_and_edit_for_requests/data/data_sources/remote_data_sources.dart';
 import '../../features/details_and_edit_for_requests/data/repositories/repository.dart';

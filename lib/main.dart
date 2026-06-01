@@ -20,9 +20,9 @@ void main() async {
   await serviceLocator<LanguageCubit>().init();
   Bloc.observer = MyBlocObserver();
   FirebaseMessaging messaging = FirebaseMessaging.instance;
-  // Remote notifications from Firebase Cloud Messaging
+  /// Remote notifications from Firebase Cloud Messaging
   await messaging.requestPermission(alert: true, badge: true, sound: true);
-  // Local notifications from flutter_local_notifications
+  /// Local notifications from flutter_local_notifications
   await PermissionsService.notifications();
   FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterError;
   await FirebaseCrashlytics.instance.setCrashlyticsCollectionEnabled(true);

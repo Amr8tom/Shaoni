@@ -881,5 +881,10 @@
   "invalidQuantity": "Please enter a valid quantity",
   "reason": "Reason",
   "reasonHint": "Enter the reason for this request",
-  "isGift": "Is Gift"
+  "isGift": "Is Gift",
+  "nationalId": "National ID",
+  "residencyId": "Residency ID",
+  "passport": "Passport",
+  "familyCard": "Family Card",
+  "drivingLicense": "Driving License"
 }

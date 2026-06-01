@@ -24,6 +24,7 @@ import 'package:shaoni/features/human_resoures/data/model/experience_certificate
 import 'package:shaoni/features/human_resoures/data/model/experience_certificate/create_experience_certificate_model.dart';
 import 'package:shaoni/features/human_resoures/domain/use_cases/experience_certificate/create_experience_certificate_use_case.dart';
 import 'package:shaoni/features/human_resoures/domain/use_cases/experience_certificate/update_experience_certificate_use_case.dart';
+import 'package:shaoni/features/human_resoures/data/model/id_document/country_model.dart';
 import 'package:shaoni/features/human_resoures/data/model/id_document/department_model.dart';
 import 'package:shaoni/features/human_resoures/data/model/id_document/id_renewal_request_type_model.dart';
 import 'package:shaoni/features/human_resoures/data/model/id_document/create_id_document_model.dart';
@@ -139,6 +140,8 @@ abstract class HRServicesRemoteDataSources {
   });
 
   /// ============================= id document =============================
+  Future<List<CountryModel>> getCountries({required NoParams params});
+
   Future<List<DepartmentModel>> getDepartments({required NoParams params});
 
   Future<List<IDRenewalRequestTypeModel>> getIDRenewalRequestTypes({
@@ -574,6 +577,19 @@ class HRServicesRemoteDataSourcesImp implements HRServicesRemoteDataSources {
   }
 
   /// ============================= id document =============================
+
+  @override
+  Future<List<CountryModel>> getCountries({required NoParams params}) async {
+    try {
+      final response = await _dio.getData(URL: URL.getCountries);
+      if (response == null) throw ServerFailure(message: 'server failure');
+      final List raw =
+          response is List ? response : (response as Map<String, dynamic>)['data'] as List;
+      return raw.map((e) => CountryModel.fromJson(e as Map<String, dynamic>)).toList();
+    } on ServerFailure catch (e) {
+      throw ServerFailure(message: e.message);
+    }
+  }
 
   @override
   Future<List<DepartmentModel>> getDepartments({

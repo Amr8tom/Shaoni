@@ -27,24 +27,30 @@ class IDDocumentState extends Equatable {
   final String? errorMessage;
   final String? requestNumber;
 
+  /// Incremented on every notifyDropdownChanged() so Equatable sees a new state.
+  final int version;
+
   const IDDocumentState({
     this.status = IDDocumentStatus.initial,
     this.errorMessage,
     this.requestNumber,
+    this.version = 0,
   });
 
   IDDocumentState copyWith({
     IDDocumentStatus? status,
     String? errorMessage,
     String? requestNumber,
+    int? version,
   }) {
     return IDDocumentState(
       status: status ?? this.status,
       errorMessage: errorMessage ?? this.errorMessage,
       requestNumber: requestNumber ?? this.requestNumber,
+      version: version ?? this.version,
     );
   }
 
   @override
-  List<Object?> get props => [status, errorMessage, requestNumber];
+  List<Object?> get props => [status, errorMessage, requestNumber, version];
 }

@@ -48,8 +48,7 @@ class CategoryDetailsScreen extends StatelessWidget {
                 itemCount: services.length,
                 itemBuilder: (context, index) {
                   if (services.isEmpty)
-                    return CustomUI.emptyData(
-                        message: S.current.noData);
+                    return CustomUI.emptyData(message: S.current.noData);
                   final service = services[index];
                   return AnimationConfiguration.staggeredGrid(
                     position: index,
@@ -60,8 +59,7 @@ class CategoryDetailsScreen extends StatelessWidget {
                       child: FadeInAnimation(
                         child: ServiceGridCard(
                           service: service,
-                          onTap: () =>
-                              _onServiceTap(context, service),
+                          onTap: () => _onServiceTap(context, service),
                         ),
                       ),
                     ),
@@ -107,6 +105,9 @@ class CategoryDetailsScreen extends StatelessWidget {
         return;
       case 'product.request':
         context.pushNamed(DRoutesName.createProductOrderRoute);
+        return;
+      case 'id.renewal.request':
+        context.pushNamed(DRoutesName.createIDDocumentRoute);
         return;
       default:
         ScaffoldMessenger.of(context).showSnackBar(

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:skeletonizer/skeletonizer.dart';
 import 'package:shaoni/common/widgets/appbar/appbar.dart';
 import 'package:shaoni/common/widgets/sizeboxs/Sizer.dart';
 import 'package:shaoni/core/constants/app_sizes.dart';
@@ -33,7 +34,7 @@ class CreateIDDocumentForm extends StatelessWidget {
         appBar: DAppBar(
           showMenu: false,
           showBackArrow: true,
-          title: _isEditMode ? S.current.editRequest : null,
+          title: _isEditMode ? S.current.editRequest : S.current.idRenewalDocument,
         ),
         extendBodyBehindAppBar: true,
         backgroundColor: ColorRes.grey6,
@@ -81,6 +82,11 @@ class CreateIDDocumentForm extends StatelessWidget {
                 }
               },
               builder: (context, state) {
+                final isLookupsLoading =
+                    state.status == IDDocumentStatus.lookupsLoading;
+                final isSubmitting =
+                    state.status == IDDocumentStatus.createLoading;
+
                 return Form(
                   key: cubit.requestFormKey,
                   child: Padding(
@@ -88,84 +94,99 @@ class CreateIDDocumentForm extends StatelessWidget {
                         horizontal: AppSizes.padding * 1.5),
                     child: Stack(
                       children: [
-                        /// Scrollable content
-                        SingleChildScrollView(
-                          physics: const BouncingScrollPhysics(),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              const Sizer(height: 220),
+                        /// Scrollable content — wrapped in Skeletonizer during lookup loading
+                        Skeletonizer(
+                          enabled: isLookupsLoading,
+                          child: SingleChildScrollView(
+                            physics: isLookupsLoading
+                                ? const NeverScrollableScrollPhysics()
+                                : const BouncingScrollPhysics(),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                const Sizer(height: 220),
 
-                              /// Date section
-                              const DateDataWidget(),
-                              const Sizer(height: 35),
+                                /// Date section
+                                const DateDataWidget(),
+                                const Sizer(height: 35),
 
-                              /// Applicant section
-                              ApplicantDataWidget(
-                                onOfficeChanged: (id, officeName) {
-                                  cubit.officeIdController.text =
-                                      id.toString();
-                                },
-                              ),
+                                /// Applicant section
+                                ApplicantDataWidget(
+                                  onOfficeChanged: (id, officeName) {
+                                    cubit.officeIdController.text =
+                                        id.toString();
+                                  },
+                                ),
 
-                              /// ── بيانات الطلب ──────────────────────────
-                              const Sizer(height: 35),
-                              Text(
-                                S.current.requestDetails,
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .headlineMedium,
-                              ),
-                              const Sizer(height: 12),
-                              const IDDocumentRequestDataWidget(),
-
-                              /// ── بيانات الوثيقة (only for add-new mode) ─
-                              if (cubit.isAddNewMode &&
-                                  cubit.documentTypeController.text
-                                      .isNotEmpty) ...[
+                                /// ── بيانات الطلب ──────────────────────────
                                 const Sizer(height: 35),
                                 Text(
-                                  S.current.documentData,
+                                  S.current.requestDetails,
                                   style: Theme.of(context)
                                       .textTheme
                                       .headlineMedium,
                                 ),
                                 const Sizer(height: 12),
-                                const IDDocumentTypeDispatcherWidget(),
+                                const IDDocumentRequestDataWidget(),
+
+                                /// ── بيانات الوثيقة (new mode only) ────
+                                if (cubit.isAddNewMode &&
+                                    cubit.documentTypeController.text
+                                        .isNotEmpty) ...[
+                                  const Sizer(height: 35),
+                                  Text(
+                                    S.current.documentData,
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .headlineMedium,
+                                  ),
+                                  const Sizer(height: 12),
+                                  const IDDocumentTypeDispatcherWidget(),
+                                ],
+
+                                /// File upload (always shown)
+                                const Sizer(height: 35),
+                                FileUploadWidget(
+                                  onPickedFile: (fileName, base64String) {
+                                    cubit.attachmentFileNameController.text =
+                                        fileName ?? '';
+                                    cubit.attachmentFileController.text =
+                                        base64String ?? '';
+                                  },
+                                ),
+
+                                const Sizer(height: 120),
                               ],
-
-                              /// File upload (always shown — handled globally)
-                              const Sizer(height: 35),
-                              FileUploadWidget(
-                                onPickedFile: (fileName, base64String) {
-                                  cubit.attachmentFileNameController.text =
-                                      fileName ?? '';
-                                  cubit.attachmentFileController.text =
-                                      base64String ?? '';
-                                },
-                              ),
-
-                              const Sizer(height: 120),
-                            ],
+                            ),
                           ),
                         ),
 
-                        /// Floating action buttons
-                        state.status.isLoading
-                            ? Center(
+                        /// Bottom action buttons — hidden while submitting
+                        if (!isLookupsLoading)
+                          isSubmitting
+                              ? const SizedBox.shrink()
+                              : CreateDeleteButtons(
+                                  deleteTab: () => cubit.resetForm(),
+                                  createTab: () {
+                                    if (cubit.requestFormKey.currentState!
+                                        .validate()) {
+                                      cubit.createIDDocument();
+                                    }
+                                  },
+                                ),
+
+                        /// Submit loading indicator overlay
+                        if (isSubmitting)
+                          Positioned.fill(
+                            child: Container(
+                              color: Colors.black12,
+                              child: Center(
                                 child: CircularProgressIndicator(
                                   color: ColorRes.primary,
                                 ),
-                              )
-                            : CreateDeleteButtons(
-                                deleteTab: () => cubit.resetForm(),
-                                createTab: () {
-                                  if (cubit.requestFormKey.currentState!
-                                      .validate()) {
-                                    cubit.createIDDocument();
-                                  }
-                                },
                               ),
+                            ),
+                          ),
                       ],
                     ),
                   ),

@@ -5,9 +5,9 @@ import 'package:intl/intl.dart';
 import 'package:shaoni/core/local_storage/cache_helper.dart';
 import 'package:shaoni/core/local_storage/cache_keys.dart';
 import 'package:shaoni/core/utils/usecases/base_usecase.dart';
-import 'package:shaoni/features/human_resoures/domain/entity/id_document/department.dart';
+import 'package:shaoni/features/human_resoures/domain/entity/id_document/country.dart';
 import 'package:shaoni/features/human_resoures/domain/entity/id_document/id_renewal_request_type.dart';
-import 'package:shaoni/features/human_resoures/domain/use_cases/id_document/get_departments_use_case.dart';
+import 'package:shaoni/features/human_resoures/domain/use_cases/id_document/get_countries_use_case.dart';
 import 'package:shaoni/features/human_resoures/domain/use_cases/id_document/get_id_renewal_request_types_use_case.dart';
 import 'package:shaoni/features/human_resoures/domain/use_cases/id_document/create_id_document_use_case.dart';
 import 'package:shaoni/generated/l10n.dart';
@@ -15,7 +15,7 @@ import 'package:shaoni/generated/l10n.dart';
 part 'id_document_state.dart';
 
 class IDDocumentCubit extends Cubit<IDDocumentState> {
-  final GetDepartmentsUseCase _getDepartmentsUseCase;
+  final GetCountriesUseCase _getCountriesUseCase;
   final GetIDRenewalRequestTypesUseCase _getIDRenewalRequestTypesUseCase;
   final CreateIDDocumentUseCase _createIDDocumentUseCase;
 
@@ -42,7 +42,7 @@ class IDDocumentCubit extends Cubit<IDDocumentState> {
 
   // ── Document data section controllers ────────────────────────────────────
 
-  /// دولة الإصدار
+  /// دولة الإصدار — display name (what user sees)
   final issuingCountryController = TextEditingController();
 
   /// رقم المستند
@@ -88,10 +88,13 @@ class IDDocumentCubit extends Cubit<IDDocumentState> {
   // ── Raw lookup lists ─────────────────────────────────────────────────────
 
   List<IDRenewalRequestType> _requestTypes = [];
-  List<Department> _departments = [];
+  List<Country> _countries = [];
+
+  /// The integer ID of the currently selected country (sent in payload).
+  int? _selectedCountryId;
 
   IDDocumentCubit(
-    this._getDepartmentsUseCase,
+    this._getCountriesUseCase,
     this._getIDRenewalRequestTypesUseCase,
     this._createIDDocumentUseCase,
   ) : super(const IDDocumentState()) {
@@ -103,31 +106,30 @@ class IDDocumentCubit extends Cubit<IDDocumentState> {
   /// Returns dropdown items whose VALUE is the document type CODE.
   /// The dispatcher widget reads this code to pick the correct sub-widget.
   List<DropdownMenuItem<String>> get documentTypeItems {
-    final isEn = S.current.localeee == 'en';
     return [
       DropdownMenuItem(
         value: 'national_id',
-        child: Text(isEn ? 'National ID' : 'رقم الهوية',
+        child: Text(S.current.nationalId,
             style: const TextStyle(fontSize: 12)),
       ),
       DropdownMenuItem(
         value: 'residency',
-        child: Text(isEn ? 'Residency ID' : 'رقم الإقامة',
+        child: Text(S.current.residencyId,
             style: const TextStyle(fontSize: 12)),
       ),
       DropdownMenuItem(
         value: 'passport',
-        child: Text(isEn ? 'Passport' : 'جواز سفر',
+        child: Text(S.current.passport,
             style: const TextStyle(fontSize: 12)),
       ),
       DropdownMenuItem(
         value: 'family_card',
-        child: Text(isEn ? 'Family Card' : 'بطاقة عائلية',
+        child: Text(S.current.familyCard,
             style: const TextStyle(fontSize: 12)),
       ),
       DropdownMenuItem(
         value: 'driving_license',
-        child: Text(isEn ? 'Driving License' : 'رخصة قيادة',
+        child: Text(S.current.drivingLicense,
             style: const TextStyle(fontSize: 12)),
       ),
     ];
@@ -139,7 +141,7 @@ class IDDocumentCubit extends Cubit<IDDocumentState> {
     emit(state.copyWith(status: IDDocumentStatus.lookupsLoading));
     await Future.wait([
       _fetchRequestTypes(),
-      _fetchDepartments(),
+      _fetchCountries(),
     ]);
     emit(state.copyWith(status: IDDocumentStatus.lookupsLoaded));
   }
@@ -167,20 +169,20 @@ class IDDocumentCubit extends Cubit<IDDocumentState> {
     );
   }
 
-  Future<void> _fetchDepartments() async {
-    final result = await _getDepartmentsUseCase.call(params: NoParams());
+  Future<void> _fetchCountries() async {
+    final result = await _getCountriesUseCase.call(params: NoParams());
     result.fold(
       (failure) => emit(state.copyWith(
         status: IDDocumentStatus.lookupsError,
         errorMessage: failure.message,
       )),
-      (departments) {
-        _departments = departments;
-        issuingCountryItems = departments
-            .map((d) => DropdownMenuItem<String>(
-                  value: _localizedName(d.nameAr, d.nameEn),
+      (countries) {
+        _countries = countries;
+        issuingCountryItems = countries
+            .map((c) => DropdownMenuItem<String>(
+                  value: _localizedName(c.nameAr, c.nameEn),
                   child: Text(
-                    _localizedName(d.nameAr, d.nameEn),
+                    _localizedName(c.nameAr, c.nameEn),
                     style: const TextStyle(fontSize: 12),
                   ),
                 ))
@@ -191,61 +193,74 @@ class IDDocumentCubit extends Cubit<IDDocumentState> {
 
   // ── Helpers ──────────────────────────────────────────────────────────────
 
-  /// True when the selected request type has code == 'new' (إضافة وثيقة جديدة).
-  /// False for 'update' (تحديث الوثائق الثبوتية) or when nothing is selected.
-  bool get isAddNewMode {
-    if (requestTypeController.text.isEmpty || _requestTypes.isEmpty) {
-      return false;
-    }
+  /// Returns the code of the currently selected request type, or null if none.
+  String? get _selectedRequestTypeCode {
+    if (requestTypeController.text.isEmpty || _requestTypes.isEmpty) return null;
     final match = _requestTypes.where(
       (t) => _localizedName(t.nameAr, t.nameEn) == requestTypeController.text,
     );
-    if (match.isEmpty) return false;
-    return match.first.code == 'new';
+    return match.isEmpty ? null : match.first.code;
   }
 
-  int? get _selectedRequestTypeId {
-    if (requestTypeController.text.isEmpty) return null;
-    final match = _requestTypes.where(
-      (t) => _localizedName(t.nameAr, t.nameEn) == requestTypeController.text,
-    );
-    return match.isEmpty ? null : match.first.id;
+  /// True when selected request type is 'new' (إضافة وثيقة جديدة).
+  bool get isAddNewMode => _selectedRequestTypeCode == 'new';
+
+  /// True when selected request type is 'update' (تحديث الوثائق الثبوتية).
+  bool get isUpdateMode => _selectedRequestTypeCode == 'update';
+
+  /// Show the document TYPE dropdown for both 'new' and 'update'.
+  bool get showDocumentData => isAddNewMode || isUpdateMode;
+
+  /// Show full document data fields (country, dates, etc.) only for 'new' mode.
+  bool get showDocumentFields => isAddNewMode;
+
+  /// Resolve country ID from display name selected in dropdown.
+  void onCountrySelected(String? displayName) {
+    issuingCountryController.text = displayName ?? '';
+    if (displayName == null || displayName.isEmpty || _countries.isEmpty) {
+      _selectedCountryId = null;
+    } else {
+      final match = _countries.where(
+        (c) => _localizedName(c.nameAr, c.nameEn) == displayName,
+      );
+      _selectedCountryId = match.isEmpty ? null : match.first.id;
+    }
+    notifyDropdownChanged();
   }
 
   void toggleTabaq(bool value) {
     tabaq = value;
-    emit(state.copyWith(status: state.status));
+    emit(state.copyWith(version: state.version + 1));
   }
 
   void toggleKafala(bool value) {
     kafala = value;
     if (!value) kafeelNameController.clear();
-    emit(state.copyWith(status: state.status));
+    emit(state.copyWith(version: state.version + 1));
   }
 
   void notifyDropdownChanged() {
-    emit(state.copyWith(status: state.status));
+    emit(state.copyWith(version: state.version + 1));
   }
 
-  // ── Create (stub — filled when backend URL is confirmed) ─────────────────
+  // ── Create ───────────────────────────────────────────────────────────────
 
   Future<void> createIDDocument() async {
     emit(state.copyWith(status: IDDocumentStatus.createLoading));
-    // TODO: fill params when backend URL is confirmed by backend developer
     final params = CreateIDDocumentParams(
-      employee: int.tryParse(
+      employeeId: int.tryParse(
               CacheHelper.getString(key: CacheKeys.employeeId) ?? '0') ??
           0,
       officeId: int.tryParse(officeIdController.text) ?? 0,
-      date: DateFormat('yyyy-MM-dd').format(DateTime.now()),
-      requestTypeId: _selectedRequestTypeId ?? 0,
-      documentTypeCode: documentTypeController.text,
-      issuingCountry: issuingCountryController.text.trim(),
-      documentNumber: documentNumberController.text.trim(),
+      date: DateFormat('yyyy-MM-dd','en').format(DateTime.now()),
+      requestTypes: _selectedRequestTypeCode ?? '',
+      identificationType: documentTypeController.text,
+      countryOfIssue: _selectedCountryId,
+      identificationId: documentNumberController.text.trim(),
       issueNumber: issueNumberController.text.trim(),
-      issueDate: issueDateController.text.trim(),
+      issuerDate: issueDateController.text.trim(),
       endDate: endDateController.text.trim(),
-      tabaq: tabaq,
+      apply: tabaq,
       kafala: kafala,
       kafeelName: kafala ? kafeelNameController.text.trim() : null,
       passportNumber: passportNumberController.text.trim(),
@@ -290,6 +305,7 @@ class IDDocumentCubit extends Cubit<IDDocumentState> {
     attachmentFileNameController.clear();
     tabaq = false;
     kafala = false;
+    _selectedCountryId = null;
     emit(state.copyWith(status: IDDocumentStatus.lookupsLoaded));
   }
 

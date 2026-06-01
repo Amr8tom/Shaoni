@@ -54,6 +54,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Add Correct Sign At All",
     ),
     "addEmail": MessageLookupByLibrary.simpleMessage("Add New Email"),
+    "addLine": MessageLookupByLibrary.simpleMessage("Add Line"),
     "addNew": MessageLookupByLibrary.simpleMessage(" Add New"),
     "addNewAddress": MessageLookupByLibrary.simpleMessage("Add Address"),
     "addPassword": MessageLookupByLibrary.simpleMessage("Add New Password"),
@@ -163,17 +164,6 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "carType": MessageLookupByLibrary.simpleMessage("Car Type (Brand)"),
     "cart": MessageLookupByLibrary.simpleMessage("Cart"),
-    "certificateReason": MessageLookupByLibrary.simpleMessage(
-      "Reason for Certificate Request",
-    ),
-    "selectCertificateReason":
-        MessageLookupByLibrary.simpleMessage("Select reason"),
-    "selectDocumentType":
-        MessageLookupByLibrary.simpleMessage("Select document type"),
-    "selectIssuingCountry":
-        MessageLookupByLibrary.simpleMessage("Select issuing country"),
-    "selectRequestType":
-        MessageLookupByLibrary.simpleMessage("Select request type"),
     "cashBack": MessageLookupByLibrary.simpleMessage("Cash Back"),
     "cashOnDelivery": MessageLookupByLibrary.simpleMessage("Cash on Delivery"),
     "cashOnDeliveryScreen": MessageLookupByLibrary.simpleMessage(
@@ -185,6 +175,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "cat": MessageLookupByLibrary.simpleMessage("Category: "),
     "categories": MessageLookupByLibrary.simpleMessage("Categories"),
     "category": MessageLookupByLibrary.simpleMessage("Category"),
+    "certificateReason": MessageLookupByLibrary.simpleMessage(
+      "Reason for Certificate Request",
+    ),
     "change": MessageLookupByLibrary.simpleMessage("change"),
     "changeColor": MessageLookupByLibrary.simpleMessage("Change Color"),
     "chatUs": MessageLookupByLibrary.simpleMessage("Chat US"),
@@ -268,6 +261,11 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "coontinue": MessageLookupByLibrary.simpleMessage("Continue"),
     "cost": MessageLookupByLibrary.simpleMessage("The Cost"),
+    "course": MessageLookupByLibrary.simpleMessage("Course"),
+    "courseDetails": MessageLookupByLibrary.simpleMessage("Course Details"),
+    "coursePeriodMonths": MessageLookupByLibrary.simpleMessage(
+      "Course Period (Months)",
+    ),
     "course_duration_months": MessageLookupByLibrary.simpleMessage(
       "Course Duration (months)",
     ),
@@ -345,6 +343,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "diseasesWrite": MessageLookupByLibrary.simpleMessage(
       "write if you have any diseases problems",
     ),
+    "documentData": MessageLookupByLibrary.simpleMessage("Document Data"),
+    "documentNumber": MessageLookupByLibrary.simpleMessage("Document Number"),
+    "documentType": MessageLookupByLibrary.simpleMessage("Document Type"),
     "does": MessageLookupByLibrary.simpleMessage(
       "Dose user need any special assistance ?",
     ),
@@ -361,6 +362,10 @@ class MessageLookup extends MessageLookupByLibrary {
     "downloadingQuran": MessageLookupByLibrary.simpleMessage(
       "Downloading Quran data...",
     ),
+    "drivingLicense": MessageLookupByLibrary.simpleMessage("Driving License"),
+    "drivingLicenseNumber": MessageLookupByLibrary.simpleMessage(
+      "Driving License Number",
+    ),
     "duis": MessageLookupByLibrary.simpleMessage(
       "   Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatu",
     ),
@@ -370,9 +375,8 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "eMail": MessageLookupByLibrary.simpleMessage("E-mail"),
     "editProduct": MessageLookupByLibrary.simpleMessage("Edit The Product"),
-    "editRequest": MessageLookupByLibrary.simpleMessage("Edit Request"),
     "editReasons": MessageLookupByLibrary.simpleMessage("Edit Reasons"),
-    "rejectReasons": MessageLookupByLibrary.simpleMessage("Rejection Reasons"),
+    "editRequest": MessageLookupByLibrary.simpleMessage("Edit Request"),
     "eggs": MessageLookupByLibrary.simpleMessage(
       "Omelets eggs + green salad + Bread",
     ),
@@ -386,6 +390,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "emailPasswordSend": MessageLookupByLibrary.simpleMessage(
       "The Reset Code is Sent",
     ),
+    "employee": MessageLookupByLibrary.simpleMessage("Employee"),
     "endDate": MessageLookupByLibrary.simpleMessage("End Date"),
     "endOfServiceRequest": MessageLookupByLibrary.simpleMessage(
       "End of Service Request",
@@ -418,27 +423,6 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "error": MessageLookupByLibrary.simpleMessage("there is an error"),
     "errorOccurred": MessageLookupByLibrary.simpleMessage("An error occurred"),
-    "experienceCertificate":
-        MessageLookupByLibrary.simpleMessage("Experience Certificate"),
-    "documentData": MessageLookupByLibrary.simpleMessage("Document Data"),
-    "documentNumber": MessageLookupByLibrary.simpleMessage("Document Number"),
-    "documentType": MessageLookupByLibrary.simpleMessage("Document Type"),
-    "drivingLicenseNumber":
-        MessageLookupByLibrary.simpleMessage("Driving License Number"),
-    "endDate": MessageLookupByLibrary.simpleMessage("End Date"),
-    "familyCardNumber":
-        MessageLookupByLibrary.simpleMessage("Family Card Number"),
-    "hasKafala": MessageLookupByLibrary.simpleMessage("Under Sponsorship"),
-    "idRenewalDocument":
-        MessageLookupByLibrary.simpleMessage("ID Document Add / Renewal Request"),
-    "issueDate": MessageLookupByLibrary.simpleMessage("Issue Date"),
-    "issueNumber": MessageLookupByLibrary.simpleMessage("Issue Number"),
-    "issuingCountry": MessageLookupByLibrary.simpleMessage("Issuing Country"),
-    "kafeelName": MessageLookupByLibrary.simpleMessage("Sponsor Name"),
-    "passportAddress": MessageLookupByLibrary.simpleMessage("Passport Address"),
-    "passportNumber": MessageLookupByLibrary.simpleMessage("Passport Number"),
-    "requestType": MessageLookupByLibrary.simpleMessage("Request Type"),
-    "tabaq": MessageLookupByLibrary.simpleMessage("Matched"),
     "eveningShift": MessageLookupByLibrary.simpleMessage(
       "evening shift Number",
     ),
@@ -452,6 +436,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "exitPermissionTitle": MessageLookupByLibrary.simpleMessage(
       "Exit Permission Request",
+    ),
+    "experienceCertificate": MessageLookupByLibrary.simpleMessage(
+      "Experience Certificate",
     ),
     "expiredProducts": MessageLookupByLibrary.simpleMessage(
       "Expired Products or Expired Items.......Dispose of expired items by uploading expired or damaged products",
@@ -475,6 +462,11 @@ class MessageLookup extends MessageLookupByLibrary {
     "fal": MessageLookupByLibrary.simpleMessage(
       "2 falafel sandwiches + 1 fava beans sandwich + 1 egg + 1 green salad",
     ),
+    "familyCard": MessageLookupByLibrary.simpleMessage("Family Card"),
+    "familyCardNumber": MessageLookupByLibrary.simpleMessage(
+      "Family Card Number",
+    ),
+    "familyMembers": MessageLookupByLibrary.simpleMessage("Family Members"),
     "faq": MessageLookupByLibrary.simpleMessage("FAQ"),
     "favorite": MessageLookupByLibrary.simpleMessage("Favorites"),
     "favoriteItems": MessageLookupByLibrary.simpleMessage(
@@ -564,6 +556,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "guide": MessageLookupByLibrary.simpleMessage("Guide"),
     "ha": MessageLookupByLibrary.simpleMessage("Hajj - Arafa"),
     "hajj": MessageLookupByLibrary.simpleMessage("Hajj Activity"),
+    "hasKafala": MessageLookupByLibrary.simpleMessage("Under Sponsorship"),
     "helper": MessageLookupByLibrary.simpleMessage("Help"),
     "hh": MessageLookupByLibrary.simpleMessage("mm/dd/yyyy  hh:mm"),
     "hijriDate": MessageLookupByLibrary.simpleMessage("Hijri Date"),
@@ -589,6 +582,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "humanResources": MessageLookupByLibrary.simpleMessage("Human Resources"),
     "huv": MessageLookupByLibrary.simpleMessage("Hajj & Umrah Video Guide"),
     "iAgreeTo": MessageLookupByLibrary.simpleMessage("I agree to "),
+    "idRenewalDocument": MessageLookupByLibrary.simpleMessage(
+      "ID Document Add / Renewal Request",
+    ),
     "idRenewalRequest": MessageLookupByLibrary.simpleMessage(
       "ID Renewal Request",
     ),
@@ -597,6 +593,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "image": MessageLookupByLibrary.simpleMessage("Image"),
     "inProgress": MessageLookupByLibrary.simpleMessage("In Progress"),
+    "includeFamilyMembers": MessageLookupByLibrary.simpleMessage(
+      "Include Family Members",
+    ),
     "information": MessageLookupByLibrary.simpleMessage("ّInformation"),
     "installmentWithSouhoola": MessageLookupByLibrary.simpleMessage(
       "Installment with souhoola",
@@ -613,11 +612,19 @@ class MessageLookup extends MessageLookupByLibrary {
     "installmentsServices": MessageLookupByLibrary.simpleMessage(
       "Installments Services",
     ),
+    "insuranceClass": MessageLookupByLibrary.simpleMessage("Insurance Class"),
     "invalidEmail": MessageLookupByLibrary.simpleMessage(
       " please enter valid email ",
     ),
     "invalidOtp": MessageLookupByLibrary.simpleMessage("Invalid OTP code"),
+    "invalidQuantity": MessageLookupByLibrary.simpleMessage(
+      "Please enter a valid quantity",
+    ),
+    "isGift": MessageLookupByLibrary.simpleMessage("Is Gift"),
     "isha": MessageLookupByLibrary.simpleMessage("Isha"),
+    "issueDate": MessageLookupByLibrary.simpleMessage("Issue Date"),
+    "issueNumber": MessageLookupByLibrary.simpleMessage("Issue Number"),
+    "issuingCountry": MessageLookupByLibrary.simpleMessage("Issuing Country"),
     "jeddah": MessageLookupByLibrary.simpleMessage("Jeddah"),
     "juz": MessageLookupByLibrary.simpleMessage("Juz"),
     "juzIndex": MessageLookupByLibrary.simpleMessage("Juz Index"),
@@ -627,6 +634,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "kaabahtawaf": MessageLookupByLibrary.simpleMessage("KAABAH TAWAF"),
     "kabaa": MessageLookupByLibrary.simpleMessage("The Kaaba"),
+    "kafeelName": MessageLookupByLibrary.simpleMessage("Sponsor Name"),
     "karim": MessageLookupByLibrary.simpleMessage("Karim"),
     "language": MessageLookupByLibrary.simpleMessage("Language"),
     "languageArabic": MessageLookupByLibrary.simpleMessage("العربية"),
@@ -680,8 +688,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "makka": MessageLookupByLibrary.simpleMessage("Makka"),
     "makkah": MessageLookupByLibrary.simpleMessage("Makkah"),
     "male": MessageLookupByLibrary.simpleMessage("Male"),
-    "managerApproval": MessageLookupByLibrary.simpleMessage("Manager Approval"),
     "manager": MessageLookupByLibrary.simpleMessage("Manager"),
+    "managerApproval": MessageLookupByLibrary.simpleMessage("Manager Approval"),
     "markAll": MessageLookupByLibrary.simpleMessage("Mark all as read"),
     "meCo": MessageLookupByLibrary.simpleMessage("Meal Components "),
     "meal": MessageLookupByLibrary.simpleMessage("Meal"),
@@ -690,6 +698,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "meals": MessageLookupByLibrary.simpleMessage("Meals"),
     "medical": MessageLookupByLibrary.simpleMessage("Medical"),
+    "medicalInsurance": MessageLookupByLibrary.simpleMessage(
+      "Medical Insurance Upgrade",
+    ),
     "medicalReportFromDoctor": MessageLookupByLibrary.simpleMessage(
       "Medical Report from Doctor",
     ),
@@ -728,6 +739,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "myWallet": MessageLookupByLibrary.simpleMessage("My Wallet"),
     "name": MessageLookupByLibrary.simpleMessage("Name:"),
     "nation": MessageLookupByLibrary.simpleMessage("Nationality"),
+    "nationalId": MessageLookupByLibrary.simpleMessage("National ID"),
     "newPass": MessageLookupByLibrary.simpleMessage("New Password"),
     "newPassword": MessageLookupByLibrary.simpleMessage("New Password"),
     "newProduct": MessageLookupByLibrary.simpleMessage("New Product"),
@@ -740,6 +752,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "noData": MessageLookupByLibrary.simpleMessage(
       "There is no data here till now",
+    ),
+    "noFamilyMembersFound": MessageLookupByLibrary.simpleMessage(
+      "No family members found",
     ),
     "noInternetConnection": MessageLookupByLibrary.simpleMessage(
       "There is no internet connection",
@@ -757,6 +772,15 @@ class MessageLookup extends MessageLookupByLibrary {
     "noResultsFound": MessageLookupByLibrary.simpleMessage("No results found"),
     "noUserFound": MessageLookupByLibrary.simpleMessage(
       "These credentials are not found",
+    ),
+    "nominationEndDate": MessageLookupByLibrary.simpleMessage(
+      "Nomination End Date",
+    ),
+    "nominationPeriodDays": MessageLookupByLibrary.simpleMessage(
+      "Nomination Period (Days)",
+    ),
+    "nominationStartDate": MessageLookupByLibrary.simpleMessage(
+      "Nomination Start Date",
     ),
     "nomination_end_date": MessageLookupByLibrary.simpleMessage(
       "Nomination End Date",
@@ -778,6 +802,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "please verify your account",
     ),
     "notes": MessageLookupByLibrary.simpleMessage(" Additional Notes"),
+    "notesHint": MessageLookupByLibrary.simpleMessage("Enter notes (optional)"),
     "notification": MessageLookupByLibrary.simpleMessage("Notifications"),
     "notifications": MessageLookupByLibrary.simpleMessage("Notifications"),
     "offers": MessageLookupByLibrary.simpleMessage("Offers"),
@@ -845,6 +870,9 @@ class MessageLookup extends MessageLookupByLibrary {
       "we are packing your order and searching for nearest delivery",
     ),
     "passNo": MessageLookupByLibrary.simpleMessage("Passport No."),
+    "passport": MessageLookupByLibrary.simpleMessage("Passport"),
+    "passportAddress": MessageLookupByLibrary.simpleMessage("Passport Address"),
+    "passportNumber": MessageLookupByLibrary.simpleMessage("Passport Number"),
     "password": MessageLookupByLibrary.simpleMessage("Password"),
     "passwordEmpty": MessageLookupByLibrary.simpleMessage(
       "password can not Be Empty",
@@ -926,10 +954,13 @@ class MessageLookup extends MessageLookupByLibrary {
     "produce": MessageLookupByLibrary.simpleMessage(
       "Produced by King Fhad Glorious Quran Printing Complex in Al-Madina Al-Munawwara",
     ),
+    "product": MessageLookupByLibrary.simpleMessage("Product"),
+    "productCategory": MessageLookupByLibrary.simpleMessage("Product Category"),
     "productDescription": MessageLookupByLibrary.simpleMessage(
       "Product Description",
     ),
     "productName": MessageLookupByLibrary.simpleMessage("Product Name"),
+    "productOrder": MessageLookupByLibrary.simpleMessage("Product Order"),
     "profile": MessageLookupByLibrary.simpleMessage("Profile"),
     "profileInfo": MessageLookupByLibrary.simpleMessage("Profile Info"),
     "profileInfoDes": MessageLookupByLibrary.simpleMessage(
@@ -955,6 +986,16 @@ class MessageLookup extends MessageLookupByLibrary {
     "quranKarem": MessageLookupByLibrary.simpleMessage("Quran Kareem"),
     "reCharge": MessageLookupByLibrary.simpleMessage("Re Change"),
     "reOrder": MessageLookupByLibrary.simpleMessage("Re-Order"),
+    "reason": MessageLookupByLibrary.simpleMessage("Reason"),
+    "reasonForUpgrade": MessageLookupByLibrary.simpleMessage(
+      "Reason for Upgrade",
+    ),
+    "reasonForUpgradeHint": MessageLookupByLibrary.simpleMessage(
+      "Enter the reason for upgrade",
+    ),
+    "reasonHint": MessageLookupByLibrary.simpleMessage(
+      "Enter the reason for this request",
+    ),
     "rec": MessageLookupByLibrary.simpleMessage("Rectangle 44"),
     "recentRecords": MessageLookupByLibrary.simpleMessage("Recent Records"),
     "rechangreWallet": MessageLookupByLibrary.simpleMessage("Recharge Wallet"),
@@ -972,6 +1013,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "registration": MessageLookupByLibrary.simpleMessage(
       "Reservation Management",
     ),
+    "rejectReasons": MessageLookupByLibrary.simpleMessage("Rejection Reasons"),
     "rejectRequest": MessageLookupByLibrary.simpleMessage("Reject Request"),
     "rejectedRequest": MessageLookupByLibrary.simpleMessage("Rejected Request"),
     "remainingLeaves": MessageLookupByLibrary.simpleMessage("Remaining Leaves"),
@@ -992,6 +1034,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "requestData": MessageLookupByLibrary.simpleMessage("Request Data"),
     "requestDetails": MessageLookupByLibrary.simpleMessage("Request Details"),
+    "requestLines": MessageLookupByLibrary.simpleMessage("Order Lines"),
     "requestNumber": MessageLookupByLibrary.simpleMessage("Request Number"),
     "requestSend": MessageLookupByLibrary.simpleMessage(
       "Request Sent Successfully",
@@ -1023,6 +1066,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "residenceKeywords": MessageLookupByLibrary.simpleMessage(
       "residence,home,place,house,accommodation,lodging,hotel,apartment,room,stay,living,dwelling,quarters,shelter,housing,address,location,building,suite,flat,villa,compound",
     ),
+    "residencyId": MessageLookupByLibrary.simpleMessage("Residency ID"),
     "resolved": MessageLookupByLibrary.simpleMessage("Resolved"),
     "results": MessageLookupByLibrary.simpleMessage("results"),
     "retry": MessageLookupByLibrary.simpleMessage("Retry"),
@@ -1069,6 +1113,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "selectCarBrand": MessageLookupByLibrary.simpleMessage("Select Car Brand"),
     "selectCarColor": MessageLookupByLibrary.simpleMessage("Select Car Color"),
     "selectCategory": MessageLookupByLibrary.simpleMessage("Select Category"),
+    "selectCertificateReason": MessageLookupByLibrary.simpleMessage(
+      "Select reason",
+    ),
     "selectCity": MessageLookupByLibrary.simpleMessage("choose your city"),
     "selectComplaintReason": MessageLookupByLibrary.simpleMessage(
       "Select Complaint Reason",
@@ -1077,19 +1124,34 @@ class MessageLookup extends MessageLookupByLibrary {
       "Select Complaint Type",
     ),
     "selectCountry": MessageLookupByLibrary.simpleMessage("Select Country"),
+    "selectCourse": MessageLookupByLibrary.simpleMessage("Select a course"),
     "selectDate": MessageLookupByLibrary.simpleMessage("Select Date"),
     "selectDep": MessageLookupByLibrary.simpleMessage("select departure city"),
     "selectDepartment": MessageLookupByLibrary.simpleMessage(
       "Select Department",
     ),
+    "selectDocumentType": MessageLookupByLibrary.simpleMessage(
+      "Select document type",
+    ),
+    "selectEmployee": MessageLookupByLibrary.simpleMessage("Select Employee"),
+    "selectInsuranceClass": MessageLookupByLibrary.simpleMessage(
+      "Select insurance class",
+    ),
     "selectIssueDep": MessageLookupByLibrary.simpleMessage(
       "Select Issue Department",
+    ),
+    "selectIssuingCountry": MessageLookupByLibrary.simpleMessage(
+      "Select issuing country",
     ),
     "selectLanguage": MessageLookupByLibrary.simpleMessage("Select Language"),
     "selectLuggage": MessageLookupByLibrary.simpleMessage("Select Luggage"),
     "selectNation": MessageLookupByLibrary.simpleMessage("Select Nationality"),
     "selectOneActivity": MessageLookupByLibrary.simpleMessage(
       "Select One of Activities",
+    ),
+    "selectProduct": MessageLookupByLibrary.simpleMessage("Select a product"),
+    "selectProductCategory": MessageLookupByLibrary.simpleMessage(
+      "Select a product category",
     ),
     "selectQuantitiy": MessageLookupByLibrary.simpleMessage(
       "Select Quantitiy at First",
@@ -1098,6 +1160,12 @@ class MessageLookup extends MessageLookupByLibrary {
       "Select Reading Theme",
     ),
     "selectRegion": MessageLookupByLibrary.simpleMessage("Select region"),
+    "selectRequestType": MessageLookupByLibrary.simpleMessage(
+      "Select request type",
+    ),
+    "selectStartWorkType": MessageLookupByLibrary.simpleMessage(
+      "Select start work type",
+    ),
     "selectStudyDestination": MessageLookupByLibrary.simpleMessage(
       "Select destination",
     ),
@@ -1160,12 +1228,6 @@ class MessageLookup extends MessageLookupByLibrary {
     "startSearch": MessageLookupByLibrary.simpleMessage("Starting Search"),
     "startWork": MessageLookupByLibrary.simpleMessage("Start Work"),
     "startWorkType": MessageLookupByLibrary.simpleMessage("Start Work Type"),
-    "selectStartWorkType": MessageLookupByLibrary.simpleMessage(
-      "Select start work type",
-    ),
-    "employee": MessageLookupByLibrary.simpleMessage("Employee"),
-    "selectEmployee": MessageLookupByLibrary.simpleMessage("Select Employee"),
-    "writeNoteHere": MessageLookupByLibrary.simpleMessage("Write note here..."),
     "status": MessageLookupByLibrary.simpleMessage("Status"),
     "stoning": MessageLookupByLibrary.simpleMessage("Stoning Devil in Mina"),
     "streetName": MessageLookupByLibrary.simpleMessage("Street Name"),
@@ -1202,6 +1264,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "tabToSelectLuggage": MessageLookupByLibrary.simpleMessage(
       "Tap to select luggage",
     ),
+    "tabaq": MessageLookupByLibrary.simpleMessage("Matched"),
     "tapToRead": MessageLookupByLibrary.simpleMessage("Tap to read"),
     "tawafStart": MessageLookupByLibrary.simpleMessage(
       "Kaaba Tawaf activity will start within 30 minutes",
@@ -1252,6 +1315,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "tourDetails": MessageLookupByLibrary.simpleMessage("Tour Details"),
     "tourForm": MessageLookupByLibrary.simpleMessage("Tour Form data"),
     "tours": MessageLookupByLibrary.simpleMessage("Tours"),
+    "trainingRequest": MessageLookupByLibrary.simpleMessage("Training Request"),
     "training_course_data": MessageLookupByLibrary.simpleMessage(
       "Training Course Data",
     ),
@@ -1377,6 +1441,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "writeMob": MessageLookupByLibrary.simpleMessage("write mobile number"),
     "writeNAme": MessageLookupByLibrary.simpleMessage("write your name here"),
+    "writeNoteHere": MessageLookupByLibrary.simpleMessage("Write note here..."),
     "writeReqDetailsHere": MessageLookupByLibrary.simpleMessage(
       "write request details here",
     ),
@@ -1384,33 +1449,5 @@ class MessageLookup extends MessageLookupByLibrary {
     "writetitleHere": MessageLookupByLibrary.simpleMessage("write title here"),
     "yes": MessageLookupByLibrary.simpleMessage("Yes"),
     "youHave": MessageLookupByLibrary.simpleMessage("you have : "),
-    "medicalInsurance": MessageLookupByLibrary.simpleMessage("Medical Insurance Upgrade"),
-    "insuranceClass": MessageLookupByLibrary.simpleMessage("Insurance Class"),
-    "selectInsuranceClass": MessageLookupByLibrary.simpleMessage("Select insurance class"),
-    "includeFamilyMembers": MessageLookupByLibrary.simpleMessage("Include Family Members"),
-    "familyMembers": MessageLookupByLibrary.simpleMessage("Family Members"),
-    "noFamilyMembersFound": MessageLookupByLibrary.simpleMessage("No family members found"),
-    "reasonForUpgrade": MessageLookupByLibrary.simpleMessage("Reason for Upgrade"),
-    "reasonForUpgradeHint": MessageLookupByLibrary.simpleMessage("Enter the reason for upgrade"),
-    "notesHint": MessageLookupByLibrary.simpleMessage("Enter notes (optional)"),
-    "trainingRequest": MessageLookupByLibrary.simpleMessage("Training Request"),
-    "course": MessageLookupByLibrary.simpleMessage("Course"),
-    "selectCourse": MessageLookupByLibrary.simpleMessage("Select a course"),
-    "courseDetails": MessageLookupByLibrary.simpleMessage("Course Details"),
-    "nominationStartDate": MessageLookupByLibrary.simpleMessage("Nomination Start Date"),
-    "nominationEndDate": MessageLookupByLibrary.simpleMessage("Nomination End Date"),
-    "coursePeriodMonths": MessageLookupByLibrary.simpleMessage("Course Period (Months)"),
-    "nominationPeriodDays": MessageLookupByLibrary.simpleMessage("Nomination Period (Days)"),
-    "productOrder": MessageLookupByLibrary.simpleMessage("Product Order"),
-    "productCategory": MessageLookupByLibrary.simpleMessage("Product Category"),
-    "selectProductCategory": MessageLookupByLibrary.simpleMessage("Select a product category"),
-    "product": MessageLookupByLibrary.simpleMessage("Product"),
-    "selectProduct": MessageLookupByLibrary.simpleMessage("Select a product"),
-    "requestLines": MessageLookupByLibrary.simpleMessage("Order Lines"),
-    "addLine": MessageLookupByLibrary.simpleMessage("Add Line"),
-    "invalidQuantity": MessageLookupByLibrary.simpleMessage("Please enter a valid quantity"),
-    "reason": MessageLookupByLibrary.simpleMessage("Reason"),
-    "reasonHint": MessageLookupByLibrary.simpleMessage("Enter the reason for this request"),
-    "isGift": MessageLookupByLibrary.simpleMessage("Is Gift"),
   };
 }

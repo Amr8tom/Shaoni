@@ -251,12 +251,7 @@ class S {
 
   /// `Manager`
   String get manager {
-    return Intl.message(
-      'Manager',
-      name: 'manager',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Manager', name: 'manager', desc: '', args: []);
   }
 
   /// `Submitted Requests`
@@ -6366,12 +6361,7 @@ class S {
 
   /// `Start Work`
   String get startWork {
-    return Intl.message(
-      'Start Work',
-      name: 'startWork',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Start Work', name: 'startWork', desc: '', args: []);
   }
 
   /// `Start Work Type`
@@ -6396,12 +6386,7 @@ class S {
 
   /// `Employee`
   String get employee {
-    return Intl.message(
-      'Employee',
-      name: 'employee',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Employee', name: 'employee', desc: '', args: []);
   }
 
   /// `Select Employee`
@@ -6536,22 +6521,12 @@ class S {
 
   /// `Issue Date`
   String get issueDate {
-    return Intl.message(
-      'Issue Date',
-      name: 'issueDate',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Issue Date', name: 'issueDate', desc: '', args: []);
   }
 
   /// `Matched`
   String get tabaq {
-    return Intl.message(
-      'Matched',
-      name: 'tabaq',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Matched', name: 'tabaq', desc: '', args: []);
   }
 
   /// `Under Sponsorship`
@@ -6566,12 +6541,7 @@ class S {
 
   /// `Sponsor Name`
   String get kafeelName {
-    return Intl.message(
-      'Sponsor Name',
-      name: 'kafeelName',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Sponsor Name', name: 'kafeelName', desc: '', args: []);
   }
 
   /// `Passport Number`
@@ -6726,12 +6696,7 @@ class S {
 
   /// `Course`
   String get course {
-    return Intl.message(
-      'Course',
-      name: 'course',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Course', name: 'course', desc: '', args: []);
   }
 
   /// `Select a course`
@@ -6826,12 +6791,7 @@ class S {
 
   /// `Product`
   String get product {
-    return Intl.message(
-      'Product',
-      name: 'product',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Product', name: 'product', desc: '', args: []);
   }
 
   /// `Select a product`
@@ -6856,12 +6816,7 @@ class S {
 
   /// `Add Line`
   String get addLine {
-    return Intl.message(
-      'Add Line',
-      name: 'addLine',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Add Line', name: 'addLine', desc: '', args: []);
   }
 
   /// `Please enter a valid quantity`
@@ -6876,12 +6831,7 @@ class S {
 
   /// `Reason`
   String get reason {
-    return Intl.message(
-      'Reason',
-      name: 'reason',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Reason', name: 'reason', desc: '', args: []);
   }
 
   /// `Enter the reason for this request`
@@ -6896,9 +6846,39 @@ class S {
 
   /// `Is Gift`
   String get isGift {
+    return Intl.message('Is Gift', name: 'isGift', desc: '', args: []);
+  }
+
+  /// `National ID`
+  String get nationalId {
+    return Intl.message('National ID', name: 'nationalId', desc: '', args: []);
+  }
+
+  /// `Residency ID`
+  String get residencyId {
     return Intl.message(
-      'Is Gift',
-      name: 'isGift',
+      'Residency ID',
+      name: 'residencyId',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Passport`
+  String get passport {
+    return Intl.message('Passport', name: 'passport', desc: '', args: []);
+  }
+
+  /// `Family Card`
+  String get familyCard {
+    return Intl.message('Family Card', name: 'familyCard', desc: '', args: []);
+  }
+
+  /// `Driving License`
+  String get drivingLicense {
+    return Intl.message(
+      'Driving License',
+      name: 'drivingLicense',
       desc: '',
       args: [],
     );

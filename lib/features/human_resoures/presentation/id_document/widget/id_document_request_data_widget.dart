@@ -28,17 +28,13 @@ class IDDocumentRequestDataWidget extends StatelessWidget {
               : cubit.requestTypeController.text,
           onChanged: (value) {
             cubit.requestTypeController.text = value ?? '';
-            // Clear document type selection when request type changes
-            cubit.documentTypeController.clear();
             cubit.notifyDropdownChanged();
           },
           validator: (v) =>
               (v == null || v.isEmpty) ? S.current.thisFieldRequired : null,
         ),
+        // ── النوع (document type) — always visible ────────────────────────
         const Sizer(height: 20),
-
-        // ── النوع (document type) ─────────────────────────────────────────
-        // Value stored is the CODE (e.g. 'national_id'), not the display name.
         DDropdownField(
           label: S.current.documentType,
           hint: S.current.selectDocumentType,

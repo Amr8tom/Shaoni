@@ -30,9 +30,7 @@ class IDDocumentBaseFieldsWidget extends StatelessWidget {
           value: cubit.issuingCountryController.text.isEmpty
               ? null
               : cubit.issuingCountryController.text,
-          onChanged: (value) {
-            cubit.issuingCountryController.text = value ?? '';
-          },
+          onChanged: cubit.onCountrySelected,
           validator: (v) =>
               (v == null || v.isEmpty) ? S.current.thisFieldRequired : null,
         ),
@@ -80,10 +78,49 @@ class IDDocumentBaseFieldsWidget extends StatelessWidget {
               initialDate: DateTime.now(),
               firstDate: DateTime(1900),
               lastDate: DateTime(2100),
+              builder: (
+              BuildContext context,
+              Widget? child,
+            ) {
+              return Theme(
+                data: Theme.of(context).copyWith(
+                  colorScheme: ColorScheme.light(
+                    primary: ColorRes.primary,
+                    onPrimary: ColorRes.white,
+                    surface: ColorRes.white,
+                    onSurface: ColorRes.black,
+                  ),
+                  textTheme: TextTheme(
+                    titleLarge: TextStyle(
+                      color: ColorRes.black,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 6,
+                    ),
+                  ),
+                  dialogTheme: DialogTheme(
+                    backgroundColor: ColorRes.white,
+                    titleTextStyle: Theme.of(
+                      context,
+                    ).textTheme.headlineSmall?.copyWith(
+                      color: ColorRes.black,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 6,
+                    ),
+                  ),
+                  textButtonTheme: TextButtonThemeData(
+                    style: TextButton.styleFrom(
+                      foregroundColor: ColorRes.primary,
+                    ),
+                  ),
+                ),
+                child: child!,
+              );
+            },
+
             );
             if (picked != null) {
               cubit.issueDateController.text =
-                  DateFormat('yyyy-MM-dd').format(picked);
+                  DateFormat('yyyy-MM-dd','en').format(picked);
             }
           },
           validator: (v) =>
@@ -105,10 +142,48 @@ class IDDocumentBaseFieldsWidget extends StatelessWidget {
               initialDate: DateTime.now(),
               firstDate: DateTime(1900),
               lastDate: DateTime(2100),
+              builder: (
+                  BuildContext context,
+                  Widget? child,
+                  ) {
+                return Theme(
+                  data: Theme.of(context).copyWith(
+                    colorScheme: ColorScheme.light(
+                      primary: ColorRes.primary,
+                      onPrimary: ColorRes.white,
+                      surface: ColorRes.white,
+                      onSurface: ColorRes.black,
+                    ),
+                    textTheme: TextTheme(
+                      titleLarge: TextStyle(
+                        color: ColorRes.black,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 6,
+                      ),
+                    ),
+                    dialogTheme: DialogTheme(
+                      backgroundColor: ColorRes.white,
+                      titleTextStyle: Theme.of(
+                        context,
+                      ).textTheme.headlineSmall?.copyWith(
+                        color: ColorRes.black,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 6,
+                      ),
+                    ),
+                    textButtonTheme: TextButtonThemeData(
+                      style: TextButton.styleFrom(
+                        foregroundColor: ColorRes.primary,
+                      ),
+                    ),
+                  ),
+                  child: child!,
+                );
+              },
             );
             if (picked != null) {
               cubit.endDateController.text =
-                  DateFormat('yyyy-MM-dd').format(picked);
+                  DateFormat('yyyy-MM-dd','en').format(picked);
             }
           },
           validator: (v) =>

@@ -52,6 +52,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "addEmail": MessageLookupByLibrary.simpleMessage(
       "إضافة بريد إلكتروني جديد",
     ),
+    "addLine": MessageLookupByLibrary.simpleMessage("إضافة بند"),
     "addNew": MessageLookupByLibrary.simpleMessage(" اضف جديد"),
     "addNewAddress": MessageLookupByLibrary.simpleMessage("إضافة عنوان"),
     "addPassword": MessageLookupByLibrary.simpleMessage("إضافة كلمة مرور"),
@@ -149,17 +150,6 @@ class MessageLookup extends MessageLookupByLibrary {
     "carPermitRequest": MessageLookupByLibrary.simpleMessage("طلب تصريح سيارة"),
     "carType": MessageLookupByLibrary.simpleMessage("نوع السيارة (الماركة)"),
     "cart": MessageLookupByLibrary.simpleMessage("العربة"),
-    "certificateReason": MessageLookupByLibrary.simpleMessage(
-      "سبب طلب شهادة الخبرة",
-    ),
-    "selectCertificateReason":
-        MessageLookupByLibrary.simpleMessage("اختر السبب"),
-    "selectDocumentType":
-        MessageLookupByLibrary.simpleMessage("اختر النوع"),
-    "selectIssuingCountry":
-        MessageLookupByLibrary.simpleMessage("اختر دولة الإصدار"),
-    "selectRequestType":
-        MessageLookupByLibrary.simpleMessage("اختر نوع الطلب"),
     "cashBack": MessageLookupByLibrary.simpleMessage("كاش باك"),
     "cashOnDelivery": MessageLookupByLibrary.simpleMessage(
       "الدفع عند الاستلام",
@@ -173,6 +163,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "cat": MessageLookupByLibrary.simpleMessage("التصنيف: "),
     "categories": MessageLookupByLibrary.simpleMessage("الاقسام"),
     "category": MessageLookupByLibrary.simpleMessage("القسم"),
+    "certificateReason": MessageLookupByLibrary.simpleMessage(
+      "سبب طلب شهادة الخبرة",
+    ),
     "change": MessageLookupByLibrary.simpleMessage(" تغيير "),
     "changeColor": MessageLookupByLibrary.simpleMessage("تغيير اللون"),
     "chatUs": MessageLookupByLibrary.simpleMessage("تحدث الينا "),
@@ -244,6 +237,11 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "coontinue": MessageLookupByLibrary.simpleMessage("متابعة"),
     "cost": MessageLookupByLibrary.simpleMessage("التكلفة"),
+    "course": MessageLookupByLibrary.simpleMessage("الدورة التدريبية"),
+    "courseDetails": MessageLookupByLibrary.simpleMessage("تفاصيل الدورة"),
+    "coursePeriodMonths": MessageLookupByLibrary.simpleMessage(
+      "مدة الدورة (بالأشهر)",
+    ),
     "course_duration_months": MessageLookupByLibrary.simpleMessage(
       "مدة الدورة (أشهر)",
     ),
@@ -321,6 +319,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "diseasesWrite": MessageLookupByLibrary.simpleMessage(
       "اكتب إذا كان لديك أي مشاكل مرضية",
     ),
+    "documentData": MessageLookupByLibrary.simpleMessage("بيانات الوثيقة"),
+    "documentNumber": MessageLookupByLibrary.simpleMessage("رقم المستند"),
+    "documentType": MessageLookupByLibrary.simpleMessage("النوع"),
     "does": MessageLookupByLibrary.simpleMessage(
       "هل يحتاج المستخدم إلى أي مساعدة خاصة؟",
     ),
@@ -335,6 +336,10 @@ class MessageLookup extends MessageLookupByLibrary {
     "downloadingQuran": MessageLookupByLibrary.simpleMessage(
       "جاري تنزيل القرآن...",
     ),
+    "drivingLicense": MessageLookupByLibrary.simpleMessage("رخصة قيادة"),
+    "drivingLicenseNumber": MessageLookupByLibrary.simpleMessage(
+      "رقم رخصة سياقة",
+    ),
     "duis": MessageLookupByLibrary.simpleMessage(
       "   هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل الخارجي للنص",
     ),
@@ -344,9 +349,8 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "eMail": MessageLookupByLibrary.simpleMessage("البريد الالكتروني"),
     "editProduct": MessageLookupByLibrary.simpleMessage("تَــعديـل المُنـتج"),
-    "editRequest": MessageLookupByLibrary.simpleMessage("تعديل الطلب"),
     "editReasons": MessageLookupByLibrary.simpleMessage("أسباب التعديل"),
-    "rejectReasons": MessageLookupByLibrary.simpleMessage("أسباب الرفض"),
+    "editRequest": MessageLookupByLibrary.simpleMessage("تعديل الطلب"),
     "eggs": MessageLookupByLibrary.simpleMessage("عجة بيض + سلطة خضراء + خبز"),
     "egy": MessageLookupByLibrary.simpleMessage("مصري"),
     "ejad": MessageLookupByLibrary.simpleMessage("شركة ايجاد الحلول الرقمية"),
@@ -358,7 +362,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "emailPasswordSend": MessageLookupByLibrary.simpleMessage(
       "تم إرسال كود إعادة التعيين",
     ),
-    "endDate": MessageLookupByLibrary.simpleMessage("تاريخ الانتهاء"),
+    "employee": MessageLookupByLibrary.simpleMessage("الموظف"),
+    "endDate": MessageLookupByLibrary.simpleMessage("النهاية م"),
     "endOfServiceRequest": MessageLookupByLibrary.simpleMessage(
       "طلب نهاية خدمة",
     ),
@@ -386,27 +391,6 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "error": MessageLookupByLibrary.simpleMessage("هناك خطأ ما"),
     "errorOccurred": MessageLookupByLibrary.simpleMessage("حدث خطأ ما"),
-    "experienceCertificate":
-        MessageLookupByLibrary.simpleMessage("شهادة الخبرة"),
-    "documentData": MessageLookupByLibrary.simpleMessage("بيانات الوثيقة"),
-    "documentNumber": MessageLookupByLibrary.simpleMessage("رقم المستند"),
-    "documentType": MessageLookupByLibrary.simpleMessage("النوع"),
-    "drivingLicenseNumber":
-        MessageLookupByLibrary.simpleMessage("رقم رخصة سياقة"),
-    "endDate": MessageLookupByLibrary.simpleMessage("النهاية م"),
-    "familyCardNumber":
-        MessageLookupByLibrary.simpleMessage("رقم بطاقة عائلية"),
-    "hasKafala": MessageLookupByLibrary.simpleMessage("هل علي كفالة"),
-    "idRenewalDocument":
-        MessageLookupByLibrary.simpleMessage("طلب تجديد / إضافة وثيقة ثبوتية"),
-    "issueDate": MessageLookupByLibrary.simpleMessage("تاريخ الإصدار م"),
-    "issueNumber": MessageLookupByLibrary.simpleMessage("رقم الإصدار"),
-    "issuingCountry": MessageLookupByLibrary.simpleMessage("دولة الإصدار"),
-    "kafeelName": MessageLookupByLibrary.simpleMessage("اسم الكفيل"),
-    "passportAddress": MessageLookupByLibrary.simpleMessage("عنوان جواز السفر"),
-    "passportNumber": MessageLookupByLibrary.simpleMessage("رقم جواز السفر"),
-    "requestType": MessageLookupByLibrary.simpleMessage("نوع الطلب"),
-    "tabaq": MessageLookupByLibrary.simpleMessage("طبق"),
     "eveningShift": MessageLookupByLibrary.simpleMessage(
       "رقم الوردية المسائية",
     ),
@@ -419,6 +403,9 @@ class MessageLookup extends MessageLookupByLibrary {
       "طلب إذن خروج",
     ),
     "exitPermissionTitle": MessageLookupByLibrary.simpleMessage("طلب إذن خروج"),
+    "experienceCertificate": MessageLookupByLibrary.simpleMessage(
+      "شهادة الخبرة",
+    ),
     "expiredProducts": MessageLookupByLibrary.simpleMessage(
       "المنتجات منتهية الصلاحية أو الأصناف المنتهية الصلاحية.......تخلص من الأصناف منتهية الصلاحية عن طريق رفع المنتجات المنتهية الصلاحية أو التالفة",
     ),
@@ -441,6 +428,11 @@ class MessageLookup extends MessageLookupByLibrary {
     "fal": MessageLookupByLibrary.simpleMessage(
       "2 ساندوتش فلافل + 1 ساندوتش فول + 1 بيضة + 1 سلطة خضراء",
     ),
+    "familyCard": MessageLookupByLibrary.simpleMessage("بطاقة عائلية"),
+    "familyCardNumber": MessageLookupByLibrary.simpleMessage(
+      "رقم بطاقة عائلية",
+    ),
+    "familyMembers": MessageLookupByLibrary.simpleMessage("أفراد الأسرة"),
     "faq": MessageLookupByLibrary.simpleMessage("الأسئلة الشائعة"),
     "favorite": MessageLookupByLibrary.simpleMessage("المفضلة"),
     "favoriteItems": MessageLookupByLibrary.simpleMessage(
@@ -528,6 +520,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "guide": MessageLookupByLibrary.simpleMessage("إرشاد"),
     "ha": MessageLookupByLibrary.simpleMessage("الحج - عرفة"),
     "hajj": MessageLookupByLibrary.simpleMessage("نشاط الحج"),
+    "hasKafala": MessageLookupByLibrary.simpleMessage("هل علي كفالة"),
     "helper": MessageLookupByLibrary.simpleMessage("مسـاعده"),
     "hh": MessageLookupByLibrary.simpleMessage("ي/ش/س  س:د"),
     "hijriDate": MessageLookupByLibrary.simpleMessage("التاريخ الهجري"),
@@ -553,12 +546,18 @@ class MessageLookup extends MessageLookupByLibrary {
     "humanResources": MessageLookupByLibrary.simpleMessage("الموارد البشرية"),
     "huv": MessageLookupByLibrary.simpleMessage("دليل الحج والعمرة بالفيديو"),
     "iAgreeTo": MessageLookupByLibrary.simpleMessage("أوافق على"),
+    "idRenewalDocument": MessageLookupByLibrary.simpleMessage(
+      "طلب تجديد / إضافة وثيقة ثبوتية",
+    ),
     "idRenewalRequest": MessageLookupByLibrary.simpleMessage("طلب تجديد هوية"),
     "imHereToHelp": MessageLookupByLibrary.simpleMessage(
       "أَنا هُنا لمُساعَدَتَكَ بِما ينفع في دِينِكَ وَرِحلَتِكَ، فَقَط حَدِّثني بِما تُريدُ ِ",
     ),
     "image": MessageLookupByLibrary.simpleMessage("صورة"),
     "inProgress": MessageLookupByLibrary.simpleMessage("قيد التنفيذ"),
+    "includeFamilyMembers": MessageLookupByLibrary.simpleMessage(
+      "تضمين أفراد الأسرة",
+    ),
     "information": MessageLookupByLibrary.simpleMessage("المعلومات"),
     "installmentWithSouhoola": MessageLookupByLibrary.simpleMessage(
       "قسط مع سهولة",
@@ -573,11 +572,19 @@ class MessageLookup extends MessageLookupByLibrary {
     "installmentsServices": MessageLookupByLibrary.simpleMessage(
       "خدمات الأقساط",
     ),
+    "insuranceClass": MessageLookupByLibrary.simpleMessage("فئة التأمين"),
     "invalidEmail": MessageLookupByLibrary.simpleMessage(
       " أدخـل بـريد الكــتروني صَحـيح ",
     ),
     "invalidOtp": MessageLookupByLibrary.simpleMessage("رمز التحقق غير صحيح"),
+    "invalidQuantity": MessageLookupByLibrary.simpleMessage(
+      "يرجى إدخال كمية صحيحة",
+    ),
+    "isGift": MessageLookupByLibrary.simpleMessage("هدية"),
     "isha": MessageLookupByLibrary.simpleMessage("العشاء"),
+    "issueDate": MessageLookupByLibrary.simpleMessage("تاريخ الإصدار م"),
+    "issueNumber": MessageLookupByLibrary.simpleMessage("رقم الإصدار"),
+    "issuingCountry": MessageLookupByLibrary.simpleMessage("دولة الإصدار"),
     "jeddah": MessageLookupByLibrary.simpleMessage("جده"),
     "juz": MessageLookupByLibrary.simpleMessage("جزء"),
     "juzIndex": MessageLookupByLibrary.simpleMessage("فهرس الأجزاء"),
@@ -585,6 +592,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "kaabaActivity": MessageLookupByLibrary.simpleMessage("نشاط طواف الكعبة"),
     "kaabahtawaf": MessageLookupByLibrary.simpleMessage("طواف الكعبة"),
     "kabaa": MessageLookupByLibrary.simpleMessage("الكعبة"),
+    "kafeelName": MessageLookupByLibrary.simpleMessage("اسم الكفيل"),
     "karim": MessageLookupByLibrary.simpleMessage("الكريم"),
     "language": MessageLookupByLibrary.simpleMessage("الـلغة"),
     "languageArabic": MessageLookupByLibrary.simpleMessage("العربية"),
@@ -638,8 +646,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "makka": MessageLookupByLibrary.simpleMessage("مكه"),
     "makkah": MessageLookupByLibrary.simpleMessage("مكة"),
     "male": MessageLookupByLibrary.simpleMessage("ذكر"),
-    "managerApproval": MessageLookupByLibrary.simpleMessage("موافقة المدير"),
     "manager": MessageLookupByLibrary.simpleMessage("المدير"),
+    "managerApproval": MessageLookupByLibrary.simpleMessage("موافقة المدير"),
     "markAll": MessageLookupByLibrary.simpleMessage("تحديد كمقروءة"),
     "meCo": MessageLookupByLibrary.simpleMessage("مكونات الوجبة "),
     "meal": MessageLookupByLibrary.simpleMessage("الوجبة"),
@@ -648,6 +656,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "meals": MessageLookupByLibrary.simpleMessage("الوجبات"),
     "medical": MessageLookupByLibrary.simpleMessage("طبي"),
+    "medicalInsurance": MessageLookupByLibrary.simpleMessage(
+      "طلب ترقية التأمين الطبي",
+    ),
     "medicalReportFromDoctor": MessageLookupByLibrary.simpleMessage(
       "تصريح مرضي من الطبيب",
     ),
@@ -688,6 +699,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "myWallet": MessageLookupByLibrary.simpleMessage("محفظتي"),
     "name": MessageLookupByLibrary.simpleMessage("الاسم:"),
     "nation": MessageLookupByLibrary.simpleMessage("الجنسية"),
+    "nationalId": MessageLookupByLibrary.simpleMessage("رقم الهوية"),
     "newPass": MessageLookupByLibrary.simpleMessage("كلمة مرور جديدة"),
     "newPassword": MessageLookupByLibrary.simpleMessage("كلمة المرور الجديدة"),
     "newProduct": MessageLookupByLibrary.simpleMessage("مٌــنتج جَـدٍيد"),
@@ -700,6 +712,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "noData": MessageLookupByLibrary.simpleMessage(
       "لا يــوجد شـئ في الوقت الحـالي",
+    ),
+    "noFamilyMembersFound": MessageLookupByLibrary.simpleMessage(
+      "لا يوجد أفراد أسرة",
     ),
     "noInternetConnection": MessageLookupByLibrary.simpleMessage(
       "لا يــوجد اتصال بالانترنت",
@@ -717,6 +732,15 @@ class MessageLookup extends MessageLookupByLibrary {
     "noResultsFound": MessageLookupByLibrary.simpleMessage("لا توجد نتائج"),
     "noUserFound": MessageLookupByLibrary.simpleMessage(
       "لم يتم العثور على هذه البيانات",
+    ),
+    "nominationEndDate": MessageLookupByLibrary.simpleMessage(
+      "تاريخ انتهاء الترشيح",
+    ),
+    "nominationPeriodDays": MessageLookupByLibrary.simpleMessage(
+      "فترة الترشيح (بالأيام)",
+    ),
+    "nominationStartDate": MessageLookupByLibrary.simpleMessage(
+      "تاريخ بدء الترشيح",
     ),
     "nomination_end_date": MessageLookupByLibrary.simpleMessage(
       "تاريخ نهاية الترشيح",
@@ -738,6 +762,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "notVerified": MessageLookupByLibrary.simpleMessage("يرجى تفعيل حسابك"),
     "notes": MessageLookupByLibrary.simpleMessage("ملاحظات إضافية"),
+    "notesHint": MessageLookupByLibrary.simpleMessage(
+      "أدخل الملاحظات (اختياري)",
+    ),
     "notification": MessageLookupByLibrary.simpleMessage("الإشعارات"),
     "notifications": MessageLookupByLibrary.simpleMessage("الاشعارات"),
     "offers": MessageLookupByLibrary.simpleMessage("العـروض"),
@@ -803,6 +830,9 @@ class MessageLookup extends MessageLookupByLibrary {
       "نحن نقوم بتجهيز طلبك والبحث عن أقرب توصيل",
     ),
     "passNo": MessageLookupByLibrary.simpleMessage("رقم جواز السفر"),
+    "passport": MessageLookupByLibrary.simpleMessage("جواز سفر"),
+    "passportAddress": MessageLookupByLibrary.simpleMessage("عنوان جواز السفر"),
+    "passportNumber": MessageLookupByLibrary.simpleMessage("رقم جواز السفر"),
     "password": MessageLookupByLibrary.simpleMessage("كلمة المرور"),
     "passwordEmpty": MessageLookupByLibrary.simpleMessage(
       "كلمة المرور لا يمكن أن تكون فارغة",
@@ -874,8 +904,11 @@ class MessageLookup extends MessageLookupByLibrary {
     "produce": MessageLookupByLibrary.simpleMessage(
       "إنتاج مجمع الملك فهد لطباعة المصحف الشريف بالمدينة المنورة",
     ),
+    "product": MessageLookupByLibrary.simpleMessage("المنتج"),
+    "productCategory": MessageLookupByLibrary.simpleMessage("فئة المنتج"),
     "productDescription": MessageLookupByLibrary.simpleMessage("وصف المنتج"),
     "productName": MessageLookupByLibrary.simpleMessage("اسم المنتج"),
+    "productOrder": MessageLookupByLibrary.simpleMessage("طلب منتج"),
     "profile": MessageLookupByLibrary.simpleMessage("حسابي"),
     "profileInfo": MessageLookupByLibrary.simpleMessage("المـلف الشــخصي"),
     "profileInfoDes": MessageLookupByLibrary.simpleMessage(
@@ -902,6 +935,12 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "reCharge": MessageLookupByLibrary.simpleMessage("أرسال"),
     "reOrder": MessageLookupByLibrary.simpleMessage("إعادة الطلب"),
+    "reason": MessageLookupByLibrary.simpleMessage("السبب"),
+    "reasonForUpgrade": MessageLookupByLibrary.simpleMessage("سبب طلب الترقية"),
+    "reasonForUpgradeHint": MessageLookupByLibrary.simpleMessage(
+      "أدخل سبب الترقية",
+    ),
+    "reasonHint": MessageLookupByLibrary.simpleMessage("أدخل سبب الطلب"),
     "rec": MessageLookupByLibrary.simpleMessage("Rectangle 44"),
     "recentRecords": MessageLookupByLibrary.simpleMessage("السجلات الأخيرة"),
     "rechangreWallet": MessageLookupByLibrary.simpleMessage(
@@ -919,6 +958,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "تم تسـجيل حســابك بنجــاح",
     ),
     "registration": MessageLookupByLibrary.simpleMessage("ادارة الحجوزات"),
+    "rejectReasons": MessageLookupByLibrary.simpleMessage("أسباب الرفض"),
     "rejectRequest": MessageLookupByLibrary.simpleMessage("رفض الطلب"),
     "rejectedRequest": MessageLookupByLibrary.simpleMessage("طلب مرفوض"),
     "remainingLeaves": MessageLookupByLibrary.simpleMessage(
@@ -939,6 +979,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "requestData": MessageLookupByLibrary.simpleMessage("بيانات الطلب"),
     "requestDetails": MessageLookupByLibrary.simpleMessage("بيانات الطلب"),
+    "requestLines": MessageLookupByLibrary.simpleMessage("بنود الطلب"),
     "requestNumber": MessageLookupByLibrary.simpleMessage("رقم الطلب"),
     "requestSend": MessageLookupByLibrary.simpleMessage("تم إرسال طلبك بنجاح"),
     "requestSentSuccessfully": MessageLookupByLibrary.simpleMessage(
@@ -970,6 +1011,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "residenceKeywords": MessageLookupByLibrary.simpleMessage(
       "سكن,إقامة,اقامة,منزل,بيت,مسكن,فندق,شقة,غرفة,إقامة,سكني,معيشة,مأوى,ماوى,مسكن,عنوان,موقع,مكان,مبنى,جناح,شالية,فيلا,مجمع,دار,منشأة,استراحة,نزل,قصر,عمارة,برج,حي,منطقة",
     ),
+    "residencyId": MessageLookupByLibrary.simpleMessage("رقم الإقامة"),
     "resolved": MessageLookupByLibrary.simpleMessage("تم الحل"),
     "results": MessageLookupByLibrary.simpleMessage("نتيجة"),
     "retry": MessageLookupByLibrary.simpleMessage("إعادة المحاولة"),
@@ -1018,6 +1060,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "selectCarColor": MessageLookupByLibrary.simpleMessage("اختر لون السيارة"),
     "selectCategory": MessageLookupByLibrary.simpleMessage("اختر الفئة"),
+    "selectCertificateReason": MessageLookupByLibrary.simpleMessage(
+      "اختر السبب",
+    ),
     "selectCity": MessageLookupByLibrary.simpleMessage("المدينة"),
     "selectComplaintReason": MessageLookupByLibrary.simpleMessage(
       "اختر سبب الشكوى",
@@ -1026,15 +1071,30 @@ class MessageLookup extends MessageLookupByLibrary {
       "اختر نوع الشكوى",
     ),
     "selectCountry": MessageLookupByLibrary.simpleMessage("الـدولـة"),
+    "selectCourse": MessageLookupByLibrary.simpleMessage(
+      "اختر الدورة التدريبية",
+    ),
     "selectDate": MessageLookupByLibrary.simpleMessage("اختر التوقيت"),
     "selectDep": MessageLookupByLibrary.simpleMessage("اختر مدينة المغادرة"),
     "selectDepartment": MessageLookupByLibrary.simpleMessage("اختر القسم"),
+    "selectDocumentType": MessageLookupByLibrary.simpleMessage("اختر النوع"),
+    "selectEmployee": MessageLookupByLibrary.simpleMessage("اختر الموظف"),
+    "selectInsuranceClass": MessageLookupByLibrary.simpleMessage(
+      "اختر فئة التأمين",
+    ),
     "selectIssueDep": MessageLookupByLibrary.simpleMessage("آختر قسم المشكله "),
+    "selectIssuingCountry": MessageLookupByLibrary.simpleMessage(
+      "اختر دولة الإصدار",
+    ),
     "selectLanguage": MessageLookupByLibrary.simpleMessage("أختيار اللغة"),
     "selectLuggage": MessageLookupByLibrary.simpleMessage(" اختر الأمتعة"),
     "selectNation": MessageLookupByLibrary.simpleMessage("اختر الجنسية"),
     "selectOneActivity": MessageLookupByLibrary.simpleMessage(
       "اختر احد الانشاط",
+    ),
+    "selectProduct": MessageLookupByLibrary.simpleMessage("اختر منتجاً"),
+    "selectProductCategory": MessageLookupByLibrary.simpleMessage(
+      "اختر فئة المنتج",
     ),
     "selectQuantitiy": MessageLookupByLibrary.simpleMessage(
       "حـــدد الكِمــية أولاً ",
@@ -1043,6 +1103,10 @@ class MessageLookup extends MessageLookupByLibrary {
       "اختر نمط القراءة",
     ),
     "selectRegion": MessageLookupByLibrary.simpleMessage(" المنطقــة "),
+    "selectRequestType": MessageLookupByLibrary.simpleMessage("اختر نوع الطلب"),
+    "selectStartWorkType": MessageLookupByLibrary.simpleMessage(
+      "اختر نوع بدء العمل",
+    ),
     "selectStudyDestination": MessageLookupByLibrary.simpleMessage(
       "اختر الجهة",
     ),
@@ -1097,12 +1161,6 @@ class MessageLookup extends MessageLookupByLibrary {
     "startSearch": MessageLookupByLibrary.simpleMessage("ابدا البحث"),
     "startWork": MessageLookupByLibrary.simpleMessage("بدء العمل"),
     "startWorkType": MessageLookupByLibrary.simpleMessage("نوع بدء العمل"),
-    "selectStartWorkType": MessageLookupByLibrary.simpleMessage(
-      "اختر نوع بدء العمل",
-    ),
-    "employee": MessageLookupByLibrary.simpleMessage("الموظف"),
-    "selectEmployee": MessageLookupByLibrary.simpleMessage("اختر الموظف"),
-    "writeNoteHere": MessageLookupByLibrary.simpleMessage("اكتب الملاحظة هنا..."),
     "status": MessageLookupByLibrary.simpleMessage("الحالة"),
     "stoning": MessageLookupByLibrary.simpleMessage("رجم الشيطان في منى"),
     "streetName": MessageLookupByLibrary.simpleMessage("أسم الشارع"),
@@ -1132,6 +1190,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "tabToSelectLuggage": MessageLookupByLibrary.simpleMessage(
       "اضغط لتحديد الأمتعة",
     ),
+    "tabaq": MessageLookupByLibrary.simpleMessage("طبق"),
     "tapToRead": MessageLookupByLibrary.simpleMessage("اضغط للقراءة"),
     "tawafStart": MessageLookupByLibrary.simpleMessage(
       "سيبدأ نشاط الطواف بالكعبة خلال 30 دقيقة",
@@ -1188,6 +1247,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "tourDetails": MessageLookupByLibrary.simpleMessage("تفاصيل الرحلة"),
     "tourForm": MessageLookupByLibrary.simpleMessage("بيانات نموذج الرحلة"),
     "tours": MessageLookupByLibrary.simpleMessage("الرحـلات"),
+    "trainingRequest": MessageLookupByLibrary.simpleMessage("طلب تدريب"),
     "training_course_data": MessageLookupByLibrary.simpleMessage(
       "بيانات الدورات التدريبية",
     ),
@@ -1305,6 +1365,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "writeMob": MessageLookupByLibrary.simpleMessage("اكتب رقم الجوال"),
     "writeNAme": MessageLookupByLibrary.simpleMessage("اكتب اسمك هنا"),
+    "writeNoteHere": MessageLookupByLibrary.simpleMessage(
+      "اكتب الملاحظة هنا...",
+    ),
     "writeReqDetailsHere": MessageLookupByLibrary.simpleMessage(
       "اكتب تفاصيل الطلب هنا",
     ),
@@ -1314,33 +1377,5 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "yes": MessageLookupByLibrary.simpleMessage("نعم"),
     "youHave": MessageLookupByLibrary.simpleMessage("  لديــك "),
-    "medicalInsurance": MessageLookupByLibrary.simpleMessage("طلب ترقية التأمين الطبي"),
-    "insuranceClass": MessageLookupByLibrary.simpleMessage("فئة التأمين"),
-    "selectInsuranceClass": MessageLookupByLibrary.simpleMessage("اختر فئة التأمين"),
-    "includeFamilyMembers": MessageLookupByLibrary.simpleMessage("تضمين أفراد الأسرة"),
-    "familyMembers": MessageLookupByLibrary.simpleMessage("أفراد الأسرة"),
-    "noFamilyMembersFound": MessageLookupByLibrary.simpleMessage("لا يوجد أفراد أسرة"),
-    "reasonForUpgrade": MessageLookupByLibrary.simpleMessage("سبب طلب الترقية"),
-    "reasonForUpgradeHint": MessageLookupByLibrary.simpleMessage("أدخل سبب الترقية"),
-    "notesHint": MessageLookupByLibrary.simpleMessage("أدخل الملاحظات (اختياري)"),
-    "trainingRequest": MessageLookupByLibrary.simpleMessage("طلب تدريب"),
-    "course": MessageLookupByLibrary.simpleMessage("الدورة التدريبية"),
-    "selectCourse": MessageLookupByLibrary.simpleMessage("اختر الدورة التدريبية"),
-    "courseDetails": MessageLookupByLibrary.simpleMessage("تفاصيل الدورة"),
-    "nominationStartDate": MessageLookupByLibrary.simpleMessage("تاريخ بدء الترشيح"),
-    "nominationEndDate": MessageLookupByLibrary.simpleMessage("تاريخ انتهاء الترشيح"),
-    "coursePeriodMonths": MessageLookupByLibrary.simpleMessage("مدة الدورة (بالأشهر)"),
-    "nominationPeriodDays": MessageLookupByLibrary.simpleMessage("فترة الترشيح (بالأيام)"),
-    "productOrder": MessageLookupByLibrary.simpleMessage("طلب منتج"),
-    "productCategory": MessageLookupByLibrary.simpleMessage("فئة المنتج"),
-    "selectProductCategory": MessageLookupByLibrary.simpleMessage("اختر فئة المنتج"),
-    "product": MessageLookupByLibrary.simpleMessage("المنتج"),
-    "selectProduct": MessageLookupByLibrary.simpleMessage("اختر منتجاً"),
-    "requestLines": MessageLookupByLibrary.simpleMessage("بنود الطلب"),
-    "addLine": MessageLookupByLibrary.simpleMessage("إضافة بند"),
-    "invalidQuantity": MessageLookupByLibrary.simpleMessage("يرجى إدخال كمية صحيحة"),
-    "reason": MessageLookupByLibrary.simpleMessage("السبب"),
-    "reasonHint": MessageLookupByLibrary.simpleMessage("أدخل سبب الطلب"),
-    "isGift": MessageLookupByLibrary.simpleMessage("هدية"),
   };
 }

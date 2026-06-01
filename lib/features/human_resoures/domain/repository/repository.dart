@@ -34,6 +34,7 @@ import '../entity/experience_certificate/certificate_reason.dart';
 import '../entity/experience_certificate/create_experience_certificate_response.dart';
 import '../use_cases/experience_certificate/create_experience_certificate_use_case.dart';
 import '../use_cases/experience_certificate/update_experience_certificate_use_case.dart';
+import '../entity/id_document/country.dart';
 import '../entity/id_document/department.dart';
 import '../entity/id_document/id_renewal_request_type.dart';
 import '../entity/id_document/create_id_document_response.dart';
@@ -147,6 +148,10 @@ abstract class HRServicesRepository {
   });
 
   /// ///////////////////////////////////// id document /////////////////////////////////////////////////////
+  Future<Either<Failure, List<Country>>> getCountries({
+    required NoParams params,
+  });
+
   Future<Either<Failure, List<Department>>> getDepartments({
     required NoParams params,
   });
