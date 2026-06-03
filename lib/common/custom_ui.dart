@@ -188,7 +188,7 @@ class CustomUI {
     return ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text(message ?? S.current.done),
-        backgroundColor: Colors.green,
+        backgroundColor: ColorRes.success,
         behavior: SnackBarBehavior.floating,
       ),
     );

@@ -24,7 +24,7 @@ class CommentWritingWidget extends StatelessWidget {
         padding: EdgeInsets.all(AppSizes.padding),
         decoration: BoxDecoration(
           border: Border.all(width: 1, color: ColorRes.greyForBorders),
-          color: Colors.white,
+          color: ColorRes.white,
           borderRadius: BorderRadius.circular(AppSizes.borderRadiusLarge),
         ),
         child: Column(

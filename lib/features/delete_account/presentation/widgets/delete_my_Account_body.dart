@@ -137,14 +137,14 @@ class DeleteMyAccountBody extends StatelessWidget {
                             children: [
                               Icon(
                                 Icons.delete_outline,
-                                color: Colors.white,
+                                color: ColorRes.white,
                                 size: AppSizes.iconSm,
                               ),
                               const Sizer(width: 8),
                               Text(
                                 S.current.deleteAccount,
                                 style: TextStyle(
-                                  color: Colors.white,
+                                  color: ColorRes.white,
                                   fontSize: AppSizes.fontSizeSm,
                                   fontWeight: FontWeight.w600,
                                 ),
@@ -266,7 +266,7 @@ class DeleteMyAccountBody extends StatelessWidget {
                 Expanded(
                   child: OutlinedButton(
                     style: OutlinedButton.styleFrom(
-                      side: BorderSide(color: ColorRes.primary),
+                      side: const BorderSide(color: ColorRes.primary),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(AppSizes.borderRadiusSm),
                       ),
@@ -274,7 +274,7 @@ class DeleteMyAccountBody extends StatelessWidget {
                     onPressed: () => Navigator.pop(dialogContext),
                     child: Text(
                       S.current.cancleOrder,
-                      style: TextStyle(
+                      style: const TextStyle(
                         color: ColorRes.primary,
                         fontWeight: FontWeight.w600,
                       ),
@@ -302,7 +302,7 @@ class DeleteMyAccountBody extends StatelessWidget {
                     child: Text(
                       S.current.deleteAccount,
                       style: const TextStyle(
-                        color: Colors.white,
+                        color: ColorRes.white,
                         fontWeight: FontWeight.w600,
                       ),
                     ),
@@ -383,7 +383,7 @@ class DeleteMyAccountBody extends StatelessWidget {
                 child: Text(
                   S.current.backToHome,
                   style: const TextStyle(
-                    color: Colors.white,
+                    color: ColorRes.white,
                     fontWeight: FontWeight.w600,
                   ),
                 ),

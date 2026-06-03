@@ -34,7 +34,7 @@ class NotificationCard extends StatelessWidget {
         ),
         child: Theme(
           data: Theme.of(context).copyWith(
-            dividerColor: Colors.transparent,
+            dividerColor: ColorRes.transparent,
             expansionTileTheme: ExpansionTileThemeData(
               tilePadding: EdgeInsets.all(AppSizes.padding),
               childrenPadding: EdgeInsets.zero,
@@ -90,8 +90,8 @@ class NotificationCard extends StatelessWidget {
                 size: AppSizes.iconMd,
               ),
             ),
-            iconColor: Colors.transparent,
-            collapsedIconColor: Colors.transparent,
+            iconColor: ColorRes.transparent,
+            collapsedIconColor: ColorRes.transparent,
             children: [
               Container(
                 width: double.infinity,

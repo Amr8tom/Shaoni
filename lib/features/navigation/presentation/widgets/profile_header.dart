@@ -36,15 +36,15 @@ class ProfileHeader extends StatelessWidget {
             Container(
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                color: Colors.white,
+                color: ColorRes.white,
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.black.withValues(alpha: 0.2),
+                    color: ColorRes.black.withValues(alpha: 0.2),
                     blurRadius: 10,
                     offset: const Offset(0, 3),
                   ),
                   BoxShadow(
-                    color: Colors.white.withValues(alpha: 0.5),
+                    color: ColorRes.white.withValues(alpha: 0.5),
                     blurRadius: 8,
                     offset: const Offset(0, -2),
                   ),
@@ -78,7 +78,7 @@ class ProfileHeader extends StatelessWidget {
               ),
             ),
         
-              Sizer(width: 8),
+              const Sizer(width: 8),
               /// User info column
               Expanded(
                 child: Column(
@@ -89,7 +89,7 @@ class ProfileHeader extends StatelessWidget {
                     Text(
                       S.current.welcome,
                       style: TextStyle(
-                        color: Colors.white.withValues(alpha: 0.9),
+                        color: ColorRes.white.withValues(alpha: 0.9),
                         fontSize: AppSizes.fontSizeMd,
                         fontWeight: FontWeight.w800,
                         height: 1.3,
@@ -101,8 +101,8 @@ class ProfileHeader extends StatelessWidget {
                     const Sizer(height: 2),
                     Text(
                       controller.state.user?.fullName ?? "مصطفى ذكريا محمد",
-                      style: TextStyle(
-                        color: Colors.white,
+                      style:  TextStyle(
+                        color: ColorRes.white,
                         fontSize: AppSizes.fontSizeSm,
                         fontWeight: FontWeight.w600,
                         height: 1.2,
@@ -111,31 +111,6 @@ class ProfileHeader extends StatelessWidget {
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                     ),
-                    // Text(
-                    //   S.current.welcome,
-                    //   style: TextStyle(
-                    //     color: Colors.white.withValues(alpha: 0.9),
-                    //     fontSize: 10.sp,
-                    //     fontWeight: FontWeight.w500,
-                    //     height: 1.3,
-                    //     letterSpacing: 0.2,
-                    //   ),
-                    //   maxLines: 1,
-                    //   overflow: TextOverflow.ellipsis,
-                    // ),
-                    // const Sizer(height: 2),
-                    // Text(
-                    //   controller.state.user?.fullName ?? "مصطفى ذكريا محمد",
-                    //   style: TextStyle(
-                    //     color: Colors.white,
-                    //     fontSize: 11.sp,
-                    //     fontWeight: FontWeight.w700,
-                    //     height: 1.2,
-                    //     letterSpacing: 0.3,
-                    //   ),
-                    //   maxLines: 1,
-                    //   overflow: TextOverflow.ellipsis,
-                    // ),
                   ],
                 ),
               ),

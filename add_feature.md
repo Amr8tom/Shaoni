@@ -294,6 +294,19 @@ presentation/
 - **Text Styles**: `Theme.of(context).textTheme.bodyLarge?.copyWith(...)`.
 - **Controllers**: All `TextEditingController` instances live in the Cubit and are disposed in `close()`.
 
+#### Spacing Examples:
+- ✅ `const Sizer(height: 8)`
+- ✅ `const Sizer(width: 12)`
+- ❌ `const SizedBox(height: 8)`
+- ❌ `Sizer(height: 8.h)`
+- ❌ `Sizer(width: AppSizes.sm)`
+
+#### Color Examples:
+- ✅ `color: ColorRes.white`
+- ✅ `color: ColorRes.primary`
+- ❌ `color: Colors.white`
+- ❌ `color: Color(0xFFE8B4A8)`
+
 ---
 
 ## 5. Final Sanity Check

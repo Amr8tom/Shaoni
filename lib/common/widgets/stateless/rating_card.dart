@@ -32,7 +32,7 @@ class RatingCard extends StatelessWidget {
         ),
         boxShadow:const [
           BoxShadow(
-            color: Colors.black26,
+            color: ColorRes.grey5,
             blurRadius: 10,
           )
         ],
@@ -51,11 +51,11 @@ class RatingCard extends StatelessWidget {
             Container(
               height: 25,
               width: 25,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 shape: BoxShape.circle,
-                color: Colors.grey.shade200,
+                color: ColorRes.grey6,
               ),
-              child: const Icon(Icons.close,color: Colors.black,),
+              child: const Icon(Icons.close,color: ColorRes.black,),
             ),
           ],),
           const Sizer(height: 8),
@@ -74,7 +74,7 @@ class RatingCard extends StatelessWidget {
             itemPadding: const EdgeInsets.symmetric(horizontal: 4.0),
             itemBuilder: (context, _) => const Icon(
               Icons.star,
-              color: Colors.amber,
+              color: ColorRes.gold,
             ),
             onRatingUpdate: onRatingChanged,
           ),
@@ -105,7 +105,7 @@ class RatingCard extends StatelessWidget {
               width: double.infinity,
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
               decoration: BoxDecoration(
-                color: Colors.grey[200],
+                color: ColorRes.grey6,
                 borderRadius: BorderRadius.circular(30),
               ),
               child: Row(
@@ -113,9 +113,9 @@ class RatingCard extends StatelessWidget {
                 children: [
                   Text(
                     S.current.thankFeed,
-                    style:const TextStyle(color: Colors.grey),
+                    style:const TextStyle(color: ColorRes.grey),
                   ),
-                  const Icon(Icons.arrow_forward_ios, color: Colors.grey, size: 16),
+                  const Icon(Icons.arrow_forward_ios, color: ColorRes.grey, size: 16),
                 ],
               ),
             ),
@@ -126,7 +126,7 @@ class RatingCard extends StatelessWidget {
             child: ElevatedButton(
               style: ElevatedButton.styleFrom(
                 backgroundColor: ColorRes.primary,
-                foregroundColor: Colors.white,
+                foregroundColor: ColorRes.white,
                 padding:const EdgeInsets.symmetric(vertical: 12),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10),

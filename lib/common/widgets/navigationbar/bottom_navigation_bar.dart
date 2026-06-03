@@ -49,7 +49,7 @@ class CustomBottomNavigationBar extends StatelessWidget {
         filter: ImageFilter.blur(sigmaX: 4, sigmaY: 4),
         child: Container(
           height: DDeviceUtils.getBottomNavigationBarHeight() * 1.3.sp,
-          margin: EdgeInsets.only(bottom: 0),
+          margin: const EdgeInsets.only(bottom: 0),
           padding: EdgeInsets.symmetric(
             horizontal: AppSizes.padding / 3,
             vertical: AppSizes.padding / 3,
@@ -111,7 +111,7 @@ class CustomBottomNavigationBar extends StatelessWidget {
               // vertical: 10.h,
             ),
             decoration: BoxDecoration(
-              color: isActive ? ColorRes.white : Colors.transparent,
+              color: isActive ? ColorRes.white : ColorRes.transparent,
               borderRadius: BorderRadius.all(
                 Radius.circular(AppSizes.borderRadiusXXLg * 4),
               ),
@@ -119,7 +119,7 @@ class CustomBottomNavigationBar extends StatelessWidget {
                   isActive
                       ? [
                         BoxShadow(
-                          color: Colors.white.withValues(alpha: 0.3),
+                          color: ColorRes.white.withValues(alpha: 0.3),
                           blurRadius: 8,
                           offset: const Offset(0, 2),
                         ),
@@ -137,7 +137,7 @@ class CustomBottomNavigationBar extends StatelessWidget {
                   colorFilter: ColorFilter.mode(
                     isActive
                         ? ColorRes.primary
-                        : Colors.white.withValues(alpha: 0.6),
+                        : ColorRes.white.withValues(alpha: 0.6),
                     BlendMode.srcIn,
                   ),
                 );

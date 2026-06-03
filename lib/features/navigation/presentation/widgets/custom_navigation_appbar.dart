@@ -65,7 +65,7 @@ PreferredSizeWidget customAppBar({
           child: Directionality(
               textDirection: S.current.localeee=='en'?TextDirection.ltr:TextDirection.rtl,
 
-              child: SvgPicture.asset(AssetRes.menuIcon, color: ColorRes.white))):Sizer(),
+              child: SvgPicture.asset(AssetRes.menuIcon, color: ColorRes.white))):const Sizer(),
 
       const Sizer(width: 15),
     ],

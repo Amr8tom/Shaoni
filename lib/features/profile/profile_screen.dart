@@ -8,7 +8,6 @@ import 'package:shaoni/core/constants/app_sizes.dart';
 import 'package:shaoni/core/extentions/navigation_extension.dart';
 import 'package:shaoni/core/routing/route_names.dart';
 import 'package:shaoni/core/service_locator/service_locator.dart';
-import 'package:shaoni/core/widgets/buttons/d_button.dart';
 import 'package:shaoni/features/navigation/data/model/user_model.dart';
 import 'package:shaoni/features/navigation/presentation/controllers/navigation_cubit.dart';
 import 'package:shaoni/features/profile/presentation/controllers/profile_cubit.dart';
@@ -79,14 +78,14 @@ class ProfileScreen extends StatelessWidget {
                                   height: 120.w,
                                   decoration: BoxDecoration(
                                     shape: BoxShape.circle,
-                                    color: const Color(0xFFE8B4A8),
+                                    color: ColorRes.error.withOpacity(0.3),
                                   ),
                                 ),
 
                                 /// Avatar image
                                 Positioned.fill(
                                   child: CircleAvatar(
-                                    backgroundColor: Colors.transparent,
+                                    backgroundColor: ColorRes.transparent,
                                     backgroundImage: AssetImage(
                                       state.gender == 1
                                           ? AssetRes.man1
@@ -282,8 +281,8 @@ class ProfileScreen extends StatelessWidget {
                 //     ),
                 //   ),
                 // ),
-                Sizer(
-                  height: AppSizes.appBarHeight * 1.6,
+                const Sizer(
+                  height: 90,
                 )
               ],
             );

@@ -19,7 +19,7 @@ class CustomSideMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      backgroundColor: Colors.white,
+      backgroundColor: ColorRes.white,
       width: DDeviceUtils.getScreenWidth(context) / 1.4,
       child: SafeArea(
         child: Column(

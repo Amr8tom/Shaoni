@@ -52,7 +52,7 @@ class SettingsTile extends StatelessWidget {
         isDestructive ? ColorRes.error : ColorRes.primary;
 
     return Material(
-      color: Colors.transparent,
+      color: ColorRes.transparent,
       child: InkWell(
         onTap: onTap,
         borderRadius: BorderRadius.circular(AppSizes.borderRadiusLg),

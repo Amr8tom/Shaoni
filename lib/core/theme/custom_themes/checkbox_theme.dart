@@ -10,16 +10,16 @@ class DCheckBoxTheme {
     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),
     checkColor: WidgetStateProperty.resolveWith((states) {
       if (states.contains(WidgetState.selected)) {
-        return Colors.white;
+        return ColorRes.white;
       } else {
-        return Colors.black;
+        return ColorRes.black;
       }
     }),
     fillColor: WidgetStateProperty.resolveWith((states) {
       if (states.contains(WidgetState.selected)) {
         return ColorRes.primary;
       } else {
-        return Colors.transparent;
+        return ColorRes.transparent;
       }
     }),
   );
@@ -29,16 +29,16 @@ class DCheckBoxTheme {
     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),
     checkColor: WidgetStateProperty.resolveWith((states) {
       if (states.contains(WidgetState.selected)) {
-        return Colors.white;
+        return ColorRes.white;
       } else {
-        return Colors.black;
+        return ColorRes.black;
       }
     }),
     fillColor: WidgetStateProperty.resolveWith((states) {
       if (states.contains(WidgetState.selected)) {
-        return Colors.blueGrey.withOpacity(.8);
+        return ColorRes.grey.withOpacity(.8);
       } else {
-        return Colors.transparent;
+        return ColorRes.transparent;
       }
     }),
   );

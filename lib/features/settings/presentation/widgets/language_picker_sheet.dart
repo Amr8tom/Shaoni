@@ -19,7 +19,7 @@ import '../../../language/presentation/controller/language_cubit.dart';
 Future<void> showLanguagePickerSheet(BuildContext context) {
   return showModalBottomSheet<void>(
     context: context,
-    backgroundColor: Colors.transparent,
+    backgroundColor: ColorRes.transparent,
     isScrollControlled: true,
     builder: (_) => const _LanguagePickerSheet(),
   );
@@ -137,7 +137,7 @@ class _LanguageOption extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
-      color: Colors.transparent,
+      color: ColorRes.transparent,
       child: InkWell(
         onTap: onTap,
         borderRadius: BorderRadius.circular(AppSizes.borderRadiusLg),

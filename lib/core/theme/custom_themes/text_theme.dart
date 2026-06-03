@@ -79,28 +79,28 @@ class DTextTheme {
   static TextTheme darkTextTheme = TextTheme(
     // button: TextStyle(fontSize: 45.sp),
     headlineLarge: TextStyle().copyWith(
-        fontSize: 32.sp, fontWeight: FontWeight.bold, color: Colors.white),
+        fontSize: 32.sp, fontWeight: FontWeight.bold, color: ColorRes.white),
     headlineMedium: TextStyle().copyWith(
-        fontSize: 24.sp, fontWeight: FontWeight.w600, color: Colors.white),
+        fontSize: 24.sp, fontWeight: FontWeight.w600, color: ColorRes.white),
     headlineSmall: TextStyle().copyWith(
-        fontSize: 18.sp, fontWeight: FontWeight.w600, color: Colors.white),
+        fontSize: 18.sp, fontWeight: FontWeight.w600, color: ColorRes.white),
     titleLarge: TextStyle().copyWith(
-        fontSize: 16.sp, fontWeight: FontWeight.w600, color: Colors.white),
+        fontSize: 16.sp, fontWeight: FontWeight.w600, color: ColorRes.white),
     titleMedium: TextStyle().copyWith(
-        fontSize: 16.sp, fontWeight: FontWeight.w500, color: Colors.white),
+        fontSize: 16.sp, fontWeight: FontWeight.w500, color: ColorRes.white),
     titleSmall: TextStyle().copyWith(
-        fontSize: 16.sp, fontWeight: FontWeight.w400, color: Colors.white),
+        fontSize: 16.sp, fontWeight: FontWeight.w400, color: ColorRes.white),
     bodyLarge: TextStyle(overflow: TextOverflow.ellipsis).copyWith(
-        fontSize: 14.sp, fontWeight: FontWeight.w500, color: Colors.white),
+        fontSize: 14.sp, fontWeight: FontWeight.w500, color: ColorRes.white),
     bodyMedium: TextStyle(overflow: TextOverflow.clip).copyWith(
-        fontSize: 14.sp, fontWeight: FontWeight.normal, color: Colors.white),
+        fontSize: 14.sp, fontWeight: FontWeight.normal, color: ColorRes.white),
     bodySmall: TextStyle().copyWith(
-        fontSize: 14.sp, fontWeight: FontWeight.w500, color: Colors.white),
+        fontSize: 14.sp, fontWeight: FontWeight.w500, color: ColorRes.white),
     labelLarge: TextStyle().copyWith(
-        fontSize: 12.sp, fontWeight: FontWeight.normal, color: Colors.white),
+        fontSize: 12.sp, fontWeight: FontWeight.normal, color: ColorRes.white),
     labelMedium: TextStyle().copyWith(
         fontSize: 12.sp,
         fontWeight: FontWeight.normal,
-        color: Colors.white.withOpacity(0.5)),
+        color: ColorRes.white.withOpacity(0.5)),
   );
 }

@@ -9,10 +9,10 @@ class DOutlinedButtonTheme {
   static final lightOutlinedButtonTheme = OutlinedButtonThemeData(
     style: OutlinedButton.styleFrom(
       elevation: 0,
-      foregroundColor: Colors.black,
+      foregroundColor: ColorRes.black,
       side: const BorderSide(color: ColorRes.primary),
       textStyle: TextStyle(
-          fontSize: 16, color: Colors.black, fontWeight: FontWeight.w600),
+          fontSize: 16, color: ColorRes.black, fontWeight: FontWeight.w600),
       padding: EdgeInsets.symmetric(vertical: 16, horizontal: 20),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
     ),
@@ -22,10 +22,10 @@ class DOutlinedButtonTheme {
   static final darkOutlinedButtonTheme = OutlinedButtonThemeData(
     style: OutlinedButton.styleFrom(
       elevation: 0,
-      foregroundColor: Colors.white,
+      foregroundColor: ColorRes.white,
       side: const BorderSide(color: ColorRes.primary),
       textStyle: TextStyle(
-          fontSize: 16, color: Colors.white, fontWeight: FontWeight.w600),
+          fontSize: 16, color: ColorRes.white, fontWeight: FontWeight.w600),
       padding: EdgeInsets.symmetric(vertical: 16, horizontal: 20),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
     ),

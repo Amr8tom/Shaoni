@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shaoni/features/details_and_edit_for_requests/presentation/controller/my_requests_cubit.dart';
 import 'package:shaoni/features/navigation/presentation/controllers/navigation_cubit.dart';
 import '../../../../core/constants/app_sizes.dart';
+import '../../../../core/constants/colors.dart';
 import '../../../../generated/l10n.dart';
 import '../../../home/presentation/widgets/manager_requests_grid_view.dart';
 import '../../../home/presentation/widgets/user_requests_grid_view.dart';
@@ -20,7 +21,7 @@ class MyRequestsScreen extends StatelessWidget {
           TabBar(
             indicatorColor: Theme.of(context).primaryColor, // Or ColorRes.primary
             labelColor: Theme.of(context).primaryColor,
-            unselectedLabelColor: Colors.grey, // Or ColorRes.grey
+            unselectedLabelColor: ColorRes.grey, // Or ColorRes.grey
             tabs:  [
               Tab(text: S.current.myOrders),
               Tab(text: S.current.submittedRequests),

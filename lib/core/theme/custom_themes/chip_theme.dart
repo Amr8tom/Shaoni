@@ -6,18 +6,18 @@ class DChipTheme {
   DChipTheme._();
 
   static ChipThemeData lightChipTheme = ChipThemeData(
-    disabledColor: Colors.grey.withOpacity(0.4),
-    labelStyle: const TextStyle(color: Colors.black),
+    disabledColor: ColorRes.grey.withOpacity(0.4),
+    labelStyle: const TextStyle(color: ColorRes.black),
     selectedColor: ColorRes.primary,
-    padding: EdgeInsets.symmetric(horizontal: 12, vertical: 12),
-    checkmarkColor: Colors.white,
+    padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
+    checkmarkColor: ColorRes.white,
   );
 
   static ChipThemeData darkChipTheme = ChipThemeData(
-    disabledColor: Colors.grey,
-    labelStyle: const TextStyle(color: Colors.white),
+    disabledColor: ColorRes.grey,
+    labelStyle: const TextStyle(color: ColorRes.white),
     selectedColor: ColorRes.primary,
-    padding: EdgeInsets.symmetric(horizontal: 12, vertical: 12),
-    checkmarkColor: Colors.white,
+    padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
+    checkmarkColor: ColorRes.white,
   );
 }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../../core/constants/app_sizes.dart';
-import '../../../../generated/l10n.dart';
+import '../../../../core/constants/colors.dart';
 
 class PageIndicator extends StatelessWidget {
   final int currentPage;
@@ -26,8 +26,8 @@ class PageIndicator extends StatelessWidget {
             height: AppSizes.xs,
             decoration: BoxDecoration(
               color: currentPage == index
-                  ? const Color(0xFF2C2C2C)
-                  : const Color(0xFFE0E0E0),
+                  ? ColorRes.realBlack
+                  : ColorRes.grey5,
               borderRadius: BorderRadius.circular(AppSizes.xs / 2),
             ),
           ),

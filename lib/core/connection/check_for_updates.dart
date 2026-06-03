@@ -26,10 +26,10 @@ void _showUpdateDialog({
   showDialog(
     context: context,
     barrierDismissible: false,
-    barrierColor: Colors.black54,
+    barrierColor: ColorRes.black.withOpacity(0.54),
     builder: (context) {
       return Dialog(
-        backgroundColor: Colors.transparent,
+        backgroundColor: ColorRes.transparent,
         elevation: 0,
         child: Container(
           decoration: BoxDecoration(
@@ -37,7 +37,7 @@ void _showUpdateDialog({
             borderRadius: BorderRadius.circular(AppSizes.borderRadiusLarge),
             boxShadow: [
               BoxShadow(
-                color: Colors.black.withOpacity(0.15),
+                color: ColorRes.black.withOpacity(0.15),
                 blurRadius: 24,
                 offset: const Offset(0, 8),
               ),

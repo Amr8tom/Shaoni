@@ -145,6 +145,7 @@ color: ColorRes.primary,
 color: ColorRes.primary.withValues(alpha: 0.1), // tints
 border: Border.all(color: ColorRes.grey5),
 ```
+**Never use raw `Colors.xxx` or `Color(0x...)` in UI widgets.**
 
 ### 5.3 Sizes — `AppSizes` (ScreenUtil-backed)
 ```dart
@@ -159,7 +160,8 @@ Use `AppSizes` for padding, radius, icon sizes, button sizes, and fixed widget d
 const Sizer(height: 16),   // vertical gap
 const Sizer(width: 8),     // horizontal gap
 ```
-Use `Sizer` for empty gaps only. Pass raw design numbers because `Sizer` already applies `flutter_screenutil` internally:
+Use `Sizer` for empty gaps only. **Never use empty `SizedBox`.**
+Pass raw design numbers because `Sizer` already applies `flutter_screenutil` internally:
 
 ```dart
 // Good
@@ -170,6 +172,7 @@ const Sizer(width: 12);
 SizedBox(height: 8);
 Sizer(height: 8.h);
 Sizer(height: AppSizes.sm);
+Sizer(width: double.infinity);
 ```
 
 ### 5.5 Images / icons — `AssetRes`

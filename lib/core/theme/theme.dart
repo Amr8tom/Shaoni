@@ -23,7 +23,6 @@ class DAppTheme {
       brightness: Brightness.light,
       primaryColor: ColorRes.black,
       scaffoldBackgroundColor: ColorRes.grey6,
-      primarySwatch: Colors.blue,
       textTheme: DTextTheme.lightTextTheme,
       chipTheme: DChipTheme.lightChipTheme,
       textSelectionTheme: DTextSelectionTheme.lightTextSelection,

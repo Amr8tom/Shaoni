@@ -139,7 +139,7 @@ class DButton extends StatelessWidget {
       elevation: useShadow ? _getElevation() : 0,
       // Modified this line
       shadowColor:
-          useShadow ? ColorRes.black.withOpacity(0.15) : Colors.transparent,
+          useShadow ? ColorRes.black.withOpacity(0.15) : ColorRes.transparent,
       // Enhanced shadow
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(
@@ -161,9 +161,9 @@ class DButton extends StatelessWidget {
       case DButtonVariant.secondary:
         return ColorRes.white;
       case DButtonVariant.outline:
-        return Colors.transparent;
+        return ColorRes.transparent;
       case DButtonVariant.text:
-        return Colors.transparent;
+        return ColorRes.transparent;
     }
   }
 

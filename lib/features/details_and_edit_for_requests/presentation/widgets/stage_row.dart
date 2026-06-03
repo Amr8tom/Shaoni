@@ -58,7 +58,7 @@ class StageRow extends StatelessWidget {
         // ── Content ──────────────────────────────────────────────────────
         Expanded(
           child: Padding(
-            padding: EdgeInsets.only(
+            padding: const EdgeInsets.only(
               top: 6,
               bottom: isLast ? 0 : 28,
             ),
@@ -165,7 +165,7 @@ class NodeCircle extends StatelessWidget {
           shape: BoxShape.circle,
           color: activeColor,
         ),
-        child: const Icon(Icons.check, color: Colors.white, size: 16),
+        child: const Icon(Icons.check, color: ColorRes.white, size: 16),
       );
     }
 
@@ -198,7 +198,7 @@ class NodeCircle extends StatelessWidget {
       height: 30,
       decoration: BoxDecoration(
         shape: BoxShape.circle,
-        color: Colors.transparent,
+        color: ColorRes.transparent,
         border: Border.all(color: ColorRes.grey2.withOpacity(0.35), width: 2),
       ),
       child: Center(

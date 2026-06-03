@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-
 import '../../constants/app_sizes.dart';
+import '../../constants/colors.dart';
 
 class DBottomSheetTheme {
   DBottomSheetTheme._();
 
   static BottomSheetThemeData lightBottomSheetTheme = BottomSheetThemeData(
     showDragHandle: true,
-    backgroundColor: Colors.white,
-    modalBackgroundColor: Colors.white,
+    backgroundColor: ColorRes.white,
+    modalBackgroundColor: ColorRes.white,
     constraints: const BoxConstraints(minWidth: double.infinity),
     shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(AppSizes.productImageRadius)),
@@ -16,8 +16,8 @@ class DBottomSheetTheme {
 
   static BottomSheetThemeData darkBottomSheetTheme = BottomSheetThemeData(
     showDragHandle: true,
-    backgroundColor: Colors.black,
-    modalBackgroundColor: Colors.black,
+    backgroundColor: ColorRes.black,
+    modalBackgroundColor: ColorRes.black,
     constraints: const BoxConstraints(minWidth: double.infinity),
     shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(AppSizes.productImageRadius)),

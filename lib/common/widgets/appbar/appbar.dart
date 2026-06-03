@@ -59,7 +59,7 @@ class DAppBar extends StatelessWidget implements PreferredSizeWidget {
       children: [
         Container(
           decoration: BoxDecoration(
-            color: showBackGroundColor ? Colors.grey[200] : ColorRes.primary,
+            color: showBackGroundColor ? ColorRes.grey6 : ColorRes.primary,
             boxShadow: [
               BoxShadow(
                 color: ColorRes.gold.withOpacity(0.1),

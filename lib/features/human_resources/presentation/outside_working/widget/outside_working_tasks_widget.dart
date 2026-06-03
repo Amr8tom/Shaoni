@@ -56,7 +56,7 @@ class _EmployeeTaskCard extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         color: ColorRes.white,
-        border: Border.all(color: Colors.grey.shade200),
+        border: Border.all(color: ColorRes.grey5),
         borderRadius: BorderRadius.circular(12),
       ),
       padding: const EdgeInsets.all(16),
@@ -68,7 +68,7 @@ class _EmployeeTaskCard extends StatelessWidget {
             'Employee ID: ${employee.id}',
             style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                   fontWeight: FontWeight.w600,
-                  color: Colors.grey.shade700,
+                  color: ColorRes.black,
                 ),
           ),
           const Sizer(height: 14),
@@ -133,7 +133,7 @@ class _EmployeeTaskCard extends StatelessWidget {
                                       fontWeight: FontWeight.w500,
                                     )),
                         const Sizer(width: 4),
-                        Text('*',
+                        const Text('*',
                             style: TextStyle(
                                 color: ColorRes.error,
                                 fontWeight: FontWeight.bold)),
@@ -144,17 +144,17 @@ class _EmployeeTaskCard extends StatelessWidget {
                       controller: data.tasksController,
                       decoration: InputDecoration(
                         hintText: 'المهام الموكلة لهذا الموظف...',
-                        hintStyle: TextStyle(
-                            fontSize: 12, color: Colors.grey.shade400),
+                        hintStyle: const TextStyle(
+                            fontSize: 12, color: ColorRes.grey2),
                         contentPadding: const EdgeInsets.symmetric(
                             horizontal: 12, vertical: 10),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(8),
-                          borderSide: BorderSide(color: Colors.grey.shade300),
+                          borderSide: const BorderSide(color: ColorRes.grey5),
                         ),
                         enabledBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(8),
-                          borderSide: BorderSide(color: Colors.grey.shade300),
+                          borderSide: const BorderSide(color: ColorRes.grey5),
                         ),
                       ),
                       validator: (v) => (v == null || v.isEmpty)
@@ -176,7 +176,7 @@ class _EmployeeTaskCard extends StatelessWidget {
                         fontWeight: FontWeight.w500,
                       )),
               const Sizer(width: 4),
-              Text('*',
+              const Text('*',
                   style: TextStyle(
                       color: ColorRes.error, fontWeight: FontWeight.bold)),
             ],
@@ -187,16 +187,16 @@ class _EmployeeTaskCard extends StatelessWidget {
             decoration: InputDecoration(
               hintText: 'مهمة خاصة ...',
               hintStyle:
-                  TextStyle(fontSize: 12, color: Colors.grey.shade400),
+                  const TextStyle(fontSize: 12, color: ColorRes.grey2),
               contentPadding:
                   const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(8),
-                borderSide: BorderSide(color: Colors.grey.shade300),
+                borderSide: const BorderSide(color: ColorRes.grey5),
               ),
               enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(8),
-                borderSide: BorderSide(color: Colors.grey.shade300),
+                borderSide: const BorderSide(color: ColorRes.grey5),
               ),
             ),
             validator: (v) =>
@@ -224,7 +224,7 @@ class _StyledDropdown extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        border: Border.all(color: Colors.grey.shade300),
+        border: Border.all(color: ColorRes.grey5),
         borderRadius: BorderRadius.circular(8),
       ),
       padding: const EdgeInsets.symmetric(horizontal: 10),

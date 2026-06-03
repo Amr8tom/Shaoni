@@ -15,7 +15,7 @@ class DElevatedButtonTheme {
       backgroundColor: ColorRes.primary,
       padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
       textStyle: TextStyle(
-          color: Colors.white,
+          color: ColorRes.white,
           fontFamily: "Cairo",
           fontSize: 21,
           fontWeight: FontWeight.bold),
@@ -32,7 +32,7 @@ class DElevatedButtonTheme {
       backgroundColor: ColorRes.primary,
       padding: EdgeInsets.symmetric(horizontal: 15, vertical: 5),
       textStyle: TextStyle(
-          color: Colors.white,
+          color: ColorRes.white,
           fontFamily: "Cairo",
           fontSize: 21,
           fontWeight: FontWeight.bold),

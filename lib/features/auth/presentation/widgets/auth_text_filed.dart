@@ -137,16 +137,16 @@ class _AuthTextFieldState extends State<AuthTextField> {
 
   Widget? _getDefaultIcon() {
     if (widget.isEmail) {
-      return const Icon(Icons.email_outlined, color: Colors.grey);
+      return const Icon(Icons.email_outlined, color: ColorRes.grey);
     }
     if (widget.isPassword) {
-      return const Icon(Icons.lock_outline, color: Colors.grey);
+      return const Icon(Icons.lock_outline, color: ColorRes.grey);
     }
     if (widget.isPhone) {
-      return const Icon(Icons.phone_outlined, color: Colors.grey);
+      return const Icon(Icons.phone_outlined, color: ColorRes.grey);
     }
     if (widget.isDate) {
-      return const Icon(Icons.calendar_today_outlined, color: Colors.grey);
+      return const Icon(Icons.calendar_today_outlined, color: ColorRes.grey);
     }
     return null;
   }
@@ -156,7 +156,7 @@ class _AuthTextFieldState extends State<AuthTextField> {
       return IconButton(
         icon: Icon(
           _showPassword ? Icons.visibility_off : Icons.visibility,
-          color: Colors.grey,
+          color: ColorRes.grey,
         ),
         onPressed: () {
           setState(() {
@@ -166,7 +166,7 @@ class _AuthTextFieldState extends State<AuthTextField> {
       );
     }
     if (widget.isDate) {
-      return const Icon(Icons.add, color: Colors.brown);
+      return const Icon(Icons.add, color: ColorRes.primary);
     }
     return null;
   }

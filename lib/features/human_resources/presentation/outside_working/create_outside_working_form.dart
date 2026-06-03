@@ -201,7 +201,7 @@ class CreateOutsideWorkingForm extends StatelessWidget {
                         if (isSubmitting)
                           Positioned.fill(
                             child: Container(
-                              color: Colors.black12,
+                              color: ColorRes.black.withOpacity(0.12),
                               child: Center(
                                 child: CircularProgressIndicator(
                                   color: ColorRes.primary,

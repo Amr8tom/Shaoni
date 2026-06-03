@@ -78,7 +78,7 @@ class _LeavesAttachmentWidgetState extends State<LeavesAttachmentWidget> {
       SnackBar(
         content: Text(
           message,
-          style: const TextStyle(color: Colors.white),
+          style: const TextStyle(color: ColorRes.white),
         ),
         backgroundColor: background,
         duration: const Duration(seconds: 3),
@@ -151,7 +151,7 @@ class _AttachmentFileCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
-      color: Colors.transparent,
+      color: ColorRes.transparent,
       child: InkWell(
         onTap: onDownload,
         borderRadius: BorderRadius.circular(AppSizes.borderRadiusLg),
@@ -290,7 +290,7 @@ class _AttachmentFileCard extends StatelessWidget {
                         child: CircularProgressIndicator(
                           strokeWidth: 2,
                           valueColor:
-                              const AlwaysStoppedAnimation<Color>(Colors.white),
+                              const AlwaysStoppedAnimation<Color>(ColorRes.white),
                         ),
                       )
                     : Icon(

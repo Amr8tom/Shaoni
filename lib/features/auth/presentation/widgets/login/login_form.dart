@@ -49,14 +49,14 @@ class LoginForm extends StatelessWidget {
                 validator: Validators.username,
                 hint: S.current.userName,
                 controller: controller.nameController,
-                prefixIcon: Icon(Icons.person, color: ColorRes.grey),
+                prefixIcon: const Icon(Icons.person, color: ColorRes.grey),
               ),
               AuthTextField(
                 isPassword: true,
                 validator: Validators.password,
                 hint: S.current.password,
                 controller: controller.passwordController,
-                prefixIcon: Icon(
+                prefixIcon: const Icon(
                   Icons.lock_open_sharp,
                   color: ColorRes.grey,
                 ),
@@ -86,7 +86,7 @@ class LoginForm extends StatelessWidget {
               ),
               const Sizer(height: 20),
               controller.state.status.isLoggingIn
-                  ? CircularProgressIndicator(
+                  ? const CircularProgressIndicator(
                       color: ColorRes.primary,
                     )
                   : AuthButton(
@@ -103,18 +103,18 @@ class LoginForm extends StatelessWidget {
               // // ── OR divider ───────────────────────────────────────────────
               // Row(
               //   children: [
-              //     Expanded(child: Divider(color: Colors.grey.shade300)),
+              //     Expanded(child: Divider(color: ColorRes.grey.shade300)),
               //     Padding(
               //       padding: const EdgeInsets.symmetric(horizontal: 12),
               //       child: Text(
               //         'OR',
               //         style: Theme.of(context).textTheme.bodySmall?.copyWith(
-              //               color: Colors.grey.shade500,
+              //               color: ColorRes.grey.shade500,
               //               fontWeight: FontWeight.w500,
               //             ),
               //       ),
               //     ),
-              //     Expanded(child: Divider(color: Colors.grey.shade300)),
+              //     Expanded(child: Divider(color: ColorRes.grey.shade300)),
               //   ],
               // ),
               //
@@ -123,7 +123,7 @@ class LoginForm extends StatelessWidget {
               // Text(
               //   'or continue with:',
               //   style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-              //         color: Colors.grey.shade700,
+              //         color: ColorRes.grey.shade700,
               //       ),
               //   textAlign: TextAlign.center,
               // ),
@@ -154,7 +154,7 @@ class LoginForm extends StatelessWidget {
               //       child: const Icon(
               //         Icons.apple_rounded,
               //         size: 32,
-              //         color: Colors.black,
+              //         color: ColorRes.black,
               //       ),
               //     ),
               //   ],
@@ -173,7 +173,7 @@ class LoginForm extends StatelessWidget {
                     style: Theme.of(context).textTheme.bodyMedium,
                     children: [
                       const TextSpan(text: "Don't have an account? "),
-                      TextSpan(
+                      const TextSpan(
                         text: 'Sign Up',
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
@@ -194,13 +194,13 @@ class LoginForm extends StatelessWidget {
                   style: Theme.of(context)
                       .textTheme
                       .bodyMedium
-                      ?.copyWith(color: Colors.grey.shade600),
+                      ?.copyWith(color: ColorRes.grey),
                   children: [
                     TextSpan(text: S.current.byContinuingYouAgreeToOur),
                     TextSpan(
                       text: S.current.privacyPolicy,
-                      style: TextStyle(
-                        color: Colors.grey.shade700,
+                      style: const TextStyle(
+                        color: ColorRes.grey,
                         decoration: TextDecoration.underline,
                       ),
                     ),
@@ -232,8 +232,8 @@ class _SocialLoginButton extends StatelessWidget {
         height: 64,
         decoration: BoxDecoration(
           shape: BoxShape.circle,
-          color: Colors.grey.shade100,
-          border: Border.all(color: Colors.grey.shade200),
+          color: ColorRes.grey6,
+          border: Border.all(color: ColorRes.grey5),
         ),
         child: Center(child: child),
       ),

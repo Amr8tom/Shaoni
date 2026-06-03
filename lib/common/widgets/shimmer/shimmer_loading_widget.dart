@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
+import '../../../core/constants/colors.dart';
+
 class ShimmerLoadingWidget extends StatelessWidget {
   final double width;
   final double height;
@@ -19,7 +21,7 @@ class ShimmerLoadingWidget extends StatelessWidget {
         width: width,
         height: height,
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: ColorRes.white,
           borderRadius: BorderRadius.circular(borderRadius),
         ),
       ),

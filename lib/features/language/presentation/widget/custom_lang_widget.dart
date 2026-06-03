@@ -53,7 +53,7 @@ class CustomLangWidget extends StatelessWidget {
               Text(
                 langName,
                 style: Theme.of(context).textTheme.headlineSmall!.copyWith(
-                  color: Colors.white,
+                  color: ColorRes.white,
                 ),
               ),
               const Spacer(),

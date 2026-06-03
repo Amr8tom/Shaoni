@@ -38,7 +38,7 @@ class ServiceRowCard extends StatelessWidget {
         : (service.nameEn ?? service.nameAr ?? '');
 
     return Material(
-      color: Colors.transparent,
+      color: ColorRes.transparent,
       child: InkWell(
         onTap: onTap,
         borderRadius: BorderRadius.circular(AppSizes.borderRadiusLg),

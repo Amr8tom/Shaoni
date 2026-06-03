@@ -76,7 +76,7 @@ class EditRequestButton extends StatelessWidget {
                     children: [
                       const Icon(
                         Icons.edit_rounded,
-                        color: Colors.white,
+                        color: ColorRes.white,
                         size: 18,
                       ),
                       const Sizer(width: 8),

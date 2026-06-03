@@ -33,11 +33,11 @@ class OutsideWorkingEmployeesWidget extends StatelessWidget {
             fillColor: ColorRes.white,
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10),
-              borderSide: BorderSide(color: Colors.grey.shade300),
+              borderSide: const BorderSide(color: ColorRes.grey5),
             ),
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10),
-              borderSide: BorderSide(color: Colors.grey.shade300),
+              borderSide: const BorderSide(color: ColorRes.grey5),
             ),
             contentPadding:
                 const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
@@ -50,7 +50,7 @@ class OutsideWorkingEmployeesWidget extends StatelessWidget {
         Container(
           decoration: BoxDecoration(
             color: ColorRes.white,
-            border: Border.all(color: Colors.grey.shade200),
+            border: Border.all(color: ColorRes.grey5),
             borderRadius: BorderRadius.circular(10),
           ),
           child: employees.isEmpty
@@ -66,7 +66,7 @@ class OutsideWorkingEmployeesWidget extends StatelessWidget {
                   physics: const NeverScrollableScrollPhysics(),
                   itemCount: employees.length,
                   separatorBuilder: (_, __) =>
-                      Divider(height: 1, color: Colors.grey.shade200),
+                      const Divider(height: 1, color: ColorRes.grey5),
                   itemBuilder: (context, index) {
                     final employee = employees[index];
                     final isSelected = cubit.isEmployeeSelected(employee);
@@ -87,7 +87,7 @@ class OutsideWorkingEmployeesWidget extends StatelessWidget {
           style: Theme.of(context)
               .textTheme
               .bodySmall
-              ?.copyWith(color: Colors.grey.shade600),
+              ?.copyWith(color: ColorRes.grey2),
         ),
       ],
     );
