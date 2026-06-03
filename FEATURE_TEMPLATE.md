@@ -515,7 +515,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../common/custom_ui.dart';
 import '../../../../../common/widgets/appbar/appbar.dart';
-import '../../../../../common/widgets/sizeboxs/Sizer.dart';
+import '../../../../../common/widgets/sized_boxes/sizer.dart';
 import '../../../../../core/constants/app_sizes.dart';
 import '../../../../../core/constants/colors.dart';
 import '../../../../../core/extentions/navigation_extension.dart';
@@ -986,10 +986,12 @@ extension RequestStatusX on CurrentStatus {
   /// Maps backend techName + service type → unified UI status.
   RequestStatusEnum getRequestStatusEnum(String? requestType) {
     final tech = techName?.toLowerCase() ?? '';
-    switch (requestType) {
-      case 'car.permission':
+    switch (ServiceCode.fromCode(requestType)) {
+      case ServiceCode.carPermission:
         if (tech == 'draft') return RequestStatusEnum.newRequest;
         // …service-specific overrides
+      default:
+        break;
     }
     // generic fallback
     if (tech.contains('reject')) return RequestStatusEnum.rejected;
@@ -1005,28 +1007,402 @@ UI compares to the enum, never the raw string → typos become compile errors.
 
 ---
 
-## 12. The "service code → widget" dispatch pattern (multi-feature apps)
+## 11.5 Edit mode — one screen handles both create & update
 
-A request's `serviceCode` decides which widget/route/cubit handles it. Key the SAME
-string in three switches; adding a feature = one `case` in each:
+Don't write a separate "edit screen." The `CreateXxxScreen` accepts an optional
+`requestId` via route arguments and flips into edit mode when it's non-null.
 
 ```dart
-// 1) Details renderer
-switch (serviceCode) {
-  case 'car.permission': return const CarPermissionDetailsWidget();
-  case 'xxx.service':    return const XxxDetailsWidget();   // ← add here
-}
-// 2) Update button → route
-switch (serviceCode) {
-  case 'xxx.service':
-    context.pushNamed(DRoutesName.createXxxRoute, arguments: {'requestId': id});
-}
-// 3) Edit cubit
-switch (serviceCode) {
-  case 'xxx.service': _getXxxEdit(); break;
+class CreateXxxScreen extends StatelessWidget {
+  final int? requestId;
+  const CreateXxxScreen({super.key, this.requestId});
+
+  bool get _isEditMode => requestId != null;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: DAppBar(
+        title: _isEditMode ? S.current.editRequest : S.current.createRequest,
+        showBackArrow: true,
+      ),
+      // ... submit button:
+      // _isEditMode
+      //   ? controller.updateXxxRequest(requestId: requestId!)
+      //   : controller.createXxxRequest()
+    );
+  }
 }
 ```
-> The service code string MUST match exactly across all three places.
+
+Route registration MUST extract `requestId` from arguments:
+```dart
+case DRoutesName.createXxxRoute:
+  final args = settings.arguments as Map<String, dynamic>?;
+  final int? requestId = args?['requestId'] as int?;
+  return PageTransition(child: CreateXxxScreen(requestId: requestId), ...);
+```
+
+Cubit needs both methods:
+```dart
+Future<void> createXxxRequest() async { ... }
+Future<void> updateXxxRequest({required int requestId}) async { ... }
+```
+
+Success dialog also reads `_isEditMode` to pick the right message:
+```dart
+title: _isEditMode ? S.current.requestUpdatedSuccessfully : S.current.requestSentSuccessfully,
+orderNumber: _isEditMode ? '' : state.requestNumber,
+```
+
+---
+
+## 11.6 Shared form widgets (reuse — don't rebuild)
+
+Every HR-style request form composes these four shared widgets so the visual language
+stays consistent. They live in `lib/features/<root>/presentation/widgets/general_request_templates/`:
+
+| Widget | What it does | Where it pulls data from |
+|---|---|---|
+| `DateDataWidget()` | Gregorian + Hijri date inputs | Reads/writes `controller.todayDateController` + `hijriDateController` |
+| `ApplicantDataWidget()` | Applicant name + org unit + office dropdown | Reads from `CacheHelper` + writes selected office id to `controller.officeIdController` |
+| `FileUploadWidget(onPickedFile:)` | Pick a file → base64 + filename | Writes to `controller.attachmentFileController` + `attachmentFileNameController` |
+| `CreateDeleteButtons(createTab:, deleteTab:)` | Floating "Save" + "Reset" buttons | Calls back into the cubit |
+
+Every create/update screen body follows the same skeleton:
+```dart
+Form(
+  key: controller.requestFormKey,
+  child: SingleChildScrollView(
+    child: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const Sizer(height: 220),
+        const DateDataWidget(),
+        const Sizer(height: 35),
+        const ApplicantDataWidget(useEnhancedDesign: true),
+        const Sizer(height: 35),
+        Text(S.current.requestDetails, style: Theme.of(context).textTheme.headlineMedium),
+        const XxxRequestDataWidget(),       // ← THIS is the only feature-specific bit
+        const Sizer(height: 35),
+        const FileUploadWidget(),
+        const Sizer(height: 120),
+      ],
+    ),
+  ),
+)
+// Floating bottom:
+CreateDeleteButtons(
+  deleteTab: () => controller.deleteXxxRequest(),
+  createTab: () {
+    if (controller.requestFormKey.currentState!.validate()) {
+      _isEditMode
+        ? controller.updateXxxRequest(requestId: requestId!)
+        : controller.createXxxRequest();
+    }
+  },
+)
+```
+**Rule:** the only screen-specific code in any create/update form is the single
+`XxxRequestDataWidget()`. Everything else is shared.
+
+---
+
+## 12. The "service code → widget" dispatch pattern (multi-feature apps)
+
+A request's backend `serviceCode` decides which widget, route, category, status,
+and edit action handles it. Convert backend strings to `ServiceCode` first; do
+not compare raw strings in widgets, cubits, or helpers.
+
+### 12.1 Source of truth — exact files
+```
+lib/core/constants/service_codes.dart
+  # canonical backend service-code enum
+
+lib/core/routing/service_route_resolver.dart
+  # ServiceCode -> DRoutesName route
+
+lib/features/details_and_edit_for_requests/presentation/helpers/get_request_details_widget.dart
+  # ServiceCode -> request details widget
+
+lib/features/details_and_edit_for_requests/presentation/controller/edit/edit_cubit.dart
+  # ServiceCode -> manager edit use case
+
+lib/features/details_and_edit_for_requests/domain/enums_and_extentions/request_enums.dart
+  # ServiceCode + backend techName -> RequestStatusEnum
+
+lib/features/services/domain/entity/services_names.dart
+  # ServiceCode category lists
+```
+
+### 12.2 Add the backend code once
+
+```dart
+enum ServiceCode {
+  carPermission('car.permission'),
+  startWork('start.work'),
+  idRenewalRequest('id.renewal.request'),
+  xxxRequest('xxx.service.code');
+
+  final String code;
+  const ServiceCode(this.code);
+
+  static ServiceCode? fromCode(String? value) {
+    final code = value?.toLowerCase().trim();
+    if (code == null || code.isEmpty) return null;
+
+    for (final serviceCode in ServiceCode.values) {
+      if (serviceCode.code == code) return serviceCode;
+    }
+    return null;
+  }
+}
+```
+
+Use canonical API codes only:
+
+```dart
+ServiceCode.startWork.code        // start.work
+ServiceCode.idRenewalRequest.code // id.renewal.request
+```
+
+Do not use old internal aliases. Always copy the canonical value from the backend/API and put it in `ServiceCode`.
+
+### 12.3 Existing service-code registry (use these names, don't invent new ones)
+| Service code             | Feature           |
+|--------------------------|-------------------|
+| `car.permission`         | Car Permission    |
+| `complaint.request`      | Complaint         |
+| `hr.exit.permission`     | Exit Permission   |
+| `hr.loan`                | Loan              |
+| `attendance.update`      | Attendance Update |
+| `visa.request`           | Visa Request      |
+| `study.request`          | Study Request     |
+| `start.work`             | Start Working     |
+| `experience.certificate` | Experience Cert.  |
+| `id.renewal.request`     | ID Document       |
+| `upgrade.medical.insurance` | Medical Insurance |
+| `training.request`       | Training          |
+| `product.request`        | Product Request   |
+| `outside.working`        | Outside Working   |
+| `scrap.request`          | Scrap Request     |
+| `new.salary.transfer`    | Salary Transfer   |
+| `employee.ticket.booking` | Employee Ticket Booking |
+| `leave.replace`          | Leave Replace     |
+| `hr.leave`               | Leave             |
+| `leave.interruption.request` | Leave Interruption |
+
+When the backend introduces a new service, add the canonical code to
+`ServiceCode`, then wire only the behavior that exists for that service.
+
+### 12.4 Route dispatch examples
+
+Routes stay centralized in `core/routing`.
+
+```dart
+static String createRouteFor(String? serviceCode) {
+  switch (ServiceCode.fromCode(serviceCode)) {
+    case ServiceCode.carPermission:
+      return DRoutesName.createCarPermissionRoute;
+    case ServiceCode.xxxRequest:
+      return DRoutesName.createXxxRoute;
+    case null:
+      return DRoutesName.noDataRoute;
+    default:
+      return DRoutesName.noDataRoute;
+  }
+}
+```
+
+Catalog and update flows only handle exceptions, then fall back to create route:
+
+```dart
+static String catalogRouteFor(String? serviceCode) {
+  switch (ServiceCode.fromCode(serviceCode)) {
+    case ServiceCode.exitPermission:
+      return DRoutesName.requestCertainService;
+    case ServiceCode.attendanceUpdate:
+      return DRoutesName.missingAttendanceHistory;
+    default:
+      return createRouteFor(serviceCode);
+  }
+}
+```
+
+```dart
+static String updateRouteFor(String? serviceCode) {
+  switch (ServiceCode.fromCode(serviceCode)) {
+    case ServiceCode.exitPermission:
+      return DRoutesName.requestCreateDetails;
+    case ServiceCode.attendanceUpdate:
+      return DRoutesName.createAttendanceRoute;
+    default:
+      return createRouteFor(serviceCode);
+  }
+}
+```
+
+Widgets use the resolver:
+
+```dart
+onTap: () => context.pushNamed(
+  ServiceRouteResolver.catalogRouteFor(service.nameEn),
+)
+```
+
+```dart
+onTap: () => context.pushNamed(
+  ServiceRouteResolver.updateRouteFor(serviceType),
+  arguments: {'requestId': int.tryParse(requestID)},
+)
+```
+
+### 12.5 Feature-specific dispatch examples
+
+Details widget dispatch:
+
+```dart
+Widget getRequestDetailsWidget({required String serviceCode}) {
+  switch (ServiceCode.fromCode(serviceCode)) {
+    case ServiceCode.xxxRequest:
+      return const XxxRequestDetailsWidget();
+    default:
+      return const Sizer();
+  }
+}
+```
+
+Manager edit dispatch:
+
+```dart
+switch (ServiceCode.fromCode(serviceCode)) {
+  case ServiceCode.xxxRequest:
+    await _getXxxEdit(requestId: requestId);
+    break;
+  default:
+    emit(state.copyWith(
+      status: EditStatus.error,
+      errorMessage: 'Edit not supported for service: $serviceCode',
+    ));
+}
+```
+
+Service categorization:
+
+```dart
+static List<ServiceCode> hrServiceKeys = [
+  ServiceCode.carPermission,
+  ServiceCode.xxxRequest,
+];
+```
+
+```dart
+final serviceCode = ServiceCode.fromCode(service.nameEn);
+
+if (ServicesNames.hrServiceKeys.contains(serviceCode)) {
+  hrServices.add(service);
+}
+```
+
+### 12.6 Each per-service details widget — uniform shape
+```dart
+class XxxRequestDetailsWidget extends StatelessWidget {
+  const XxxRequestDetailsWidget({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final controller = context.watch<MyRequestsCubit>();
+    final data = controller.state.requestDetails?.extraData?.xxx;
+
+    return Skeletonizer(
+      enabled: controller.state.status.isLoading,
+      child: Padding(
+        padding: EdgeInsets.symmetric(horizontal: AppSizes.padding),
+        child: Container(
+          padding: EdgeInsets.all(AppSizes.padding),
+          decoration: BoxDecoration(
+            color: ColorRes.white,
+            border: Border.all(width: 1, color: ColorRes.greyForBorders),
+            borderRadius: BorderRadius.circular(AppSizes.borderRadiusLarge),
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(S.current.orderDetails,
+                  style: Theme.of(context).textTheme.bodyLarge?.copyWith(fontWeight: FontWeight.bold)),
+              Divider(color: ColorRes.grey4),
+              const Sizer(height: 12),
+              Row(children: [
+                OrderTextCard(title: S.current.field1, result: data?.field1 ?? ''),
+                const Sizer(width: 10),
+                OrderTextCard(title: S.current.field2, result: data?.field2 ?? ''),
+              ]),
+              // … more rows
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+```
+> Every details widget uses `Skeletonizer` + the same white card + `OrderTextCard` rows.
+> No card-styling decisions per feature.
+
+---
+
+## 12.5 `main.dart` skeleton — MaterialApp wiring
+
+```dart
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  await ScreenUtil.ensureScreenSize();
+  await DDeviceUtils.initCacheHelper();
+  await DI.execute();                         // ← all service locators
+  await serviceLocator<LanguageCubit>().init();
+  Bloc.observer = MyBlocObserver();
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+  @override
+  Widget build(BuildContext context) {
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<LanguageCubit>(create: (_) => serviceLocator<LanguageCubit>()),
+      ],
+      child: ScreenUtilInit(
+        designSize: const Size(430, 932),
+        minTextAdapt: true,
+        builder: (context, _) {
+          final controller = context.read<LanguageCubit>();
+          return BlocBuilder<LanguageCubit, LanguageState>(
+            builder: (context, state) => MaterialApp(
+              debugShowCheckedModeBanner: false,
+              title: 'MyApp',
+              onGenerateRoute: RouteGenerator.generateRoute,
+              initialRoute: DRoutesName.splashSRoute,
+              theme: DAppTheme.lightTheme(context),
+              darkTheme: DAppTheme.darkTheme(context),
+              themeMode: ThemeMode.light,
+              locale: controller.currentLanguage,
+              supportedLocales: const [Locale('en'), Locale('ar')],
+              localizationsDelegates: const [
+                S.delegate,
+                GlobalMaterialLocalizations.delegate,
+                GlobalCupertinoLocalizations.delegate,
+                GlobalWidgetsLocalizations.delegate,
+              ],
+            ),
+          );
+        },
+      ),
+    );
+  }
+}
+```
 
 ---
 

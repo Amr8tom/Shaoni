@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:in_app_update/in_app_update.dart';
-import 'package:shaoni/common/widgets/sizeboxs/Sizer.dart';
+import 'package:shaoni/common/widgets/sized_boxes/sizer.dart';
 import 'package:shaoni/core/widgets/buttons/d_button.dart';
 
 import '../../../generated/l10n.dart';

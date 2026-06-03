@@ -10,8 +10,8 @@ import 'package:shaoni/features/study&training/domain/use_cases/study/update_stu
 import 'package:shaoni/features/study&training/domain/use_cases/training_request/create_training_request_use_case.dart';
 import 'package:shaoni/features/study&training/domain/use_cases/training_request/get_courses_use_case.dart';
 import 'package:shaoni/features/study&training/domain/use_cases/training_request/update_training_request_use_case.dart';
-import 'package:shaoni/features/study&training/presentaion/controller/study/study_cubit.dart';
-import 'package:shaoni/features/study&training/presentaion/controller/training_request/training_request_cubit.dart';
+import 'package:shaoni/features/study&training/presentation/controller/study/study_cubit.dart';
+import 'package:shaoni/features/study&training/presentation/controller/training_request/training_request_cubit.dart';
 
 class StudyTrainingServiceLocator {
   static execute({required GetIt serviceLocator}) async {

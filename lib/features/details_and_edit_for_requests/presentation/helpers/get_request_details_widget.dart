@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
-import 'package:shaoni/common/widgets/sizeboxs/Sizer.dart';
+import 'package:shaoni/common/widgets/sized_boxes/sizer.dart';
+import '../../../../core/constants/service_codes.dart';
 import '../widgets/attendance_request_details_widget.dart';
 import '../widgets/car_permission_details_widget.dart';
 import '../widgets/complaint_request_details_widget.dart';
@@ -13,31 +14,31 @@ import '../widgets/training_request_details_widget.dart';
 import '../widgets/product_order_details_widget.dart';
 import '../widgets/outside_working_details_widget.dart';
 
-Widget GetRequestDetailsWidget({required String serviceCode}) {
-  switch (serviceCode) {
-    case 'car.permission':
+Widget getRequestDetailsWidget({required String serviceCode}) {
+  switch (ServiceCode.fromCode(serviceCode)) {
+    case ServiceCode.carPermission:
       return const CarPermissionDetailsWidget();
-    case 'complaint.request':
+    case ServiceCode.complaintRequest:
       return const ComplaintRequestDetailsWidget();
-    case 'hr.exit.permission':
+    case ServiceCode.exitPermission:
       return const ExitPermissionDetailsWidget();
-    case 'attendance.update':
+    case ServiceCode.attendanceUpdate:
       return const AttendanceRequestDetailsWidget();
-    case 'study.request':
+    case ServiceCode.studyRequest:
       return const StudyRequestDetailsWidget();
-    case 'start.working':
+    case ServiceCode.startWork:
       return const StartWorkRequestDetailsWidget();
-    case 'experience.certificate':
+    case ServiceCode.experienceCertificate:
       return const ExperienceCertificateDetailsWidget();
-    case 'id.document':
+    case ServiceCode.idRenewalRequest:
       return const IDDocumentDetailsWidget();
-    case 'upgrade.medical.insurance':
+    case ServiceCode.medicalInsuranceUpgrade:
       return const MedicalInsuranceDetailsWidget();
-    case 'training.request':
+    case ServiceCode.trainingRequest:
       return const TrainingRequestDetailsWidget();
-    case 'product.request':
+    case ServiceCode.productRequest:
       return const ProductOrderDetailsWidget();
-    case 'outside.working':
+    case ServiceCode.outsideWorking:
       return const OutsideWorkingDetailsWidget();
     default:
       return const Sizer();

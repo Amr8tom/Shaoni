@@ -1,16 +1,11 @@
+import '../../../../core/constants/service_codes.dart';
 import '../entities/current_status.dart';
-
 extension RequestStatusExtension on CurrentStatus {
   RequestStatusEnum getRequestStatusEnum({required String? serviceType}) {
     final tech = techName?.toLowerCase() ?? '';
-    final ServiceType = serviceType?.toLowerCase() ?? '';
 
-    /// ────────────────────────────────────────────────────────────────
-    /// 1) Service-specific overrides — wins when present.
-    ///    Add a new branch here when a service has unusual tech names.
-    /// ────────────────────────────────────────────────────────────────
-    switch (ServiceType) {
-      case 'hr.exit.permission':
+    switch (ServiceCode.fromCode(serviceType)) {
+      case ServiceCode.exitPermission:
         switch (tech) {
           case 'new':
             return RequestStatusEnum.newRequest;
@@ -25,7 +20,7 @@ extension RequestStatusExtension on CurrentStatus {
         }
         break;
 
-      case 'car.permission':
+      case ServiceCode.carPermission:
         switch (tech) {
           case 'draft':
             return RequestStatusEnum.newRequest;
@@ -42,7 +37,7 @@ extension RequestStatusExtension on CurrentStatus {
         }
         break;
 
-      case 'attendance.update':
+      case ServiceCode.attendanceUpdate:
         switch (tech) {
           case 'draft':
             return RequestStatusEnum.newRequest;
@@ -60,7 +55,8 @@ extension RequestStatusExtension on CurrentStatus {
             return RequestStatusEnum.cancel;
         }
         break;
-      case 'study.request':
+
+      case ServiceCode.studyRequest:
         switch (tech) {
           case 'draft':
             return RequestStatusEnum.newRequest;
@@ -80,7 +76,8 @@ extension RequestStatusExtension on CurrentStatus {
             return RequestStatusEnum.notValid;
         }
         break;
-      case 'complaint.request':
+
+      case ServiceCode.complaintRequest:
         switch (tech) {
           case 'draft':
             return RequestStatusEnum.newRequest;
@@ -94,7 +91,8 @@ extension RequestStatusExtension on CurrentStatus {
             return RequestStatusEnum.rejected;
         }
         break;
-      case 'start.work':
+
+      case ServiceCode.startWork:
         switch (tech) {
           case 'new':
             return RequestStatusEnum.newRequest;
@@ -108,7 +106,8 @@ extension RequestStatusExtension on CurrentStatus {
             return RequestStatusEnum.approved;
         }
         break;
-      case 'id.renewal.request':
+
+      case ServiceCode.idRenewalRequest:
         switch (tech) {
           case 'draft':
             return RequestStatusEnum.newRequest;
@@ -120,7 +119,8 @@ extension RequestStatusExtension on CurrentStatus {
             return RequestStatusEnum.rejected;
         }
         break;
-      case 'experience.certificate':
+
+      case ServiceCode.experienceCertificate:
         switch (tech) {
           case 'new':
             return RequestStatusEnum.newRequest;
@@ -132,7 +132,8 @@ extension RequestStatusExtension on CurrentStatus {
             return RequestStatusEnum.approved;
         }
         break;
-      case 'upgrade.medical.insurance':
+
+      case ServiceCode.medicalInsuranceUpgrade:
         switch (tech) {
           case 'new':
             return RequestStatusEnum.newRequest;
@@ -144,7 +145,8 @@ extension RequestStatusExtension on CurrentStatus {
             return RequestStatusEnum.approved;
         }
         break;
-      case 'training.request':
+
+      case ServiceCode.trainingRequest:
         switch (tech) {
           case 'draft':
             return RequestStatusEnum.newRequest;
@@ -156,7 +158,8 @@ extension RequestStatusExtension on CurrentStatus {
             return RequestStatusEnum.rejected;
         }
         break;
-      case 'product.request':
+
+      case ServiceCode.productRequest:
         switch (tech) {
           case 'draft':
             return RequestStatusEnum.newRequest;
@@ -173,6 +176,18 @@ extension RequestStatusExtension on CurrentStatus {
           case 'close':
             return RequestStatusEnum.closed;
         }
+        break;
+
+      case ServiceCode.loan:
+      case ServiceCode.outsideWorking:
+      case ServiceCode.visaRequest:
+      case ServiceCode.scrapRequest:
+      case ServiceCode.salaryTransfer:
+      case ServiceCode.employeeTicketBooking:
+      case ServiceCode.leaveReplace:
+      case ServiceCode.leave:
+      case ServiceCode.leaveInterruptionRequest:
+      case null:
         break;
     }
 

@@ -12,7 +12,7 @@ import 'auth_service_locator.dart';
 import 'delete_account_service_locator.dart';
 import 'home_service_locator.dart';
 import 'language_service_locator.dart';
-import 'navigation_servise_locator.dart';
+import 'navigation_service_locator.dart';
 
 final serviceLocator = GetIt.instance;
 
@@ -33,7 +33,7 @@ class DI {
     await AuthServiceLocator.execute(serviceLocator: serviceLocator);
 
     /// navigation
-    await NavigationServiseLocator.execute(serviceLocator: serviceLocator);
+    await NavigationServiceLocator.execute(serviceLocator: serviceLocator);
 
     /// language
     await LanguageServiceLocator.execute(serviceLocator: serviceLocator);

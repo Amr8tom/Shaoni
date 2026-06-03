@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shaoni/core/extentions/navigation_extension.dart';
 import 'package:shaoni/core/utils/enums/general_status.dart';
 import '../../../../../generated/l10n.dart';
-import '../../../../common/widgets/sizeboxs/Sizer.dart';
+import '../../../../common/widgets/sized_boxes/sizer.dart';
 import '../../../../core/constants/app_sizes.dart';
 import '../../../../core/constants/colors.dart';
 import '../../../../core/local_storage/cache_helper.dart';

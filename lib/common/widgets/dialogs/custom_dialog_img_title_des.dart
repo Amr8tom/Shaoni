@@ -7,7 +7,7 @@ import '../../../core/constants/colors.dart';
 import '../../../core/device/device_utility.dart';
 import '../../../core/utils/helpers/background_image.dart';
 import '../../../generated/l10n.dart';
-import '../sizeboxs/Sizer.dart';
+import '../sized_boxes/sizer.dart';
 
 void CustomDialogImgTitleDes({
   required BuildContext context,

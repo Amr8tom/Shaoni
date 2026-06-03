@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:shaoni/core/utils/enums/general_status.dart';
 import 'package:shaoni/features/home/presentation/controller/home_cubit.dart';
-import '../../../../common/widgets/sizeboxs/Sizer.dart';
+import '../../../../common/widgets/sized_boxes/sizer.dart';
 import '../../../../core/constants/app_sizes.dart';
 import '../../../../core/constants/asset_resoures.dart';
 import '../../../../core/constants/colors.dart';

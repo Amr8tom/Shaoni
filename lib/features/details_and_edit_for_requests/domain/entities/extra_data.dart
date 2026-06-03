@@ -9,7 +9,7 @@ import 'package:shaoni/features/details_and_edit_for_requests/data/models/produc
 import 'package:shaoni/features/details_and_edit_for_requests/domain/entities/car_permission/car_permission.dart';
 import 'package:shaoni/features/details_and_edit_for_requests/domain/entities/complaint_request/complaint_request_details.dart';
 
-import '../../../human_resoures/domain/entity/exit_permisstion.dart';
+import '../../../human_resources/domain/entity/exit_permisstion.dart';
 import '../../data/models/attendance_request_details_model.dart';
 
 class ExtraData extends Equatable {

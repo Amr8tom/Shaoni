@@ -4,7 +4,7 @@ import '../../../core/constants/colors.dart';
 import '../../../features/auth/presentation/widgets/auth_button.dart';
 import '../../../features/auth/presentation/widgets/auth_text_filed.dart';
 import '../../../generated/l10n.dart';
-import '../sizeboxs/Sizer.dart';
+import '../sized_boxes/sizer.dart';
 
 void showOTPPopUp({required BuildContext context, required String email}) {
   showDialog(

@@ -6,7 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'core/device/device_utility.dart';
 import 'core/service_locator/service_locator.dart';
-import 'core/utils/helpers/bloc_oberver.dart';
+import 'core/utils/helpers/bloc_observer.dart';
 import 'core/utils/helpers/permissions_services.dart';
 import 'features/app/app.dart';
 import 'features/language/presentation/controller/language_cubit.dart';

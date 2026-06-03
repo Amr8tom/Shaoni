@@ -1,6 +1,7 @@
-import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shaoni/core/constants/service_codes.dart';
 import 'package:shaoni/features/details_and_edit_for_requests/domain/entities/edit/edit_response.dart';
 import 'package:shaoni/features/details_and_edit_for_requests/domain/use_cases/get_attendance_edit_use_case.dart';
 import 'package:shaoni/features/details_and_edit_for_requests/domain/use_cases/get_car_permission_edit_use_case.dart';
@@ -48,41 +49,50 @@ class EditCubit extends Cubit<EditState> {
     required int requestId,
     required String serviceCode,
   }) async {
-    switch (serviceCode.toLowerCase().trim()) {
-      case 'car.permission':
+    switch (ServiceCode.fromCode(serviceCode)) {
+      case ServiceCode.carPermission:
         await _getCarPermissionEdit(requestId: requestId);
         break;
-      case 'hr.exit.permission':
+      case ServiceCode.exitPermission:
         await _getExitPermissionEdit(requestId: requestId);
         break;
-      case 'attendance.update':
+      case ServiceCode.attendanceUpdate:
         await _getAttendanceEdit(requestId: requestId);
         break;
-      case 'study.request':
+      case ServiceCode.studyRequest:
         await _getStudyEdit(requestId: requestId);
         break;
-      case 'start.working':
+      case ServiceCode.startWork:
         await _getStartWorkEdit(requestId: requestId);
         break;
-      case 'experience.certificate':
+      case ServiceCode.experienceCertificate:
         await _getExperienceCertificateEdit(requestId: requestId);
         break;
-      case 'id.document':
+      case ServiceCode.idRenewalRequest:
         await _getIDDocumentEdit(requestId: requestId);
         break;
-      case 'upgrade.medical.insurance':
+      case ServiceCode.medicalInsuranceUpgrade:
         await _getMedicalInsuranceEdit(requestId: requestId);
         break;
-      case 'training.request':
+      case ServiceCode.trainingRequest:
         await _getTrainingRequestEdit(requestId: requestId);
         break;
-      case 'product.request':
+      case ServiceCode.productRequest:
         await _getProductOrderEdit(requestId: requestId);
         break;
-      case 'outside.working':
+      case ServiceCode.outsideWorking:
         await _getOutsideWorkingEdit(requestId: requestId);
         break;
-      default:
+      case ServiceCode.complaintRequest:
+      case ServiceCode.loan:
+      case ServiceCode.visaRequest:
+      case ServiceCode.scrapRequest:
+      case ServiceCode.salaryTransfer:
+      case ServiceCode.employeeTicketBooking:
+      case ServiceCode.leaveReplace:
+      case ServiceCode.leave:
+      case ServiceCode.leaveInterruptionRequest:
+      case null:
         emit(state.copyWith(
           status: EditStatus.error,
           errorMessage: 'Edit not supported for service: $serviceCode',

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shaoni/common/widgets/appbar/appbar.dart';
-import 'package:shaoni/common/widgets/sizeboxs/Sizer.dart';
+import 'package:shaoni/common/widgets/sized_boxes/sizer.dart';
 import 'package:shaoni/core/service_locator/service_locator.dart';
 import 'package:shaoni/features/details_and_edit_for_requests/domain/entities/current_status.dart';
 import 'package:shaoni/features/details_and_edit_for_requests/presentation/controller/edit/edit_cubit.dart';
@@ -76,7 +76,7 @@ class RequestDetailsScreen extends StatelessWidget {
                   const Sizer(height: 20),
 
                   /// request-specific details widget
-                  GetRequestDetailsWidget(serviceCode: serviceCode),
+                  getRequestDetailsWidget(serviceCode: serviceCode),
 
                   const Sizer(height: 20),
 

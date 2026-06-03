@@ -1,5 +1,6 @@
-import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shaoni/core/constants/service_codes.dart';
 import 'package:shaoni/core/utils/enums/general_status.dart';
 import '../../../../core/utils/usecases/base_usecase.dart';
 import '../../domain/entity/service.dart';
@@ -40,7 +41,7 @@ class ServicesCubit extends Cubit<ServicesState> {
     final purchasesServices = <Service>[];
 
     for (var service in services) {
-      final serviceCode = service.nameEn ?? '';
+      final serviceCode = ServiceCode.fromCode(service.nameEn);
 
       if (ServicesNames.hrServiceKeys.contains(serviceCode)) {
         hrServices.add(service);

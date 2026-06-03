@@ -5,8 +5,7 @@ import 'package:shaoni/common/widgets/appbar/appbar.dart';
 import 'package:shaoni/core/constants/app_sizes.dart';
 import 'package:shaoni/core/constants/colors.dart';
 import 'package:shaoni/core/extentions/navigation_extension.dart';
-import 'package:shaoni/core/routing/route_names.dart';
-import 'package:skeletonizer/skeletonizer.dart';
+import '../../../../core/routing/service_route_resolver.dart';
 import '../../../../generated/l10n.dart';
 import '../../domain/entity/service.dart';
 import '../widgets/all_services/service_grid_card.dart';
@@ -47,8 +46,9 @@ class CategoryDetailsScreen extends StatelessWidget {
                 ),
                 itemCount: services.length,
                 itemBuilder: (context, index) {
-                  if (services.isEmpty)
+                  if (services.isEmpty) {
                     return CustomUI.emptyData(message: S.current.noData);
+                  }
                   final service = services[index];
                   return AnimationConfiguration.staggeredGrid(
                     position: index,
@@ -59,7 +59,11 @@ class CategoryDetailsScreen extends StatelessWidget {
                       child: FadeInAnimation(
                         child: ServiceGridCard(
                           service: service,
-                          onTap: () => _onServiceTap(context, service),
+                          onTap: () => context.pushNamed(
+                            ServiceRouteResolver.catalogRouteFor(
+                              service.nameEn,
+                            ),
+                          ),
                         ),
                       ),
                     ),
@@ -71,55 +75,4 @@ class CategoryDetailsScreen extends StatelessWidget {
     );
   }
 
-  static void _onServiceTap(BuildContext context, Service service) {
-    final code = service.nameEn ?? '';
-    switch (code) {
-      case 'hr.exit.permission':
-        context.pushNamed(
-          DRoutesName.requestCertainService,
-        );
-        return;
-      case 'attendance.update':
-        context.pushNamed(DRoutesName.missingAttendanceHistory);
-        return;
-      case 'study.request':
-        context.pushNamed(DRoutesName.createStudyRequestRoute);
-        return;
-      case 'car.permission':
-        context.pushNamed(DRoutesName.createCarPermissionRoute);
-        return;
-      case 'complaint.request':
-        context.pushNamed(DRoutesName.createComplaintRequestRoute);
-        return;
-      case 'start.work':
-        context.pushNamed(DRoutesName.createStartWorkRoute);
-        return;
-      case 'experience.certificate':
-        context.pushNamed(DRoutesName.createExperienceCertificateRoute);
-        return;
-      case 'upgrade.medical.insurance':
-        context.pushNamed(DRoutesName.createMedicalInsuranceRoute);
-        return;
-      case 'training.request':
-        context.pushNamed(DRoutesName.createTrainingRequestRoute);
-        return;
-      case 'product.request':
-        context.pushNamed(DRoutesName.createProductOrderRoute);
-        return;
-      case 'id.renewal.request':
-        context.pushNamed(DRoutesName.createIDDocumentRoute);
-      case 'outside.working':
-        context.pushNamed(DRoutesName.createOutsideWorkingRoute);
-        return;
-      default:
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text(S.current.notImplementedYet),
-            backgroundColor: ColorRes.grey2,
-            behavior: SnackBarBehavior.floating,
-            duration: const Duration(seconds: 2),
-          ),
-        );
-    }
-  }
 }

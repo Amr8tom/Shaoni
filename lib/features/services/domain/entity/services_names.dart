@@ -1,27 +1,32 @@
 import 'package:equatable/equatable.dart';
+import 'package:shaoni/core/constants/service_codes.dart';
 
 class ServicesNames extends Equatable{
-  static List<String> hrServiceKeys = [
-    "outside.working",
-    "attendance.update",
-    "hr.exit.permission",
-    "school.permission",
-    "car.permission",
-    "end.of.service",
-    "clearance.request",
-    "start.work",
-    "id.renewal.request",
-    "profile.update.request",
-    "upgrade.medical.insurance",
-    "experience.certificate",
-    "complaint.request",
+  static List<ServiceCode> hrServiceKeys = [
+    ServiceCode.outsideWorking,
+    ServiceCode.attendanceUpdate,
+    ServiceCode.exitPermission,
+    ServiceCode.loan,
+    ServiceCode.visaRequest,
+    ServiceCode.carPermission,
+    ServiceCode.scrapRequest,
+    ServiceCode.startWork,
+    ServiceCode.salaryTransfer,
+    ServiceCode.employeeTicketBooking,
+    ServiceCode.idRenewalRequest,
+    ServiceCode.complaintRequest,
+    ServiceCode.medicalInsuranceUpgrade,
+    ServiceCode.experienceCertificate,
+    ServiceCode.leaveReplace,
+    ServiceCode.leave,
+    ServiceCode.leaveInterruptionRequest,
   ];
-  static List<String> studyServiceKeys = [
-    "study.request",
-    "training.request",
+  static List<ServiceCode> studyServiceKeys = [
+    ServiceCode.studyRequest,
+    ServiceCode.trainingRequest,
   ];
-  static List<String> productServiceKeys = [
-    "product.request",
+  static List<ServiceCode> productServiceKeys = [
+    ServiceCode.productRequest,
   ];
   @override
   List<Object?> get props => [];

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../common/widgets/sizeboxs/Sizer.dart';
+import '../../common/widgets/sized_boxes/sizer.dart';
 import '../../core/constants/app_sizes.dart';
 import 'presentation/widgets/announcement_card.dart';
 import 'presentation/widgets/attendance_stats/attendance_stats_section.dart';

@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:shaoni/common/widgets/sizeboxs/Sizer.dart';
+import 'package:shaoni/common/widgets/sized_boxes/sizer.dart';
 import 'package:shaoni/core/constants/app_sizes.dart';
 import 'package:shaoni/core/constants/colors.dart';
 import 'package:shaoni/core/extentions/navigation_extension.dart';
-import 'package:shaoni/core/routing/route_names.dart';
 import 'package:shaoni/generated/l10n.dart';
+
+import '../../../../core/routing/service_route_resolver.dart';
 
 class UpdateRequestButton extends StatelessWidget {
   final String requestID;
@@ -21,7 +22,10 @@ class UpdateRequestButton extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: AppSizes.padding * 1.8),
       child: GestureDetector(
-        onTap: () => _onTap(context),
+        onTap: () => context.pushNamed(
+          ServiceRouteResolver.updateRouteFor(serviceType),
+          arguments: {'requestId': int.tryParse(requestID)},
+        ),
         child: Container(
           height: AppSizes.heightcontainer,
           decoration: BoxDecoration(
@@ -29,7 +33,7 @@ class UpdateRequestButton extends StatelessWidget {
             color: ColorRes.primary,
             boxShadow: [
               BoxShadow(
-                color: ColorRes.primary.withOpacity(0.30),
+                color: ColorRes.primary.withValues(alpha: 0.30),
                 blurRadius: 12,
                 offset: const Offset(0, 4),
               ),
@@ -52,98 +56,5 @@ class UpdateRequestButton extends StatelessWidget {
         ),
       ),
     );
-  }
-
-  void _onTap(BuildContext context) {
-    switch (serviceType) {
-      case 'car.permission':
-        context.pushNamed(
-          DRoutesName.createCarPermissionRoute,
-          arguments: {'requestId': int.tryParse(requestID)},
-        );
-        break;
-
-      case 'hr.exit.permission':
-        context.pushNamed(
-          DRoutesName.requestCreateDetails,
-          arguments: {'requestId': int.tryParse(requestID)},
-        );
-        break;
-
-      case 'attendance.update':
-        context.pushNamed(
-          DRoutesName.createAttendanceRoute,
-          arguments: {
-            'requestId': int.tryParse(requestID),
-          },
-        );
-        break;
-
-      case 'study.request':
-        context.pushNamed(
-          DRoutesName.createStudyRequestRoute,
-          arguments: {'requestId': int.tryParse(requestID)},
-        );
-        break;
-
-      case 'start.working':
-        context.pushNamed(
-          DRoutesName.createStartWorkRoute,
-          arguments: {'requestId': int.tryParse(requestID)},
-        );
-        break;
-
-      case 'experience.certificate':
-        context.pushNamed(
-          DRoutesName.createExperienceCertificateRoute,
-          arguments: {'requestId': int.tryParse(requestID)},
-        );
-        break;
-
-      case 'id.document':
-        context.pushNamed(
-          DRoutesName.createIDDocumentRoute,
-          arguments: {'requestId': int.tryParse(requestID)},
-        );
-        break;
-
-      case 'upgrade.medical.insurance':
-        context.pushNamed(
-          DRoutesName.createMedicalInsuranceRoute,
-          arguments: {'requestId': int.tryParse(requestID)},
-        );
-        break;
-
-      case 'training.request':
-        context.pushNamed(
-          DRoutesName.createTrainingRequestRoute,
-          arguments: {'requestId': int.tryParse(requestID)},
-        );
-        break;
-
-      case 'product.request':
-        context.pushNamed(
-          DRoutesName.createProductOrderRoute,
-          arguments: {'requestId': int.tryParse(requestID)},
-        );
-        break;
-
-      case 'outside.working':
-        context.pushNamed(
-          DRoutesName.createOutsideWorkingRoute,
-          arguments: {'requestId': int.tryParse(requestID)},
-        );
-        break;
-
-      default:
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text(S.current.notImplementedYet),
-            backgroundColor: ColorRes.grey2,
-            behavior: SnackBarBehavior.floating,
-            duration: const Duration(seconds: 2),
-          ),
-        );
-    }
   }
 }

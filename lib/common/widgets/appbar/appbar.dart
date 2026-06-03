@@ -11,7 +11,7 @@ import '../../../core/device/device_utility.dart';
 import '../../../core/routing/route_names.dart';
 import '../../../features/navigation/presentation/controllers/navigation_cubit.dart';
 import '../../../features/navigation/presentation/widgets/profile_header.dart';
-import '../sizeboxs/Sizer.dart';
+import '../sized_boxes/sizer.dart';
 
 class DAppBar extends StatelessWidget implements PreferredSizeWidget {
   DAppBar({
