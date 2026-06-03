@@ -286,8 +286,8 @@ presentation/
 
 ### 4.5 Non-Negotiable Style Rules
 - **Colors**: `ColorRes.xxx` only.
-- **Sizes**: `AppSizes.xxx` only.
-- **Spacing**: `Sizer(width:, height:)` instead of `SizedBox`.
+- **Sizes**: `AppSizes.xxx` for padding, radius, icons, buttons, and fixed widget dimensions.
+- **Spacing**: use `const Sizer(width: 8)` / `const Sizer(height: 8)` for empty gaps instead of `SizedBox`; never pass `.w`, `.h`, or `AppSizes` into `Sizer`.
 - **Strings**: `S.current.xxx` only.
 - **App Bar**: `DAppBar(title: ..., showBackArrow: true)`.
 - **Buttons**: `DButton(variant: ..., size: ...)` or shared templates like `CreateDeleteButtons`.

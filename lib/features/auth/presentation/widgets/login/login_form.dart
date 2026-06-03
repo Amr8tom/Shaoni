@@ -145,7 +145,7 @@ class LoginForm extends StatelessWidget {
               //         height: 28,
               //       ),
               //     ),
-              //     const SizedBox(width: 20),
+              //     const Sizer(width: 20),
               //     // Apple
               //     _SocialLoginButton(
               //       onTap: () {
@@ -196,8 +196,7 @@ class LoginForm extends StatelessWidget {
                       .bodyMedium
                       ?.copyWith(color: Colors.grey.shade600),
                   children: [
-                     TextSpan(text: S.current.byContinuingYouAgreeToOur),
-
+                    TextSpan(text: S.current.byContinuingYouAgreeToOur),
                     TextSpan(
                       text: S.current.privacyPolicy,
                       style: TextStyle(

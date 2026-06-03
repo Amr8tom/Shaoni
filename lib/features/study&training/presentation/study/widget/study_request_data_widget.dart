@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shaoni/common/widgets/sized_boxes/sizer.dart';
-import 'package:shaoni/core/constants/app_sizes.dart';
 import 'package:shaoni/core/constants/colors.dart';
 import 'package:shaoni/features/human_resources/presentation/attendance/widget/attendance_dropdown_field.dart';
 import 'package:shaoni/features/human_resources/presentation/attendance/widget/attendance_editable_field.dart';
@@ -41,7 +40,6 @@ class StudyRequestDataWidget extends StatelessWidget {
               ),
             ),
             const Sizer(width: 9.6),
-
             Expanded(
               child: DEditableField(
                 label: S.current.requiredStudy,
@@ -57,7 +55,6 @@ class StudyRequestDataWidget extends StatelessWidget {
               ),
             ),
             const Sizer(width: 9.6),
-
             Expanded(
               child: DDropdownField(
                 label: S.current.studyDestination,
@@ -96,7 +93,6 @@ class StudyRequestDataWidget extends StatelessWidget {
               ),
             ),
             const Sizer(width: 9.6),
-
             Expanded(
               child: StudyDatePickerField(
                 label: S.current.endDate,
@@ -122,9 +118,8 @@ class StudyRequestDataWidget extends StatelessWidget {
           controller: controller.reasonController,
           readOnly: false,
           keyboardType: TextInputType.multiline,
-          validator: (v) => (v == null || v.isEmpty)
-              ? S.current.thisFieldRequired
-              : null,
+          validator: (v) =>
+              (v == null || v.isEmpty) ? S.current.thisFieldRequired : null,
         ),
       ],
     );

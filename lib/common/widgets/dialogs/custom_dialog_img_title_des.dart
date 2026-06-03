@@ -57,8 +57,8 @@ void CustomDialogImgTitleDes({
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   SizedBox(
-                    width: width ?? AppSizes.containerSmall*1.5,
-                    height: height ?? AppSizes.containerSmall*1.5,
+                    width: width ?? AppSizes.containerSmall * 1.5,
+                    height: height ?? AppSizes.containerSmall * 1.5,
                     child: BackgroundImage(
                       isSvgImage: isSvg,
                       isPositioned: false,
@@ -66,17 +66,17 @@ void CustomDialogImgTitleDes({
                       fit: BoxFit.fill,
                     ),
                   ),
-                  const Sizer(height: 16, width: double.infinity),
+                  const Sizer(height: 16),
                   Text(
                     title,
                     style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                      color: ColorRes.black,
-                      fontWeight: FontWeight.bold
-                    ),
+                        color: ColorRes.black, fontWeight: FontWeight.bold),
                   ),
                   const Sizer(height: 8),
                   Text(
-                    orderNumber ==null?des:   "${S.current.orderNumber} ${orderNumber ?? ''}",
+                    orderNumber == null
+                        ? des
+                        : "${S.current.orderNumber} ${orderNumber ?? ''}",
                     style: Theme.of(
                       context,
                     ).textTheme.bodyMedium?.copyWith(color: ColorRes.grey2),
@@ -107,7 +107,7 @@ void CustomDialogImgTitleDes({
                               borderRadius: AppSizes.borderRadiusXXLg,
                               size: DButtonSize.medium,
                               variant: DButtonVariant.secondary,
-                              onPressed:onTab2,
+                              onPressed: onTab2,
                             ),
                           ),
                           // Expanded(

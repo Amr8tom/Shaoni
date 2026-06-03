@@ -106,7 +106,7 @@ lib/features/<feature>/
 |---|------|------|---------|
 | 1 | Colors | `ColorRes.primary` | `Colors.red`, `Color(0xFF…)` |
 | 2 | Sizes / radius / padding | `AppSizes.padding` | raw numbers `16`, `12` |
-| 3 | Spacing | `Sizer(height: 12)` | `SizedBox(height: 12)` |
+| 3 | Empty spacing gaps | `const Sizer(height: 12)` | `SizedBox(height: 12)`, `Sizer(height: 12.h)`, `Sizer(height: AppSizes.md)` |
 | 4 | Images / icons | `AssetRes.logo` | `'assets/images/logo.png'` |
 | 5 | Text style | `Theme.of(context).textTheme.bodyLarge?.copyWith(...)` | raw `TextStyle(...)` |
 | 6 | Strings | `S.current.login` | `'Login'` |
@@ -152,11 +152,24 @@ padding: EdgeInsets.all(AppSizes.padding),
 borderRadius: BorderRadius.circular(AppSizes.borderRadiusLg),
 Icon(Icons.add, size: AppSizes.iconMd),
 ```
+Use `AppSizes` for padding, radius, icon sizes, button sizes, and fixed widget dimensions.
 
 ### 5.4 Spacing — `Sizer`
 ```dart
 const Sizer(height: 16),   // vertical gap
 const Sizer(width: 8),     // horizontal gap
+```
+Use `Sizer` for empty gaps only. Pass raw design numbers because `Sizer` already applies `flutter_screenutil` internally:
+
+```dart
+// Good
+const Sizer(height: 8);
+const Sizer(width: 12);
+
+// Bad
+SizedBox(height: 8);
+Sizer(height: 8.h);
+Sizer(height: AppSizes.sm);
 ```
 
 ### 5.5 Images / icons — `AssetRes`
@@ -1415,7 +1428,8 @@ class MyApp extends StatelessWidget {
 - [ ] Defensive list parsing: `response is List ? response : response['data']`.
 - [ ] Every new string has BOTH `ar` + `en` keys, and codegen was run.
 - [ ] Controllers disposed in `Cubit.close()`.
-- [ ] No raw colors / sizes / strings / `TextStyle` / `SizedBox` in widgets.
+- [ ] No raw colors / general sizes / strings / `TextStyle` / empty `SizedBox` spacers in widgets.
+- [ ] Empty spacing uses `const Sizer(height: 8)` or `const Sizer(width: 8)` with raw numbers only.
 - [ ] `const` on every widget that can be const.
 - [ ] Service-code string identical across the 3 dispatch switches.
 

@@ -20,7 +20,7 @@
 //           },
 //           child: Container(
 //             padding: EdgeInsets.symmetric(
-//               horizontal: AppSizes.md, 
+//               horizontal: AppSizes.md,
 //               vertical: AppSizes.sm,
 //             ),
 //             decoration: BoxDecoration(
@@ -38,11 +38,11 @@
 //               mainAxisSize: MainAxisSize.min,
 //               children: [
 //                 Icon(
-//                   Icons.language, 
-//                   color: ColorRes.primary, 
+//                   Icons.language,
+//                   color: ColorRes.primary,
 //                   size: AppSizes.iconSmall,
 //                 ),
-//                 SizedBox(width: AppSizes.xs),
+//                 const Sizer(width: 4),
 //                 Text(
 //                   languageCubit.showLang,
 //                   style: TextStyle(
