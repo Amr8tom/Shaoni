@@ -1,6 +1,7 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shaoni/common/widgets/sized_boxes/sizer.dart';
 import 'package:shaoni/core/routing/route_names.dart';
 import 'package:shaoni/core/extentions/navigation_extension.dart';
 import '../../../../core/constants/app_sizes.dart';
@@ -78,7 +79,7 @@ class EditRequestButton extends StatelessWidget {
                         color: Colors.white,
                         size: 18,
                       ),
-                      SizedBox(width: AppSizes.padding * 0.5),
+                      const Sizer(width: 8),
                       Text(
                         S.current.editRequest,
                         style: Theme.of(context)

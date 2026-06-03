@@ -120,7 +120,7 @@ class RequestCard extends StatelessWidget {
                       size: 17,
                     ),
                   ),
-                  const SizedBox(width: 8),
+                  const Sizer(width: 8),
                   Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -132,7 +132,7 @@ class RequestCard extends StatelessWidget {
                                 fontSize: 10,
                               ),
                         ),
-                        const SizedBox(height: 1),
+                        const Sizer(height: 1),
                         Text(
                           applicantName!,
                           style: Theme.of(context).textTheme.bodySmall?.copyWith(

@@ -127,7 +127,7 @@ class _EmployeeCheckTile extends StatelessWidget {
                 visualDensity: VisualDensity.compact,
               ),
             ),
-            const SizedBox(width: 12),
+            const Sizer(width: 12),
             Expanded(
               child: Text(
                 employee.name,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shaoni/common/widgets/sized_boxes/sizer.dart';
 import '../constants/colors.dart';
 import '../constants/app_sizes.dart';
 import '../extentions/navigation_extension.dart';
@@ -100,7 +101,7 @@ class CustomUI {
                   size: AppSizes.iconXLarge * 2,
                   color: ColorRes.grey,
                 ),
-            SizedBox(height: AppSizes.xl),
+            const Sizer(height: 32),
             if (title != null) ...[
               Text(
                 title,
@@ -109,7 +110,7 @@ class CustomUI {
                 ),
                 textAlign: TextAlign.center,
               ),
-              SizedBox(height: AppSizes.sm),
+              const Sizer(height: 8),
             ],
             Text(
               message,
@@ -119,7 +120,7 @@ class CustomUI {
               textAlign: TextAlign.center,
             ),
             if (onRetry != null) ...[
-              SizedBox(height: AppSizes.xl),
+              const Sizer(height: 32),
               ElevatedButton(
                 onPressed: onRetry,
                 style: ElevatedButton.styleFrom(

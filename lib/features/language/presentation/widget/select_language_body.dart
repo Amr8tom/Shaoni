@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shaoni/common/widgets/sized_boxes/sizer.dart';
 import '../../../../generated/l10n.dart';
 import '../../../../core/constants/asset_resoures.dart';
 import '../../../../core/constants/app_sizes.dart';
@@ -32,7 +33,7 @@ class SelectLanguageBody extends StatelessWidget {
                   },
                 ),
               ),
-              SizedBox(height: AppSizes.ld),
+              const Sizer(height: 24),
               Expanded(
                 child: CustomLangWidget(
                   imagPath: AssetRes.en,

@@ -76,7 +76,7 @@ class ProductOrderDataWidget extends StatelessWidget {
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       Icon(Icons.add, color: ColorRes.primary, size: 18),
-                      Sizer(width: AppSizes.padding * 0.4),
+                      const Sizer(width: 6.4),
                       Text(
                         S.current.addLine,
                         style: Theme.of(context).textTheme.bodyMedium?.copyWith(

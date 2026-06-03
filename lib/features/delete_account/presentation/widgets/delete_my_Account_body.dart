@@ -140,7 +140,7 @@ class DeleteMyAccountBody extends StatelessWidget {
                                 color: Colors.white,
                                 size: AppSizes.iconSm,
                               ),
-                              Sizer(width: AppSizes.spaceBetweenIcon),
+                              const Sizer(width: 8),
                               Text(
                                 S.current.deleteAccount,
                                 style: TextStyle(
@@ -210,7 +210,7 @@ class DeleteMyAccountBody extends StatelessWidget {
               color: ColorRes.error.withOpacity(0.6),
               size: AppSizes.iconSm,
             ),
-            Sizer(width: AppSizes.spaceBetweenIcon),
+            const Sizer(width: 8),
             Expanded(
               child: Text(
                 point,
@@ -249,7 +249,7 @@ class DeleteMyAccountBody extends StatelessWidget {
                   color: ColorRes.error,
                 ),
               ),
-              Sizer(height: AppSizes.md),
+              const Sizer(height: 16),
             ],
           ),
           content: Text(
@@ -281,7 +281,7 @@ class DeleteMyAccountBody extends StatelessWidget {
                     ),
                   ),
                 ),
-                Sizer(width: AppSizes.md),
+                const Sizer(width: 16),
                 Expanded(
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
@@ -340,7 +340,7 @@ class DeleteMyAccountBody extends StatelessWidget {
                   color: ColorRes.success,
                 ),
               ),
-              Sizer(height: AppSizes.md),
+              const Sizer(height: 16),
             ],
           ),
           content: Column(
@@ -354,7 +354,7 @@ class DeleteMyAccountBody extends StatelessWidget {
                 ),
                 textAlign: TextAlign.center,
               ),
-              Sizer(height: AppSizes.sm),
+              const Sizer(height: 8),
               Text(
                 S.current.accountDeleted,
                 style: Theme.of(context).textTheme.bodyMedium?.copyWith(

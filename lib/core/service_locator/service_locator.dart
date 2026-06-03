@@ -7,7 +7,6 @@ import 'package:shaoni/core/service_locator/services_service_locator.dart';
 import 'package:shaoni/core/service_locator/study_training_service_locator.dart';
 import '../connection/checkNetwork.dart';
 import '../dio/dio_helper.dart';
-import '../utils/helpers/geolocator.dart';
 import 'auth_service_locator.dart';
 import 'delete_account_service_locator.dart';
 import 'home_service_locator.dart';

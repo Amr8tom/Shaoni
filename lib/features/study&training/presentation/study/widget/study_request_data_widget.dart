@@ -40,7 +40,7 @@ class StudyRequestDataWidget extends StatelessWidget {
                     : null,
               ),
             ),
-            SizedBox(width: AppSizes.padding * 0.6),
+            const Sizer(width: 9.6),
 
             Expanded(
               child: DEditableField(
@@ -56,7 +56,7 @@ class StudyRequestDataWidget extends StatelessWidget {
                     : null,
               ),
             ),
-            SizedBox(width: AppSizes.padding * 0.6),
+            const Sizer(width: 9.6),
 
             Expanded(
               child: DDropdownField(
@@ -95,7 +95,7 @@ class StudyRequestDataWidget extends StatelessWidget {
                 },
               ),
             ),
-            SizedBox(width: AppSizes.padding * 0.6),
+            const Sizer(width: 9.6),
 
             Expanded(
               child: StudyDatePickerField(

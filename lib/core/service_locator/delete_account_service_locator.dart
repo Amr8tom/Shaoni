@@ -1,5 +1,5 @@
 import 'package:get_it/get_it.dart';
-import '../../features/delete_account/data/data_sources/loca_data_sources.dart';
+import '../../features/delete_account/data/data_sources/local_data_sources.dart';
 import '../../features/delete_account/data/data_sources/remote_data_sources.dart';
 import '../../features/delete_account/data/repository/repository.dart';
 import '../../features/delete_account/domain/repository/repository.dart';

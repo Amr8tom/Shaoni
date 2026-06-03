@@ -86,7 +86,7 @@ class _EmployeeTaskCard extends StatelessWidget {
                         style: Theme.of(context).textTheme.bodySmall?.copyWith(
                               fontWeight: FontWeight.w500,
                             )),
-                    const SizedBox(height: 6),
+                    const Sizer(height: 6),
                     _StyledDropdown(
                       value: data.includeWeekend ? 'true' : 'false',
                       items: yesNoItems,
@@ -96,7 +96,7 @@ class _EmployeeTaskCard extends StatelessWidget {
                   ],
                 ),
               ),
-              const SizedBox(width: 10),
+              const Sizer(width: 10),
 
               // Exception Request
               Expanded(
@@ -107,7 +107,7 @@ class _EmployeeTaskCard extends StatelessWidget {
                         style: Theme.of(context).textTheme.bodySmall?.copyWith(
                               fontWeight: FontWeight.w500,
                             )),
-                    const SizedBox(height: 6),
+                    const Sizer(height: 6),
                     _StyledDropdown(
                       value: data.exceptionRequest ? 'true' : 'false',
                       items: yesNoItems,
@@ -117,7 +117,7 @@ class _EmployeeTaskCard extends StatelessWidget {
                   ],
                 ),
               ),
-              const SizedBox(width: 10),
+              const Sizer(width: 10),
 
               // Tasks
               Expanded(
@@ -132,14 +132,14 @@ class _EmployeeTaskCard extends StatelessWidget {
                                 Theme.of(context).textTheme.bodySmall?.copyWith(
                                       fontWeight: FontWeight.w500,
                                     )),
-                        const SizedBox(width: 4),
+                        const Sizer(width: 4),
                         Text('*',
                             style: TextStyle(
                                 color: ColorRes.error,
                                 fontWeight: FontWeight.bold)),
                       ],
                     ),
-                    const SizedBox(height: 6),
+                    const Sizer(height: 6),
                     TextFormField(
                       controller: data.tasksController,
                       decoration: InputDecoration(
@@ -175,13 +175,13 @@ class _EmployeeTaskCard extends StatelessWidget {
                   style: Theme.of(context).textTheme.bodySmall?.copyWith(
                         fontWeight: FontWeight.w500,
                       )),
-              const SizedBox(width: 4),
+              const Sizer(width: 4),
               Text('*',
                   style: TextStyle(
                       color: ColorRes.error, fontWeight: FontWeight.bold)),
             ],
           ),
-          const SizedBox(height: 6),
+          const Sizer(height: 6),
           TextFormField(
             controller: data.privateTasksController,
             decoration: InputDecoration(

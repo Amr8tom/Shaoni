@@ -137,7 +137,7 @@ class _StatusBadge extends StatelessWidget {
               color: color,
             ),
           ),
-          const SizedBox(width: 6),
+          const Sizer(width: 6),
           Text(
             label,
             style: TextStyle(
@@ -167,7 +167,7 @@ class _RejectedBanner extends StatelessWidget {
       child: Row(
         children: [
           Icon(Icons.cancel_rounded, color: ColorRes.error, size: 22),
-          const SizedBox(width: 10),
+          const Sizer(width: 10),
           Text(
             S.current.rejectedRequest,
             style: TextStyle(

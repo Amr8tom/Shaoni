@@ -97,7 +97,7 @@ class ProfileScreen extends StatelessWidget {
                               ],
                             ),
                           ),
-                          SizedBox(height: 20.h),
+                          const Sizer(height: 20),
 
                           /// Form fields
                           Padding(
@@ -114,7 +114,7 @@ class ProfileScreen extends StatelessWidget {
 
                             ),
                           ),
-                          SizedBox(height: 16.h),
+                          const Sizer(height: 16),
                           Padding(
                             padding: EdgeInsets.symmetric(
                               horizontal: AppSizes.padding / 3,
@@ -128,7 +128,7 @@ class ProfileScreen extends StatelessWidget {
                               prefixIcon: const Icon(Icons.phone_android),
                             ),
                           ),
-                          SizedBox(height: 16.h),
+                          const Sizer(height: 16),
                           Padding(
                             padding: EdgeInsets.symmetric(
                               horizontal: AppSizes.padding / 3,

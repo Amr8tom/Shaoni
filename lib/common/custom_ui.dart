@@ -97,7 +97,7 @@ class CustomUI {
               height: AppSizes.productItemHeight,
             ),
           ),
-          SizedBox(height: AppSizes.spaceBtwItems),
+          const Sizer(height: 16),
           Text(
             S.current.error,
             style: TextStyle(
@@ -129,7 +129,7 @@ class CustomUI {
               ),
             ),
           ),
-          SizedBox(height: AppSizes.spaceBtwItems),
+          const Sizer(height: 16),
           Text(
             message ?? S.current.noData,
             style: TextStyle(
@@ -176,7 +176,7 @@ class CustomUI {
               ),
             ),
           ),
-          SizedBox(height: AppSizes.spaceBtwItems*6),
+          const Sizer(height: 96),
           Text(S.current.noData),
         ],
       ),

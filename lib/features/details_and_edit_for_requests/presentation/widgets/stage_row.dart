@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shaoni/common/widgets/sized_boxes/sizer.dart';
 
 import '../../../../core/constants/colors.dart';
 
@@ -52,7 +53,7 @@ class StageRow extends StatelessWidget {
           ),
         ),
 
-        const SizedBox(width: 14),
+        const Sizer(width: 14),
 
         // ── Content ──────────────────────────────────────────────────────
         Expanded(

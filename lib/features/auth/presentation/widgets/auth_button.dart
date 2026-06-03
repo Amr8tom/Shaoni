@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shaoni/common/widgets/sized_boxes/sizer.dart';
 import '../../../../core/constants/colors.dart';
 import '../../../../core/constants/app_sizes.dart';
 
@@ -72,7 +73,7 @@ class AuthButton extends StatelessWidget {
                       children: [
                         if (icon != null) ...[
                           icon!,
-                          SizedBox(width: AppSizes.xs),
+                          const Sizer(width: 4),
                         ],
                         Text(
                           text.toUpperCase(),

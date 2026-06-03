@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:shaoni/common/widgets/sized_boxes/sizer.dart';
 import '../../../core/constants/colors.dart';
 import '../../../generated/l10n.dart';
 
@@ -40,7 +41,7 @@ class RatingCard extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           Row(children: [
-            const  SizedBox(width: 25,),
+            const Sizer(width: 25),
             const  Spacer(),
             Text(
               S.current.feed,
@@ -57,12 +58,12 @@ class RatingCard extends StatelessWidget {
               child: const Icon(Icons.close,color: Colors.black,),
             ),
           ],),
-          const SizedBox(height: 8,),
+          const Sizer(height: 8),
           Text(
             getRatingText(rating),
             style:const TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
           ),
-          const SizedBox(height: 8),
+          const Sizer(height: 8),
           RatingBar.builder(
             initialRating: rating,
             minRating: 1,
@@ -77,7 +78,7 @@ class RatingCard extends StatelessWidget {
             ),
             onRatingUpdate: onRatingChanged,
           ),
-          const SizedBox(height: 12),
+          const Sizer(height: 12),
           Wrap(
             spacing: 8,
             children: tags.map((tag) =>  GestureDetector(
@@ -96,7 +97,7 @@ class RatingCard extends StatelessWidget {
               ),
             )).toList(),
           ),
-          const SizedBox(height: 12),
+          const Sizer(height: 12),
           GestureDetector(
             onTap: () {
             },
@@ -119,7 +120,7 @@ class RatingCard extends StatelessWidget {
               ),
             ),
           ),
-          const SizedBox(height: 12),
+          const Sizer(height: 12),
           SizedBox(
             width: double.infinity,
             child: ElevatedButton(

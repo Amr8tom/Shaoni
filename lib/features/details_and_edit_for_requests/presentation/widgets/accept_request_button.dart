@@ -69,7 +69,7 @@ class AcceptRejecttButton extends StatelessWidget {
                     ),
                   ),
                 ),
-                Sizer(width: AppSizes.padding),
+                const Sizer(width: 16),
                 /// reject request button
                 Expanded(
                   flex: 1,

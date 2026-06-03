@@ -1,12 +1,10 @@
 import 'package:get_it/get_it.dart';
 import 'package:shaoni/features/navigation/domain/use_cases/get_user_data_use_case.dart';
-import 'package:shaoni/features/navigation/domain/use_cases/get_user_data_use_case.dart';
 
 import '../../features/navigation/data/data_sources/local_data_sources.dart';
 import '../../features/navigation/data/data_sources/remote_data_sources.dart';
 import '../../features/navigation/data/repositories/repository.dart';
 import '../../features/navigation/domain/repositories/repositories.dart';
-import '../../features/navigation/domain/use_cases/get_count_unreaded_notification_use_case.dart';
 import '../../features/navigation/presentation/controllers/navigation_cubit.dart';
 
 class NavigationServiceLocator {
@@ -43,4 +41,3 @@ class NavigationServiceLocator {
     );
   }
 }
-

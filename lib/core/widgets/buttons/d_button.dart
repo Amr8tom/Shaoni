@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:shaoni/common/widgets/sized_boxes/sizer.dart';
 import '../../constants/app_sizes.dart';
 import '../../constants/colors.dart';
 
@@ -309,7 +310,7 @@ class DButton extends StatelessWidget {
           child: prefixIcon,
         ),
       );
-      children.add(SizedBox(width: AppSizes.sm));
+      children.add(const Sizer(width: 8));
     }
 
     children.add(
@@ -325,7 +326,7 @@ class DButton extends StatelessWidget {
     );
 
     if (suffixIcon != null) {
-      children.add(SizedBox(width: AppSizes.sm));
+      children.add(const Sizer(width: 8));
       children.add(
         SizedBox(
           height: _getIconSize(),
