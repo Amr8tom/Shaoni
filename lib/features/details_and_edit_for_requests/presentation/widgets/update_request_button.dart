@@ -128,6 +128,13 @@ class UpdateRequestButton extends StatelessWidget {
         );
         break;
 
+      case 'outside.working':
+        context.pushNamed(
+          DRoutesName.createOutsideWorkingRoute,
+          arguments: {'requestId': int.tryParse(requestID)},
+        );
+        break;
+
       default:
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(

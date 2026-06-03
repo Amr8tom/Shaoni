@@ -6869,6 +6869,16 @@ class S {
     return Intl.message('Passport', name: 'passport', desc: '', args: []);
   }
 
+  /// `By logging in you agree to our`
+  String get byContinuingYouAgreeToOur {
+    return Intl.message(
+      'By logging in you agree to our',
+      name: 'byContinuingYouAgreeToOur',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Family Card`
   String get familyCard {
     return Intl.message('Family Card', name: 'familyCard', desc: '', args: []);
@@ -6882,6 +6892,171 @@ class S {
       desc: '',
       args: [],
     );
+  }
+
+  /// `Outside Working Request`
+  String get outsideWorkingRequest {
+    return Intl.message(
+      'Outside Working Request',
+      name: 'outsideWorkingRequest',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Department Type`
+  String get departmentType {
+    return Intl.message(
+      'Department Type',
+      name: 'departmentType',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Select Department Type`
+  String get selectDepartmentType {
+    return Intl.message(
+      'Select Department Type',
+      name: 'selectDepartmentType',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Project Type`
+  String get projectType {
+    return Intl.message(
+      'Project Type',
+      name: 'projectType',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Select Project Type`
+  String get selectProjectType {
+    return Intl.message(
+      'Select Project Type',
+      name: 'selectProjectType',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Project Name`
+  String get projectName {
+    return Intl.message(
+      'Project Name',
+      name: 'projectName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Select Project Name`
+  String get selectProjectName {
+    return Intl.message(
+      'Select Project Name',
+      name: 'selectProjectName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Attendance Way`
+  String get attendanceWay {
+    return Intl.message(
+      'Attendance Way',
+      name: 'attendanceWay',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Select Attendance Way`
+  String get selectAttendanceWay {
+    return Intl.message(
+      'Select Attendance Way',
+      name: 'selectAttendanceWay',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Include Weekend`
+  String get includeWeekend {
+    return Intl.message(
+      'Include Weekend',
+      name: 'includeWeekend',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Search by name...`
+  String get searchEmployee {
+    return Intl.message(
+      'Search by name...',
+      name: 'searchEmployee',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No employees found`
+  String get noEmployeesFound {
+    return Intl.message(
+      'No employees found',
+      name: 'noEmployeesFound',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Selected Employees`
+  String get selectedEmployees {
+    return Intl.message(
+      'Selected Employees',
+      name: 'selectedEmployees',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Private Tasks`
+  String get privateTasks {
+    return Intl.message(
+      'Private Tasks',
+      name: 'privateTasks',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please select at least one employee`
+  String get selectAtLeastOneEmployee {
+    return Intl.message(
+      'Please select at least one employee',
+      name: 'selectAtLeastOneEmployee',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Duration`
+  String get duration {
+    return Intl.message('Duration', name: 'duration', desc: '', args: []);
+  }
+
+  /// `Employees`
+  String get employees {
+    return Intl.message('Employees', name: 'employees', desc: '', args: []);
+  }
+
+  /// `Tasks`
+  String get tasks {
+    return Intl.message('Tasks', name: 'tasks', desc: '', args: []);
   }
 }
 

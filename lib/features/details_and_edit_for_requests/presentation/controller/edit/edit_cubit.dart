@@ -12,6 +12,7 @@ import 'package:shaoni/features/details_and_edit_for_requests/domain/use_cases/g
 import 'package:shaoni/features/details_and_edit_for_requests/domain/use_cases/get_medical_insurance_edit_use_case.dart';
 import 'package:shaoni/features/details_and_edit_for_requests/domain/use_cases/get_training_request_edit_use_case.dart';
 import 'package:shaoni/features/details_and_edit_for_requests/domain/use_cases/get_product_order_edit_use_case.dart';
+import 'package:shaoni/features/details_and_edit_for_requests/domain/use_cases/get_outside_working_edit_use_case.dart';
 
 part 'edit_state.dart';
 
@@ -26,6 +27,7 @@ class EditCubit extends Cubit<EditState> {
   final GetMedicalInsuranceEditUseCase _getMedicalInsuranceEditUseCase;
   final GetTrainingRequestEditUseCase _getTrainingRequestEditUseCase;
   final GetProductOrderEditUseCase _getProductOrderEditUseCase;
+  final GetOutsideWorkingEditUseCase _getOutsideWorkingEditUseCase;
   final editNotesController = TextEditingController();
 
   EditCubit(
@@ -39,6 +41,7 @@ class EditCubit extends Cubit<EditState> {
     this._getMedicalInsuranceEditUseCase,
     this._getTrainingRequestEditUseCase,
     this._getProductOrderEditUseCase,
+    this._getOutsideWorkingEditUseCase,
   ) : super(const EditState());
 
   Future<void> editRequest({
@@ -75,6 +78,9 @@ class EditCubit extends Cubit<EditState> {
         break;
       case 'product.request':
         await _getProductOrderEdit(requestId: requestId);
+        break;
+      case 'outside.working':
+        await _getOutsideWorkingEdit(requestId: requestId);
         break;
       default:
         emit(state.copyWith(
@@ -292,6 +298,28 @@ class EditCubit extends Cubit<EditState> {
     emit(state.copyWith(status: EditStatus.loading));
     final result = await _getMedicalInsuranceEditUseCase.call(
       params: GetMedicalInsuranceEditParams(
+        requestId: requestId,
+        editReasons: editNotesController.text,
+      ),
+    );
+    result.fold(
+      (failure) => emit(state.copyWith(
+        status: EditStatus.error,
+        errorMessage: failure.message,
+      )),
+      (response) => emit(state.copyWith(
+        status: EditStatus.editRequestLoaded,
+        editResponse: response,
+      )),
+    );
+  }
+
+  /// ── Outside Working ───────────────────────────────────────────────────────
+
+  Future<void> _getOutsideWorkingEdit({required int requestId}) async {
+    emit(state.copyWith(status: EditStatus.loading));
+    final result = await _getOutsideWorkingEditUseCase.call(
+      params: GetOutsideWorkingEditParams(
         requestId: requestId,
         editReasons: editNotesController.text,
       ),

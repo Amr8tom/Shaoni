@@ -82,6 +82,16 @@ class URL {
   static const String updateMedicalInsurance = '$baseUrl/MedicalInsurance/update/';
   static const String getMedicalInsuranceEdit = '$baseUrl/MedicalInsurance/edit/';
 
+  /// ============================ outside working ============================
+  static const String getAttendanceWayLookup = '$baseUrl/Lookup/GetAttendanceWayLookup';
+  static const String getDepartmentTypeLookup = '$baseUrl/Lookup/GetDepartmentTypeLookup';
+  static const String getProjectTypeLookup = '$baseUrl/Lookup/GetProjectTypeLookup';
+  static const String syncEmployees = '$baseUrl/Integration/sync-employees';
+  static const String getProjects = '$baseUrl/Projects';
+  static const String createOutsideWorking = '$baseUrl/OutsideWorking/create';
+  static const String updateOutsideWorking = '$baseUrl/OutsideWorking/update/';
+  static const String getOutsideWorkingEdit = '$baseUrl/OutsideWorking/edit/';
+
   /// ============================ complaint request ============================
   static const String getComplaintTypes = '$baseUrl/Lookup/GetComplaintTypes';
   static const String getComplaintReasons = '$baseUrl/Lookup/GetComplaintReasons';

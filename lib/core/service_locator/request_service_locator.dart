@@ -1,4 +1,11 @@
 import 'package:get_it/get_it.dart';
+import 'package:shaoni/features/human_resoures/domain/use_cases/outside_working/get_attendance_way_use_case.dart';
+import 'package:shaoni/features/human_resoures/domain/use_cases/outside_working/get_department_type_lookup_use_case.dart';
+import 'package:shaoni/features/human_resoures/domain/use_cases/outside_working/get_project_type_lookup_use_case.dart';
+import 'package:shaoni/features/human_resoures/domain/use_cases/outside_working/get_outside_working_employees_use_case.dart';
+import 'package:shaoni/features/human_resoures/domain/use_cases/outside_working/get_outside_working_projects_use_case.dart';
+import 'package:shaoni/features/human_resoures/domain/use_cases/outside_working/create_outside_working_use_case.dart';
+import 'package:shaoni/features/human_resoures/presentation/controller/outside_working/outside_working_cubit.dart';
 import 'package:shaoni/features/human_resoures/domain/use_cases/attendance/get_all_missing_attendance_use_case.dart';
 import 'package:shaoni/features/human_resoures/domain/use_cases/attendance/get_attendance_lookup_use_case.dart';
 import 'package:shaoni/features/human_resoures/domain/use_cases/attendance/get_forget_reason_use_case.dart';
@@ -244,6 +251,36 @@ class HRServiceLocator {
         serviceLocator(),
         serviceLocator(),
         serviceLocator(),
+      ),
+    );
+
+    /// ============================ outside working ============================
+    serviceLocator.registerLazySingleton<GetAttendanceWayUseCase>(
+      () => GetAttendanceWayUseCase(serviceLocator()),
+    );
+    serviceLocator.registerLazySingleton<GetDepartmentTypeLookupUseCase>(
+      () => GetDepartmentTypeLookupUseCase(serviceLocator()),
+    );
+    serviceLocator.registerLazySingleton<GetProjectTypeLookupUseCase>(
+      () => GetProjectTypeLookupUseCase(serviceLocator()),
+    );
+    serviceLocator.registerLazySingleton<GetOutsideWorkingEmployeesUseCase>(
+      () => GetOutsideWorkingEmployeesUseCase(serviceLocator()),
+    );
+    serviceLocator.registerLazySingleton<GetOutsideWorkingProjectsUseCase>(
+      () => GetOutsideWorkingProjectsUseCase(serviceLocator()),
+    );
+    serviceLocator.registerLazySingleton<CreateOutsideWorkingUseCase>(
+      () => CreateOutsideWorkingUseCase(serviceLocator()),
+    );
+    serviceLocator.registerFactory<OutsideWorkingCubit>(
+      () => OutsideWorkingCubit(
+        serviceLocator<GetAttendanceWayUseCase>(),
+        serviceLocator<GetDepartmentTypeLookupUseCase>(),
+        serviceLocator<GetProjectTypeLookupUseCase>(),
+        serviceLocator<GetOutsideWorkingEmployeesUseCase>(),
+        serviceLocator<GetOutsideWorkingProjectsUseCase>(),
+        serviceLocator<CreateOutsideWorkingUseCase>(),
       ),
     );
   }

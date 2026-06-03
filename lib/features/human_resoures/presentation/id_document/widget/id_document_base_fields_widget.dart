@@ -8,9 +8,6 @@ import 'package:shaoni/features/human_resoures/presentation/controller/id_docume
 import 'package:shaoni/generated/l10n.dart';
 import 'package:shaoni/core/constants/colors.dart';
 
-/// Shared base fields for all document type widgets.
-/// Renders: issuing country, document number, issue number,
-/// issue date, end date, tabaq checkbox, kafala checkbox + kafeel name.
 class IDDocumentBaseFieldsWidget extends StatelessWidget {
   const IDDocumentBaseFieldsWidget({super.key});
 

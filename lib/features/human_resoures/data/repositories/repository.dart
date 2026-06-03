@@ -55,6 +55,13 @@ import '../../domain/use_cases/exit/create_exit_permission_use_case.dart';
 import '../data_sources/local_data_sources.dart';
 import '../data_sources/remote_data_sources.dart';
 import '../model/attendance/attendance_model.dart';
+import '../../domain/entity/outside_working/attendance_way.dart';
+import '../../domain/entity/outside_working/department_type_lookup.dart';
+import '../../domain/entity/outside_working/project_type_lookup.dart';
+import '../../domain/entity/outside_working/outside_working_employee.dart';
+import '../../domain/entity/outside_working/outside_working_project.dart';
+import '../../domain/entity/outside_working/create_outside_working_response.dart';
+import '../../domain/use_cases/outside_working/create_outside_working_use_case.dart';
 
 class HRServicesRepositoryImp extends HRServicesRepository {
   final HRServicesLocalDataSources _local;
@@ -643,6 +650,104 @@ class HRServicesRepositoryImp extends HRServicesRepository {
     if (await _networkInfo.isConnected) {
       try {
         final response = await _remote.updateProductOrder(params: params);
+        return Right(response);
+      } on ServerFailure catch (e) {
+        return Left(ServerFailure(message: e.message));
+      }
+    } else {
+      return Left(CacheFailure());
+    }
+  }
+
+  /// ============================= outside working =============================
+
+  @override
+  Future<Either<Failure, List<AttendanceWay>>> getAttendanceWay({
+    required NoParams params,
+  }) async {
+    if (await _networkInfo.isConnected) {
+      try {
+        final response = await _remote.getAttendanceWay(params: params);
+        return Right(response);
+      } on ServerFailure catch (e) {
+        return Left(ServerFailure(message: e.message));
+      }
+    } else {
+      return Left(CacheFailure());
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<DepartmentTypeLookup>>> getDepartmentTypeLookup({
+    required NoParams params,
+  }) async {
+    if (await _networkInfo.isConnected) {
+      try {
+        final response = await _remote.getDepartmentTypeLookup(params: params);
+        return Right(response);
+      } on ServerFailure catch (e) {
+        return Left(ServerFailure(message: e.message));
+      }
+    } else {
+      return Left(CacheFailure());
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<ProjectTypeLookup>>> getProjectTypeLookup({
+    required NoParams params,
+  }) async {
+    if (await _networkInfo.isConnected) {
+      try {
+        final response = await _remote.getProjectTypeLookup(params: params);
+        return Right(response);
+      } on ServerFailure catch (e) {
+        return Left(ServerFailure(message: e.message));
+      }
+    } else {
+      return Left(CacheFailure());
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<OutsideWorkingEmployee>>> getOutsideWorkingEmployees({
+    required NoParams params,
+  }) async {
+    if (await _networkInfo.isConnected) {
+      try {
+        final response = await _remote.getOutsideWorkingEmployees(params: params);
+        return Right(response);
+      } on ServerFailure catch (e) {
+        return Left(ServerFailure(message: e.message));
+      }
+    } else {
+      return Left(CacheFailure());
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<OutsideWorkingProject>>> getOutsideWorkingProjects({
+    required NoParams params,
+  }) async {
+    if (await _networkInfo.isConnected) {
+      try {
+        final response = await _remote.getOutsideWorkingProjects(params: params);
+        return Right(response);
+      } on ServerFailure catch (e) {
+        return Left(ServerFailure(message: e.message));
+      }
+    } else {
+      return Left(CacheFailure());
+    }
+  }
+
+  @override
+  Future<Either<Failure, CreateOutsideWorkingResponse>> createOutsideWorking({
+    required CreateOutsideWorkingParams params,
+  }) async {
+    if (await _networkInfo.isConnected) {
+      try {
+        final response = await _remote.createOutsideWorking(params: params);
         return Right(response);
       } on ServerFailure catch (e) {
         return Left(ServerFailure(message: e.message));

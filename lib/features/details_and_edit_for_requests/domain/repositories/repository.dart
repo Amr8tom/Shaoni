@@ -19,6 +19,7 @@ import '../use_cases/get_id_document_edit_use_case.dart';
 import '../use_cases/get_medical_insurance_edit_use_case.dart';
 import '../use_cases/get_training_request_edit_use_case.dart';
 import '../use_cases/get_product_order_edit_use_case.dart';
+import '../use_cases/get_outside_working_edit_use_case.dart';
 
 abstract class MyRequestsRepository {
   /// get
@@ -70,5 +71,9 @@ abstract class MyRequestsRepository {
 
   Future<Either<Failure, EditResponse>> getProductOrderEdit({
     required GetProductOrderEditParams params,
+  });
+
+  Future<Either<Failure, EditResponse>> getOutsideWorkingEdit({
+    required GetOutsideWorkingEditParams params,
   });
 }

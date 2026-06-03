@@ -97,9 +97,146 @@ class LoginForm extends StatelessWidget {
                       textColor: ColorRes.white,
                       backgroundColor: ColorRes.primary,
                     ),
+
+              const Sizer(height: 24),
+
+              // // ── OR divider ───────────────────────────────────────────────
+              // Row(
+              //   children: [
+              //     Expanded(child: Divider(color: Colors.grey.shade300)),
+              //     Padding(
+              //       padding: const EdgeInsets.symmetric(horizontal: 12),
+              //       child: Text(
+              //         'OR',
+              //         style: Theme.of(context).textTheme.bodySmall?.copyWith(
+              //               color: Colors.grey.shade500,
+              //               fontWeight: FontWeight.w500,
+              //             ),
+              //       ),
+              //     ),
+              //     Expanded(child: Divider(color: Colors.grey.shade300)),
+              //   ],
+              // ),
+              //
+              // const Sizer(height: 16),
+              //
+              // Text(
+              //   'or continue with:',
+              //   style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+              //         color: Colors.grey.shade700,
+              //       ),
+              //   textAlign: TextAlign.center,
+              // ),
+              //
+              // const Sizer(height: 20),
+              //
+              // // ── Social icons ─────────────────────────────────────────────
+              // Row(
+              //   mainAxisAlignment: MainAxisAlignment.center,
+              //   children: [
+              //     // Google
+              //     _SocialLoginButton(
+              //       onTap: () {
+              //         // TODO: implement Google sign-in
+              //       },
+              //       child: Image.asset(
+              //         'assets/images/pngs/social_images/google-logo.png',
+              //         width: 28,
+              //         height: 28,
+              //       ),
+              //     ),
+              //     const SizedBox(width: 20),
+              //     // Apple
+              //     _SocialLoginButton(
+              //       onTap: () {
+              //         // TODO: implement Apple sign-in
+              //       },
+              //       child: const Icon(
+              //         Icons.apple_rounded,
+              //         size: 32,
+              //         color: Colors.black,
+              //       ),
+              //     ),
+              //   ],
+              // ),
+              //
+              // const Sizer(height: 24),
+
+              // ── Don't have an account? Sign Up ───────────────────────────
+              GestureDetector(
+                onTap: () {
+                  // TODO: implement Sign Up navigation
+                },
+                child: RichText(
+                  textAlign: TextAlign.center,
+                  text: TextSpan(
+                    style: Theme.of(context).textTheme.bodyMedium,
+                    children: [
+                      const TextSpan(text: "Don't have an account? "),
+                      TextSpan(
+                        text: 'Sign Up',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: ColorRes.black,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+
+              const Sizer(height: 16),
+
+              // ── Privacy Policy note ───────────────────────────────────────
+              RichText(
+                textAlign: TextAlign.center,
+                text: TextSpan(
+                  style: Theme.of(context)
+                      .textTheme
+                      .bodyMedium
+                      ?.copyWith(color: Colors.grey.shade600),
+                  children: [
+                     TextSpan(text: S.current.byContinuingYouAgreeToOur),
+
+                    TextSpan(
+                      text: S.current.privacyPolicy,
+                      style: TextStyle(
+                        color: Colors.grey.shade700,
+                        decoration: TextDecoration.underline,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+
+              const Sizer(height: 30),
             ],
           ),
         ),
+      ),
+    );
+  }
+}
+
+class _SocialLoginButton extends StatelessWidget {
+  final VoidCallback onTap;
+  final Widget child;
+
+  const _SocialLoginButton({required this.onTap, required this.child});
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        width: 64,
+        height: 64,
+        decoration: BoxDecoration(
+          shape: BoxShape.circle,
+          color: Colors.grey.shade100,
+          border: Border.all(color: Colors.grey.shade200),
+        ),
+        child: Center(child: child),
       ),
     );
   }

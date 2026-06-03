@@ -34,6 +34,7 @@ class DRoutesName {
   static const String createMedicalInsuranceRoute = 'create-medical-insurance-route';
   static const String createTrainingRequestRoute = 'create-training-request-route';
   static const String createProductOrderRoute = 'create-product-order-route';
+  static const String createOutsideWorkingRoute = 'create-outside-working-route';
 
   /// location & maps Screen
   static const String mapRoute = 'map-route';

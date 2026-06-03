@@ -42,6 +42,13 @@ import 'package:shaoni/features/human_resoures/domain/use_cases/product_order/ge
 import 'package:shaoni/features/human_resoures/domain/use_cases/product_order/create_product_order_use_case.dart';
 import 'package:shaoni/features/human_resoures/domain/use_cases/product_order/update_product_order_use_case.dart';
 import 'package:shaoni/features/human_resoures/domain/use_cases/complaint_request/create_complaint_request_use_case.dart';
+import 'package:shaoni/features/human_resoures/data/model/outside_working/attendance_way_model.dart';
+import 'package:shaoni/features/human_resoures/data/model/outside_working/department_type_lookup_model.dart';
+import 'package:shaoni/features/human_resoures/data/model/outside_working/project_type_lookup_model.dart';
+import 'package:shaoni/features/human_resoures/data/model/outside_working/outside_working_employee_model.dart';
+import 'package:shaoni/features/human_resoures/data/model/outside_working/outside_working_project_model.dart';
+import 'package:shaoni/features/human_resoures/data/model/outside_working/create_outside_working_response_model.dart';
+import 'package:shaoni/features/human_resoures/domain/use_cases/outside_working/create_outside_working_use_case.dart';
 import '../../../../core/constants/api_constants.dart';
 import '../../../../core/dio/dio_helper.dart';
 import '../../../../core/error/failure.dart';
@@ -182,6 +189,16 @@ abstract class HRServicesRemoteDataSources {
 
   Future<CreateProductOrderResponseModel> updateProductOrder({
     required UpdateProductOrderParams params,
+  });
+
+  /// ============================= outside working =============================
+  Future<List<AttendanceWayModel>> getAttendanceWay({required NoParams params});
+  Future<List<DepartmentTypeLookupModel>> getDepartmentTypeLookup({required NoParams params});
+  Future<List<ProjectTypeLookupModel>> getProjectTypeLookup({required NoParams params});
+  Future<List<OutsideWorkingEmployeeModel>> getOutsideWorkingEmployees({required NoParams params});
+  Future<List<OutsideWorkingProjectModel>> getOutsideWorkingProjects({required NoParams params});
+  Future<CreateOutsideWorkingResponseModel> createOutsideWorking({
+    required CreateOutsideWorkingParams params,
   });
 }
 
@@ -767,6 +784,91 @@ class HRServicesRemoteDataSourcesImp implements HRServicesRemoteDataSources {
       if (response == null) throw ServerFailure(message: 'server failure');
       return CreateProductOrderResponseModel.fromJson(
           response.data as Map<String, dynamic>);
+    } on ServerFailure catch (e) {
+      throw ServerFailure(message: e.message);
+    }
+  }
+
+  /// ============================= outside working =============================
+
+  @override
+  Future<List<AttendanceWayModel>> getAttendanceWay({required NoParams params}) async {
+    try {
+      final response = await _dio.getData(URL: URL.getAttendanceWayLookup);
+      if (response == null) throw ServerFailure(message: 'server failure');
+      final List raw = response is List ? response : (response as Map<String, dynamic>)['data'] as List;
+      return raw.map((e) => AttendanceWayModel.fromJson(e)).toList();
+    } on ServerFailure catch (e) {
+      throw ServerFailure(message: e.message);
+    }
+  }
+
+  @override
+  Future<List<DepartmentTypeLookupModel>> getDepartmentTypeLookup({required NoParams params}) async {
+    try {
+      final response = await _dio.getData(URL: URL.getDepartmentTypeLookup);
+      if (response == null) throw ServerFailure(message: 'server failure');
+      final List raw = response is List ? response : (response as Map<String, dynamic>)['data'] as List;
+      return raw.map((e) => DepartmentTypeLookupModel.fromJson(e)).toList();
+    } on ServerFailure catch (e) {
+      throw ServerFailure(message: e.message);
+    }
+  }
+
+  @override
+  Future<List<ProjectTypeLookupModel>> getProjectTypeLookup({required NoParams params}) async {
+    try {
+      final response = await _dio.getData(URL: URL.getProjectTypeLookup);
+      if (response == null) throw ServerFailure(message: 'server failure');
+      final List raw = response is List ? response : (response as Map<String, dynamic>)['data'] as List;
+      return raw.map((e) => ProjectTypeLookupModel.fromJson(e)).toList();
+    } on ServerFailure catch (e) {
+      throw ServerFailure(message: e.message);
+    }
+  }
+
+  @override
+  Future<List<OutsideWorkingEmployeeModel>> getOutsideWorkingEmployees({required NoParams params}) async {
+    try {
+      final response = await _dio.getData(URL: URL.syncEmployees);
+      if (response == null) throw ServerFailure(message: 'server failure');
+      final List raw = response is List ? response : (response as Map<String, dynamic>)['data'] as List;
+      return raw.map((e) => OutsideWorkingEmployeeModel.fromJson(e)).toList();
+    } on ServerFailure catch (e) {
+      throw ServerFailure(message: e.message);
+    }
+  }
+
+  @override
+  Future<List<OutsideWorkingProjectModel>> getOutsideWorkingProjects({required NoParams params}) async {
+    try {
+      final response = await _dio.getData(URL: '${URL.getProjects}?refresh=true');
+      if (response == null) throw ServerFailure(message: 'server failure');
+      dynamic rawBody;
+      if (response is List) {
+        rawBody = response;
+      } else if (response is Map<String, dynamic>) {
+        rawBody = response['body'] ?? response['data'] ?? response['items'];
+      }
+      if (rawBody == null || rawBody is! List) return [];
+      return (rawBody as List).map((e) => OutsideWorkingProjectModel.fromJson(e)).toList();
+    } on ServerFailure catch (e) {
+      throw ServerFailure(message: e.message);
+    }
+  }
+
+  @override
+  Future<CreateOutsideWorkingResponseModel> createOutsideWorking({
+    required CreateOutsideWorkingParams params,
+  }) async {
+    try {
+      final response = await _dio.postData(
+        URL: URL.createOutsideWorking,
+        body: params.toMap(),
+      );
+      if (response == null) throw ServerFailure(message: 'server failure');
+      return CreateOutsideWorkingResponseModel.fromJson(
+          response is Map<String, dynamic> ? response : response as Map<String, dynamic>);
     } on ServerFailure catch (e) {
       throw ServerFailure(message: e.message);
     }

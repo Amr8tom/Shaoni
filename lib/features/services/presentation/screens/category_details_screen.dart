@@ -108,6 +108,8 @@ class CategoryDetailsScreen extends StatelessWidget {
         return;
       case 'id.renewal.request':
         context.pushNamed(DRoutesName.createIDDocumentRoute);
+      case 'outside.working':
+        context.pushNamed(DRoutesName.createOutsideWorkingRoute);
         return;
       default:
         ScaffoldMessenger.of(context).showSnackBar(

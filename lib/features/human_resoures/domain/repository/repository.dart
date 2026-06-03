@@ -51,6 +51,13 @@ import '../entity/product_order/create_product_order_response.dart';
 import '../use_cases/product_order/get_products_by_category_use_case.dart';
 import '../use_cases/product_order/create_product_order_use_case.dart';
 import '../use_cases/product_order/update_product_order_use_case.dart';
+import '../entity/outside_working/attendance_way.dart';
+import '../entity/outside_working/department_type_lookup.dart';
+import '../entity/outside_working/project_type_lookup.dart';
+import '../entity/outside_working/outside_working_employee.dart';
+import '../entity/outside_working/outside_working_project.dart';
+import '../entity/outside_working/create_outside_working_response.dart';
+import '../use_cases/outside_working/create_outside_working_use_case.dart';
 
 abstract class HRServicesRepository {
 
@@ -194,5 +201,30 @@ abstract class HRServicesRepository {
 
   Future<Either<Failure, CreateProductOrderResponse>> updateProductOrder({
     required UpdateProductOrderParams params,
+  });
+
+  /// ///////////////////////////////////// outside working /////////////////////////////////////////////////////
+  Future<Either<Failure, List<AttendanceWay>>> getAttendanceWay({
+    required NoParams params,
+  });
+
+  Future<Either<Failure, List<DepartmentTypeLookup>>> getDepartmentTypeLookup({
+    required NoParams params,
+  });
+
+  Future<Either<Failure, List<ProjectTypeLookup>>> getProjectTypeLookup({
+    required NoParams params,
+  });
+
+  Future<Either<Failure, List<OutsideWorkingEmployee>>> getOutsideWorkingEmployees({
+    required NoParams params,
+  });
+
+  Future<Either<Failure, List<OutsideWorkingProject>>> getOutsideWorkingProjects({
+    required NoParams params,
+  });
+
+  Future<Either<Failure, CreateOutsideWorkingResponse>> createOutsideWorking({
+    required CreateOutsideWorkingParams params,
   });
 }

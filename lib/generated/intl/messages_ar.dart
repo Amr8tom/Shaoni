@@ -103,6 +103,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "إحصائيات الحضور",
     ),
     "attendanceType": MessageLookupByLibrary.simpleMessage("نوع إثبات البصمة"),
+    "attendanceWay": MessageLookupByLibrary.simpleMessage("طريقة الحضور"),
     "attendanceWillAppearHere": MessageLookupByLibrary.simpleMessage(
       "ستظهر سجلات الحضور ومعلومات تسجيل الدخول الخاصة بك هنا",
     ),
@@ -134,6 +135,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "buyingLimit": MessageLookupByLibrary.simpleMessage("حد الشراء"),
     "byClickYourAgreeTerms": MessageLookupByLibrary.simpleMessage(
       " بالضغط على الزر، فإنك توافق على ",
+    ),
+    "byContinuingYouAgreeToOur": MessageLookupByLibrary.simpleMessage(
+      "بالمواصلة، فإنك توافق على",
     ),
     "callUs": MessageLookupByLibrary.simpleMessage("اتصل بنا"),
     "camera": MessageLookupByLibrary.simpleMessage("كاميرا"),
@@ -300,6 +304,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "depDate": MessageLookupByLibrary.simpleMessage("تاريخ المغادرة"),
     "depFli": MessageLookupByLibrary.simpleMessage("رقم رحلة المغادرة"),
     "depart": MessageLookupByLibrary.simpleMessage("الإنطلاق إلى منى"),
+    "departmentType": MessageLookupByLibrary.simpleMessage("نوع القسم"),
     "des": MessageLookupByLibrary.simpleMessage("الوصف"),
     "desc": MessageLookupByLibrary.simpleMessage("الوصف:"),
     "description": MessageLookupByLibrary.simpleMessage("الـوصـف"),
@@ -343,6 +348,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "duis": MessageLookupByLibrary.simpleMessage(
       "   هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل الخارجي للنص",
     ),
+    "duration": MessageLookupByLibrary.simpleMessage("المدة"),
     "durationInHours": MessageLookupByLibrary.simpleMessage("المدة بالساعات"),
     "duringWorkHours": MessageLookupByLibrary.simpleMessage(
       "أثناء ساعات العمل: للخروج والعودة مرة أخرى (مثل موعد طبي سريع). قبل انتهاء الدوام: للمغادرة وعدم العودة (الخروج المبكر). المهام الخارجية: عند تكليف الموظف بمهمة عمل تتطلب تواجده في موقع آخر.",
@@ -363,6 +369,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "تم إرسال كود إعادة التعيين",
     ),
     "employee": MessageLookupByLibrary.simpleMessage("الموظف"),
+    "employees": MessageLookupByLibrary.simpleMessage("الموظفون"),
     "endDate": MessageLookupByLibrary.simpleMessage("النهاية م"),
     "endOfServiceRequest": MessageLookupByLibrary.simpleMessage(
       "طلب نهاية خدمة",
@@ -558,6 +565,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "includeFamilyMembers": MessageLookupByLibrary.simpleMessage(
       "تضمين أفراد الأسرة",
     ),
+    "includeWeekend": MessageLookupByLibrary.simpleMessage("يشمل عطلات؟"),
     "information": MessageLookupByLibrary.simpleMessage("المعلومات"),
     "installmentWithSouhoola": MessageLookupByLibrary.simpleMessage(
       "قسط مع سهولة",
@@ -713,6 +721,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "noData": MessageLookupByLibrary.simpleMessage(
       "لا يــوجد شـئ في الوقت الحـالي",
     ),
+    "noEmployeesFound": MessageLookupByLibrary.simpleMessage("لا يوجد موظفون"),
     "noFamilyMembersFound": MessageLookupByLibrary.simpleMessage(
       "لا يوجد أفراد أسرة",
     ),
@@ -820,6 +829,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "ourOffers": MessageLookupByLibrary.simpleMessage("عروضنا"),
     "ourTours": MessageLookupByLibrary.simpleMessage("رحلاتنا"),
+    "outsideWorkingRequest": MessageLookupByLibrary.simpleMessage(
+      "طلب وقت عمل إضافي",
+    ),
     "overtime": MessageLookupByLibrary.simpleMessage("وقت إضافي"),
     "overtimeRequest": MessageLookupByLibrary.simpleMessage(
       "طلب وقت عمل إضافي",
@@ -898,6 +910,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "priceAfterOffer": MessageLookupByLibrary.simpleMessage("السعر بعد العرض"),
     "priceBeforeOffer": MessageLookupByLibrary.simpleMessage("السعر قبل العرض"),
     "privacyPolicy": MessageLookupByLibrary.simpleMessage("سياسة الخصوصية"),
+    "privateTasks": MessageLookupByLibrary.simpleMessage("المهام الخاصة"),
     "processingType": MessageLookupByLibrary.simpleMessage(
       "نوع المعالجة: فوري / يتطلب موافقة",
     ),
@@ -917,6 +930,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "profileKeywords": MessageLookupByLibrary.simpleMessage(
       "حساب,ملف,إعدادات,اعدادات,شخصي,معلومات,تفاصيل,بيانات,مستخدم,أنا,انا,لي,خاص,تفضيلات,إعداد,اعداد,خيارات,تعديل,تحديث,تغيير,نفسي,هويتي,سيرة,اسم,صورة,رقم,ايميل,بريد,كلمة سر,باسورد,رمز,هاتف,جوال,موبايل",
     ),
+    "projectName": MessageLookupByLibrary.simpleMessage("اسم المشروع"),
+    "projectType": MessageLookupByLibrary.simpleMessage("نوع المشروع"),
     "provide": MessageLookupByLibrary.simpleMessage("يقدم بواسطة:"),
     "qibla": MessageLookupByLibrary.simpleMessage("القبلة"),
     "qiblaAngle": MessageLookupByLibrary.simpleMessage("زاوية القبلة"),
@@ -1037,6 +1052,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "search": MessageLookupByLibrary.simpleMessage(
       "البحث عن طريق الكلمات الرئيسية",
     ),
+    "searchEmployee": MessageLookupByLibrary.simpleMessage("ابحث بالاسم..."),
     "searchJuzIndex": MessageLookupByLibrary.simpleMessage(
       "ابحث عن رقم الجزء...",
     ),
@@ -1055,6 +1071,12 @@ class MessageLookup extends MessageLookupByLibrary {
       "الرجـاء أختيار عنوان أولا",
     ),
     "selectArr": MessageLookupByLibrary.simpleMessage("اختر مدينة الوصول"),
+    "selectAtLeastOneEmployee": MessageLookupByLibrary.simpleMessage(
+      "يرجى اختيار موظف واحد على الأقل",
+    ),
+    "selectAttendanceWay": MessageLookupByLibrary.simpleMessage(
+      "اختر طريقة الحضور",
+    ),
     "selectCarBrand": MessageLookupByLibrary.simpleMessage(
       "اختر ماركة السيارة",
     ),
@@ -1077,6 +1099,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "selectDate": MessageLookupByLibrary.simpleMessage("اختر التوقيت"),
     "selectDep": MessageLookupByLibrary.simpleMessage("اختر مدينة المغادرة"),
     "selectDepartment": MessageLookupByLibrary.simpleMessage("اختر القسم"),
+    "selectDepartmentType": MessageLookupByLibrary.simpleMessage(
+      "اختر نوع القسم",
+    ),
     "selectDocumentType": MessageLookupByLibrary.simpleMessage("اختر النوع"),
     "selectEmployee": MessageLookupByLibrary.simpleMessage("اختر الموظف"),
     "selectInsuranceClass": MessageLookupByLibrary.simpleMessage(
@@ -1096,6 +1121,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "selectProductCategory": MessageLookupByLibrary.simpleMessage(
       "اختر فئة المنتج",
     ),
+    "selectProjectName": MessageLookupByLibrary.simpleMessage(
+      "اختر اسم المشروع",
+    ),
+    "selectProjectType": MessageLookupByLibrary.simpleMessage(
+      "اختر نوع المشروع",
+    ),
     "selectQuantitiy": MessageLookupByLibrary.simpleMessage(
       "حـــدد الكِمــية أولاً ",
     ),
@@ -1112,6 +1143,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "selectStudyType": MessageLookupByLibrary.simpleMessage("اختر نوع الدراسة"),
     "selectTime": MessageLookupByLibrary.simpleMessage("حدد الوقت"),
+    "selectedEmployees": MessageLookupByLibrary.simpleMessage(
+      "الموظفون المحددون",
+    ),
     "send": MessageLookupByLibrary.simpleMessage("أرسال"),
     "sendFeed": MessageLookupByLibrary.simpleMessage("ارسل رأيك"),
     "sendOtp": MessageLookupByLibrary.simpleMessage("تاكيد رمز التحقق"),
@@ -1192,6 +1226,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "tabaq": MessageLookupByLibrary.simpleMessage("طبق"),
     "tapToRead": MessageLookupByLibrary.simpleMessage("اضغط للقراءة"),
+    "tasks": MessageLookupByLibrary.simpleMessage("المهام"),
     "tawafStart": MessageLookupByLibrary.simpleMessage(
       "سيبدأ نشاط الطواف بالكعبة خلال 30 دقيقة",
     ),

@@ -8,6 +8,7 @@ import 'package:shaoni/features/human_resoures/presentation/id_document/create_i
 import 'package:shaoni/features/human_resoures/presentation/medical_insurance/create_medical_insurance_form.dart';
 import 'package:shaoni/features/study&training/presentaion/training_request/create_training_request_form.dart';
 import 'package:shaoni/features/human_resoures/presentation/product_order/create_product_order_form.dart';
+import 'package:shaoni/features/human_resoures/presentation/outside_working/create_outside_working_form.dart';
 import 'package:shaoni/features/profile/profile_screen.dart';
 import 'package:shaoni/features/services/presentation/screens/category_details_screen.dart';
 import '../../features/auth/presentation/screen/login_screen.dart';
@@ -18,7 +19,6 @@ import '../../features/human_resoures/presentation/attendance/create_attendance_
 import '../../features/human_resoures/presentation/car_permission/create_car_permission_screen.dart';
 import '../../features/human_resoures/presentation/complaint_request/create_complaint_request_screen.dart';
 import '../../features/human_resoures/presentation/attendance/missing_attendance_history_screen.dart';
-import '../../features/human_resoures/presentation/screens/all_human_resources_requests.dart';
 import '../../features/human_resoures/presentation/exit/create_exit_request_form.dart';
 import '../../features/human_resoures/presentation/screens/faq_information.dart';
 import '../../features/details_and_edit_for_requests/presentation/screens/request_details_screen.dart';
@@ -138,6 +138,16 @@ class RouteGenerator {
         final int? requestId = args?['requestId'] as int?;
         return PageTransition(
           child: CreateProductOrderForm(requestId: requestId),
+          type: PageTransitionType.rightToLeft,
+          settings: settings,
+        );
+
+     /// create / edit outside working screen
+      case DRoutesName.createOutsideWorkingRoute:
+        final args = settings.arguments as Map<String, dynamic>?;
+        final int? requestId = args?['requestId'] as int?;
+        return PageTransition(
+          child: CreateOutsideWorkingForm(requestId: requestId),
           type: PageTransitionType.rightToLeft,
           settings: settings,
         );
