@@ -7,8 +7,8 @@ import '../../../../core/constants/app_sizes.dart';
 import '../../../../core/constants/colors.dart';
 import '../../../../generated/l10n.dart';
 import '../../../home/presentation/widgets/order_text_card.dart';
+import '../../domain/entities/product_order.dart';
 import '../controller/my_requests_cubit.dart';
-import '../../data/models/product_order_model.dart';
 
 class ProductOrderDetailsWidget extends StatelessWidget {
   const ProductOrderDetailsWidget({super.key});
@@ -108,7 +108,7 @@ class ProductOrderDetailsWidget extends StatelessWidget {
 class _LineItemCard extends StatelessWidget {
   const _LineItemCard({required this.line});
 
-  final ProductOrderLineItem line;
+  final ProductOrderLineItemEntity line;
 
   @override
   Widget build(BuildContext context) {

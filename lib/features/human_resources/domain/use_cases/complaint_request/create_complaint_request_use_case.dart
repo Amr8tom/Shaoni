@@ -3,16 +3,16 @@ import 'package:shaoni/core/error/failure.dart';
 import 'package:shaoni/core/utils/usecases/base_usecase.dart';
 import 'package:shaoni/features/human_resources/domain/repository/repository.dart';
 
-import '../../../data/model/complaint_request/create_complaint_request_model.dart';
+import 'package:shaoni/features/human_resources/domain/entity/complaint_request/create_complaint_request.dart';
 
 class CreateComplaintRequestUseCase
-    extends UseCase<CreateComplaintRequestModel, CreateComplaintRequestParams> {
+    extends UseCase<CreateComplaintRequest, CreateComplaintRequestParams> {
   final HRServicesRepository repository;
 
   CreateComplaintRequestUseCase(this.repository);
 
   @override
-  Future<Either<Failure, CreateComplaintRequestModel>> call({
+  Future<Either<Failure, CreateComplaintRequest>> call({
     required CreateComplaintRequestParams params,
   }) async {
     return await repository.createComplaintRequest(params: params);

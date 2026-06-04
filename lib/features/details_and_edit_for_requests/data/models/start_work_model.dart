@@ -1,32 +1,20 @@
-class StartWorkModel {
-  final String? externalName;
-  final String? date;
-  final String? startDate;
-  final int? typeId;
-  final String? typeName;
-  final int? employeeId;
-  final int? managerId;
-  final String? managerName;
-  final String? note;
-  final String? attachment;
-  final String? state;
-  final String? editReasons;
-  final String? rejectReasons;
+import 'package:shaoni/features/details_and_edit_for_requests/domain/entities/start_work.dart';
 
+class StartWorkModel extends StartWork {
   const StartWorkModel({
-    this.externalName,
-    this.date,
-    this.startDate,
-    this.typeId,
-    this.typeName,
-    this.employeeId,
-    this.managerId,
-    this.managerName,
-    this.note,
-    this.attachment,
-    this.state,
-    this.editReasons,
-    this.rejectReasons,
+    super.externalName,
+    super.date,
+    super.startDate,
+    super.typeId,
+    super.typeName,
+    super.employeeId,
+    super.managerId,
+    super.managerName,
+    super.note,
+    super.attachment,
+    super.state,
+    super.editReasons,
+    super.rejectReasons,
   });
 
   factory StartWorkModel.fromJson(Map<String, dynamic> json) {

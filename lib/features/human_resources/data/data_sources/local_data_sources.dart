@@ -4,7 +4,7 @@ import 'package:shaoni/core/error/failure.dart';
 import 'package:shaoni/features/human_resources/data/model/attendance_record_model.dart';
 import '../../../../core/local_storage/cache_helper.dart';
 import '../../../../core/local_storage/cache_keys.dart';
-import '../../domain/entity/all_attendance_record_model.dart';
+import '../model/all_attendance_record_model.dart';
 import '../model/permission_time_model.dart';
 import '../model/permission_type_model.dart';
 

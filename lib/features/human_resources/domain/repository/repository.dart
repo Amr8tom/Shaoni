@@ -7,11 +7,11 @@ import 'package:shaoni/features/human_resources/domain/entity/car_permission/car
 import 'package:shaoni/features/human_resources/domain/entity/complaint_request/complaint_reason.dart';
 import 'package:shaoni/features/human_resources/domain/entity/complaint_request/complaint_type.dart';
 import '../../../../core/utils/usecases/base_usecase.dart';
-import '../../data/model/attendance/attendance_model.dart';
-import '../../data/model/car_permission/create_car_permission_model.dart';
-import '../../data/model/car_permission/update_car_permission_model.dart';
-import '../../data/model/complaint_request/create_complaint_request_model.dart';
-import '../entity/all_attendance_record_model.dart';
+import '../entity/attendance/attendance.dart';
+import '../entity/car_permission/create_car_permission.dart';
+import '../entity/car_permission/update_car_permission.dart';
+import '../entity/complaint_request/create_complaint_request.dart';
+import '../entity/all_attendance_record.dart';
 import '../entity/exit_permisstion.dart';
 import '../entity/permission_time.dart';
 import '../entity/permission_type.dart';
@@ -77,9 +77,9 @@ abstract class HRServicesRepository {
   });
 
   /// ///////////////////////////////////// attendance /////////////////////////////////////////////////////
-  Future<Either<Failure, AllAttendanceRecordModel>> getAllMissingAttendance(
+  Future<Either<Failure, AllAttendanceRecord>> getAllMissingAttendance(
       {required AllMissingAttendanceParams params});
-  Future<Either<Failure, AttendanceModel>> createAttendance({
+  Future<Either<Failure, Attendance>> createAttendance({
     required CreateAttendanceParams params,
   });
 
@@ -101,11 +101,11 @@ abstract class HRServicesRepository {
   Future<Either<Failure, List<CarBrand>>> getCarBrands({
     required NoParams params,
   });
-  Future<Either<Failure, CreateCarPermissionModel>> createCarPermission({
+  Future<Either<Failure, CreateCarPermission>> createCarPermission({
     required CreateCarPermissionParams params,
   });
 
-  Future<Either<Failure, UpdateCarPermissionModel>> updateCarPermission({
+  Future<Either<Failure, UpdateCarPermission>> updateCarPermission({
     required UpdateCarPermissionParams params,
   });
 
@@ -118,7 +118,7 @@ abstract class HRServicesRepository {
     required NoParams params,
   });
 
-  Future<Either<Failure, CreateComplaintRequestModel>> createComplaintRequest({
+  Future<Either<Failure, CreateComplaintRequest>> createComplaintRequest({
     required CreateComplaintRequestParams params,
   });
 

@@ -12,26 +12,6 @@ class CurrentStatus extends Equatable {
     this.colorHex,
   });
 
-  /// fromJson
-  factory CurrentStatus.fromJson(Map<String, dynamic> json) {
-    return CurrentStatus(
-      nameAr: json['nameAr'],
-      nameEn: json['nameEn'],
-      techName: json['techName'],
-      colorHex: json['colorHex'],
-    );
-  }
-
-  /// toJson
-  Map<String, dynamic> toJson() {
-    return {
-      'nameAr': nameAr,
-      'nameEn': nameEn,
-      'techName': techName,
-      'colorHex': colorHex,
-    };
-  }
-
   @override
   List<Object?> get props => [nameAr, colorHex, nameEn, techName];
 }

@@ -1,5 +1,5 @@
 import '../../domain/entities/approve_request.dart';
-import '../../domain/entities/odoo_request.dart';
+import 'odoo_request_model.dart';
 
 class ApproveRequestModel extends ApproveRequest {
   const ApproveRequestModel(
@@ -18,7 +18,7 @@ class ApproveRequestModel extends ApproveRequest {
         statusNameEn: json['statusNameEn'],
         statusId: json['statusId'],
         odooResult: json['odooResult'] != null
-            ? OdooRequest.fromJson(json['odooResult'])
+            ? OdooRequestModel.fromJson(json['odooResult'])
             : null,
         comment: json['comment']);
   }
@@ -30,7 +30,7 @@ class ApproveRequestModel extends ApproveRequest {
       'statusNameAr': statusNameAr,
       'statusNameEn': statusNameEn,
       'statusId': statusId,
-      'odooResult': odooResult?.toJson(),
+      'odooResult': (odooResult as OdooRequestModel?)?.toJson(),
       'comment': comment,
     };
   }

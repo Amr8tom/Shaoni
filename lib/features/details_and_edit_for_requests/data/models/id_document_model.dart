@@ -1,38 +1,23 @@
-class IDDocumentModel {
-  final int? id;
-  final String? requestType;
-  final String? documentType;
-  final String? issuingCountry;
-  final String? documentNumber;
-  final String? issueNumber;
-  final String? issueDate;
-  final String? endDate;
-  final bool? tabaq;
-  final bool? kafala;
-  final String? kafeelName;
-  final String? passportNumber;
-  final String? passportAddress;
-  final String? familyCardNumber;
-  final String? drivingLicenseNumber;
-  final String? date;
+import 'package:shaoni/features/details_and_edit_for_requests/domain/entities/id_document.dart';
 
+class IDDocumentModel extends IDDocument {
   const IDDocumentModel({
-    this.id,
-    this.requestType,
-    this.documentType,
-    this.issuingCountry,
-    this.documentNumber,
-    this.issueNumber,
-    this.issueDate,
-    this.endDate,
-    this.tabaq,
-    this.kafala,
-    this.kafeelName,
-    this.passportNumber,
-    this.passportAddress,
-    this.familyCardNumber,
-    this.drivingLicenseNumber,
-    this.date,
+    super.id,
+    super.requestType,
+    super.documentType,
+    super.issuingCountry,
+    super.documentNumber,
+    super.issueNumber,
+    super.issueDate,
+    super.endDate,
+    super.tabaq,
+    super.kafala,
+    super.kafeelName,
+    super.passportNumber,
+    super.passportAddress,
+    super.familyCardNumber,
+    super.drivingLicenseNumber,
+    super.date,
   });
 
   factory IDDocumentModel.fromJson(Map<String, dynamic> json) {

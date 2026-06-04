@@ -2,9 +2,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:shaoni/core/utils/enums/general_status.dart';
+import 'package:shaoni/features/auth/domain/entities/user_entity.dart';
 import 'package:shaoni/features/profile/domain/use_cases/update_profile_use_case.dart';
-
-import '../../../navigation/data/model/user_model.dart';
 
 part 'profile_state.dart';
 
@@ -35,7 +34,7 @@ class ProfileCubit extends Cubit<ProfileState> {
     });
   }
 
-  void initWithUser(UserModel? user) {
+  void initWithUser(UserEntity? user) {
     if (user == null) return;
 
     final int gender = user.gender == "Male" ? 1 : 2;

@@ -3,16 +3,16 @@ import 'package:shaoni/core/error/failure.dart';
 import 'package:shaoni/core/utils/usecases/base_usecase.dart';
 import 'package:shaoni/features/human_resources/domain/repository/repository.dart';
 
-import '../../../data/model/car_permission/update_car_permission_model.dart';
+import 'package:shaoni/features/human_resources/domain/entity/car_permission/update_car_permission.dart';
 
 class UpdateCarPermissionUseCase
-    extends UseCase<UpdateCarPermissionModel, UpdateCarPermissionParams> {
+    extends UseCase<UpdateCarPermission, UpdateCarPermissionParams> {
   final HRServicesRepository repository;
 
   UpdateCarPermissionUseCase(this.repository);
 
   @override
-  Future<Either<Failure, UpdateCarPermissionModel>> call({
+  Future<Either<Failure, UpdateCarPermission>> call({
     required UpdateCarPermissionParams params,
   }) async {
     return await repository.updateCarPermission(params: params);

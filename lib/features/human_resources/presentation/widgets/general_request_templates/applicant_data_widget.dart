@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:shaoni/core/local_storage/cache_keys.dart';
+import 'package:shaoni/features/auth/domain/entities/office.dart';
 import 'package:shaoni/features/auth/data/model/office_model.dart';
 import '../../../../../common/widgets/sized_boxes/sizer.dart';
 import '../../../../../core/constants/app_sizes.dart';
@@ -24,7 +25,7 @@ class ApplicantDataWidget extends StatefulWidget {
 }
 
 class _ApplicantDataWidgetState extends State<ApplicantDataWidget> {
-  List<OfficeModel> _offices = [];
+  List<OfficeEntity> _offices = [];
   String? _selectedOfficeName;
 
   void _loadOfficesFromCache() {

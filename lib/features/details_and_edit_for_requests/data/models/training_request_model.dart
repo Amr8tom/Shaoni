@@ -1,34 +1,20 @@
-import 'package:equatable/equatable.dart';
+import 'package:shaoni/features/details_and_edit_for_requests/domain/entities/training_request.dart';
 
-class TrainingRequestModel extends Equatable {
-  final int? courseId;
-  final String? courseName;
-  final String? startDate;
-  final String? endDate;
-  final String? nominationStartDate;
-  final String? nominationEndDate;
-  final int? coursePeriodMonths;
-  final int? nominationPeriodDays;
-  final String? note;
-  final String? attachment;
-  final String? editReasons;
-  final String? rejectReasons;
-  final String? stageName;
-
+class TrainingRequestModel extends TrainingRequest {
   const TrainingRequestModel({
-    this.courseId,
-    this.courseName,
-    this.startDate,
-    this.endDate,
-    this.nominationStartDate,
-    this.nominationEndDate,
-    this.coursePeriodMonths,
-    this.nominationPeriodDays,
-    this.note,
-    this.attachment,
-    this.editReasons,
-    this.rejectReasons,
-    this.stageName,
+    super.courseId,
+    super.courseName,
+    super.startDate,
+    super.endDate,
+    super.nominationStartDate,
+    super.nominationEndDate,
+    super.coursePeriodMonths,
+    super.nominationPeriodDays,
+    super.note,
+    super.attachment,
+    super.editReasons,
+    super.rejectReasons,
+    super.stageName,
   });
 
   factory TrainingRequestModel.fromJson(Map<String, dynamic> json) {
@@ -64,21 +50,4 @@ class TrainingRequestModel extends Equatable {
         'rejectReasons': rejectReasons,
         'stageName': stageName,
       };
-
-  @override
-  List<Object?> get props => [
-        courseId,
-        courseName,
-        startDate,
-        endDate,
-        nominationStartDate,
-        nominationEndDate,
-        coursePeriodMonths,
-        nominationPeriodDays,
-        note,
-        attachment,
-        editReasons,
-        rejectReasons,
-        stageName,
-      ];
 }

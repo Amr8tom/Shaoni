@@ -1,9 +1,9 @@
 import 'package:equatable/equatable.dart';
 
-import '../../data/model/service_model.dart';
+import 'service.dart';
 
 class AllServices extends Equatable {
-  final List<ServiceModel> services;
+  final List<Service> services;
 
   const AllServices({required this.services});
 

@@ -52,11 +52,11 @@ import '../../../../core/constants/api_constants.dart';
 import '../../../../core/dio/dio_helper.dart';
 import '../../../../core/error/failure.dart';
 import '../../../../core/utils/usecases/base_usecase.dart';
-import '../../domain/entity/all_attendance_record_model.dart';
 import '../../domain/entity/exit_permisstion.dart';
 import '../../domain/use_cases/car_permission/create_car_permission_use_case.dart';
 import '../../domain/use_cases/exit/create_exit_permission_use_case.dart';
 import '../../domain/use_cases/attendance/get_all_missing_attendance_use_case.dart';
+import '../model/all_attendance_record_model.dart';
 import '../model/permission_time_model.dart';
 import '../model/permission_type_model.dart';
 

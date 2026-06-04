@@ -1,6 +1,5 @@
 import 'package:equatable/equatable.dart';
-
-import '../../../services/data/model/service_model.dart';
+import '../../../services/domain/entity/service.dart';
 import 'history.dart';
 
 class Request extends Equatable {
@@ -16,7 +15,7 @@ class Request extends Equatable {
   final int? statusId;
   final String? createdAt;
   final String? updatedAt;
-  final ServiceModel? service;
+  final Service? service;
   final List<History> histories;
 
   const Request({
@@ -35,49 +34,6 @@ class Request extends Equatable {
     required this.service,
     required this.histories,
   });
-
-  /// from json
-  factory Request.fromJson(Map<String, dynamic> json) {
-    return Request(
-      id: json['id'],
-      requestNumber: json['requestNumber'],
-      requesterId: json['requesterId'],
-      requestId: json['requestId'],
-      serviceId: json['serviceId'],
-      isGift: json['isGift'] ?? false,
-      kafeelId: json['kafeelId'],
-      needEmp: json['needEmp'] ?? false,
-      odooStatus: json['odooStatus'] ?? '',
-      statusId: json['statusId'],
-      createdAt: json['createdAt'],
-      updatedAt: json['updatedAt'],
-      service: ServiceModel.fromJson(json['service']),
-      histories: json['statusHistories'] != null
-          ? List<History>.from(
-              json['statusHistories'].map((x) => History.fromJson(x)))
-          : [],
-    );
-  }
-
-  /// to json
-  Map<String, dynamic> toJson() {
-    return {
-      'id': id,
-      'requestNumber': requestNumber,
-      'requesterId': requesterId,
-      'requestId': requestId,
-      'serviceId': serviceId,
-      'isGift': isGift,
-      'kafeelId': kafeelId,
-      'needEmp': needEmp,
-      'odooStatus': odooStatus,
-      'statusId': statusId,
-      'createdAt': createdAt,
-      'updatedAt': updatedAt,
-      'service': service?.toJson(),
-      'histories': histories.map((x) => x.toJson()).toList(),
-    };
-  }
 
   @override
   List<Object?> get props => [

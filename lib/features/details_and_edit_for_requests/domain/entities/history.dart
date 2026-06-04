@@ -23,43 +23,6 @@ class History extends Equatable {
     required this.status,
   });
 
-  /// fromJson
-  factory History.fromJson(Map<String, dynamic> json) {
-    try {
-      return History(
-        id: json['id'] ?? 0,
-        changedBy: json['changedBy'] ?? '',
-        changedAt: json['changedAt'] != null
-            ? DateTime.parse(json['changedAt'])
-            : DateTime.now(),
-        comment: json['comment'] ?? '',
-        requestId: json['requestId'] ?? 0,
-        request:
-            json['request'] != null ? Request.fromJson(json['request']) : null,
-        statusId: json['statusId'] ?? 0,
-        status: json['status'] != null
-            ? Status.fromJson(json['status'])
-            : Status.empty(),
-      );
-    } catch (_) {
-      rethrow;
-    }
-  }
-
-  /// to json
-  Map<String, dynamic> toJson() {
-    return {
-      'id': id,
-      'changedBy': changedBy,
-      'changedAt': changedAt.toIso8601String(),
-      'comment': comment,
-      'requestId': requestId,
-      'request': request?.toJson(),
-      'statusId': statusId,
-      'status': status.toJson(),
-    };
-  }
-
   @override
   List<Object?> get props => [
         id,

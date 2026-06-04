@@ -1,16 +1,11 @@
-import 'package:equatable/equatable.dart';
+import 'package:shaoni/features/details_and_edit_for_requests/domain/entities/product_order.dart';
 
-class ProductOrderLineItem extends Equatable {
-  final int productId;
-  final String productName;
-  final int quantity;
-  final String note;
-
+class ProductOrderLineItem extends ProductOrderLineItemEntity {
   const ProductOrderLineItem({
-    required this.productId,
-    required this.productName,
-    required this.quantity,
-    required this.note,
+    required super.productId,
+    required super.productName,
+    required super.quantity,
+    required super.note,
   });
 
   factory ProductOrderLineItem.fromJson(Map<String, dynamic> json) {
@@ -28,26 +23,16 @@ class ProductOrderLineItem extends Equatable {
         'quantity': quantity,
         'note': note,
       };
-
-  @override
-  List<Object?> get props => [productId, productName, quantity, note];
 }
 
-class ProductOrderModel extends Equatable {
-  final bool isGift;
-  final String? reason;
-  final String? note;
-  final String? editReasons;
-  final String? rejectReasons;
-  final List<ProductOrderLineItem> lines;
-
+class ProductOrderModel extends ProductOrderEntity {
   const ProductOrderModel({
-    required this.isGift,
-    this.reason,
-    this.note,
-    this.editReasons,
-    this.rejectReasons,
-    this.lines = const [],
+    required super.isGift,
+    super.reason,
+    super.note,
+    super.editReasons,
+    super.rejectReasons,
+    super.lines = const [],
   });
 
   factory ProductOrderModel.fromJson(Map<String, dynamic> json) {
@@ -75,10 +60,6 @@ class ProductOrderModel extends Equatable {
         'note': note,
         'editReasons': editReasons,
         'rejectReasons': rejectReasons,
-        'lines': lines.map((l) => l.toJson()).toList(),
+        'lines': lines.map((l) => (l as ProductOrderLineItem).toJson()).toList(),
       };
-
-  @override
-  List<Object?> get props =>
-      [isGift, reason, note, editReasons, rejectReasons, lines];
 }

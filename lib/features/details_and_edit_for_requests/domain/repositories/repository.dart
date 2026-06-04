@@ -2,7 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:shaoni/features/details_and_edit_for_requests/domain/entities/request_with_stage.dart';
 
 import '../../../../core/error/failure.dart';
-import '../../data/models/approve_request_model.dart';
+import '../entities/approve_request.dart';
 import '../entities/all_requests_with_stages.dart';
 import '../entities/edit/edit_response.dart';
 import '../use_cases/approve_request_use_case.dart';
@@ -29,7 +29,7 @@ abstract class MyRequestsRepository {
       {required GetAllManagerRequestsParams params});
   Future<Either<Failure, RequestWithStage>> getRequestDetails(
       {required GetRequestDetailsParams params});
-  Future<Either<Failure, ApproveRequestModel>> acceptRequest(
+  Future<Either<Failure, ApproveRequest>> acceptRequest(
       {required AcceptRequestParams params});
 
   /// ============================ edit ============================

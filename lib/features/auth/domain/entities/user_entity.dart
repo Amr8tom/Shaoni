@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
-import 'package:shaoni/features/auth/data/model/department_model.dart';
-import 'package:shaoni/features/auth/data/model/office_model.dart';
+import 'package:shaoni/features/auth/domain/entities/department.dart';
+import 'package:shaoni/features/auth/domain/entities/office.dart';
 
 class UserEntity extends Equatable {
   final int? id;
@@ -18,12 +18,12 @@ class UserEntity extends Equatable {
   final int? managerId;
   final String? managerName;
   final int? officeId;
-  final List<OfficeModel>? officeIds;
+  final List<OfficeEntity>? officeIds;
 
-  final OfficeModel? office;
+  final OfficeEntity? office;
   final int? departmentId;
 
-  final DepartmentModel? department;
+  final DepartmentEntity? department;
 
   const UserEntity({
     required this.id,

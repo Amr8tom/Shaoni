@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:shaoni/core/connection/check_network.dart';
 import 'package:shaoni/core/error/failure.dart';
-import 'package:shaoni/features/details_and_edit_for_requests/data/models/approve_request_model.dart';
+import 'package:shaoni/features/details_and_edit_for_requests/domain/entities/approve_request.dart';
 import 'package:shaoni/features/details_and_edit_for_requests/domain/entities/all_requests_with_stages.dart';
 import 'package:shaoni/features/details_and_edit_for_requests/domain/entities/edit/edit_response.dart';
 import 'package:shaoni/features/details_and_edit_for_requests/domain/entities/request_with_stage.dart';
@@ -91,7 +91,7 @@ class MyRequestsRepositoryImp extends MyRequestsRepository {
   }
 
   @override
-  Future<Either<Failure, ApproveRequestModel>> acceptRequest(
+  Future<Either<Failure, ApproveRequest>> acceptRequest(
       {required AcceptRequestParams params}) async {
     if (await _networkInfo.isConnected) {
       try {

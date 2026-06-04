@@ -1,22 +1,22 @@
 import 'dart:convert';
 import 'package:shaoni/core/error/failure.dart';
 import 'package:shaoni/core/local_storage/cache_helper.dart';
-import 'package:shaoni/features/details_and_edit_for_requests/domain/entities/all_requests_with_stages.dart';
+import 'package:shaoni/features/details_and_edit_for_requests/data/models/all_requests_with_stages_model.dart';
+import 'package:shaoni/features/details_and_edit_for_requests/data/models/request_with_stage_model.dart';
 import '../../../../../core/local_storage/cache_keys.dart';
-import '../../domain/entities/request_with_stage.dart';
 
 abstract class MyRequestsLocalDataSources {
-  Future cacheAllMyRequests({required AllRequestsWithStages requests});
-  Future<AllRequestsWithStages> getAllMyRequests();
-  Future cacheAllMyRequestsByManager({required AllRequestsWithStages requests});
-  Future<AllRequestsWithStages> getAllMyRequestsByManager();
-  Future cacheRequestDetails({required RequestWithStage requestDetails});
-  Future<RequestWithStage> getRequestDetails();
+  Future cacheAllMyRequests({required AllRequestsWithStagesModel requests});
+  Future<AllRequestsWithStagesModel> getAllMyRequests();
+  Future cacheAllMyRequestsByManager({required AllRequestsWithStagesModel requests});
+  Future<AllRequestsWithStagesModel> getAllMyRequestsByManager();
+  Future cacheRequestDetails({required RequestWithStageModel requestDetails});
+  Future<RequestWithStageModel> getRequestDetails();
 }
 
 class MyRequestsLocalDataSourcesImp implements MyRequestsLocalDataSources {
   @override
-  Future cacheAllMyRequests({required AllRequestsWithStages requests}) async {
+  Future cacheAllMyRequests({required AllRequestsWithStagesModel requests}) async {
     final String myRequestsString = jsonEncode(requests.toJson());
     await CacheHelper.putString(
       key: CacheKeys.myRequests,
@@ -25,18 +25,18 @@ class MyRequestsLocalDataSourcesImp implements MyRequestsLocalDataSources {
   }
 
   @override
-  Future<AllRequestsWithStages> getAllMyRequests() async {
+  Future<AllRequestsWithStagesModel> getAllMyRequests() async {
     final String? myRequestsString =
         CacheHelper.getString(key: CacheKeys.myRequests);
     if (myRequestsString != null) {
-      return AllRequestsWithStages.fromJson(jsonDecode(myRequestsString));
+      return AllRequestsWithStagesModel.fromJson(jsonDecode(myRequestsString));
     }
     throw CacheFailure();
   }
 
   @override
   Future cacheAllMyRequestsByManager(
-      {required AllRequestsWithStages requests}) async {
+      {required AllRequestsWithStagesModel requests}) async {
     final String myRequestsString = jsonEncode(requests.toJson());
     await CacheHelper.putString(
       key: CacheKeys.myRequestsByManager,
@@ -45,17 +45,17 @@ class MyRequestsLocalDataSourcesImp implements MyRequestsLocalDataSources {
   }
 
   @override
-  Future<AllRequestsWithStages> getAllMyRequestsByManager() async {
+  Future<AllRequestsWithStagesModel> getAllMyRequestsByManager() async {
     final String? myRequestsString =
         CacheHelper.getString(key: CacheKeys.myRequestsByManager);
     if (myRequestsString != null) {
-      return AllRequestsWithStages.fromJson(jsonDecode(myRequestsString));
+      return AllRequestsWithStagesModel.fromJson(jsonDecode(myRequestsString));
     }
     throw CacheFailure();
   }
 
   @override
-  Future cacheRequestDetails({required RequestWithStage requestDetails}) async {
+  Future cacheRequestDetails({required RequestWithStageModel requestDetails}) async {
     final String requestDetailsString = jsonEncode(requestDetails.toJson());
     await CacheHelper.putString(
       key: CacheKeys.requestDetails,
@@ -64,7 +64,7 @@ class MyRequestsLocalDataSourcesImp implements MyRequestsLocalDataSources {
   }
 
   @override
-  Future<RequestWithStage> getRequestDetails() {
+  Future<RequestWithStageModel> getRequestDetails() {
     throw CacheFailure();
   }
 }

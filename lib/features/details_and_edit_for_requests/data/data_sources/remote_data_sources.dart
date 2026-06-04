@@ -1,7 +1,7 @@
 import 'package:shaoni/core/constants/api_constants.dart';
 import 'package:shaoni/core/dio/dio_helper.dart';
-import 'package:shaoni/features/details_and_edit_for_requests/domain/entities/all_requests_with_stages.dart';
-import 'package:shaoni/features/details_and_edit_for_requests/domain/entities/request_with_stage.dart';
+import 'package:shaoni/features/details_and_edit_for_requests/data/models/all_requests_with_stages_model.dart';
+import 'package:shaoni/features/details_and_edit_for_requests/data/models/request_with_stage_model.dart';
 import 'package:shaoni/features/details_and_edit_for_requests/domain/use_cases/approve_request_use_case.dart';
 import '../../../../../core/error/failure.dart';
 import '../../domain/use_cases/get_all_manager_requests_use_case.dart';
@@ -22,14 +22,14 @@ import '../models/approve_request_model.dart';
 import '../models/edit_response_model.dart';
 
 abstract class MyRequestsRemoteDataSources {
-  Future<AllRequestsWithStages> getAllUserRequests({
+  Future<AllRequestsWithStagesModel> getAllUserRequests({
     required GetAllUserRequestsParams params,
   });
 
-  Future<RequestWithStage> getRequestDetails(
+  Future<RequestWithStageModel> getRequestDetails(
       {required GetRequestDetailsParams params});
 
-  Future<AllRequestsWithStages> getAllManagerRequests({
+  Future<AllRequestsWithStagesModel> getAllManagerRequests({
     required GetAllManagerRequestsParams params,
   });
 
@@ -89,7 +89,7 @@ class MyRequestsRemoteDataSourcesImp implements MyRequestsRemoteDataSources {
   const MyRequestsRemoteDataSourcesImp(this._dio);
 
   @override
-  Future<AllRequestsWithStages> getAllUserRequests({
+  Future<AllRequestsWithStagesModel> getAllUserRequests({
     required GetAllUserRequestsParams params,
   }) async {
     try {
@@ -100,14 +100,14 @@ class MyRequestsRemoteDataSourcesImp implements MyRequestsRemoteDataSources {
       if (response == null) {
         throw ServerFailure(message: 'Null response from server');
       }
-      return AllRequestsWithStages.fromJson(response);
+      return AllRequestsWithStagesModel.fromJson(response);
     } on ServerFailure {
       rethrow;
     }
   }
 
   @override
-  Future<AllRequestsWithStages> getAllManagerRequests(
+  Future<AllRequestsWithStagesModel> getAllManagerRequests(
       {required GetAllManagerRequestsParams params}) async {
     try {
       final response = await _dio.postData(
@@ -117,7 +117,7 @@ class MyRequestsRemoteDataSourcesImp implements MyRequestsRemoteDataSources {
       if (response == null) {
         throw ServerFailure(message: 'Null response from server');
       }
-      return AllRequestsWithStages.fromJson(response);
+      return AllRequestsWithStagesModel.fromJson(response);
     } on ServerFailure {
       rethrow;
     }
@@ -136,7 +136,7 @@ class MyRequestsRemoteDataSourcesImp implements MyRequestsRemoteDataSources {
   }
 
   @override
-  Future<RequestWithStage> getRequestDetails(
+  Future<RequestWithStageModel> getRequestDetails(
       {required GetRequestDetailsParams params}) async {
     try {
       final response = await _dio.getData(
@@ -145,7 +145,7 @@ class MyRequestsRemoteDataSourcesImp implements MyRequestsRemoteDataSources {
       if (response == null) {
         throw ServerFailure(message: 'Null response from server');
       }
-      return RequestWithStage.fromJson(response);
+      return RequestWithStageModel.fromJson(response);
     } on ServerFailure {
       rethrow;
     }

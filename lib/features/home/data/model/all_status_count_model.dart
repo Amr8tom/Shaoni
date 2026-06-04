@@ -29,7 +29,8 @@ class AllStatusCountModel extends AllStatusCount {
       'serviceCode': serviceCode,
       'serviceNameAr': serviceNameAr,
       'serviceNameEn': serviceNameEn,
-      'statusCounts': statusCounts?.map((e) => (e).toJson()).toList(),
+      'statusCounts':
+          statusCounts?.map((e) => (e as StatusCountModel).toJson()).toList(),
     };
   }
 }

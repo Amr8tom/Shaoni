@@ -8,7 +8,6 @@ import 'package:shaoni/core/constants/app_sizes.dart';
 import 'package:shaoni/core/extensions/navigation_extension.dart';
 import 'package:shaoni/core/routing/route_names.dart';
 import 'package:shaoni/core/service_locator/service_locator.dart';
-import 'package:shaoni/features/navigation/data/model/user_model.dart';
 import 'package:shaoni/features/navigation/presentation/controllers/navigation_cubit.dart';
 import 'package:shaoni/features/profile/presentation/controllers/profile_cubit.dart';
 import '../../core/utils/enums/general_status.dart';
@@ -25,7 +24,7 @@ class ProfileScreen extends StatelessWidget {
       create: (context) {
         final cubit = serviceLocator<ProfileCubit>();
         final navController = context.read<NavigationCubit>();
-        cubit.initWithUser(navController.state.user as UserModel?);
+        cubit.initWithUser(navController.state.user);
         return cubit;
       },
       child: Scaffold(

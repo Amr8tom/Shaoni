@@ -12,7 +12,7 @@ class AllServicesModel extends AllServices {
 
   /// toJson
   List<Map<String, dynamic>> toJson() {
-    return services.map((e) => e.toJson()).toList();
+    return services.map((e) => (e as ServiceModel).toJson()).toList();
   }
 }
 
