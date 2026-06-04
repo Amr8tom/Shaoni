@@ -18,7 +18,7 @@ class ServerFailure extends Failure {
     this.errors,
   });
 
-  /// factory method to take  errors masssage from json method
+  /// factory method to take  errors massage from json method
   factory ServerFailure.fromString(String message) {
     return ServerFailure(
       message: message,
@@ -40,7 +40,7 @@ class ValidationFailure extends Failure {
     this.errors,
   });
 
-  /// method to take  errors masssage from json method
+  /// method to take  errors massage from json method
   factory ValidationFailure.fromMap(Map<String, dynamic> map) {
     if (map['errors'] != null) {
       final errorsMap = Map<String, dynamic>.from(map['errors']);
@@ -84,10 +84,7 @@ class UnknownFailure extends Failure {
 }
 
 class InvalidOtpFailure extends Failure {
-  @override
-  final String message;
-
-  const InvalidOtpFailure(this.message);
+  const InvalidOtpFailure({required super.message});
 
   @override
   List<Object?> get props => [];
@@ -112,7 +109,7 @@ String getFailureMessage(Failure failure, BuildContext context) {
     }
     return failure.message ?? 'Server Failure';
   } else if (failure is InvalidOtpFailure) {
-    return failure.message;
+    return failure.message ?? 'Invalid OTP';
   } else if (failure is UnauthorizedFailure) {
     return 'Unauthorized';
   } else if (failure is CacheFailure) {

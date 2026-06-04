@@ -5,7 +5,7 @@ import 'package:shaoni/features/home/data/model/all_status_count_model.dart';
 import '../../../../core/dio/dio_helper.dart';
 
 abstract class HomeRemoteDataSources {
-  Future<List<AllStatusCountModel>> GetAllStatusCountForAllServices();
+  Future<List<AllStatusCountModel>> getAllStatusCountForAllServices();
 }
 
 class HomeRemoteDataSourcesImp implements HomeRemoteDataSources {
@@ -14,9 +14,9 @@ class HomeRemoteDataSourcesImp implements HomeRemoteDataSources {
   HomeRemoteDataSourcesImp(this._dio);
 
   @override
-  Future<List<AllStatusCountModel>> GetAllStatusCountForAllServices() async {
+  Future<List<AllStatusCountModel>> getAllStatusCountForAllServices() async {
     try {
-      final response = await _dio.getData(URL: URL.getAllRequestsStatusCount);
+      final response = await _dio.getData(url: URL.getAllRequestsStatusCount);
       if (response == null) {
         throw ServerFailure(message: 'No Data');
       }

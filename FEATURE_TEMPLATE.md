@@ -314,7 +314,7 @@ class XxxRemoteDataSourcesImp implements XxxRemoteDataSources {
   @override
   Future<List<XxxLookupModel>> getXxxTypes() async {
     try {
-      final response = await _dio.getData(URL: URL.getXxxTypes);
+      final response = await _dio.getData(url: URL.getXxxTypes);
       // defensive list parsing
       final List data = response is List ? response : response['data'] as List;
       return data.map((e) => XxxLookupModel.fromJson(e)).toList();
@@ -326,7 +326,7 @@ class XxxRemoteDataSourcesImp implements XxxRemoteDataSources {
   @override
   Future<CreateXxxModel> createXxx(CreateXxxParams params) async {
     try {
-      final response = await _dio.postData(URL: URL.createXxx, body: params.toMap());
+      final response = await _dio.postData(url: URL.createXxx, body: params.toMap());
       return CreateXxxModel.fromJson(response);
     } on ServerFailure catch (e) {
       throw ServerFailure(message: e.message);
@@ -380,7 +380,7 @@ static const String updateXxx   = '$baseUrl/Xxx/update/'; // id appended at call
 
 ### 6.8 Presentation · Cubit — `presentation/controller/xxx/xxx_cubit.dart`
 ```dart
-import 'package:bloc/bloc.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import '../../../../../core/local_storage/cache_helper.dart';

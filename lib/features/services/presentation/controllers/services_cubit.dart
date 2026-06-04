@@ -12,7 +12,7 @@ part 'services_state.dart';
 class ServicesCubit extends Cubit<ServicesState> {
   final GetAllPermissionServicesUseCase _getAllServicesUseCase;
 
-  ServicesCubit(this._getAllServicesUseCase) : super(ServicesState()) {
+  ServicesCubit(this._getAllServicesUseCase) : super(const ServicesState()) {
     getAllServices();
   }
 
@@ -53,8 +53,8 @@ class ServicesCubit extends Cubit<ServicesState> {
     }
 
     emit(state.copyWith(
-      HRservices: hrServices,
-      Studyservices: studyServices,
+      hrServices: hrServices,
+      studyServices: studyServices,
       purchasesServices: purchasesServices,
     ));
   }

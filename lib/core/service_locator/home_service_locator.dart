@@ -35,7 +35,7 @@ class HomeServiceLocator {
 
     /// controller
     serviceLocator.registerFactory<HomeCubit>(
-      () => HomeCubit(serviceLocator(), serviceLocator()),
+      () => HomeCubit(serviceLocator()),
     );
   }
 }

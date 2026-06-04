@@ -57,6 +57,8 @@ class _FileUploadWidgetState extends State<FileUploadWidget> {
                   final fileBytes = await file.readAsBytes();
                   final base64String = base64Encode(fileBytes);
 
+                  if (!mounted) return;
+
                   setState(() {
                     _pickedFile = result.files.single;
                   });
@@ -65,21 +67,11 @@ class _FileUploadWidgetState extends State<FileUploadWidget> {
                     widget.onPickedFile!(_pickedFile!.name, base64String);
                   }
                 } catch (_) {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(
-                      content: Text(S.current.error),
-                      backgroundColor: ColorRes.error,
-                    ),
-                  );
+                  if (!mounted) return;
                 }
               }
             } catch (e) {
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(
-                  content: Text(S.current.error),
-                  backgroundColor: ColorRes.error,
-                ),
-              );
+              if (!mounted) return;
             }
           },
           child: Container(

@@ -36,8 +36,7 @@ class AttendanceMissingItem extends StatelessWidget {
 
         return state.isEmpty
             ? CustomUI.noData()
-            : Container(
-                child: ListView.builder(
+            :  ListView.builder(
                   physics: const AlwaysScrollableScrollPhysics(
                     parent: BouncingScrollPhysics(),
                   ),
@@ -64,8 +63,8 @@ class AttendanceMissingItem extends StatelessWidget {
                       ),
                     );
                   },
-                ),
-              );
+                );
+
       },
     );
   }

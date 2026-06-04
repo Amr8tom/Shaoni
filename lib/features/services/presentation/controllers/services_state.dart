@@ -3,8 +3,8 @@ part of 'services_cubit.dart';
 final class ServicesState extends Equatable {
   final GeneralStatus status;
   final List<Service>? services;
-  final List<Service>? HRservices;
-  final List<Service>? Studyservices;
+  final List<Service>? hrServices;
+  final List<Service>? studyServices;
   final List<Service>? purchasesServices;
   final List<Service>? salariesServices;
   final List<Service>? reservationsServices;
@@ -12,8 +12,8 @@ final class ServicesState extends Equatable {
   const ServicesState({
     this.status = GeneralStatus.initialized,
     this.services,
-    this.HRservices,
-    this.Studyservices,
+    this.hrServices,
+    this.studyServices,
     this.purchasesServices,
     this.salariesServices,
     this.reservationsServices,
@@ -23,8 +23,8 @@ final class ServicesState extends Equatable {
   ServicesState copyWith({
     GeneralStatus? status,
     List<Service>? services,
-    List<Service>? HRservices,
-    List<Service>? Studyservices,
+    List<Service>? hrServices,
+    List<Service>? studyServices,
     List<Service>? purchasesServices,
     List<Service>? salariesServices,
     List<Service>? reservationsServices,
@@ -32,8 +32,8 @@ final class ServicesState extends Equatable {
     return ServicesState(
       status: status ?? this.status,
       services: services ?? this.services,
-      HRservices: HRservices ?? this.HRservices,
-      Studyservices: Studyservices ?? this.Studyservices,
+      hrServices: hrServices ?? this.hrServices,
+      studyServices: studyServices ?? this.studyServices,
       purchasesServices: purchasesServices ?? this.purchasesServices,
       salariesServices: salariesServices ?? this.salariesServices,
       reservationsServices: reservationsServices ?? this.reservationsServices,
@@ -44,8 +44,8 @@ final class ServicesState extends Equatable {
   List<Object?> get props => [
         status,
         services,
-        HRservices,
-        Studyservices,
+        hrServices,
+        studyServices,
         purchasesServices,
         salariesServices,
         reservationsServices

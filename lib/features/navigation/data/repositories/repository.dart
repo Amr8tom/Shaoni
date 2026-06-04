@@ -2,7 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:shaoni/features/navigation/data/data_sources/local_data_sources.dart';
 import 'package:shaoni/features/navigation/data/data_sources/remote_data_sources.dart';
 
-import '../../../../core/connection/checkNetwork.dart';
+import '../../../../core/connection/check_network.dart';
 import '../../../../core/error/failure.dart';
 import '../../../auth/domain/entities/user_entity.dart';
 import '../../domain/repositories/repositories.dart';

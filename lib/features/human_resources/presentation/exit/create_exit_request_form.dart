@@ -53,7 +53,7 @@ class ExitRequestDetailsScreen extends StatelessWidget {
                 }
 
                 if (state.isSubmitSucceeded) {
-                  CustomDialogImgTitleDes(
+                  customDialogImgTitleDes(
                     button1: S.current.myOrders,
                     button2: S.current.home,
                     onTab2: () {

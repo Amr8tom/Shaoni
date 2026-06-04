@@ -46,7 +46,8 @@ PreferredSizeWidget customAppBar({
                 context?.pushNamed(DRoutesName.notificationsRoute);
               },
               child: SvgPicture.asset(AssetRes.notificationIcon,
-                  color: ColorRes.white)),
+                  colorFilter: const ColorFilter.mode(
+                      ColorRes.white, BlendMode.srcIn))),
         ],
       ),
       const Sizer(width: 30),
@@ -61,7 +62,8 @@ PreferredSizeWidget customAppBar({
                       ? TextDirection.ltr
                       : TextDirection.rtl,
                   child: SvgPicture.asset(AssetRes.menuIcon,
-                      color: ColorRes.white)))
+                      colorFilter: const ColorFilter.mode(
+                          ColorRes.white, BlendMode.srcIn))))
           : const Sizer(),
 
       const Sizer(width: 15),

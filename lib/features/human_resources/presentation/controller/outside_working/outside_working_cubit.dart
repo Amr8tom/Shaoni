@@ -1,13 +1,10 @@
-import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 import 'package:shaoni/core/local_storage/cache_helper.dart';
 import 'package:shaoni/core/local_storage/cache_keys.dart';
 import 'package:shaoni/core/utils/usecases/base_usecase.dart';
-import 'package:shaoni/features/human_resources/domain/entity/outside_working/attendance_way.dart';
-import 'package:shaoni/features/human_resources/domain/entity/outside_working/department_type_lookup.dart';
-import 'package:shaoni/features/human_resources/domain/entity/outside_working/project_type_lookup.dart';
 import 'package:shaoni/features/human_resources/domain/entity/outside_working/outside_working_employee.dart';
 import 'package:shaoni/features/human_resources/domain/entity/outside_working/outside_working_project.dart';
 import 'package:shaoni/features/human_resources/domain/use_cases/outside_working/get_attendance_way_use_case.dart';
@@ -62,9 +59,6 @@ class OutsideWorkingCubit extends Cubit<OutsideWorkingState> {
   final projectNameController = TextEditingController();
 
   // ── Lookup data ───────────────────────────────────────────────────────────
-  List<AttendanceWay> _attendanceWays = [];
-  List<DepartmentTypeLookup> _departmentTypes = [];
-  List<ProjectTypeLookup> _projectTypes = [];
   List<OutsideWorkingEmployee> _employees = [];
   List<OutsideWorkingProject> _projects = [];
 
@@ -132,7 +126,6 @@ class OutsideWorkingCubit extends Cubit<OutsideWorkingState> {
         errorMessage: failure.message,
       )),
       (ways) {
-        _attendanceWays = ways;
         attendanceWayItems = ways
             .map((w) => DropdownMenuItem<String>(
                   value: w.nameEn,
@@ -153,7 +146,6 @@ class OutsideWorkingCubit extends Cubit<OutsideWorkingState> {
         errorMessage: failure.message,
       )),
       (types) {
-        _departmentTypes = types;
         departmentTypeItems = types
             .map((t) => DropdownMenuItem<String>(
                   value: t.nameEn,
@@ -173,7 +165,6 @@ class OutsideWorkingCubit extends Cubit<OutsideWorkingState> {
         errorMessage: failure.message,
       )),
       (types) {
-        _projectTypes = types;
         projectTypeItems = types
             .map((t) => DropdownMenuItem<String>(
                   value: t.nameEn,

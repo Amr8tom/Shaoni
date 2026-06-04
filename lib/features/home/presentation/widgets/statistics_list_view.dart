@@ -147,30 +147,24 @@ class StatisticsListView extends StatelessWidget {
           Padding(
             padding: EdgeInsets.only(
                 left: AppSizes.padding, right: AppSizes.padding),
-            child: Container(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Padding(
-                    padding: EdgeInsets.only(bottom: AppSizes.iconPadding * 2),
-                    child: Text(count,
-                        style: Theme.of(context)
-                            .textTheme
-                            .headlineLarge
-                            ?.copyWith(
-                                color: color,
-                                fontSize: AppSizes.fontSizeXXLg * 1.2)),
-                  ),
-                  const Spacer(),
-                  Image.asset(
-                    imagePath,
-                    color: color,
-                    // fit: BoxFit.fitWidth,
-                    width: AppSizes.iconXLarge,
-                    height: AppSizes.iconXLarge,
-                  ),
-                ],
-              ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Padding(
+                  padding: EdgeInsets.only(bottom: AppSizes.iconPadding * 2),
+                  child: Text(count,
+                      style: Theme.of(context).textTheme.headlineLarge?.copyWith(
+                          color: color, fontSize: AppSizes.fontSizeXXLg * 1.2)),
+                ),
+                const Spacer(),
+                Image.asset(
+                  imagePath,
+                  color: color,
+                  // fit: BoxFit.fitWidth,
+                  width: AppSizes.iconXLarge,
+                  height: AppSizes.iconXLarge,
+                ),
+              ],
             ),
           ),
           Positioned(

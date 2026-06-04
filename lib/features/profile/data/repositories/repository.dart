@@ -5,7 +5,7 @@ import 'package:shaoni/core/error/failure.dart';
 import 'package:shaoni/features/profile/domain/entities/profile.dart';
 import 'package:shaoni/features/profile/domain/use_cases/update_profile_use_case.dart';
 
-import '../../../../core/connection/checkNetwork.dart';
+import '../../../../core/connection/check_network.dart';
 import '../../domain/repositories/repository.dart';
 import '../data_sources/remote_data_sources.dart';
 

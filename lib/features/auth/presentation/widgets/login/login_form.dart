@@ -108,7 +108,7 @@ class LoginForm extends StatelessWidget {
                     style: Theme.of(context).textTheme.bodyMedium,
                     children: [
                       const TextSpan(text: "Don't have an account? "),
-                       TextSpan(
+                      TextSpan(
                         text: S.current.singUp,
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
@@ -134,7 +134,7 @@ class LoginForm extends StatelessWidget {
                     TextSpan(text: S.current.byContinuingYouAgreeToOur),
                     TextSpan(
                       text: S.current.privacyPolicy,
-                      style:  TextStyle(
+                      style: TextStyle(
                         color: ColorRes.greyShade600,
                         decoration: TextDecoration.underline,
                       ),

@@ -81,7 +81,7 @@ class PermissionsService {
   }
 
   static Future<void> calendar() async {
-    await requestPermission(Permission.calendar, 'Calendar');
+    await requestPermission(Permission.calendarFullAccess, 'Calendar');
   }
 
   static Future<void> photos() async {

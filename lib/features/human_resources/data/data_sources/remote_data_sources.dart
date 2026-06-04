@@ -97,6 +97,7 @@ abstract class HRServicesRemoteDataSources {
   Future<List<CarColorModel>> getCarColors({required NoParams params});
 
   Future<List<CarBrandModel>> getCarBrands({required NoParams params});
+
   Future<CreateCarPermissionModel> createCarPermission({
     required CreateCarPermissionParams params,
   });
@@ -193,14 +194,19 @@ abstract class HRServicesRemoteDataSources {
 
   /// ============================= outside working =============================
   Future<List<AttendanceWayModel>> getAttendanceWay({required NoParams params});
+
   Future<List<DepartmentTypeLookupModel>> getDepartmentTypeLookup(
       {required NoParams params});
+
   Future<List<ProjectTypeLookupModel>> getProjectTypeLookup(
       {required NoParams params});
+
   Future<List<OutsideWorkingEmployeeModel>> getOutsideWorkingEmployees(
       {required NoParams params});
+
   Future<List<OutsideWorkingProjectModel>> getOutsideWorkingProjects(
       {required NoParams params});
+
   Future<CreateOutsideWorkingResponseModel> createOutsideWorking({
     required CreateOutsideWorkingParams params,
   });
@@ -217,7 +223,7 @@ class HRServicesRemoteDataSourcesImp implements HRServicesRemoteDataSources {
   ) async {
     try {
       final response = await _dio.postData(
-        URL: URL.exitPermission,
+        url: URL.exitPermission,
         body: params.toMap(),
       );
       if (response != null) {
@@ -236,7 +242,7 @@ class HRServicesRemoteDataSourcesImp implements HRServicesRemoteDataSources {
   }) async {
     try {
       final response = await _dio.putData(
-        URL: '${URL.updateExitPermission}${params.requestId}',
+        url: '${URL.updateExitPermission}${params.requestId}',
         body: params.toMap(),
       );
       if (response.statusCode == 200 || response.statusCode == 201) {
@@ -253,7 +259,7 @@ class HRServicesRemoteDataSourcesImp implements HRServicesRemoteDataSources {
   @override
   Future<List<PermissionTimeModel>> getAllPermissionTimes() async {
     try {
-      final List response = await _dio.getData(URL: URL.getPermissionTime);
+      final List response = await _dio.getData(url: URL.getPermissionTime);
       return response.map((e) => PermissionTimeModel.fromJson(e)).toList();
     } on ServerFailure catch (e) {
       throw ServerFailure(message: e.message);
@@ -263,7 +269,7 @@ class HRServicesRemoteDataSourcesImp implements HRServicesRemoteDataSources {
   @override
   Future<List<PermissionTypeModel>> getAllPermissionTypes() async {
     try {
-      final response = await _dio.getData(URL: URL.getPermissionTypes);
+      final response = await _dio.getData(url: URL.getPermissionTypes);
       if (response != null) {
         /// Extract the data field from the response Map
         final List data = response['data'] as List;
@@ -281,7 +287,7 @@ class HRServicesRemoteDataSourcesImp implements HRServicesRemoteDataSources {
       {required AllMissingAttendanceParams params}) async {
     try {
       final response = await _dio.postData(
-          URL: URL.getAttendanceRecord, body: params.toJson());
+          url: URL.getAttendanceRecord, body: params.toJson());
       if (response != null) {
         /// Extract the data field from the response Map
         return AllAttendanceRecordModel.fromJson(response);
@@ -298,7 +304,7 @@ class HRServicesRemoteDataSourcesImp implements HRServicesRemoteDataSources {
       {required CreateAttendanceParams params}) async {
     try {
       final response = await _dio.postData(
-          URL: URL.createAttendanceRequest, body: params.toMap());
+          url: URL.createAttendanceRequest, body: params.toMap());
       if (response != null) {
         /// Extract the data field from the response Map
         return AttendanceModel.fromJson(response);
@@ -316,7 +322,7 @@ class HRServicesRemoteDataSourcesImp implements HRServicesRemoteDataSources {
   }) async {
     try {
       final response = await _dio.putData(
-        URL: '${URL.updateAttendanceRequest}${params.requestId}',
+        url: '${URL.updateAttendanceRequest}${params.requestId}',
         body: params.toMap(),
       );
       if (response.statusCode == 200 || response.statusCode == 201) {
@@ -334,7 +340,7 @@ class HRServicesRemoteDataSourcesImp implements HRServicesRemoteDataSources {
   Future<List<AttendanceLookUpModel>> getAttendanceLookup(
       {required NoParams params}) async {
     try {
-      final List response = await _dio.getData(URL: URL.getAttendanceLookUp);
+      final List response = await _dio.getData(url: URL.getAttendanceLookUp);
 
       /// Extract the data field from the response Map
       return response.map((e) {
@@ -349,7 +355,7 @@ class HRServicesRemoteDataSourcesImp implements HRServicesRemoteDataSources {
   Future<List<ForgetReasonModel>> getForgetReason(
       {required NoParams params}) async {
     try {
-      final response = await _dio.getData(URL: URL.getAttendanceForgetReason);
+      final response = await _dio.getData(url: URL.getAttendanceForgetReason);
       if (response != null) {
         /// Handle both a plain List response and a wrapped {data: [...]} response.
         final List raw = response is List
@@ -369,7 +375,7 @@ class HRServicesRemoteDataSourcesImp implements HRServicesRemoteDataSources {
   @override
   Future<List<CarColorModel>> getCarColors({required NoParams params}) async {
     try {
-      final response = await _dio.getData(URL: URL.getCarColors);
+      final response = await _dio.getData(url: URL.getCarColors);
       if (response != null) {
         final List data = response as List;
         return data.map((e) => CarColorModel.fromJson(e)).toList();
@@ -384,7 +390,7 @@ class HRServicesRemoteDataSourcesImp implements HRServicesRemoteDataSources {
   @override
   Future<List<CarBrandModel>> getCarBrands({required NoParams params}) async {
     try {
-      final response = await _dio.getData(URL: URL.getCarBrands);
+      final response = await _dio.getData(url: URL.getCarBrands);
       if (response != null) {
         final List data = response as List;
         return data.map((e) => CarBrandModel.fromJson(e)).toList();
@@ -401,7 +407,7 @@ class HRServicesRemoteDataSourcesImp implements HRServicesRemoteDataSources {
       {required CreateCarPermissionParams params}) async {
     try {
       final response = await _dio.postData(
-          URL: URL.createCarPermission, body: params.toMap());
+          url: URL.createCarPermission, body: params.toMap());
       if (response != null) {
         return CreateCarPermissionModel.fromJson(response);
       } else {
@@ -417,7 +423,7 @@ class HRServicesRemoteDataSourcesImp implements HRServicesRemoteDataSources {
       {required UpdateCarPermissionParams params}) async {
     try {
       final response = await _dio.putData(
-        URL: '${URL.updateCarPermission}${params.requestId}',
+        url: '${URL.updateCarPermission}${params.requestId}',
         body: params.toMap(),
       );
       if (response.statusCode == 200 || response.statusCode == 201) {
@@ -437,7 +443,7 @@ class HRServicesRemoteDataSourcesImp implements HRServicesRemoteDataSources {
   Future<List<ComplaintTypeModel>> getComplaintTypes(
       {required NoParams params}) async {
     try {
-      final response = await _dio.getData(URL: URL.getComplaintTypes);
+      final response = await _dio.getData(url: URL.getComplaintTypes);
       if (response != null) {
         final List data = response as List;
         return data.map((e) => ComplaintTypeModel.fromJson(e)).toList();
@@ -453,7 +459,7 @@ class HRServicesRemoteDataSourcesImp implements HRServicesRemoteDataSources {
   Future<List<ComplaintReasonModel>> getComplaintReasons(
       {required NoParams params}) async {
     try {
-      final response = await _dio.getData(URL: URL.getComplaintReasons);
+      final response = await _dio.getData(url: URL.getComplaintReasons);
       if (response != null) {
         final List data = response as List;
         return data.map((e) => ComplaintReasonModel.fromJson(e)).toList();
@@ -470,7 +476,7 @@ class HRServicesRemoteDataSourcesImp implements HRServicesRemoteDataSources {
       {required CreateComplaintRequestParams params}) async {
     try {
       final response = await _dio.postData(
-          URL: URL.createComplaintRequest, body: params.toMap());
+          url: URL.createComplaintRequest, body: params.toMap());
       if (response != null) {
         return CreateComplaintRequestModel.fromJson(response);
       } else {
@@ -488,7 +494,7 @@ class HRServicesRemoteDataSourcesImp implements HRServicesRemoteDataSources {
     required NoParams params,
   }) async {
     try {
-      final response = await _dio.getData(URL: URL.getStartWorkTypes);
+      final response = await _dio.getData(url: URL.getStartWorkTypes);
       if (response == null) throw ServerFailure(message: 'server failure');
       final List raw = response is List
           ? response
@@ -504,7 +510,7 @@ class HRServicesRemoteDataSourcesImp implements HRServicesRemoteDataSources {
     required NoParams params,
   }) async {
     try {
-      final response = await _dio.getData(URL: URL.getEmployees);
+      final response = await _dio.getData(url: URL.getEmployees);
       if (response == null) throw ServerFailure(message: 'server failure');
       final List raw = response is List
           ? response
@@ -521,7 +527,7 @@ class HRServicesRemoteDataSourcesImp implements HRServicesRemoteDataSources {
   }) async {
     try {
       final response = await _dio.postData(
-        URL: URL.createStartWork,
+        url: URL.createStartWork,
         body: params.toMap(),
       );
       if (response == null) throw ServerFailure(message: 'server failure');
@@ -537,7 +543,7 @@ class HRServicesRemoteDataSourcesImp implements HRServicesRemoteDataSources {
   }) async {
     try {
       final response = await _dio.putData(
-        URL: '${URL.updateStartWork}${params.requestId}',
+        url: '${URL.updateStartWork}${params.requestId}',
         body: params.toMap(),
       );
       return CreateStartWorkModel.fromJson(
@@ -554,7 +560,7 @@ class HRServicesRemoteDataSourcesImp implements HRServicesRemoteDataSources {
     required NoParams params,
   }) async {
     try {
-      final response = await _dio.getData(URL: URL.getCertificateReasons);
+      final response = await _dio.getData(url: URL.getCertificateReasons);
       if (response == null) throw ServerFailure(message: 'server failure');
       final List raw = response is List
           ? response
@@ -571,7 +577,7 @@ class HRServicesRemoteDataSourcesImp implements HRServicesRemoteDataSources {
   }) async {
     try {
       final response = await _dio.postData(
-        URL: URL.createExperienceCertificate,
+        url: URL.createExperienceCertificate,
         body: params.toMap(),
       );
       if (response == null) throw ServerFailure(message: 'server failure');
@@ -587,7 +593,7 @@ class HRServicesRemoteDataSourcesImp implements HRServicesRemoteDataSources {
   }) async {
     try {
       final response = await _dio.putData(
-        URL: '${URL.updateExperienceCertificate}${params.requestId}',
+        url: '${URL.updateExperienceCertificate}${params.requestId}',
         body: params.toMap(),
       );
       return CreateExperienceCertificateModel.fromJson(
@@ -602,7 +608,7 @@ class HRServicesRemoteDataSourcesImp implements HRServicesRemoteDataSources {
   @override
   Future<List<CountryModel>> getCountries({required NoParams params}) async {
     try {
-      final response = await _dio.getData(URL: URL.getCountries);
+      final response = await _dio.getData(url: URL.getCountries);
       if (response == null) throw ServerFailure(message: 'server failure');
       final List raw = response is List
           ? response
@@ -620,7 +626,7 @@ class HRServicesRemoteDataSourcesImp implements HRServicesRemoteDataSources {
     required NoParams params,
   }) async {
     try {
-      final response = await _dio.getData(URL: URL.getDepartments);
+      final response = await _dio.getData(url: URL.getDepartments);
       if (response == null) throw ServerFailure(message: 'server failure');
       final List raw = response is List
           ? response
@@ -636,7 +642,7 @@ class HRServicesRemoteDataSourcesImp implements HRServicesRemoteDataSources {
     required NoParams params,
   }) async {
     try {
-      final response = await _dio.getData(URL: URL.getIDRenewalRequestTypes);
+      final response = await _dio.getData(url: URL.getIDRenewalRequestTypes);
       if (response == null) throw ServerFailure(message: 'server failure');
       final List raw = response is List
           ? response
@@ -653,7 +659,7 @@ class HRServicesRemoteDataSourcesImp implements HRServicesRemoteDataSources {
   }) async {
     try {
       final response = await _dio.postData(
-        URL: URL.createIDDocument,
+        url: URL.createIDDocument,
         body: params.toMap(),
       );
       if (response == null) throw ServerFailure(message: 'server failure');
@@ -670,7 +676,7 @@ class HRServicesRemoteDataSourcesImp implements HRServicesRemoteDataSources {
     required NoParams params,
   }) async {
     try {
-      final response = await _dio.getData(URL: URL.getMedicalInsuranceClasses);
+      final response = await _dio.getData(url: URL.getMedicalInsuranceClasses);
       if (response == null) throw ServerFailure(message: 'server failure');
       final List raw = response is List
           ? response
@@ -687,7 +693,7 @@ class HRServicesRemoteDataSourcesImp implements HRServicesRemoteDataSources {
   }) async {
     try {
       final response = await _dio.getData(
-        URL: '${URL.getEmployeeRelatives}${params.employeeId}',
+        url: '${URL.getEmployeeRelatives}${params.employeeId}',
       );
       if (response == null) throw ServerFailure(message: 'server failure');
       // API returns: {code, message, count, body: [...]}
@@ -706,7 +712,7 @@ class HRServicesRemoteDataSourcesImp implements HRServicesRemoteDataSources {
   }) async {
     try {
       final response = await _dio.postData(
-        URL: URL.createMedicalInsurance,
+        url: URL.createMedicalInsurance,
         body: params.toMap(),
       );
       if (response == null) throw ServerFailure(message: 'server failure');
@@ -722,7 +728,7 @@ class HRServicesRemoteDataSourcesImp implements HRServicesRemoteDataSources {
   }) async {
     try {
       final response = await _dio.putData(
-        URL: '${URL.updateMedicalInsurance}${params.requestId}',
+        url: '${URL.updateMedicalInsurance}${params.requestId}',
         body: params.toMap(),
       );
       return CreateMedicalInsuranceModel.fromJson(
@@ -737,7 +743,7 @@ class HRServicesRemoteDataSourcesImp implements HRServicesRemoteDataSources {
   @override
   Future<List<ProductCategoryModel>> getProductCategories() async {
     try {
-      final response = await _dio.getData(URL: URL.getProductCategories);
+      final response = await _dio.getData(url: URL.getProductCategories);
       if (response == null) throw ServerFailure(message: 'server failure');
       final List raw = response is List
           ? response
@@ -756,7 +762,7 @@ class HRServicesRemoteDataSourcesImp implements HRServicesRemoteDataSources {
       final url = params.categoryId != null
           ? '${URL.getProductsByCategory}?categId=${params.categoryId}'
           : URL.getProductsByCategory;
-      final response = await _dio.getData(URL: url);
+      final response = await _dio.getData(url: url);
       if (response == null) throw ServerFailure(message: 'server failure');
       final List raw = response is List
           ? response
@@ -773,7 +779,7 @@ class HRServicesRemoteDataSourcesImp implements HRServicesRemoteDataSources {
   }) async {
     try {
       final response = await _dio.postData(
-        URL: URL.createProductOrder,
+        url: URL.createProductOrder,
         body: params.toMap(),
       );
       if (response == null) throw ServerFailure(message: 'server failure');
@@ -789,7 +795,7 @@ class HRServicesRemoteDataSourcesImp implements HRServicesRemoteDataSources {
   }) async {
     try {
       final response = await _dio.putData(
-        URL: '${URL.updateProductOrder}${params.requestId}',
+        url: '${URL.updateProductOrder}${params.requestId}',
         body: params.data.toMap(),
       );
       return CreateProductOrderResponseModel.fromJson(
@@ -805,7 +811,7 @@ class HRServicesRemoteDataSourcesImp implements HRServicesRemoteDataSources {
   Future<List<AttendanceWayModel>> getAttendanceWay(
       {required NoParams params}) async {
     try {
-      final response = await _dio.getData(URL: URL.getAttendanceWayLookup);
+      final response = await _dio.getData(url: URL.getAttendanceWayLookup);
       if (response == null) throw ServerFailure(message: 'server failure');
       final List raw = response is List
           ? response
@@ -820,7 +826,7 @@ class HRServicesRemoteDataSourcesImp implements HRServicesRemoteDataSources {
   Future<List<DepartmentTypeLookupModel>> getDepartmentTypeLookup(
       {required NoParams params}) async {
     try {
-      final response = await _dio.getData(URL: URL.getDepartmentTypeLookup);
+      final response = await _dio.getData(url: URL.getDepartmentTypeLookup);
       if (response == null) throw ServerFailure(message: 'server failure');
       final List raw = response is List
           ? response
@@ -835,7 +841,7 @@ class HRServicesRemoteDataSourcesImp implements HRServicesRemoteDataSources {
   Future<List<ProjectTypeLookupModel>> getProjectTypeLookup(
       {required NoParams params}) async {
     try {
-      final response = await _dio.getData(URL: URL.getProjectTypeLookup);
+      final response = await _dio.getData(url: URL.getProjectTypeLookup);
       if (response == null) throw ServerFailure(message: 'server failure');
       final List raw = response is List
           ? response
@@ -850,7 +856,7 @@ class HRServicesRemoteDataSourcesImp implements HRServicesRemoteDataSources {
   Future<List<OutsideWorkingEmployeeModel>> getOutsideWorkingEmployees(
       {required NoParams params}) async {
     try {
-      final response = await _dio.getData(URL: URL.syncEmployees);
+      final response = await _dio.getData(url: URL.syncEmployees);
       if (response == null) throw ServerFailure(message: 'server failure');
       final List raw = response is List
           ? response
@@ -866,7 +872,7 @@ class HRServicesRemoteDataSourcesImp implements HRServicesRemoteDataSources {
       {required NoParams params}) async {
     try {
       final response =
-          await _dio.getData(URL: '${URL.getProjects}?refresh=true');
+          await _dio.getData(url: '${URL.getProjects}?refresh=true');
       if (response == null) throw ServerFailure(message: 'server failure');
       dynamic rawBody;
       if (response is List) {
@@ -889,12 +895,11 @@ class HRServicesRemoteDataSourcesImp implements HRServicesRemoteDataSources {
   }) async {
     try {
       final response = await _dio.postData(
-        URL: URL.createOutsideWorking,
+        url: URL.createOutsideWorking,
         body: params.toMap(),
       );
       if (response == null) throw ServerFailure(message: 'server failure');
-      return CreateOutsideWorkingResponseModel.fromJson(
-          response is Map<String, dynamic> ? response : response);
+      return CreateOutsideWorkingResponseModel.fromJson(response);
     } on ServerFailure catch (e) {
       throw ServerFailure(message: e.message);
     }

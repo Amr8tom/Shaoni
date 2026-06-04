@@ -1,4 +1,4 @@
-import 'package:bloc/bloc.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:shaoni/features/human_resources/domain/use_cases/attendance/create_attendance_use_case.dart';
@@ -122,16 +122,16 @@ class AttendanceCubit extends Cubit<AttendanceState> {
       (permission) {
         forgetReasonItems = permission
             .map(
-              (Reasons) => DropdownMenuItem(
+              (reasons) => DropdownMenuItem(
                 value: (S.current.localeee == "ar"
-                        ? Reasons.name
-                        : Reasons.nameEn) ??
+                        ? reasons.name
+                        : reasons.nameEn) ??
                     '3',
                 child: Text(
                   (S.current.localeee == "ar"
-                          ? Reasons.name
-                          : Reasons.nameEn) ??
-                      '3',
+                          ? reasons.name
+                          : reasons.nameEn) ??
+                    '3',
                   style: const TextStyle(fontSize: 12),
                 ),
               ),

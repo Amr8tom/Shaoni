@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../constants/app_sizes.dart';
 import '../../constants/colors.dart';
 
-Image ImageFromBase64String({
+Image imageFromBaseString({
   required String base64String,
   double? width,
   double? height,

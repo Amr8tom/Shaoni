@@ -1,5 +1,5 @@
 import 'package:dartz/dartz.dart';
-import 'package:shaoni/core/connection/checkNetwork.dart';
+import 'package:shaoni/core/connection/check_network.dart';
 
 import 'package:shaoni/core/error/failure.dart';
 
@@ -21,7 +21,7 @@ class HomeRepositoriesImp extends HomeRepositories {
     if (await _networkInfo.isConnected) {
       try {
         final response =
-            await _remoteDataSources.GetAllStatusCountForAllServices();
+            await _remoteDataSources.getAllStatusCountForAllServices();
         return Right(response);
       } on ServerFailure catch (e) {
         return Left(ServerFailure(message: e.message));

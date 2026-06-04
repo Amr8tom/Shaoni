@@ -1,9 +1,8 @@
-import 'package:bloc/bloc.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
 import '../../../../core/local_storage/cache_helper.dart';
 import '../../../../core/utils/enums/general_status.dart';
 import '../../../../core/utils/usecases/base_usecase.dart';
-import '../../data/models/delete_account_model.dart';
 import '../../domain/usecases/delete_account_use_case.dart';
 
 part 'delete_account_state.dart';

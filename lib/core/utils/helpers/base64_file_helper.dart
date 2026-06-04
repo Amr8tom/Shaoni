@@ -156,8 +156,12 @@ class Base64FileHelper {
     /// running build (common right after adding the dependency), surface
     /// a "savedOnly" result instead of crashing.
     try {
-      await Share.shareXFiles([XFile(filePath)],
-          text: filePath.split('/').last);
+      await SharePlus.instance.share(
+        ShareParams(
+          files: [XFile(filePath)],
+          text: filePath.split('/').last,
+        ),
+      );
       return DownloadResult(
         status: DownloadStatus.shared,
         filePath: filePath,

@@ -211,7 +211,7 @@ class RequestDataWidget extends StatelessWidget {
                               AppSizes.borderRadiusMd,
                             ),
                             borderSide: BorderSide(
-                              color: ColorRes.grey_F707340,
+                              color: ColorRes.greyF707340,
                               width: 1,
                             ),
                           ),

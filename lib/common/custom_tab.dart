@@ -4,8 +4,9 @@ import '../../core/constants/colors.dart';
 import '../core/constants/app_sizes.dart';
 
 class CustomTab extends StatelessWidget {
-  final isSelected;
-  final title;
+  final bool isSelected;
+  final String title;
+
   const CustomTab({super.key, required this.title, required this.isSelected});
 
   @override
@@ -15,7 +16,7 @@ class CustomTab extends StatelessWidget {
         color: isSelected ? ColorRes.primary : ColorRes.white,
         borderRadius: BorderRadius.circular(AppSizes.borderRadiusSm),
         border: Border.all(
-          color: isSelected ? ColorRes.primary : ColorRes.grey_F707340,
+          color: isSelected ? ColorRes.primary : ColorRes.greyF707340,
           width: 1,
         ),
       ),

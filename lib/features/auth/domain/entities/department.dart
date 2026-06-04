@@ -4,8 +4,8 @@ class DepartmentEntity extends Equatable {
   final int id;
   final String nameEn;
   final String nameAr;
-  final String parent_department_id;
-  final String parent_department_name;
+  final String parentDepartmentId;
+  final String parentDepartmentName;
   final bool isActive;
   final String updatedAt;
   final bool isDeleted;
@@ -14,8 +14,8 @@ class DepartmentEntity extends Equatable {
       {required this.id,
       required this.nameEn,
       required this.nameAr,
-      required this.parent_department_id,
-      required this.parent_department_name,
+      required this.parentDepartmentId,
+      required this.parentDepartmentName,
       required this.isActive,
       required this.updatedAt,
       required this.isDeleted});
@@ -25,8 +25,8 @@ class DepartmentEntity extends Equatable {
         id,
         nameEn,
         nameAr,
-        parent_department_id,
-        parent_department_name,
+        parentDepartmentId,
+        parentDepartmentName,
         isActive,
         isDeleted,
         updatedAt,

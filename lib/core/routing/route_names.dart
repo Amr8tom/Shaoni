@@ -5,7 +5,7 @@ class DRoutesName {
   static const String nextPageInSignupRoute = 'next_page_in-signup-route';
   static const String verifyEmailRoute = 'verify-email-route';
   static const String verifyAccountRoute = 'verify-account-route';
-  static const String OTPRoute = 'OTP-route';
+  static const String otpRoute = 'OTP-route';
   static const String addNewPasswordRoute = 'add-new-password-route';
   static const String addNewEmailRoute = 'add-new-email-route';
   static const String verifyCodeRoute = 'verify-code-route';
@@ -44,9 +44,9 @@ class DRoutesName {
   static const String mapRoute = 'map-route';
 
   /// side menu
-  static const String FAQRoute = 'F-A-Q-route';
+  static const String faqRoute = 'F-A-Q-route';
   static const String feedbackRoute = 'feedback-route';
-  static const String QRCodeRoute = 'Q-R-Code-route';
+  static const String qrCodeRoute = 'Q-R-Code-route';
   static const String requestRoutes = 'request-route';
   static const String requestDetailsRoutes = 'request-details-route';
   static const String requestCertainService = 'request-certain-route';

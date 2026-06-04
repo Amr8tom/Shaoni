@@ -15,7 +15,7 @@ class DeleteRemoteDataSourcesImp implements DeleteRemoteDataSources {
   @override
   Future<dynamic> deleteAccount({required NoParams params}) async {
     try {
-      final response = await _dio.deleteData(URL: URL.deleteAccount);
+      final response = await _dio.deleteData(url: URL.deleteAccount);
       return response.data;
     } on ServerFailure {
       throw ServerFailure(message: "Server Failure");

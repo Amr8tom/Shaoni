@@ -81,6 +81,7 @@ class _SplashScreenState extends State<SplashScreen> {
                                 languageCode,
                               );
                               CacheHelper.cacheLanguage(languageCode);
+                              if (!mounted) return;
                               Navigator.of(
                                 context,
                               ).pushReplacementNamed(
@@ -100,8 +101,9 @@ class _SplashScreenState extends State<SplashScreen> {
 
   Future _delayBeforeNavigation() async {
     if (token?.trim() != '' || token!.isNotEmpty) {
-      await Future.delayed(Duration(seconds: 4, milliseconds: 500));
+      await Future.delayed(const Duration(seconds: 4, milliseconds: 500));
 
+      if (!mounted) return;
       context.pushReplacementNamed(DRoutesName.navigationMenuRoute);
     }
   }

@@ -27,13 +27,13 @@ class DioHelper {
   }
 
   Future getData({
-    required String URL,
+    required String url,
     bool isHeader = true,
     Map<String, dynamic>? data,
   }) async {
     try {
       Response response = await dio.get(
-        URL,
+        url,
         options: isHeader
             ? Options(
                 headers: {
@@ -57,13 +57,13 @@ class DioHelper {
   }
 
   Future<Map<String, dynamic>?> postData({
-    required String URL,
+    required String url,
     Map<String, dynamic>? body,
     String? token,
   }) async {
     try {
       Response response = await dio.post(
-        URL,
+        url,
         data: body,
         options: Options(
           followRedirects: false,
@@ -97,13 +97,13 @@ class DioHelper {
   }
 
   Future<dynamic> postDataWithStringBody({
-    required String URL,
+    required String url,
     String? body,
     String? token,
   }) async {
     try {
       Response response = await dio.post(
-        URL,
+        url,
         data: body,
         options: Options(
           followRedirects: false,
@@ -136,13 +136,13 @@ class DioHelper {
 
   Future<Map<String, dynamic>?> postFormData({
     bool handleError = true,
-    required String URL,
+    required String url,
     FormData? formData,
     String? token,
   }) async {
     try {
       Response response = await dio.post(
-        URL,
+        url,
         data: formData,
         options: Options(
           followRedirects: false,
@@ -172,13 +172,13 @@ class DioHelper {
 
   Future<Response> postDataWithoutAuth({
     bool handleError = true,
-    required String URL,
+    required String url,
     Map<String, dynamic>? body,
     String? token,
   }) async {
     try {
       Response response = await dio.post(
-        URL,
+        url,
         data: body,
         options: Options(
           /// validate status option to prevent dio from throwing error automatically and let me handle it
@@ -204,11 +204,11 @@ class DioHelper {
   }
 
   Future<Response> putData({
-    required String URL,
+    required String url,
     Map<String, dynamic>? body,
   }) async {
     return await dio.put(
-      URL,
+      url,
       data: body,
       options: Options(
         headers: {
@@ -221,11 +221,11 @@ class DioHelper {
   }
 
   Future<Response> patchData({
-    required String URL,
+    required String url,
     Map<String, dynamic>? body,
   }) async {
     return await dio.patch(
-      URL,
+      url,
       data: body,
       options: Options(
         headers: {
@@ -238,11 +238,11 @@ class DioHelper {
   }
 
   Future<Response> deleteFromCart({
-    required String URL,
+    required String url,
     Map<String, dynamic>? body,
   }) async {
     return await dio.put(
-      URL,
+      url,
       data: body,
       options: Options(
         headers: {
@@ -255,11 +255,11 @@ class DioHelper {
   }
 
   Future<Response> deleteData({
-    required String URL,
+    required String url,
     Map<String, dynamic>? body,
   }) async {
     return await dio.delete(
-      URL,
+      url,
       data: body,
       options: Options(
         headers: {

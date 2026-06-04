@@ -54,7 +54,7 @@ class CreateExperienceCertificateForm extends StatelessWidget {
                 }
 
                 if (state.status.isCreateLoaded) {
-                  CustomDialogImgTitleDes(
+                  customDialogImgTitleDes(
                     button1: S.current.myOrders,
                     button2: S.current.home,
                     orderNumber: _isEditMode ? '' : (state.requestNumber ?? ''),

@@ -1,4 +1,4 @@
-import 'package:bloc/bloc.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:shaoni/core/local_storage/cache_helper.dart';
@@ -112,14 +112,6 @@ class StudyCubit extends Cubit<StudyState> {
   }
 
   // ── Helpers ───────────────────────────────────────────────────────────────
-
-  int? get _selectedStudyTypeId {
-    if (studyTypeController.text.isEmpty) return null;
-    final match = _studyTypes.where(
-      (t) => _localizedName(t.nameAr, t.nameEn) == studyTypeController.text,
-    );
-    return match.isEmpty ? null : match.first.id;
-  }
 
   String get _selectedStudyTypeCode {
     if (studyTypeController.text.isEmpty) return '';

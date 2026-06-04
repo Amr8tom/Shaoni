@@ -6,8 +6,8 @@ class Contacts {
   static launchFacebookProfile({required String faceLink}) async {
     String facebookUrl = faceLink;
 
-    if (await canLaunch(facebookUrl)) {
-      await launch(facebookUrl);
+    if (await canLaunchUrl(Uri.parse(facebookUrl))) {
+      await launchUrl(Uri.parse(facebookUrl));
     } else {
       throw 'Could not launch $facebookUrl';
     }
@@ -46,8 +46,8 @@ class Contacts {
 
   static Future<void> openInstagram() async {
     const url = 'https://www.instagram.com'; // Instagram URL
-    if (await canLaunch(url)) {
-      await launch(url);
+    if (await canLaunchUrl(Uri.parse(url))) {
+      await launchUrl(Uri.parse(url));
     } else {
       throw 'Could not launch $url';
     }

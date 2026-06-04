@@ -1,5 +1,5 @@
 import 'package:dartz/dartz.dart';
-import '../../../../core/connection/checkNetwork.dart';
+import '../../../../core/connection/check_network.dart';
 import '../../../../core/error/failure.dart';
 import '../../../../core/utils/usecases/base_usecase.dart';
 import '../../domain/entities/study/create_study_response.dart';

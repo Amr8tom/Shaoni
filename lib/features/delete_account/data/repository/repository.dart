@@ -1,5 +1,6 @@
+
 import 'package:dartz/dartz.dart';
-import '../../../../core/connection/checkNetwork.dart';
+import '../../../../core/connection/check_network.dart';
 import '../../../../core/error/failure.dart';
 import '../../../../core/utils/usecases/base_usecase.dart';
 import '../../domain/repository/repository.dart';
@@ -20,6 +21,7 @@ class DeleteAccountRepositoryImp implements DeleteAccountRepository {
       final deleteReponse = await _remote.deleteAccount(params: params);
       return right(deleteReponse);
     } else {
+      _local.toString();
       return left(CacheFailure());
     }
   }

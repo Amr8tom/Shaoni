@@ -6,7 +6,7 @@ import 'package:shaoni/features/auth/domain/repositories/auth_repositories.dart'
 import 'package:shaoni/features/auth/domain/usecases/change_password_use_case.dart';
 import 'package:shaoni/features/auth/domain/usecases/login_use_case.dart';
 
-import '../../../../core/connection/checkNetwork.dart';
+import '../../../../core/connection/check_network.dart';
 import '../data_sources/remote_data_sources.dart';
 
 class AuthRepositoriesImp implements AuthRepositories {

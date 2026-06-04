@@ -10,6 +10,7 @@ import '../../constants/colors.dart';
 Future<void> checkForPlayUpdate({required BuildContext context}) async {
   InAppUpdate.checkForUpdate().then((updateInfo) {
     if (updateInfo.updateAvailability == UpdateAvailability.updateAvailable) {
+      if (!context.mounted) return;
       _showUpdateDialog(
         context: context,
         versionCode: updateInfo.availableVersionCode?.toString(),

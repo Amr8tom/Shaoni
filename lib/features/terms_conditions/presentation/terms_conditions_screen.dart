@@ -9,7 +9,7 @@ class TermsConditionsScreen extends StatefulWidget {
   const TermsConditionsScreen({super.key});
 
   @override
-  _TermsConditionsScreenState createState() => _TermsConditionsScreenState();
+  State<TermsConditionsScreen> createState() => _TermsConditionsScreenState();
 }
 
 class _TermsConditionsScreenState extends State<TermsConditionsScreen> {

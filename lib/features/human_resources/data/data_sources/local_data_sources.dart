@@ -35,28 +35,28 @@ class HRServicesLocalDataSourcesImp implements HRServicesLocalDataSources {
   @override
   Future<Unit> cacheAllPermissionTimes(
       List<PermissionTimeModel> permissionTimes) async {
-    final String PermisstionTimes =
+    final String permissionTimesString =
         jsonEncode(permissionTimes.map((e) => e.toJson()).toList());
     CacheHelper.putString(
-        key: CacheKeys.permissionTimes, value: PermisstionTimes);
+        key: CacheKeys.permissionTimes, value: permissionTimesString);
     return Future.value(unit);
   }
 
   @override
   Future<Unit> cacheAllPermissionTypes(
       List<PermissionTypeModel> permissionTypes) {
-    final String PermisstionTypes = jsonEncode(permissionTypes);
+    final String permissionTypesString = jsonEncode(permissionTypes);
     CacheHelper.putString(
-        key: CacheKeys.permissionTypes, value: PermisstionTypes);
+        key: CacheKeys.permissionTypes, value: permissionTypesString);
     return Future.value(unit);
   }
 
   @override
   Future<List<PermissionTimeModel>> getAllPermissionTimes() async {
-    final String? PermisstionTimes =
+    final String? permissionTimesString =
         CacheHelper.getString(key: CacheKeys.permissionTimes);
-    if (PermisstionTimes != null) {
-      return (jsonDecode(PermisstionTimes) as List)
+    if (permissionTimesString != null) {
+      return (jsonDecode(permissionTimesString) as List)
           .map((e) => PermissionTimeModel.fromJson(e))
           .toList();
     } else {
@@ -66,10 +66,10 @@ class HRServicesLocalDataSourcesImp implements HRServicesLocalDataSources {
 
   @override
   Future<List<PermissionTypeModel>> getAllPermissionTypes() async {
-    final String? PermisstionTypes =
+    final String? permissionTypesString =
         CacheHelper.getString(key: CacheKeys.permissionTypes);
-    if (PermisstionTypes != null) {
-      return (jsonDecode(PermisstionTypes) as List)
+    if (permissionTypesString != null) {
+      return (jsonDecode(permissionTypesString) as List)
           .map((e) => PermissionTypeModel.fromJson(e))
           .toList();
     } else {
@@ -92,9 +92,9 @@ class HRServicesLocalDataSourcesImp implements HRServicesLocalDataSources {
     final String? allRecords =
         CacheHelper.getString(key: CacheKeys.attendanceRecords);
     if (allRecords != null) {
-      final Map<String, dynamic> AllattendanceRecordsJson =
+      final Map<String, dynamic> allAttendanceRecordsJson =
           jsonDecode(allRecords);
-      return AllAttendanceRecordModel.fromJson(AllattendanceRecordsJson);
+      return AllAttendanceRecordModel.fromJson(allAttendanceRecordsJson);
     } else {
       throw CacheFailure();
     }

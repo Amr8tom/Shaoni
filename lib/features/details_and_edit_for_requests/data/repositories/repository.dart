@@ -1,5 +1,5 @@
 import 'package:dartz/dartz.dart';
-import 'package:shaoni/core/connection/checkNetwork.dart';
+import 'package:shaoni/core/connection/check_network.dart';
 import 'package:shaoni/core/error/failure.dart';
 import 'package:shaoni/features/details_and_edit_for_requests/data/models/approve_request_model.dart';
 import 'package:shaoni/features/details_and_edit_for_requests/domain/entities/all_requests_with_stages.dart';

@@ -104,7 +104,7 @@ class _AuthTextFieldState extends State<AuthTextField> {
                   widget.borderRadius ?? AppSizes.borderRadiusXXLg,
                 ),
                 borderSide: BorderSide(
-                  color: widget.borderColor ?? ColorRes.grey_F707340,
+                  color: widget.borderColor ?? ColorRes.greyF707340,
                   width: 1,
                 ),
               ),

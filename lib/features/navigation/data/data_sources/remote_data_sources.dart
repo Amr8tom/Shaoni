@@ -18,7 +18,7 @@ class NavigationRemoteDataSourcesImp implements NavigationRemoteDataSources {
   Future<int> getUnreadedNotifications() async {
     try {
       final response =
-          await _dio.getData(URL: URL.getCountUnreadedNotificaion) as int;
+          await _dio.getData(url: URL.getCountUnreadedNotificaion) as int;
       return response;
     } on ServerFailure {
       throw ServerFailure(message: "Server Failure");
@@ -28,7 +28,7 @@ class NavigationRemoteDataSourcesImp implements NavigationRemoteDataSources {
   @override
   Future<UserModel> getUserData({required GetUserDataParams params}) async {
     try {
-      final response = await _dio.getData(URL: "${URL.user}${params.id}");
+      final response = await _dio.getData(url: "${URL.user}${params.id}");
       if (response == null) {
         throw ServerFailure(message: "Server Failure");
       }

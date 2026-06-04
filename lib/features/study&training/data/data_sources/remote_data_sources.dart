@@ -51,7 +51,7 @@ class StudyServicesRemoteDataSourcesImp
   @override
   Future<List<StudyTypeModel>> getStudyTypes({required NoParams params}) async {
     try {
-      final List response = await _dio.getData(URL: URL.getStudyTypes);
+      final List response = await _dio.getData(url: URL.getStudyTypes);
       return response.map((e) => StudyTypeModel.fromJson(e)).toList();
     } on ServerFailure catch (e) {
       throw ServerFailure(message: e.message);
@@ -63,7 +63,7 @@ class StudyServicesRemoteDataSourcesImp
     required NoParams params,
   }) async {
     try {
-      final response = await _dio.getData(URL: URL.getStudyDestinations);
+      final response = await _dio.getData(url: URL.getStudyDestinations);
       if (response != null) {
         final List data = response['data'] as List;
         return data.map((e) => StudyDestinationModel.fromJson(e)).toList();
@@ -81,7 +81,7 @@ class StudyServicesRemoteDataSourcesImp
   }) async {
     try {
       final response = await _dio.postData(
-        URL: URL.createStudyRequest,
+        url: URL.createStudyRequest,
         body: params.toMap(),
       );
       if (response != null) {
@@ -100,7 +100,7 @@ class StudyServicesRemoteDataSourcesImp
   }) async {
     try {
       final response = await _dio.putData(
-        URL: '${URL.updateStudyRequest}${params.requestId}',
+        url: '${URL.updateStudyRequest}${params.requestId}',
         body: params.toMap(),
       );
       return CreateStudyModel.fromJson(response.data as Map<String, dynamic>);
@@ -114,7 +114,7 @@ class StudyServicesRemoteDataSourcesImp
   @override
   Future<List<CourseModel>> getCourses() async {
     try {
-      final response = await _dio.getData(URL: URL.getCourses);
+      final response = await _dio.getData(url: URL.getCourses);
       if (response == null) throw ServerFailure(message: 'server failure');
       final List raw = response is List
           ? response
@@ -131,7 +131,7 @@ class StudyServicesRemoteDataSourcesImp
   }) async {
     try {
       final response = await _dio.postData(
-        URL: URL.createTrainingRequest,
+        url: URL.createTrainingRequest,
         body: params.toMap(),
       );
       if (response == null) throw ServerFailure(message: 'server failure');
@@ -147,7 +147,7 @@ class StudyServicesRemoteDataSourcesImp
   }) async {
     try {
       final response = await _dio.putData(
-        URL: '${URL.updateTrainingRequest}${params.requestId}',
+        url: '${URL.updateTrainingRequest}${params.requestId}',
         body: params.data.toMap(),
       );
       return CreateTrainingResponseModel.fromJson(

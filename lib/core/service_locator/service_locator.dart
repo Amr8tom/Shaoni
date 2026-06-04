@@ -5,7 +5,7 @@ import 'package:shaoni/core/service_locator/profile_service_locator.dart';
 import 'package:shaoni/core/service_locator/request_service_locator.dart';
 import 'package:shaoni/core/service_locator/services_service_locator.dart';
 import 'package:shaoni/core/service_locator/study_training_service_locator.dart';
-import '../connection/checkNetwork.dart';
+import '../connection/check_network.dart';
 import '../dio/dio_helper.dart';
 import 'auth_service_locator.dart';
 import 'delete_account_service_locator.dart';

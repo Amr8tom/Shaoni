@@ -49,7 +49,7 @@ class CreateComplaintRequestScreen extends StatelessWidget {
                 }
 
                 if (state.isCreateRequestLoaded) {
-                  CustomDialogImgTitleDes(
+                  customDialogImgTitleDes(
                     button1: S.current.myOrders,
                     button2: S.current.home,
                     orderNumber: state.requestNumber ?? '',

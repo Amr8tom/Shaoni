@@ -26,9 +26,11 @@ Future<void> downloadBase64File(
 
     // 6. Trigger the native save/share sheet
     // This allows the user to tap "Save to Files" on iOS or Android
-    await Share.shareXFiles(
-      [XFile(file.path)],
-      text: 'Save your file',
+    await SharePlus.instance.share(
+      ShareParams(
+        files: [XFile(file.path)],
+        text: 'Save your file',
+      ),
     );
   } catch (_) {}
 }

@@ -19,7 +19,7 @@ class ProfileRemoteDataSourcesImpl implements ProfileRemoteDataSources {
   Future<Profile> updateProfile({required UpdateProfileParams params}) async {
     try {
       final response = await _dioHelper.putData(
-          URL: URL.updateProfile, body: params.toMap());
+          url: URL.updateProfile, body: params.toMap());
       return ProfileModel.fromJson(response.data);
     } on ServerFailure catch (e) {
       throw ServerFailure(message: e.message);

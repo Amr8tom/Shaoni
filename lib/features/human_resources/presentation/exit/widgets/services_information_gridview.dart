@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../core/constants/app_sizes.dart';
 import '../../../../../core/constants/colors.dart';
 import '../../../../../generated/l10n.dart';
-import '../../../domain/entity/request_services_Entity.dart';
+import '../../../../services/domain/entity/request_services_entity.dart';
 import '../../controller/exit_permission/exit_request_service_cubit.dart';
 
 class ServicesInformationGridview extends StatelessWidget {

@@ -9,7 +9,7 @@ import '../../../core/utils/helpers/background_image.dart';
 import '../../../generated/l10n.dart';
 import '../sized_boxes/sizer.dart';
 
-void CustomDialogImgTitleDes({
+void customDialogImgTitleDes({
   required BuildContext context,
   required String title,
   required String des,

@@ -94,7 +94,7 @@ class MyRequestsRemoteDataSourcesImp implements MyRequestsRemoteDataSources {
   }) async {
     try {
       final response = await _dio.postData(
-        URL: URL.getAllRequestsWithStages,
+        url: URL.getAllRequestsWithStages,
         body: params.toMap(),
       );
       if (response == null) {
@@ -111,7 +111,7 @@ class MyRequestsRemoteDataSourcesImp implements MyRequestsRemoteDataSources {
       {required GetAllManagerRequestsParams params}) async {
     try {
       final response = await _dio.postData(
-        URL: URL.getAllRequestsWithStagesByManager,
+        url: URL.getAllRequestsWithStagesByManager,
         body: params.toMap(),
       );
       if (response == null) {
@@ -128,7 +128,7 @@ class MyRequestsRemoteDataSourcesImp implements MyRequestsRemoteDataSources {
       {required AcceptRequestParams params}) async {
     try {
       final response = await _dio.putData(
-          URL: '${URL.approveRequest}${params.id}', body: params.toJson());
+          url: '${URL.approveRequest}${params.id}', body: params.toJson());
       return ApproveRequestModel.fromJson(response.data);
     } on ServerFailure {
       rethrow;
@@ -140,7 +140,7 @@ class MyRequestsRemoteDataSourcesImp implements MyRequestsRemoteDataSources {
       {required GetRequestDetailsParams params}) async {
     try {
       final response = await _dio.getData(
-        URL: '${URL.getRequestDetailsStages}${params.requestId}/with-stages',
+        url: '${URL.getRequestDetailsStages}${params.requestId}/with-stages',
       );
       if (response == null) {
         throw ServerFailure(message: 'Null response from server');
@@ -159,7 +159,7 @@ class MyRequestsRemoteDataSourcesImp implements MyRequestsRemoteDataSources {
   }) async {
     try {
       final response = await _dio.putData(
-        URL: '${URL.getCarPermissionEdit}${params.requestId}',
+        url: '${URL.getCarPermissionEdit}${params.requestId}',
         body: params.toMap(),
       );
       return EditResponseModel.fromJson(response.data as Map<String, dynamic>);
@@ -174,7 +174,7 @@ class MyRequestsRemoteDataSourcesImp implements MyRequestsRemoteDataSources {
   }) async {
     try {
       final response = await _dio.putData(
-        URL: '${URL.getExitPermissionEdit}${params.requestId}',
+        url: '${URL.getExitPermissionEdit}${params.requestId}',
         body: params.toMap(),
       );
       return EditResponseModel.fromJson(response.data as Map<String, dynamic>);
@@ -189,7 +189,7 @@ class MyRequestsRemoteDataSourcesImp implements MyRequestsRemoteDataSources {
   }) async {
     try {
       final response = await _dio.putData(
-        URL: '${URL.getAttendanceEdit}${params.requestId}',
+        url: '${URL.getAttendanceEdit}${params.requestId}',
         body: params.toMap(),
       );
       return EditResponseModel.fromJson(response.data as Map<String, dynamic>);
@@ -204,7 +204,7 @@ class MyRequestsRemoteDataSourcesImp implements MyRequestsRemoteDataSources {
   }) async {
     try {
       final response = await _dio.putData(
-        URL: '${URL.getStudyEdit}${params.requestId}',
+        url: '${URL.getStudyEdit}${params.requestId}',
         body: params.toMap(),
       );
       return EditResponseModel.fromJson(response.data as Map<String, dynamic>);
@@ -219,7 +219,7 @@ class MyRequestsRemoteDataSourcesImp implements MyRequestsRemoteDataSources {
   }) async {
     try {
       final response = await _dio.putData(
-        URL: '${URL.getStartWorkEdit}${params.requestId}',
+        url: '${URL.getStartWorkEdit}${params.requestId}',
         body: params.toMap(),
       );
       return EditResponseModel.fromJson(response.data as Map<String, dynamic>);
@@ -234,7 +234,7 @@ class MyRequestsRemoteDataSourcesImp implements MyRequestsRemoteDataSources {
   }) async {
     try {
       final response = await _dio.putData(
-        URL: '${URL.getExperienceCertificateEdit}${params.requestId}',
+        url: '${URL.getExperienceCertificateEdit}${params.requestId}',
         body: params.toMap(),
       );
       return EditResponseModel.fromJson(response.data as Map<String, dynamic>);
@@ -249,7 +249,7 @@ class MyRequestsRemoteDataSourcesImp implements MyRequestsRemoteDataSources {
   }) async {
     try {
       final response = await _dio.putData(
-        URL: '${URL.getIDDocumentEdit}${params.requestId}',
+        url: '${URL.getIDDocumentEdit}${params.requestId}',
         body: params.toMap(),
       );
       return EditResponseModel.fromJson(response.data as Map<String, dynamic>);
@@ -264,7 +264,7 @@ class MyRequestsRemoteDataSourcesImp implements MyRequestsRemoteDataSources {
   }) async {
     try {
       final response = await _dio.putData(
-        URL: '${URL.getMedicalInsuranceEdit}${params.requestId}',
+        url: '${URL.getMedicalInsuranceEdit}${params.requestId}',
         body: params.toMap(),
       );
       return EditResponseModel.fromJson(response.data as Map<String, dynamic>);
@@ -279,7 +279,7 @@ class MyRequestsRemoteDataSourcesImp implements MyRequestsRemoteDataSources {
   }) async {
     try {
       final response = await _dio.putData(
-        URL: '${URL.getTrainingRequestEdit}${params.requestId}',
+        url: '${URL.getTrainingRequestEdit}${params.requestId}',
         body: params.toMap(),
       );
       return EditResponseModel.fromJson(response.data as Map<String, dynamic>);
@@ -294,7 +294,7 @@ class MyRequestsRemoteDataSourcesImp implements MyRequestsRemoteDataSources {
   }) async {
     try {
       final response = await _dio.putData(
-        URL: '${URL.getProductOrderEdit}${params.requestId}',
+        url: '${URL.getProductOrderEdit}${params.requestId}',
         body: params.toMap(),
       );
       return EditResponseModel.fromJson(response.data as Map<String, dynamic>);
@@ -309,7 +309,7 @@ class MyRequestsRemoteDataSourcesImp implements MyRequestsRemoteDataSources {
   }) async {
     try {
       final response = await _dio.putData(
-        URL: '${URL.updateOutsideWorking}${params.requestId}',
+        url: '${URL.updateOutsideWorking}${params.requestId}',
         body: params.toMap(),
       );
       return EditResponseModel.fromJson(response.data as Map<String, dynamic>);

@@ -144,17 +144,17 @@ class _EmployeeTaskCard extends StatelessWidget {
                       controller: data.tasksController,
                       decoration: InputDecoration(
                         hintText: 'المهام الموكلة لهذا الموظف...',
-                        hintStyle:  TextStyle(
+                        hintStyle: TextStyle(
                             fontSize: 12, color: ColorRes.greyShade400),
                         contentPadding: const EdgeInsets.symmetric(
                             horizontal: 12, vertical: 10),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(8),
-                          borderSide:  BorderSide(color: ColorRes.greyShade300),
+                          borderSide: BorderSide(color: ColorRes.greyShade300),
                         ),
                         enabledBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(8),
-                          borderSide:  BorderSide(color: ColorRes.greyShade300),
+                          borderSide: BorderSide(color: ColorRes.greyShade300),
                         ),
                       ),
                       validator: (v) => (v == null || v.isEmpty)
@@ -186,16 +186,16 @@ class _EmployeeTaskCard extends StatelessWidget {
             controller: data.privateTasksController,
             decoration: InputDecoration(
               hintText: 'مهمة خاصة ...',
-              hintStyle:  TextStyle(fontSize: 12, color: ColorRes.greyShade400),
+              hintStyle: TextStyle(fontSize: 12, color: ColorRes.greyShade400),
               contentPadding:
                   const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(8),
-                borderSide:  BorderSide(color: ColorRes.greyShade300),
+                borderSide: BorderSide(color: ColorRes.greyShade300),
               ),
               enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(8),
-                borderSide:  BorderSide(color: ColorRes.greyShade300),
+                borderSide: BorderSide(color: ColorRes.greyShade300),
               ),
             ),
             validator: (v) =>

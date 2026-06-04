@@ -14,15 +14,15 @@ abstract class NavigationLocalDataSources {
 class NavigationLocalDataSourcesImp implements NavigationLocalDataSources {
   @override
   Future cacheUserData({required UserModel user}) async {
-    final String UserString = jsonEncode(user.toJson());
-    CacheHelper.putString(key: CacheKeys.userData, value: UserString);
+    final String userString = jsonEncode(user.toJson());
+    CacheHelper.putString(key: CacheKeys.userData, value: userString);
   }
 
   @override
   Future<UserModel> getUserData() async {
-    final String UserString =
+    final String userString =
         CacheHelper.getString(key: CacheKeys.userData) ?? '';
-    final Map<String, dynamic> userMap = jsonDecode(UserString);
+    final Map<String, dynamic> userMap = jsonDecode(userString);
     final UserModel user = UserModel.fromJson(userMap);
     return user;
   }

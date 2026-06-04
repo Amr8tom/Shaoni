@@ -17,7 +17,7 @@ class ServicesRemoteDataSourcesImp implements ServicesRemoteDataSources {
   @override
   Future<AllServicesModel> getAllServices() async {
     try {
-      final response = await _dio.getData(URL: URL.getAllServices);
+      final response = await _dio.getData(url: URL.getAllServices);
       if (response != null) {
         return AllServicesModel.fromJson(response);
       } else {

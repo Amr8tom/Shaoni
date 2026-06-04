@@ -59,7 +59,7 @@ class CreateCarPermissionScreen extends StatelessWidget {
 
                 /// ── Create success ───────────────────────────────────────────
                 if (state.isCreateRequestLoaded) {
-                  CustomDialogImgTitleDes(
+                  customDialogImgTitleDes(
                     button1: S.current.myOrders,
                     button2: S.current.home,
                     orderNumber: state.requestNumber ?? '',
@@ -81,7 +81,7 @@ class CreateCarPermissionScreen extends StatelessWidget {
 
                 /// ── Update success ───────────────────────────────────────────
                 if (state.isUpdateRequestLoaded) {
-                  CustomDialogImgTitleDes(
+                  customDialogImgTitleDes(
                     button1: S.current.myOrders,
                     button2: S.current.home,
                     orderNumber: state.requestNumber ?? '',

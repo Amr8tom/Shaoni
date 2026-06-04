@@ -12,7 +12,7 @@ import '../../../features/navigation/presentation/widgets/profile_header.dart';
 import '../sized_boxes/sizer.dart';
 
 class DAppBar extends StatelessWidget implements PreferredSizeWidget {
-  DAppBar({
+  const DAppBar({
     super.key,
     this.title,
     this.showBackArrow = false,
@@ -44,7 +44,7 @@ class DAppBar extends StatelessWidget implements PreferredSizeWidget {
   final double? appHeight;
   final GlobalKey<ScaffoldState>? scaffoldKey;
 
-  void Function()? doSomeThing;
+  final void Function()? doSomeThing;
 
   @override
   Widget build(BuildContext context) {
@@ -71,102 +71,101 @@ class DAppBar extends StatelessWidget implements PreferredSizeWidget {
               ),
             ),
             height: AppSizes.appBarHeight * 2.7),
-        Container(
-          child: Column(
-            children: [
-              AppBar(
-                elevation: 0.0,
-                titleTextStyle: TextStyle(
-                  fontWeight: FontWeight.w700,
-                  fontSize: fontSize ?? 24.sp,
-                  color: ColorRes.white,
-                ),
-                backgroundColor: bgColor ?? ColorRes.transparent,
-                automaticallyImplyLeading: false,
-                // leadingWidth: 85.w,
-                leading: showBackArrow
-                    ? IconButton(
-                        onPressed: () {
-                          if (doSomeThing != null) {
-                            doSomeThing!();
-                          }
-                          context.pop(); // Navigate back
-                        },
-                        icon: Icon(
-                          Icons.arrow_back_ios_rounded,
-                          // Use arrow_back_ios for a more modern look
-                          size: AppSizes.iconMd,
-                          color:
-                              arrowBackColor ? ColorRes.white : ColorRes.white,
-                        ),
-                      )
-                    : Padding(
-                        padding: const EdgeInsets.only(right: 20.0),
-                        child: leadingWidget,
-                      ),
-                title: Text(title ?? ""),
-                centerTitle: centerTitle,
-                actions: actions ??
-                    [
-                      const Sizer(width: 10),
-                      isHeader ? const ProfileHeader() : const Sizer(),
-                      const Sizer(width: 20),
-                      IconButton(
-                        onPressed: () {
-                          context.pushNamed(
-                            DRoutesName.notificationsRoute,
-                          );
-                        },
-                        icon: SvgPicture.asset(
-                          AssetRes.notificationIcon,
-                          color: ColorRes.white,
-                        ),
-                      ),
-                      const Sizer(width: 7),
-                      showMenu
-                          ? IconButton(
-                              onPressed: () {
-                                if (scaffoldKey != null &&
-                                    scaffoldKey!.currentState != null) {
-                                  scaffoldKey!.currentState!.openDrawer();
-                                } else {
-                                  Scaffold.of(context).openDrawer();
-                                }
-                              },
-                              icon: SvgPicture.asset(
-                                AssetRes.menuIcon,
-                                color: ColorRes.white,
-                              ),
-                            )
-                          : Sizer(),
-                      const Sizer(width: 10),
-                    ],
-                toolbarHeight: DDeviceUtils.getAppBarHeight().sp * 1,
+        Column(
+          children: [
+            AppBar(
+              elevation: 0.0,
+              titleTextStyle: TextStyle(
+                fontWeight: FontWeight.w700,
+                fontSize: fontSize ?? 24.sp,
+                color: ColorRes.white,
               ),
-              Container(
-                height: 3,
-                decoration: BoxDecoration(
-                  color: ColorRes.error.withValues(alpha: 0.2),
-                  boxShadow: [
-                    BoxShadow(
-                      offset: Offset(0, 2),
-                      color: ColorRes.primary.withValues(alpha: 0.2),
-                      blurRadius: 4,
-                      spreadRadius: 0.2,
+              backgroundColor: bgColor ?? ColorRes.transparent,
+              automaticallyImplyLeading: false,
+              // leadingWidth: 85.w,
+              leading: showBackArrow
+                  ? IconButton(
+                      onPressed: () {
+                        if (doSomeThing != null) {
+                          doSomeThing!();
+                        }
+                        context.pop(); // Navigate back
+                      },
+                      icon: Icon(
+                        Icons.arrow_back_ios_rounded,
+                        // Use arrow_back_ios for a more modern look
+                        size: AppSizes.iconMd,
+                        color: arrowBackColor ? ColorRes.white : ColorRes.white,
+                      ),
+                    )
+                  : Padding(
+                      padding: const EdgeInsets.only(right: 20.0),
+                      child: leadingWidget,
                     ),
+              title: Text(title ?? ""),
+              centerTitle: centerTitle,
+              actions: actions ??
+                  [
+                    const Sizer(width: 10),
+                    isHeader ? const ProfileHeader() : const Sizer(),
+                    const Sizer(width: 20),
+                    IconButton(
+                      onPressed: () {
+                        context.pushNamed(
+                          DRoutesName.notificationsRoute,
+                        );
+                      },
+                      icon: SvgPicture.asset(
+                        AssetRes.notificationIcon,
+                        colorFilter: const ColorFilter.mode(
+                            ColorRes.white, BlendMode.srcIn),
+                      ),
+                    ),
+                    const Sizer(width: 7),
+                    showMenu
+                        ? IconButton(
+                            onPressed: () {
+                              if (scaffoldKey != null &&
+                                  scaffoldKey!.currentState != null) {
+                                scaffoldKey!.currentState!.openDrawer();
+                              } else {
+                                Scaffold.of(context).openDrawer();
+                              }
+                            },
+                            icon: SvgPicture.asset(
+                              AssetRes.menuIcon,
+                              colorFilter: const ColorFilter.mode(
+                                  ColorRes.white, BlendMode.srcIn),
+                            ),
+                          )
+                        : const Sizer(),
+                    const Sizer(width: 10),
                   ],
-                  gradient: LinearGradient(
-                    begin: Alignment.topLeft,
-                    end: Alignment.bottomRight,
-                    colors: [
-                      ColorRes.primary.withValues(alpha: 0.2),
-                      ColorRes.primary.withValues(alpha: 0.1),
-                    ],
+              toolbarHeight: DDeviceUtils.getAppBarHeight().sp * 1,
+            ),
+            Container(
+              height: 3,
+              decoration: BoxDecoration(
+                color: ColorRes.error.withValues(alpha: 0.2),
+                boxShadow: [
+                  BoxShadow(
+                    offset: const Offset(0, 2),
+                    color: ColorRes.primary.withValues(alpha: 0.2),
+                    blurRadius: 4,
+                    spreadRadius: 0.2,
                   ),
+                ],
+                gradient: LinearGradient(
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                  colors: [
+                    ColorRes.primary.withValues(alpha: 0.2),
+                    ColorRes.primary.withValues(alpha: 0.1),
+                  ],
                 ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ],
     );

@@ -20,7 +20,7 @@ class LoginScreen extends StatelessWidget {
       child: BlocConsumer<LoginCubit, LoginState>(
         listener: (context, state) {
           if (state.status.isLoggedIn) {
-            context.pushNamed(DRoutesName.OTPRoute);
+            context.pushNamed(DRoutesName.otpRoute);
           }
           if (state.status.isError) {
             ScaffoldMessenger.of(context).showSnackBar(

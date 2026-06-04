@@ -218,7 +218,7 @@ class RouteGenerator {
         );
       //
       /// OTP verification Screen
-      case DRoutesName.OTPRoute:
+      case DRoutesName.otpRoute:
         return PageTransition(
           child: const OtpScreen(),
           type: PageTransitionType.rightToLeft,

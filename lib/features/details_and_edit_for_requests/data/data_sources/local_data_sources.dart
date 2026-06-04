@@ -65,6 +65,6 @@ class MyRequestsLocalDataSourcesImp implements MyRequestsLocalDataSources {
 
   @override
   Future<RequestWithStage> getRequestDetails() {
-    throw UnimplementedError();
+    throw CacheFailure();
   }
 }

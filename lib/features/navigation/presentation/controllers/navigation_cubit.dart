@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'package:bloc/bloc.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:shaoni/features/navigation/domain/use_cases/get_user_data_use_case.dart';
@@ -9,7 +9,7 @@ import '../../../auth/domain/entities/user_entity.dart';
 import '../../../home/home_screen.dart';
 import '../../../details_and_edit_for_requests/presentation/screens/my_requests_screen.dart';
 import '../../../profile/profile_screen.dart';
-import '../../../services/presentation/screens/all_categories_Screen.dart';
+import '../../../services/presentation/screens/all_categories_screen.dart';
 
 part 'navigation_state.dart';
 

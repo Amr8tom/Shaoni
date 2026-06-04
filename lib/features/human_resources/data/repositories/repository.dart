@@ -46,7 +46,7 @@ import 'package:shaoni/features/human_resources/domain/use_cases/product_order/c
 import 'package:shaoni/features/human_resources/domain/use_cases/product_order/update_product_order_use_case.dart';
 import '../model/car_permission/update_car_permission_model.dart';
 import '../model/complaint_request/create_complaint_request_model.dart';
-import '../../../../core/connection/checkNetwork.dart';
+import '../../../../core/connection/check_network.dart';
 import '../../domain/entity/all_attendance_record_model.dart';
 import '../../domain/entity/permission_time.dart';
 import '../../domain/entity/permission_type.dart';

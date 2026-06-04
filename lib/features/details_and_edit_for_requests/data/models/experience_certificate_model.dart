@@ -1,7 +1,7 @@
 // "experienceCertificate": { "externalName": "TR000045", "date": "2026-05-20", "certificateReasonId": 2, "certificateReasonName": "Reason 02", "reason": "add", "note": "", "state": "اعتماد الموارد البشرية", "editReasons": null, "rejectReasons": nu
 // ll, "certificateUrl": null }
 
-import '../../domain/entities/certification/experienceCertificate.dart';
+import '../../domain/entities/certification/experience_certificate.dart';
 
 class ExperienceCertificateModel extends ExperienceCertificate {
   const ExperienceCertificateModel(

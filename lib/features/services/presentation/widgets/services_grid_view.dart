@@ -37,7 +37,7 @@ class ServicesGridView extends StatelessWidget {
             onTap: () {
               context.pushNamed(DRoutesName.categoryDetailsRoute, arguments: {
                 'title': S.current.humanResources,
-                'services': controller.state.HRservices,
+                'services': controller.state.hrServices,
               });
             },
             title: S.current.humanResources),
@@ -64,7 +64,7 @@ class ServicesGridView extends StatelessWidget {
             onTap: () {
               context.pushNamed(DRoutesName.categoryDetailsRoute, arguments: {
                 'title': S.current.study,
-                'services': controller.state.Studyservices,
+                'services': controller.state.studyServices,
               });
             },
             title: S.current.study),

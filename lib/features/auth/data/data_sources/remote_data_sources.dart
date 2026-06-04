@@ -26,7 +26,7 @@ class AuthRemoteDataSourcesImp implements AuthRemoteDataSources {
   Future<LoginEntity> login({required LoginParams params}) async {
     try {
       final reponse =
-          await _dio.postData(URL: URL.login, body: params.toJson());
+          await _dio.postData(url: URL.login, body: params.toJson());
       if (reponse != null) {
         return LoginModel.fromJson(reponse);
       } else {
@@ -42,7 +42,7 @@ class AuthRemoteDataSourcesImp implements AuthRemoteDataSources {
       {required NewPasswordParams params}) async {
     try {
       final reponse =
-          await _dio.postData(URL: URL.changePassword, body: params.toJson());
+          await _dio.postData(url: URL.changePassword, body: params.toJson());
       if (reponse != null) {
         return NewPasswordModel.fromJson(reponse);
       } else {
