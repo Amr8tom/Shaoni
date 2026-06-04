@@ -30,7 +30,7 @@ class AllStatusCountModel extends AllStatusCount {
       'serviceNameAr': serviceNameAr,
       'serviceNameEn': serviceNameEn,
       'statusCounts':
-          statusCounts?.map((e) => (e as StatusCountModel).toJson()).toList(),
+          statusCounts?.map(StatusCountModel.toJsonFromEntity).toList(),
     };
   }
 }

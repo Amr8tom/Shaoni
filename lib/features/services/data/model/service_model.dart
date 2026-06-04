@@ -37,14 +37,18 @@ class ServiceModel extends Service {
 
   /// toJson
   Map<String, dynamic> toJson() {
+    return toJsonFromEntity(this);
+  }
+
+  static Map<String, dynamic> toJsonFromEntity(Service service) {
     return {
-      'id': id,
-      'code': code,
-      'nameAr': nameAr,
-      'nameEn': nameEn,
-      'isActive': isActive,
-      'updatedAt': updatedAt,
-      'isDeleted': isDeleted,
+      'id': service.id,
+      'code': service.code,
+      'nameAr': service.nameAr,
+      'nameEn': service.nameEn,
+      'isActive': service.isActive,
+      'updatedAt': service.updatedAt,
+      'isDeleted': service.isDeleted,
     };
   }
 }

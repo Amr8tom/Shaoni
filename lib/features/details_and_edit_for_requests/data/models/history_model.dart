@@ -23,8 +23,9 @@ class HistoryModel extends History {
           : DateTime.now(),
       comment: json['comment'] ?? '',
       requestId: json['requestId'] ?? 0,
-      request:
-          json['request'] != null ? RequestModel.fromJson(json['request']) : null,
+      request: json['request'] != null
+          ? RequestModel.fromJson(json['request'])
+          : null,
       statusId: json['statusId'] ?? 0,
       status: json['status'] != null
           ? StatusModel.fromJson(json['status'])
@@ -33,15 +34,21 @@ class HistoryModel extends History {
   }
 
   Map<String, dynamic> toJson() {
+    return toJsonFromEntity(this);
+  }
+
+  static Map<String, dynamic> toJsonFromEntity(History history) {
     return {
-      'id': id,
-      'changedBy': changedBy,
-      'changedAt': changedAt.toIso8601String(),
-      'comment': comment,
-      'requestId': requestId,
-      'request': (request as RequestModel?)?.toJson(),
-      'statusId': statusId,
-      'status': (status as StatusModel).toJson(),
+      'id': history.id,
+      'changedBy': history.changedBy,
+      'changedAt': history.changedAt.toIso8601String(),
+      'comment': history.comment,
+      'requestId': history.requestId,
+      'request': history.request == null
+          ? null
+          : RequestModel.toJsonFromEntity(history.request!),
+      'statusId': history.statusId,
+      'status': StatusModel.toJsonFromEntity(history.status),
     };
   }
 }

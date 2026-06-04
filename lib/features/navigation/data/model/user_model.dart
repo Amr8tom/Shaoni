@@ -74,11 +74,12 @@ class UserModel extends UserEntity {
       'managerId': managerId,
       'managerName': managerName,
       'officeId': officeId,
-      'office_ids':
-          officeIds?.map((office) => (office as OfficeModel).toJson()).toList(),
-      'office': (office as OfficeModel?)?.toJson(),
+      'office_ids': officeIds?.map(OfficeModel.toJsonFromEntity).toList(),
+      'office': office == null ? null : OfficeModel.toJsonFromEntity(office!),
       'departmentId': departmentId,
-      'department': (department as DepartmentModel?)?.toJson(),
+      'department': department == null
+          ? null
+          : DepartmentModel.toJsonFromEntity(department!),
     };
   }
 }

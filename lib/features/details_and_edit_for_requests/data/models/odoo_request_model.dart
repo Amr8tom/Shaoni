@@ -25,15 +25,19 @@ class OdooRequestModel extends OdooRequest {
   }
 
   Map<String, dynamic> toJson() {
+    return toJsonFromEntity(this);
+  }
+
+  static Map<String, dynamic> toJsonFromEntity(OdooRequest request) {
     return {
-      'success': success,
-      'code': code,
-      'status': status,
-      'message': message,
-      'externalId': externalId,
-      'externalName': externalName,
-      'externalState': externalState,
-      'externalStateId': externalStateId,
+      'success': request.success,
+      'code': request.code,
+      'status': request.status,
+      'message': request.message,
+      'externalId': request.externalId,
+      'externalName': request.externalName,
+      'externalState': request.externalState,
+      'externalStateId': request.externalStateId,
     };
   }
 }

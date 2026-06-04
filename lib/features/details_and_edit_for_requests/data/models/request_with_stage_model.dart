@@ -61,17 +61,29 @@ class RequestWithStageModel extends RequestWithStage {
 
   /// toJson
   Map<String, dynamic> toJson() {
+    return toJsonFromEntity(this);
+  }
+
+  static Map<String, dynamic> toJsonFromEntity(RequestWithStage request) {
     return {
-      'odooStageId': odooStageId,
-      'extraData': (extraData as ExtraDataModel?)?.toJson(),
-      'requesterFullName': requesterFullName,
-      'managerFullName': managerFullName,
-      'request': (request as RequestModel?)?.toJson(),
-      'service': (service as ServiceModel?)?.toJson(),
-      'currentStatus': (currentStatus as CurrentStatusModel?)?.toJson(),
-      'histories': histories != null
+      'odooStageId': request.odooStageId,
+      'extraData': request.extraData == null
+          ? null
+          : ExtraDataModel.toJsonFromEntity(request.extraData!),
+      'requesterFullName': request.requesterFullName,
+      'managerFullName': request.managerFullName,
+      'request': request.request == null
+          ? null
+          : RequestModel.toJsonFromEntity(request.request!),
+      'service': request.service == null
+          ? null
+          : ServiceModel.toJsonFromEntity(request.service!),
+      'currentStatus': request.currentStatus == null
+          ? null
+          : CurrentStatusModel.toJsonFromEntity(request.currentStatus!),
+      'histories': request.histories != null
           ? List<dynamic>.from(
-              histories!.map((x) => (x as HistoryModel).toJson()))
+              request.histories!.map(HistoryModel.toJsonFromEntity))
           : null,
     };
   }

@@ -39,15 +39,19 @@ class StatusModel extends Status {
   }
 
   Map<String, dynamic> toJson() {
+    return toJsonFromEntity(this);
+  }
+
+  static Map<String, dynamic> toJsonFromEntity(Status status) {
     return {
-      'id': id,
-      'code': code,
-      'nameAr': nameAr,
-      'nameEn': nameEn,
-      'techName': techName,
-      'isActive': isActive,
-      'updatedAt': updatedAt,
-      'isDeleted': isDeleted,
+      'id': status.id,
+      'code': status.code,
+      'nameAr': status.nameAr,
+      'nameEn': status.nameEn,
+      'techName': status.techName,
+      'isActive': status.isActive,
+      'updatedAt': status.updatedAt,
+      'isDeleted': status.isDeleted,
     };
   }
 }

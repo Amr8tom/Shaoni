@@ -38,15 +38,19 @@ class DepartmentModel extends DepartmentEntity {
 
   /// toJson
   Map<String, dynamic> toJson() {
+    return toJsonFromEntity(this);
+  }
+
+  static Map<String, dynamic> toJsonFromEntity(DepartmentEntity department) {
     return {
-      'id': id,
-      'nameEn': nameEn,
-      'nameAr': nameAr,
-      'parent_department_id': parentDepartmentId,
-      'parent_department_name': parentDepartmentName,
-      'updatedAt': updatedAt,
-      'isActive': isActive,
-      'isDeleted': isDeleted,
+      'id': department.id,
+      'nameEn': department.nameEn,
+      'nameAr': department.nameAr,
+      'parent_department_id': department.parentDepartmentId,
+      'parent_department_name': department.parentDepartmentName,
+      'updatedAt': department.updatedAt,
+      'isActive': department.isActive,
+      'isDeleted': department.isDeleted,
     };
   }
 }

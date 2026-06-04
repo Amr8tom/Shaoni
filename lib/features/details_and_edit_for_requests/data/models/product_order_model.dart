@@ -23,6 +23,17 @@ class ProductOrderLineItem extends ProductOrderLineItemEntity {
         'quantity': quantity,
         'note': note,
       };
+
+  static Map<String, dynamic> toJsonFromEntity(
+    ProductOrderLineItemEntity line,
+  ) {
+    return {
+      'productId': line.productId,
+      'productName': line.productName,
+      'quantity': line.quantity,
+      'note': line.note,
+    };
+  }
 }
 
 class ProductOrderModel extends ProductOrderEntity {
@@ -60,6 +71,6 @@ class ProductOrderModel extends ProductOrderEntity {
         'note': note,
         'editReasons': editReasons,
         'rejectReasons': rejectReasons,
-        'lines': lines.map((l) => (l as ProductOrderLineItem).toJson()).toList(),
+        'lines': lines.map(ProductOrderLineItem.toJsonFromEntity).toList(),
       };
 }

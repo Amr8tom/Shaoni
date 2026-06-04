@@ -18,11 +18,15 @@ class CurrentStatusModel extends CurrentStatus {
   }
 
   Map<String, dynamic> toJson() {
+    return toJsonFromEntity(this);
+  }
+
+  static Map<String, dynamic> toJsonFromEntity(CurrentStatus status) {
     return {
-      'nameAr': nameAr,
-      'nameEn': nameEn,
-      'techName': techName,
-      'colorHex': colorHex,
+      'nameAr': status.nameAr,
+      'nameEn': status.nameEn,
+      'techName': status.techName,
+      'colorHex': status.colorHex,
     };
   }
 }

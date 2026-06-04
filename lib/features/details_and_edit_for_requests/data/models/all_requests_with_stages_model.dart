@@ -17,7 +17,8 @@ class AllRequestsWithStagesModel extends AllRequestsWithStages {
       totalCount: json['totalCount'] as int? ?? 0,
       totalPages: json['totalPages'] as int? ?? 0,
       items: (json['items'] as List<dynamic>?)
-              ?.map((item) => RequestWithStageModel.fromJson(item as Map<String, dynamic>))
+              ?.map((item) =>
+                  RequestWithStageModel.fromJson(item as Map<String, dynamic>))
               .toList() ??
           [],
     );
@@ -29,7 +30,7 @@ class AllRequestsWithStagesModel extends AllRequestsWithStages {
       'pageSize': pageSize,
       'totalCount': totalCount,
       'totalPages': totalPages,
-      'items': items.map((e) => (e as RequestWithStageModel).toJson()).toList(),
+      'items': items.map(RequestWithStageModel.toJsonFromEntity).toList(),
     };
   }
 }

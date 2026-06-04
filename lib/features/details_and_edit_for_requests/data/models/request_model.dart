@@ -47,21 +47,28 @@ class RequestModel extends Request {
 
   /// to json
   Map<String, dynamic> toJson() {
+    return toJsonFromEntity(this);
+  }
+
+  static Map<String, dynamic> toJsonFromEntity(Request request) {
     return {
-      'id': id,
-      'requestNumber': requestNumber,
-      'requesterId': requesterId,
-      'requestId': requestId,
-      'serviceId': serviceId,
-      'isGift': isGift,
-      'kafeelId': kafeelId,
-      'needEmp': needEmp,
-      'odooStatus': odooStatus,
-      'statusId': statusId,
-      'createdAt': createdAt,
-      'updatedAt': updatedAt,
-      'service': (service as ServiceModel?)?.toJson(),
-      'histories': histories.map((x) => (x as HistoryModel).toJson()).toList(),
+      'id': request.id,
+      'requestNumber': request.requestNumber,
+      'requesterId': request.requesterId,
+      'requestId': request.requestId,
+      'serviceId': request.serviceId,
+      'isGift': request.isGift,
+      'kafeelId': request.kafeelId,
+      'needEmp': request.needEmp,
+      'odooStatus': request.odooStatus,
+      'statusId': request.statusId,
+      'createdAt': request.createdAt,
+      'updatedAt': request.updatedAt,
+      'service': request.service == null
+          ? null
+          : ServiceModel.toJsonFromEntity(request.service!),
+      'histories':
+          request.histories.map(HistoryModel.toJsonFromEntity).toList(),
     };
   }
 }

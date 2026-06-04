@@ -13,9 +13,13 @@ class OfficeModel extends OfficeEntity {
 
   /// toJson
   Map<String, dynamic> toJson() {
+    return toJsonFromEntity(this);
+  }
+
+  static Map<String, dynamic> toJsonFromEntity(OfficeEntity office) {
     return {
-      'id': id,
-      'name': name,
+      'id': office.id,
+      'name': office.name,
     };
   }
 }

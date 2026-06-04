@@ -24,7 +24,9 @@ class AllAttendanceRecordModel extends AllAttendanceRecord {
 
   Map<String, dynamic> toJson() {
     return {
-      'items': attendanceRecords.map((e) => (e as AttendanceRecordModel).toJson()).toList(),
+      'items': attendanceRecords
+          .map(AttendanceRecordModel.toJsonFromEntity)
+          .toList(),
       'pageNumber': pageNumber,
       'pageSize': pageSize,
       'totalCount': totalCount,

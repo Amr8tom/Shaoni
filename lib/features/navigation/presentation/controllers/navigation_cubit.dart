@@ -2,7 +2,6 @@ import 'dart:convert';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:shaoni/features/auth/data/model/office_model.dart';
 import 'package:shaoni/features/navigation/domain/use_cases/get_user_data_use_case.dart';
 import '../../../../core/local_storage/cache_helper.dart';
 import '../../../../core/local_storage/cache_keys.dart';
@@ -47,7 +46,10 @@ class NavigationCubit extends Cubit<NavigationState> {
         await CacheHelper.putString(
             key: CacheKeys.officesList,
             value: jsonEncode(user.officeIds
-                ?.map((o) => (o as OfficeModel).toJson())
+                ?.map((office) => {
+                      'id': office.id,
+                      'name': office.name,
+                    })
                 .toList()));
         emit(state.copyWith(status: NavigationStatus.success, user: user));
       },

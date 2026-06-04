@@ -19,12 +19,16 @@ class StatusCountModel extends StatusCount {
   }
 
   Map<String, dynamic> toJson() {
+    return toJsonFromEntity(this);
+  }
+
+  static Map<String, dynamic> toJsonFromEntity(StatusCount statusCount) {
     return {
-      'statusId': statusId,
-      'nameAr': nameAr,
-      'nameEn': nameEn,
-      'techName': techName,
-      'count': count,
+      'statusId': statusCount.statusId,
+      'nameAr': statusCount.nameAr,
+      'nameEn': statusCount.nameEn,
+      'techName': statusCount.techName,
+      'count': statusCount.count,
     };
   }
 }

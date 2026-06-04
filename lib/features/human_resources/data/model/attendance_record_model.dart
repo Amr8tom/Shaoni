@@ -50,19 +50,23 @@ class AttendanceRecordModel extends AttendanceRecord {
   /// toJson
 
   Map<String, dynamic> toJson() {
+    return toJsonFromEntity(this);
+  }
+
+  static Map<String, dynamic> toJsonFromEntity(AttendanceRecord record) {
     return {
-      'id': id,
-      'odooId': odooId,
-      'employeeName': employeeName,
-      'checkDate': gregorianDate,
-      'hijriCheckInDisplay': hijriDate,
-      'checkIn': checkInTime != null
-          ? DateTime.parse(checkInTime!).toUtc().toIso8601String()
+      'id': record.id,
+      'odooId': record.odooId,
+      'employeeName': record.employeeName,
+      'checkDate': record.gregorianDate,
+      'hijriCheckInDisplay': record.hijriDate,
+      'checkIn': record.checkInTime != null
+          ? DateTime.parse(record.checkInTime!).toUtc().toIso8601String()
           : null,
-      'checkOut': checkOutTime != null
-          ? DateTime.parse(checkOutTime!).toUtc().toIso8601String()
+      'checkOut': record.checkOutTime != null
+          ? DateTime.parse(record.checkOutTime!).toUtc().toIso8601String()
           : null,
-      'outMode': outMode,
+      'outMode': record.outMode,
     };
   }
 }
