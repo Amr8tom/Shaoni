@@ -1,5 +1,3 @@
-
-
 import 'package:shaoni/features/auth/domain/entities/new_password.dart';
 
 class NewPasswordModel extends NewPassword {

@@ -16,7 +16,9 @@ class ShimmerLoadingWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Skeletonizer(
-      enabled: true, /// Set this to true to enable the shimmer effect
+      enabled: true,
+
+      /// Set this to true to enable the shimmer effect
       child: Container(
         width: width,
         height: height,

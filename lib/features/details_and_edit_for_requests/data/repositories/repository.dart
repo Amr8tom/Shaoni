@@ -219,8 +219,8 @@ class MyRequestsRepositoryImp extends MyRequestsRepository {
   }) async {
     if (await _networkInfo.isConnected) {
       try {
-        final result = await _remoteDataSources
-            .getExperienceCertificateEdit(params: params);
+        final result = await _remoteDataSources.getExperienceCertificateEdit(
+            params: params);
         return Right(result);
       } on ServerFailure catch (e) {
         return Left(ServerFailure(message: e.message));

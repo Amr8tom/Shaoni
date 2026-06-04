@@ -69,8 +69,7 @@ class CreateProductOrderParams extends Equatable {
         'reason': reason,
         'note': note,
         'type': type,
-        'request_line_ids':
-            requestLineIds.map((item) => item.toMap()).toList(),
+        'request_line_ids': requestLineIds.map((item) => item.toMap()).toList(),
       };
 
   @override

@@ -26,46 +26,43 @@ PreferredSizeWidget customAppBar({
     showBackArrow: showBackArrow,
     showMenu: showMenu,
     // bgColor: ColorRes.transparent,
-    appHeight: height ?? DDeviceUtils.getAppBarHeight() ,
+    appHeight: height ?? DDeviceUtils.getAppBarHeight(),
     actions: [
       const Sizer(width: 15),
 
       /// when profile show special skip and done button
       // IconButton(onPressed: (){}, icon:Icon(Icons.menu,color: ColorRes.white,)),
-      isHeader ? ProfileHeader(userName:controller?.state.user?.fullName ,) : const Sizer(),
+      isHeader
+          ? ProfileHeader(
+              userName: controller?.state.user?.fullName,
+            )
+          : const Sizer(),
       const Spacer(),
 
-      /// todo : remove comment form this stack to red point for unreaded notification
       Stack(
         children: [
-          // Text("Sdsds"),
-          // context.read<NavigationCubit>().state.notificationCount > 0
-          //     ? Text(
-          //       "${context.read<NavigationCubit>().state.notificationCount}",
-          //       style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-          //         fontWeight: FontWeight.bold,
-          //         color: ColorRes.error2,
-          //
-          //       ),
-          //     )
-          //     :const Sizer(),
-          GestureDetector(onTap: (){
-            context?.pushNamed(DRoutesName.notificationsRoute);
-          },
-              child: SvgPicture.asset(
-                  AssetRes.notificationIcon, color: ColorRes.white)),
+          GestureDetector(
+              onTap: () {
+                context?.pushNamed(DRoutesName.notificationsRoute);
+              },
+              child: SvgPicture.asset(AssetRes.notificationIcon,
+                  color: ColorRes.white)),
         ],
       ),
       const Sizer(width: 30),
 
-      showMenu?GestureDetector(
-          onTap: (){
-            scaffoldKey?.currentState?.openDrawer();
-          },
-          child: Directionality(
-              textDirection: S.current.localeee=='en'?TextDirection.ltr:TextDirection.rtl,
-
-              child: SvgPicture.asset(AssetRes.menuIcon, color: ColorRes.white))):const Sizer(),
+      showMenu
+          ? GestureDetector(
+              onTap: () {
+                scaffoldKey?.currentState?.openDrawer();
+              },
+              child: Directionality(
+                  textDirection: S.current.localeee == 'en'
+                      ? TextDirection.ltr
+                      : TextDirection.rtl,
+                  child: SvgPicture.asset(AssetRes.menuIcon,
+                      color: ColorRes.white)))
+          : const Sizer(),
 
       const Sizer(width: 15),
     ],

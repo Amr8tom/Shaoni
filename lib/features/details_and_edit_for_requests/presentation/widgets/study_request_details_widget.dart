@@ -10,7 +10,6 @@ import '../../../home/presentation/widgets/order_text_card.dart';
 import '../controller/my_requests_cubit.dart';
 import 'attachements_widget.dart';
 
-
 class StudyRequestDetailsWidget extends StatelessWidget {
   const StudyRequestDetailsWidget({super.key});
 
@@ -45,10 +44,10 @@ class StudyRequestDetailsWidget extends StatelessWidget {
 
               /// Row 1 — study type + destination
 
-                  OrderTextCard(
-                    title: S.current.studyDestination,
-                    result: study?.studyDestinationsText ?? '',
-                  ),
+              OrderTextCard(
+                title: S.current.studyDestination,
+                result: study?.studyDestinationsText ?? '',
+              ),
 
               const Sizer(height: 12),
 

@@ -30,19 +30,19 @@ class DDropdownField extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisSize: MainAxisSize.min,
       children: [
-        label?.trim()==''?const Sizer():Text(
-          label!,
-          textAlign: TextAlign.end,
-          style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                color: ColorRes.grey2,
-                fontSize: AppSizes.fontSizeSm * 0.85,
-                fontWeight: FontWeight.w600,
+        label?.trim() == ''
+            ? const Sizer()
+            : Text(
+                label!,
+                textAlign: TextAlign.end,
+                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                      color: ColorRes.grey2,
+                      fontSize: AppSizes.fontSizeSm * 0.85,
+                      fontWeight: FontWeight.w600,
+                    ),
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
               ),
-          maxLines: 1,
-          overflow: TextOverflow.ellipsis,
-        ),
-        // const Sizer(height: 6),
-
         DropdownButtonFormField<String>(
           value: (value != null && value!.isNotEmpty) ? value : null,
           items: items,
@@ -69,7 +69,7 @@ class DDropdownField extends StatelessWidget {
                   fontSize: AppSizes.fontSizeSm,
                 ),
             prefixIcon: Padding(
-              padding:  EdgeInsets.symmetric(horizontal: AppSizes.padding * 0.8),
+              padding: EdgeInsets.symmetric(horizontal: AppSizes.padding * 0.8),
               child: Icon(
                 icon,
                 size: AppSizes.iconMd,
@@ -96,8 +96,7 @@ class DDropdownField extends StatelessWidget {
             ),
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(AppSizes.borderRadiusMd),
-              borderSide:
-                  BorderSide(color: ColorRes.primary, width: 1.5),
+              borderSide: BorderSide(color: ColorRes.primary, width: 1.5),
             ),
             errorBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(AppSizes.borderRadiusMd),

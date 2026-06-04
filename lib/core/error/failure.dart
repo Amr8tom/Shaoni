@@ -1,7 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/cupertino.dart';
 
-
 abstract class Failure extends Equatable {
   final String? message;
 
@@ -17,20 +16,20 @@ class ServerFailure extends Failure {
     required super.message,
     this.errors,
   });
-/// factory method to take  errors masssage from json method
+
+  /// factory method to take  errors masssage from json method
   factory ServerFailure.fromString(String message) {
-      return ServerFailure(
-        message:message ,
-      );
+    return ServerFailure(
+      message: message,
+    );
   }
 
   factory ServerFailure.fromMap(Map<String, dynamic> map) {
-
-
     return ServerFailure(
       message: map['message'] ?? 'Server Failure',
     );
-}}
+  }
+}
 
 class ValidationFailure extends Failure {
   final List<String>? errors;
@@ -39,13 +38,13 @@ class ValidationFailure extends Failure {
     required super.message,
     this.errors,
   });
+
   /// method to take  errors masssage from json method
   factory ValidationFailure.fromMap(Map<String, dynamic> map) {
     if (map['errors'] != null) {
       final errorsMap = Map<String, dynamic>.from(map['errors']);
-      final errorsList = errorsMap.values
-          .expand((error) => List<String>.from(error))
-          .toList();
+      final errorsList =
+          errorsMap.values.expand((error) => List<String>.from(error)).toList();
       return ValidationFailure(
         message: map['title'] ?? 'Validation Error',
         errors: errorsList,
@@ -61,7 +60,6 @@ class ValidationFailure extends Failure {
   @override
   List<Object?> get props => [message, errors];
 }
-
 
 class UnauthorizedFailure extends Failure {
   const UnauthorizedFailure();
@@ -93,19 +91,12 @@ class InvalidOtpFailure extends Failure {
   List<Object?> get props => [];
 }
 
-// class ValidationFailure extends Failure {
-//   final String message;
-//
-//   const ValidationFailure(this.message);
-//
-//   @override
-//   List<Object?> get props => [];
-// }
-
 class SocialLoginFailure extends Failure {
   final dynamic exception;
 
-  const SocialLoginFailure(this.exception,);
+  const SocialLoginFailure(
+    this.exception,
+  );
 
   @override
   List<Object?> get props => [];
@@ -122,17 +113,10 @@ String getFailureMessage(Failure failure, BuildContext context) {
     return failure.message;
   } else if (failure is UnauthorizedFailure) {
     return 'Unauthorized';
-    // }
-    // else if (failure is SocialLoginFailure) {
-    //   if (failure.exception is FirebaseException &&
-    //       (failure.exception as FirebaseException).message != null) {
-    //     return (failure.exception as FirebaseException).message!;
-    //   }
-    //   return failure.exception.toString();
   } else if (failure is CacheFailure) {
     return 'Cache Failure';
   } else if (failure is ValidationFailure) {
-    return failure.message??'Validation Failure';
+    return failure.message ?? 'Validation Failure';
   } else if (failure is UnknownFailure) {
     return 'Unknown Failure';
   } else {

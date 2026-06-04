@@ -20,7 +20,6 @@ class CreateCarPermission extends Equatable {
     required this.data,
   });
 
-
   @override
   List<Object?> get props => [success, message, requestId, data];
 }

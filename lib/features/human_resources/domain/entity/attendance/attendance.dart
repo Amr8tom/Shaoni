@@ -1,4 +1,3 @@
-
 import 'package:equatable/equatable.dart';
 
 class Attendance extends Equatable {
@@ -12,8 +11,6 @@ class Attendance extends Equatable {
     required this.requestNumber,
   });
 
-
-
   @override
-  List<Object?> get props => [success, message,requestNumber];
+  List<Object?> get props => [success, message, requestNumber];
 }

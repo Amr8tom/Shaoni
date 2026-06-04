@@ -1,4 +1,3 @@
-
 import '../../domain/entity/permission_time.dart';
 
 class PermissionTimeModel extends PermissionTime {

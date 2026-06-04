@@ -76,48 +76,47 @@ class IDDocumentBaseFieldsWidget extends StatelessWidget {
               firstDate: DateTime(1900),
               lastDate: DateTime(2100),
               builder: (
-              BuildContext context,
-              Widget? child,
-            ) {
-              return Theme(
-                data: Theme.of(context).copyWith(
-                  colorScheme: ColorScheme.light(
-                    primary: ColorRes.primary,
-                    onPrimary: ColorRes.white,
-                    surface: ColorRes.white,
-                    onSurface: ColorRes.black,
-                  ),
-                  textTheme: TextTheme(
-                    titleLarge: TextStyle(
-                      color: ColorRes.black,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 6,
+                BuildContext context,
+                Widget? child,
+              ) {
+                return Theme(
+                  data: Theme.of(context).copyWith(
+                    colorScheme: ColorScheme.light(
+                      primary: ColorRes.primary,
+                      onPrimary: ColorRes.white,
+                      surface: ColorRes.white,
+                      onSurface: ColorRes.black,
+                    ),
+                    textTheme: TextTheme(
+                      titleLarge: TextStyle(
+                        color: ColorRes.black,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 6,
+                      ),
+                    ),
+                    dialogTheme: DialogTheme(
+                      backgroundColor: ColorRes.white,
+                      titleTextStyle: Theme.of(
+                        context,
+                      ).textTheme.headlineSmall?.copyWith(
+                            color: ColorRes.black,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 6,
+                          ),
+                    ),
+                    textButtonTheme: TextButtonThemeData(
+                      style: TextButton.styleFrom(
+                        foregroundColor: ColorRes.primary,
+                      ),
                     ),
                   ),
-                  dialogTheme: DialogTheme(
-                    backgroundColor: ColorRes.white,
-                    titleTextStyle: Theme.of(
-                      context,
-                    ).textTheme.headlineSmall?.copyWith(
-                      color: ColorRes.black,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 6,
-                    ),
-                  ),
-                  textButtonTheme: TextButtonThemeData(
-                    style: TextButton.styleFrom(
-                      foregroundColor: ColorRes.primary,
-                    ),
-                  ),
-                ),
-                child: child!,
-              );
-            },
-
+                  child: child!,
+                );
+              },
             );
             if (picked != null) {
               cubit.issueDateController.text =
-                  DateFormat('yyyy-MM-dd','en').format(picked);
+                  DateFormat('yyyy-MM-dd', 'en').format(picked);
             }
           },
           validator: (v) =>
@@ -140,9 +139,9 @@ class IDDocumentBaseFieldsWidget extends StatelessWidget {
               firstDate: DateTime(1900),
               lastDate: DateTime(2100),
               builder: (
-                  BuildContext context,
-                  Widget? child,
-                  ) {
+                BuildContext context,
+                Widget? child,
+              ) {
                 return Theme(
                   data: Theme.of(context).copyWith(
                     colorScheme: ColorScheme.light(
@@ -163,10 +162,10 @@ class IDDocumentBaseFieldsWidget extends StatelessWidget {
                       titleTextStyle: Theme.of(
                         context,
                       ).textTheme.headlineSmall?.copyWith(
-                        color: ColorRes.black,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 6,
-                      ),
+                            color: ColorRes.black,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 6,
+                          ),
                     ),
                     textButtonTheme: TextButtonThemeData(
                       style: TextButton.styleFrom(
@@ -180,7 +179,7 @@ class IDDocumentBaseFieldsWidget extends StatelessWidget {
             );
             if (picked != null) {
               cubit.endDateController.text =
-                  DateFormat('yyyy-MM-dd','en').format(picked);
+                  DateFormat('yyyy-MM-dd', 'en').format(picked);
             }
           },
           validator: (v) =>

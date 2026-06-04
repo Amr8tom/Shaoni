@@ -86,7 +86,6 @@ class HRServicesRepositoryImp extends HRServicesRepository {
     }
   }
 
-
   @override
   Future<Either<Failure, List<PermissionTime>>> getAllPermissionTimes({
     required NoParams params,
@@ -178,12 +177,6 @@ class HRServicesRepositoryImp extends HRServicesRepository {
       }
     } else {
       throw CacheFailure();
-      // try {
-      //   final response = await _local.getAttendanceLookup();
-      //   return Right(response);
-      // } on CacheFailure catch (e) {
-      //   return Left(CacheFailure());
-      // }
     }
   }
 
@@ -268,7 +261,7 @@ class HRServicesRepositoryImp extends HRServicesRepository {
 
   @override
   Future<Either<Failure, CreateCarPermissionModel>> createCarPermission(
-      {required CreateCarPermissionParams params}) async{
+      {required CreateCarPermissionParams params}) async {
     if (await _networkInfo.isConnected) {
       try {
         final response = await _remote.createCarPermission(params: params);
@@ -532,12 +525,14 @@ class HRServicesRepositoryImp extends HRServicesRepository {
   /// ===================== medical insurance =====================
 
   @override
-  Future<Either<Failure, List<MedicalInsuranceClass>>> getMedicalInsuranceClasses({
+  Future<Either<Failure, List<MedicalInsuranceClass>>>
+      getMedicalInsuranceClasses({
     required NoParams params,
   }) async {
     if (await _networkInfo.isConnected) {
       try {
-        final response = await _remote.getMedicalInsuranceClasses(params: params);
+        final response =
+            await _remote.getMedicalInsuranceClasses(params: params);
         return Right(response);
       } on ServerFailure catch (e) {
         return Left(ServerFailure(message: e.message));
@@ -564,7 +559,8 @@ class HRServicesRepositoryImp extends HRServicesRepository {
   }
 
   @override
-  Future<Either<Failure, CreateMedicalInsuranceResponse>> createMedicalInsurance({
+  Future<Either<Failure, CreateMedicalInsuranceResponse>>
+      createMedicalInsurance({
     required CreateMedicalInsuranceParams params,
   }) async {
     if (await _networkInfo.isConnected) {
@@ -580,7 +576,8 @@ class HRServicesRepositoryImp extends HRServicesRepository {
   }
 
   @override
-  Future<Either<Failure, CreateMedicalInsuranceResponse>> updateMedicalInsurance({
+  Future<Either<Failure, CreateMedicalInsuranceResponse>>
+      updateMedicalInsurance({
     required UpdateMedicalInsuranceParams params,
   }) async {
     if (await _networkInfo.isConnected) {
@@ -710,12 +707,14 @@ class HRServicesRepositoryImp extends HRServicesRepository {
   }
 
   @override
-  Future<Either<Failure, List<OutsideWorkingEmployee>>> getOutsideWorkingEmployees({
+  Future<Either<Failure, List<OutsideWorkingEmployee>>>
+      getOutsideWorkingEmployees({
     required NoParams params,
   }) async {
     if (await _networkInfo.isConnected) {
       try {
-        final response = await _remote.getOutsideWorkingEmployees(params: params);
+        final response =
+            await _remote.getOutsideWorkingEmployees(params: params);
         return Right(response);
       } on ServerFailure catch (e) {
         return Left(ServerFailure(message: e.message));
@@ -726,12 +725,14 @@ class HRServicesRepositoryImp extends HRServicesRepository {
   }
 
   @override
-  Future<Either<Failure, List<OutsideWorkingProject>>> getOutsideWorkingProjects({
+  Future<Either<Failure, List<OutsideWorkingProject>>>
+      getOutsideWorkingProjects({
     required NoParams params,
   }) async {
     if (await _networkInfo.isConnected) {
       try {
-        final response = await _remote.getOutsideWorkingProjects(params: params);
+        final response =
+            await _remote.getOutsideWorkingProjects(params: params);
         return Right(response);
       } on ServerFailure catch (e) {
         return Left(ServerFailure(message: e.message));

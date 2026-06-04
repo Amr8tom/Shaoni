@@ -10,9 +10,9 @@ class CustomTextFromFiled extends StatelessWidget {
   final TextEditingController controller;
   final bool isPhone;
   final int maxLines;
-  final double? iconSize ;
+  final double? iconSize;
   final Color? border;
-  final FormFieldValidator<String>?  validator;
+  final FormFieldValidator<String>? validator;
 
   const CustomTextFromFiled({
     super.key,
@@ -20,15 +20,17 @@ class CustomTextFromFiled extends StatelessWidget {
     this.isMail = false,
     this.isPhone = false,
     required this.validateError,
-     this.icon,
+    this.icon,
     required this.controller,
-    this.maxLines = 1, this.iconSize, this.border,  this.validator,
+    this.maxLines = 1,
+    this.iconSize,
+    this.border,
+    this.validator,
   });
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-
       maxLines: maxLines,
       controller: controller,
       keyboardType: isPhone ? TextInputType.phone : TextInputType.text,
@@ -36,39 +38,42 @@ class CustomTextFromFiled extends StatelessWidget {
         alignLabelWithHint: true,
         labelText: label,
         border: const OutlineInputBorder(),
-        suffixIcon: Icon(icon,size: iconSize, color: ColorRes.grey,),
+        suffixIcon: Icon(
+          icon,
+          size: iconSize,
+          color: ColorRes.grey,
+        ),
         enabledBorder: OutlineInputBorder(
-          borderSide: BorderSide(color:border?? ColorRes.grey),
+          borderSide: BorderSide(color: border ?? ColorRes.grey),
         ),
         focusedBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: border ??ColorRes.grey, width: 2.0),
+          borderSide: BorderSide(color: border ?? ColorRes.grey, width: 2.0),
         ),
         errorBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: border ??ColorRes.grey),
+          borderSide: BorderSide(color: border ?? ColorRes.grey),
         ),
         focusedErrorBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: border ??ColorRes.grey, width: 2.0),
+          borderSide: BorderSide(color: border ?? ColorRes.grey, width: 2.0),
         ),
       ),
-
-      validator:validator?? (value) {
-        if (isMail) {
-          if (value == null || value.isEmpty) {
-            return validateError;
-          } else if (!RegExp(
-            r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$',
-          ).hasMatch(value)) {
-            return S.current.error;
-          }
-          return null;
-        } else {
-          if (value == null || value.isEmpty) {
-            return validateError;
-          }
-          return null;
-        }
-      },
-
+      validator: validator ??
+          (value) {
+            if (isMail) {
+              if (value == null || value.isEmpty) {
+                return validateError;
+              } else if (!RegExp(
+                r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$',
+              ).hasMatch(value)) {
+                return S.current.error;
+              }
+              return null;
+            } else {
+              if (value == null || value.isEmpty) {
+                return validateError;
+              }
+              return null;
+            }
+          },
     );
   }
 }

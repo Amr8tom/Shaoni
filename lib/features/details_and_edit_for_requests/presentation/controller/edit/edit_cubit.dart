@@ -23,7 +23,8 @@ class EditCubit extends Cubit<EditState> {
   final GetAttendanceEditUseCase _getAttendanceEditUseCase;
   final GetStudyEditUseCase _getStudyEditUseCase;
   final GetStartWorkEditUseCase _getStartWorkEditUseCase;
-  final GetExperienceCertificateEditUseCase _getExperienceCertificateEditUseCase;
+  final GetExperienceCertificateEditUseCase
+      _getExperienceCertificateEditUseCase;
   final GetIDDocumentEditUseCase _getIDDocumentEditUseCase;
   final GetMedicalInsuranceEditUseCase _getMedicalInsuranceEditUseCase;
   final GetTrainingRequestEditUseCase _getTrainingRequestEditUseCase;

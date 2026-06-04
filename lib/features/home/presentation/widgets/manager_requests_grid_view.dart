@@ -79,29 +79,25 @@ class ManagerRequestsGridView extends StatelessWidget {
                   'id': request.request?.id ?? '',
                   'en_status': request.currentStatus?.nameEn ?? '',
                   'currentStatus': request.currentStatus,
-                  'orderNumber': request.request?.requestNumber.toString() ?? '',
+                  'orderNumber':
+                      request.request?.requestNumber.toString() ?? '',
                   'date': request.request?.createdAt?.substring(0, 10) ?? '',
-                  'permissionType': request.extraData
-                      ?.exitPermission
-                      ?.permissionType
+                  'permissionType': request
+                      .extraData?.exitPermission?.permissionType
                       .toString(),
                   'serviceName': S.current.localeee == 'en'
                       ? controller.state.itemsManager[index].service?.nameEn
                       : request.service?.nameAr ?? '',
                   'serviceCode': request.service?.nameEn ?? '',
-                  'numberOfHours': request.extraData
-                      ?.exitPermission
-                      ?.numberOfHours
+                  'numberOfHours': request
+                      .extraData?.exitPermission?.numberOfHours
                       .toString(),
-                  'permissionDate': request.extraData
-                          ?.exitPermission
-                          ?.exitDate
+                  'permissionDate': request.extraData?.exitPermission?.exitDate
                           ?.substring(0, 10) ??
                       '',
-                  'leavesAttachment': request.extraData
-                          ?.exitPermission
-                          ?.leavesAttachment ??
-                      S.current.noData,
+                  'leavesAttachment':
+                      request.extraData?.exitPermission?.leavesAttachment ??
+                          S.current.noData,
                   'requestID': request.request?.id.toString() ?? '',
                   'isManager':
                       navController.state.user?.managerId == 0 ? true : false,

@@ -7,7 +7,6 @@ import '../../features/home/domain/repositories/home_repositories.dart';
 import '../../features/navigation/domain/use_cases/get_user_data_use_case.dart';
 import '../../features/home/presentation/controller/home_cubit.dart';
 
-
 class HomeServiceLocator {
   static Future<void> execute({required GetIt serviceLocator}) async {
     /// data sources
@@ -31,18 +30,14 @@ class HomeServiceLocator {
     // serviceLocator.registerLazySingleton<GetUserDataUseCase>(
     //   () => GetUserDataUseCase(serviceLocator()),
     // );
-   /// use cases
+    /// use cases
     serviceLocator.registerLazySingleton<GetAllStatusCountsUseCase>(
       () => GetAllStatusCountsUseCase(serviceLocator()),
     );
 
-
     /// controller
     serviceLocator.registerFactory<HomeCubit>(
-      () => HomeCubit(
-        serviceLocator(),
-        serviceLocator()
-      ),
+      () => HomeCubit(serviceLocator(), serviceLocator()),
     );
   }
 }

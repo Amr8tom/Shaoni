@@ -52,16 +52,13 @@ extension CarPermissionStateExtension on CarPermissionState {
       status == CarPermissionStatus.updateRequestError;
 
   /// True while any submit is in-flight (create or update).
-  bool get isSubmitting =>
-      isCreateRequestLoading || isUpdateRequestLoading;
+  bool get isSubmitting => isCreateRequestLoading || isUpdateRequestLoading;
 
   /// True when any submit succeeded.
-  bool get isSubmitSucceeded =>
-      isCreateRequestLoaded || isUpdateRequestLoaded;
+  bool get isSubmitSucceeded => isCreateRequestLoaded || isUpdateRequestLoaded;
 
   /// True when any submit failed.
-  bool get isSubmitFailed =>
-      isCreateRequestError || isUpdateRequestError;
+  bool get isSubmitFailed => isCreateRequestError || isUpdateRequestError;
 
   bool get isError => status == CarPermissionStatus.error;
 }

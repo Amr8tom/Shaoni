@@ -11,10 +11,10 @@ class DoneButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  GestureDetector(
+    return GestureDetector(
       onTap: onPressed,
       child: Container(
-        width: AppSizes.fullWidth/1.2,
+        width: AppSizes.fullWidth / 1.2,
         padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
         decoration: BoxDecoration(
           color: ColorRes.white,

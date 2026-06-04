@@ -60,8 +60,6 @@ import '../entity/outside_working/create_outside_working_response.dart';
 import '../use_cases/outside_working/create_outside_working_use_case.dart';
 
 abstract class HRServicesRepository {
-
-
   Future<Either<Failure, ExitPermission>> createExitPermission({
     required CreateExitPermissionParams params,
   });
@@ -77,7 +75,8 @@ abstract class HRServicesRepository {
   Future<Either<Failure, List<PermissionTime>>> getAllPermissionTimes({
     required NoParams params,
   });
-/// ///////////////////////////////////// attendance /////////////////////////////////////////////////////
+
+  /// ///////////////////////////////////// attendance /////////////////////////////////////////////////////
   Future<Either<Failure, AllAttendanceRecordModel>> getAllMissingAttendance(
       {required AllMissingAttendanceParams params});
   Future<Either<Failure, AttendanceModel>> createAttendance({
@@ -89,7 +88,8 @@ abstract class HRServicesRepository {
   });
   Future<Either<Failure, List<AttendanceLookup>>> getAttendanceLookup({
     required NoParams params,
-  });  Future<Either<Failure, List<ForgetReason>>> getForgetReason({
+  });
+  Future<Either<Failure, List<ForgetReason>>> getForgetReason({
     required NoParams params,
   });
 
@@ -172,7 +172,8 @@ abstract class HRServicesRepository {
   });
 
   /// ///////////////////////////////////// medical insurance /////////////////////////////////////////////////////
-  Future<Either<Failure, List<MedicalInsuranceClass>>> getMedicalInsuranceClasses({
+  Future<Either<Failure, List<MedicalInsuranceClass>>>
+      getMedicalInsuranceClasses({
     required NoParams params,
   });
 
@@ -180,11 +181,13 @@ abstract class HRServicesRepository {
     required GetEmployeeRelativesParams params,
   });
 
-  Future<Either<Failure, CreateMedicalInsuranceResponse>> createMedicalInsurance({
+  Future<Either<Failure, CreateMedicalInsuranceResponse>>
+      createMedicalInsurance({
     required CreateMedicalInsuranceParams params,
   });
 
-  Future<Either<Failure, CreateMedicalInsuranceResponse>> updateMedicalInsurance({
+  Future<Either<Failure, CreateMedicalInsuranceResponse>>
+      updateMedicalInsurance({
     required UpdateMedicalInsuranceParams params,
   });
 
@@ -216,11 +219,13 @@ abstract class HRServicesRepository {
     required NoParams params,
   });
 
-  Future<Either<Failure, List<OutsideWorkingEmployee>>> getOutsideWorkingEmployees({
+  Future<Either<Failure, List<OutsideWorkingEmployee>>>
+      getOutsideWorkingEmployees({
     required NoParams params,
   });
 
-  Future<Either<Failure, List<OutsideWorkingProject>>> getOutsideWorkingProjects({
+  Future<Either<Failure, List<OutsideWorkingProject>>>
+      getOutsideWorkingProjects({
     required NoParams params,
   });
 

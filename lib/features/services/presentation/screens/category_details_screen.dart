@@ -74,5 +74,4 @@ class CategoryDetailsScreen extends StatelessWidget {
       ),
     );
   }
-
 }

@@ -43,7 +43,6 @@ class SplashLanguageSection extends StatelessWidget {
                     useShadow: true,
                   ),
                 ),
-
               ],
             ),
           ),
@@ -52,9 +51,9 @@ class SplashLanguageSection extends StatelessWidget {
             child: Text(
               S.current.designDevelopment,
               style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                fontWeight: FontWeight.bold,
-                color: ColorRes.black,
-              ),
+                    fontWeight: FontWeight.bold,
+                    color: ColorRes.black,
+                  ),
             ),
           ),
           const Sizer(height: 2),
@@ -62,9 +61,9 @@ class SplashLanguageSection extends StatelessWidget {
             child: Text(
               S.current.ejad,
               style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                fontWeight: FontWeight.bold,
-                color: ColorRes.black,
-              ),
+                    fontWeight: FontWeight.bold,
+                    color: ColorRes.black,
+                  ),
             ),
           ),
           const Sizer(height: 16),

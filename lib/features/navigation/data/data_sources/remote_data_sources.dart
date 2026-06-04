@@ -7,7 +7,6 @@ import '../model/user_model.dart';
 abstract class NavigationRemoteDataSources {
   Future<int> getUnreadedNotifications();
   Future<UserModel> getUserData({required GetUserDataParams params});
-
 }
 
 class NavigationRemoteDataSourcesImp implements NavigationRemoteDataSources {
@@ -28,16 +27,13 @@ class NavigationRemoteDataSourcesImp implements NavigationRemoteDataSources {
 
   @override
   Future<UserModel> getUserData({required GetUserDataParams params}) async {
-
-    try{
-      final response = await _dio.getData(URL: URL.user+"${params.id}");
-      if (response== null) {
+    try {
+      final response = await _dio.getData(URL: URL.user + "${params.id}");
+      if (response == null) {
         throw ServerFailure(message: "Server Failure");
       }
       return UserModel.fromJson(response);
-
-
-    } on ServerFailure{
+    } on ServerFailure {
       throw ServerFailure(message: "Server Failure");
     }
   }

@@ -83,5 +83,4 @@ class AppSizes {
   static final double buttonHeight = 48.0.h;
 
   static final double paddingHorizontallyContainer = 100.w;
-
 }

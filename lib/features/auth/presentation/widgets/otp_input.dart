@@ -69,7 +69,7 @@ class _OtpInputState extends State<OtpInput> {
 
     // Update current OTP
     _currentOtp = _controllers.map((controller) => controller.text).join();
-    
+
     // Call onChanged callback
     widget.onChanged?.call(_currentOtp);
 
@@ -90,8 +90,8 @@ class _OtpInputState extends State<OtpInput> {
           height: AppSizes.buttonHeight,
           decoration: BoxDecoration(
             border: Border.all(
-              color: _controllers[index].text.isNotEmpty 
-                  ? ColorRes.primary 
+              color: _controllers[index].text.isNotEmpty
+                  ? ColorRes.primary
                   : ColorRes.grey.withOpacity(0.3),
               width: 1.5,
             ),
@@ -103,9 +103,9 @@ class _OtpInputState extends State<OtpInput> {
             focusNode: _focusNodes[index],
             textAlign: TextAlign.center,
             style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-              fontWeight: FontWeight.w600,
-              color: ColorRes.textPrimary,
-            ),
+                  fontWeight: FontWeight.w600,
+                  color: ColorRes.textPrimary,
+                ),
             keyboardType: TextInputType.number,
             inputFormatters: [
               LengthLimitingTextInputFormatter(1),

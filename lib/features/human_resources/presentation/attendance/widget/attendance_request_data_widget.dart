@@ -11,7 +11,6 @@ import 'attendance_dropdown_field.dart';
 import 'attendance_editable_field.dart';
 import 'attendance_info_tile.dart';
 
-
 class AttendanceRequestDataWidget extends StatelessWidget {
   const AttendanceRequestDataWidget({
     super.key,
@@ -41,7 +40,6 @@ class AttendanceRequestDataWidget extends StatelessWidget {
   // Read-only data tiles populated from `record` (API response).
   // -------------------------------------------------------------------
   Widget _buildReadOnlySection(BuildContext context) {
-
     const String empty = '00:00';
 
     final String fingerprint = record?.displayName ?? empty;
@@ -59,10 +57,9 @@ class AttendanceRequestDataWidget extends StatelessWidget {
         /// Row: overtime  |  check-in (from record)
         _PairRow(
           right: AttendanceInfoTile(
-            label: S.current.checkInFromRecord,
-            value: checkInFromRecord,
-            icon: Icons.access_time_rounded
-          ),
+              label: S.current.checkInFromRecord,
+              value: checkInFromRecord,
+              icon: Icons.access_time_rounded),
           left: AttendanceInfoTile(
             label: S.current.overtime,
             value: overtime,
@@ -243,10 +240,10 @@ class AttendanceRequestDataWidget extends StatelessWidget {
           titleTextStyle: Theme.of(
             context,
           ).textTheme.headlineSmall?.copyWith(
-            color: ColorRes.black,
-            fontWeight: FontWeight.bold,
-            fontSize: 6,
-          ),
+                color: ColorRes.black,
+                fontWeight: FontWeight.bold,
+                fontSize: 6,
+              ),
         ),
         textButtonTheme: TextButtonThemeData(
           style: TextButton.styleFrom(

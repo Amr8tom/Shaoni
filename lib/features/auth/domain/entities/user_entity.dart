@@ -5,7 +5,6 @@ import 'package:shaoni/features/auth/data/model/office_model.dart';
 import 'department.dart';
 import 'office.dart';
 
-
 class UserEntity extends Equatable {
   final int? id;
   final String? fullName;
@@ -53,24 +52,24 @@ class UserEntity extends Equatable {
 
   @override
   List<Object?> get props => [
-    id,
-    fullName,
-    userName,
-    email,
-    role,
-    roleId,
-    phoneNumber,
-    gender,
-    nationality,
-    city,
-    isActive,
-    employeeId,
-    managerId,
-    managerName,
-    officeId,
-    officeIds,
-    office,
-    departmentId,
-    department,
-  ];
+        id,
+        fullName,
+        userName,
+        email,
+        role,
+        roleId,
+        phoneNumber,
+        gender,
+        nationality,
+        city,
+        isActive,
+        employeeId,
+        managerId,
+        managerName,
+        officeId,
+        officeIds,
+        office,
+        departmentId,
+        department,
+      ];
 }

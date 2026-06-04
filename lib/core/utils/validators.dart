@@ -25,7 +25,6 @@ class Validators {
     }
 
     if (value.length < 6) {
-      // return 'Password must be at least 6 characters';
       return S.current.authenticationError;
     }
 
@@ -39,9 +38,7 @@ class Validators {
     }
 
     if (value.length < 2) {
-      // return 'Username must be at least 2 characters';
       return S.current.authenticationError;
-
     }
 
     return null;
@@ -114,5 +111,3 @@ class Validators {
     return null;
   }
 }
-
-

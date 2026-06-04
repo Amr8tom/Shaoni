@@ -22,15 +22,15 @@ void showLogoutDialog(BuildContext context) {
         title: Text(
           S.current.logOut,
           style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-            color: ColorRes.black,
-            fontWeight: FontWeight.bold,
-          ),
+                color: ColorRes.black,
+                fontWeight: FontWeight.bold,
+              ),
         ),
         content: Text(
           S.current.logoutQuestion,
           style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-            color: ColorRes.grey2,
-          ),
+                color: ColorRes.grey2,
+              ),
         ),
         actions: [
           /// Cancel Button
@@ -41,15 +41,14 @@ void showLogoutDialog(BuildContext context) {
             child: Text(
               S.current.cancel,
               style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                color: ColorRes.grey2,
-              ),
+                    color: ColorRes.grey2,
+                  ),
             ),
           ),
 
           /// Logout Button
           TextButton(
             onPressed: () async {
-
               await CacheHelper.removeFromShared(key: CacheKeys.token);
               await CacheHelper.removeFromShared(key: CacheKeys.userId);
               await CacheHelper.removeFromShared(key: CacheKeys.employeeId);
@@ -61,9 +60,9 @@ void showLogoutDialog(BuildContext context) {
             child: Text(
               S.current.logOut,
               style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                color: ColorRes.primary,
-                fontWeight: FontWeight.bold,
-              ),
+                    color: ColorRes.primary,
+                    fontWeight: FontWeight.bold,
+                  ),
             ),
           ),
         ],
@@ -71,4 +70,3 @@ void showLogoutDialog(BuildContext context) {
     },
   );
 }
-

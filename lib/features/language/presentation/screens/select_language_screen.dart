@@ -8,10 +8,8 @@ class SelectLanguageScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    
     return Scaffold(
       appBar: DAppBar(
-
         title: S.current.selectLanguage,
       ),
       body: const SelectLanguageBody(),

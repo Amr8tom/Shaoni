@@ -1,4 +1,5 @@
 import '../../../domain/entity/car_permission/car_brand.dart';
+
 class CarBrandModel extends CarBrand {
   const CarBrandModel({
     required super.id,

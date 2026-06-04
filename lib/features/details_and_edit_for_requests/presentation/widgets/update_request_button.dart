@@ -42,7 +42,7 @@ class UpdateRequestButton extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Icon(Icons.edit_rounded, color: ColorRes.white, size: 18),
+               Icon(Icons.edit_rounded, color: ColorRes.white, size: AppSizes.iconSmall*1.15),
               const Sizer(width: 8),
               Text(
                 S.current.updateRequest,

@@ -37,6 +37,7 @@ class StudyModel extends Study {
           : null,
     );
   }
+
   /// toJson
   Map<String, dynamic> toJson() {
     return {

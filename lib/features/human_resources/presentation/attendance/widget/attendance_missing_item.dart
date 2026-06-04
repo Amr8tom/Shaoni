@@ -15,9 +15,7 @@ class AttendanceMissingItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<AttendanceCubit, AttendanceState>(
-      listener: (context, state) {
-        // TODO: implement listener
-      },
+      listener: (context, state) {},
       builder: (context, state) {
         final records = state.isLoading
             ? List.filled(
@@ -36,39 +34,38 @@ class AttendanceMissingItem extends StatelessWidget {
                     outMode: null))
             : state.records ?? [];
 
-        return state.isEmpty ?CustomUI.noData():
-        Container(
-          child: ListView.builder(
-            physics: const AlwaysScrollableScrollPhysics(
-              parent: BouncingScrollPhysics(),
-            ),
-            padding: EdgeInsets.zero,
-
-            itemCount: records.length,
-            itemBuilder: (context, index) {
-              return Padding(
-                padding: EdgeInsets.symmetric(
-                  horizontal: AppSizes.padding,
-                  vertical: AppSizes.padding / 2,
-                ),
-                child: Skeletonizer(
-                  enabled: state.isLoading,
-
-                  child: AttendanceRecordCard(
-                      record: records[index],
-                      onTap: () {
-                        context.pushNamed(
-                          DRoutesName.createAttendanceRoute,
-                          arguments: {
-                            'attendanceID': records[index].id,
-                          },
-                        );
-                      }),
+        return state.isEmpty
+            ? CustomUI.noData()
+            : Container(
+                child: ListView.builder(
+                  physics: const AlwaysScrollableScrollPhysics(
+                    parent: BouncingScrollPhysics(),
+                  ),
+                  padding: EdgeInsets.zero,
+                  itemCount: records.length,
+                  itemBuilder: (context, index) {
+                    return Padding(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: AppSizes.padding,
+                        vertical: AppSizes.padding / 2,
+                      ),
+                      child: Skeletonizer(
+                        enabled: state.isLoading,
+                        child: AttendanceRecordCard(
+                            record: records[index],
+                            onTap: () {
+                              context.pushNamed(
+                                DRoutesName.createAttendanceRoute,
+                                arguments: {
+                                  'attendanceID': records[index].id,
+                                },
+                              );
+                            }),
+                      ),
+                    );
+                  },
                 ),
               );
-            },
-          ),
-        );
       },
     );
   }

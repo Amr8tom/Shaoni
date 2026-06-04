@@ -94,7 +94,8 @@ class ProductOrderCubit extends Cubit<ProductOrderState> {
         errorMessage: failure.message,
       )),
       (products) {
-        final updated = Map<int, List<OdooProduct>>.from(state.productsByCategory);
+        final updated =
+            Map<int, List<OdooProduct>>.from(state.productsByCategory);
         updated[categoryId] = products;
         emit(state.copyWith(
           status: ProductOrderStatus.lookupsLoaded,
@@ -122,13 +123,14 @@ class ProductOrderCubit extends Cubit<ProductOrderState> {
     _qtyControllers.remove(localId);
     _notesControllers[localId]?.dispose();
     _notesControllers.remove(localId);
-    final items =
-        state.lineItems.where((i) => i.localId != localId).toList();
+    final items = state.lineItems.where((i) => i.localId != localId).toList();
     emit(state.copyWith(lineItems: items));
   }
 
-  void updateItemCategory(String localId, int? categoryId, String categoryName) {
-    if (categoryId != null) loadProductsForCategory(categoryId); // -1 triggers "all" fetch
+  void updateItemCategory(
+      String localId, int? categoryId, String categoryName) {
+    if (categoryId != null)
+      loadProductsForCategory(categoryId); // -1 triggers "all" fetch
     final items = state.lineItems.map((i) {
       if (i.localId != localId) return i;
       return i.copyWith(
@@ -157,12 +159,14 @@ class ProductOrderCubit extends Cubit<ProductOrderState> {
 
   CreateProductOrderParams _buildParams() {
     final empId =
-        int.tryParse(CacheHelper.getString(key: CacheKeys.employeeId) ?? '0') ?? 0;
+        int.tryParse(CacheHelper.getString(key: CacheKeys.employeeId) ?? '0') ??
+            0;
     final lineIds = state.lineItems
         .where((i) => i.productId != null)
         .map((i) => RequestLineItemParams(
               productId: i.productId!,
-              productQty: int.tryParse(_qtyControllers[i.localId]?.text ?? '1') ?? 1,
+              productQty:
+                  int.tryParse(_qtyControllers[i.localId]?.text ?? '1') ?? 1,
               notes: _notesControllers[i.localId]?.text.trim() ?? '',
             ))
         .toList();
@@ -183,7 +187,8 @@ class ProductOrderCubit extends Cubit<ProductOrderState> {
 
   Future<void> createProductOrder() async {
     emit(state.copyWith(status: ProductOrderStatus.createLoading));
-    final result = await _createProductOrderUseCase.call(params: _buildParams());
+    final result =
+        await _createProductOrderUseCase.call(params: _buildParams());
     result.fold(
       (failure) => emit(state.copyWith(
         status: ProductOrderStatus.createError,
@@ -191,7 +196,8 @@ class ProductOrderCubit extends Cubit<ProductOrderState> {
       )),
       (response) => emit(state.copyWith(
         status: ProductOrderStatus.createLoaded,
-        requestNumber: response.requestName ?? response.requestId?.toString() ?? '',
+        requestNumber:
+            response.requestName ?? response.requestId?.toString() ?? '',
       )),
     );
   }

@@ -6,10 +6,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:shaoni/core/constants/app_sizes.dart';
 import 'package:shaoni/core/device/device_utility.dart';
-import 'package:shaoni/core/extentions/navigation_extension.dart';
 import '../../../core/constants/asset_resoures.dart';
 import '../../../core/constants/colors.dart';
-import '../../../core/routing/route_names.dart';
 import '../../../features/navigation/presentation/controllers/navigation_cubit.dart';
 import '../../../generated/l10n.dart';
 
@@ -63,25 +61,15 @@ class CustomBottomNavigationBar extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: List.generate(items.length, (index) {
-              // if (index == 3) {
-              //   return _buildNavItem(
-              //     context: context,
-              //     item: items[index],
-              //     isActive: false,
-              //     onTap: () {
-              //       context.pushNamed(DRoutesName.profileRoute);
-              //     },
-              //   );
-              // } else {
-                final isActive = controller.indx == index;
-                return _buildNavItem(
-                  context: context,
-                  item: items[index],
-                  isActive: isActive,
-                  onTap: () {
-                    context.read<NavigationCubit>().changeIndex(index);
-                  },
-                );
+              final isActive = controller.indx == index;
+              return _buildNavItem(
+                context: context,
+                item: items[index],
+                isActive: isActive,
+                onTap: () {
+                  context.read<NavigationCubit>().changeIndex(index);
+                },
+              );
               // }
             }),
           ),
@@ -115,16 +103,15 @@ class CustomBottomNavigationBar extends StatelessWidget {
               borderRadius: BorderRadius.all(
                 Radius.circular(AppSizes.borderRadiusXXLg * 4),
               ),
-              boxShadow:
-                  isActive
-                      ? [
-                        BoxShadow(
-                          color: ColorRes.white.withValues(alpha: 0.3),
-                          blurRadius: 8,
-                          offset: const Offset(0, 2),
-                        ),
-                      ]
-                      : null,
+              boxShadow: isActive
+                  ? [
+                      BoxShadow(
+                        color: ColorRes.white.withValues(alpha: 0.3),
+                        blurRadius: 8,
+                        offset: const Offset(0, 2),
+                      ),
+                    ]
+                  : null,
             ),
             child: TweenAnimationBuilder<double>(
               duration: const Duration(milliseconds: 800),
@@ -147,10 +134,11 @@ class CustomBottomNavigationBar extends StatelessWidget {
           Text(
             item.label,
             style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-              color:
-                  isActive ? ColorRes.white : ColorRes.white.withOpacity(0.6),
-              fontWeight: isActive ? FontWeight.bold : FontWeight.normal,
-            ),
+                  color: isActive
+                      ? ColorRes.white
+                      : ColorRes.white.withOpacity(0.6),
+                  fontWeight: isActive ? FontWeight.bold : FontWeight.normal,
+                ),
           ),
         ],
       ),

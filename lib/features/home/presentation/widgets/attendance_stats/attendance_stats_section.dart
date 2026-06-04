@@ -75,8 +75,7 @@ class AttendanceStatsSection extends StatelessWidget {
           /// Section header
           _SectionHeader(
             title: S.current.attendanceStatistics,
-            onViewAll: () =>
-                context.pushNamed(DRoutesName.attendanceRoute),
+            onViewAll: () => context.pushNamed(DRoutesName.attendanceRoute),
           ),
           const Sizer(height: 12),
 

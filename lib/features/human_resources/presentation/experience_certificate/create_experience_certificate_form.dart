@@ -32,7 +32,9 @@ class CreateExperienceCertificateForm extends StatelessWidget {
         appBar: DAppBar(
           showMenu: false,
           showBackArrow: true,
-          title: _isEditMode ? S.current.editRequest : S.current.experienceCertificate,
+          title: _isEditMode
+              ? S.current.editRequest
+              : S.current.experienceCertificate,
         ),
         extendBodyBehindAppBar: true,
         backgroundColor: ColorRes.grey6,
@@ -55,8 +57,7 @@ class CreateExperienceCertificateForm extends StatelessWidget {
                   CustomDialogImgTitleDes(
                     button1: S.current.myOrders,
                     button2: S.current.home,
-                    orderNumber:
-                        _isEditMode ? '' : (state.requestNumber ?? ''),
+                    orderNumber: _isEditMode ? '' : (state.requestNumber ?? ''),
                     onTab2: () {
                       context.pushNamedAndRemoveUntil(
                         DRoutesName.navigationMenuRoute,
@@ -113,9 +114,8 @@ class CreateExperienceCertificateForm extends StatelessWidget {
                               const Sizer(height: 35),
                               Text(
                                 S.current.requestDetails,
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .headlineMedium,
+                                style:
+                                    Theme.of(context).textTheme.headlineMedium,
                               ),
                               const ExperienceCertificateDataWidget(),
 
@@ -123,8 +123,8 @@ class CreateExperienceCertificateForm extends StatelessWidget {
                               const Sizer(height: 35),
                               FileUploadWidget(
                                 onPickedFile: (fileName, base64String) {
-                                  controller.attachmentFileNameController
-                                      .text = fileName ?? '';
+                                  controller.attachmentFileNameController.text =
+                                      fileName ?? '';
                                   controller.attachmentFileController.text =
                                       base64String ?? '';
                                 },
@@ -149,12 +149,10 @@ class CreateExperienceCertificateForm extends StatelessWidget {
                                   if (controller.requestFormKey.currentState!
                                       .validate()) {
                                     if (_isEditMode) {
-                                      controller
-                                          .updateExperienceCertificate(
-                                              requestId: requestId!);
+                                      controller.updateExperienceCertificate(
+                                          requestId: requestId!);
                                     } else {
-                                      controller
-                                          .createExperienceCertificate();
+                                      controller.createExperienceCertificate();
                                     }
                                   }
                                 },

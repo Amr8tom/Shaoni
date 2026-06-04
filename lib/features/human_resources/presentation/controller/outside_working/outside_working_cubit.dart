@@ -73,6 +73,7 @@ class OutsideWorkingCubit extends Cubit<OutsideWorkingState> {
   String? _selectedProjectTypeCode;
   String? _selectedAttendanceWayCode;
   List<int> _selectedProjectIds = [];
+
   /// Used as the dropdown value for project name (id string); controller holds display name.
   String? selectedProjectId;
 
@@ -107,7 +108,8 @@ class OutsideWorkingCubit extends Cubit<OutsideWorkingState> {
   List<OutsideWorkingEmployee> get filteredEmployees {
     if (employeeSearchQuery.isEmpty) return _employees;
     return _employees
-        .where((e) => e.name.toLowerCase().contains(employeeSearchQuery.toLowerCase()))
+        .where((e) =>
+            e.name.toLowerCase().contains(employeeSearchQuery.toLowerCase()))
         .toList();
   }
 
@@ -143,7 +145,8 @@ class OutsideWorkingCubit extends Cubit<OutsideWorkingState> {
   }
 
   Future<void> _fetchDepartmentTypes() async {
-    final result = await _getDepartmentTypeLookupUseCase.call(params: NoParams());
+    final result =
+        await _getDepartmentTypeLookupUseCase.call(params: NoParams());
     result.fold(
       (failure) => emit(state.copyWith(
         status: OutsideWorkingStatus.lookupsError,
@@ -183,7 +186,8 @@ class OutsideWorkingCubit extends Cubit<OutsideWorkingState> {
   }
 
   Future<void> _fetchEmployees() async {
-    final result = await _getOutsideWorkingEmployeesUseCase.call(params: NoParams());
+    final result =
+        await _getOutsideWorkingEmployeesUseCase.call(params: NoParams());
     result.fold(
       (failure) => emit(state.copyWith(
         status: OutsideWorkingStatus.lookupsError,
@@ -197,7 +201,8 @@ class OutsideWorkingCubit extends Cubit<OutsideWorkingState> {
   }
 
   Future<void> _fetchProjects() async {
-    final result = await _getOutsideWorkingProjectsUseCase.call(params: NoParams());
+    final result =
+        await _getOutsideWorkingProjectsUseCase.call(params: NoParams());
     result.fold(
       (failure) => null,
       (projects) {
@@ -256,7 +261,8 @@ class OutsideWorkingCubit extends Cubit<OutsideWorkingState> {
 
   void toggleEmployee(OutsideWorkingEmployee employee) {
     if (selectedEmployees.any((e) => e.id == employee.id)) {
-      selectedEmployees = selectedEmployees.where((e) => e.id != employee.id).toList();
+      selectedEmployees =
+          selectedEmployees.where((e) => e.id != employee.id).toList();
       // dispose and remove task data
       employeeTaskData[employee.id]?.dispose();
       employeeTaskData.remove(employee.id);
@@ -317,7 +323,8 @@ class OutsideWorkingCubit extends Cubit<OutsideWorkingState> {
       orderReason: orderReasonController.text.trim(),
       departmentType: _selectedDepartmentTypeCode ?? '',
       projectType: _selectedProjectTypeCode ?? '',
-      projectName: _selectedProjectTypeCode == 'general' ? [] : _selectedProjectIds,
+      projectName:
+          _selectedProjectTypeCode == 'general' ? [] : _selectedProjectIds,
       employeeIds: selectedEmployees.map((e) => e.id).toList(),
       startDate: startDateController.text.trim(),
       endDate: endDateController.text.trim(),
@@ -363,7 +370,9 @@ class OutsideWorkingCubit extends Cubit<OutsideWorkingState> {
     employeeTaskData.clear();
     selectedEmployees = [];
     employeeSearchQuery = '';
-    emit(state.copyWith(status: OutsideWorkingStatus.lookupsLoaded, version: state.version + 1));
+    emit(state.copyWith(
+        status: OutsideWorkingStatus.lookupsLoaded,
+        version: state.version + 1));
   }
 
   // ── Helpers ───────────────────────────────────────────────────────────────

@@ -58,8 +58,7 @@ class CreateOutsideWorkingForm extends StatelessWidget {
                   CustomDialogImgTitleDes(
                     button1: S.current.myOrders,
                     button2: S.current.home,
-                    orderNumber:
-                        _isEditMode ? '' : (state.requestNumber ?? ''),
+                    orderNumber: _isEditMode ? '' : (state.requestNumber ?? ''),
                     onTab2: () {
                       context.pushNamedAndRemoveUntil(
                         DRoutesName.navigationMenuRoute,
@@ -183,8 +182,8 @@ class CreateOutsideWorkingForm extends StatelessWidget {
                                     if (cubit.selectedEmployees.isEmpty) {
                                       ScaffoldMessenger.of(context)
                                           .showSnackBar(SnackBar(
-                                        content:
-                                            Text(S.current.selectAtLeastOneEmployee),
+                                        content: Text(
+                                            S.current.selectAtLeastOneEmployee),
                                         backgroundColor:
                                             ColorRes.error.withOpacity(0.5),
                                       ));

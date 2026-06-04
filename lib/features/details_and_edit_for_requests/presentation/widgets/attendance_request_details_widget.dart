@@ -9,7 +9,6 @@ import '../../../../generated/l10n.dart';
 import '../../../home/presentation/widgets/order_text_card.dart';
 import '../controller/my_requests_cubit.dart';
 
-
 class AttendanceRequestDetailsWidget extends StatelessWidget {
   const AttendanceRequestDetailsWidget({super.key});
 
@@ -43,10 +42,10 @@ class AttendanceRequestDetailsWidget extends StatelessWidget {
               const Sizer(height: 12),
 
               /// Row 1 — attendance type
-                  OrderTextCard(
-                    title: S.current.attendanceType,
-                    result: attendance?.attendanceType ?? '',
-                  ),
+              OrderTextCard(
+                title: S.current.attendanceType,
+                result: attendance?.attendanceType ?? '',
+              ),
 
               const Sizer(height: 12),
 

@@ -18,115 +18,104 @@ class NewPasswordForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller =context.read<LoginCubit>();
+    final controller = context.read<LoginCubit>();
 
-    return BlocConsumer<LoginCubit,LoginState>(
-  builder: (context, state) {
-    return SafeArea(
-      child: Form(
-        key: controller.passwordFormKey,
-        child: Container(
-          decoration: BoxDecoration(
-            color: ColorRes.white,
-            borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(AppSizes.borderRadiusXXLg),
-              topRight: Radius.circular(AppSizes.borderRadiusXXLg),
+    return BlocConsumer<LoginCubit, LoginState>(builder: (context, state) {
+      return SafeArea(
+        child: Form(
+          key: controller.passwordFormKey,
+          child: Container(
+            decoration: BoxDecoration(
+              color: ColorRes.white,
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(AppSizes.borderRadiusXXLg),
+                topRight: Radius.circular(AppSizes.borderRadiusXXLg),
+              ),
             ),
-          ),
-          width: double.infinity,
-          padding: EdgeInsets.only(left: AppSizes.xl, right: AppSizes.xl),
-          child: SingleChildScrollView(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const Sizer(height: 30),
+            width: double.infinity,
+            padding: EdgeInsets.only(left: AppSizes.xl, right: AppSizes.xl),
+            child: SingleChildScrollView(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Sizer(height: 30),
 
-                /// Title
-                Text(
-                  S.current.newPassword,
-                  style: Theme.of(
-                    context,
-                  ).textTheme.headlineLarge!.copyWith(
-                    fontSize:AppSizes.fontSizeLg
+                  /// Title
+                  Text(
+                    S.current.newPassword,
+                    style: Theme.of(
+                      context,
+                    )
+                        .textTheme
+                        .headlineLarge!
+                        .copyWith(fontSize: AppSizes.fontSizeLg),
+                    textAlign: TextAlign.center,
+                    maxLines: 5,
                   ),
-                  textAlign: TextAlign.center,
-                  maxLines: 5,
-                ),
-                /// make size
-                const Sizer(height: 10),
 
-                ///
-                AuthTextField(
-                  isPassword: true,
-                  validator: Validators.password,
-                  hint: S.current.pleaseEnterPassword,
-                  controller: controller.newPasswordController,
-                  prefixIcon: Icon(Icons.lock_open_sharp, color: ColorRes.grey),
-                ),
-                AuthTextField(
-                  isPassword: true,
-                  validator:
-                      (value) => Validators.confirmPassword(
-                        value,
-                        controller.newPasswordController.text,
-                      ),
-                  hint: S.current.repeatNewPassword,
-                  controller: controller.confirmPasswordController,
-                  prefixIcon: Icon(Icons.lock_open_sharp, color: ColorRes.grey),
-                ),
+                  /// make size
+                  const Sizer(height: 10),
 
-                const Sizer(height: 20),
-               state.status.isChangePasswordLoading? CircularProgressIndicator(
-                  color: ColorRes.primary,
-                ): AuthButton(
-                  text: S.current.saveNewPassword,
-                  onPressed: () => controller.changePassword(),
-                  width: double.infinity,
-                  height: AppSizes.buttonHeight,
-                  textColor: ColorRes.white,
-                  backgroundColor: ColorRes.primary,
-                ),
-                // const Sizer(height: 12),
-                // AuthButton(
-                //   text: S.current.cancel,
-                //   onPressed: () => context.pushNamedAndRemoveUntil(
-                //     DRoutesName.navigationMenuRoute,
-                //     predicate: (Route<dynamic> route) => false,
-                //   ),
-                //   width: double.infinity,
-                //   height: AppSizes.buttonHeight,
-                //   textColor: ColorRes.primary,
-                //   backgroundColor: ColorRes.white,
-                // ),
+                  ///
+                  AuthTextField(
+                    isPassword: true,
+                    validator: Validators.password,
+                    hint: S.current.pleaseEnterPassword,
+                    controller: controller.newPasswordController,
+                    prefixIcon:
+                        Icon(Icons.lock_open_sharp, color: ColorRes.grey),
+                  ),
+                  AuthTextField(
+                    isPassword: true,
+                    validator: (value) => Validators.confirmPassword(
+                      value,
+                      controller.newPasswordController.text,
+                    ),
+                    hint: S.current.repeatNewPassword,
+                    controller: controller.confirmPasswordController,
+                    prefixIcon:
+                        Icon(Icons.lock_open_sharp, color: ColorRes.grey),
+                  ),
 
-              ],
+                  const Sizer(height: 20),
+                  state.status.isChangePasswordLoading
+                      ? CircularProgressIndicator(
+                          color: ColorRes.primary,
+                        )
+                      : AuthButton(
+                          text: S.current.saveNewPassword,
+                          onPressed: () => controller.changePassword(),
+                          width: double.infinity,
+                          height: AppSizes.buttonHeight,
+                          textColor: ColorRes.white,
+                          backgroundColor: ColorRes.primary,
+                        ),
+                ],
+              ),
             ),
           ),
         ),
-      ),
-    );
-  }, listener: (BuildContext context, LoginState state) {
-    if(state.status.isChangePasswordSuccess){
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(state.newPasswordMsg??''),
-        ),
       );
-      context.pushNamedAndRemoveUntil(
-        DRoutesName.navigationMenuRoute,
-        predicate: (Route<dynamic> route) => false,
-      );
-    }
-    if(state.status.isError){
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(state.loginErrorMassage??''),
-          backgroundColor: ColorRes.error2.withOpacity(0.5),
-        ),
-      );
-    }
-
-  });
-
-}
+    }, listener: (BuildContext context, LoginState state) {
+      if (state.status.isChangePasswordSuccess) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(state.newPasswordMsg ?? ''),
+          ),
+        );
+        context.pushNamedAndRemoveUntil(
+          DRoutesName.navigationMenuRoute,
+          predicate: (Route<dynamic> route) => false,
+        );
+      }
+      if (state.status.isError) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(state.loginErrorMassage ?? ''),
+            backgroundColor: ColorRes.error2.withOpacity(0.5),
+          ),
+        );
+      }
+    });
+  }
 }

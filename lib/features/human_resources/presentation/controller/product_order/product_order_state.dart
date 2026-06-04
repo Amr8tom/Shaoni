@@ -65,7 +65,9 @@ extension ProductOrderStatusX on ProductOrderStatus {
       this == ProductOrderStatus.productsLoading ||
       this == ProductOrderStatus.createLoading;
   bool get isLookupLoaded => this == ProductOrderStatus.lookupsLoaded;
-  bool get isError => this == ProductOrderStatus.createError || this == ProductOrderStatus.lookupsError;
+  bool get isError =>
+      this == ProductOrderStatus.createError ||
+      this == ProductOrderStatus.lookupsError;
   bool get isCreateLoaded => this == ProductOrderStatus.createLoaded;
 }
 

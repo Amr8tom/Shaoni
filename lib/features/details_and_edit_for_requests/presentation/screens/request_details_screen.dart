@@ -81,7 +81,7 @@ class RequestDetailsScreen extends StatelessWidget {
                   const Sizer(height: 20),
 
                   /// comment field — shown to manager when request is pending approval
-                  if (isManagerApproval && isManager&& !isEmployeeRequest)
+                  if (isManagerApproval && isManager && !isEmployeeRequest)
                     CommentWritingWidget(onCommentSubmit: (comment) {
                       context.read<EditCubit>().editNotesController.text =
                           comment;
@@ -100,7 +100,7 @@ class RequestDetailsScreen extends StatelessWidget {
                   const Sizer(height: 20),
 
                   /// manager: accept/reject + edit
-                  if (isManagerApproval && isManager&& !isEmployeeRequest) ...[
+                  if (isManagerApproval && isManager && !isEmployeeRequest) ...[
                     AcceptRejecttButton(
                       requestID: requestID,
                     ),

@@ -12,7 +12,7 @@ class DeleteAccountCubit extends Cubit<DeleteAccountState> {
   final DeleteAccountUseCase _deleteAccountUseCase;
 
   DeleteAccountCubit(this._deleteAccountUseCase)
-    : super(DeleteAccountState(status: GeneralStatus.initialized));
+      : super(DeleteAccountState(status: GeneralStatus.initialized));
 
   Future deleteAccount() async {
     emit(state.copyWith(status: GeneralStatus.loading));

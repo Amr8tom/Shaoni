@@ -179,9 +179,8 @@ class _LanguageOption extends StatelessWidget {
                   label,
                   style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                         color: ColorRes.black,
-                        fontWeight: isSelected
-                            ? FontWeight.w700
-                            : FontWeight.w500,
+                        fontWeight:
+                            isSelected ? FontWeight.w700 : FontWeight.w500,
                       ),
                 ),
               ),

@@ -170,7 +170,7 @@ class StartWorkCubit extends Cubit<StartWorkState> {
           date: DateFormat('yyyy-MM-dd', 'en').format(DateTime.now()),
           employee: _selectedEmployeeId ?? 0,
           managerId: int.tryParse(
-              CacheHelper.getString(key: CacheKeys.employeeId) ?? '0') ??
+                  CacheHelper.getString(key: CacheKeys.employeeId) ?? '0') ??
               0,
           officeId: int.tryParse(officeIdController.text) ?? 0,
           startDate: startDateController.text.trim(),
@@ -208,8 +208,6 @@ class StartWorkCubit extends Cubit<StartWorkState> {
 
   /// ── Private helpers ──────────────────────────────────────────────────────
 
-
-
   String _localizedName(String ar, String en) {
     return S.current.localeee == 'en'
         ? (en.isEmpty ? ar : en)
@@ -229,8 +227,3 @@ class StartWorkCubit extends Cubit<StartWorkState> {
     return super.close();
   }
 }
-
-
-
-
-

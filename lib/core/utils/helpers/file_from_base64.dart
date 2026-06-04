@@ -1,9 +1,10 @@
 import 'dart:convert';
 import 'dart:io';
-import 'package:flutter/foundation.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:share_plus/share_plus.dart';
-Future<void> downloadBase64File({required String base64String,required String fileName}) async {
+
+Future<void> downloadBase64File(
+    {required String base64String, required String fileName}) async {
   try {
     // 1. Clean the Base64 string if it contains a data URI scheme
     // (e.g., "data:application/pdf;base64,JVBER...")
@@ -29,9 +30,5 @@ Future<void> downloadBase64File({required String base64String,required String fi
       [XFile(file.path)],
       text: 'Save your file',
     );
-
-  } catch (e) {
-    debugPrint("Error downloading file: $e");
-    // Handle the error appropriately in your UI (e.g., show a SnackBar)
-  }
+  } catch (_) {}
 }

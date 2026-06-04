@@ -14,7 +14,7 @@ class SelectLanguageBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = context.read<LanguageCubit>();
-    
+
     return BlocBuilder<LanguageCubit, LanguageState>(
       builder: (context, state) {
         return Padding(

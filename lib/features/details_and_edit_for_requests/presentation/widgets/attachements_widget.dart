@@ -62,6 +62,7 @@ class _LeavesAttachmentWidgetState extends State<LeavesAttachmentWidget> {
         background = ColorRes.success;
         break;
       case DownloadStatus.savedOnly:
+
         /// Plugin not linked / share sheet failed — the file IS on disk.
         message = result.filePath != null
             ? 'Saved to: ${result.filePath}'
@@ -181,8 +182,7 @@ class _AttachmentFileCard extends StatelessWidget {
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
                   color: info.color.withOpacity(0.12),
-                  borderRadius:
-                      BorderRadius.circular(AppSizes.borderRadiusMd),
+                  borderRadius: BorderRadius.circular(AppSizes.borderRadiusMd),
                   border: Border.all(
                     color: info.color.withOpacity(0.20),
                     width: 1,
@@ -204,10 +204,7 @@ class _AttachmentFileCard extends StatelessWidget {
                   children: [
                     Text(
                       info.label,
-                      style: Theme.of(context)
-                          .textTheme
-                          .bodyLarge
-                          ?.copyWith(
+                      style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                             color: ColorRes.black,
                             fontWeight: FontWeight.w700,
                           ),
@@ -225,22 +222,21 @@ class _AttachmentFileCard extends StatelessWidget {
                           ),
                           decoration: BoxDecoration(
                             color: info.color.withOpacity(0.10),
-                            borderRadius: BorderRadius.circular(
-                                AppSizes.borderRadiusSm),
+                            borderRadius:
+                                BorderRadius.circular(AppSizes.borderRadiusSm),
                           ),
                           child: Text(
                             info.extension.toUpperCase(),
-                            style: Theme.of(context)
-                                .textTheme
-                                .bodySmall
-                                ?.copyWith(
-                                  color: info.color,
-                                  fontWeight: FontWeight.w800,
-                                  fontSize: 10,
-                                ),
+                            style:
+                                Theme.of(context).textTheme.bodySmall?.copyWith(
+                                      color: info.color,
+                                      fontWeight: FontWeight.w800,
+                                      fontSize: 10,
+                                    ),
                           ),
                         ),
                         const Sizer(width: 6),
+
                         /// Bullet separator
                         Container(
                           width: 3,
@@ -251,6 +247,7 @@ class _AttachmentFileCard extends StatelessWidget {
                           ),
                         ),
                         const Sizer(width: 6),
+
                         /// File size
                         Text(
                           Base64FileHelper.formatSize(info.sizeInBytes),
@@ -273,8 +270,7 @@ class _AttachmentFileCard extends StatelessWidget {
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
                   color: ColorRes.primary,
-                  borderRadius:
-                      BorderRadius.circular(AppSizes.borderRadiusMd),
+                  borderRadius: BorderRadius.circular(AppSizes.borderRadiusMd),
                   boxShadow: [
                     BoxShadow(
                       color: ColorRes.primary.withOpacity(0.25),
@@ -289,8 +285,8 @@ class _AttachmentFileCard extends StatelessWidget {
                         height: AppSizes.iconMd,
                         child: CircularProgressIndicator(
                           strokeWidth: 2,
-                          valueColor:
-                              const AlwaysStoppedAnimation<Color>(ColorRes.white),
+                          valueColor: const AlwaysStoppedAnimation<Color>(
+                              ColorRes.white),
                         ),
                       )
                     : Icon(

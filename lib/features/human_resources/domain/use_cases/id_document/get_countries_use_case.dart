@@ -10,7 +10,8 @@ class GetCountriesUseCase extends UseCase<List<Country>, NoParams> {
   GetCountriesUseCase(this._repository);
 
   @override
-  Future<Either<Failure, List<Country>>> call({required NoParams params}) async {
+  Future<Either<Failure, List<Country>>> call(
+      {required NoParams params}) async {
     return await _repository.getCountries(params: params);
   }
 }

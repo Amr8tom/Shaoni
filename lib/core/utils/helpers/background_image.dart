@@ -20,17 +20,18 @@ class BackgroundImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return isPositioned? Positioned.fill(
-      child:
-          isNetworkImage
-              ? CachedNetworkImage(imageUrl: path, fit: fit)
-              : isSvgImage
-              ? SvgPicture.asset(path, fit: fit)
-              : Image.asset(path, fit: fit),
-    ) :  isNetworkImage
-        ? CachedNetworkImage(imageUrl: path, fit: fit)
-        : isSvgImage
-        ? SvgPicture.asset(path, fit: fit)
-        : Image.asset(path, fit: fit);
+    return isPositioned
+        ? Positioned.fill(
+            child: isNetworkImage
+                ? CachedNetworkImage(imageUrl: path, fit: fit)
+                : isSvgImage
+                    ? SvgPicture.asset(path, fit: fit)
+                    : Image.asset(path, fit: fit),
+          )
+        : isNetworkImage
+            ? CachedNetworkImage(imageUrl: path, fit: fit)
+            : isSvgImage
+                ? SvgPicture.asset(path, fit: fit)
+                : Image.asset(path, fit: fit);
   }
 }

@@ -1,7 +1,6 @@
 import 'package:shaoni/features/human_resources/data/model/attendance/attendance_look_up_model.dart';
 import 'package:shaoni/features/human_resources/data/model/attendance/attendance_model.dart';
 import 'package:shaoni/features/human_resources/data/model/attendance/forget_reason_model.dart';
-import 'package:shaoni/features/human_resources/data/model/attendance_record_model.dart';
 import 'package:shaoni/features/human_resources/data/model/car_permission/car_brand_model.dart';
 import 'package:shaoni/features/human_resources/data/model/car_permission/car_color_model.dart';
 import 'package:shaoni/features/human_resources/data/model/car_permission/create_car_permission_model.dart';
@@ -58,12 +57,10 @@ import '../../domain/entity/exit_permisstion.dart';
 import '../../domain/use_cases/car_permission/create_car_permission_use_case.dart';
 import '../../domain/use_cases/exit/create_exit_permission_use_case.dart';
 import '../../domain/use_cases/attendance/get_all_missing_attendance_use_case.dart';
-import '../model/all_services_model.dart';
 import '../model/permission_time_model.dart';
 import '../model/permission_type_model.dart';
 
 abstract class HRServicesRemoteDataSources {
-
   /// ============================= exit permission  =============================
   Future<ExitPermission> createExitPermission(
     CreateExitPermissionParams params,
@@ -81,7 +78,8 @@ abstract class HRServicesRemoteDataSources {
   Future<AllAttendanceRecordModel> getAllMissingAttendance(
       {required AllMissingAttendanceParams params});
 
-  Future<AttendanceModel> createAttendance({required CreateAttendanceParams params});
+  Future<AttendanceModel> createAttendance(
+      {required CreateAttendanceParams params});
 
   Future<UpdateAttendanceModel> updateAttendance({
     required UpdateAttendanceParams params,
@@ -108,9 +106,11 @@ abstract class HRServicesRemoteDataSources {
   });
 
   /// ============================= complaint request =============================
-  Future<List<ComplaintTypeModel>> getComplaintTypes({required NoParams params});
+  Future<List<ComplaintTypeModel>> getComplaintTypes(
+      {required NoParams params});
 
-  Future<List<ComplaintReasonModel>> getComplaintReasons({required NoParams params});
+  Future<List<ComplaintReasonModel>> getComplaintReasons(
+      {required NoParams params});
 
   Future<CreateComplaintRequestModel> createComplaintRequest({
     required CreateComplaintRequestParams params,
@@ -193,10 +193,14 @@ abstract class HRServicesRemoteDataSources {
 
   /// ============================= outside working =============================
   Future<List<AttendanceWayModel>> getAttendanceWay({required NoParams params});
-  Future<List<DepartmentTypeLookupModel>> getDepartmentTypeLookup({required NoParams params});
-  Future<List<ProjectTypeLookupModel>> getProjectTypeLookup({required NoParams params});
-  Future<List<OutsideWorkingEmployeeModel>> getOutsideWorkingEmployees({required NoParams params});
-  Future<List<OutsideWorkingProjectModel>> getOutsideWorkingProjects({required NoParams params});
+  Future<List<DepartmentTypeLookupModel>> getDepartmentTypeLookup(
+      {required NoParams params});
+  Future<List<ProjectTypeLookupModel>> getProjectTypeLookup(
+      {required NoParams params});
+  Future<List<OutsideWorkingEmployeeModel>> getOutsideWorkingEmployees(
+      {required NoParams params});
+  Future<List<OutsideWorkingProjectModel>> getOutsideWorkingProjects(
+      {required NoParams params});
   Future<CreateOutsideWorkingResponseModel> createOutsideWorking({
     required CreateOutsideWorkingParams params,
   });
@@ -206,7 +210,6 @@ class HRServicesRemoteDataSourcesImp implements HRServicesRemoteDataSources {
   final DioHelper _dio;
 
   const HRServicesRemoteDataSourcesImp(this._dio);
-
 
   @override
   Future<ExitPermission> createExitPermission(
@@ -252,9 +255,6 @@ class HRServicesRemoteDataSourcesImp implements HRServicesRemoteDataSources {
     try {
       final List response = await _dio.getData(URL: URL.getPermissionTime);
       if (response != null) {
-        print(
-            "============================ response ===========================");
-        print(response);
         return response.map((e) => PermissionTimeModel.fromJson(e)).toList();
       } else {
         throw ServerFailure(message: 'server failure');
@@ -335,14 +335,15 @@ class HRServicesRemoteDataSourcesImp implements HRServicesRemoteDataSources {
   }
 
   @override
-  Future<List<AttendanceLookUpModel>>getAttendanceLookup(
+  Future<List<AttendanceLookUpModel>> getAttendanceLookup(
       {required NoParams params}) async {
     try {
       final List response = await _dio.getData(URL: URL.getAttendanceLookUp);
       if (response != null) {
-
         /// Extract the data field from the response Map
-        return response.map((e){return AttendanceLookUpModel.fromJson(e);}).toList() ;
+        return response.map((e) {
+          return AttendanceLookUpModel.fromJson(e);
+        }).toList();
       } else {
         throw ServerFailure(message: 'server failure');
       }
@@ -403,9 +404,11 @@ class HRServicesRemoteDataSourcesImp implements HRServicesRemoteDataSources {
   }
 
   @override
-  Future<CreateCarPermissionModel> createCarPermission({required CreateCarPermissionParams params}) async{
+  Future<CreateCarPermissionModel> createCarPermission(
+      {required CreateCarPermissionParams params}) async {
     try {
-      final response = await _dio.postData(URL: URL.createCarPermission, body: params.toMap());
+      final response = await _dio.postData(
+          URL: URL.createCarPermission, body: params.toMap());
       if (response != null) {
         return CreateCarPermissionModel.fromJson(response);
       } else {
@@ -417,14 +420,16 @@ class HRServicesRemoteDataSourcesImp implements HRServicesRemoteDataSources {
   }
 
   @override
-  Future<UpdateCarPermissionModel> updateCarPermission({required UpdateCarPermissionParams params}) async {
+  Future<UpdateCarPermissionModel> updateCarPermission(
+      {required UpdateCarPermissionParams params}) async {
     try {
       final response = await _dio.putData(
         URL: '${URL.updateCarPermission}${params.requestId}',
         body: params.toMap(),
       );
       if (response.statusCode == 200 || response.statusCode == 201) {
-        return UpdateCarPermissionModel.fromJson(response.data as Map<String, dynamic>);
+        return UpdateCarPermissionModel.fromJson(
+            response.data as Map<String, dynamic>);
       } else {
         throw ServerFailure(message: 'server failure');
       }
@@ -436,7 +441,8 @@ class HRServicesRemoteDataSourcesImp implements HRServicesRemoteDataSources {
   /// ============================= complaint request =============================
 
   @override
-  Future<List<ComplaintTypeModel>> getComplaintTypes({required NoParams params}) async {
+  Future<List<ComplaintTypeModel>> getComplaintTypes(
+      {required NoParams params}) async {
     try {
       final response = await _dio.getData(URL: URL.getComplaintTypes);
       if (response != null) {
@@ -451,7 +457,8 @@ class HRServicesRemoteDataSourcesImp implements HRServicesRemoteDataSources {
   }
 
   @override
-  Future<List<ComplaintReasonModel>> getComplaintReasons({required NoParams params}) async {
+  Future<List<ComplaintReasonModel>> getComplaintReasons(
+      {required NoParams params}) async {
     try {
       final response = await _dio.getData(URL: URL.getComplaintReasons);
       if (response != null) {
@@ -466,9 +473,11 @@ class HRServicesRemoteDataSourcesImp implements HRServicesRemoteDataSources {
   }
 
   @override
-  Future<CreateComplaintRequestModel> createComplaintRequest({required CreateComplaintRequestParams params}) async {
+  Future<CreateComplaintRequestModel> createComplaintRequest(
+      {required CreateComplaintRequestParams params}) async {
     try {
-      final response = await _dio.postData(URL: URL.createComplaintRequest, body: params.toMap());
+      final response = await _dio.postData(
+          URL: URL.createComplaintRequest, body: params.toMap());
       if (response != null) {
         return CreateComplaintRequestModel.fromJson(response);
       } else {
@@ -488,8 +497,9 @@ class HRServicesRemoteDataSourcesImp implements HRServicesRemoteDataSources {
     try {
       final response = await _dio.getData(URL: URL.getStartWorkTypes);
       if (response == null) throw ServerFailure(message: 'server failure');
-      final List raw =
-          response is List ? response : (response as Map<String, dynamic>)['data'] as List;
+      final List raw = response is List
+          ? response
+          : (response as Map<String, dynamic>)['data'] as List;
       return raw.map((e) => StartWorkTypeModel.fromJson(e)).toList();
     } on ServerFailure catch (e) {
       throw ServerFailure(message: e.message);
@@ -503,8 +513,9 @@ class HRServicesRemoteDataSourcesImp implements HRServicesRemoteDataSources {
     try {
       final response = await _dio.getData(URL: URL.getEmployees);
       if (response == null) throw ServerFailure(message: 'server failure');
-      final List raw =
-          response is List ? response : (response as Map<String, dynamic>)['data'] as List;
+      final List raw = response is List
+          ? response
+          : (response as Map<String, dynamic>)['data'] as List;
       return raw.map((e) => EmployeeModel.fromJson(e)).toList();
     } on ServerFailure catch (e) {
       throw ServerFailure(message: e.message);
@@ -537,7 +548,8 @@ class HRServicesRemoteDataSourcesImp implements HRServicesRemoteDataSources {
         body: params.toMap(),
       );
       if (response == null) throw ServerFailure(message: 'server failure');
-      return CreateStartWorkModel.fromJson(response.data as Map<String, dynamic>);
+      return CreateStartWorkModel.fromJson(
+          response.data as Map<String, dynamic>);
     } on ServerFailure catch (e) {
       throw ServerFailure(message: e.message);
     }
@@ -552,8 +564,9 @@ class HRServicesRemoteDataSourcesImp implements HRServicesRemoteDataSources {
     try {
       final response = await _dio.getData(URL: URL.getCertificateReasons);
       if (response == null) throw ServerFailure(message: 'server failure');
-      final List raw =
-          response is List ? response : (response as Map<String, dynamic>)['data'] as List;
+      final List raw = response is List
+          ? response
+          : (response as Map<String, dynamic>)['data'] as List;
       return raw.map((e) => CertificateReasonModel.fromJson(e)).toList();
     } on ServerFailure catch (e) {
       throw ServerFailure(message: e.message);
@@ -600,9 +613,12 @@ class HRServicesRemoteDataSourcesImp implements HRServicesRemoteDataSources {
     try {
       final response = await _dio.getData(URL: URL.getCountries);
       if (response == null) throw ServerFailure(message: 'server failure');
-      final List raw =
-          response is List ? response : (response as Map<String, dynamic>)['data'] as List;
-      return raw.map((e) => CountryModel.fromJson(e as Map<String, dynamic>)).toList();
+      final List raw = response is List
+          ? response
+          : (response as Map<String, dynamic>)['data'] as List;
+      return raw
+          .map((e) => CountryModel.fromJson(e as Map<String, dynamic>))
+          .toList();
     } on ServerFailure catch (e) {
       throw ServerFailure(message: e.message);
     }
@@ -615,8 +631,9 @@ class HRServicesRemoteDataSourcesImp implements HRServicesRemoteDataSources {
     try {
       final response = await _dio.getData(URL: URL.getDepartments);
       if (response == null) throw ServerFailure(message: 'server failure');
-      final List raw =
-          response is List ? response : (response as Map<String, dynamic>)['data'] as List;
+      final List raw = response is List
+          ? response
+          : (response as Map<String, dynamic>)['data'] as List;
       return raw.map((e) => DepartmentModel.fromJson(e)).toList();
     } on ServerFailure catch (e) {
       throw ServerFailure(message: e.message);
@@ -630,8 +647,9 @@ class HRServicesRemoteDataSourcesImp implements HRServicesRemoteDataSources {
     try {
       final response = await _dio.getData(URL: URL.getIDRenewalRequestTypes);
       if (response == null) throw ServerFailure(message: 'server failure');
-      final List raw =
-          response is List ? response : (response as Map<String, dynamic>)['data'] as List;
+      final List raw = response is List
+          ? response
+          : (response as Map<String, dynamic>)['data'] as List;
       return raw.map((e) => IDRenewalRequestTypeModel.fromJson(e)).toList();
     } on ServerFailure catch (e) {
       throw ServerFailure(message: e.message);
@@ -663,8 +681,9 @@ class HRServicesRemoteDataSourcesImp implements HRServicesRemoteDataSources {
     try {
       final response = await _dio.getData(URL: URL.getMedicalInsuranceClasses);
       if (response == null) throw ServerFailure(message: 'server failure');
-      final List raw =
-          response is List ? response : (response as Map<String, dynamic>)['data'] as List;
+      final List raw = response is List
+          ? response
+          : (response as Map<String, dynamic>)['data'] as List;
       return raw.map((e) => MedicalInsuranceClassModel.fromJson(e)).toList();
     } on ServerFailure catch (e) {
       throw ServerFailure(message: e.message);
@@ -730,8 +749,9 @@ class HRServicesRemoteDataSourcesImp implements HRServicesRemoteDataSources {
     try {
       final response = await _dio.getData(URL: URL.getProductCategories);
       if (response == null) throw ServerFailure(message: 'server failure');
-      final List raw =
-          response is List ? response : (response as Map<String, dynamic>)['data'] as List;
+      final List raw = response is List
+          ? response
+          : (response as Map<String, dynamic>)['data'] as List;
       return raw.map((e) => ProductCategoryModel.fromJson(e)).toList();
     } on ServerFailure catch (e) {
       throw ServerFailure(message: e.message);
@@ -748,8 +768,9 @@ class HRServicesRemoteDataSourcesImp implements HRServicesRemoteDataSources {
           : URL.getProductsByCategory;
       final response = await _dio.getData(URL: url);
       if (response == null) throw ServerFailure(message: 'server failure');
-      final List raw =
-          response is List ? response : (response as Map<String, dynamic>)['data'] as List;
+      final List raw = response is List
+          ? response
+          : (response as Map<String, dynamic>)['data'] as List;
       return raw.map((e) => OdooProductModel.fromJson(e)).toList();
     } on ServerFailure catch (e) {
       throw ServerFailure(message: e.message);
@@ -792,11 +813,14 @@ class HRServicesRemoteDataSourcesImp implements HRServicesRemoteDataSources {
   /// ============================= outside working =============================
 
   @override
-  Future<List<AttendanceWayModel>> getAttendanceWay({required NoParams params}) async {
+  Future<List<AttendanceWayModel>> getAttendanceWay(
+      {required NoParams params}) async {
     try {
       final response = await _dio.getData(URL: URL.getAttendanceWayLookup);
       if (response == null) throw ServerFailure(message: 'server failure');
-      final List raw = response is List ? response : (response as Map<String, dynamic>)['data'] as List;
+      final List raw = response is List
+          ? response
+          : (response as Map<String, dynamic>)['data'] as List;
       return raw.map((e) => AttendanceWayModel.fromJson(e)).toList();
     } on ServerFailure catch (e) {
       throw ServerFailure(message: e.message);
@@ -804,11 +828,14 @@ class HRServicesRemoteDataSourcesImp implements HRServicesRemoteDataSources {
   }
 
   @override
-  Future<List<DepartmentTypeLookupModel>> getDepartmentTypeLookup({required NoParams params}) async {
+  Future<List<DepartmentTypeLookupModel>> getDepartmentTypeLookup(
+      {required NoParams params}) async {
     try {
       final response = await _dio.getData(URL: URL.getDepartmentTypeLookup);
       if (response == null) throw ServerFailure(message: 'server failure');
-      final List raw = response is List ? response : (response as Map<String, dynamic>)['data'] as List;
+      final List raw = response is List
+          ? response
+          : (response as Map<String, dynamic>)['data'] as List;
       return raw.map((e) => DepartmentTypeLookupModel.fromJson(e)).toList();
     } on ServerFailure catch (e) {
       throw ServerFailure(message: e.message);
@@ -816,11 +843,14 @@ class HRServicesRemoteDataSourcesImp implements HRServicesRemoteDataSources {
   }
 
   @override
-  Future<List<ProjectTypeLookupModel>> getProjectTypeLookup({required NoParams params}) async {
+  Future<List<ProjectTypeLookupModel>> getProjectTypeLookup(
+      {required NoParams params}) async {
     try {
       final response = await _dio.getData(URL: URL.getProjectTypeLookup);
       if (response == null) throw ServerFailure(message: 'server failure');
-      final List raw = response is List ? response : (response as Map<String, dynamic>)['data'] as List;
+      final List raw = response is List
+          ? response
+          : (response as Map<String, dynamic>)['data'] as List;
       return raw.map((e) => ProjectTypeLookupModel.fromJson(e)).toList();
     } on ServerFailure catch (e) {
       throw ServerFailure(message: e.message);
@@ -828,11 +858,14 @@ class HRServicesRemoteDataSourcesImp implements HRServicesRemoteDataSources {
   }
 
   @override
-  Future<List<OutsideWorkingEmployeeModel>> getOutsideWorkingEmployees({required NoParams params}) async {
+  Future<List<OutsideWorkingEmployeeModel>> getOutsideWorkingEmployees(
+      {required NoParams params}) async {
     try {
       final response = await _dio.getData(URL: URL.syncEmployees);
       if (response == null) throw ServerFailure(message: 'server failure');
-      final List raw = response is List ? response : (response as Map<String, dynamic>)['data'] as List;
+      final List raw = response is List
+          ? response
+          : (response as Map<String, dynamic>)['data'] as List;
       return raw.map((e) => OutsideWorkingEmployeeModel.fromJson(e)).toList();
     } on ServerFailure catch (e) {
       throw ServerFailure(message: e.message);
@@ -840,9 +873,11 @@ class HRServicesRemoteDataSourcesImp implements HRServicesRemoteDataSources {
   }
 
   @override
-  Future<List<OutsideWorkingProjectModel>> getOutsideWorkingProjects({required NoParams params}) async {
+  Future<List<OutsideWorkingProjectModel>> getOutsideWorkingProjects(
+      {required NoParams params}) async {
     try {
-      final response = await _dio.getData(URL: '${URL.getProjects}?refresh=true');
+      final response =
+          await _dio.getData(URL: '${URL.getProjects}?refresh=true');
       if (response == null) throw ServerFailure(message: 'server failure');
       dynamic rawBody;
       if (response is List) {
@@ -851,7 +886,9 @@ class HRServicesRemoteDataSourcesImp implements HRServicesRemoteDataSources {
         rawBody = response['body'] ?? response['data'] ?? response['items'];
       }
       if (rawBody == null || rawBody is! List) return [];
-      return (rawBody as List).map((e) => OutsideWorkingProjectModel.fromJson(e)).toList();
+      return (rawBody as List)
+          .map((e) => OutsideWorkingProjectModel.fromJson(e))
+          .toList();
     } on ServerFailure catch (e) {
       throw ServerFailure(message: e.message);
     }
@@ -868,7 +905,9 @@ class HRServicesRemoteDataSourcesImp implements HRServicesRemoteDataSources {
       );
       if (response == null) throw ServerFailure(message: 'server failure');
       return CreateOutsideWorkingResponseModel.fromJson(
-          response is Map<String, dynamic> ? response : response as Map<String, dynamic>);
+          response is Map<String, dynamic>
+              ? response
+              : response as Map<String, dynamic>);
     } on ServerFailure catch (e) {
       throw ServerFailure(message: e.message);
     }

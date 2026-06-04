@@ -36,26 +36,23 @@ class NavigationMenuScreen extends StatelessWidget {
           final controller = context.watch<NavigationCubit>();
           final requestController = context.read<
               MyRequestsCubit>(); // Use read instead of watch for listener logic
-          // context.read<HomeCubit>().getAllStatusCounts();
 
           return UpgradeAlert(
             child: Scaffold(
               appBar: controller.indx == 0
                   ? null
-                  :
-              customAppBar(
+                  : customAppBar(
                       scaffoldKey: scaffoldKey,
                       context: context,
                       isHeader: true,
                       showMenu: true,
-
-                      height: AppSizes.appBarHeight *1.8,
+                      height: AppSizes.appBarHeight * 1.8,
                     ),
               // DAppBar(
               //         scaffoldKey: scaffoldKey,
               //         isHeader: true,
               //         showMenu: true,
-                    // ),
+              // ),
               key: scaffoldKey,
               drawer: const CustomSideMenu(),
               // extendBodyBehindAppBar: true,

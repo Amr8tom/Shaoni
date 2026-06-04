@@ -11,18 +11,16 @@ class TitleSettingWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return     Padding(
+    return Padding(
       padding: EdgeInsets.only(left: AppSizes.xs, right: AppSizes.xs),
       child: Text(
         title,
         style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-          color: color ?? ColorRes.grey2,
-          fontWeight: FontWeight.w700,
-          letterSpacing: 0.2,
-        ),
+              color: color ?? ColorRes.grey2,
+              fontWeight: FontWeight.w700,
+              letterSpacing: 0.2,
+            ),
       ),
     );
   }
 }
-
-

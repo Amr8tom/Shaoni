@@ -53,7 +53,6 @@ class RequestNumberAndDateWidget extends StatelessWidget {
                       ? orderNumber.substring(9)
                       : orderNumber ?? ' ',
                 ),
-                // const Sizer(width: 20),
                 orderNumber.length >= 9
                     ? const Sizer(width: 20)
                     : const Sizer(width: 0),

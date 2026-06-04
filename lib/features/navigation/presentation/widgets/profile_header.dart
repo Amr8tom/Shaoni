@@ -31,7 +31,6 @@ class ProfileHeader extends StatelessWidget {
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-        
             /// Profile avatar with enhanced design
             Container(
               decoration: BoxDecoration(
@@ -61,64 +60,67 @@ class ProfileHeader extends StatelessWidget {
                 child: ClipOval(
                   child: userImage != null
                       ? Image.network(
-                    userImage!,
-                    fit: BoxFit.cover,
-                    errorBuilder: (context, error, stackTrace) {
-                      return Image.asset(
-                        controller.state.user?.gender=="Male"? AssetRes.man1:AssetRes.woman,
-                        fit: BoxFit.fill,
-                      );
-                    },
-                  )
+                          userImage!,
+                          fit: BoxFit.cover,
+                          errorBuilder: (context, error, stackTrace) {
+                            return Image.asset(
+                              controller.state.user?.gender == "Male"
+                                  ? AssetRes.man1
+                                  : AssetRes.woman,
+                              fit: BoxFit.fill,
+                            );
+                          },
+                        )
                       : Image.asset(
-                   controller.state.user?.gender=="Male"? AssetRes.man1:AssetRes.woman,
-                    fit: BoxFit.fill,
-                  ),
+                          controller.state.user?.gender == "Male"
+                              ? AssetRes.man1
+                              : AssetRes.woman,
+                          fit: BoxFit.fill,
+                        ),
                 ),
               ),
             ),
-        
-              const Sizer(width: 8),
-              /// User info column
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Text(
-                      S.current.welcome,
-                      style: TextStyle(
-                        color: ColorRes.white.withValues(alpha: 0.9),
-                        fontSize: AppSizes.fontSizeMd,
-                        fontWeight: FontWeight.w800,
-                        height: 1.3,
-                        letterSpacing: 0.2,
-                      ),
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                    const Sizer(height: 2),
-                    Text(
-                      controller.state.user?.fullName ?? "مصطفى ذكريا محمد",
-                      style:  TextStyle(
-                        color: ColorRes.white,
-                        fontSize: AppSizes.fontSizeSm,
-                        fontWeight: FontWeight.w600,
-                        height: 1.2,
-                        letterSpacing: 0.3,
-                      ),
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                  ],
-                ),
-              ),
-        
-            ],
-          ),
-      ),
-      );
-  }
 
+            const Sizer(width: 8),
+
+            /// User info column
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text(
+                    S.current.welcome,
+                    style: TextStyle(
+                      color: ColorRes.white.withValues(alpha: 0.9),
+                      fontSize: AppSizes.fontSizeMd,
+                      fontWeight: FontWeight.w800,
+                      height: 1.3,
+                      letterSpacing: 0.2,
+                    ),
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                  const Sizer(height: 2),
+                  Text(
+                    controller.state.user?.fullName ?? "مصطفى ذكريا محمد",
+                    style: TextStyle(
+                      color: ColorRes.white,
+                      fontSize: AppSizes.fontSizeSm,
+                      fontWeight: FontWeight.w600,
+                      height: 1.2,
+                      letterSpacing: 0.3,
+                    ),
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
 }

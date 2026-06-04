@@ -42,17 +42,14 @@ class _ApplicantDataWidgetState extends State<ApplicantDataWidget> {
         try {
           _selectedOfficeName =
               _offices.firstWhere((o) => o.id == widget.initialOfficeId).name;
-        } catch (e) {
-          // Initial office ID not found in list
-        }
+        } catch (_) {}
       }
 
       if (_selectedOfficeName != null &&
           !_offices.any((o) => o.name == _selectedOfficeName)) {
         _selectedOfficeName = null;
       }
-    } catch (e) {
-      debugPrint('Error parsing offices: $e');
+    } catch (_) {
       _offices = [];
     }
   }
@@ -67,9 +64,7 @@ class _ApplicantDataWidgetState extends State<ApplicantDataWidget> {
     try {
       final selected = _offices.firstWhere((o) => o.name == value);
       widget.onOfficeChanged?.call(selected.id, selected.name);
-    } catch (e) {
-      // Office not found
-    }
+    } catch (_) {}
   }
 
   @override

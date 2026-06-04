@@ -8,7 +8,6 @@ import '../../attendance/widget/attendance_dropdown_field.dart';
 import '../../attendance/widget/attendance_editable_field.dart';
 import '../../controller/car_permission/car_permission_cubit.dart';
 
-
 /// "بيانات الطلب" section of the car-permission request screen.
 ///
 /// Three fields — car brand (lookup dropdown), car color (lookup

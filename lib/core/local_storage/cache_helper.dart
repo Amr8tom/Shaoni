@@ -2,7 +2,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import 'cache_keys.dart';
 
-
 class CacheHelper {
   static SharedPreferences? preferences;
 
@@ -90,7 +89,8 @@ class CacheHelper {
         0;
   }
 
-  static Future putDouble({required CacheKeys key, required double value}) async {
+  static Future putDouble(
+      {required CacheKeys key, required double value}) async {
     await preferences?.setDouble(key.name, value);
   }
 

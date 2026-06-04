@@ -21,12 +21,12 @@ class Service extends Equatable {
 
   @override
   List<Object?> get props => [
-    id,
-    code,
-    nameAr,
-    nameEn,
-    isActive,
-    updatedAt,
-    isDeleted,
-  ];
+        id,
+        code,
+        nameAr,
+        nameEn,
+        isActive,
+        updatedAt,
+        isDeleted,
+      ];
 }

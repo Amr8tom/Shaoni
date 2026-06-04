@@ -36,7 +36,6 @@ class AttendanceCardHeader extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-
           /// Employee pill — white-translucent badge with person icon
           _EmployeePill(name: employeeName),
 
@@ -48,10 +47,12 @@ class AttendanceCardHeader extends StatelessWidget {
             style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                   color: ColorRes.white,
                   fontWeight: FontWeight.w700,
-              fontSize: AppSizes.fontSizeSm ,
+                  fontSize: AppSizes.fontSizeSm,
                 ),
           ),
-          const Sizer(width: 8,),
+          const Sizer(
+            width: 8,
+          ),
           Icon(
             Icons.calendar_today_rounded,
             color: ColorRes.white.withOpacity(0.9),

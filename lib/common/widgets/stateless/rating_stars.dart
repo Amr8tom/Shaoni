@@ -11,10 +11,10 @@ class RatingStars extends StatelessWidget {
 
   const RatingStars(
       {super.key,
-        required this.rating,
-        this.maxRating = 5,
-        this.color,
-        this.iconSize = 14});
+      required this.rating,
+      this.maxRating = 5,
+      this.color,
+      this.iconSize = 14});
 
   @override
   Widget build(BuildContext context) {
@@ -26,9 +26,7 @@ class RatingStars extends StatelessWidget {
         itemBuilder: (context, index) => Icon(
           Icons.star,
           size: iconSize,
-          color: rating > (index)
-              ? color ?? ColorRes.primary
-              : ColorRes.grey,
+          color: rating > (index) ? color ?? ColorRes.primary : ColorRes.grey,
         ),
         itemCount: maxRating,
       ),

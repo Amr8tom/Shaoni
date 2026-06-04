@@ -4,7 +4,6 @@ import '../core/constants/colors.dart';
 import '../features/notifications/domain/entities/notification_entity.dart';
 
 class Dummy {
-
   /// Dummy Activities Meals list
 
   ///
@@ -73,7 +72,7 @@ class Dummy {
       id: 1,
       title: 'تم الموافقة علي طلبك رقم #56745',
       description:
-      'تم الموافقة علي طلبك رقم #13242 الخاص باذن خروج بتاريخ 29/1/2026',
+          'تم الموافقة علي طلبك رقم #13242 الخاص باذن خروج بتاريخ 29/1/2026',
       isApproved: true,
       isRead: false,
     ),
@@ -151,5 +150,4 @@ class Dummy {
       'type': 'loan ',
     },
   ];
-
 }

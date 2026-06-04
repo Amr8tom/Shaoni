@@ -4,18 +4,15 @@ import '../../../../core/local_storage/cache_helper.dart';
 import '../../../../core/local_storage/cache_keys.dart';
 import '../model/all_services_model.dart';
 
-
 abstract class ServicesLocalDataSources {
   /// get all services
   Future<AllServicesModel> getAllServices();
 
   /// cache all services
   Future<Unit> cacheAllServices(AllServicesModel alServicesModel);
-
 }
 
 class ServicesLocalDataSourcesImp implements ServicesLocalDataSources {
-
   @override
   Future<Unit> cacheAllServices(AllServicesModel allServicesModel) async {
     final String allServices = jsonEncode(allServicesModel.toJson());
@@ -33,6 +30,4 @@ class ServicesLocalDataSourcesImp implements ServicesLocalDataSources {
       return Future.value(AllServicesModel(services: []));
     }
   }
-
-
 }

@@ -5,19 +5,18 @@ import 'package:shaoni/features/human_resources/domain/repository/repository.dar
 
 import '../../../data/model/car_permission/create_car_permission_model.dart';
 
-class CreateCarPermissionUseCase extends UseCase<CreateCarPermissionModel, CreateCarPermissionParams> {
-   HRServicesRepository repository;
+class CreateCarPermissionUseCase
+    extends UseCase<CreateCarPermissionModel, CreateCarPermissionParams> {
+  HRServicesRepository repository;
 
   CreateCarPermissionUseCase(this.repository);
 
   @override
-  Future<Either<Failure, CreateCarPermissionModel>> call({required CreateCarPermissionParams params}) async{
+  Future<Either<Failure, CreateCarPermissionModel>> call(
+      {required CreateCarPermissionParams params}) async {
     return await repository.createCarPermission(params: params);
   }
-
-
 }
-
 
 class CreateCarPermissionParams {
   final int employeeId;

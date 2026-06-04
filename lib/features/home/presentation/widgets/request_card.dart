@@ -127,18 +127,20 @@ class RequestCard extends StatelessWidget {
                       children: [
                         Text(
                           S.current.applicantName,
-                          style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                                color: ColorRes.grey2,
-                                fontSize: 10,
-                              ),
+                          style:
+                              Theme.of(context).textTheme.bodySmall?.copyWith(
+                                    color: ColorRes.grey2,
+                                    fontSize: 10,
+                                  ),
                         ),
                         const Sizer(height: 1),
                         Text(
                           applicantName!,
-                          style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                                fontWeight: FontWeight.w600,
-                                fontSize: 12,
-                              ),
+                          style:
+                              Theme.of(context).textTheme.bodySmall?.copyWith(
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: 12,
+                                  ),
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
                         ),

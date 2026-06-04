@@ -1,4 +1,3 @@
-
 import '../../../domain/entities/study/study_type.dart';
 
 class StudyTypeModel extends StudyType {

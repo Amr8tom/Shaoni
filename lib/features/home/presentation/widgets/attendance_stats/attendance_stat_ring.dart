@@ -38,6 +38,7 @@ class AttendanceStatRing extends StatelessWidget {
     return SizedBox(
       width: size,
       height: size,
+
       /// Animate the arc from 0 → target progress on first build so the
       /// dashboard feels alive when the user lands on the home screen.
       /// `TweenAnimationBuilder` naturally re-animates whenever the

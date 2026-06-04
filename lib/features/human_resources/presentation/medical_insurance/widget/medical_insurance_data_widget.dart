@@ -112,8 +112,7 @@ class MedicalInsuranceDataWidget extends StatelessWidget {
                           selected
                               ? Icons.check_box_rounded
                               : Icons.check_box_outline_blank_rounded,
-                          color:
-                              selected ? ColorRes.primary : ColorRes.grey3,
+                          color: selected ? ColorRes.primary : ColorRes.grey3,
                           size: 20,
                         ),
                         const Sizer(width: 10),
@@ -218,8 +217,7 @@ class _RadioOption extends StatelessWidget {
               label,
               style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                     color: selected ? ColorRes.primary : ColorRes.black,
-                    fontWeight:
-                        selected ? FontWeight.w600 : FontWeight.normal,
+                    fontWeight: selected ? FontWeight.w600 : FontWeight.normal,
                   ),
             ),
           ],

@@ -11,7 +11,8 @@ class GetForgetReasonUseCase extends UseCase<List<ForgetReason>, NoParams> {
   GetForgetReasonUseCase(this._repository);
 
   @override
-  Future<Either<Failure, List<ForgetReason>>> call({required NoParams params}) async {
+  Future<Either<Failure, List<ForgetReason>>> call(
+      {required NoParams params}) async {
     return _repository.getForgetReason(params: NoParams());
   }
 }

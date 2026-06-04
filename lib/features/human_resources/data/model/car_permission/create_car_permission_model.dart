@@ -7,6 +7,7 @@ class CreateCarPermissionModel extends CreateCarPermission {
     required super.requestId,
     required super.data,
   });
+
   /// from json
   factory CreateCarPermissionModel.fromJson(Map<String, dynamic> json) {
     return CreateCarPermissionModel(
@@ -26,5 +27,4 @@ class CreateCarPermissionModel extends CreateCarPermission {
       'data': data,
     };
   }
-
 }

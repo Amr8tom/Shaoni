@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:shaoni/core/constants/service_codes.dart';
 
-class ServicesNames extends Equatable{
+class ServicesNames extends Equatable {
   static List<ServiceCode> hrServiceKeys = [
     ServiceCode.outsideWorking,
     ServiceCode.attendanceUpdate,

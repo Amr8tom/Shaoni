@@ -31,7 +31,7 @@ class EditRequestButton extends StatelessWidget {
           );
           context.pushNamedAndRemoveUntil(DRoutesName.navigationMenuRoute,
               predicate: (route) => false);
-        }else if (state.isError) {
+        } else if (state.isError) {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
               content: Text(state.errorMessage ?? S.current.notImplementedYet),

@@ -12,7 +12,6 @@ abstract class NavigationLocalDataSources {
 }
 
 class NavigationLocalDataSourcesImp implements NavigationLocalDataSources {
-
   @override
   Future cacheUserData({required UserModel user}) async {
     final String UserString = jsonEncode(user.toJson());

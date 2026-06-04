@@ -38,8 +38,10 @@ class AcceptRejecttButton extends StatelessWidget {
                           params: AcceptRequestParams(
                               id: int.parse(requestID),
                               statusCode: 6,
-                              comment:  context.read<MyRequestsCubit>().commentController.text
-                          ));
+                              comment: context
+                                  .read<MyRequestsCubit>()
+                                  .commentController
+                                  .text));
                     },
                     child: ClipRRect(
                       borderRadius: BorderRadius.all(
@@ -70,6 +72,7 @@ class AcceptRejecttButton extends StatelessWidget {
                   ),
                 ),
                 const Sizer(width: 16),
+
                 /// reject request button
                 Expanded(
                   flex: 1,
@@ -79,8 +82,10 @@ class AcceptRejecttButton extends StatelessWidget {
                           params: AcceptRequestParams(
                               id: int.parse(requestID),
                               statusCode: 8,
-                              comment:  context.read<MyRequestsCubit>().commentController.text
-                          ));
+                              comment: context
+                                  .read<MyRequestsCubit>()
+                                  .commentController
+                                  .text));
                     },
                     child: ClipRRect(
                       borderRadius: BorderRadius.all(

@@ -17,7 +17,6 @@ import '../../../human_resources/presentation/widgets/general_request_templates/
 import '../../../human_resources/presentation/widgets/general_request_templates/date_data_widget.dart';
 import '../../../human_resources/presentation/widgets/general_request_templates/file_upload_widget.dart';
 
-
 class CreateTrainingRequestForm extends StatelessWidget {
   final int? requestId;
 
@@ -55,8 +54,7 @@ class CreateTrainingRequestForm extends StatelessWidget {
                   CustomDialogImgTitleDes(
                     button1: S.current.myOrders,
                     button2: S.current.home,
-                    orderNumber:
-                        _isEditMode ? '' : (state.requestNumber ?? ''),
+                    orderNumber: _isEditMode ? '' : (state.requestNumber ?? ''),
                     onTab2: () {
                       context.pushNamedAndRemoveUntil(
                         DRoutesName.navigationMenuRoute,
@@ -113,9 +111,8 @@ class CreateTrainingRequestForm extends StatelessWidget {
                               const Sizer(height: 35),
                               Text(
                                 S.current.requestDetails,
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .headlineMedium,
+                                style:
+                                    Theme.of(context).textTheme.headlineMedium,
                               ),
                               const TrainingRequestDataWidget(),
 
@@ -123,8 +120,8 @@ class CreateTrainingRequestForm extends StatelessWidget {
                               const Sizer(height: 35),
                               FileUploadWidget(
                                 onPickedFile: (fileName, base64String) {
-                                  controller.attachmentFileNameController
-                                      .text = fileName ?? '';
+                                  controller.attachmentFileNameController.text =
+                                      fileName ?? '';
                                   controller.attachmentFileController.text =
                                       base64String ?? '';
                                 },

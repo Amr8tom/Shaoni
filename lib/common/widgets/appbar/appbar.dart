@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:shaoni/core/extentions/navigation_extension.dart';
@@ -9,7 +8,6 @@ import '../../../core/constants/asset_resoures.dart';
 import '../../../core/constants/colors.dart';
 import '../../../core/device/device_utility.dart';
 import '../../../core/routing/route_names.dart';
-import '../../../features/navigation/presentation/controllers/navigation_cubit.dart';
 import '../../../features/navigation/presentation/widgets/profile_header.dart';
 import '../sized_boxes/sizer.dart';
 
@@ -58,26 +56,24 @@ class DAppBar extends StatelessWidget implements PreferredSizeWidget {
     return Stack(
       children: [
         Container(
-          decoration: BoxDecoration(
-            color: showBackGroundColor ? ColorRes.grey6 : ColorRes.primary,
-            boxShadow: [
-              BoxShadow(
-                color: ColorRes.gold.withOpacity(0.1),
-                blurRadius: 10,
-                spreadRadius: 2,
+            decoration: BoxDecoration(
+              color: showBackGroundColor ? ColorRes.grey6 : ColorRes.primary,
+              boxShadow: [
+                BoxShadow(
+                  color: ColorRes.gold.withOpacity(0.1),
+                  blurRadius: 10,
+                  spreadRadius: 2,
+                ),
+              ],
+              borderRadius: BorderRadius.only(
+                bottomLeft: Radius.circular(AppSizes.borderRadiusLarge * 1.5),
+                bottomRight: Radius.circular(AppSizes.borderRadiusLarge * 1.5),
               ),
-            ],
-            borderRadius: BorderRadius.only(
-              bottomLeft: Radius.circular(AppSizes.borderRadiusLarge * 1.5),
-              bottomRight: Radius.circular(AppSizes.borderRadiusLarge * 1.5),
             ),
-          ),
-          height:  AppSizes.appBarHeight * 2.7
-        ),
+            height: AppSizes.appBarHeight * 2.7),
         Container(
           child: Column(
             children: [
-              // const Sizer(height: 20),
               AppBar(
                 elevation: 0.0,
                 titleTextStyle: TextStyle(
@@ -88,38 +84,33 @@ class DAppBar extends StatelessWidget implements PreferredSizeWidget {
                 backgroundColor: bgColor ?? ColorRes.transparent,
                 automaticallyImplyLeading: false,
                 // leadingWidth: 85.w,
-                leading:
-                    showBackArrow
-                        ? IconButton(
-                          onPressed: () {
-                            if (doSomeThing != null) {
-                              doSomeThing!();
-                            }
-                            context.pop(); // Navigate back
-                          },
-                          icon: Icon(
-                            Icons.arrow_back_ios_rounded,
-                            // Use arrow_back_ios for a more modern look
-                            size: AppSizes.iconMd,
-                            color:
-                                arrowBackColor
-                                    ? ColorRes.white
-                                    : ColorRes.white,
-                          ),
-                        )
-                        : Padding(
-                          padding: const EdgeInsets.only(right: 20.0),
-                          child: leadingWidget,
+                leading: showBackArrow
+                    ? IconButton(
+                        onPressed: () {
+                          if (doSomeThing != null) {
+                            doSomeThing!();
+                          }
+                          context.pop(); // Navigate back
+                        },
+                        icon: Icon(
+                          Icons.arrow_back_ios_rounded,
+                          // Use arrow_back_ios for a more modern look
+                          size: AppSizes.iconMd,
+                          color:
+                              arrowBackColor ? ColorRes.white : ColorRes.white,
                         ),
+                      )
+                    : Padding(
+                        padding: const EdgeInsets.only(right: 20.0),
+                        child: leadingWidget,
+                      ),
                 title: Text(title ?? ""),
                 centerTitle: centerTitle,
-                actions:
-                    actions ??
+                actions: actions ??
                     [
                       const Sizer(width: 10),
                       isHeader ? const ProfileHeader() : const Sizer(),
-                      // const Spacer(),
-const Sizer(width: 20),
+                      const Sizer(width: 20),
                       IconButton(
                         onPressed: () {
                           context.pushNamed(
@@ -130,32 +121,28 @@ const Sizer(width: 20),
                           AssetRes.notificationIcon,
                           color: ColorRes.white,
                         ),
-
                       ),
                       const Sizer(width: 7),
-
-                      showMenu?  IconButton(
-                        onPressed: () {
-                          debugPrint('Menu icon tapped');
-                          if (scaffoldKey != null &&
-                              scaffoldKey!.currentState != null) {
-                            scaffoldKey!.currentState!.openDrawer();
-                          } else {
-                            Scaffold.of(context).openDrawer();
-                          }
-                        },
-                        icon: SvgPicture.asset(
-                          AssetRes.menuIcon,
-                          color: ColorRes.white,
-                        ),
-
-                      ):Sizer(),
-
+                      showMenu
+                          ? IconButton(
+                              onPressed: () {
+                                if (scaffoldKey != null &&
+                                    scaffoldKey!.currentState != null) {
+                                  scaffoldKey!.currentState!.openDrawer();
+                                } else {
+                                  Scaffold.of(context).openDrawer();
+                                }
+                              },
+                              icon: SvgPicture.asset(
+                                AssetRes.menuIcon,
+                                color: ColorRes.white,
+                              ),
+                            )
+                          : Sizer(),
                       const Sizer(width: 10),
                     ],
                 toolbarHeight: DDeviceUtils.getAppBarHeight().sp * 1,
               ),
-
               Container(
                 height: 3,
                 decoration: BoxDecoration(
@@ -187,5 +174,5 @@ const Sizer(width: 20),
 
   @override
   Size get preferredSize =>
-      Size.fromHeight(appHeight ?? AppSizes.appBarHeight *1.8);
+      Size.fromHeight(appHeight ?? AppSizes.appBarHeight * 1.8);
 }

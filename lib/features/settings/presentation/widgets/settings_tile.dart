@@ -48,8 +48,7 @@ class SettingsTile extends StatelessWidget {
   Widget build(BuildContext context) {
     /// Pull the accent color once so primary / destructive variants share
     /// the exact same layout / sizing.
-    final Color accent =
-        isDestructive ? ColorRes.error : ColorRes.primary;
+    final Color accent = isDestructive ? ColorRes.error : ColorRes.primary;
 
     return Material(
       color: ColorRes.transparent,
@@ -81,8 +80,7 @@ class SettingsTile extends StatelessWidget {
                 height: AppSizes.iconLg * 1.4,
                 decoration: BoxDecoration(
                   color: accent.withOpacity(0.10),
-                  borderRadius:
-                      BorderRadius.circular(AppSizes.borderRadiusMd),
+                  borderRadius: BorderRadius.circular(AppSizes.borderRadiusMd),
                 ),
                 child: Icon(icon, color: accent, size: AppSizes.iconMd),
               ),
@@ -100,9 +98,8 @@ class SettingsTile extends StatelessWidget {
                           .textTheme
                           .headlineSmall
                           ?.copyWith(
-                            color: isDestructive
-                                ? ColorRes.error
-                                : ColorRes.black,
+                            color:
+                                isDestructive ? ColorRes.error : ColorRes.black,
                             fontWeight: FontWeight.w600,
                           ),
                     ),
@@ -126,7 +123,7 @@ class SettingsTile extends StatelessWidget {
               /// Trailing — chevron by default
               trailing ??
                   Icon(
-                   Icons.arrow_forward_ios_rounded,
+                    Icons.arrow_forward_ios_rounded,
                     size: AppSizes.iconSm,
                     color: ColorRes.grey2,
                   ),

@@ -41,5 +41,13 @@ final class ServicesState extends Equatable {
   }
 
   @override
-  List<Object?> get props => [status, services, HRservices, Studyservices, purchasesServices, salariesServices, reservationsServices];
+  List<Object?> get props => [
+        status,
+        services,
+        HRservices,
+        Studyservices,
+        purchasesServices,
+        salariesServices,
+        reservationsServices
+      ];
 }

@@ -1,7 +1,6 @@
 import '../../domain/entities/approve_request.dart';
 import '../../domain/entities/odoo_request.dart';
 
-
 class ApproveRequestModel extends ApproveRequest {
   const ApproveRequestModel(
       {required super.requestId,
@@ -31,7 +30,7 @@ class ApproveRequestModel extends ApproveRequest {
       'statusNameAr': statusNameAr,
       'statusNameEn': statusNameEn,
       'statusId': statusId,
-      'odooResult': odooResult?.toJson()??null,
+      'odooResult': odooResult?.toJson() ?? null,
       'comment': comment,
     };
   }

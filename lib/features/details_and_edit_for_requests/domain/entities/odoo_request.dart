@@ -47,7 +47,7 @@ class OdooRequest extends Equatable {
   }
 
   /// toJson
-   Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson() {
     return {
       'success': success,
       'code': code,
@@ -59,6 +59,7 @@ class OdooRequest extends Equatable {
       'externalStateId': externalStateId,
     };
   }
+
   @override
   List<Object?> get props => [
         success,

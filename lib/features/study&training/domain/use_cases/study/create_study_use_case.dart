@@ -5,7 +5,8 @@ import 'package:shaoni/core/utils/usecases/base_usecase.dart';
 import '../../entities/study/create_study_response.dart';
 import '../../repository/repository.dart';
 
-class CreateStudyUseCase extends UseCase<CreateStudyResponse, CreateStudyParams> {
+class CreateStudyUseCase
+    extends UseCase<CreateStudyResponse, CreateStudyParams> {
   final StudyServicesRepository _repository;
 
   CreateStudyUseCase(this._repository);

@@ -28,16 +28,21 @@ class ContinueButton extends StatelessWidget {
                     context,
                   ).textTheme.titleMedium?.copyWith(color: ColorRes.yellow),
                 ),
-                const Sizer(width: 8,),
-                Icon(Icons.arrow_forward_ios,color: ColorRes.yellow,size: AppSizes.ld,),
+                const Sizer(
+                  width: 8,
+                ),
+                Icon(
+                  Icons.arrow_forward_ios,
+                  color: ColorRes.yellow,
+                  size: AppSizes.ld,
+                ),
               ],
             ),
             style: ElevatedButton.styleFrom(
               backgroundColor: ColorRes.primary,
-              minimumSize: Size(double.infinity, AppSizes.buttonHeight*1.2),
+              minimumSize: Size(double.infinity, AppSizes.buttonHeight * 1.2),
               shape: RoundedRectangleBorder(borderRadius: BorderRadius.zero),
             ),
-
           ),
         ),
       ],

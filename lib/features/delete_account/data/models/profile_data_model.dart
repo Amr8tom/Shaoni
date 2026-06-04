@@ -1,11 +1,13 @@
 class ProfileDataModel {
   ProfileDataModel({
-      this.status, 
-      this.profile,});
+    this.status,
+    this.profile,
+  });
 
   ProfileDataModel.fromJson(dynamic json) {
     status = json['status'];
-    profile = json['profile'] != null ? Profile.fromJson(json['profile']) : null;
+    profile =
+        json['profile'] != null ? Profile.fromJson(json['profile']) : null;
   }
   String? status;
   Profile? profile;
@@ -18,21 +20,21 @@ class ProfileDataModel {
     }
     return map;
   }
-
 }
 
 class Profile {
   Profile({
-      this.id, 
-      this.firstName, 
-      this.lastName, 
-      this.email, 
-      this.status, 
-      this.featuredImageId, 
-      this.role, 
-      this.deletedAt, 
-      this.createdAt, 
-      this.updatedAt,});
+    this.id,
+    this.firstName,
+    this.lastName,
+    this.email,
+    this.status,
+    this.featuredImageId,
+    this.role,
+    this.deletedAt,
+    this.createdAt,
+    this.updatedAt,
+  });
 
   Profile.fromJson(dynamic json) {
     id = json['id'];
@@ -71,5 +73,4 @@ class Profile {
     map['updated_at'] = updatedAt;
     return map;
   }
-
 }

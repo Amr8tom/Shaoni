@@ -32,7 +32,8 @@ class CreateMedicalInsuranceForm extends StatelessWidget {
         appBar: DAppBar(
           showMenu: false,
           showBackArrow: true,
-          title: _isEditMode ? S.current.editRequest : S.current.medicalInsurance,
+          title:
+              _isEditMode ? S.current.editRequest : S.current.medicalInsurance,
         ),
         extendBodyBehindAppBar: true,
         backgroundColor: ColorRes.grey6,
@@ -54,8 +55,7 @@ class CreateMedicalInsuranceForm extends StatelessWidget {
                   CustomDialogImgTitleDes(
                     button1: S.current.myOrders,
                     button2: S.current.home,
-                    orderNumber:
-                        _isEditMode ? '' : (state.requestNumber ?? ''),
+                    orderNumber: _isEditMode ? '' : (state.requestNumber ?? ''),
                     onTab2: () {
                       context.pushNamedAndRemoveUntil(
                         DRoutesName.navigationMenuRoute,
@@ -112,9 +112,8 @@ class CreateMedicalInsuranceForm extends StatelessWidget {
                               const Sizer(height: 35),
                               Text(
                                 S.current.requestDetails,
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .headlineMedium,
+                                style:
+                                    Theme.of(context).textTheme.headlineMedium,
                               ),
                               const MedicalInsuranceDataWidget(),
 
@@ -122,8 +121,8 @@ class CreateMedicalInsuranceForm extends StatelessWidget {
                               const Sizer(height: 35),
                               FileUploadWidget(
                                 onPickedFile: (fileName, base64String) {
-                                  controller.attachmentFileNameController
-                                      .text = fileName ?? '';
+                                  controller.attachmentFileNameController.text =
+                                      fileName ?? '';
                                   controller.attachmentFileController.text =
                                       base64String ?? '';
                                 },

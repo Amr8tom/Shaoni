@@ -45,9 +45,7 @@ class ProductOrderDetailsWidget extends StatelessWidget {
               /// Is Gift
               OrderTextCard(
                 title: S.current.isGift,
-                result: (po?.isGift ?? false)
-                    ? S.current.yes
-                    : S.current.no,
+                result: (po?.isGift ?? false) ? S.current.yes : S.current.no,
               ),
               const Sizer(height: 12),
 

@@ -28,12 +28,11 @@ class AttendanceInfoBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Color valueColor =
-        isAvailable ? ColorRes.black : ColorRes.grey2;
+    final Color valueColor = isAvailable ? ColorRes.black : ColorRes.grey2;
 
     return Container(
       padding: EdgeInsets.all(AppSizes.padding * 0.9),
-      height: AppSizes.fullHeight/5,
+      height: AppSizes.fullHeight / 5,
       decoration: BoxDecoration(
         color: ColorRes.grey6,
         borderRadius: BorderRadius.circular(AppSizes.borderRadiusLg),
@@ -64,7 +63,7 @@ class AttendanceInfoBox extends StatelessWidget {
 
           /// Detail line (hijri remainder / dash for empty)
           Text(
-            detail.substring(0,15),
+            detail.substring(0, 15),
             style: Theme.of(context).textTheme.bodySmall?.copyWith(
                   color: valueColor.withOpacity(0.8),
                   fontSize: AppSizes.fontSizeSm * 0.85,

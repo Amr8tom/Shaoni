@@ -56,7 +56,7 @@ class _EmployeeTaskCard extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         color: ColorRes.white,
-        border: Border.all(color: ColorRes.grey5),
+        border: Border.all(color: ColorRes.greyShade300),
         borderRadius: BorderRadius.circular(12),
       ),
       padding: const EdgeInsets.all(16),
@@ -68,7 +68,7 @@ class _EmployeeTaskCard extends StatelessWidget {
             'Employee ID: ${employee.id}',
             style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                   fontWeight: FontWeight.w600,
-                  color: ColorRes.black,
+                  color: ColorRes.greyShade600,
                 ),
           ),
           const Sizer(height: 14),
@@ -144,17 +144,17 @@ class _EmployeeTaskCard extends StatelessWidget {
                       controller: data.tasksController,
                       decoration: InputDecoration(
                         hintText: 'المهام الموكلة لهذا الموظف...',
-                        hintStyle: const TextStyle(
-                            fontSize: 12, color: ColorRes.grey2),
+                        hintStyle:  TextStyle(
+                            fontSize: 12, color: ColorRes.greyShade400),
                         contentPadding: const EdgeInsets.symmetric(
                             horizontal: 12, vertical: 10),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(8),
-                          borderSide: const BorderSide(color: ColorRes.grey5),
+                          borderSide:  BorderSide(color: ColorRes.greyShade300),
                         ),
                         enabledBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(8),
-                          borderSide: const BorderSide(color: ColorRes.grey5),
+                          borderSide:  BorderSide(color: ColorRes.greyShade300),
                         ),
                       ),
                       validator: (v) => (v == null || v.isEmpty)
@@ -186,17 +186,16 @@ class _EmployeeTaskCard extends StatelessWidget {
             controller: data.privateTasksController,
             decoration: InputDecoration(
               hintText: 'مهمة خاصة ...',
-              hintStyle:
-                  const TextStyle(fontSize: 12, color: ColorRes.grey2),
+              hintStyle:  TextStyle(fontSize: 12, color: ColorRes.greyShade400),
               contentPadding:
                   const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(8),
-                borderSide: const BorderSide(color: ColorRes.grey5),
+                borderSide:  BorderSide(color: ColorRes.greyShade300),
               ),
               enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(8),
-                borderSide: const BorderSide(color: ColorRes.grey5),
+                borderSide:  BorderSide(color: ColorRes.greyShade300),
               ),
             ),
             validator: (v) =>
@@ -224,7 +223,7 @@ class _StyledDropdown extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        border: Border.all(color: ColorRes.grey5),
+        border: Border.all(color: ColorRes.greyShade300),
         borderRadius: BorderRadius.circular(8),
       ),
       padding: const EdgeInsets.symmetric(horizontal: 10),

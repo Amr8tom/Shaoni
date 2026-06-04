@@ -24,7 +24,7 @@ class MissingAttendanceHistoryScreen extends StatelessWidget {
           fontSize: AppSizes.fontSizeMd,
           actions: const [],
         ),
-        body: const  AttendanceMissingItem(),
+        body: const AttendanceMissingItem(),
       ),
     );
   }

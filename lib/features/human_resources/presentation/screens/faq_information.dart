@@ -25,7 +25,8 @@ class FAQInformation extends StatelessWidget {
         backgroundColor: ColorRes.grey6,
         extendBodyBehindAppBar: true,
         appBar: DAppBar(
-          showBackArrow: true,),
+          showBackArrow: true,
+        ),
         body: Padding(
           padding: EdgeInsets.only(
             left: AppSizes.padding,
@@ -45,14 +46,14 @@ class FAQInformation extends StatelessWidget {
                     Text(
                       S.current.exitPermissionRequest,
                       style: Theme.of(context).textTheme.titleSmall?.copyWith(
-                        fontWeight: FontWeight.bold,
-                      ),
+                            fontWeight: FontWeight.bold,
+                          ),
                     ),
                     const Sizer(height: 24),
                     const ServicesInformationGridview(),
                     // Extra space so content doesn't hide behind the button
                     Sizer(
-                      height: AppSizes.heightcontainer *7,
+                      height: AppSizes.heightcontainer * 7,
                     ),
                   ],
                 ),
@@ -84,7 +85,9 @@ class FAQInformation extends StatelessWidget {
                         child: Center(
                           child: Text(
                             S.current.createRequest,
-                            style: Theme.of(context).textTheme.bodyLarge
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyLarge
                                 ?.copyWith(color: ColorRes.white),
                           ),
                         ),

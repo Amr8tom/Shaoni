@@ -37,6 +37,4 @@ enum CacheKeys {
   departmentAddress,
   offices,
   officesList,
-
-
 }

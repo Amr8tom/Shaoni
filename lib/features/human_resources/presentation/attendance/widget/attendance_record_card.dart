@@ -10,7 +10,8 @@ import 'attendance_check_in_box.dart';
 import '../widget/attendance_info_box.dart';
 
 class AttendanceRecordCard extends StatelessWidget {
-  const AttendanceRecordCard({super.key, required this.record,required this.onTap});
+  const AttendanceRecordCard(
+      {super.key, required this.record, required this.onTap});
 
   final AttendanceRecord record;
   final VoidCallback onTap;
@@ -22,7 +23,6 @@ class AttendanceRecordCard extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
           color: ColorRes.white,
-
           borderRadius: BorderRadius.circular(AppSizes.borderRadiusLg),
           border: Border.all(color: ColorRes.grey5, width: 1),
           boxShadow: [
@@ -39,13 +39,14 @@ class AttendanceRecordCard extends StatelessWidget {
           children: [
             /// 1) Header banner
             AttendanceCardHeader(
-              title: '${record.gregorianDate.substring(0,10)}',
+              title: '${record.gregorianDate.substring(0, 10)}',
               employeeName: record.employeeName,
             ),
 
             /// 2) Body — check-in + checkout/outmode row
             Padding(
-              padding: EdgeInsets.symmetric(horizontal:AppSizes.padding,vertical: AppSizes.padding ),
+              padding: EdgeInsets.symmetric(
+                  horizontal: AppSizes.padding, vertical: AppSizes.padding),
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [

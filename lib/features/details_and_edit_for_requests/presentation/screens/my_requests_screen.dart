@@ -14,58 +14,58 @@ class MyRequestsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final navController = context.watch<NavigationCubit>();
-   return navController.state.user?.managerId==0?  DefaultTabController(
-      length: 2,
-      child: Column(
-        children: [
-          TabBar(
-            indicatorColor: Theme.of(context).primaryColor, // Or ColorRes.primary
-            labelColor: Theme.of(context).primaryColor,
-            unselectedLabelColor: ColorRes.grey, // Or ColorRes.grey
-            tabs:  [
-              Tab(text: S.current.myOrders),
-              Tab(text: S.current.submittedRequests),
-            ],
-          ),
-          // Sizer(height: 10,),
-          Expanded(child:TabBarView(children:
-          [
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: AppSizes.padding),
-              child: SizedBox(
-                height: AppSizes.fullHeight * 0.79,
-                child: BlocBuilder<MyRequestsCubit, MyRequestsState>(
-                  builder: (context, state) {
-                    return const UserRequestsGridView();
-                  },
+    return navController.state.user?.managerId == 0
+        ? DefaultTabController(
+            length: 2,
+            child: Column(
+              children: [
+                TabBar(
+                  indicatorColor: Theme.of(context).primaryColor,
+                  labelColor: Theme.of(context).primaryColor,
+                  unselectedLabelColor: ColorRes.grey,
+                  tabs: [
+                    Tab(text: S.current.myOrders),
+                    Tab(text: S.current.submittedRequests),
+                  ],
                 ),
+                Expanded(
+                    child: TabBarView(children: [
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: AppSizes.padding),
+                    child: SizedBox(
+                      height: AppSizes.fullHeight * 0.79,
+                      child: BlocBuilder<MyRequestsCubit, MyRequestsState>(
+                        builder: (context, state) {
+                          return const UserRequestsGridView();
+                        },
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: AppSizes.padding),
+                    child: SizedBox(
+                      height: AppSizes.fullHeight * 0.79,
+                      child: BlocBuilder<MyRequestsCubit, MyRequestsState>(
+                        builder: (context, state) {
+                          return const ManagerRequestsGridView();
+                        },
+                      ),
+                    ),
+                  ),
+                ])),
+              ],
+            ),
+          )
+        : Padding(
+            padding: EdgeInsets.symmetric(horizontal: AppSizes.padding),
+            child: SizedBox(
+              height: AppSizes.fullHeight * 0.79,
+              child: BlocBuilder<MyRequestsCubit, MyRequestsState>(
+                builder: (context, state) {
+                  return const UserRequestsGridView();
+                },
               ),
             ),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: AppSizes.padding),
-              child: SizedBox(
-                height: AppSizes.fullHeight * 0.79,
-                child: BlocBuilder<MyRequestsCubit, MyRequestsState>(
-                  builder: (context, state) {
-                    return const ManagerRequestsGridView();
-                  },
-                ),
-              ),
-            ),
-          ]) ),
-
-        ],
-      ),
-    ): Padding(
-     padding: EdgeInsets.symmetric(horizontal: AppSizes.padding),
-     child: SizedBox(
-       height: AppSizes.fullHeight * 0.79,
-       child: BlocBuilder<MyRequestsCubit, MyRequestsState>(
-         builder: (context, state) {
-           return const UserRequestsGridView();
-         },
-       ),
-     ),
-   );
+          );
   }
 }

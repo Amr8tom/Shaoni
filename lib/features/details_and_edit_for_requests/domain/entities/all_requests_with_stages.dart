@@ -196,6 +196,7 @@ class AllRequestsWithStages extends Equatable {
       'items': items.map((e) => e.toJson()).toList(),
     };
   }
+
   /// from Json
   factory AllRequestsWithStages.fromJson(Map<String, dynamic> json) {
     return AllRequestsWithStages(
@@ -217,13 +218,12 @@ class AllRequestsWithStages extends Equatable {
         .toList();
   }
 
-
   @override
   List<Object?> get props => [
-    pageNumber,
-    pageSize,
-    totalCount,
-    totalPages,
-    items,
-  ];
+        pageNumber,
+        pageSize,
+        totalCount,
+        totalPages,
+        items,
+      ];
 }

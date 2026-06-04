@@ -14,9 +14,7 @@ Future<void> checkForUpdate({required BuildContext context}) async {
         versionCode: updateInfo.availableVersionCode?.toString(),
       );
     }
-  }).catchError((error) {
-    debugPrint('Error checking for update: $error');
-  });
+  }).catchError((_) {});
 }
 
 void _showUpdateDialog({
@@ -139,7 +137,7 @@ void _showUpdateDialog({
                       onPressed: () {
                         Navigator.of(context).pop();
                         InAppUpdate.performImmediateUpdate().catchError(
-                          (error) => debugPrint('Update error: $error'),
+                          (_) => AppUpdateResult.inAppUpdateFailed,
                         );
                       },
                     ),

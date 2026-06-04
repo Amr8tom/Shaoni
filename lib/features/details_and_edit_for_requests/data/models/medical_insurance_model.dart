@@ -17,9 +17,8 @@ class MedicalInsuranceModel extends MedicalInsuranceDetails {
     return MedicalInsuranceModel(
       externalName: json['externalName'] ?? '',
       date: json['date'] ?? '',
-      insuranceClassName: json['insuranceClassName'] ??
-          json['newInsuranceClassName'] ??
-          '',
+      insuranceClassName:
+          json['insuranceClassName'] ?? json['newInsuranceClassName'] ?? '',
       includeFamilyMember: json['includeFamilyMember'] ?? false,
       reasonForUpgrade: json['reasonForUpgrade'] ?? '',
       note: json['note'] ?? '',

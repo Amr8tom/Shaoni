@@ -46,7 +46,8 @@ class DTextFormFieldTheme {
     suffixIconColor: ColorRes.grey,
     labelStyle:
         const TextStyle().copyWith(fontSize: 14.sp, color: ColorRes.white),
-    hintStyle: const TextStyle().copyWith(fontSize: 14.sp, color: ColorRes.white),
+    hintStyle:
+        const TextStyle().copyWith(fontSize: 14.sp, color: ColorRes.white),
     floatingLabelStyle:
         const TextStyle().copyWith(color: ColorRes.white.withOpacity(0.8)),
     border: const OutlineInputBorder().copyWith(

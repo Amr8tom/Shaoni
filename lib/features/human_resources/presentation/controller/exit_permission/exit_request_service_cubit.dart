@@ -163,8 +163,8 @@ class ExitRequestServiceCubit extends Cubit<ExitRequestServiceState> {
     final result = await _updateExitPermissionUseCase.call(
       params: UpdateExitPermissionParams(
         requestId: requestId,
-        employeeId: int.parse(
-            CacheHelper.getString(key: CacheKeys.employeeId) ?? "1"),
+        employeeId:
+            int.parse(CacheHelper.getString(key: CacheKeys.employeeId) ?? "1"),
         officeId: officeIDController.text.isEmpty
             ? 0
             : int.parse(officeIDController.text),

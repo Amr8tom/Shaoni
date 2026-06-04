@@ -9,6 +9,7 @@ class AttendanceRequestDetailsModel extends AttendanceRequestDetails {
       required super.attendanceType,
       required super.forgetReason,
       required super.missingAttendance});
+
   /// fromJson
   factory AttendanceRequestDetailsModel.fromJson(Map<String, dynamic> json) {
     return AttendanceRequestDetailsModel(
@@ -21,6 +22,7 @@ class AttendanceRequestDetailsModel extends AttendanceRequestDetails {
       missingAttendance: json['missingAttendance'],
     );
   }
+
   /// toJson
   Map<String, dynamic> toJson() {
     return {

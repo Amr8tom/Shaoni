@@ -12,7 +12,8 @@ class RequestStageCard extends StatelessWidget {
   final CurrentStatus status;
   final String serviceType;
 
-  const RequestStageCard({super.key, required this.status,required this.serviceType});
+  const RequestStageCard(
+      {super.key, required this.status, required this.serviceType});
 
   // ─── helpers ────────────────────────────────────────────────────────────────
 
@@ -23,7 +24,8 @@ class RequestStageCard extends StatelessWidget {
         : (status.nameEn ?? status.nameAr ?? '');
   }
 
-  RequestStatusEnum get _enum => status.getRequestStatusEnum(serviceType: serviceType);
+  RequestStatusEnum get _enum =>
+      status.getRequestStatusEnum(serviceType: serviceType);
 
   int get _activeIndex {
     switch (_enum) {

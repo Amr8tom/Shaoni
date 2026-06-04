@@ -31,7 +31,10 @@ class DAppBarTheme {
     shadowColor: ColorRes.black,
     iconTheme: IconThemeData(color: ColorRes.white, size: 24),
     actionsIconTheme: IconThemeData(color: ColorRes.white, size: 24),
-    titleTextStyle: TextStyle( fontFamily: 'Cairo',
-        fontSize: 32, fontWeight: FontWeight.w700, color: ColorRes.white),
+    titleTextStyle: TextStyle(
+        fontFamily: 'Cairo',
+        fontSize: 32,
+        fontWeight: FontWeight.w700,
+        color: ColorRes.white),
   );
 }

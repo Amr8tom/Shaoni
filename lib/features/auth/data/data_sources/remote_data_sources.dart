@@ -15,10 +15,10 @@ import '../../domain/usecases/login_use_case.dart';
 abstract class AuthRemoteDataSources {
   /// login
   Future<LoginEntity> login({required LoginParams params});
+
   /// change password
   Future<NewPassword> changePassword({required NewPasswordParams params});
 }
-
 
 class AuthRemoteDataSourcesImp implements AuthRemoteDataSources {
   final DioHelper _dio;
@@ -27,33 +27,32 @@ class AuthRemoteDataSourcesImp implements AuthRemoteDataSources {
 
   @override
   Future<LoginEntity> login({required LoginParams params}) async {
-    try{
-    final reponse = await _dio.postData(URL: URL.login,body: params.toJson());
-   if (reponse != null) {
+    try {
+      final reponse =
+          await _dio.postData(URL: URL.login, body: params.toJson());
+      if (reponse != null) {
         return LoginModel.fromJson(reponse);
-    } else {
-      throw ServerFailure(message: 'server failure');
-    }} on ServerFailure catch (e) {
+      } else {
+        throw ServerFailure(message: 'server failure');
+      }
+    } on ServerFailure catch (e) {
       throw ServerFailure(message: e.message);
     }
-  
   }
 
   @override
-  Future<NewPassword> changePassword({required NewPasswordParams params}) async{
-    try{
-      final reponse = await _dio.postData(URL: URL.changePassword,body: params.toJson());
+  Future<NewPassword> changePassword(
+      {required NewPasswordParams params}) async {
+    try {
+      final reponse =
+          await _dio.postData(URL: URL.changePassword, body: params.toJson());
       if (reponse != null) {
         return NewPasswordModel.fromJson(reponse);
       } else {
         throw ServerFailure(message: 'server failure');
-      }} on ServerFailure catch (e) {
+      }
+    } on ServerFailure catch (e) {
       throw ServerFailure(message: e.message);
     }
-
-
-
-
   }
-
 }

@@ -19,59 +19,59 @@ class CustomBadge extends StatelessWidget {
     this.left,
     this.width,
     this.borderRadius,
-    this.isPositioned=true,
+    this.isPositioned = true,
   });
 
   @override
   Widget build(BuildContext context) {
-    return isPositioned?Positioned(
-      top: top,
-      right: right,
-      bottom: bottom,
-      left: left,
-      child: Container(
-        padding: EdgeInsets.all(AppSizes.padding/4),
-        width: width ?? AppSizes.widthcontainer / 1.5,
-        decoration: BoxDecoration(
-          color: backgroundColor,
-          borderRadius:
-              borderRadius != null
+    return isPositioned
+        ? Positioned(
+            top: top,
+            right: right,
+            bottom: bottom,
+            left: left,
+            child: Container(
+              padding: EdgeInsets.all(AppSizes.padding / 4),
+              width: width ?? AppSizes.widthcontainer / 1.5,
+              decoration: BoxDecoration(
+                color: backgroundColor,
+                borderRadius: borderRadius != null
+                    ? BorderRadius.all(Radius.circular(borderRadius!))
+                    : BorderRadius.only(
+                        topRight: Radius.circular(AppSizes.borderRadiusSm),
+                        bottomRight: Radius.circular(AppSizes.borderRadiusSm),
+                      ),
+              ),
+              child: Center(
+                child: Text(
+                  badgeTitle,
+                  style: Theme.of(
+                    context,
+                  ).textTheme.bodySmall!.copyWith(color: ColorRes.white),
+                ),
+              ),
+            ),
+          )
+        : Container(
+            height: AppSizes.heightcontainer / 2.2,
+            width: width ?? AppSizes.widthcontainer / 1.5,
+            decoration: BoxDecoration(
+              color: backgroundColor,
+              borderRadius: borderRadius != null
                   ? BorderRadius.all(Radius.circular(borderRadius!))
                   : BorderRadius.only(
-                    topRight: Radius.circular(AppSizes.borderRadiusSm),
-                    bottomRight: Radius.circular(AppSizes.borderRadiusSm),
-                  ),
-        ),
-        child: Center(
-          child: Text(
-            badgeTitle,
-            style: Theme.of(
-              context,
-            ).textTheme.bodySmall!.copyWith(color: ColorRes.white),
-          ),
-        ),
-      ),
-    ): Container(
-      height: AppSizes.heightcontainer / 2.2,
-      width: width ?? AppSizes.widthcontainer / 1.5,
-      decoration: BoxDecoration(
-        color: backgroundColor,
-        borderRadius:
-        borderRadius != null
-            ? BorderRadius.all(Radius.circular(borderRadius!))
-            : BorderRadius.only(
-          topRight: Radius.circular(AppSizes.borderRadiusSm),
-          bottomRight: Radius.circular(AppSizes.borderRadiusSm),
-        ),
-      ),
-      child: Center(
-        child: Text(
-          badgeTitle,
-          style: Theme.of(
-            context,
-          ).textTheme.bodySmall!.copyWith(color: ColorRes.white),
-        ),
-      ),
-    );
+                      topRight: Radius.circular(AppSizes.borderRadiusSm),
+                      bottomRight: Radius.circular(AppSizes.borderRadiusSm),
+                    ),
+            ),
+            child: Center(
+              child: Text(
+                badgeTitle,
+                style: Theme.of(
+                  context,
+                ).textTheme.bodySmall!.copyWith(color: ColorRes.white),
+              ),
+            ),
+          );
   }
 }

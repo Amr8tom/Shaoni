@@ -54,7 +54,8 @@ class OutsideWorkingRequestDataWidget extends StatelessWidget {
             hint: S.current.selectProjectName,
             icon: Icons.folder_rounded,
             items: cubit.projectNameItems,
-            value: cubit.selectedProjectId, // ID string; items also have id as value
+            value: cubit
+                .selectedProjectId, // ID string; items also have id as value
             onChanged: cubit.onProjectNameSelected,
             validator: (v) =>
                 (v == null || v.isEmpty) ? S.current.thisFieldRequired : null,

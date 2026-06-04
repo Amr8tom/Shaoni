@@ -39,7 +39,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
         duration: const Duration(milliseconds: 300),
         curve: Curves.easeInOut,
       );
-    }else{
+    } else {
       context.pushNamed(DRoutesName.loginRoute);
     }
   }
@@ -77,7 +77,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
 
               /// Bottom section with indicator and buttons
               Padding(
-                padding: EdgeInsets.only(left:AppSizes.xl,right:AppSizes.xl,bottom: AppSizes.xl),
+                padding: EdgeInsets.only(
+                    left: AppSizes.xl, right: AppSizes.xl, bottom: AppSizes.xl),
                 child: Column(
                   children: [
                     PageIndicator(
@@ -110,22 +111,12 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                               size: DButtonSize.medium,
                             ),
                           ),
-
                         ],
                       ),
                     ),
                   ],
-
                 ),
               ),
-
-              // /// Buttons
-              // Padding(
-              //   padding: EdgeInsets.symmetric(horizontal: AppSizes.padding*3),
-              //   child:
-              // ),
-
-
             ],
           ),
         ],

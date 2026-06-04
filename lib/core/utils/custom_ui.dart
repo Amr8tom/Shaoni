@@ -47,7 +47,10 @@ class CustomUI {
       SnackBar(
         content: Text(
           message,
-          style: Theme.of(context).textTheme.bodyMedium!.copyWith(color: ColorRes.white),
+          style: Theme.of(context)
+              .textTheme
+              .bodyMedium!
+              .copyWith(color: ColorRes.white),
         ),
         backgroundColor: ColorRes.error,
         behavior: SnackBarBehavior.floating,
@@ -68,7 +71,10 @@ class CustomUI {
       SnackBar(
         content: Text(
           message,
-          style: Theme.of(context).textTheme.bodyMedium!.copyWith(color: ColorRes.white),
+          style: Theme.of(context)
+              .textTheme
+              .bodyMedium!
+              .copyWith(color: ColorRes.white),
         ),
         backgroundColor: ColorRes.success,
         behavior: SnackBarBehavior.floating,
@@ -106,8 +112,8 @@ class CustomUI {
               Text(
                 title,
                 style: Theme.of(context).textTheme.headlineMedium!.copyWith(
-                  color: ColorRes.textPrimary,
-                ),
+                      color: ColorRes.textPrimary,
+                    ),
                 textAlign: TextAlign.center,
               ),
               const Sizer(height: 8),
@@ -115,8 +121,8 @@ class CustomUI {
             Text(
               message,
               style: Theme.of(context).textTheme.bodyLarge!.copyWith(
-                color: ColorRes.textSecondary,
-              ),
+                    color: ColorRes.textSecondary,
+                  ),
               textAlign: TextAlign.center,
             ),
             if (onRetry != null) ...[
@@ -130,15 +136,16 @@ class CustomUI {
                     vertical: AppSizes.md,
                   ),
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(AppSizes.borderRadiusLg),
+                    borderRadius:
+                        BorderRadius.circular(AppSizes.borderRadiusLg),
                   ),
                 ),
                 child: Text(
                   retryText ?? 'Retry',
                   style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                    color: ColorRes.white,
-                    fontWeight: FontWeight.w600,
-                  ),
+                        color: ColorRes.white,
+                        fontWeight: FontWeight.w600,
+                      ),
                 ),
               ),
             ],

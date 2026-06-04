@@ -21,6 +21,7 @@ class GetUserDataParams {
   final String id;
 
   const GetUserDataParams({required this.id});
+
   /// toMap
   Map<String, dynamic> toMap() {
     return {

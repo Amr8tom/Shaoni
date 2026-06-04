@@ -12,7 +12,8 @@ class ChangePasswordUseCase extends UseCase<NewPassword, NewPasswordParams> {
   ChangePasswordUseCase(this._repository);
 
   @override
-  Future<Either<Failure, NewPassword>> call({required NewPasswordParams params}) async{
+  Future<Either<Failure, NewPassword>> call(
+      {required NewPasswordParams params}) async {
     return await _repository.changePassword(params: params);
   }
 }
@@ -25,7 +26,8 @@ class NewPasswordParams extends Equatable {
     required this.newPassword,
     required this.userID,
   });
-/// toJson
+
+  /// toJson
   Map<String, dynamic> toJson() {
     return {
       'newPassword': newPassword,
@@ -34,5 +36,5 @@ class NewPasswordParams extends Equatable {
   }
 
   @override
-  List<Object?> get props => [newPassword,userID];
+  List<Object?> get props => [newPassword, userID];
 }

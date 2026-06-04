@@ -1,29 +1,8 @@
-// {
-// "id": 100,
-// "changedBy": "16",
-// "changedAt": "2026-03-26T09:00:39.7104691",
-// "comment": null,
-// "requestId": 43,
-// "request": null,
-// "statusId": 13,
-// "status": {
-// "id": 13,
-// "code": "1",
-// "nameAr": "جديد",
-// "nameEn": "New",
-// "techName": "new",
-// "isActive": true,
-// "updatedAt": "2026-03-18T11:35:38.2681105",
-// "isDeleted": false,
-// "serviceStatuses": null
-// }
-// }
-
 import 'package:equatable/equatable.dart';
 import 'package:shaoni/features/details_and_edit_for_requests/domain/entities/request.dart';
 import 'package:shaoni/features/details_and_edit_for_requests/domain/entities/status.dart';
 
-class History extends Equatable{
+class History extends Equatable {
   final int id;
   final String changedBy;
   final DateTime changedAt;
@@ -50,18 +29,23 @@ class History extends Equatable{
       return History(
         id: json['id'] ?? 0,
         changedBy: json['changedBy'] ?? '',
-        changedAt: json['changedAt'] != null ? DateTime.parse(json['changedAt']) : DateTime.now(),
+        changedAt: json['changedAt'] != null
+            ? DateTime.parse(json['changedAt'])
+            : DateTime.now(),
         comment: json['comment'] ?? '',
         requestId: json['requestId'] ?? 0,
-        request: json['request'] != null ? Request.fromJson(json['request']) : null,
+        request:
+            json['request'] != null ? Request.fromJson(json['request']) : null,
         statusId: json['statusId'] ?? 0,
-        status: json['status'] != null ? Status.fromJson(json['status']) : Status.empty(),
+        status: json['status'] != null
+            ? Status.fromJson(json['status'])
+            : Status.empty(),
       );
-    } catch (e) {
-      print('Error parsing History: $e');
+    } catch (_) {
       rethrow;
     }
   }
+
   /// to json
   Map<String, dynamic> toJson() {
     return {
@@ -73,11 +57,9 @@ class History extends Equatable{
       'request': request?.toJson(),
       'statusId': statusId,
       'status': status.toJson(),
-
     };
   }
 
   @override
   List<Object?> get props => [];
-
 }

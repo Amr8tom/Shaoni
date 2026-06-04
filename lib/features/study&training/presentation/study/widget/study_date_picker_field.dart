@@ -55,9 +55,9 @@ class StudyDatePickerField extends StatelessWidget {
               firstDate: DateTime(2000),
               lastDate: DateTime(2100),
               builder: (
-                  BuildContext context,
-                  Widget? child,
-                  ) {
+                BuildContext context,
+                Widget? child,
+              ) {
                 return Theme(
                   data: Theme.of(context).copyWith(
                     colorScheme: ColorScheme.light(
@@ -78,10 +78,10 @@ class StudyDatePickerField extends StatelessWidget {
                       titleTextStyle: Theme.of(
                         context,
                       ).textTheme.headlineSmall?.copyWith(
-                        color: ColorRes.black,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 6,
-                      ),
+                            color: ColorRes.black,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 6,
+                          ),
                     ),
                     textButtonTheme: TextButtonThemeData(
                       style: TextButton.styleFrom(
@@ -117,9 +117,7 @@ class StudyDatePickerField extends StatelessWidget {
             borderRadius: BorderRadius.circular(AppSizes.borderRadiusMd),
           ),
           child: Text(
-            hijriController.text.isEmpty
-                ? '––'
-                : '${hijriController.text} هـ',
+            hijriController.text.isEmpty ? '––' : '${hijriController.text} هـ',
             textAlign: TextAlign.center,
             style: Theme.of(context).textTheme.bodySmall?.copyWith(
                   color: ColorRes.grey2,

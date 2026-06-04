@@ -136,7 +136,8 @@ class MedicalInsuranceCubit extends Cubit<MedicalInsuranceState> {
   int? get _selectedInsuranceClassId {
     if (insuranceClassController.text.isEmpty) return null;
     final match = _insuranceClasses.where(
-      (c) => _localizedName(c.nameAr, c.nameEn) == insuranceClassController.text,
+      (c) =>
+          _localizedName(c.nameAr, c.nameEn) == insuranceClassController.text,
     );
     return match.isEmpty ? null : match.first.id;
   }

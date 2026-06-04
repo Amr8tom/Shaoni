@@ -8,15 +8,14 @@ class LoginEntity extends Equatable {
   final String? errors;
   final int? id;
 
-  const LoginEntity({
-    required this.accessToken,
-    required this.success,
-    required this.userName,
-    required this.role,
-    required this.id,
-    this.errors
-  });
+  const LoginEntity(
+      {required this.accessToken,
+      required this.success,
+      required this.userName,
+      required this.role,
+      required this.id,
+      this.errors});
 
   @override
-  List<Object?> get props => [accessToken, success, userName, role,errors,id];
+  List<Object?> get props => [accessToken, success, userName, role, errors, id];
 }

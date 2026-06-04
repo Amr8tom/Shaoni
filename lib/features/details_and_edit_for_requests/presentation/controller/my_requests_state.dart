@@ -40,10 +40,25 @@ final class MyRequestsState extends Equatable {
   }
 
   @override
-  List<Object?> get props => [status, userRequests,managerRequests, itemsManager, itemsUser, requestDetails];
+  List<Object?> get props => [
+        status,
+        userRequests,
+        managerRequests,
+        itemsManager,
+        itemsUser,
+        requestDetails
+      ];
 }
 
-enum MyRequestsStatus { initialized, loading, pageLoading, success, error, sendRequestLoading,sendRequestSuccess }
+enum MyRequestsStatus {
+  initialized,
+  loading,
+  pageLoading,
+  success,
+  error,
+  sendRequestLoading,
+  sendRequestSuccess
+}
 
 extension MyRequestsStatusExtension on MyRequestsStatus {
   bool get isInitialized => this == MyRequestsStatus.initialized;

@@ -3,7 +3,6 @@ import 'package:shaoni/core/utils/usecases/base_usecase.dart';
 
 // class GetUserRequestsUseCase extends UseCase<> {}
 
-
 class GetUserRequestParams extends Equatable {
   final int? employeeId;
   final int? permissionType;
@@ -27,8 +26,7 @@ class GetUserRequestParams extends Equatable {
       required this.leavesAttachmentName});
 
   @override
-  List<Object?> get props =>
-       [
+  List<Object?> get props => [
         employeeId,
         permissionType,
         type,
@@ -39,5 +37,4 @@ class GetUserRequestParams extends Equatable {
         leavesAttachment,
         leavesAttachmentName
       ];
-
 }

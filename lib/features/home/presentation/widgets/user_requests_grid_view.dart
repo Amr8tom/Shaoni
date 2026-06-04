@@ -90,8 +90,6 @@ class UserRequestsGridView extends StatelessWidget {
                           ? validRequests[index].service?.nameEn ?? ''
                           : validRequests[index].service?.nameAr ?? '',
                       onTap: () {
-                        // controller.getRequestDetails(requestId: validRequests[index].request?.id);
-
                         context.pushNamed(DRoutesName.requestDetailsRoute,
                             arguments: {
                               'id': validRequests[index].request?.id ?? '',

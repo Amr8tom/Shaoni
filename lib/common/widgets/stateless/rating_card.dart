@@ -24,13 +24,13 @@ class RatingCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(16),
-      decoration:  BoxDecoration(
+      decoration: BoxDecoration(
         color: Theme.of(context).scaffoldBackgroundColor,
-        borderRadius:const BorderRadius.only(
+        borderRadius: const BorderRadius.only(
           topLeft: Radius.circular(20),
           topRight: Radius.circular(20),
         ),
-        boxShadow:const [
+        boxShadow: const [
           BoxShadow(
             color: ColorRes.grey5,
             blurRadius: 10,
@@ -40,28 +40,34 @@ class RatingCard extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Row(children: [
-            const Sizer(width: 25),
-            const  Spacer(),
-            Text(
-              S.current.feed,
-              style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-            ),
-            const Spacer(),
-            Container(
-              height: 25,
-              width: 25,
-              decoration: const BoxDecoration(
-                shape: BoxShape.circle,
-                color: ColorRes.grey6,
+          Row(
+            children: [
+              const Sizer(width: 25),
+              const Spacer(),
+              Text(
+                S.current.feed,
+                style:
+                    const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
-              child: const Icon(Icons.close,color: ColorRes.black,),
-            ),
-          ],),
+              const Spacer(),
+              Container(
+                height: 25,
+                width: 25,
+                decoration: const BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: ColorRes.grey6,
+                ),
+                child: const Icon(
+                  Icons.close,
+                  color: ColorRes.black,
+                ),
+              ),
+            ],
+          ),
           const Sizer(height: 8),
           Text(
             getRatingText(rating),
-            style:const TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+            style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
           ),
           const Sizer(height: 8),
           RatingBar.builder(
@@ -81,26 +87,25 @@ class RatingCard extends StatelessWidget {
           const Sizer(height: 12),
           Wrap(
             spacing: 8,
-            children: tags.map((tag) =>  GestureDetector(
-              onTap: () => onTagSelected(tag),
-              child: Container(
-                width: MediaQuery.sizeOf(context).width*.41,
-                height: 40,
-                margin: const EdgeInsets.all(4),
-                alignment: Alignment.center,
-                decoration: BoxDecoration(
-                    color:ColorRes.grey4,
-                    borderRadius: BorderRadius.circular(12)
-                ),
-                child:Text(tag),
-
-              ),
-            )).toList(),
+            children: tags
+                .map((tag) => GestureDetector(
+                      onTap: () => onTagSelected(tag),
+                      child: Container(
+                        width: MediaQuery.sizeOf(context).width * .41,
+                        height: 40,
+                        margin: const EdgeInsets.all(4),
+                        alignment: Alignment.center,
+                        decoration: BoxDecoration(
+                            color: ColorRes.grey4,
+                            borderRadius: BorderRadius.circular(12)),
+                        child: Text(tag),
+                      ),
+                    ))
+                .toList(),
           ),
           const Sizer(height: 12),
           GestureDetector(
-            onTap: () {
-            },
+            onTap: () {},
             child: Container(
               width: double.infinity,
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
@@ -113,9 +118,10 @@ class RatingCard extends StatelessWidget {
                 children: [
                   Text(
                     S.current.thankFeed,
-                    style:const TextStyle(color: ColorRes.grey),
+                    style: const TextStyle(color: ColorRes.grey),
                   ),
-                  const Icon(Icons.arrow_forward_ios, color: ColorRes.grey, size: 16),
+                  const Icon(Icons.arrow_forward_ios,
+                      color: ColorRes.grey, size: 16),
                 ],
               ),
             ),
@@ -127,13 +133,12 @@ class RatingCard extends StatelessWidget {
               style: ElevatedButton.styleFrom(
                 backgroundColor: ColorRes.primary,
                 foregroundColor: ColorRes.white,
-                padding:const EdgeInsets.symmetric(vertical: 12),
+                padding: const EdgeInsets.symmetric(vertical: 12),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10),
                 ),
               ),
-              onPressed: () {
-              },
+              onPressed: () {},
               child: Text(S.current.send),
             ),
           ),
@@ -142,6 +147,7 @@ class RatingCard extends StatelessWidget {
     );
   }
 }
+
 String getRatingText(double rating) {
   if (rating >= 4.5) return S.current.excellent;
   if (rating >= 3.5) return S.current.veryGood;

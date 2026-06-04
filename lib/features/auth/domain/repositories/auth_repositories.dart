@@ -5,8 +5,7 @@ import '../entities/new_password.dart';
 import '../usecases/change_password_use_case.dart';
 import '../usecases/login_use_case.dart';
 
-abstract class AuthRepositories{
-
+abstract class AuthRepositories {
   /// login an existing
   Future<Either<Failure, LoginEntity>> login({
     required LoginParams params,

@@ -25,10 +25,10 @@ class HomeStatusBadge extends StatelessWidget {
           child: Text(
             S.current.orderStatus + ":    ",
             style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-              color: ColorRes.black,
-              fontSize: AppSizes.fontSizeSm * 0.70,
-              fontWeight: FontWeight.w800,
-            ),
+                  color: ColorRes.black,
+                  fontSize: AppSizes.fontSizeSm * 0.70,
+                  fontWeight: FontWeight.w800,
+                ),
             overflow: TextOverflow.ellipsis,
             maxLines: 2,
           ),
@@ -51,10 +51,9 @@ class HomeStatusBadge extends StatelessWidget {
               child: Text(
                 status,
                 style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                  color: ColorRes.white,
-
-                  fontSize: AppSizes.fontSizeSm * 0.7,
-                ),
+                      color: ColorRes.white,
+                      fontSize: AppSizes.fontSizeSm * 0.7,
+                    ),
                 overflow: TextOverflow.ellipsis,
                 maxLines: 2,
               ),

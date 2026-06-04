@@ -131,7 +131,7 @@ class DButton extends StatelessWidget {
 
   ButtonStyle _getButtonStyle() {
     return ElevatedButton.styleFrom(
-     /// todo: font size height
+      /// todo: font size height
       backgroundColor: _getBackgroundColor(),
       foregroundColor: _getForegroundColor(),
       disabledBackgroundColor: ColorRes.buttonDisabled,
@@ -147,10 +147,11 @@ class DButton extends StatelessWidget {
         ),
         side: _getBorderSide(),
       ),
-      padding: padding ?? EdgeInsets.symmetric(
-        horizontal: _getHorizontalPadding(),
-        vertical: _getVerticalPadding(),
-      ),
+      padding: padding ??
+          EdgeInsets.symmetric(
+            horizontal: _getHorizontalPadding(),
+            vertical: _getVerticalPadding(),
+          ),
     );
   }
 

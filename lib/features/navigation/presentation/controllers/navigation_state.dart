@@ -40,10 +40,10 @@ final class NavigationState extends Equatable {
 
   @override
   List<Object?> get props => [
-    status,
-    notificationCount,
-    isGuest,
-    screens,
-    user,
-  ];
+        status,
+        notificationCount,
+        isGuest,
+        screens,
+        user,
+      ];
 }

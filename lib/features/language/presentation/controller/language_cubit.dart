@@ -27,7 +27,6 @@ class LanguageCubit extends Cubit<LanguageState> {
     emit(LanguageLoading());
     currentLanguage = Locale(lang);
     CacheHelper.putString(key: CacheKeys.lang, value: lang);
-    print(currentLanguage);
 
     emit(LanguageSuccess());
   }
@@ -43,7 +42,6 @@ class LanguageCubit extends Cubit<LanguageState> {
       showLang = "AR";
       CacheHelper.putString(key: CacheKeys.lang, value: "en");
     }
-    print(currentLanguage);
 
     emit(LanguageSuccess());
   }

@@ -6,13 +6,10 @@ import '../repository/repository.dart';
 class DeleteAccountUseCase extends UseCase<dynamic, NoParams> {
   final DeleteAccountRepository _repository;
 
-   DeleteAccountUseCase(this._repository);
+  DeleteAccountUseCase(this._repository);
 
   @override
-  Future<Either<Failure, dynamic>> call({required NoParams params}) async{
-   return await _repository.deleteAccount(params: params);
+  Future<Either<Failure, dynamic>> call({required NoParams params}) async {
+    return await _repository.deleteAccount(params: params);
   }
-
-
 }
-

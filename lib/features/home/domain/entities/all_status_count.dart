@@ -1,8 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:shaoni/features/home/data/model/status_count_model.dart';
 
-
-
 class AllStatusCount extends Equatable {
   final int? serviceId;
   final String? serviceCode;

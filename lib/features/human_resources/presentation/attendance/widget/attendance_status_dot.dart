@@ -39,7 +39,7 @@ class AttendanceStatusDot extends StatelessWidget {
             style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                   color: color,
                   fontWeight: FontWeight.w700,
-                  fontSize: AppSizes.fontSizeSm*0.9,
+                  fontSize: AppSizes.fontSizeSm * 0.9,
                 ),
           ),
         ),

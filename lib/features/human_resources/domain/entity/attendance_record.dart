@@ -66,7 +66,7 @@ class AttendanceRecord extends Equatable {
   @override
   List<Object?> get props => [
         id,
-    odooId,
+        odooId,
         employeeName,
         gregorianDate,
         hijriDate,

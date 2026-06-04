@@ -14,7 +14,7 @@ class ShowAllSubmittedRequests extends StatelessWidget {
   Widget build(BuildContext context) {
     final navController = context.read<NavigationCubit>();
     return GestureDetector(
-      onTap: (){
+      onTap: () {
         navController.changeIndex(2);
       },
       child: Padding(
@@ -44,7 +44,3 @@ class ShowAllSubmittedRequests extends StatelessWidget {
     );
   }
 }
-
-
-
-

@@ -2,7 +2,6 @@ import 'package:shaoni/features/auth/data/model/office_model.dart';
 import 'package:shaoni/features/auth/domain/entities/user_entity.dart';
 import '../../../auth/data/model/department_model.dart';
 
-
 class UserModel extends UserEntity {
   const UserModel({
     required super.id,
@@ -22,9 +21,9 @@ class UserModel extends UserEntity {
     required super.officeIds,
     required super.office,
     required super.departmentId,
-    required super.department, required super.gender,
+    required super.department,
+    required super.gender,
   });
-
 
   /// fromJson
   factory UserModel.fromJson(Map<String, dynamic> json) {
@@ -77,5 +76,4 @@ class UserModel extends UserEntity {
       'department': department?.toJson(),
     };
   }
-
 }

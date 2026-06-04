@@ -8,7 +8,6 @@
 // "leavesAttachment": null
 // }
 
-
 import 'package:equatable/equatable.dart';
 
 class ExitPermission extends Equatable {
@@ -43,8 +42,7 @@ class ExitPermission extends Equatable {
   }
 
   @override
-  List<Object?> get props =>
-      [
+  List<Object?> get props => [
         id,
         exitDate,
         numberOfHours,
@@ -54,5 +52,3 @@ class ExitPermission extends Equatable {
         leavesAttachment
       ];
 }
-
-

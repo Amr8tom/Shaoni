@@ -49,6 +49,13 @@ class CreateExperienceCertificateParams extends Equatable {
       };
 
   @override
-  List<Object?> get props =>
-      [employee, officeId, certificateReasonId, reason, note, date, attachmentIds];
+  List<Object?> get props => [
+        employee,
+        officeId,
+        certificateReasonId,
+        reason,
+        note,
+        date,
+        attachmentIds
+      ];
 }

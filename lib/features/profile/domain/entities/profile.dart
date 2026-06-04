@@ -6,14 +6,13 @@ import 'package:equatable/equatable.dart';
 // "error": null
 // }
 
-class Profile extends Equatable{
+class Profile extends Equatable {
   final bool success;
   final String message;
   final String? errorMassage;
-  const Profile({required this.success,required this.message, this.errorMassage});
-
+  const Profile(
+      {required this.success, required this.message, this.errorMassage});
 
   @override
-
-  List<Object?> get props => [success,message,errorMassage];
+  List<Object?> get props => [success, message, errorMassage];
 }

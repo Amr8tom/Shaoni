@@ -5,7 +5,7 @@ class ColorRes {
 
   /// App Basic Colors
   static const Color primary = Color(0xFF009D8B);
-    static const Color primaryLight = Color(0xFF404040);
+  static const Color primaryLight = Color(0xFF404040);
   static const Color scaffoldBG = Color(0xFFE7ECED);
   static const Color lightYellow = Color(0x38FFD700);
   static const Color lightYellow2 = Color(0xFFDCBA8D);
@@ -71,7 +71,11 @@ class ColorRes {
   static const Color greyForBorders = Color(0x1a292929);
   static const Color grey4 = Color(0xfff1f1f1);
   static const Color grey_F707340 = Color(0x406f7073);
-  static const Color grey5= Color(0x1a6f7073);
+  static const Color grey5 = Color(0x1a6f7073);
+  static  Color greyShade300 =Colors.grey.shade300;
+  static  Color greyShade200 =Colors.grey.shade200;
+  static  Color greyShade400 =Colors.grey.shade400;
+  static  Color greyShade600 =Colors.grey.shade600;
   static const Color bgColorOfCategoryComponent = Color(0xFFFCFCFC);
   static const Color softGrey = Color(0xFFF4F4F4);
   static const Color lightGrey = Color(0xFFF1F1F1);

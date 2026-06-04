@@ -54,11 +54,8 @@ class NotificationCard extends StatelessWidget {
                 height: AppSizes.iconSmall,
               ),
             ),
-            // key: ValueKey('expansion_tile_$index\_${state.expandedIndex}'),
             initiallyExpanded: isExpanded,
-            onExpansionChanged: (expanded) {
-              // controller.setExpandedIndex(expanded ? index : null);
-            },
+            onExpansionChanged: (expanded) {},
             tilePadding: EdgeInsets.symmetric(
               horizontal: AppSizes.md,
               vertical: AppSizes.sm / 2,
@@ -67,10 +64,10 @@ class NotificationCard extends StatelessWidget {
               // questions[index].question,
               notification.title,
               style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                color: isExpanded ? ColorRes.primary : ColorRes.black,
-                fontWeight: FontWeight.w600,
-                fontSize: 14,
-              ),
+                    color: isExpanded ? ColorRes.primary : ColorRes.black,
+                    fontWeight: FontWeight.w600,
+                    fontSize: 14,
+                  ),
               maxLines: 2,
             ),
             trailing: Container(
@@ -81,7 +78,6 @@ class NotificationCard extends StatelessWidget {
                 color: ColorRes.white.withOpacity(0.2),
                 borderRadius: BorderRadius.circular(AppSizes.borderRadiusSm),
               ),
-
               child: Icon(
                 isExpanded
                     ? Icons.keyboard_arrow_up
@@ -97,15 +93,14 @@ class NotificationCard extends StatelessWidget {
                 width: double.infinity,
                 margin: EdgeInsets.all(AppSizes.sm),
                 padding: EdgeInsets.all(AppSizes.md),
-
                 child: Text(
                   notification.description,
                   // questions[index].answer,
                   style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                    color: ColorRes.black,
-                    height: 1.5,
-                    fontSize: 13,
-                  ),
+                        color: ColorRes.black,
+                        height: 1.5,
+                        fontSize: 13,
+                      ),
                   maxLines: 10,
                 ),
               ),

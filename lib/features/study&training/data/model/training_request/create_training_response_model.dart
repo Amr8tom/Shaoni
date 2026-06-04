@@ -1,4 +1,3 @@
-
 import '../../../domain/entities/training_request/create_training_response.dart';
 
 class CreateTrainingResponseModel extends CreateTrainingResponse {

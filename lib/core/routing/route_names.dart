@@ -16,7 +16,6 @@ class DRoutesName {
   static const String onBoardingRoute = 'on-boarding-route';
   static const String categoryDetailsRoute = 'category-details-route';
 
-
   /// Profile && Setting
   static const String deleteAccountRoute = 'delete-account-route';
   static const String profileRoute = 'profile-route';
@@ -27,14 +26,19 @@ class DRoutesName {
   static const String createAttendanceRoute = 'attendance-route';
   static const String createStudyRequestRoute = 'create-study-form-route';
   static const String createCarPermissionRoute = 'create-car-permission-route';
-  static const String createComplaintRequestRoute = 'create-complaint-request-route';
+  static const String createComplaintRequestRoute =
+      'create-complaint-request-route';
   static const String createStartWorkRoute = 'create-start-work-route';
-  static const String createExperienceCertificateRoute = 'create-experience-certificate-route';
+  static const String createExperienceCertificateRoute =
+      'create-experience-certificate-route';
   static const String createIDDocumentRoute = 'create-id-document-route';
-  static const String createMedicalInsuranceRoute = 'create-medical-insurance-route';
-  static const String createTrainingRequestRoute = 'create-training-request-route';
+  static const String createMedicalInsuranceRoute =
+      'create-medical-insurance-route';
+  static const String createTrainingRequestRoute =
+      'create-training-request-route';
   static const String createProductOrderRoute = 'create-product-order-route';
-  static const String createOutsideWorkingRoute = 'create-outside-working-route';
+  static const String createOutsideWorkingRoute =
+      'create-outside-working-route';
 
   /// location & maps Screen
   static const String mapRoute = 'map-route';

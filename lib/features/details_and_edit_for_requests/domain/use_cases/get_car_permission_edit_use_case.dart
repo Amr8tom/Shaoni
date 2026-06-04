@@ -36,8 +36,6 @@ class GetCarPermissionEditParams extends Equatable {
       'notes': notes,
       'edit_reasons': editReasons,
     };
-
-
   }
 
   @override

@@ -29,7 +29,7 @@ class MyRequestsLocalDataSourcesImp implements MyRequestsLocalDataSources {
   @override
   Future<AllRequestsWithStages> getAllMyRequests() async {
     final String? myRequestsString =
-    await CacheHelper.getString(key: CacheKeys.myRequests);
+        await CacheHelper.getString(key: CacheKeys.myRequests);
     if (myRequestsString != null) {
       return AllRequestsWithStages.fromJson(jsonDecode(myRequestsString));
     }
@@ -37,7 +37,8 @@ class MyRequestsLocalDataSourcesImp implements MyRequestsLocalDataSources {
   }
 
   @override
-  Future cacheAllMyRequestsByManager({required AllRequestsWithStages requests}) async{
+  Future cacheAllMyRequestsByManager(
+      {required AllRequestsWithStages requests}) async {
     final String myRequestsString = jsonEncode(requests.toJson());
     await CacheHelper.putString(
       key: CacheKeys.myRequestsByManager,
@@ -46,7 +47,7 @@ class MyRequestsLocalDataSourcesImp implements MyRequestsLocalDataSources {
   }
 
   @override
-  Future<AllRequestsWithStages> getAllMyRequestsByManager() async{
+  Future<AllRequestsWithStages> getAllMyRequestsByManager() async {
     final String? myRequestsString =
         await CacheHelper.getString(key: CacheKeys.myRequestsByManager);
     if (myRequestsString != null) {
@@ -56,7 +57,7 @@ class MyRequestsLocalDataSourcesImp implements MyRequestsLocalDataSources {
   }
 
   @override
-  Future cacheRequestDetails({required RequestWithStage requestDetails}) async{
+  Future cacheRequestDetails({required RequestWithStage requestDetails}) async {
     final String requestDetailsString = jsonEncode(requestDetails.toJson());
     await CacheHelper.putString(
       key: CacheKeys.requestDetails,
@@ -66,9 +67,6 @@ class MyRequestsLocalDataSourcesImp implements MyRequestsLocalDataSources {
 
   @override
   Future<RequestWithStage> getRequestDetails() {
-    // TODO: implement getRequestDetails
     throw UnimplementedError();
   }
-
-
 }

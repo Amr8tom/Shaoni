@@ -5,8 +5,7 @@ import 'package:shaoni/core/utils/usecases/base_usecase.dart';
 import '../../entity/start_work/start_work_type.dart';
 import '../../repository/repository.dart';
 
-class GetStartWorkTypesUseCase
-    extends UseCase<List<StartWorkType>, NoParams> {
+class GetStartWorkTypesUseCase extends UseCase<List<StartWorkType>, NoParams> {
   final HRServicesRepository _repository;
 
   GetStartWorkTypesUseCase(this._repository);

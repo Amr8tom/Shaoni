@@ -47,7 +47,9 @@ void showOTPPopUp({required BuildContext context, required String email}) {
                       Flexible(
                         child: Text(
                           S.current.enterEmailToResetPassword,
-                          style: Theme.of(context).textTheme.bodyLarge!
+                          style: Theme.of(context)
+                              .textTheme
+                              .bodyLarge!
                               .copyWith(color: ColorRes.darkGrey, height: 1.5),
                           maxLines: 7,
                           textAlign: TextAlign.center,

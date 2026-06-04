@@ -10,7 +10,8 @@ class GetAttendanceWayUseCase extends UseCase<List<AttendanceWay>, NoParams> {
   GetAttendanceWayUseCase(this._repository);
 
   @override
-  Future<Either<Failure, List<AttendanceWay>>> call({required NoParams params}) async {
+  Future<Either<Failure, List<AttendanceWay>>> call(
+      {required NoParams params}) async {
     return await _repository.getAttendanceWay(params: params);
   }
 }

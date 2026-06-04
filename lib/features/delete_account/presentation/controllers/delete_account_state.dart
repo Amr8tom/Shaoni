@@ -1,13 +1,13 @@
 part of 'delete_account_cubit.dart';
 
 final class DeleteAccountState extends Equatable {
-  // final DeleteAccountModel? deleteAccountModel;
   final GeneralStatus status;
 
   const DeleteAccountState({
-     // this.deleteAccountModel,
+    // this.deleteAccountModel,
     required this.status,
   });
+
   /// copy with
   DeleteAccountState copyWith({
     DeleteAccountModel? deleteAccountModel,
@@ -20,5 +20,5 @@ final class DeleteAccountState extends Equatable {
   }
 
   @override
-  List<Object?> get props => [ status];
+  List<Object?> get props => [status];
 }

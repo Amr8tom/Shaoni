@@ -1,9 +1,6 @@
-
-
-
 import 'package:equatable/equatable.dart';
 
-class ExperienceCertificate extends Equatable{
+class ExperienceCertificate extends Equatable {
   final String externalName;
   final String date;
   final String certificateReasonId;
@@ -26,22 +23,19 @@ class ExperienceCertificate extends Equatable{
     required this.certificateUrl,
     required this.editReasons,
     required this.rejectReasons,
-
   });
 
-
   @override
-
   List<Object?> get props => [
-    externalName,
-    date,
-    certificateReasonId,
-    certificateReasonName,
-    reason,
-    note,
-    state,
-    certificateUrl,
-    editReasons,
-    rejectReasons,
-  ];
+        externalName,
+        date,
+        certificateReasonId,
+        certificateReasonName,
+        reason,
+        note,
+        state,
+        certificateUrl,
+        editReasons,
+        rejectReasons,
+      ];
 }

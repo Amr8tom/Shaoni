@@ -22,7 +22,6 @@ class DepartmentModel extends DepartmentEntity {
       required super.updatedAt,
       required super.isDeleted});
 
-
   /// fromJson
   factory DepartmentModel.fromJson(Map<String, dynamic>? json) {
     return DepartmentModel(

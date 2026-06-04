@@ -14,7 +14,8 @@ class DeleteAccountRepositoryImp implements DeleteAccountRepository {
   DeleteAccountRepositoryImp(this._networkInfo, this._remote, this._local);
 
   @override
-  Future<Either<Failure, dynamic>> deleteAccount({required NoParams params}) async {
+  Future<Either<Failure, dynamic>> deleteAccount(
+      {required NoParams params}) async {
     if (await _networkInfo.isConnected) {
       final deleteReponse = await _remote.deleteAccount(params: params);
       return right(deleteReponse);

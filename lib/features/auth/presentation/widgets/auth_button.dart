@@ -24,29 +24,32 @@ class AuthButton extends StatelessWidget {
     this.textColor,
     this.width,
     this.height,
-    this.icon, this.fontSize,
+    this.icon,
+    this.fontSize,
   });
 
   @override
   Widget build(BuildContext context) {
     final bool canPress = isEnabled && !isLoading && onPressed != null;
-    
+
     return Container(
       width: width ?? double.infinity,
       height: height ?? AppSizes.buttonHeight,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(AppSizes.borderRadiusXXLg),
-        boxShadow: canPress ? [
-          BoxShadow(
-            color: ColorRes.primary,
-            blurRadius: AppSizes.sm,
-            offset: const Offset(0, 2),
-          ),
-        ] : [],
+        boxShadow: canPress
+            ? [
+                BoxShadow(
+                  color: ColorRes.primary,
+                  blurRadius: AppSizes.sm,
+                  offset: const Offset(0, 2),
+                ),
+              ]
+            : [],
       ),
       child: Material(
-        color: canPress 
-            ? (backgroundColor ?? ColorRes.black) 
+        color: canPress
+            ? (backgroundColor ?? ColorRes.black)
             : ColorRes.grey.withOpacity(0.3),
         borderRadius: BorderRadius.circular(AppSizes.borderRadiusXXLg),
         child: InkWell(
@@ -77,9 +80,12 @@ class AuthButton extends StatelessWidget {
                         ],
                         Text(
                           text.toUpperCase(),
-                          style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                            color:textColor?? ColorRes.white,fontSize: fontSize
-                          ),
+                          style: Theme.of(context)
+                              .textTheme
+                              .bodyLarge
+                              ?.copyWith(
+                                  color: textColor ?? ColorRes.white,
+                                  fontSize: fontSize),
                         ),
                       ],
                     ),

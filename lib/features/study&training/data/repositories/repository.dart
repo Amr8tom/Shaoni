@@ -2,13 +2,13 @@ import 'package:dartz/dartz.dart';
 import '../../../../core/connection/checkNetwork.dart';
 import '../../../../core/error/failure.dart';
 import '../../../../core/utils/usecases/base_usecase.dart';
-import '../../domain/entities/study/create_study_response.dart' ;
+import '../../domain/entities/study/create_study_response.dart';
 import '../../domain/entities/study/study_destination.dart';
 import '../../domain/entities/study/study_type.dart';
 import '../../domain/entities/training_request/course.dart';
 import '../../domain/entities/training_request/create_training_response.dart';
-import '../../domain/repository/repository.dart' ;
-import '../../domain/use_cases/study/create_study_use_case.dart' ;
+import '../../domain/repository/repository.dart';
+import '../../domain/use_cases/study/create_study_use_case.dart';
 import '../../domain/use_cases/study/update_study_use_case.dart';
 import '../../domain/use_cases/training_request/create_training_request_use_case.dart';
 import '../../domain/use_cases/training_request/update_training_request_use_case.dart';
@@ -110,7 +110,7 @@ class StudyServicesRepositoryImp extends StudyServicesRepository {
   }) async {
     if (await _networkInfo.isConnected) {
       try {
-        final  response = await _remote.createTrainingRequest(params: params);
+        final response = await _remote.createTrainingRequest(params: params);
         return Right(response);
       } on ServerFailure catch (e) {
         return Left(ServerFailure(message: e.message));

@@ -27,6 +27,7 @@ class AllAttendanceRecordModel extends Equatable {
       totalPages: json['totalPages'],
     );
   }
+
   /// toJson
   Map<String, dynamic> toJson() {
     return {
@@ -39,5 +40,6 @@ class AllAttendanceRecordModel extends Equatable {
   }
 
   @override
-  List<Object?> get props => [ attendanceRecords, pageNumber, pageSize, totalCount, totalPages];
+  List<Object?> get props =>
+      [attendanceRecords, pageNumber, pageSize, totalCount, totalPages];
 }

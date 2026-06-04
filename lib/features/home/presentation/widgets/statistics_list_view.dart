@@ -85,19 +85,20 @@ class StatisticsListView extends StatelessWidget {
                 imagePath = AssetRes.approvedIcon;
                 itemColor = ColorRes.staticGreenColor;
                 statusTitle = S.current.completed;
-              }
-              else if (title.toLowerCase().contains('new')) {
+              } else if (title.toLowerCase().contains('new')) {
                 imagePath = AssetRes.waitingIcon;
                 itemColor = ColorRes.staticBlueColor;
                 statusTitle = S.current.pendingRequest;
-              }    else if (title.toLowerCase().contains('id')) {
+              } else if (title.toLowerCase().contains('id')) {
                 imagePath = AssetRes.waitingIcon;
                 itemColor = ColorRes.staticVioletColor;
-                statusTitle = S.current.localeee=="en"?title:"إضافة وثيقة ثبوتية";
-              }  else if (title.toLowerCase().contains('manager')) {
+                statusTitle =
+                    S.current.localeee == "en" ? title : "إضافة وثيقة ثبوتية";
+              } else if (title.toLowerCase().contains('manager')) {
                 imagePath = AssetRes.waitingIcon;
                 itemColor = ColorRes.staticVioletColor;
-                statusTitle = S.current.localeee=="en"?title:"إضافة وثيقة ثبوتية";
+                statusTitle =
+                    S.current.localeee == "en" ? title : "إضافة وثيقة ثبوتية";
               }
 
               return AnimationConfiguration.staggeredList(
@@ -120,33 +121,7 @@ class StatisticsListView extends StatelessWidget {
           ),
         );
       },
-      listener: (BuildContext context, HomeState state) {
-        if (state.status.isSuccess) {
-          print("======================================================");
-          print("======================================================");
-          print("======================================================");
-          print("======================================================");
-          print(state.requestsStatus?.length);
-          print(state.allStatusCounts?.length);
-          print(state.allStatusCounts?.length);
-          print(state.allStatusCounts?.length);
-          print(state.allStatusCounts?.length);
-          print(state.allStatusCounts?.length);
-          print(state.allStatusCounts?.length);
-          print(state.allStatusCounts?.length);
-          print(state.allStatusCounts?.length);
-          print(state.allStatusCounts?.length);
-          print(state.allStatusCounts?.length);
-          print(state.allStatusCounts?.length);
-          print(state.allStatusCounts?.length);
-          print(state.allStatusCounts?.length);
-          print(state.allStatusCounts?.length);
-          print(state.allStatusCounts?.length);
-          print(state.allStatusCounts?.length);
-          print(state.allStatusCounts?.length);
-          print(state.allStatusCounts?.length);
-        }
-      },
+      listener: (BuildContext context, HomeState state) {},
     );
   }
 

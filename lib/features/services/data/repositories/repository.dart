@@ -15,8 +15,6 @@ class ServicesRepositoryImp extends ServicesRepository {
 
   ServicesRepositoryImp(this._local, this._remote, this._networkInfo);
 
-
-
   @override
   Future<Either<Failure, AllServices>> getAllPermissionServices({
     required NoParams params,
@@ -38,5 +36,4 @@ class ServicesRepositoryImp extends ServicesRepository {
       }
     }
   }
-
 }

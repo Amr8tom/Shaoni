@@ -5,14 +5,15 @@ import 'package:shaoni/core/utils/usecases/base_usecase.dart';
 import '../../../data/model/attendance/attendance_model.dart';
 import '../../repository/repository.dart';
 
-class CreateAttendanceUseCase extends UseCase<AttendanceModel,CreateAttendanceParams>{
+class CreateAttendanceUseCase
+    extends UseCase<AttendanceModel, CreateAttendanceParams> {
   final HRServicesRepository _repository;
-   CreateAttendanceUseCase(this._repository);
+  CreateAttendanceUseCase(this._repository);
 
   @override
-  Future<Either<Failure, AttendanceModel>> call({required CreateAttendanceParams params}) async{
+  Future<Either<Failure, AttendanceModel>> call(
+      {required CreateAttendanceParams params}) async {
     return await _repository.createAttendance(params: params);
-
   }
 }
 
@@ -47,7 +48,7 @@ class CreateAttendanceParams {
       "attendance_id": this.attendanceId,
       "order_reason": this.orderReason,
       "forget_reasons_ids": this.forgetReasonsIds,
-      "office_id":this.officeId,
+      "office_id": this.officeId,
       // "request_attachment_ids": this.requestAttachmentIds.map((e) => e.toMap()).toList(),
       "fields": [
         "id",

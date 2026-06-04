@@ -1,6 +1,5 @@
 part of 'attendance_cubit.dart';
 
-
 final class AttendanceState extends Equatable {
   final AttendanceStatus status;
   final List<AttendanceRecord> records;
@@ -33,8 +32,10 @@ final class AttendanceState extends Equatable {
   }
 
   @override
-  List<Object?> get props => [status, records, errorMessage,successMessage,requestNumber];
+  List<Object?> get props =>
+      [status, records, errorMessage, successMessage, requestNumber];
 }
+
 /// Lifecycle of the Attendance list screen.
 enum AttendanceStatus {
   initialized,

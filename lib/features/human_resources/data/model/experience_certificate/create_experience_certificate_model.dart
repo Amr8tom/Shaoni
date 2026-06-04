@@ -8,8 +8,7 @@ class CreateExperienceCertificateModel
     required super.requestId,
   });
 
-  factory CreateExperienceCertificateModel.fromJson(
-      Map<String, dynamic> json) {
+  factory CreateExperienceCertificateModel.fromJson(Map<String, dynamic> json) {
     return CreateExperienceCertificateModel(
       success: json['success'] ?? false,
       message: json['message'] ?? '',

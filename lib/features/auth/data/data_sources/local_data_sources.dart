@@ -1,4 +1,1 @@
-abstract class AuthLocalDataSources{
-
-
-}
+abstract class AuthLocalDataSources {}

@@ -21,7 +21,6 @@ class AuthRepositoriesImp implements AuthRepositories {
     if (await _networkInfo.isConnected) {
       try {
         final result = await _remoteDataSources.login(params: params);
-        print(result);
         return Right(result);
       } on ServerFailure catch (e) {
         return Left(e);
@@ -37,7 +36,6 @@ class AuthRepositoriesImp implements AuthRepositories {
     if (await _networkInfo.isConnected) {
       try {
         final result = await _remoteDataSources.changePassword(params: params);
-        print(result);
         return Right(result);
       } on ServerFailure catch (e) {
         return Left(e);

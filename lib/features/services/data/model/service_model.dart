@@ -1,5 +1,3 @@
-
-
 import '../../domain/entity/service.dart';
 
 class ServiceModel extends Service {
@@ -15,14 +13,14 @@ class ServiceModel extends Service {
 
   @override
   List<Object?> get props => [
-    id,
-    code,
-    nameAr,
-    nameEn,
-    isActive,
-    updatedAt,
-    isDeleted,
-  ];
+        id,
+        code,
+        nameAr,
+        nameEn,
+        isActive,
+        updatedAt,
+        isDeleted,
+      ];
 
   /// fromJson
   factory ServiceModel.fromJson(Map<String, dynamic>? json) {

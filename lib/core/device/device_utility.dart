@@ -18,25 +18,27 @@ class DDeviceUtils {
 
   static Future<void> setStatusBarColor(Color color) async {
     SystemChrome.setSystemUIOverlayStyle(
-      SystemUiOverlayStyle(statusBarColor: color,
-        statusBarIconBrightness: Brightness.light,
-        statusBarBrightness: Brightness.dark,
-      systemNavigationBarColor: color,systemNavigationBarDividerColor: color,
-        systemNavigationBarContrastEnforced: true,
+      SystemUiOverlayStyle(
+          statusBarColor: color,
+          statusBarIconBrightness: Brightness.light,
+          statusBarBrightness: Brightness.dark,
+          systemNavigationBarColor: color,
+          systemNavigationBarDividerColor: color,
+          systemNavigationBarContrastEnforced: true,
           systemNavigationBarIconBrightness: Brightness.dark),
-
     );
   }
 
   static Future<void> setNavigationBarColor(Color color) async {
     SystemChrome.setSystemUIOverlayStyle(
-      SystemUiOverlayStyle(systemNavigationBarColor: color,
-        statusBarIconBrightness: Brightness.dark,
-        statusBarBrightness: Brightness.dark,
-      statusBarColor: color,systemNavigationBarDividerColor: color,
-      systemNavigationBarContrastEnforced: true,
-      systemNavigationBarIconBrightness: Brightness.dark
-      ),
+      SystemUiOverlayStyle(
+          systemNavigationBarColor: color,
+          statusBarIconBrightness: Brightness.dark,
+          statusBarBrightness: Brightness.dark,
+          statusBarColor: color,
+          systemNavigationBarDividerColor: color,
+          systemNavigationBarContrastEnforced: true,
+          systemNavigationBarIconBrightness: Brightness.dark),
     );
   }
 

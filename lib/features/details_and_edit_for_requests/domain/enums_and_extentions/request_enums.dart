@@ -1,5 +1,6 @@
 import '../../../../core/constants/service_codes.dart';
 import '../entities/current_status.dart';
+
 extension RequestStatusExtension on CurrentStatus {
   RequestStatusEnum getRequestStatusEnum({required String? serviceType}) {
     final tech = techName?.toLowerCase() ?? '';

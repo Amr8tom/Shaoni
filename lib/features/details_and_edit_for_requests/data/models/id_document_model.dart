@@ -38,23 +38,23 @@ class IDDocumentModel {
   factory IDDocumentModel.fromJson(Map<String, dynamic> json) {
     return IDDocumentModel(
       id: json['id'] as int?,
-      requestType: json['requestType']?.toString() ??
-          json['request_type']?.toString(),
-      documentType: json['documentType']?.toString() ??
-          json['document_type']?.toString(),
+      requestType:
+          json['requestType']?.toString() ?? json['request_type']?.toString(),
+      documentType:
+          json['documentType']?.toString() ?? json['document_type']?.toString(),
       issuingCountry: json['issuingCountry']?.toString() ??
           json['issuing_country']?.toString(),
       documentNumber: json['documentNumber']?.toString() ??
           json['document_number']?.toString(),
-      issueNumber: json['issueNumber']?.toString() ??
-          json['issue_number']?.toString(),
-      issueDate: json['issueDate']?.toString() ??
-          json['issue_date']?.toString(),
+      issueNumber:
+          json['issueNumber']?.toString() ?? json['issue_number']?.toString(),
+      issueDate:
+          json['issueDate']?.toString() ?? json['issue_date']?.toString(),
       endDate: json['endDate']?.toString() ?? json['end_date']?.toString(),
       tabaq: json['tabaq'] as bool?,
       kafala: json['kafala'] as bool?,
-      kafeelName: json['kafeelName']?.toString() ??
-          json['kafeel_name']?.toString(),
+      kafeelName:
+          json['kafeelName']?.toString() ?? json['kafeel_name']?.toString(),
       passportNumber: json['passportNumber']?.toString() ??
           json['passport_number']?.toString(),
       passportAddress: json['passportAddress']?.toString() ??

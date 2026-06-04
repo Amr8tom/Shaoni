@@ -17,10 +17,8 @@ extension ExperienceCertificateStatusX on ExperienceCertificateStatus {
   bool get isError =>
       this == ExperienceCertificateStatus.lookupsError ||
       this == ExperienceCertificateStatus.createError;
-  bool get isCreateLoaded =>
-      this == ExperienceCertificateStatus.createLoaded;
-  bool get isLookupsError =>
-      this == ExperienceCertificateStatus.lookupsError;
+  bool get isCreateLoaded => this == ExperienceCertificateStatus.createLoaded;
+  bool get isLookupsError => this == ExperienceCertificateStatus.lookupsError;
 }
 
 class ExperienceCertificateState extends Equatable {

@@ -32,5 +32,5 @@ class ProfileState extends Equatable {
   }
 
   @override
-  List<Object?> get props => [gender, nationality, city,status,massage];
+  List<Object?> get props => [gender, nationality, city, status, massage];
 }

@@ -7,8 +7,6 @@ import '../../entities/training_request/create_training_response.dart';
 import '../../repository/repository.dart';
 import 'create_training_request_use_case.dart';
 
-
-
 class UpdateTrainingRequestUseCase
     extends UseCase<CreateTrainingResponse, UpdateTrainingRequestParams> {
   final StudyServicesRepository _repository;

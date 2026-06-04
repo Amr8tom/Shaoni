@@ -1,4 +1,3 @@
-
 import 'package:shaoni/features/services/data/model/service_model.dart';
 import '../../domain/entity/all_services.dart';
 
@@ -14,7 +13,8 @@ class AllServicesModel extends AllServices {
   /// toJson
   List<Map<String, dynamic>> toJson() {
     return services.map((e) => e.toJson()).toList();
-}}
+  }
+}
 
 // [
 // {

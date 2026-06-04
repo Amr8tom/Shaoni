@@ -5,7 +5,8 @@ import '../../entities/study/create_study_response.dart';
 import '../../repository/repository.dart';
 import 'create_study_use_case.dart';
 
-class UpdateStudyUseCase extends UseCase<CreateStudyResponse, UpdateStudyParams> {
+class UpdateStudyUseCase
+    extends UseCase<CreateStudyResponse, UpdateStudyParams> {
   final StudyServicesRepository repository;
 
   UpdateStudyUseCase(this.repository);

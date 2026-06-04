@@ -10,7 +10,7 @@ class CustomLangWidget extends StatelessWidget {
   final double? hight;
   final double? width;
   final bool isSvg;
-  
+
   const CustomLangWidget({
     super.key,
     required this.imagPath,
@@ -31,7 +31,7 @@ class CustomLangWidget extends StatelessWidget {
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(AppSizes.borderRadiusLg),
             gradient: LinearGradient(
-              colors: ColorRes.langGrad, 
+              colors: ColorRes.langGrad,
               begin: Alignment.topLeft,
             ),
           ),
@@ -53,8 +53,8 @@ class CustomLangWidget extends StatelessWidget {
               Text(
                 langName,
                 style: Theme.of(context).textTheme.headlineSmall!.copyWith(
-                  color: ColorRes.white,
-                ),
+                      color: ColorRes.white,
+                    ),
               ),
               const Spacer(),
             ],

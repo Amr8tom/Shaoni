@@ -1,4 +1,3 @@
-
 import 'package:get_it/get_it.dart';
 import 'package:shaoni/features/services/data/data_sources/local_data_sources.dart';
 import '../../features/services/data/data_sources/remote_data_sources.dart';
@@ -11,16 +10,16 @@ class ServicesServiceLocator {
   static Future<void> execute({required GetIt serviceLocator}) async {
     /// data sources
     serviceLocator.registerLazySingleton<ServicesRemoteDataSources>(
-          () => ServicesRemoteDataSourcesImp(serviceLocator()),
+      () => ServicesRemoteDataSourcesImp(serviceLocator()),
     );
     serviceLocator.registerLazySingleton<ServicesLocalDataSources>(
-          () => ServicesLocalDataSourcesImp(),
+      () => ServicesLocalDataSourcesImp(),
     );
 
     /// repositories
 
     serviceLocator.registerLazySingleton<ServicesRepository>(
-          () => ServicesRepositoryImp(
+      () => ServicesRepositoryImp(
         serviceLocator(),
         serviceLocator(),
         serviceLocator(),
@@ -30,12 +29,12 @@ class ServicesServiceLocator {
     /// use cases
 
     serviceLocator.registerLazySingleton<GetAllPermissionServicesUseCase>(
-          () => GetAllPermissionServicesUseCase(serviceLocator()),
+      () => GetAllPermissionServicesUseCase(serviceLocator()),
     );
 
     /// controller
-    serviceLocator.registerFactory<ServicesCubit>(()=>
-        ServicesCubit(serviceLocator()),
+    serviceLocator.registerFactory<ServicesCubit>(
+      () => ServicesCubit(serviceLocator()),
     );
   }
 }

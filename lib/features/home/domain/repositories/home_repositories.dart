@@ -8,6 +8,6 @@ import '../../../navigation/domain/use_cases/get_user_data_use_case.dart';
 import '../entities/all_status_count.dart';
 
 abstract class HomeRepositories {
-  Future<Either<Failure, List<AllStatusCount>>> getAllStatusCountForAllServices({required NoParams params});
+  Future<Either<Failure, List<AllStatusCount>>> getAllStatusCountForAllServices(
+      {required NoParams params});
 }
-

@@ -1,6 +1,5 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
-import 'package:shaoni/generated/l10n.dart';
 import '../error/failure.dart';
 import '../local_storage/cache_helper.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
@@ -33,31 +32,24 @@ class DioHelper {
     Map<String, dynamic>? data,
   }) async {
     try {
-      print(URL);
-      print('Before response');
       Response response = await dio.get(
         URL,
-        options:
-            isHeader
-                ? Options(
-                  headers: {
-                    "Authorization":
-                        "Bearer ${CacheHelper.getString(key: CacheKeys.token)}",
-                    "App-Language":
-                        CacheHelper.getString(key: CacheKeys.lang) ?? 'en',
-                  },
-                )
-                : null,
+        options: isHeader
+            ? Options(
+                headers: {
+                  "Authorization":
+                      "Bearer ${CacheHelper.getString(key: CacheKeys.token)}",
+                  "App-Language":
+                      CacheHelper.getString(key: CacheKeys.lang) ?? 'en',
+                },
+              )
+            : null,
         data: data,
       );
-      print('After response');
       if (response.statusCode == 200) {
-        print(response.statusCode);
-        print(response.data);
         return response.data;
       }
-    } on DioException catch (error) {
-      print("erro ========================================> $error");
+    } on DioException {
       throw ServerFailure(
         message: '================== server failure =============',
       );
@@ -65,58 +57,11 @@ class DioHelper {
   }
 
   Future<Map<String, dynamic>?> postData({
-    // bool handleError = true,
     required String URL,
     Map<String, dynamic>? body,
     String? token,
   }) async {
     try {
-      print(URL);
-      print(body);
-      Response response = await dio.post(
-        URL,
-        data: body,
-        options: Options(
-          followRedirects: false,
-          validateStatus: (status) => true,
-          headers: {
-            "Authorization":
-            "Bearer ${CacheHelper.getString(key: CacheKeys.token)}",
-            "App-Language": CacheHelper.getString(key: CacheKeys.lang) ?? 'en',
-          },
-        ),
-      );
-      print(response.data);
-      print(response.headers);
-      if (response.statusCode == 204 ||
-          response.statusCode == 200 ||
-          response.statusCode == 201) {
-        return response.data;
-      } else if (response.statusCode == 403 || response.statusCode == 401|| response.statusCode == 400) {
-        if(response is String){
-          throw ServerFailure.fromString(response.data);
-        }else {
-          throw ServerFailure.fromMap(response.data);
-        }
-      }else if (response.statusCode == 400) {
-        throw ServerFailure(message: "server failure");
-      }
-    } on DioException catch (error) {
-      print("erro ========================================> $error");
-      rethrow;
-    }
-    return null;
-  }
-
-  Future<dynamic> postDataWithStringBody({
-    // bool handleError = true,
-    required String URL,
-    String? body,
-    String? token,
-  }) async {
-    try {
-      print(URL);
-      print(body);
       Response response = await dio.post(
         URL,
         data: body,
@@ -130,24 +75,60 @@ class DioHelper {
           },
         ),
       );
-      print(response.data);
-      print(response.headers);
       if (response.statusCode == 204 ||
           response.statusCode == 200 ||
+          response.statusCode == 201) {
+        return response.data;
+      } else if (response.statusCode == 403 ||
+          response.statusCode == 401 ||
+          response.statusCode == 400) {
+        if (response is String) {
+          throw ServerFailure.fromString(response.data);
+        } else {
+          throw ServerFailure.fromMap(response.data);
+        }
+      } else if (response.statusCode == 400) {
+        throw ServerFailure(message: "server failure");
+      }
+    } on DioException {
+      rethrow;
+    }
+    return null;
+  }
+
+  Future<dynamic> postDataWithStringBody({
+    required String URL,
+    String? body,
+    String? token,
+  }) async {
+    try {
+      Response response = await dio.post(
+        URL,
+        data: body,
+        options: Options(
+          followRedirects: false,
+          validateStatus: (status) => true,
+          headers: {
+            "Authorization":
+                "Bearer ${CacheHelper.getString(key: CacheKeys.token)}",
+            "App-Language": CacheHelper.getString(key: CacheKeys.lang) ?? 'en',
+          },
+        ),
+      );
+      if (response.statusCode == 204 ||
+          response.statusCode == 200 ||
+
           ///401 unauthorized
           response.statusCode == 401 ||
           response.statusCode == 400 ||
           response.statusCode == 201) {
-        print("//////////// API Data  Fetched Successfully  ////////////");
-        print(response.data);
         return response.data;
       } else if (response.statusCode == 403) {
         throw ServerFailure(
           message: '================== server failure =============',
         );
       }
-    } on DioException catch (error) {
-      print("erro ========================================> $error");
+    } on DioException {
       rethrow;
     }
     return null;
@@ -195,8 +176,6 @@ class DioHelper {
     Map<String, dynamic>? body,
     String? token,
   }) async {
-    print(body);
-    print(body);
     try {
       Response response = await dio.post(
         URL,
@@ -207,23 +186,16 @@ class DioHelper {
           validateStatus: (status) => true,
         ),
       );
-      print(response.statusCode);
-      print(response.data);
-      print(body);
-      print(body);
-      print(body);
 
       if (response.statusCode == 204 ||
           response.statusCode == 200 ||
           response.statusCode == 201) {
-      } else if (response.statusCode == 403 ) {
+      } else if (response.statusCode == 403) {
         throw ServerFailure.fromString(response.data);
-      }else if ( response.statusCode == 401){
+      } else if (response.statusCode == 401) {
         throw ServerFailure(message: " unauthorized");
-      }
-      else if (response.statusCode == 400) {
+      } else if (response.statusCode == 400) {
         throw ValidationFailure.fromMap(response.data);
-
       }
       return response;
     } on DioException {
@@ -285,7 +257,6 @@ class DioHelper {
   Future<Response> deleteData({
     required String URL,
     Map<String, dynamic>? body,
-    // String? token,
   }) async {
     return await dio.delete(
       URL,
@@ -299,9 +270,4 @@ class DioHelper {
       ),
     );
   }
-
-  // static void logout(BuildContext context) async {
-  //   await CacheHelper.clearShared();
-  //   context.pushReplacementNamed(DRoutesName.loginRoute);
-  // }
 }

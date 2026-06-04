@@ -109,23 +109,20 @@ class IDDocumentCubit extends Cubit<IDDocumentState> {
     return [
       DropdownMenuItem(
         value: 'national_id',
-        child: Text(S.current.nationalId,
-            style: const TextStyle(fontSize: 12)),
+        child: Text(S.current.nationalId, style: const TextStyle(fontSize: 12)),
       ),
       DropdownMenuItem(
         value: 'residency',
-        child: Text(S.current.residencyId,
-            style: const TextStyle(fontSize: 12)),
+        child:
+            Text(S.current.residencyId, style: const TextStyle(fontSize: 12)),
       ),
       DropdownMenuItem(
         value: 'passport',
-        child: Text(S.current.passport,
-            style: const TextStyle(fontSize: 12)),
+        child: Text(S.current.passport, style: const TextStyle(fontSize: 12)),
       ),
       DropdownMenuItem(
         value: 'family_card',
-        child: Text(S.current.familyCard,
-            style: const TextStyle(fontSize: 12)),
+        child: Text(S.current.familyCard, style: const TextStyle(fontSize: 12)),
       ),
       DropdownMenuItem(
         value: 'driving_license',
@@ -195,7 +192,8 @@ class IDDocumentCubit extends Cubit<IDDocumentState> {
 
   /// Returns the code of the currently selected request type, or null if none.
   String? get _selectedRequestTypeCode {
-    if (requestTypeController.text.isEmpty || _requestTypes.isEmpty) return null;
+    if (requestTypeController.text.isEmpty || _requestTypes.isEmpty)
+      return null;
     final match = _requestTypes.where(
       (t) => _localizedName(t.nameAr, t.nameEn) == requestTypeController.text,
     );
@@ -252,7 +250,7 @@ class IDDocumentCubit extends Cubit<IDDocumentState> {
               CacheHelper.getString(key: CacheKeys.employeeId) ?? '0') ??
           0,
       officeId: int.tryParse(officeIdController.text) ?? 0,
-      date: DateFormat('yyyy-MM-dd','en').format(DateTime.now()),
+      date: DateFormat('yyyy-MM-dd', 'en').format(DateTime.now()),
       requestTypes: _selectedRequestTypeCode ?? '',
       identificationType: documentTypeController.text,
       countryOfIssue: _selectedCountryId,

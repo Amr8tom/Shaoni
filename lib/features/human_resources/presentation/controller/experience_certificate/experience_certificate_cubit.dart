@@ -59,8 +59,7 @@ class ExperienceCertificateCubit extends Cubit<ExperienceCertificateState> {
   }
 
   Future<void> _fetchCertificateReasons() async {
-    final result =
-        await _getCertificateReasonsUseCase.call(params: NoParams());
+    final result = await _getCertificateReasonsUseCase.call(params: NoParams());
     result.fold(
       (failure) => emit(state.copyWith(
         status: ExperienceCertificateStatus.lookupsError,
@@ -102,7 +101,7 @@ class ExperienceCertificateCubit extends Cubit<ExperienceCertificateState> {
       certificateReasonId: _selectedReasonId ?? 0,
       reason: reasonController.text.trim(),
       note: noteController.text.trim(),
-      date: DateFormat('yyyy-MM-dd',"en").format(DateTime.now()),
+      date: DateFormat('yyyy-MM-dd', "en").format(DateTime.now()),
       attachmentIds: [],
     );
   }

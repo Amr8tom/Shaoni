@@ -66,7 +66,10 @@ class OnboardingPageWidget extends StatelessWidget {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const Sizer(height: 10,),
+                      const Sizer(
+                        height: 10,
+                      ),
+
                       /// Title
                       Text(
                         page.title,
@@ -84,7 +87,9 @@ class OnboardingPageWidget extends StatelessWidget {
                         fit: FlexFit.tight,
                         child: Text(
                           page.description,
-                          style: Theme.of(context).textTheme.bodyLarge!
+                          style: Theme.of(context)
+                              .textTheme
+                              .bodyLarge!
                               .copyWith(color: ColorRes.darkGrey, height: 1.5),
                           maxLines: 7,
                           textAlign: TextAlign.center,

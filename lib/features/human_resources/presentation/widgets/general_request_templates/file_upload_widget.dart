@@ -40,7 +40,14 @@ class _FileUploadWidgetState extends State<FileUploadWidget> {
               final result = await FilePicker.platform.pickFiles(
                 type: FileType.custom,
                 allowedExtensions: [
-                  'pdf', 'doc', 'docx', 'jpg', 'jpeg', 'png', 'xlsx', 'xls'
+                  'pdf',
+                  'doc',
+                  'docx',
+                  'jpg',
+                  'jpeg',
+                  'png',
+                  'xlsx',
+                  'xls'
                 ],
               );
 
@@ -54,13 +61,10 @@ class _FileUploadWidgetState extends State<FileUploadWidget> {
                     _pickedFile = result.files.single;
                   });
 
-                  // RETURN DATA TO PARENT WIDGET HERE
                   if (widget.onPickedFile != null) {
                     widget.onPickedFile!(_pickedFile!.name, base64String);
                   }
-
-                } catch (e) {
-                  debugPrint('Error converting file to base64: $e');
+                } catch (_) {
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(
                       content: Text(S.current.error ?? 'Error processing file'),
@@ -102,13 +106,12 @@ class _FileUploadWidgetState extends State<FileUploadWidget> {
                 Text(
                   S.current.uploadFileSelect,
                   style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                    color: ColorRes.primary,
-                    fontWeight: FontWeight.w600,
-                  ),
+                        color: ColorRes.primary,
+                        fontWeight: FontWeight.w600,
+                      ),
                   textAlign: TextAlign.center,
                 ),
                 const Sizer(height: 8),
-
               ],
             ),
           ),
@@ -141,20 +144,21 @@ class _FileUploadWidgetState extends State<FileUploadWidget> {
                       Text(
                         _pickedFile!.name,
                         style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                          fontWeight: FontWeight.w600,
-                        ),
+                              fontWeight: FontWeight.w600,
+                            ),
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                       ),
                       Text(
                         _formatFileSize(_pickedFile!.size),
                         style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                          color: ColorRes.grey2.withOpacity(0.6),
-                        ),
+                              color: ColorRes.grey2.withOpacity(0.6),
+                            ),
                       ),
                     ],
                   ),
                 ),
+
                 /// Remove button
                 GestureDetector(
                   onTap: () {
@@ -182,15 +186,20 @@ class _FileUploadWidgetState extends State<FileUploadWidget> {
 
   IconData _getFileIcon(String extension) {
     switch (extension.toLowerCase()) {
-      case 'pdf': return Icons.picture_as_pdf;
+      case 'pdf':
+        return Icons.picture_as_pdf;
       case 'doc':
-      case 'docx': return Icons.description;
+      case 'docx':
+        return Icons.description;
       case 'jpg':
       case 'jpeg':
-      case 'png': return Icons.image;
+      case 'png':
+        return Icons.image;
       case 'xlsx':
-      case 'xls': return Icons.table_chart;
-      default: return Icons.attach_file;
+      case 'xls':
+        return Icons.table_chart;
+      default:
+        return Icons.attach_file;
     }
   }
 

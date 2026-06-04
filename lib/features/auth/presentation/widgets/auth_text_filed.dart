@@ -59,18 +59,18 @@ class _AuthTextFieldState extends State<AuthTextField> {
             Text(
               widget.label!,
               style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                color: ColorRes.primary,
-                fontSize: AppSizes.fontSizeSm / 1.1,
-              ),
+                    color: ColorRes.primary,
+                    fontSize: AppSizes.fontSizeSm / 1.1,
+                  ),
             ),
             const Sizer(height: 8),
           ],
           Text(
             widget.label ?? '',
             style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-              color: ColorRes.primary,
-              fontSize: AppSizes.fontSizeSm / 1.1,
-            ),
+                  color: ColorRes.primary,
+                  fontSize: AppSizes.fontSizeSm / 1.1,
+                ),
           ),
 
           /// Text Field
@@ -85,9 +85,9 @@ class _AuthTextFieldState extends State<AuthTextField> {
             decoration: InputDecoration(
               hintText: widget.hint,
               hintStyle: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                color: ColorRes.grey2.withOpacity(0.7),
-                fontSize: AppSizes.fontSizeSm * 1,
-              ),
+                    color: ColorRes.grey2.withOpacity(0.7),
+                    fontSize: AppSizes.fontSizeSm * 1,
+                  ),
               prefixIcon: widget.prefixIcon ?? _getDefaultIcon(),
               suffixIcon: widget.suffixIcon ?? _getSuffixIcon(),
               contentPadding: EdgeInsets.symmetric(
@@ -127,7 +127,7 @@ class _AuthTextFieldState extends State<AuthTextField> {
                 borderSide: const BorderSide(color: ColorRes.error, width: 1),
               ),
               filled: true,
-              fillColor: widget.formColor??ColorRes.white,
+              fillColor: widget.formColor ?? ColorRes.white,
             ),
           ),
         ],

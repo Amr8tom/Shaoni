@@ -8,8 +8,7 @@ class ExitPermissionEditResponseModel extends ExitPermissionEditResponse {
     super.data,
   });
 
-  factory ExitPermissionEditResponseModel.fromJson(
-      Map<String, dynamic> json) {
+  factory ExitPermissionEditResponseModel.fromJson(Map<String, dynamic> json) {
     return ExitPermissionEditResponseModel(
       success: json['success'] as bool?,
       message: json['message'] as String?,

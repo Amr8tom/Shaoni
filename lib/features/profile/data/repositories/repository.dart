@@ -9,23 +9,22 @@ import '../../../../core/connection/checkNetwork.dart';
 import '../../domain/repositories/repository.dart';
 import '../data_sources/remote_data_sources.dart';
 
-class ProfileRepositoryImp extends ProfileRepository{
+class ProfileRepositoryImp extends ProfileRepository {
   final ProfileRemoteDataSources _remoteDataSources;
   final NetworkInfo _networkInfo;
   ProfileRepositoryImp(this._remoteDataSources, this._networkInfo);
   @override
-  Future<Either<Failure, Profile>> updateProfile({required UpdateProfileParams params}) async{
+  Future<Either<Failure, Profile>> updateProfile(
+      {required UpdateProfileParams params}) async {
     if (await _networkInfo.isConnected) {
       try {
         final response = await _remoteDataSources.updateProfile(params: params);
         return Right(response);
-        } on ServerFailure catch (e) {
+      } on ServerFailure catch (e) {
         return Left(ServerFailure(message: e.message));
       }
-
-    }else{
+    } else {
       return Left(CacheFailure());
     }
-
   }
 }

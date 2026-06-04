@@ -12,8 +12,7 @@ import 'package:equatable/equatable.dart';
 // "serviceStatuses": null
 // }
 
-
-class Status extends Equatable{
+class Status extends Equatable {
   final int id;
   final String? code;
   final String? nameAr;
@@ -61,6 +60,7 @@ class Status extends Equatable{
       isDeleted: json['isDeleted'] ?? false,
     );
   }
+
   /// toJson
   Map<String, dynamic> toJson() {
     return {
@@ -76,6 +76,6 @@ class Status extends Equatable{
   }
 
   @override
-  List<Object?> get props => [ id, code, nameAr, nameEn, techName, isActive, updatedAt, isDeleted];
-
+  List<Object?> get props =>
+      [id, code, nameAr, nameEn, techName, isActive, updatedAt, isDeleted];
 }

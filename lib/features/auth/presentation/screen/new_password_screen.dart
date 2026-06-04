@@ -17,7 +17,6 @@ class NewPasswordScreen extends StatelessWidget {
       child: Scaffold(
         body: Stack(
           children: [
-
             ///  Background Image
             Positioned(
               top: 0,
@@ -32,7 +31,6 @@ class NewPasswordScreen extends StatelessWidget {
 
             Column(
               children: [
-
                 /// Top section with illustration
                 Expanded(
                   flex: 5,

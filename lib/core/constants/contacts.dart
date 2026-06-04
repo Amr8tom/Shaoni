@@ -22,7 +22,6 @@ class Contacts {
     try {
       await launchUrl(phoneUri);
     } catch (e) {
-      print(e);
       throw CacheFailure();
     }
   }
@@ -44,18 +43,6 @@ class Contacts {
               "the error is $e and Could not launch WhatsApp. URL: $whatsappUrl");
     }
   }
-
-  // static Future<void> openWhatsAppChat() async {
-  //   String phoneNumber =
-  //       "+201008541308"; // Replace with the desired phone number
-  //   String message =
-  //       "Hello!"; // Optional: Replace with your desired initial message
-  //
-  //   String url = "https://wa.me/$phoneNumber/?text=${Uri.parse(message)}";
-  //
-  //   await launchUrl(Uri.parse(url));
-  //   ; // Launch the WhatsApp URL
-  // }
 
   static Future<void> openInstagram() async {
     const url = 'https://www.instagram.com'; // Instagram URL

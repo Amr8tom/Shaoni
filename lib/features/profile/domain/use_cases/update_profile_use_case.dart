@@ -5,8 +5,6 @@ import 'package:shaoni/core/utils/usecases/base_usecase.dart';
 import 'package:shaoni/features/profile/domain/entities/profile.dart';
 import '../repositories/repository.dart';
 
-
-
 class UpdateProfileUseCase extends UseCase<Profile, UpdateProfileParams> {
   final ProfileRepository _repository;
   UpdateProfileUseCase(this._repository);

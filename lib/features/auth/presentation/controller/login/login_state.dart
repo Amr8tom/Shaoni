@@ -9,8 +9,8 @@ enum LoginStatus {
   loginLoading,
   sendingOTP,
   reSendingOTP,
-changePasswordLoading,
-changePasswordLoaded,
+  changePasswordLoading,
+  changePasswordLoaded,
   settingPassword,
   passwordSet,
   otpCorrect,
@@ -69,7 +69,6 @@ class LoginState extends Equatable {
   final LoginStatus status;
   final String? otpId, token;
   final int? userID;
-  // final List<ErrorDetail>? errors;
   final Map<String, dynamic>? errorsSetPassword;
   final bool? isRegistered;
   final bool isPasswordHidden;
@@ -81,7 +80,7 @@ class LoginState extends Equatable {
     this.isRegistered = false,
     this.otpId,
     this.token,
-    this.newPasswordMsg ,
+    this.newPasswordMsg,
     this.userID,
     // this.errors,
     this.errorsSetPassword,
@@ -118,15 +117,15 @@ class LoginState extends Equatable {
 
   @override
   List<Object?> get props => [
-    status,
-    // errors,
-    userID,
-    otpId,
-    token,
-    isRegistered,
-    errorsSetPassword,
-    loginErrorMassage,
-    isPasswordHidden,
-    newPasswordMsg
-  ];
+        status,
+        // errors,
+        userID,
+        otpId,
+        token,
+        isRegistered,
+        errorsSetPassword,
+        loginErrorMassage,
+        isPasswordHidden,
+        newPasswordMsg
+      ];
 }

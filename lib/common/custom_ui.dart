@@ -26,12 +26,11 @@ class CustomUI {
     showDialog(
       context: context,
       barrierDismissible: false,
-      builder:
-          (_) => Center(
-            child: RepaintBoundary(
-              child: Lottie.asset(AssetRes.loaderLottie, width: 100.w),
-            ),
-          ),
+      builder: (_) => Center(
+        child: RepaintBoundary(
+          child: Lottie.asset(AssetRes.loaderLottie, width: 100.w),
+        ),
+      ),
     );
   }
 
@@ -39,17 +38,16 @@ class CustomUI {
     showDialog(
       context: context,
       barrierDismissible: true,
-      builder:
-          (_) => AlertDialog(
-            title: Text(S.current.error),
-            content: Text(message ?? S.current.error),
-            actions: [
-              TextButton(
-                onPressed: () => Navigator.of(context).pop(),
-                child: Text(S.current.done),
-              ),
-            ],
+      builder: (_) => AlertDialog(
+        title: Text(S.current.error),
+        content: Text(message ?? S.current.error),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.of(context).pop(),
+            child: Text(S.current.done),
           ),
+        ],
+      ),
     );
   }
 
@@ -60,8 +58,6 @@ class CustomUI {
       ),
     );
   }
-
-
 
   static Widget simpleSendingDataLoader() {
     return Center(
@@ -184,7 +180,7 @@ class CustomUI {
   }
 
   static ScaffoldFeatureController<SnackBar, SnackBarClosedReason>
-  snackBarSuccess({required BuildContext context, String? message}) {
+      snackBarSuccess({required BuildContext context, String? message}) {
     return ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text(message ?? S.current.done),
@@ -195,7 +191,7 @@ class CustomUI {
   }
 
   static ScaffoldFeatureController<SnackBar, SnackBarClosedReason>
-  snackBarFailure({required BuildContext context, String? message}) {
+      snackBarFailure({required BuildContext context, String? message}) {
     return ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text(

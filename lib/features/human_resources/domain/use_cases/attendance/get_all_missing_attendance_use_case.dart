@@ -7,11 +7,13 @@ import 'package:shaoni/features/human_resources/domain/entity/all_attendance_rec
 
 import '../../repository/repository.dart';
 
-class GetAllMissingAttendanceUseCase extends UseCase<AllAttendanceRecordModel,AllMissingAttendanceParams> {
+class GetAllMissingAttendanceUseCase
+    extends UseCase<AllAttendanceRecordModel, AllMissingAttendanceParams> {
   final HRServicesRepository _repository;
-   GetAllMissingAttendanceUseCase(this._repository);
+  GetAllMissingAttendanceUseCase(this._repository);
   @override
-  Future<Either<Failure, AllAttendanceRecordModel>> call({required AllMissingAttendanceParams params}) async{
+  Future<Either<Failure, AllAttendanceRecordModel>> call(
+      {required AllMissingAttendanceParams params}) async {
     return await _repository.getAllMissingAttendance(params: params);
   }
 }
@@ -31,7 +33,11 @@ class AllMissingAttendanceParams extends Equatable {
       {required this.userId, required this.pageNumber, required this.pageSize});
 
   Map<String, dynamic> toJson() {
-    return {"userId": this.userId, "pageNumber": this.pageNumber, "pageSize": this.pageSize};
+    return {
+      "userId": this.userId,
+      "pageNumber": this.pageNumber,
+      "pageSize": this.pageSize
+    };
   }
 
   @override

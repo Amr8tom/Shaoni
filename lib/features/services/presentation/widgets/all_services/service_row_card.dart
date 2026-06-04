@@ -68,8 +68,7 @@ class ServiceRowCard extends StatelessWidget {
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
                   color: visuals.color.withOpacity(0.10),
-                  borderRadius:
-                      BorderRadius.circular(AppSizes.borderRadiusMd),
+                  borderRadius: BorderRadius.circular(AppSizes.borderRadiusMd),
                   border: Border.all(
                     color: visuals.color.withOpacity(0.20),
                     width: 1,
@@ -91,14 +90,12 @@ class ServiceRowCard extends StatelessWidget {
                   children: [
                     Text(
                       title,
-                      style: Theme.of(context)
-                          .textTheme
-                          .headlineSmall
-                          ?.copyWith(
-                            color: ColorRes.black,
-                            fontWeight: FontWeight.w700,
-                            fontSize: AppSizes.fontSizeSm,
-                          ),
+                      style:
+                          Theme.of(context).textTheme.headlineSmall?.copyWith(
+                                color: ColorRes.black,
+                                fontWeight: FontWeight.w700,
+                                fontSize: AppSizes.fontSizeSm,
+                              ),
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                     ),
@@ -115,17 +112,16 @@ class ServiceRowCard extends StatelessWidget {
                               : ColorRes.grey2,
                         ),
                         const Sizer(width: 6),
+
                         /// Code hint
                         Flexible(
                           child: Text(
                             service.nameEn ?? '',
-                            style: Theme.of(context)
-                                .textTheme
-                                .bodySmall
-                                ?.copyWith(
-                                  color: ColorRes.grey2,
-                                  fontSize: AppSizes.fontSizeSm * 0.8,
-                                ),
+                            style:
+                                Theme.of(context).textTheme.bodySmall?.copyWith(
+                                      color: ColorRes.grey2,
+                                      fontSize: AppSizes.fontSizeSm * 0.8,
+                                    ),
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
                           ),

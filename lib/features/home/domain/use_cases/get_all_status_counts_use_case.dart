@@ -5,7 +5,8 @@ import 'package:shaoni/features/home/domain/entities/all_status_count.dart';
 
 import '../repositories/home_repositories.dart';
 
-class GetAllStatusCountsUseCase extends UseCase<List<AllStatusCount>, NoParams> {
+class GetAllStatusCountsUseCase
+    extends UseCase<List<AllStatusCount>, NoParams> {
   final HomeRepositories repositories;
 
   GetAllStatusCountsUseCase(this.repositories);

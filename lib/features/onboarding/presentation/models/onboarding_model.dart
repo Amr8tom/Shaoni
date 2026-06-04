@@ -17,7 +17,6 @@ class OnboardingModel {
 // Onboarding data
 class OnboardingData {
   static List<OnboardingModel> getPages(BuildContext context) {
-    
     return [
       OnboardingModel(
         title: S.current.onboarding1Title,

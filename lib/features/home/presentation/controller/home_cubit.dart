@@ -34,8 +34,8 @@ class HomeCubit extends Cubit<HomeState> {
             for (var e in element.statusCounts!) {
               final name = e.nameEn?.trim();
               if (name != null && name.isNotEmpty) {
-                print(name);
-                final currentCount = int.tryParse(updatedStatus[name] ?? '0') ?? 0;
+                final currentCount =
+                    int.tryParse(updatedStatus[name] ?? '0') ?? 0;
                 final newCount = (e.count ?? 0) + currentCount;
                 updatedStatus[name] = newCount.toString();
               }

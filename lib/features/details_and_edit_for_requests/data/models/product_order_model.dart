@@ -54,8 +54,8 @@ class ProductOrderModel extends Equatable {
     final rawLines = json['lines'];
     final List<ProductOrderLineItem> lineItems = rawLines is List
         ? rawLines
-            .map((e) =>
-                ProductOrderLineItem.fromJson(e as Map<String, dynamic>))
+            .map(
+                (e) => ProductOrderLineItem.fromJson(e as Map<String, dynamic>))
             .toList()
         : [];
 

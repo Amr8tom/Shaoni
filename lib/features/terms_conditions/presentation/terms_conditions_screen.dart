@@ -5,7 +5,6 @@ import '../../../core/constants/api_constants.dart';
 import '../../../core/constants/app_sizes.dart';
 import '../../../generated/l10n.dart';
 
-
 class TermsConditionsScreen extends StatefulWidget {
   @override
   _TermsConditionsScreenState createState() => _TermsConditionsScreenState();

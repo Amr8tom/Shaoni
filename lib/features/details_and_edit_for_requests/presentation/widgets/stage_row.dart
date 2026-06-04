@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shaoni/common/widgets/sized_boxes/sizer.dart';
 
+import '../../../../core/constants/app_sizes.dart';
 import '../../../../core/constants/colors.dart';
 
 class StageRow extends StatelessWidget {
@@ -24,7 +26,9 @@ class StageRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Color nodeColor = isCompleted || isActive ? activeColor : ColorRes.grey2.withOpacity(0.35);
+    final Color nodeColor = isCompleted || isActive
+        ? activeColor
+        : ColorRes.grey2.withOpacity(0.35);
     final Color textColor = isPending ? ColorRes.grey2 : ColorRes.primaryDark;
 
     return Row(
@@ -58,21 +62,20 @@ class StageRow extends StatelessWidget {
         // ── Content ──────────────────────────────────────────────────────
         Expanded(
           child: Padding(
-            padding: const EdgeInsets.only(
+            padding:  EdgeInsets.only(
               top: 6,
-              bottom: isLast ? 0 : 28,
+              bottom: isLast ? 0.h : 28.h,
             ),
             child: isActive
                 ? ActiveLabel(title: title, color: activeColor)
                 : Text(
-              title,
-              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                color: textColor,
-                fontWeight: isCompleted
-                    ? FontWeight.w600
-                    : FontWeight.w400,
-              ),
-            ),
+                    title,
+                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                          color: textColor,
+                          fontWeight:
+                              isCompleted ? FontWeight.w600 : FontWeight.w400,
+                        ),
+                  ),
           ),
         ),
 
@@ -89,10 +92,7 @@ class StageRow extends StatelessWidget {
       ],
     );
   }
-
-
 }
-
 
 class Connector extends StatelessWidget {
   final bool isCompleted;
@@ -113,6 +113,7 @@ class Connector extends StatelessWidget {
     );
   }
 }
+
 class ActiveLabel extends StatelessWidget {
   final String title;
   final Color color;
@@ -131,9 +132,9 @@ class ActiveLabel extends StatelessWidget {
       child: Text(
         title,
         style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-          color: color,
-          fontWeight: FontWeight.bold,
-        ),
+              color: color,
+              fontWeight: FontWeight.bold,
+            ),
       ),
     );
   }
@@ -165,7 +166,7 @@ class NodeCircle extends StatelessWidget {
           shape: BoxShape.circle,
           color: activeColor,
         ),
-        child: const Icon(Icons.check, color: ColorRes.white, size: 16),
+        child:  Icon(Icons.check, color: ColorRes.white, size: AppSizes.iconSm),
       );
     }
 

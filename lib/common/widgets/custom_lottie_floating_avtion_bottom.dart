@@ -18,14 +18,13 @@ class CustomLottieFloatingAvtionBottom extends StatelessWidget {
       child: RepaintBoundary(
         child: CircleAvatar(
           backgroundColor: ColorRes.yellow,
-          radius: DDeviceUtils.getScreenWidth(context)/10,
+          radius: DDeviceUtils.getScreenWidth(context) / 10,
           child: SizedBox(
-        
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 SizedBox(
-                  width: AppSizes.imageSize*1.2,
+                  width: AppSizes.imageSize * 1.2,
                   child: Transform.scale(
                     scale: 1.3,
                     child: ColorFiltered(
@@ -49,8 +48,6 @@ class CustomLottieFloatingAvtionBottom extends StatelessWidget {
                 //   height: AppSizes.iconLg,
                 //
                 // ),
-                // Sizer(height: 3,),
-                // Text(S.current.home,style:Theme.of(context).textTheme.headlineSmall!.copyWith(color:ColorRes.primary),)
               ],
             ),
           ),

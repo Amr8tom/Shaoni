@@ -30,14 +30,14 @@ class ProfileCubit extends Cubit<ProfileState> {
     result.fold((failure) {
       emit(state.copyWith(status: GeneralStatus.error));
     }, (profile) {
-      emit(state.copyWith(status: GeneralStatus.success,
-      massage: profile.message));
+      emit(state.copyWith(
+          status: GeneralStatus.success, massage: profile.message));
     });
   }
 
   void initWithUser(UserModel? user) {
     if (user == null) return;
-    
+
     final int gender = user.gender == "Male" ? 1 : 2;
     final int nationality = user.nationality == "سعودي" ? 1 : 2;
     final int city = user.city == "جده" ? 1 : 2;
@@ -47,7 +47,7 @@ class ProfileCubit extends Cubit<ProfileState> {
       nationality: nationality,
       city: city,
     ));
-    
+
     nameController.text = user.fullName ?? "";
     numberController.text = user.phoneNumber ?? "";
     emailController.text = user.email ?? "";

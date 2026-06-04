@@ -9,7 +9,6 @@ class ExitPermission extends Equatable {
   final String? notes;
   final String? leavesAttachment;
 
-
   const ExitPermission({
     this.id,
     this.exitDate,
@@ -18,7 +17,6 @@ class ExitPermission extends Equatable {
     this.permissionType,
     this.notes,
     this.leavesAttachment,
-
   });
 
   /// from Json
@@ -31,9 +29,9 @@ class ExitPermission extends Equatable {
       permissionType: json['permissionType'],
       notes: json['notes'],
       leavesAttachment: json['leavesAttachment'],
-
     );
   }
+
   /// to json
   Map<String, dynamic> toJson() {
     return {
@@ -44,19 +42,17 @@ class ExitPermission extends Equatable {
       'permissionType': permissionType,
       'notes': notes,
       'leavesAttachment': leavesAttachment,
-
     };
   }
 
   @override
   List<Object?> get props => [
-    id,
-    exitDate,
-    numberOfHours,
-    permissionTimeValue,
-    permissionType,
-    notes,
-    leavesAttachment,
-
-  ];
+        id,
+        exitDate,
+        numberOfHours,
+        permissionTimeValue,
+        permissionType,
+        notes,
+        leavesAttachment,
+      ];
 }

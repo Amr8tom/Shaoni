@@ -15,7 +15,7 @@ class PageIndicator extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Directionality(
-      textDirection: TextDirection.ltr ,
+      textDirection: TextDirection.ltr,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: List.generate(
@@ -25,9 +25,7 @@ class PageIndicator extends StatelessWidget {
             width: currentPage == index ? AppSizes.xl * 1.5 : AppSizes.xs,
             height: AppSizes.xs,
             decoration: BoxDecoration(
-              color: currentPage == index
-                  ? ColorRes.realBlack
-                  : ColorRes.grey5,
+              color: currentPage == index ? ColorRes.realBlack : ColorRes.grey5,
               borderRadius: BorderRadius.circular(AppSizes.xs / 2),
             ),
           ),

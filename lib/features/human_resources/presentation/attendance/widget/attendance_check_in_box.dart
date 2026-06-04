@@ -30,8 +30,9 @@ class AttendanceCheckInBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: AppSizes.padding,vertical:AppSizes.padding/1.5),
-      height: AppSizes.fullHeight/5,
+      padding: EdgeInsets.symmetric(
+          horizontal: AppSizes.padding, vertical: AppSizes.padding / 1.5),
+      height: AppSizes.fullHeight / 5,
       decoration: BoxDecoration(
         color: ColorRes.primary.withOpacity(0.06),
         borderRadius: BorderRadius.circular(AppSizes.borderRadiusLg),

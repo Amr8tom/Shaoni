@@ -51,12 +51,11 @@ class RequestDataWidget extends StatelessWidget {
                           cancelText: S.current.cancel,
                           confirmText: S.current.done,
                           initialDatePickerMode: DatePickerMode.day,
-                          initialEntryMode:
-                          DatePickerEntryMode.calendar,
+                          initialEntryMode: DatePickerEntryMode.calendar,
                           builder: (
-                              BuildContext context,
-                              Widget? child,
-                              ) {
+                            BuildContext context,
+                            Widget? child,
+                          ) {
                             return Theme(
                               data: Theme.of(context).copyWith(
                                 colorScheme: ColorScheme.light(
@@ -77,10 +76,10 @@ class RequestDataWidget extends StatelessWidget {
                                   titleTextStyle: Theme.of(
                                     context,
                                   ).textTheme.headlineSmall?.copyWith(
-                                    color: ColorRes.black,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 6,
-                                  ),
+                                        color: ColorRes.black,
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 6,
+                                      ),
                                 ),
                                 textButtonTheme: TextButtonThemeData(
                                   style: TextButton.styleFrom(
@@ -94,7 +93,8 @@ class RequestDataWidget extends StatelessWidget {
                         );
                         if (pickedDate != null) {
                           controller.permissionDateController.text =
-                              DateFormat('yyyy-MM-dd', 'en_US').format(pickedDate);
+                              DateFormat('yyyy-MM-dd', 'en_US')
+                                  .format(pickedDate);
                         }
                       },
                       validator: (value) {
@@ -116,7 +116,7 @@ class RequestDataWidget extends StatelessWidget {
                         color: ColorRes.grey2.withOpacity(0.5),
                       ),
                       controller: controller.durationController,
-                      validator:    (value) {
+                      validator: (value) {
                         if (value == null || value.isEmpty) {
                           return S.current.pleaseEndterValue;
                         }
@@ -139,7 +139,7 @@ class RequestDataWidget extends StatelessWidget {
                       color: ColorRes.white,
                       child: DropdownButtonFormField<String>(
                         style: TextStyle(
-                          fontSize: AppSizes.fontSizeSm*0.7,
+                          fontSize: AppSizes.fontSizeSm * 0.7,
                           color: ColorRes.black.withOpacity(0.7),
                         ),
                         decoration: InputDecoration(
@@ -169,7 +169,7 @@ class RequestDataWidget extends StatelessWidget {
                           controller.permissionTypeController.text =
                               value ?? '';
                         },
-                        validator:    (value) {
+                        validator: (value) {
                           if (value == null || value.isEmpty) {
                             return S.current.pleaseEndterValue;
                           }
@@ -183,7 +183,7 @@ class RequestDataWidget extends StatelessWidget {
                       color: ColorRes.white,
                       child: DropdownButtonFormField<String>(
                         style: TextStyle(
-                          fontSize: AppSizes.fontSizeSm*0.7,
+                          fontSize: AppSizes.fontSizeSm * 0.7,
                           color: ColorRes.black.withOpacity(0.7),
                         ),
                         decoration: InputDecoration(
@@ -234,12 +234,13 @@ class RequestDataWidget extends StatelessWidget {
                           controller.permissionTimeTypeController.text =
                               value ?? '';
                         },
-                        validator:    (value) {
+                        validator: (value) {
                           if (value == null || value.isEmpty) {
                             return S.current.pleaseEndterValue;
                           }
                           return null;
-                        },                      ),
+                        },
+                      ),
                     ),
                   ),
                 ],

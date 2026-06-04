@@ -22,4 +22,3 @@ class DrawerLogoWidget extends StatelessWidget {
     );
   }
 }
-

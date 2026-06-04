@@ -14,10 +14,9 @@
 // flutter: ║                 "attachments": []
 // flutter: ║            }
 
-
 import 'package:equatable/equatable.dart';
 
-class Study extends Equatable{
+class Study extends Equatable {
   final String? requestType;
   final String? requestTypeLabel;
   final String? study;
@@ -46,9 +45,7 @@ class Study extends Equatable{
     this.editReasons,
     this.rejectReasons,
     this.attachments,
-
   });
-
 
   @override
   List<Object?> get props => [

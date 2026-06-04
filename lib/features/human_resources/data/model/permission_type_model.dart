@@ -1,4 +1,3 @@
-
 import '../../domain/entity/permission_type.dart';
 
 class PermissionTypeModel extends PermissionType {

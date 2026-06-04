@@ -100,81 +100,16 @@ class LoginForm extends StatelessWidget {
 
               const Sizer(height: 24),
 
-              // // ── OR divider ───────────────────────────────────────────────
-              // Row(
-              //   children: [
-              //     Expanded(child: Divider(color: ColorRes.grey.shade300)),
-              //     Padding(
-              //       padding: const EdgeInsets.symmetric(horizontal: 12),
-              //       child: Text(
-              //         'OR',
-              //         style: Theme.of(context).textTheme.bodySmall?.copyWith(
-              //               color: ColorRes.grey.shade500,
-              //               fontWeight: FontWeight.w500,
-              //             ),
-              //       ),
-              //     ),
-              //     Expanded(child: Divider(color: ColorRes.grey.shade300)),
-              //   ],
-              // ),
-              //
-              // const Sizer(height: 16),
-              //
-              // Text(
-              //   'or continue with:',
-              //   style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-              //         color: ColorRes.grey.shade700,
-              //       ),
-              //   textAlign: TextAlign.center,
-              // ),
-              //
-              // const Sizer(height: 20),
-              //
-              // // ── Social icons ─────────────────────────────────────────────
-              // Row(
-              //   mainAxisAlignment: MainAxisAlignment.center,
-              //   children: [
-              //     // Google
-              //     _SocialLoginButton(
-              //       onTap: () {
-              //         // TODO: implement Google sign-in
-              //       },
-              //       child: Image.asset(
-              //         'assets/images/pngs/social_images/google-logo.png',
-              //         width: 28,
-              //         height: 28,
-              //       ),
-              //     ),
-              //     const Sizer(width: 20),
-              //     // Apple
-              //     _SocialLoginButton(
-              //       onTap: () {
-              //         // TODO: implement Apple sign-in
-              //       },
-              //       child: const Icon(
-              //         Icons.apple_rounded,
-              //         size: 32,
-              //         color: ColorRes.black,
-              //       ),
-              //     ),
-              //   ],
-              // ),
-              //
-              // const Sizer(height: 24),
-
-              // ── Don't have an account? Sign Up ───────────────────────────
               GestureDetector(
-                onTap: () {
-                  // TODO: implement Sign Up navigation
-                },
+                onTap: () {},
                 child: RichText(
                   textAlign: TextAlign.center,
                   text: TextSpan(
                     style: Theme.of(context).textTheme.bodyMedium,
                     children: [
                       const TextSpan(text: "Don't have an account? "),
-                      const TextSpan(
-                        text: 'Sign Up',
+                       TextSpan(
+                        text: S.current.singUp,
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           color: ColorRes.black,
@@ -194,13 +129,13 @@ class LoginForm extends StatelessWidget {
                   style: Theme.of(context)
                       .textTheme
                       .bodyMedium
-                      ?.copyWith(color: ColorRes.grey),
+                      ?.copyWith(color: ColorRes.greyShade600),
                   children: [
                     TextSpan(text: S.current.byContinuingYouAgreeToOur),
                     TextSpan(
                       text: S.current.privacyPolicy,
-                      style: const TextStyle(
-                        color: ColorRes.grey,
+                      style:  TextStyle(
+                        color: ColorRes.greyShade600,
                         decoration: TextDecoration.underline,
                       ),
                     ),
@@ -212,30 +147,6 @@ class LoginForm extends StatelessWidget {
             ],
           ),
         ),
-      ),
-    );
-  }
-}
-
-class _SocialLoginButton extends StatelessWidget {
-  final VoidCallback onTap;
-  final Widget child;
-
-  const _SocialLoginButton({required this.onTap, required this.child});
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Container(
-        width: 64,
-        height: 64,
-        decoration: BoxDecoration(
-          shape: BoxShape.circle,
-          color: ColorRes.grey6,
-          border: Border.all(color: ColorRes.grey5),
-        ),
-        child: Center(child: child),
       ),
     );
   }

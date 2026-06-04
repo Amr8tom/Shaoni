@@ -94,7 +94,8 @@ class TrainingRequestCubit extends Cubit<TrainingRequestState> {
 
   CreateTrainingRequestParams _buildParams() {
     final empId =
-        int.tryParse(CacheHelper.getString(key: CacheKeys.employeeId) ?? '0') ?? 0;
+        int.tryParse(CacheHelper.getString(key: CacheKeys.employeeId) ?? '0') ??
+            0;
     return CreateTrainingRequestParams(
       employeeId: empId,
       officeId: int.tryParse(officeIdController.text) ?? 0,

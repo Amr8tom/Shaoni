@@ -123,7 +123,8 @@ class ComplaintRequestCubit extends Cubit<ComplaintRequestState> {
   int? get selectedComplaintReasonId {
     if (complaintReasonController.text.isEmpty) return null;
     final selected = _reasons.where(
-      (r) => _localizedName(r.nameAr, r.nameEn) == complaintReasonController.text,
+      (r) =>
+          _localizedName(r.nameAr, r.nameEn) == complaintReasonController.text,
     );
     return selected.isEmpty ? null : selected.first.id;
   }
@@ -149,7 +150,8 @@ class ComplaintRequestCubit extends Cubit<ComplaintRequestState> {
         complaintDescription: complaintDescriptionController.text.isEmpty
             ? ''
             : complaintDescriptionController.text,
-        date: todayDateController.text.isEmpty ? null : todayDateController.text,
+        date:
+            todayDateController.text.isEmpty ? null : todayDateController.text,
         attachmentName: attachmentFileNameController.text.isEmpty
             ? ''
             : attachmentFileNameController.text,

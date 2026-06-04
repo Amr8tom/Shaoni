@@ -86,7 +86,8 @@ class Base64FileHelper {
     if (base64String.startsWith('data:')) {
       final commaIdx = base64String.indexOf(',');
       if (commaIdx != -1) {
-        final header = base64String.substring(5, commaIdx); // e.g. "image/png;base64"
+        final header =
+            base64String.substring(5, commaIdx); // e.g. "image/png;base64"
         mimeFromUri = header.split(';').first.trim();
         cleaned = base64String.substring(commaIdx + 1);
       }
@@ -135,8 +136,7 @@ class Base64FileHelper {
       final cleaned = base64String.startsWith('data:')
           ? base64String.substring(base64String.indexOf(',') + 1)
           : base64String;
-      final bytes =
-          base64Decode(cleaned.replaceAll(RegExp(r'\s'), ''));
+      final bytes = base64Decode(cleaned.replaceAll(RegExp(r'\s'), ''));
 
       /// Save to the app documents directory so the file survives long
       /// enough for the user to act on it (temp dir gets cleared more
@@ -149,8 +149,7 @@ class Base64FileHelper {
       final file = File('${dir.path}/$fileName');
       await file.writeAsBytes(bytes);
       filePath = file.path;
-    } catch (e) {
-      debugPrint('Base64FileHelper.downloadAndShare write error: $e');
+    } catch (_) {
       return const DownloadResult(status: DownloadStatus.failure);
     }
 
@@ -158,20 +157,18 @@ class Base64FileHelper {
     /// running build (common right after adding the dependency), surface
     /// a "savedOnly" result instead of crashing.
     try {
-      await Share.shareXFiles([XFile(filePath)], text: filePath.split('/').last);
+      await Share.shareXFiles([XFile(filePath)],
+          text: filePath.split('/').last);
       return DownloadResult(
         status: DownloadStatus.shared,
         filePath: filePath,
       );
     } on MissingPluginException {
-      debugPrint(
-          'share_plus plugin not registered — file saved to: $filePath');
       return DownloadResult(
         status: DownloadStatus.savedOnly,
         filePath: filePath,
       );
-    } catch (e) {
-      debugPrint('Base64FileHelper.downloadAndShare share error: $e');
+    } catch (_) {
       return DownloadResult(
         status: DownloadStatus.savedOnly,
         filePath: filePath,
@@ -204,10 +201,7 @@ class Base64FileHelper {
     }
 
     /// PNG
-    if (b[0] == 0x89 &&
-        b[1] == 0x50 &&
-        b[2] == 0x4E &&
-        b[3] == 0x47) {
+    if (b[0] == 0x89 && b[1] == 0x50 && b[2] == 0x4E && b[3] == 0x47) {
       return 'image/png';
     }
 
@@ -289,9 +283,8 @@ class Base64FileHelper {
       case 'image/webp':
         return Base64FileInfo(
           mimeType: mime,
-          extension: mime.split('/').last == 'jpeg'
-              ? 'jpg'
-              : mime.split('/').last,
+          extension:
+              mime.split('/').last == 'jpeg' ? 'jpg' : mime.split('/').last,
           label: 'Image',
           icon: Icons.image_rounded,
           color: ColorRes.primary,
@@ -344,6 +337,7 @@ class Base64FileHelper {
         );
       case 'application/zip':
       case 'application/vnd.ms-office':
+
         /// Catch-all for ZIP-/OLE-based files when no MIME prefix was sent.
         return Base64FileInfo(
           mimeType: mime,

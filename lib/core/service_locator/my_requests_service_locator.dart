@@ -87,8 +87,8 @@ class MyRequestsServiceLocator {
     );
 
     /// controllers
-    serviceLocator.registerFactory(() => MyRequestsCubit(
-        serviceLocator(), serviceLocator(), serviceLocator(), serviceLocator()));
+    serviceLocator.registerFactory(() => MyRequestsCubit(serviceLocator(),
+        serviceLocator(), serviceLocator(), serviceLocator()));
     serviceLocator.registerFactory<EditCubit>(
       () => EditCubit(
         serviceLocator(),

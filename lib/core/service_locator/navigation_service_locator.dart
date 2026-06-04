@@ -36,8 +36,8 @@ class NavigationServiceLocator {
     );
 
     /// controller
-    serviceLocator.registerFactory<NavigationCubit>(()=>
-      NavigationCubit(serviceLocator()),
+    serviceLocator.registerFactory<NavigationCubit>(
+      () => NavigationCubit(serviceLocator()),
     );
   }
 }

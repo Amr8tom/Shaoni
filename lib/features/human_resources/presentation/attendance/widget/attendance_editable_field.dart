@@ -68,7 +68,7 @@ class DEditableField extends StatelessWidget {
             prefixIcon: Icon(
               icon,
               size: AppSizes.iconSm,
-              color: iconColor??ColorRes.primary,
+              color: iconColor ?? ColorRes.primary,
             ),
             prefixIconConstraints: BoxConstraints(
               minWidth: AppSizes.iconLg,
@@ -90,8 +90,7 @@ class DEditableField extends StatelessWidget {
             ),
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(AppSizes.borderRadiusMd),
-              borderSide:
-                  BorderSide(color: ColorRes.primary, width: 1.5),
+              borderSide: BorderSide(color: ColorRes.primary, width: 1.5),
             ),
             errorBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(AppSizes.borderRadiusMd),

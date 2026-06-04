@@ -1,7 +1,5 @@
 import 'package:shaoni/features/profile/domain/entities/profile.dart';
 
-
-
 class ProfileModel extends Profile {
   const ProfileModel(
       {required super.success, required super.message, super.errorMassage});
@@ -17,7 +15,8 @@ class ProfileModel extends Profile {
       return ProfileModel(
           success: json['success'],
           message: json['message'] ?? '',
-          errorMassage: json['error'] != null ? json['error']['message'] : null);
+          errorMassage:
+              json['error'] != null ? json['error']['message'] : null);
     }
   }
 }

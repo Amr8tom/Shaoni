@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 
-class CurrentStatus extends Equatable{
+class CurrentStatus extends Equatable {
   final String? nameAr;
   final String? nameEn;
   final String? colorHex;
@@ -12,7 +12,7 @@ class CurrentStatus extends Equatable{
     this.colorHex,
   });
 
-/// fromJson
+  /// fromJson
   factory CurrentStatus.fromJson(Map<String, dynamic> json) {
     return CurrentStatus(
       nameAr: json['nameAr'],
@@ -20,7 +20,6 @@ class CurrentStatus extends Equatable{
       techName: json['techName'],
       colorHex: json['colorHex'],
     );
-
   }
 
   /// toJson

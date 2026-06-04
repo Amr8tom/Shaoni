@@ -110,22 +110,10 @@ void CustomDialogImgTitleDes({
                               onPressed: onTab2,
                             ),
                           ),
-                          // Expanded(
-                          //   child: DButton(
-                          //     borderRadius: AppSizes.borderRadiusXXLg,
-                          //     height: AppSizes.heightcontainer,
-                          //     text: S.current.languageEnglish,
-                          //     onPressed: (){},
-                          //     variant: DButtonVariant.secondary,
-                          //     size: DButtonSize.medium,
-                          //   ),
-                          // ),
                         ],
                       ),
                     ),
                   ],
-
-                  // Sizer(height: 8),
                 ],
               ),
             ],

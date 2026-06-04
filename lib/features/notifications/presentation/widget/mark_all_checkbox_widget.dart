@@ -8,7 +8,6 @@ import '../../../../generated/l10n.dart';
 class MarkAllCheckboxWidget extends StatefulWidget {
   const MarkAllCheckboxWidget({super.key});
 
-
   @override
   State<MarkAllCheckboxWidget> createState() => _MarkAllCheckboxWidgetState();
 }
@@ -18,7 +17,7 @@ class _MarkAllCheckboxWidgetState extends State<MarkAllCheckboxWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return        Padding(
+    return Padding(
       padding: EdgeInsets.symmetric(
         horizontal: AppSizes.md,
         vertical: AppSizes.sm,
@@ -29,10 +28,10 @@ class _MarkAllCheckboxWidgetState extends State<MarkAllCheckboxWidget> {
           Text(
             S.current.addCorrectSignAtAll,
             style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-              color: ColorRes.grey,
-            ),
+                  color: ColorRes.grey,
+                ),
           ),
-         const Sizer(width: 8),
+          const Sizer(width: 8),
           Checkbox(
             value: markAllAsRead,
             onChanged: (value) {
@@ -47,6 +46,6 @@ class _MarkAllCheckboxWidgetState extends State<MarkAllCheckboxWidget> {
           ),
         ],
       ),
-    ) ;
+    );
   }
 }

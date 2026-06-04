@@ -40,9 +40,9 @@ class ServiceCard extends StatelessWidget {
                 maxLines: 2,
                 title,
                 style: Theme.of(context).textTheme.bodyLarge!.copyWith(
-                  color: ColorRes.black,
-                  fontWeight: FontWeight.bold,
-                ),
+                      color: ColorRes.black,
+                      fontWeight: FontWeight.bold,
+                    ),
               ),
             ),
           ],

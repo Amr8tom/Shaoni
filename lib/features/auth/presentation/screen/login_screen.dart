@@ -31,9 +31,6 @@ class LoginScreen extends StatelessWidget {
                 duration: Duration(seconds: 3),
               ),
             );
-
-
-
           }
         },
         builder: (context, state) {
@@ -42,7 +39,6 @@ class LoginScreen extends StatelessWidget {
             backgroundColor: ColorRes.error,
             body: Stack(
               children: [
-
                 ///  Background Image - outside SafeArea to extend behind status bar & app bar
                 Positioned.fill(
                   child: Image.asset(
@@ -55,7 +51,6 @@ class LoginScreen extends StatelessWidget {
 
                 Column(
                   children: [
-
                     /// Top section with illustration
                     Expanded(
                       flex: 5,
@@ -77,7 +72,6 @@ class LoginScreen extends StatelessWidget {
                     const Expanded(flex: 4, child: LoginForm()),
                   ],
                 ),
-
               ],
             ),
           );

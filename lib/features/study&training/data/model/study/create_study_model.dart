@@ -1,4 +1,4 @@
-import '../../../domain/entities/study/create_study_response.dart' ;
+import '../../../domain/entities/study/create_study_response.dart';
 
 class CreateStudyModel extends CreateStudyResponse {
   const CreateStudyModel({

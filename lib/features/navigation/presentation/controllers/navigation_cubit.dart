@@ -15,14 +15,10 @@ import '../../../services/presentation/screens/all_categories_Screen.dart';
 part 'navigation_state.dart';
 
 class NavigationCubit extends Cubit<NavigationState> {
-  // final GetCountUnreadedNotificationUseCase
-  // _getCountUnreadedNotificationUseCase;
   final GetUserDataUseCase _getUserDataUseCase;
 
   NavigationCubit(this._getUserDataUseCase) : super(const NavigationState()) {
     getUserData(CacheHelper.getString(key: CacheKeys.userId));
-    // isManagerMode() ? null :
-    // GetCountUnreadedNotification();
   }
 
   int indx = 0;
@@ -35,8 +31,6 @@ class NavigationCubit extends Cubit<NavigationState> {
     return result.fold(
       (failure) => emit(state.copyWith(status: NavigationStatus.error)),
       (user) async {
-        print('================= employeeId =============');
-        print(user.employeeId);
         await CacheHelper.putString(
             key: CacheKeys.employeeId, value: user.employeeId.toString());
         await CacheHelper.putString(
@@ -63,21 +57,6 @@ class NavigationCubit extends Cubit<NavigationState> {
     indx = index;
     emit(state.copyWith(status: NavigationStatus.indexChanged));
   }
-
-// Future GetCountUnreadedNotification() async {
-//   final token = CacheHelper.getString(key: CacheKeys.token);
-//   if (token == null || token.trim() == '') {
-//     return;
-//   }
-//   emit(state.copyWith(status: GeneralStatus.loading));
-//   final result = await _getCountUnreadedNotificationUseCase.call(
-//     params: NoParams(),
-//   );
-//   return result.fold(
-//         (failure) => emit(state.copyWith(status: GeneralStatus.error)),
-//         (count) => emit(state.copyWith(notificationCount: count)),
-//   );
-// }
 }
 
 enum NavigationStatus { initialized, indexChanged, loading, success, error }

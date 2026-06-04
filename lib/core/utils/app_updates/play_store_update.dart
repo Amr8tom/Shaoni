@@ -15,9 +15,7 @@ Future<void> checkForPlayUpdate({required BuildContext context}) async {
         versionCode: updateInfo.availableVersionCode?.toString(),
       );
     }
-  }).catchError((error) {
-    debugPrint('Error checking for update: $error');
-  });
+  }).catchError((_) {});
 }
 
 void _showUpdateDialog({
@@ -27,10 +25,10 @@ void _showUpdateDialog({
   showDialog(
     context: context,
     barrierDismissible: false,
-    barrierColor: Colors.black54,
+    barrierColor: ColorRes.black.withOpacity(0.54),
     builder: (context) {
       return Dialog(
-        backgroundColor: Colors.transparent,
+        backgroundColor: ColorRes.transparent,
         elevation: 0,
         child: Container(
           decoration: BoxDecoration(
@@ -38,7 +36,7 @@ void _showUpdateDialog({
             borderRadius: BorderRadius.circular(AppSizes.borderRadiusLarge),
             boxShadow: [
               BoxShadow(
-                color: Colors.black.withOpacity(0.15),
+                color: ColorRes.black.withOpacity(0.15),
                 blurRadius: 24,
                 offset: const Offset(0, 8),
               ),
@@ -140,7 +138,7 @@ void _showUpdateDialog({
                       onPressed: () {
                         Navigator.of(context).pop();
                         InAppUpdate.performImmediateUpdate().catchError(
-                          (error) => debugPrint('Update error: $error'),
+                          (_) => AppUpdateResult.inAppUpdateFailed,
                         );
                       },
                     ),

@@ -100,9 +100,8 @@ class CreateComplaintRequestScreen extends StatelessWidget {
                               /// Request details title
                               Text(
                                 S.current.requestDetails,
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .headlineMedium,
+                                style:
+                                    Theme.of(context).textTheme.headlineMedium,
                               ),
                               const Sizer(height: 16),
 
@@ -113,8 +112,8 @@ class CreateComplaintRequestScreen extends StatelessWidget {
                               /// File upload — base64 saved to the cubit
                               FileUploadWidget(
                                 onPickedFile: (fileName, base64String) {
-                                  controller.attachmentFileNameController
-                                      .text = fileName ?? '';
+                                  controller.attachmentFileNameController.text =
+                                      fileName ?? '';
                                   controller.attachmentFileController.text =
                                       base64String ?? '';
                                 },

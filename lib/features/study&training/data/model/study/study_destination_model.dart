@@ -1,4 +1,3 @@
-
 import '../../../domain/entities/study/study_destination.dart';
 
 class StudyDestinationModel extends StudyDestination {

@@ -5,8 +5,8 @@ import '../core/constants/app_sizes.dart';
 
 class CustomTab extends StatelessWidget {
   final isSelected;
-  final title ;
-  const CustomTab({super.key, required this.title,  required this.isSelected});
+  final title;
+  const CustomTab({super.key, required this.title, required this.isSelected});
 
   @override
   Widget build(BuildContext context) {

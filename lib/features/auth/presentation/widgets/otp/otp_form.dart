@@ -58,16 +58,20 @@ class _OtpFormState extends State<OtpForm> {
               textAlign: TextAlign.center,
               maxLines: 5,
             ),
-/// make size
-            const Sizer(height: 12,),
+
+            /// make size
+            const Sizer(
+              height: 12,
+            ),
+
             /// Description
             Flexible(
               child: Text(
                 S.current.enterOtp,
                 style: Theme.of(context).textTheme.bodyLarge!.copyWith(
-                  color: ColorRes.darkGrey,
-                  height: 1.5,
-                ),
+                      color: ColorRes.darkGrey,
+                      height: 1.5,
+                    ),
                 maxLines: 7,
                 textAlign: TextAlign.center,
               ),
@@ -78,10 +82,11 @@ class _OtpFormState extends State<OtpForm> {
 
             /// OTP fields
             OtpTextField(
-              fieldWidth: AppSizes.xl*1.8,
-              fieldHeight: AppSizes.xxl*1.5,
+              fieldWidth: AppSizes.xl * 1.8,
+              fieldHeight: AppSizes.xxl * 1.5,
               numberOfFields: 5,
-              borderColor: _errorMessage != null ? ColorRes.error : ColorRes.darkerGrey,
+              borderColor:
+                  _errorMessage != null ? ColorRes.error : ColorRes.darkerGrey,
               showFieldAsBox: true,
               onCodeChanged: (String code) {
                 setState(() {
@@ -96,7 +101,9 @@ class _OtpFormState extends State<OtpForm> {
                 _handleSubmitOtp(context);
               }, // end onSubmit
             ),
-            const Sizer(height: 12,),
+            const Sizer(
+              height: 12,
+            ),
 
             // Error message
             if (_errorMessage != null)
@@ -105,14 +112,13 @@ class _OtpFormState extends State<OtpForm> {
                 child: Text(
                   _errorMessage!,
                   style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                    color: ColorRes.error,
-                  ),
+                        color: ColorRes.error,
+                      ),
                 ),
               ),
 
-            // const Sizer(height: 6),
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: AppSizes.padding*2),
+              padding: EdgeInsets.symmetric(horizontal: AppSizes.padding * 2),
               child: AuthButton(
                 text: S.current.sendOtp,
                 onPressed: () => _handleSubmitOtp(context),
@@ -122,8 +128,9 @@ class _OtpFormState extends State<OtpForm> {
                 backgroundColor: ColorRes.primary,
               ),
             ),
-            const Sizer(height: 12,),
-
+            const Sizer(
+              height: 12,
+            ),
           ],
         ),
       ),

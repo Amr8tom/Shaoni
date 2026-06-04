@@ -15,7 +15,7 @@ Image ImageFromBase64String({
     width: width,
     height: height,
     errorBuilder: (context, error, stackTrace) {
-      return  Icon(
+      return Icon(
         Icons.image_not_supported,
         color: ColorRes.grey,
         size: AppSizes.iconXLarge,

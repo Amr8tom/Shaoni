@@ -46,7 +46,8 @@ class DeleteMyAccountBody extends StatelessWidget {
                       padding: EdgeInsets.all(AppSizes.padding),
                       decoration: BoxDecoration(
                         color: ColorRes.error.withOpacity(0.08),
-                        borderRadius: BorderRadius.circular(AppSizes.borderRadiusMd),
+                        borderRadius:
+                            BorderRadius.circular(AppSizes.borderRadiusMd),
                         border: Border.all(
                           color: ColorRes.error.withOpacity(0.2),
                           width: 1.5,
@@ -72,10 +73,13 @@ class DeleteMyAccountBody extends StatelessWidget {
                           /// Main Question
                           Text(
                             S.current.askDelete,
-                            style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-                              fontWeight: FontWeight.bold,
-                              color: ColorRes.error,
-                            ),
+                            style: Theme.of(context)
+                                .textTheme
+                                .headlineSmall
+                                ?.copyWith(
+                                  fontWeight: FontWeight.bold,
+                                  color: ColorRes.error,
+                                ),
                             textAlign: TextAlign.center,
                           ),
                         ],
@@ -89,17 +93,21 @@ class DeleteMyAccountBody extends StatelessWidget {
                       padding: EdgeInsets.all(AppSizes.padding),
                       decoration: BoxDecoration(
                         color: ColorRes.grey6,
-                        borderRadius: BorderRadius.circular(AppSizes.borderRadiusMd),
+                        borderRadius:
+                            BorderRadius.circular(AppSizes.borderRadiusMd),
                       ),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
                             S.current.deleteBody,
-                            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                              color: ColorRes.grey2.withOpacity(0.7),
-                              height: 1.6,
-                            ),
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyMedium
+                                ?.copyWith(
+                                  color: ColorRes.grey2.withOpacity(0.7),
+                                  height: 1.6,
+                                ),
                             textAlign: TextAlign.start,
                           ),
                           const Sizer(height: 16),
@@ -215,9 +223,9 @@ class DeleteMyAccountBody extends StatelessWidget {
               child: Text(
                 point,
                 style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                  color: ColorRes.grey2.withOpacity(0.6),
-                  height: 1.5,
-                ),
+                      color: ColorRes.grey2.withOpacity(0.6),
+                      height: 1.5,
+                    ),
               ),
             ),
           ],
@@ -255,9 +263,9 @@ class DeleteMyAccountBody extends StatelessWidget {
           content: Text(
             'Are you absolutely sure? This will permanently delete your account.',
             style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-              color: ColorRes.grey2,
-              height: 1.6,
-            ),
+                  color: ColorRes.grey2,
+                  height: 1.6,
+                ),
             textAlign: TextAlign.center,
           ),
           actions: [
@@ -268,7 +276,8 @@ class DeleteMyAccountBody extends StatelessWidget {
                     style: OutlinedButton.styleFrom(
                       side: const BorderSide(color: ColorRes.primary),
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(AppSizes.borderRadiusSm),
+                        borderRadius:
+                            BorderRadius.circular(AppSizes.borderRadiusSm),
                       ),
                     ),
                     onPressed: () => Navigator.pop(dialogContext),
@@ -287,13 +296,15 @@ class DeleteMyAccountBody extends StatelessWidget {
                     style: ElevatedButton.styleFrom(
                       backgroundColor: ColorRes.error,
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(AppSizes.borderRadiusSm),
+                        borderRadius:
+                            BorderRadius.circular(AppSizes.borderRadiusSm),
                       ),
                     ),
                     onPressed: () async {
                       await CacheHelper.removeFromShared(key: CacheKeys.token);
                       await CacheHelper.removeFromShared(key: CacheKeys.userId);
-                      await CacheHelper.removeFromShared(key: CacheKeys.employeeId);
+                      await CacheHelper.removeFromShared(
+                          key: CacheKeys.employeeId);
                       if (dialogContext.mounted) {
                         Navigator.pop(dialogContext);
                         context.pushReplacementNamed(DRoutesName.loginRoute);
@@ -349,18 +360,18 @@ class DeleteMyAccountBody extends StatelessWidget {
               Text(
                 'Account Deleted',
                 style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-                  fontWeight: FontWeight.bold,
-                  color: ColorRes.primary,
-                ),
+                      fontWeight: FontWeight.bold,
+                      color: ColorRes.primary,
+                    ),
                 textAlign: TextAlign.center,
               ),
               const Sizer(height: 8),
               Text(
                 S.current.accountDeleted,
                 style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                  color: ColorRes.grey2.withOpacity(0.6),
-                  height: 1.6,
-                ),
+                      color: ColorRes.grey2.withOpacity(0.6),
+                      height: 1.6,
+                    ),
                 textAlign: TextAlign.center,
               ),
             ],
@@ -372,7 +383,8 @@ class DeleteMyAccountBody extends StatelessWidget {
                 style: ElevatedButton.styleFrom(
                   backgroundColor: ColorRes.primary,
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(AppSizes.borderRadiusSm),
+                    borderRadius:
+                        BorderRadius.circular(AppSizes.borderRadiusSm),
                   ),
                   padding: EdgeInsets.symmetric(vertical: AppSizes.md),
                 ),

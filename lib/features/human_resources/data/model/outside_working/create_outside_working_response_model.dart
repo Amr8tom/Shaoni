@@ -6,9 +6,11 @@ class CreateOutsideWorkingResponseModel extends CreateOutsideWorkingResponse {
     required super.outsideWorkingName,
   });
 
-  factory CreateOutsideWorkingResponseModel.fromJson(Map<String, dynamic> json) =>
+  factory CreateOutsideWorkingResponseModel.fromJson(
+          Map<String, dynamic> json) =>
       CreateOutsideWorkingResponseModel(
-        odooOutsideWorkingId: (json['odooOutsideWorkingId'] as num?)?.toInt() ?? 0,
+        odooOutsideWorkingId:
+            (json['odooOutsideWorkingId'] as num?)?.toInt() ?? 0,
         outsideWorkingName: json['outsideWorkingName'] as String? ?? '',
       );
 }

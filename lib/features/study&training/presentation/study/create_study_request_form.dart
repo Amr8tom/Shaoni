@@ -17,7 +17,6 @@ import '../../../human_resources/presentation/widgets/general_request_templates/
 import '../../../human_resources/presentation/widgets/general_request_templates/date_data_widget.dart';
 import '../../../human_resources/presentation/widgets/general_request_templates/file_upload_widget.dart';
 
-
 class CreateStudyRequestForm extends StatelessWidget {
   final int? requestId;
 
@@ -40,8 +39,7 @@ class CreateStudyRequestForm extends StatelessWidget {
         body: Builder(
           builder: (context) {
             final controller = context.read<StudyCubit>();
-            return BlocConsumer<StudyCubit,
-                StudyState>(
+            return BlocConsumer<StudyCubit, StudyState>(
               listener: (context, state) {
                 if (state.isError) {
                   ScaffoldMessenger.of(context).showSnackBar(
@@ -129,13 +127,12 @@ class CreateStudyRequestForm extends StatelessWidget {
 
                               const StudyRequestDataWidget(),
 
-
                               /// file upload
                               const Sizer(height: 35),
                               FileUploadWidget(
                                 onPickedFile: (fileName, base64String) {
-                                  controller.attachmentFileNameController
-                                      .text = fileName ?? '';
+                                  controller.attachmentFileNameController.text =
+                                      fileName ?? '';
                                   controller.attachmentFileController.text =
                                       base64String ?? '';
                                 },
@@ -150,10 +147,10 @@ class CreateStudyRequestForm extends StatelessWidget {
                         /// Floating blur buttons at the bottom
                         state.isCreateStudyRequestLoading
                             ? Center(
-                              child: CircularProgressIndicator(
+                                child: CircularProgressIndicator(
                                   color: ColorRes.primary,
                                 ),
-                            )
+                              )
                             : CreateDeleteButtons(
                                 deleteTab: () {
                                   controller.deleteStudyRequest();
