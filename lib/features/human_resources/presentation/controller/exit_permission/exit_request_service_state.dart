@@ -127,7 +127,7 @@ final class ExitRequestServiceState extends Equatable {
             clearExpandedIndex ? null : (expandedIndex ?? this.expandedIndex),
         permissionTypes: permissionTypes ?? this.permissionTypes,
         permissionTimes: permissionTimes ?? this.permissionTimes,
-        errorMassage: errorMessage ?? this.errorMassage);
+        errorMassage: errorMessage ?? errorMassage);
   }
 
   @override

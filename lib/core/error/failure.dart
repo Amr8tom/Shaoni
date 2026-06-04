@@ -6,6 +6,7 @@ abstract class Failure extends Equatable {
 
   const Failure({this.message});
 
+  @override
   List<Object?> get props => [message];
 }
 
@@ -83,6 +84,7 @@ class UnknownFailure extends Failure {
 }
 
 class InvalidOtpFailure extends Failure {
+  @override
   final String message;
 
   const InvalidOtpFailure(this.message);

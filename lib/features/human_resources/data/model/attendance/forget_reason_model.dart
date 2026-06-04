@@ -16,9 +16,9 @@ class ForgetReasonModel extends ForgetReason {
   /// to json
   Map<String, dynamic> toJson() {
     return {
-      'id': this.id,
-      'name': this.name,
-      'nameEn': this.nameEn,
+      'id': id,
+      'name': name,
+      'nameEn': nameEn,
     };
   }
 }

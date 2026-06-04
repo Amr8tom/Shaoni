@@ -254,11 +254,7 @@ class HRServicesRemoteDataSourcesImp implements HRServicesRemoteDataSources {
   Future<List<PermissionTimeModel>> getAllPermissionTimes() async {
     try {
       final List response = await _dio.getData(URL: URL.getPermissionTime);
-      if (response != null) {
-        return response.map((e) => PermissionTimeModel.fromJson(e)).toList();
-      } else {
-        throw ServerFailure(message: 'server failure');
-      }
+      return response.map((e) => PermissionTimeModel.fromJson(e)).toList();
     } on ServerFailure catch (e) {
       throw ServerFailure(message: e.message);
     }
@@ -339,14 +335,11 @@ class HRServicesRemoteDataSourcesImp implements HRServicesRemoteDataSources {
       {required NoParams params}) async {
     try {
       final List response = await _dio.getData(URL: URL.getAttendanceLookUp);
-      if (response != null) {
-        /// Extract the data field from the response Map
-        return response.map((e) {
-          return AttendanceLookUpModel.fromJson(e);
-        }).toList();
-      } else {
-        throw ServerFailure(message: 'server failure');
-      }
+
+      /// Extract the data field from the response Map
+      return response.map((e) {
+        return AttendanceLookUpModel.fromJson(e);
+      }).toList();
     } on ServerFailure catch (e) {
       throw ServerFailure(message: e.message);
     }
@@ -547,7 +540,6 @@ class HRServicesRemoteDataSourcesImp implements HRServicesRemoteDataSources {
         URL: '${URL.updateStartWork}${params.requestId}',
         body: params.toMap(),
       );
-      if (response == null) throw ServerFailure(message: 'server failure');
       return CreateStartWorkModel.fromJson(
           response.data as Map<String, dynamic>);
     } on ServerFailure catch (e) {
@@ -598,7 +590,6 @@ class HRServicesRemoteDataSourcesImp implements HRServicesRemoteDataSources {
         URL: '${URL.updateExperienceCertificate}${params.requestId}',
         body: params.toMap(),
       );
-      if (response == null) throw ServerFailure(message: 'server failure');
       return CreateExperienceCertificateModel.fromJson(
           response.data as Map<String, dynamic>);
     } on ServerFailure catch (e) {
@@ -734,7 +725,6 @@ class HRServicesRemoteDataSourcesImp implements HRServicesRemoteDataSources {
         URL: '${URL.updateMedicalInsurance}${params.requestId}',
         body: params.toMap(),
       );
-      if (response == null) throw ServerFailure(message: 'server failure');
       return CreateMedicalInsuranceModel.fromJson(
           response.data as Map<String, dynamic>);
     } on ServerFailure catch (e) {
@@ -802,7 +792,6 @@ class HRServicesRemoteDataSourcesImp implements HRServicesRemoteDataSources {
         URL: '${URL.updateProductOrder}${params.requestId}',
         body: params.data.toMap(),
       );
-      if (response == null) throw ServerFailure(message: 'server failure');
       return CreateProductOrderResponseModel.fromJson(
           response.data as Map<String, dynamic>);
     } on ServerFailure catch (e) {
@@ -886,7 +875,7 @@ class HRServicesRemoteDataSourcesImp implements HRServicesRemoteDataSources {
         rawBody = response['body'] ?? response['data'] ?? response['items'];
       }
       if (rawBody == null || rawBody is! List) return [];
-      return (rawBody as List)
+      return (rawBody)
           .map((e) => OutsideWorkingProjectModel.fromJson(e))
           .toList();
     } on ServerFailure catch (e) {
@@ -905,9 +894,7 @@ class HRServicesRemoteDataSourcesImp implements HRServicesRemoteDataSources {
       );
       if (response == null) throw ServerFailure(message: 'server failure');
       return CreateOutsideWorkingResponseModel.fromJson(
-          response is Map<String, dynamic>
-              ? response
-              : response as Map<String, dynamic>);
+          response is Map<String, dynamic> ? response : response);
     } on ServerFailure catch (e) {
       throw ServerFailure(message: e.message);
     }

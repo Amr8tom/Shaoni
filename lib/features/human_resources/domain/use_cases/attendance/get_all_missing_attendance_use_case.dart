@@ -1,6 +1,5 @@
 import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
-import 'package:flutter/material.dart';
 import 'package:shaoni/core/error/failure.dart';
 import 'package:shaoni/core/utils/usecases/base_usecase.dart';
 import 'package:shaoni/features/human_resources/domain/entity/all_attendance_record_model.dart';
@@ -33,11 +32,7 @@ class AllMissingAttendanceParams extends Equatable {
       {required this.userId, required this.pageNumber, required this.pageSize});
 
   Map<String, dynamic> toJson() {
-    return {
-      "userId": this.userId,
-      "pageNumber": this.pageNumber,
-      "pageSize": this.pageSize
-    };
+    return {"userId": userId, "pageNumber": pageNumber, "pageSize": pageSize};
   }
 
   @override

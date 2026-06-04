@@ -2,7 +2,7 @@ import 'package:shaoni/features/home/data/model/status_count_model.dart';
 import 'package:shaoni/features/home/domain/entities/all_status_count.dart';
 
 class AllStatusCountModel extends AllStatusCount {
-  AllStatusCountModel(
+  const AllStatusCountModel(
       {required super.serviceId,
       required super.serviceCode,
       required super.serviceNameAr,
@@ -29,8 +29,7 @@ class AllStatusCountModel extends AllStatusCount {
       'serviceCode': serviceCode,
       'serviceNameAr': serviceNameAr,
       'serviceNameEn': serviceNameEn,
-      'statusCounts':
-          statusCounts?.map((e) => (e as StatusCountModel).toJson()).toList(),
+      'statusCounts': statusCounts?.map((e) => (e).toJson()).toList(),
     };
   }
 }

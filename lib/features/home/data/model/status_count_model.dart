@@ -1,7 +1,7 @@
 import 'package:shaoni/features/home/domain/entities/status_count.dart';
 
 class StatusCountModel extends StatusCount {
-  StatusCountModel(
+  const StatusCountModel(
       {required super.statusId,
       required super.nameAr,
       required super.nameEn,

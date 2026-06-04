@@ -34,10 +34,10 @@ class AttendanceCheckInBox extends StatelessWidget {
           horizontal: AppSizes.padding, vertical: AppSizes.padding / 1.5),
       height: AppSizes.fullHeight / 5,
       decoration: BoxDecoration(
-        color: ColorRes.primary.withOpacity(0.06),
+        color: ColorRes.primary.withValues(alpha: 0.06),
         borderRadius: BorderRadius.circular(AppSizes.borderRadiusLg),
         border: Border.all(
-          color: ColorRes.primary.withOpacity(0.25),
+          color: ColorRes.primary.withValues(alpha: 0.25),
           width: 1,
         ),
       ),
@@ -48,7 +48,7 @@ class AttendanceCheckInBox extends StatelessWidget {
           Text(
             S.current.checkIn,
             style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                  color: ColorRes.black.withOpacity(0.8),
+                  color: ColorRes.black.withValues(alpha: 0.8),
                   fontWeight: FontWeight.bold,
                   fontSize: AppSizes.fontSizeSm,
                 ),

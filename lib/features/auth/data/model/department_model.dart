@@ -12,7 +12,7 @@ import 'package:shaoni/features/auth/domain/entities/department.dart';
 //                "isDeleted": false
 // }
 class DepartmentModel extends DepartmentEntity {
-  DepartmentModel(
+  const DepartmentModel(
       {required super.id,
       required super.nameEn,
       required super.nameAr,

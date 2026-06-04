@@ -62,7 +62,7 @@ class DEditableField extends StatelessWidget {
             isDense: true,
             hintText: hint,
             hintStyle: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                  color: ColorRes.grey2.withOpacity(0.6),
+                  color: ColorRes.grey2.withValues(alpha: 0.6),
                   fontSize: AppSizes.fontSizeSm,
                 ),
             prefixIcon: Icon(

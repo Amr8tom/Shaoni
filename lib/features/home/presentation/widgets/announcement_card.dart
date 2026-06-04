@@ -52,7 +52,7 @@ class AnnouncementCard extends StatelessWidget {
             borderRadius: BorderRadius.circular(AppSizes.borderRadiusLg),
             boxShadow: [
               BoxShadow(
-                color: ColorRes.primary.withOpacity(0.25),
+                color: ColorRes.primary.withValues(alpha: 0.25),
                 blurRadius: 14,
                 offset: const Offset(0, 6),
               ),
@@ -68,7 +68,7 @@ class AnnouncementCard extends StatelessWidget {
                   right: -20,
                   child: _DecorBlob(
                     size: 120,
-                    color: ColorRes.white.withOpacity(0.10),
+                    color: ColorRes.white.withValues(alpha: 0.10),
                   ),
                 ),
                 Positioned(
@@ -76,7 +76,7 @@ class AnnouncementCard extends StatelessWidget {
                   left: -10,
                   child: _DecorBlob(
                     size: 100,
-                    color: ColorRes.white.withOpacity(0.08),
+                    color: ColorRes.white.withValues(alpha: 0.08),
                   ),
                 ),
 
@@ -90,11 +90,11 @@ class AnnouncementCard extends StatelessWidget {
                       height: AppSizes.iconLg * 1.4,
                       alignment: Alignment.center,
                       decoration: BoxDecoration(
-                        color: ColorRes.white.withOpacity(0.20),
+                        color: ColorRes.white.withValues(alpha: 0.20),
                         borderRadius:
                             BorderRadius.circular(AppSizes.borderRadiusMd),
                         border: Border.all(
-                          color: ColorRes.white.withOpacity(0.30),
+                          color: ColorRes.white.withValues(alpha: 0.30),
                           width: 1,
                         ),
                       ),
@@ -129,7 +129,7 @@ class AnnouncementCard extends StatelessWidget {
                                 .textTheme
                                 .bodyMedium
                                 ?.copyWith(
-                                  color: ColorRes.white.withOpacity(0.92),
+                                  color: ColorRes.white.withValues(alpha: 0.92),
                                   height: 1.5,
                                   fontSize: AppSizes.fontSizeSm,
                                 ),

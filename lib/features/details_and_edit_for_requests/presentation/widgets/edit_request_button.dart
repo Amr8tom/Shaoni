@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shaoni/common/widgets/sized_boxes/sizer.dart';
 import 'package:shaoni/core/routing/route_names.dart';
-import 'package:shaoni/core/extentions/navigation_extension.dart';
+import 'package:shaoni/core/extensions/navigation_extension.dart';
 import '../../../../core/constants/app_sizes.dart';
 import '../../../../core/constants/colors.dart';
 import '../../../../generated/l10n.dart';
@@ -69,7 +69,7 @@ class EditRequestButton extends StatelessWidget {
                   decoration: BoxDecoration(
                     borderRadius:
                         BorderRadius.all(Radius.circular(AppSizes.xxl)),
-                    color: ColorRes.staticBlueColor.withOpacity(0.75),
+                    color: ColorRes.staticBlueColor.withValues(alpha: 0.75),
                   ),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,

@@ -42,9 +42,10 @@ class TrainingRequestDataWidget extends StatelessWidget {
           Container(
             padding: EdgeInsets.all(AppSizes.padding * 0.9),
             decoration: BoxDecoration(
-              color: ColorRes.primary.withOpacity(0.05),
+              color: ColorRes.primary.withValues(alpha: 0.05),
               borderRadius: BorderRadius.circular(AppSizes.borderRadiusMd),
-              border: Border.all(color: ColorRes.primary.withOpacity(0.25)),
+              border:
+                  Border.all(color: ColorRes.primary.withValues(alpha: 0.25)),
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,

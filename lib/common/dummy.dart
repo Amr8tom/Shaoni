@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-import '../core/constants/asset_resoures.dart';
 import '../core/constants/colors.dart';
 import '../features/notifications/domain/entities/notification_entity.dart';
 

@@ -6,6 +6,8 @@ import '../../../core/constants/app_sizes.dart';
 import '../../../generated/l10n.dart';
 
 class TermsConditionsScreen extends StatefulWidget {
+  const TermsConditionsScreen({super.key});
+
   @override
   _TermsConditionsScreenState createState() => _TermsConditionsScreenState();
 }

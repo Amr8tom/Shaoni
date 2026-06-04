@@ -12,10 +12,10 @@ import '../../domain/entities/request_with_stage.dart';
 part 'my_requests_state.dart';
 
 class MyRequestsCubit extends Cubit<MyRequestsState> {
-  GetAllUserRequestsUseCase _getAllUserRequestsUseCase;
-  GetRequestDetailsUseCase _getRequestDetailsUseCase;
-  GetAllManagerRequestsUseCase _getAllManagerRequestsUseCase;
-  ApproveRequestUseCase _approveRequestUseCase;
+  final GetAllUserRequestsUseCase _getAllUserRequestsUseCase;
+  final GetRequestDetailsUseCase _getRequestDetailsUseCase;
+  final GetAllManagerRequestsUseCase _getAllManagerRequestsUseCase;
+  final ApproveRequestUseCase _approveRequestUseCase;
   final ScrollController userScrollController = ScrollController();
   final ScrollController managerScrollController = ScrollController();
   int userPage = 1;
@@ -33,7 +33,7 @@ class MyRequestsCubit extends Cubit<MyRequestsState> {
       this._getAllManagerRequestsUseCase,
       this._approveRequestUseCase,
       this._getRequestDetailsUseCase)
-      : super(const MyRequestsState()) {}
+      : super(const MyRequestsState());
 
   /// getAllUserRequests with debounce
   Future getAllUserRequests(
@@ -58,7 +58,7 @@ class MyRequestsCubit extends Cubit<MyRequestsState> {
       (failure) => emit(state.copyWith(status: MyRequestsStatus.error)),
       (requests) {
         final List<RequestWithStage> updatedItems = [
-          ...(state.itemsUser ?? []),
+          ...state.itemsUser,
           ...requests.items
         ];
         emit(state.copyWith(
@@ -101,7 +101,7 @@ class MyRequestsCubit extends Cubit<MyRequestsState> {
       (failure) => emit(state.copyWith(status: MyRequestsStatus.error)),
       (requests) {
         final List<RequestWithStage> updatedItems = [
-          ...(state.itemsManager ?? []),
+          ...state.itemsManager,
           ...requests.items
         ];
 
@@ -134,6 +134,7 @@ class MyRequestsCubit extends Cubit<MyRequestsState> {
       emit(state.copyWith(
           status: MyRequestsStatus.success, requestDetails: response));
     });
+    return null;
   }
 
   /// accept request by manager

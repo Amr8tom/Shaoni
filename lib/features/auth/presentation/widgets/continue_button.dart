@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shaoni/core/extentions/navigation_extension.dart';
+import 'package:shaoni/core/extensions/navigation_extension.dart';
 import '../../../../common/widgets/sized_boxes/sizer.dart';
 import '../../../../core/constants/app_sizes.dart';
 import '../../../../core/constants/colors.dart';
@@ -19,6 +19,11 @@ class ContinueButton extends StatelessWidget {
             onPressed: () {
               context.pushNamed(DRoutesName.verifyAccountRoute);
             },
+            style: ElevatedButton.styleFrom(
+              backgroundColor: ColorRes.primary,
+              minimumSize: Size(double.infinity, AppSizes.buttonHeight * 1.2),
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.zero),
+            ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -37,11 +42,6 @@ class ContinueButton extends StatelessWidget {
                   size: AppSizes.ld,
                 ),
               ],
-            ),
-            style: ElevatedButton.styleFrom(
-              backgroundColor: ColorRes.primary,
-              minimumSize: Size(double.infinity, AppSizes.buttonHeight * 1.2),
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.zero),
             ),
           ),
         ),

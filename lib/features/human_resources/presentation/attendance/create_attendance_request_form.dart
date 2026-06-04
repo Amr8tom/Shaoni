@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:shaoni/core/extentions/navigation_extension.dart';
+import 'package:shaoni/core/extensions/navigation_extension.dart';
 import 'package:shaoni/features/human_resources/presentation/attendance/widget/attendance_request_data_widget.dart';
 import '../../../../../common/widgets/appbar/appbar.dart';
 import '../../../../../common/widgets/dialogs/custom_dialog_img_title_des.dart';
 import '../../../../../common/widgets/sized_boxes/sizer.dart';
 import '../../../../../core/constants/app_sizes.dart';
-import '../../../../../core/constants/asset_resoures.dart';
+import '../../../../../core/constants/asset_resources.dart';
 import '../../../../../core/constants/colors.dart';
 import '../../../../../core/routing/route_names.dart';
 import '../../../../../core/service_locator/service_locator.dart';
@@ -49,7 +49,7 @@ class CreateAttendanceRequestForm extends StatelessWidget {
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(
                       content: Text(state.errorMessage ?? "Error"),
-                      backgroundColor: ColorRes.error.withOpacity(0.5),
+                      backgroundColor: ColorRes.error.withValues(alpha: 0.5),
                     ),
                   );
                 }

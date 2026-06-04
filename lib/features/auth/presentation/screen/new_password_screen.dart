@@ -2,9 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shaoni/core/service_locator/service_locator.dart';
 import '../../../../core/constants/app_sizes.dart';
-import '../../../../core/constants/asset_resoures.dart';
+import '../../../../core/constants/asset_resources.dart';
 import '../controller/login/login_cubit.dart';
-import '../widgets/login/login_form.dart';
 import '../widgets/new_password/new_password_form.dart';
 
 class NewPasswordScreen extends StatelessWidget {

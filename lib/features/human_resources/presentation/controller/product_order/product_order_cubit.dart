@@ -129,8 +129,9 @@ class ProductOrderCubit extends Cubit<ProductOrderState> {
 
   void updateItemCategory(
       String localId, int? categoryId, String categoryName) {
-    if (categoryId != null)
+    if (categoryId != null) {
       loadProductsForCategory(categoryId); // -1 triggers "all" fetch
+    }
     final items = state.lineItems.map((i) {
       if (i.localId != localId) return i;
       return i.copyWith(

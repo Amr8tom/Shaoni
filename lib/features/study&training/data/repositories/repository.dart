@@ -36,6 +36,7 @@ class StudyServicesRepositoryImp extends StudyServicesRepository {
         return Left(ServerFailure(message: e.message));
       }
     } else {
+      _local.toString();
       return Left(CacheFailure());
     }
   }

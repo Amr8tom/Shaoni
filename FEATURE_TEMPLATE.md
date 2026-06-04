@@ -534,7 +534,7 @@ import '../../../../../common/widgets/appbar/appbar.dart';
 import '../../../../../common/widgets/sized_boxes/sizer.dart';
 import '../../../../../core/constants/app_sizes.dart';
 import '../../../../../core/constants/colors.dart';
-import '../../../../../core/extentions/navigation_extension.dart';
+import '../../../../../core/extensions/navigation_extension.dart';
 import '../../../../../core/routing/route_names.dart';
 import '../../../../../core/service_locator/service_locator.dart';
 import '../../../../../generated/l10n.dart';
@@ -687,7 +687,7 @@ case DRoutesName.createXxxRoute:
   );
 ```
 
-### 7.3 Navigation extension — `core/extentions/navigation_extension.dart`
+### 7.3 Navigation extension — `core/extensions/navigation_extension.dart`
 ```dart
 extension Navigation on BuildContext {
   Future<dynamic> pushNamed(String route, {Object? arguments}) =>

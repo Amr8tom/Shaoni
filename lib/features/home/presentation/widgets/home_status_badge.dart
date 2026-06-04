@@ -23,7 +23,7 @@ class HomeStatusBadge extends StatelessWidget {
         Flexible(
           flex: 1,
           child: Text(
-            S.current.orderStatus + ":    ",
+            "${S.current.orderStatus}:    ",
             style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                   color: ColorRes.black,
                   fontSize: AppSizes.fontSizeSm * 0.70,
@@ -44,7 +44,7 @@ class HomeStatusBadge extends StatelessWidget {
               // vertical: AppSizes.padding / 5,
             ),
             decoration: BoxDecoration(
-              color: statusColor.withOpacity(0.8),
+              color: statusColor.withValues(alpha: 0.8),
               borderRadius: BorderRadius.circular(AppSizes.borderRadiusSm),
             ),
             child: Center(

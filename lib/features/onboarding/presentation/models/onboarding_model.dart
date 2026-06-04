@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../../generated/l10n.dart';
-import '../../../../core/constants/asset_resoures.dart';
+import '../../../../core/constants/asset_resources.dart';
 
 class OnboardingModel {
   final String title;

@@ -21,7 +21,7 @@ class DoneButton extends StatelessWidget {
           borderRadius: BorderRadius.circular(8),
           boxShadow: [
             BoxShadow(
-              color: ColorRes.grey.withOpacity(0.2),
+              color: ColorRes.grey.withValues(alpha: 0.2),
               blurRadius: 4,
               offset: const Offset(0, 2),
             ),

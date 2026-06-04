@@ -50,7 +50,7 @@ class AuthButton extends StatelessWidget {
       child: Material(
         color: canPress
             ? (backgroundColor ?? ColorRes.black)
-            : ColorRes.grey.withOpacity(0.3),
+            : ColorRes.grey.withValues(alpha: 0.3),
         borderRadius: BorderRadius.circular(AppSizes.borderRadiusXXLg),
         child: InkWell(
           onTap: canPress ? onPressed : null,

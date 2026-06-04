@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shaoni/core/extentions/navigation_extension.dart';
+import 'package:shaoni/core/extensions/navigation_extension.dart';
 import 'package:shaoni/core/widgets/buttons/d_button.dart';
 import '../../../core/constants/app_sizes.dart';
 
@@ -76,7 +76,7 @@ void CustomDialogImgTitleDes({
                   Text(
                     orderNumber == null
                         ? des
-                        : "${S.current.orderNumber} ${orderNumber ?? ''}",
+                        : "${S.current.orderNumber} $orderNumber",
                     style: Theme.of(
                       context,
                     ).textTheme.bodyMedium?.copyWith(color: ColorRes.grey2),
@@ -91,7 +91,7 @@ void CustomDialogImgTitleDes({
                         children: [
                           Expanded(
                             child: DButton(
-                              text: button1!,
+                              text: button1,
                               height: AppSizes.heightcontainer,
                               borderRadius: AppSizes.borderRadiusXXLg,
                               size: DButtonSize.medium,

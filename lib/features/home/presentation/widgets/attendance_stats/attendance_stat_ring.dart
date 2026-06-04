@@ -2,8 +2,6 @@ import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
 
-import '../../../../../core/constants/colors.dart';
-
 /// Circular progress ring used inside [AttendanceStatCard].
 ///
 /// Draws a soft tinted background track and a colored progress arc on top
@@ -86,7 +84,7 @@ class _RingPainter extends CustomPainter {
       ..style = PaintingStyle.stroke
       ..strokeWidth = strokeWidth
       ..strokeCap = StrokeCap.round
-      ..color = color.withOpacity(0.15);
+      ..color = color.withValues(alpha: 0.15);
     canvas.drawCircle(center, radius, trackPaint);
 
     /// Foreground arc — starts at the top (-90°) and sweeps clockwise.

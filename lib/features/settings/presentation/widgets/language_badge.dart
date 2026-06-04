@@ -17,10 +17,10 @@ class LanguageBadge extends StatelessWidget {
         vertical: AppSizes.xs,
       ),
       decoration: BoxDecoration(
-        color: ColorRes.primary.withOpacity(0.10),
+        color: ColorRes.primary.withValues(alpha: 0.10),
         borderRadius: BorderRadius.circular(AppSizes.borderRadiusXXLg),
         border: Border.all(
-          color: ColorRes.primary.withOpacity(0.30),
+          color: ColorRes.primary.withValues(alpha: 0.30),
           width: 1,
         ),
       ),

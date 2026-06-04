@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shaoni/core/constants/app_sizes.dart';
-import 'package:shaoni/core/constants/asset_resoures.dart';
-import 'package:shaoni/core/extentions/navigation_extension.dart';
+import 'package:shaoni/core/constants/asset_resources.dart';
+import 'package:shaoni/core/extensions/navigation_extension.dart';
 import 'package:shaoni/core/routing/route_names.dart';
 import 'package:shaoni/features/services/presentation/widgets/service_card.dart';
 
@@ -10,7 +10,7 @@ import '../../../../generated/l10n.dart';
 import '../controllers/services_cubit.dart';
 
 class ServicesGridView extends StatelessWidget {
-  const ServicesGridView({Key? key}) : super(key: key);
+  const ServicesGridView({super.key});
 
   @override
   Widget build(BuildContext context) {

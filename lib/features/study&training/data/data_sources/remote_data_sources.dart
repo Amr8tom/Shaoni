@@ -52,11 +52,7 @@ class StudyServicesRemoteDataSourcesImp
   Future<List<StudyTypeModel>> getStudyTypes({required NoParams params}) async {
     try {
       final List response = await _dio.getData(URL: URL.getStudyTypes);
-      if (response != null) {
-        return response.map((e) => StudyTypeModel.fromJson(e)).toList();
-      } else {
-        throw ServerFailure(message: 'server failure');
-      }
+      return response.map((e) => StudyTypeModel.fromJson(e)).toList();
     } on ServerFailure catch (e) {
       throw ServerFailure(message: e.message);
     }
@@ -107,7 +103,6 @@ class StudyServicesRemoteDataSourcesImp
         URL: '${URL.updateStudyRequest}${params.requestId}',
         body: params.toMap(),
       );
-      if (response == null) throw ServerFailure(message: 'server failure');
       return CreateStudyModel.fromJson(response.data as Map<String, dynamic>);
     } on ServerFailure catch (e) {
       throw ServerFailure(message: e.message);
@@ -155,7 +150,6 @@ class StudyServicesRemoteDataSourcesImp
         URL: '${URL.updateTrainingRequest}${params.requestId}',
         body: params.data.toMap(),
       );
-      if (response == null) throw ServerFailure(message: 'server failure');
       return CreateTrainingResponseModel.fromJson(
           response.data as Map<String, dynamic>);
     } on ServerFailure catch (e) {

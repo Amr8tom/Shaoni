@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lottie/lottie.dart';
 import '../../common/widgets/sized_boxes/sizer.dart';
 import '../core/constants/app_sizes.dart';
-import '../core/constants/asset_resoures.dart';
+import '../core/constants/asset_resources.dart';
 import '../core/constants/colors.dart';
 import '../generated/l10n.dart';
 
@@ -116,7 +116,7 @@ class CustomUI {
           RepaintBoundary(
             child: ColorFiltered(
               colorFilter: ColorFilter.mode(
-                ColorRes.primary.withOpacity(0.7),
+                ColorRes.primary.withValues(alpha: 0.7),
                 BlendMode.srcIn,
               ),
               child: Lottie.asset(
@@ -163,7 +163,7 @@ class CustomUI {
           RepaintBoundary(
             child: ColorFiltered(
               colorFilter: ColorFilter.mode(
-                ColorRes.primary.withOpacity(0.7),
+                ColorRes.primary.withValues(alpha: 0.7),
                 BlendMode.srcIn,
               ),
               child: Lottie.asset(

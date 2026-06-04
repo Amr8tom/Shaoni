@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../common/widgets/sized_boxes/sizer.dart';
 import '../../../../core/constants/app_sizes.dart';
 import '../../../../core/constants/colors.dart';
-import '../../../../core/extentions/navigation_extension.dart';
+import '../../../../core/extensions/navigation_extension.dart';
 import '../../../../core/routing/route_names.dart';
 import '../../../../generated/l10n.dart';
 import '../../../language/presentation/controller/language_cubit.dart';
@@ -149,7 +149,7 @@ class _LanguageOption extends StatelessWidget {
           ),
           decoration: BoxDecoration(
             color: isSelected
-                ? ColorRes.primary.withOpacity(0.08)
+                ? ColorRes.primary.withValues(alpha: 0.08)
                 : ColorRes.grey6,
             borderRadius: BorderRadius.circular(AppSizes.borderRadiusLg),
             border: Border.all(

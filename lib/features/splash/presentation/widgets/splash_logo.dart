@@ -23,7 +23,7 @@ class SplashLogo extends StatelessWidget {
             Shadow(
               offset: Offset(2, 2),
               blurRadius: AppSizes.blurSmall,
-              color: ColorRes.black.withOpacity(0.3),
+              color: ColorRes.black.withValues(alpha: 0.3),
             ),
           ],
         ),

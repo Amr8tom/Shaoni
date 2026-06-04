@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shaoni/core/extentions/navigation_extension.dart';
+import 'package:shaoni/core/extensions/navigation_extension.dart';
 import '../../../../core/constants/app_sizes.dart';
 import '../../../../core/constants/colors.dart';
 import '../../../../core/routing/route_names.dart';
@@ -17,16 +17,16 @@ class SkipIntroButton extends StatelessWidget {
             onPressed: () {
               context.pushNamed(DRoutesName.verifyAccountRoute);
             },
+            style: ElevatedButton.styleFrom(
+              backgroundColor: ColorRes.primary,
+              minimumSize: Size(double.infinity, AppSizes.buttonHeight * 1.2),
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.zero),
+            ),
             child: Text(
               S.current.skip,
               style: Theme.of(
                 context,
               ).textTheme.titleMedium?.copyWith(color: ColorRes.yellow),
-            ),
-            style: ElevatedButton.styleFrom(
-              backgroundColor: ColorRes.primary,
-              minimumSize: Size(double.infinity, AppSizes.buttonHeight * 1.2),
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.zero),
             ),
           ),
         ),

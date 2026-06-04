@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shaoni/common/custom_ui.dart';
 import 'package:shaoni/core/constants/colors.dart';
-import 'package:shaoni/core/extentions/navigation_extension.dart';
+import 'package:shaoni/core/extensions/navigation_extension.dart';
 import 'package:shaoni/core/routing/route_names.dart';
 import 'package:shaoni/features/home/presentation/widgets/request_card.dart';
 import 'package:shaoni/features/details_and_edit_for_requests/domain/entities/request_with_stage.dart';
@@ -37,7 +37,7 @@ class UserRequestsGridView extends StatelessWidget {
         if (controller.userScrollController.position.pixels >=
             controller.userScrollController.position.maxScrollExtent - 160) {
           if (((controller.state.userRequests?.totalPages) ?? 0) >
-              (controller.userPage - 1 ?? 1)) {
+              controller.userPage - 1) {
             controller.getAllUserRequests(
                 employeeId: int.parse(
                     CacheHelper.getString(key: CacheKeys.employeeId) ??
@@ -49,7 +49,7 @@ class UserRequestsGridView extends StatelessWidget {
     });
 
     /// Sample data - replace with actual data later
-    return validRequests.length == 0
+    return validRequests.isEmpty
         ? CustomUI.noData()
         : SizedBox(
             // height: AppSizes.fullHeight * 0.5,

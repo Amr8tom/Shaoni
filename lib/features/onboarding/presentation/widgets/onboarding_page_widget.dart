@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../../common/widgets/sized_boxes/sizer.dart';
 import '../../../../core/constants/app_sizes.dart';
-import '../../../../core/constants/asset_resoures.dart';
+import '../../../../core/constants/asset_resources.dart';
 import '../../../../core/constants/colors.dart';
 import '../models/onboarding_model.dart';
 

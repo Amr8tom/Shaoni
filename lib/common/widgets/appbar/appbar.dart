@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:shaoni/core/extentions/navigation_extension.dart';
+import 'package:shaoni/core/extensions/navigation_extension.dart';
 
 import '../../../core/constants/app_sizes.dart';
-import '../../../core/constants/asset_resoures.dart';
+import '../../../core/constants/asset_resources.dart';
 import '../../../core/constants/colors.dart';
 import '../../../core/device/device_utility.dart';
 import '../../../core/routing/route_names.dart';
@@ -60,7 +60,7 @@ class DAppBar extends StatelessWidget implements PreferredSizeWidget {
               color: showBackGroundColor ? ColorRes.grey6 : ColorRes.primary,
               boxShadow: [
                 BoxShadow(
-                  color: ColorRes.gold.withOpacity(0.1),
+                  color: ColorRes.gold.withValues(alpha: 0.1),
                   blurRadius: 10,
                   spreadRadius: 2,
                 ),
@@ -146,11 +146,11 @@ class DAppBar extends StatelessWidget implements PreferredSizeWidget {
               Container(
                 height: 3,
                 decoration: BoxDecoration(
-                  color: ColorRes.error.withOpacity(0.2),
+                  color: ColorRes.error.withValues(alpha: 0.2),
                   boxShadow: [
                     BoxShadow(
                       offset: Offset(0, 2),
-                      color: ColorRes.primary.withOpacity(0.2),
+                      color: ColorRes.primary.withValues(alpha: 0.2),
                       blurRadius: 4,
                       spreadRadius: 0.2,
                     ),
@@ -159,8 +159,8 @@ class DAppBar extends StatelessWidget implements PreferredSizeWidget {
                     begin: Alignment.topLeft,
                     end: Alignment.bottomRight,
                     colors: [
-                      ColorRes.primary.withOpacity(0.2),
-                      ColorRes.primary.withOpacity(0.1),
+                      ColorRes.primary.withValues(alpha: 0.2),
+                      ColorRes.primary.withValues(alpha: 0.1),
                     ],
                   ),
                 ),

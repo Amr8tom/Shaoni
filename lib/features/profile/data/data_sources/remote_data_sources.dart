@@ -20,11 +20,7 @@ class ProfileRemoteDataSourcesImpl implements ProfileRemoteDataSources {
     try {
       final response = await _dioHelper.putData(
           URL: URL.updateProfile, body: params.toMap());
-      if (response != null) {
-        return ProfileModel.fromJson(response.data);
-      } else {
-        throw ServerFailure(message: "server error");
-      }
+      return ProfileModel.fromJson(response.data);
     } on ServerFailure catch (e) {
       throw ServerFailure(message: e.message);
     }

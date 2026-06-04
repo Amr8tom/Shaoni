@@ -18,7 +18,7 @@ class OrderTextCard extends StatelessWidget {
         Flexible(
           flex: 2,
           child: Text(
-            "${title}: ",
+            "$title: ",
             style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                   color: ColorRes.black,
                   fontSize: AppSizes.fontSizeSm * 0.80,

@@ -25,7 +25,7 @@ void _showUpdateDialog({
   showDialog(
     context: context,
     barrierDismissible: false,
-    barrierColor: ColorRes.black.withOpacity(0.54),
+    barrierColor: ColorRes.black.withValues(alpha: 0.54),
     builder: (context) {
       return Dialog(
         backgroundColor: ColorRes.transparent,
@@ -36,7 +36,7 @@ void _showUpdateDialog({
             borderRadius: BorderRadius.circular(AppSizes.borderRadiusLarge),
             boxShadow: [
               BoxShadow(
-                color: ColorRes.black.withOpacity(0.15),
+                color: ColorRes.black.withValues(alpha: 0.15),
                 blurRadius: 24,
                 offset: const Offset(0, 8),
               ),
@@ -53,7 +53,7 @@ void _showUpdateDialog({
                   gradient: LinearGradient(
                     colors: [
                       ColorRes.primary,
-                      ColorRes.primary.withOpacity(0.75),
+                      ColorRes.primary.withValues(alpha: 0.75),
                     ],
                     begin: Alignment.topLeft,
                     end: Alignment.bottomRight,
@@ -70,7 +70,7 @@ void _showUpdateDialog({
                       width: 72,
                       height: 72,
                       decoration: BoxDecoration(
-                        color: ColorRes.white.withOpacity(0.2),
+                        color: ColorRes.white.withValues(alpha: 0.2),
                         shape: BoxShape.circle,
                       ),
                       child: Icon(
@@ -95,7 +95,7 @@ void _showUpdateDialog({
                           vertical: 4,
                         ),
                         decoration: BoxDecoration(
-                          color: ColorRes.white.withOpacity(0.25),
+                          color: ColorRes.white.withValues(alpha: 0.25),
                           borderRadius: BorderRadius.circular(20),
                         ),
                         child: Text(

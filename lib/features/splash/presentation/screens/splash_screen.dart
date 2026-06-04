@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:shaoni/core/constants/asset_resoures.dart';
+import 'package:shaoni/core/constants/asset_resources.dart';
+import 'package:shaoni/core/extensions/navigation_extension.dart';
 import '../../../../common/widgets/sized_boxes/sizer.dart';
 import '../../../../core/constants/app_sizes.dart';
 import '../../../../core/constants/colors.dart';
@@ -26,8 +27,6 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
     _setSystemUIOverlayStyle();
-
-    /// todo: use it after develop auth feature
     _delayBeforeNavigation();
   }
 
@@ -99,12 +98,11 @@ class _SplashScreenState extends State<SplashScreen> {
     );
   }
 
-  Future<void> _delayBeforeNavigation() async {
+  Future _delayBeforeNavigation() async {
     if (token?.trim() != '' || token!.isNotEmpty) {
       await Future.delayed(Duration(seconds: 4, milliseconds: 500));
 
-      Navigator.of(context)
-          .pushReplacementNamed(DRoutesName.navigationMenuRoute);
+      context.pushReplacementNamed(DRoutesName.navigationMenuRoute);
     }
   }
 }

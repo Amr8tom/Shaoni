@@ -98,6 +98,6 @@ class DTextTheme {
     labelMedium: TextStyle().copyWith(
         fontSize: 12.sp,
         fontWeight: FontWeight.normal,
-        color: ColorRes.white.withOpacity(0.5)),
+        color: ColorRes.white.withValues(alpha: 0.5)),
   );
 }

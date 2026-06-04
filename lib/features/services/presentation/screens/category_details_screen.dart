@@ -4,7 +4,7 @@ import 'package:shaoni/common/custom_ui.dart';
 import 'package:shaoni/common/widgets/appbar/appbar.dart';
 import 'package:shaoni/core/constants/app_sizes.dart';
 import 'package:shaoni/core/constants/colors.dart';
-import 'package:shaoni/core/extentions/navigation_extension.dart';
+import 'package:shaoni/core/extensions/navigation_extension.dart';
 import '../../../../core/routing/service_route_resolver.dart';
 import '../../../../generated/l10n.dart';
 import '../../domain/entity/service.dart';

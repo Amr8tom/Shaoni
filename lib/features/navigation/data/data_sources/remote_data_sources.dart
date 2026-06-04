@@ -28,7 +28,7 @@ class NavigationRemoteDataSourcesImp implements NavigationRemoteDataSources {
   @override
   Future<UserModel> getUserData({required GetUserDataParams params}) async {
     try {
-      final response = await _dio.getData(URL: URL.user + "${params.id}");
+      final response = await _dio.getData(URL: "${URL.user}${params.id}");
       if (response == null) {
         throw ServerFailure(message: "Server Failure");
       }

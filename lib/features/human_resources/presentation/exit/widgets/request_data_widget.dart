@@ -37,7 +37,7 @@ class RequestDataWidget extends StatelessWidget {
                       hint: S.current.permissionDate,
                       suffixIcon: Icon(
                         Icons.date_range,
-                        color: ColorRes.grey2.withOpacity(0.5),
+                        color: ColorRes.grey2.withValues(alpha: 0.5),
                       ),
                       controller: controller.permissionDateController,
                       readOnly: true,
@@ -113,7 +113,7 @@ class RequestDataWidget extends StatelessWidget {
                       hint: S.current.durationInHours,
                       suffixIcon: Icon(
                         Icons.hourglass_bottom_sharp,
-                        color: ColorRes.grey2.withOpacity(0.5),
+                        color: ColorRes.grey2.withValues(alpha: 0.5),
                       ),
                       controller: controller.durationController,
                       validator: (value) {
@@ -140,14 +140,14 @@ class RequestDataWidget extends StatelessWidget {
                       child: DropdownButtonFormField<String>(
                         style: TextStyle(
                           fontSize: AppSizes.fontSizeSm * 0.7,
-                          color: ColorRes.black.withOpacity(0.7),
+                          color: ColorRes.black.withValues(alpha: 0.7),
                         ),
                         decoration: InputDecoration(
                           hintText: S.current.permissionType,
                           hintStyle: Theme.of(
                             context,
                           ).textTheme.bodyMedium?.copyWith(
-                                color: ColorRes.grey2.withOpacity(0.1),
+                                color: ColorRes.grey2.withValues(alpha: 0.1),
                                 fontSize: AppSizes.fontSizeXLg,
                               ),
                           contentPadding: EdgeInsets.symmetric(
@@ -162,7 +162,7 @@ class RequestDataWidget extends StatelessWidget {
                         ),
                         icon: Icon(
                           Icons.arrow_drop_down,
-                          color: ColorRes.grey2.withOpacity(0.5),
+                          color: ColorRes.grey2.withValues(alpha: 0.5),
                         ),
                         items: controller.permissionTypeItems,
                         onChanged: (value) {
@@ -184,14 +184,14 @@ class RequestDataWidget extends StatelessWidget {
                       child: DropdownButtonFormField<String>(
                         style: TextStyle(
                           fontSize: AppSizes.fontSizeSm * 0.7,
-                          color: ColorRes.black.withOpacity(0.7),
+                          color: ColorRes.black.withValues(alpha: 0.7),
                         ),
                         decoration: InputDecoration(
                           hintText: S.current.permissionTime,
                           hintStyle: Theme.of(
                             context,
                           ).textTheme.bodyMedium?.copyWith(
-                                color: ColorRes.white.withOpacity(0.7),
+                                color: ColorRes.white.withValues(alpha: 0.7),
                                 fontSize: AppSizes.fontSizeXLg,
                               ),
                           contentPadding: EdgeInsets.symmetric(
@@ -227,7 +227,7 @@ class RequestDataWidget extends StatelessWidget {
                         ),
                         icon: Icon(
                           Icons.arrow_drop_down,
-                          color: ColorRes.grey2.withOpacity(0.5),
+                          color: ColorRes.grey2.withValues(alpha: 0.5),
                         ),
                         items: controller.durationItems,
                         onChanged: (value) {

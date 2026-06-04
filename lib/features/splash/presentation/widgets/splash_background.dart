@@ -22,8 +22,8 @@ class SplashBackground extends StatelessWidget {
           end: Alignment.bottomCenter,
           colors: [
             ColorRes.primary,
-            ColorRes.primary.withOpacity(0.8),
-            ColorRes.white.withOpacity(0.1),
+            ColorRes.primary.withValues(alpha: 0.8),
+            ColorRes.white.withValues(alpha: 0.1),
           ],
         ),
       ),

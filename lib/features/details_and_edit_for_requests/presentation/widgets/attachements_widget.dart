@@ -162,12 +162,12 @@ class _AttachmentFileCard extends StatelessWidget {
             color: ColorRes.white,
             borderRadius: BorderRadius.circular(AppSizes.borderRadiusLg),
             border: Border.all(
-              color: info.color.withOpacity(0.20),
+              color: info.color.withValues(alpha: 0.20),
               width: 1,
             ),
             boxShadow: [
               BoxShadow(
-                color: info.color.withOpacity(0.06),
+                color: info.color.withValues(alpha: 0.06),
                 blurRadius: 12,
                 offset: const Offset(0, 4),
               ),
@@ -181,10 +181,10 @@ class _AttachmentFileCard extends StatelessWidget {
                 height: AppSizes.iconLg * 1.6,
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
-                  color: info.color.withOpacity(0.12),
+                  color: info.color.withValues(alpha: 0.12),
                   borderRadius: BorderRadius.circular(AppSizes.borderRadiusMd),
                   border: Border.all(
-                    color: info.color.withOpacity(0.20),
+                    color: info.color.withValues(alpha: 0.20),
                     width: 1,
                   ),
                 ),
@@ -221,7 +221,7 @@ class _AttachmentFileCard extends StatelessWidget {
                             vertical: 2,
                           ),
                           decoration: BoxDecoration(
-                            color: info.color.withOpacity(0.10),
+                            color: info.color.withValues(alpha: 0.10),
                             borderRadius:
                                 BorderRadius.circular(AppSizes.borderRadiusSm),
                           ),
@@ -273,7 +273,7 @@ class _AttachmentFileCard extends StatelessWidget {
                   borderRadius: BorderRadius.circular(AppSizes.borderRadiusMd),
                   boxShadow: [
                     BoxShadow(
-                      color: ColorRes.primary.withOpacity(0.25),
+                      color: ColorRes.primary.withValues(alpha: 0.25),
                       blurRadius: 8,
                       offset: const Offset(0, 3),
                     ),

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:shaoni/common/widgets/sized_boxes/sizer.dart';
 import '../constants/colors.dart';
 import '../constants/app_sizes.dart';
-import '../extentions/navigation_extension.dart';
+import '../extensions/navigation_extension.dart';
 
 /// Centralized UI utility class for common UI patterns
 /// Provides consistent loading, error, and empty state handling

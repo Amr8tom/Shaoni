@@ -31,7 +31,7 @@ class ServicesRepositoryImp extends ServicesRepository {
       try {
         final response = await _local.getAllServices();
         return Right(response);
-      } on CacheFailure catch (e) {
+      } on CacheFailure {
         return Left(CacheFailure());
       }
     }

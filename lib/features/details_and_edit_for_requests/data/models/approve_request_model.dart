@@ -30,7 +30,7 @@ class ApproveRequestModel extends ApproveRequest {
       'statusNameAr': statusNameAr,
       'statusNameEn': statusNameEn,
       'statusId': statusId,
-      'odooResult': odooResult?.toJson() ?? null,
+      'odooResult': odooResult?.toJson(),
       'comment': comment,
     };
   }

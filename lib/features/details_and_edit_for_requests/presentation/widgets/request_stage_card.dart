@@ -124,9 +124,9 @@ class _StatusBadge extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 5),
       decoration: BoxDecoration(
-        color: color.withOpacity(0.10),
+        color: color.withValues(alpha: 0.10),
         borderRadius: BorderRadius.circular(20),
-        border: Border.all(color: color.withOpacity(0.35), width: 1),
+        border: Border.all(color: color.withValues(alpha: 0.35), width: 1),
       ),
       child: Row(
         mainAxisSize: MainAxisSize.min,
@@ -162,9 +162,10 @@ class _RejectedBanner extends StatelessWidget {
       width: double.infinity,
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
       decoration: BoxDecoration(
-        color: ColorRes.error.withOpacity(0.07),
+        color: ColorRes.error.withValues(alpha: 0.07),
         borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: ColorRes.error.withOpacity(0.25), width: 1),
+        border:
+            Border.all(color: ColorRes.error.withValues(alpha: 0.25), width: 1),
       ),
       child: Row(
         children: [

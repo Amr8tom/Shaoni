@@ -28,7 +28,7 @@ class CarPermission extends Equatable {
       carNumber: json['carNumber'],
       note: json['note'],
       state: json['state'],
-      attachments: json['attachments'] != null ? json['attachments'] : null,
+      attachments: json['attachments'],
     );
   }
 

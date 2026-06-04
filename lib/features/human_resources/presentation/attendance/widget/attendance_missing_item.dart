@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shaoni/common/custom_ui.dart';
-import 'package:shaoni/core/extentions/navigation_extension.dart';
+import 'package:shaoni/core/extensions/navigation_extension.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 import '../../../../../../core/constants/app_sizes.dart';
 import '../../../../../../core/routing/route_names.dart';
@@ -32,7 +32,7 @@ class AttendanceMissingItem extends StatelessWidget {
                     checkOutTime: "04:15 م",
                     isCheckedOut: true,
                     outMode: null))
-            : state.records ?? [];
+            : state.records;
 
         return state.isEmpty
             ? CustomUI.noData()

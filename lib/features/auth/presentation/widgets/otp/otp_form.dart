@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
-import 'package:shaoni/core/extentions/navigation_extension.dart';
+import 'package:shaoni/core/extensions/navigation_extension.dart';
 import '../../../../../common/widgets/sized_boxes/sizer.dart';
 import '../../../../../core/constants/app_sizes.dart';
 import '../../../../../core/constants/colors.dart';

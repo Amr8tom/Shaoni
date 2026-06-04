@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:shaoni/common/widgets/sized_boxes/sizer.dart';
 import 'package:shaoni/core/constants/app_sizes.dart';
 import 'package:shaoni/core/constants/colors.dart';
-import 'package:shaoni/core/device/device_utility.dart';
-import 'package:shaoni/features/navigation/presentation/widgets/custom_navigation_appbar.dart';
 import 'package:shaoni/features/notifications/presentation/widget/mark_all_checkbox_widget.dart';
 import 'package:shaoni/features/notifications/presentation/widget/notification_card.dart';
 import '../../../common/dummy.dart';

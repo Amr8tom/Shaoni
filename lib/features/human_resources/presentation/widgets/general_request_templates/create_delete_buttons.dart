@@ -1,13 +1,11 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../common/widgets/sized_boxes/sizer.dart';
 import '../../../../../core/constants/app_sizes.dart';
-import '../../../../../core/constants/asset_resoures.dart';
+import '../../../../../core/constants/asset_resources.dart';
 import '../../../../../core/constants/colors.dart';
 import '../../../../../generated/l10n.dart';
 import '../../../../auth/presentation/widgets/auth_button.dart';
-import '../../controller/exit_permission/exit_request_service_cubit.dart';
 
 class CreateDeleteButtons extends StatelessWidget {
   final VoidCallback? deleteTab;
@@ -58,7 +56,7 @@ class CreateDeleteButtons extends StatelessWidget {
                         vertical: AppSizes.padding * 0.6,
                       ),
                       decoration: BoxDecoration(
-                        color: ColorRes.grey.withOpacity(0.7),
+                        color: ColorRes.grey.withValues(alpha: 0.7),
                         borderRadius: BorderRadius.circular(
                           AppSizes.borderRadiusXXLg,
                         ),

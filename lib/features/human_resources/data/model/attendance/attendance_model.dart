@@ -1,7 +1,7 @@
 import 'package:shaoni/features/human_resources/domain/entity/attendance/attendance.dart';
 
 class AttendanceModel extends Attendance {
-  AttendanceModel(
+  const AttendanceModel(
       {required super.success,
       required super.message,
       required super.requestNumber});

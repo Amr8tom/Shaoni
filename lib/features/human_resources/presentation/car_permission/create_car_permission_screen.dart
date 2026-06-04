@@ -5,9 +5,9 @@ import '../../../../common/widgets/appbar/appbar.dart';
 import '../../../../common/widgets/dialogs/custom_dialog_img_title_des.dart';
 import '../../../../common/widgets/sized_boxes/sizer.dart';
 import '../../../../core/constants/app_sizes.dart';
-import '../../../../core/constants/asset_resoures.dart';
+import '../../../../core/constants/asset_resources.dart';
 import '../../../../core/constants/colors.dart';
-import '../../../../core/extentions/navigation_extension.dart';
+import '../../../../core/extensions/navigation_extension.dart';
 import '../../../../core/routing/route_names.dart';
 import '../../../../core/service_locator/service_locator.dart';
 import '../../../../generated/l10n.dart';
@@ -52,7 +52,7 @@ class CreateCarPermissionScreen extends StatelessWidget {
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(
                       content: Text(state.errorMessage ?? S.current.error),
-                      backgroundColor: ColorRes.error.withOpacity(0.5),
+                      backgroundColor: ColorRes.error.withValues(alpha: 0.5),
                     ),
                   );
                 }

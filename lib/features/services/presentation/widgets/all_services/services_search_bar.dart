@@ -29,7 +29,7 @@ class ServicesSearchBar extends StatelessWidget {
         border: Border.all(color: ColorRes.grey5, width: 1),
         boxShadow: [
           BoxShadow(
-            color: ColorRes.primary.withOpacity(0.04),
+            color: ColorRes.primary.withValues(alpha: 0.04),
             blurRadius: 8,
             offset: const Offset(0, 2),
           ),

@@ -22,7 +22,7 @@ class UpdateProfileParams extends Equatable {
   final int cityId;
   final int genderId;
 
-  UpdateProfileParams({
+  const UpdateProfileParams({
     required this.fullName,
     required this.phoneNumber,
     required this.nationalityId,

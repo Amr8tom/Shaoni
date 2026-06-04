@@ -15,6 +15,7 @@ class StageRow extends StatelessWidget {
   final Color activeColor;
 
   const StageRow({
+    super.key,
     required this.index,
     required this.title,
     required this.isCompleted,
@@ -28,7 +29,7 @@ class StageRow extends StatelessWidget {
   Widget build(BuildContext context) {
     final Color nodeColor = isCompleted || isActive
         ? activeColor
-        : ColorRes.grey2.withOpacity(0.35);
+        : ColorRes.grey2.withValues(alpha: 0.35);
     final Color textColor = isPending ? ColorRes.grey2 : ColorRes.primaryDark;
 
     return Row(
@@ -62,7 +63,7 @@ class StageRow extends StatelessWidget {
         // ── Content ──────────────────────────────────────────────────────
         Expanded(
           child: Padding(
-            padding:  EdgeInsets.only(
+            padding: EdgeInsets.only(
               top: 6,
               bottom: isLast ? 0.h : 28.h,
             ),
@@ -98,7 +99,8 @@ class Connector extends StatelessWidget {
   final bool isCompleted;
   final Color activeColor;
 
-  const Connector({required this.isCompleted, required this.activeColor});
+  const Connector(
+      {super.key, required this.isCompleted, required this.activeColor});
 
   @override
   Widget build(BuildContext context) {
@@ -108,7 +110,8 @@ class Connector extends StatelessWidget {
       margin: const EdgeInsets.symmetric(vertical: 3),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(2),
-        color: isCompleted ? activeColor : ColorRes.grey2.withOpacity(0.25),
+        color:
+            isCompleted ? activeColor : ColorRes.grey2.withValues(alpha: 0.25),
       ),
     );
   }
@@ -118,16 +121,16 @@ class ActiveLabel extends StatelessWidget {
   final String title;
   final Color color;
 
-  const ActiveLabel({required this.title, required this.color});
+  const ActiveLabel({super.key, required this.title, required this.color});
 
   @override
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
       decoration: BoxDecoration(
-        color: color.withOpacity(0.08),
+        color: color.withValues(alpha: 0.08),
         borderRadius: BorderRadius.circular(8),
-        border: Border.all(color: color.withOpacity(0.2), width: 1),
+        border: Border.all(color: color.withValues(alpha: 0.2), width: 1),
       ),
       child: Text(
         title,
@@ -148,6 +151,7 @@ class NodeCircle extends StatelessWidget {
   final Color activeColor;
 
   const NodeCircle({
+    super.key,
     required this.index,
     required this.isCompleted,
     required this.isActive,
@@ -166,7 +170,7 @@ class NodeCircle extends StatelessWidget {
           shape: BoxShape.circle,
           color: activeColor,
         ),
-        child:  Icon(Icons.check, color: ColorRes.white, size: AppSizes.iconSm),
+        child: Icon(Icons.check, color: ColorRes.white, size: AppSizes.iconSm),
       );
     }
 
@@ -177,7 +181,7 @@ class NodeCircle extends StatelessWidget {
         height: 30,
         decoration: BoxDecoration(
           shape: BoxShape.circle,
-          color: activeColor.withOpacity(0.15),
+          color: activeColor.withValues(alpha: 0.15),
           border: Border.all(color: activeColor, width: 2),
         ),
         child: Center(
@@ -200,7 +204,8 @@ class NodeCircle extends StatelessWidget {
       decoration: BoxDecoration(
         shape: BoxShape.circle,
         color: ColorRes.transparent,
-        border: Border.all(color: ColorRes.grey2.withOpacity(0.35), width: 2),
+        border:
+            Border.all(color: ColorRes.grey2.withValues(alpha: 0.35), width: 2),
       ),
       child: Center(
         child: Text(
@@ -208,7 +213,7 @@ class NodeCircle extends StatelessWidget {
           style: TextStyle(
             fontSize: 11,
             fontWeight: FontWeight.bold,
-            color: ColorRes.grey2.withOpacity(0.6),
+            color: ColorRes.grey2.withValues(alpha: 0.6),
           ),
         ),
       ),

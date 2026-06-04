@@ -1,6 +1,5 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:shaoni/features/human_resources/domain/use_cases/attendance/create_attendance_use_case.dart';
 import 'package:shaoni/features/human_resources/domain/use_cases/attendance/get_all_missing_attendance_use_case.dart';
@@ -73,7 +72,7 @@ class AttendanceCubit extends Cubit<AttendanceState> {
       (failure) => emit(state.copyWith(
           status: AttendanceStatus.error, errorMessage: failure.message)),
       (records) {
-        if (records.attendanceRecords.length == 0) {
+        if (records.attendanceRecords.isEmpty) {
           emit(state.copyWith(status: AttendanceStatus.empty));
         } else {
           emit(state.copyWith(
@@ -96,11 +95,11 @@ class AttendanceCubit extends Cubit<AttendanceState> {
               (attendanceType) => DropdownMenuItem(
                 value: S.current.localeee == "ar"
                     ? attendanceType.nameAr
-                    : attendanceType.nameEn ?? '3',
+                    : attendanceType.nameEn,
                 child: Text(
                   S.current.localeee == "ar"
                       ? attendanceType.nameAr
-                      : attendanceType.nameEn ?? '3',
+                      : attendanceType.nameEn,
                   style: const TextStyle(fontSize: 12),
                 ),
               ),
@@ -170,7 +169,7 @@ class AttendanceCubit extends Cubit<AttendanceState> {
                 : "check_out",
             updateDate:
                 '${attendanceDateController.text} ${attendanceTimeController.text}',
-            attendanceId: (int.parse(state.records.first.odooId)) ?? 0,
+            attendanceId: int.parse(state.records.first.odooId),
             officeId: officeIDController.text.isEmpty
                 ? 0
                 : int.parse(officeIDController.text),

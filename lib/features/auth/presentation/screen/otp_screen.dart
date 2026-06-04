@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../core/constants/app_sizes.dart';
-import '../../../../core/constants/asset_resoures.dart';
+import '../../../../core/constants/asset_resources.dart';
 import '../widgets/otp/otp_form.dart';
 
 class OtpScreen extends StatelessWidget {

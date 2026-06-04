@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:shaoni/core/extentions/navigation_extension.dart';
+import 'package:shaoni/core/extensions/navigation_extension.dart';
 import 'package:shaoni/core/utils/enums/general_status.dart';
 import '../../../../../generated/l10n.dart';
 import '../../../../common/widgets/sized_boxes/sizer.dart';
@@ -45,11 +45,11 @@ class DeleteMyAccountBody extends StatelessWidget {
                       width: double.infinity,
                       padding: EdgeInsets.all(AppSizes.padding),
                       decoration: BoxDecoration(
-                        color: ColorRes.error.withOpacity(0.08),
+                        color: ColorRes.error.withValues(alpha: 0.08),
                         borderRadius:
                             BorderRadius.circular(AppSizes.borderRadiusMd),
                         border: Border.all(
-                          color: ColorRes.error.withOpacity(0.2),
+                          color: ColorRes.error.withValues(alpha: 0.2),
                           width: 1.5,
                         ),
                       ),
@@ -59,7 +59,7 @@ class DeleteMyAccountBody extends StatelessWidget {
                           Container(
                             padding: EdgeInsets.all(AppSizes.md),
                             decoration: BoxDecoration(
-                              color: ColorRes.error.withOpacity(0.15),
+                              color: ColorRes.error.withValues(alpha: 0.15),
                               shape: BoxShape.circle,
                             ),
                             child: Icon(
@@ -105,7 +105,7 @@ class DeleteMyAccountBody extends StatelessWidget {
                                 .textTheme
                                 .bodyMedium
                                 ?.copyWith(
-                                  color: ColorRes.grey2.withOpacity(0.7),
+                                  color: ColorRes.grey2.withValues(alpha: 0.7),
                                   height: 1.6,
                                 ),
                             textAlign: TextAlign.start,
@@ -215,7 +215,7 @@ class DeleteMyAccountBody extends StatelessWidget {
           children: [
             Icon(
               Icons.check_circle_outline,
-              color: ColorRes.error.withOpacity(0.6),
+              color: ColorRes.error.withValues(alpha: 0.6),
               size: AppSizes.iconSm,
             ),
             const Sizer(width: 8),
@@ -223,7 +223,7 @@ class DeleteMyAccountBody extends StatelessWidget {
               child: Text(
                 point,
                 style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                      color: ColorRes.grey2.withOpacity(0.6),
+                      color: ColorRes.grey2.withValues(alpha: 0.6),
                       height: 1.5,
                     ),
               ),
@@ -248,7 +248,7 @@ class DeleteMyAccountBody extends StatelessWidget {
               Container(
                 padding: EdgeInsets.all(AppSizes.md),
                 decoration: BoxDecoration(
-                  color: ColorRes.error.withOpacity(0.15),
+                  color: ColorRes.error.withValues(alpha: 0.15),
                   shape: BoxShape.circle,
                 ),
                 child: Icon(
@@ -342,7 +342,7 @@ class DeleteMyAccountBody extends StatelessWidget {
               Container(
                 padding: EdgeInsets.all(AppSizes.md),
                 decoration: BoxDecoration(
-                  color: ColorRes.success.withOpacity(0.15),
+                  color: ColorRes.success.withValues(alpha: 0.15),
                   shape: BoxShape.circle,
                 ),
                 child: Icon(
@@ -369,7 +369,7 @@ class DeleteMyAccountBody extends StatelessWidget {
               Text(
                 S.current.accountDeleted,
                 style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                      color: ColorRes.grey2.withOpacity(0.6),
+                      color: ColorRes.grey2.withValues(alpha: 0.6),
                       height: 1.6,
                     ),
                 textAlign: TextAlign.center,

@@ -140,9 +140,7 @@ class MyRequestsRemoteDataSourcesImp implements MyRequestsRemoteDataSources {
       {required GetRequestDetailsParams params}) async {
     try {
       final response = await _dio.getData(
-        URL: URL.getRequestDetailsStages +
-            params.requestId.toString() +
-            '/with-stages',
+        URL: '${URL.getRequestDetailsStages}${params.requestId}/with-stages',
       );
       if (response == null) {
         throw ServerFailure(message: 'Null response from server');
@@ -164,9 +162,6 @@ class MyRequestsRemoteDataSourcesImp implements MyRequestsRemoteDataSources {
         URL: '${URL.getCarPermissionEdit}${params.requestId}',
         body: params.toMap(),
       );
-      if (response == null) {
-        throw ServerFailure(message: 'Null response from server');
-      }
       return EditResponseModel.fromJson(response.data as Map<String, dynamic>);
     } on ServerFailure {
       rethrow;
@@ -182,9 +177,6 @@ class MyRequestsRemoteDataSourcesImp implements MyRequestsRemoteDataSources {
         URL: '${URL.getExitPermissionEdit}${params.requestId}',
         body: params.toMap(),
       );
-      if (response == null) {
-        throw ServerFailure(message: 'Null response from server');
-      }
       return EditResponseModel.fromJson(response.data as Map<String, dynamic>);
     } on ServerFailure {
       rethrow;
@@ -200,9 +192,6 @@ class MyRequestsRemoteDataSourcesImp implements MyRequestsRemoteDataSources {
         URL: '${URL.getAttendanceEdit}${params.requestId}',
         body: params.toMap(),
       );
-      if (response == null) {
-        throw ServerFailure(message: 'Null response from server');
-      }
       return EditResponseModel.fromJson(response.data as Map<String, dynamic>);
     } on ServerFailure {
       rethrow;
@@ -218,9 +207,6 @@ class MyRequestsRemoteDataSourcesImp implements MyRequestsRemoteDataSources {
         URL: '${URL.getStudyEdit}${params.requestId}',
         body: params.toMap(),
       );
-      if (response == null) {
-        throw ServerFailure(message: 'Null response from server');
-      }
       return EditResponseModel.fromJson(response.data as Map<String, dynamic>);
     } on ServerFailure {
       rethrow;
@@ -236,9 +222,6 @@ class MyRequestsRemoteDataSourcesImp implements MyRequestsRemoteDataSources {
         URL: '${URL.getStartWorkEdit}${params.requestId}',
         body: params.toMap(),
       );
-      if (response == null) {
-        throw ServerFailure(message: 'Null response from server');
-      }
       return EditResponseModel.fromJson(response.data as Map<String, dynamic>);
     } on ServerFailure {
       rethrow;
@@ -254,9 +237,6 @@ class MyRequestsRemoteDataSourcesImp implements MyRequestsRemoteDataSources {
         URL: '${URL.getExperienceCertificateEdit}${params.requestId}',
         body: params.toMap(),
       );
-      if (response == null) {
-        throw ServerFailure(message: 'Null response from server');
-      }
       return EditResponseModel.fromJson(response.data as Map<String, dynamic>);
     } on ServerFailure {
       rethrow;
@@ -272,9 +252,6 @@ class MyRequestsRemoteDataSourcesImp implements MyRequestsRemoteDataSources {
         URL: '${URL.getIDDocumentEdit}${params.requestId}',
         body: params.toMap(),
       );
-      if (response == null) {
-        throw ServerFailure(message: 'Null response from server');
-      }
       return EditResponseModel.fromJson(response.data as Map<String, dynamic>);
     } on ServerFailure {
       rethrow;
@@ -290,9 +267,6 @@ class MyRequestsRemoteDataSourcesImp implements MyRequestsRemoteDataSources {
         URL: '${URL.getMedicalInsuranceEdit}${params.requestId}',
         body: params.toMap(),
       );
-      if (response == null) {
-        throw ServerFailure(message: 'Null response from server');
-      }
       return EditResponseModel.fromJson(response.data as Map<String, dynamic>);
     } on ServerFailure {
       rethrow;
@@ -308,9 +282,6 @@ class MyRequestsRemoteDataSourcesImp implements MyRequestsRemoteDataSources {
         URL: '${URL.getTrainingRequestEdit}${params.requestId}',
         body: params.toMap(),
       );
-      if (response == null) {
-        throw ServerFailure(message: 'Null response from server');
-      }
       return EditResponseModel.fromJson(response.data as Map<String, dynamic>);
     } on ServerFailure {
       rethrow;
@@ -326,9 +297,6 @@ class MyRequestsRemoteDataSourcesImp implements MyRequestsRemoteDataSources {
         URL: '${URL.getProductOrderEdit}${params.requestId}',
         body: params.toMap(),
       );
-      if (response == null) {
-        throw ServerFailure(message: 'Null response from server');
-      }
       return EditResponseModel.fromJson(response.data as Map<String, dynamic>);
     } on ServerFailure {
       rethrow;
@@ -344,9 +312,6 @@ class MyRequestsRemoteDataSourcesImp implements MyRequestsRemoteDataSources {
         URL: '${URL.updateOutsideWorking}${params.requestId}',
         body: params.toMap(),
       );
-      if (response == null) {
-        throw ServerFailure(message: 'Null response from server');
-      }
       return EditResponseModel.fromJson(response.data as Map<String, dynamic>);
     } on ServerFailure {
       rethrow;

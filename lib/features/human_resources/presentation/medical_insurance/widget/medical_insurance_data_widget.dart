@@ -98,7 +98,7 @@ class MedicalInsuranceDataWidget extends StatelessWidget {
                         horizontal: 14, vertical: 12),
                     decoration: BoxDecoration(
                       color: selected
-                          ? ColorRes.primary.withOpacity(0.08)
+                          ? ColorRes.primary.withValues(alpha: 0.08)
                           : ColorRes.white,
                       borderRadius: BorderRadius.circular(10),
                       border: Border.all(
@@ -198,7 +198,9 @@ class _RadioOption extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
         decoration: BoxDecoration(
-          color: selected ? ColorRes.primary.withOpacity(0.08) : ColorRes.white,
+          color: selected
+              ? ColorRes.primary.withValues(alpha: 0.08)
+              : ColorRes.white,
           borderRadius: BorderRadius.circular(10),
           border: Border.all(
             color: selected ? ColorRes.primary : ColorRes.grey4,

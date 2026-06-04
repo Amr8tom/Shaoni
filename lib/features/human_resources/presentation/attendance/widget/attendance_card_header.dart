@@ -55,7 +55,7 @@ class AttendanceCardHeader extends StatelessWidget {
           ),
           Icon(
             Icons.calendar_today_rounded,
-            color: ColorRes.white.withOpacity(0.9),
+            color: ColorRes.white.withValues(alpha: 0.9),
             size: AppSizes.iconMd,
           ),
           const Sizer(width: 8)
@@ -79,10 +79,10 @@ class _EmployeePill extends StatelessWidget {
         vertical: AppSizes.xs,
       ),
       decoration: BoxDecoration(
-        color: ColorRes.white.withOpacity(0.18),
+        color: ColorRes.white.withValues(alpha: 0.18),
         borderRadius: BorderRadius.circular(AppSizes.borderRadiusSm),
         border: Border.all(
-          color: ColorRes.white.withOpacity(0.30),
+          color: ColorRes.white.withValues(alpha: 0.30),
           width: 1,
         ),
       ),

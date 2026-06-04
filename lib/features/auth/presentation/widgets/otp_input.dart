@@ -92,7 +92,7 @@ class _OtpInputState extends State<OtpInput> {
             border: Border.all(
               color: _controllers[index].text.isNotEmpty
                   ? ColorRes.primary
-                  : ColorRes.grey.withOpacity(0.3),
+                  : ColorRes.grey.withValues(alpha: 0.3),
               width: 1.5,
             ),
             borderRadius: BorderRadius.circular(AppSizes.sm),

@@ -67,7 +67,7 @@ class _FileUploadWidgetState extends State<FileUploadWidget> {
                 } catch (_) {
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(
-                      content: Text(S.current.error ?? 'Error processing file'),
+                      content: Text(S.current.error),
                       backgroundColor: ColorRes.error,
                     ),
                   );
@@ -76,7 +76,7 @@ class _FileUploadWidgetState extends State<FileUploadWidget> {
             } catch (e) {
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(
-                  content: Text(S.current.error ?? 'Error picking file'),
+                  content: Text(S.current.error),
                   backgroundColor: ColorRes.error,
                 ),
               );
@@ -87,11 +87,11 @@ class _FileUploadWidgetState extends State<FileUploadWidget> {
             padding: EdgeInsets.all(AppSizes.padding * 1.5),
             decoration: BoxDecoration(
               border: Border.all(
-                color: ColorRes.primary.withOpacity(0.3),
+                color: ColorRes.primary.withValues(alpha: 0.3),
                 width: 2,
               ),
               borderRadius: BorderRadius.circular(AppSizes.borderRadiusMd),
-              color: ColorRes.primary.withOpacity(0.05),
+              color: ColorRes.primary.withValues(alpha: 0.05),
             ),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -124,7 +124,7 @@ class _FileUploadWidgetState extends State<FileUploadWidget> {
             padding: EdgeInsets.all(AppSizes.padding),
             decoration: BoxDecoration(
               border: Border.all(
-                color: ColorRes.grey2.withOpacity(0.2),
+                color: ColorRes.grey2.withValues(alpha: 0.2),
               ),
               borderRadius: BorderRadius.circular(AppSizes.borderRadiusMd),
               color: ColorRes.grey6,
@@ -152,7 +152,7 @@ class _FileUploadWidgetState extends State<FileUploadWidget> {
                       Text(
                         _formatFileSize(_pickedFile!.size),
                         style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                              color: ColorRes.grey2.withOpacity(0.6),
+                              color: ColorRes.grey2.withValues(alpha: 0.6),
                             ),
                       ),
                     ],
@@ -173,7 +173,7 @@ class _FileUploadWidgetState extends State<FileUploadWidget> {
                   },
                   child: Icon(
                     Icons.close,
-                    color: ColorRes.grey2.withOpacity(0.5),
+                    color: ColorRes.grey2.withValues(alpha: 0.5),
                   ),
                 ),
               ],

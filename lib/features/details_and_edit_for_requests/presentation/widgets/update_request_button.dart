@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:shaoni/common/widgets/sized_boxes/sizer.dart';
 import 'package:shaoni/core/constants/app_sizes.dart';
 import 'package:shaoni/core/constants/colors.dart';
-import 'package:shaoni/core/extentions/navigation_extension.dart';
+import 'package:shaoni/core/extensions/navigation_extension.dart';
 import 'package:shaoni/generated/l10n.dart';
 
 import '../../../../core/routing/service_route_resolver.dart';
@@ -42,7 +42,8 @@ class UpdateRequestButton extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-               Icon(Icons.edit_rounded, color: ColorRes.white, size: AppSizes.iconSmall*1.15),
+              Icon(Icons.edit_rounded,
+                  color: ColorRes.white, size: AppSizes.iconSmall * 1.15),
               const Sizer(width: 8),
               Text(
                 S.current.updateRequest,

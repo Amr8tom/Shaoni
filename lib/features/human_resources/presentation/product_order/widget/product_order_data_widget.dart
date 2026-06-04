@@ -70,7 +70,7 @@ class ProductOrderDataWidget extends StatelessWidget {
                         color: ColorRes.primary, style: BorderStyle.solid),
                     borderRadius:
                         BorderRadius.circular(AppSizes.borderRadiusMd),
-                    color: ColorRes.primary.withOpacity(0.06),
+                    color: ColorRes.primary.withValues(alpha: 0.06),
                   ),
                   child: Row(
                     mainAxisSize: MainAxisSize.min,

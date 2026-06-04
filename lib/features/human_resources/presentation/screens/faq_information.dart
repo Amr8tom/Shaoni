@@ -6,7 +6,7 @@ import 'package:shaoni/common/widgets/appbar/appbar.dart';
 import 'package:shaoni/common/widgets/sized_boxes/sizer.dart';
 import 'package:shaoni/core/constants/app_sizes.dart';
 import 'package:shaoni/core/constants/colors.dart';
-import 'package:shaoni/core/extentions/navigation_extension.dart';
+import 'package:shaoni/core/extensions/navigation_extension.dart';
 import 'package:shaoni/core/routing/route_names.dart';
 import 'package:shaoni/core/service_locator/service_locator.dart';
 import '../../../../core/device/device_utility.dart';
@@ -80,7 +80,7 @@ class FAQInformation extends StatelessWidget {
                           borderRadius: BorderRadius.all(
                             Radius.circular(AppSizes.xxl),
                           ),
-                          color: ColorRes.primary.withOpacity(0.7),
+                          color: ColorRes.primary.withValues(alpha: 0.7),
                         ),
                         child: Center(
                           child: Text(

@@ -192,8 +192,9 @@ class IDDocumentCubit extends Cubit<IDDocumentState> {
 
   /// Returns the code of the currently selected request type, or null if none.
   String? get _selectedRequestTypeCode {
-    if (requestTypeController.text.isEmpty || _requestTypes.isEmpty)
+    if (requestTypeController.text.isEmpty || _requestTypes.isEmpty) {
       return null;
+    }
     final match = _requestTypes.where(
       (t) => _localizedName(t.nameAr, t.nameEn) == requestTypeController.text,
     );

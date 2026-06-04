@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 import '../../../../common/widgets/sized_boxes/sizer.dart';
 import '../../../../core/constants/app_sizes.dart';
@@ -51,14 +50,14 @@ class RequestNumberAndDateWidget extends StatelessWidget {
                   title: S.current.orderNumber,
                   result: orderNumber.length >= 9
                       ? orderNumber.substring(9)
-                      : orderNumber ?? ' ',
+                      : orderNumber,
                 ),
                 orderNumber.length >= 9
                     ? const Sizer(width: 20)
                     : const Sizer(width: 0),
                 OrderTextCard(
                   title: S.current.orderStatus,
-                  result: status ?? '',
+                  result: status,
                 ),
               ],
             ),

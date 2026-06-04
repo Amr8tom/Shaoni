@@ -27,7 +27,7 @@ class ShaoniApp extends StatelessWidget {
         splitScreenMode: true,
         builder: (context, child) {
           final controller = context.read<LanguageCubit>();
-          final cachedLang = CacheHelper.getCachedLanguage() ?? "en";
+          final cachedLang = CacheHelper.getCachedLanguage();
           controller.currentLanguage = Locale(cachedLang);
           return BlocBuilder<LanguageCubit, LanguageState>(
             buildWhen: (previous, current) => previous != current,

@@ -1,7 +1,7 @@
 import 'package:shaoni/features/human_resources/domain/entity/attendance/attendance_lookup.dart';
 
 class AttendanceLookUpModel extends AttendanceLookup {
-  AttendanceLookUpModel(
+  const AttendanceLookUpModel(
       {required super.id, required super.nameAr, required super.nameEn});
 
   /// from json

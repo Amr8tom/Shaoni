@@ -41,14 +41,14 @@ class CreateAttendanceParams {
   /// toMap
   Map<String, dynamic> toMap() {
     return {
-      "employee": this.employee,
-      "attendance_type": this.attendanceType,
-      "update_Date": this.updateDate,
-      "date": this.date,
-      "attendance_id": this.attendanceId,
-      "order_reason": this.orderReason,
-      "forget_reasons_ids": this.forgetReasonsIds,
-      "office_id": this.officeId,
+      "employee": employee,
+      "attendance_type": attendanceType,
+      "update_Date": updateDate,
+      "date": date,
+      "attendance_id": attendanceId,
+      "order_reason": orderReason,
+      "forget_reasons_ids": forgetReasonsIds,
+      "office_id": officeId,
       // "request_attachment_ids": this.requestAttachmentIds.map((e) => e.toMap()).toList(),
       "fields": [
         "id",

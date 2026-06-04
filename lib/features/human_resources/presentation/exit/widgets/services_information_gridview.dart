@@ -52,7 +52,7 @@ class ServicesInformationGridview extends StatelessWidget {
                   borderRadius: BorderRadius.circular(AppSizes.borderRadiusMd),
                   boxShadow: [
                     BoxShadow(
-                      color: ColorRes.grey.withOpacity(0.2),
+                      color: ColorRes.grey.withValues(alpha: 0.2),
                       blurRadius: AppSizes.xs,
                       offset: Offset(0, AppSizes.xs / 2),
                     ),
@@ -68,7 +68,7 @@ class ServicesInformationGridview extends StatelessWidget {
                   ),
                   child: ExpansionTile(
                     key: ValueKey(
-                        'expansion_tile_$index\_${state.expandedIndex}'),
+                        'expansion_tile_${index}_${state.expandedIndex}'),
                     initiallyExpanded: isExpanded,
                     onExpansionChanged: (expanded) {
                       controller.setExpandedIndex(expanded ? index : null);
@@ -92,7 +92,7 @@ class ServicesInformationGridview extends StatelessWidget {
                       height: AppSizes.iconMd,
                       padding: EdgeInsets.all(AppSizes.xs / 1.5),
                       decoration: BoxDecoration(
-                        color: ColorRes.white.withOpacity(0.2),
+                        color: ColorRes.white.withValues(alpha: 0.2),
                         borderRadius: BorderRadius.circular(
                           AppSizes.borderRadiusSm,
                         ),

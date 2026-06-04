@@ -11,7 +11,7 @@ class DateDataWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    HijriCalendar _today = HijriCalendar.now();
+    HijriCalendar today = HijriCalendar.now();
     HijriCalendar.setLocal('ar');
 
     return Column(
@@ -64,7 +64,7 @@ class DateDataWidget extends StatelessWidget {
                   color: ColorRes.grey2.withValues(alpha: 0.5),
                 ),
                 controller: TextEditingController(
-                  text: _today.toFormat("yyyy/MMMM/dd"),
+                  text: today.toFormat("yyyy/MMMM/dd"),
                 ),
                 readOnly: true,
                 validator: (value) {

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import '../../../../core/constants/app_sizes.dart';
-import '../../../../core/constants/asset_resoures.dart';
+import '../../../../core/constants/asset_resources.dart';
 import '../../../../core/constants/colors.dart';
 import '../../domain/entities/notification_entity.dart';
 
@@ -11,6 +11,7 @@ class NotificationCard extends StatelessWidget {
   final VoidCallback onTap;
 
   const NotificationCard({
+    super.key,
     required this.notification,
     required this.isExpanded,
     required this.onTap,
@@ -26,7 +27,7 @@ class NotificationCard extends StatelessWidget {
           borderRadius: BorderRadius.circular(AppSizes.borderRadiusMd),
           boxShadow: [
             BoxShadow(
-              color: ColorRes.grey.withOpacity(0.2),
+              color: ColorRes.grey.withValues(alpha: 0.2),
               blurRadius: AppSizes.xs,
               offset: Offset(0, AppSizes.xs / 2),
             ),
@@ -75,7 +76,7 @@ class NotificationCard extends StatelessWidget {
               height: AppSizes.iconMd,
               padding: EdgeInsets.all(AppSizes.xs / 1.5),
               decoration: BoxDecoration(
-                color: ColorRes.white.withOpacity(0.2),
+                color: ColorRes.white.withValues(alpha: 0.2),
                 borderRadius: BorderRadius.circular(AppSizes.borderRadiusSm),
               ),
               child: Icon(

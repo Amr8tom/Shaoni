@@ -1,10 +1,8 @@
 import 'package:get_it/get_it.dart';
 import 'package:shaoni/features/home/domain/use_cases/get_all_status_counts_use_case.dart';
-import '../../features/home/data/data_sources/local_data_sources.dart';
 import '../../features/home/data/data_sources/remote_data_sources.dart';
 import '../../features/home/data/repositories/repository.dart';
 import '../../features/home/domain/repositories/home_repositories.dart';
-import '../../features/navigation/domain/use_cases/get_user_data_use_case.dart';
 import '../../features/home/presentation/controller/home_cubit.dart';
 
 class HomeServiceLocator {

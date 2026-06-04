@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
-import 'package:shaoni/core/utils/enums/general_status.dart';
 import 'package:shaoni/features/home/presentation/controller/home_cubit.dart';
 import '../../../../common/widgets/sized_boxes/sizer.dart';
 import '../../../../core/constants/app_sizes.dart';
-import '../../../../core/constants/asset_resoures.dart';
+import '../../../../core/constants/asset_resources.dart';
 import '../../../../core/constants/colors.dart';
 import '../../../../generated/l10n.dart';
 
@@ -53,7 +52,7 @@ class StatisticsListView extends StatelessWidget {
     // ];
     return BlocConsumer<HomeCubit, HomeState>(
       builder: (context, state) {
-        return Container(
+        return SizedBox(
           width: double.infinity,
           height: AppSizes.heightcontainerCategories * 2.05,
           child: ListView.separated(

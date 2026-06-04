@@ -4,10 +4,10 @@ import 'package:shaoni/common/widgets/appbar/appbar.dart';
 import 'package:shaoni/common/widgets/sized_boxes/sizer.dart';
 import 'package:shaoni/core/constants/app_sizes.dart';
 import 'package:shaoni/core/constants/colors.dart';
-import 'package:shaoni/core/extentions/navigation_extension.dart';
+import 'package:shaoni/core/extensions/navigation_extension.dart';
 import 'package:shaoni/core/service_locator/service_locator.dart';
 import '../../../../common/widgets/dialogs/custom_dialog_img_title_des.dart';
-import '../../../../core/constants/asset_resoures.dart';
+import '../../../../core/constants/asset_resources.dart';
 import '../../../../core/routing/route_names.dart';
 import '../../../../generated/l10n.dart';
 import '../controller/exit_permission/exit_request_service_cubit.dart';
@@ -47,7 +47,7 @@ class ExitRequestDetailsScreen extends StatelessWidget {
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(
                       content: Text(state.errorMassage ?? "Error"),
-                      backgroundColor: ColorRes.error.withOpacity(0.5),
+                      backgroundColor: ColorRes.error.withValues(alpha: 0.5),
                     ),
                   );
                 }

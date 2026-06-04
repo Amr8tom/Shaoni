@@ -138,8 +138,9 @@ class DButton extends StatelessWidget {
       disabledForegroundColor: ColorRes.grey,
       elevation: useShadow ? _getElevation() : 0,
       // Modified this line
-      shadowColor:
-          useShadow ? ColorRes.black.withOpacity(0.15) : ColorRes.transparent,
+      shadowColor: useShadow
+          ? ColorRes.black.withValues(alpha: 0.15)
+          : ColorRes.transparent,
       // Enhanced shadow
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(

@@ -2,7 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:shaoni/core/extentions/navigation_extension.dart';
+import 'package:shaoni/core/extensions/navigation_extension.dart';
 import 'package:shaoni/core/local_storage/cache_helper.dart';
 import 'package:shaoni/core/local_storage/cache_keys.dart';
 import 'package:shaoni/features/auth/domain/usecases/change_password_use_case.dart';

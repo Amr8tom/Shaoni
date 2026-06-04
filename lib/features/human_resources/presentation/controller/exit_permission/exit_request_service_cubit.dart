@@ -1,6 +1,5 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'package:shaoni/core/local_storage/cache_helper.dart';
@@ -136,9 +135,9 @@ class ExitRequestServiceCubit extends Cubit<ExitRequestServiceState> {
           exitDate: permissionDateController.text,
           numberOfHours: int.parse(durationController.text),
           stageId: 0,
-          leavesAttachment: attachmentFileController.text ?? '',
-          leavesAttachmentName: attachmentFileNameController.text ?? '',
-          notes: notesController.text ?? 'notes'),
+          leavesAttachment: attachmentFileController.text,
+          leavesAttachmentName: attachmentFileNameController.text,
+          notes: notesController.text),
     );
 
     result.fold(

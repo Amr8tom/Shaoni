@@ -33,9 +33,9 @@ class _ApplicantDataWidgetState extends State<ApplicantDataWidget> {
           jsonDecode(CacheHelper.getString(key: CacheKeys.officesList) ?? '[]');
       if (decoded is! List) return;
 
-      _offices = (decoded as List)
-          .where((o) => o is Map<String, dynamic>)
-          .map((o) => OfficeModel.fromJson(o as Map<String, dynamic>))
+      _offices = (decoded)
+          .whereType<Map<String, dynamic>>()
+          .map((o) => OfficeModel.fromJson(o))
           .toList();
 
       if (_selectedOfficeName == null && widget.initialOfficeId != null) {

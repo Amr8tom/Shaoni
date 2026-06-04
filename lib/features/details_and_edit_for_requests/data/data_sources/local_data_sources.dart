@@ -1,11 +1,9 @@
 import 'dart:convert';
 import 'package:shaoni/core/error/failure.dart';
 import 'package:shaoni/core/local_storage/cache_helper.dart';
-import 'package:shaoni/features/details_and_edit_for_requests/data/models/approve_request_model.dart';
 import 'package:shaoni/features/details_and_edit_for_requests/domain/entities/all_requests_with_stages.dart';
 import '../../../../../core/local_storage/cache_keys.dart';
 import '../../domain/entities/request_with_stage.dart';
-import '../../domain/use_cases/approve_request_use_case.dart';
 
 abstract class MyRequestsLocalDataSources {
   Future cacheAllMyRequests({required AllRequestsWithStages requests});
@@ -29,7 +27,7 @@ class MyRequestsLocalDataSourcesImp implements MyRequestsLocalDataSources {
   @override
   Future<AllRequestsWithStages> getAllMyRequests() async {
     final String? myRequestsString =
-        await CacheHelper.getString(key: CacheKeys.myRequests);
+        CacheHelper.getString(key: CacheKeys.myRequests);
     if (myRequestsString != null) {
       return AllRequestsWithStages.fromJson(jsonDecode(myRequestsString));
     }
@@ -49,7 +47,7 @@ class MyRequestsLocalDataSourcesImp implements MyRequestsLocalDataSources {
   @override
   Future<AllRequestsWithStages> getAllMyRequestsByManager() async {
     final String? myRequestsString =
-        await CacheHelper.getString(key: CacheKeys.myRequestsByManager);
+        CacheHelper.getString(key: CacheKeys.myRequestsByManager);
     if (myRequestsString != null) {
       return AllRequestsWithStages.fromJson(jsonDecode(myRequestsString));
     }

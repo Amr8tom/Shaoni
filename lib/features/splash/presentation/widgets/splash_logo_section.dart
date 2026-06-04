@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shaoni/core/constants/app_sizes.dart';
-import '../../../../core/constants/asset_resoures.dart';
+import '../../../../core/constants/asset_resources.dart';
 
 class SplashLogoSection extends StatefulWidget {
   const SplashLogoSection({super.key});

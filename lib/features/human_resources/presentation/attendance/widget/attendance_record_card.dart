@@ -27,7 +27,7 @@ class AttendanceRecordCard extends StatelessWidget {
           border: Border.all(color: ColorRes.grey5, width: 1),
           boxShadow: [
             BoxShadow(
-              color: ColorRes.primary.withOpacity(0.05),
+              color: ColorRes.primary.withValues(alpha: 0.05),
               blurRadius: 12,
               offset: const Offset(0, 4),
             ),
@@ -39,7 +39,7 @@ class AttendanceRecordCard extends StatelessWidget {
           children: [
             /// 1) Header banner
             AttendanceCardHeader(
-              title: '${record.gregorianDate.substring(0, 10)}',
+              title: record.gregorianDate.substring(0, 10),
               employeeName: record.employeeName,
             ),
 

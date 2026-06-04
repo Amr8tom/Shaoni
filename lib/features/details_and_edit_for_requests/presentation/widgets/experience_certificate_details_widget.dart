@@ -50,7 +50,7 @@ class ExperienceCertificateDetailsWidget extends StatelessWidget {
               const Sizer(height: 12),
 
               /// Date
-              if ((cert?.date?.isNotEmpty ?? false)) ...[
+              if ((cert?.date.isNotEmpty ?? false)) ...[
                 OrderTextCard(
                   title: S.current.startDate,
                   result: _formatDate(cert?.date),

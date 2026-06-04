@@ -36,19 +36,11 @@ class AttendanceRecordModel extends AttendanceRecord {
       hijriCheckOutDisplay: json['hijriCheckOutDisplay'],
       inMode: json['inMode'],
       checkInTime: json['checkIn'] != null
-          ? DateTime.parse(json['checkIn'])
-                  .toLocal()
-                  .toString()
-                  .substring(11, 16) +
-              ' ص'
+          ? '${DateTime.parse(json['checkIn']).toLocal().toString().substring(11, 16)} ص'
           : null,
       isCheckedIn: json['checkIn'] != null,
       checkOutTime: json['checkOut'] != null
-          ? DateTime.parse(json['checkOut'])
-                  .toLocal()
-                  .toString()
-                  .substring(11, 16) +
-              ' م'
+          ? '${DateTime.parse(json['checkOut']).toLocal().toString().substring(11, 16)} م'
           : null,
       isCheckedOut: json['checkOut'] != null,
       outMode: json['outMode'],

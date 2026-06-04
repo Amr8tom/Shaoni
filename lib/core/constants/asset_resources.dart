@@ -1,4 +1,3 @@
-import 'package:shaoni/generated/l10n.dart';
 
 class AssetRes {
   /// -- App Logos

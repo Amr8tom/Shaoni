@@ -29,10 +29,10 @@ class SideMenuItem extends StatelessWidget {
         borderRadius: BorderRadius.circular(AppSizes.borderRadiusLg),
         child: Container(
           decoration: BoxDecoration(
-            color: ColorRes.primary.withOpacity(0.06),
+            color: ColorRes.primary.withValues(alpha: 0.06),
             borderRadius: BorderRadius.circular(AppSizes.borderRadiusLg),
             border: Border.all(
-              color: ColorRes.primary.withOpacity(0.10),
+              color: ColorRes.primary.withValues(alpha: 0.10),
               width: 1,
             ),
           ),
@@ -47,7 +47,7 @@ class SideMenuItem extends StatelessWidget {
                 height: AppSizes.iconLg * 1.5,
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
-                  color: ColorRes.primary.withOpacity(0.12),
+                  color: ColorRes.primary.withValues(alpha: 0.12),
                   borderRadius: BorderRadius.circular(AppSizes.borderRadiusMd),
                 ),
                 child: isIcon
@@ -78,7 +78,7 @@ class SideMenuItem extends StatelessWidget {
               Icon(
                 Icons.arrow_forward_ios_rounded,
                 size: AppSizes.iconSm,
-                color: ColorRes.primary.withOpacity(0.6),
+                color: ColorRes.primary.withValues(alpha: 0.6),
               ),
             ],
           ),

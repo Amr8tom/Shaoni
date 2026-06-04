@@ -1,7 +1,7 @@
 import 'package:shaoni/features/auth/domain/entities/office.dart';
 
 class OfficeModel extends OfficeEntity {
-  OfficeModel({required super.id, required super.name});
+  const OfficeModel({required super.id, required super.name});
 
   /// fromJson
   factory OfficeModel.fromJson(Map<String, dynamic>? json) {

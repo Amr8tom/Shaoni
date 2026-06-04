@@ -53,7 +53,7 @@ class ServiceRowCard extends StatelessWidget {
             border: Border.all(color: ColorRes.grey5, width: 1),
             boxShadow: [
               BoxShadow(
-                color: visuals.color.withOpacity(0.05),
+                color: visuals.color.withValues(alpha: 0.05),
                 blurRadius: 12,
                 offset: const Offset(0, 4),
               ),
@@ -67,10 +67,10 @@ class ServiceRowCard extends StatelessWidget {
                 height: AppSizes.iconLg * 1.5,
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
-                  color: visuals.color.withOpacity(0.10),
+                  color: visuals.color.withValues(alpha: 0.10),
                   borderRadius: BorderRadius.circular(AppSizes.borderRadiusMd),
                   border: Border.all(
-                    color: visuals.color.withOpacity(0.20),
+                    color: visuals.color.withValues(alpha: 0.20),
                     width: 1,
                   ),
                 ),
@@ -139,7 +139,7 @@ class ServiceRowCard extends StatelessWidget {
                     ? Icons.arrow_back_ios_new_rounded
                     : Icons.arrow_forward_ios_rounded,
                 size: AppSizes.iconSm,
-                color: visuals.color.withOpacity(0.6),
+                color: visuals.color.withValues(alpha: 0.6),
               ),
             ],
           ),
@@ -164,9 +164,9 @@ class _StatusPill extends StatelessWidget {
         vertical: 2,
       ),
       decoration: BoxDecoration(
-        color: color.withOpacity(0.10),
+        color: color.withValues(alpha: 0.10),
         borderRadius: BorderRadius.circular(AppSizes.borderRadiusSm),
-        border: Border.all(color: color.withOpacity(0.30), width: 1),
+        border: Border.all(color: color.withValues(alpha: 0.30), width: 1),
       ),
       child: Text(
         label,

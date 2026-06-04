@@ -5,7 +5,7 @@ import '../../../../common/widgets/appbar/appbar.dart';
 import '../../../../common/widgets/sized_boxes/sizer.dart';
 import '../../../../core/constants/app_sizes.dart';
 import '../../../../core/constants/colors.dart';
-import '../../../../core/extentions/navigation_extension.dart';
+import '../../../../core/extensions/navigation_extension.dart';
 import '../../../../core/routing/route_names.dart';
 import '../../../../generated/l10n.dart';
 import '../../../language/presentation/controller/language_cubit.dart';

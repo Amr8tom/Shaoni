@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shaoni/core/extentions/navigation_extension.dart';
+import 'package:shaoni/core/extensions/navigation_extension.dart';
 
 import '../../../../core/constants/app_sizes.dart';
 import '../../../../core/constants/colors.dart';

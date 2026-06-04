@@ -6,7 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:shaoni/core/constants/app_sizes.dart';
 import 'package:shaoni/core/device/device_utility.dart';
-import '../../../core/constants/asset_resoures.dart';
+import '../../../core/constants/asset_resources.dart';
 import '../../../core/constants/colors.dart';
 import '../../../features/navigation/presentation/controllers/navigation_cubit.dart';
 import '../../../generated/l10n.dart';
@@ -53,7 +53,7 @@ class CustomBottomNavigationBar extends StatelessWidget {
             vertical: AppSizes.padding / 3,
           ),
           decoration: BoxDecoration(
-            color: ColorRes.primary.withOpacity(0.79),
+            color: ColorRes.primary.withValues(alpha: 0.79),
             borderRadius: BorderRadius.all(
               Radius.circular(AppSizes.borderRadiusXXLg * 2),
             ),
@@ -136,7 +136,7 @@ class CustomBottomNavigationBar extends StatelessWidget {
             style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                   color: isActive
                       ? ColorRes.white
-                      : ColorRes.white.withOpacity(0.6),
+                      : ColorRes.white.withValues(alpha: 0.6),
                   fontWeight: isActive ? FontWeight.bold : FontWeight.normal,
                 ),
           ),

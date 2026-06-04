@@ -4,12 +4,12 @@ import 'package:shaoni/common/widgets/appbar/appbar.dart';
 import 'package:shaoni/common/widgets/sized_boxes/sizer.dart';
 import 'package:shaoni/core/constants/app_sizes.dart';
 import 'package:shaoni/core/constants/colors.dart';
-import 'package:shaoni/core/extentions/navigation_extension.dart';
+import 'package:shaoni/core/extensions/navigation_extension.dart';
 import 'package:shaoni/core/service_locator/service_locator.dart';
 import 'package:shaoni/features/human_resources/presentation/controller/medical_insurance/medical_insurance_cubit.dart';
 import 'package:shaoni/features/human_resources/presentation/medical_insurance/widget/medical_insurance_data_widget.dart';
 import '../../../../common/widgets/dialogs/custom_dialog_img_title_des.dart';
-import '../../../../core/constants/asset_resoures.dart';
+import '../../../../core/constants/asset_resources.dart';
 import '../../../../core/routing/route_names.dart';
 import '../../../../generated/l10n.dart';
 import '../widgets/general_request_templates/applicant_data_widget.dart';
@@ -46,7 +46,7 @@ class CreateMedicalInsuranceForm extends StatelessWidget {
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(
                       content: Text(state.errorMessage ?? S.current.error),
-                      backgroundColor: ColorRes.error.withOpacity(0.5),
+                      backgroundColor: ColorRes.error.withValues(alpha: 0.5),
                     ),
                   );
                 }

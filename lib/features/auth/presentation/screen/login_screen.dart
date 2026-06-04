@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:shaoni/core/extentions/navigation_extension.dart';
-import 'package:shaoni/features/auth/presentation/controller/login/login_cubit.dart';
+import 'package:shaoni/core/extensions/navigation_extension.dart';
 import 'package:shaoni/features/auth/presentation/controller/login/login_cubit.dart';
 import '../../../../core/constants/app_sizes.dart';
-import '../../../../core/constants/asset_resoures.dart';
+import '../../../../core/constants/asset_resources.dart';
 import '../../../../core/constants/colors.dart';
 import '../../../../core/routing/route_names.dart';
 import '../../../../core/service_locator/service_locator.dart';
@@ -27,7 +26,7 @@ class LoginScreen extends StatelessWidget {
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(
                 content: Text(S.current.authenticationError),
-                backgroundColor: ColorRes.error2.withOpacity(0.5),
+                backgroundColor: ColorRes.error2.withValues(alpha: 0.5),
                 duration: Duration(seconds: 3),
               ),
             );

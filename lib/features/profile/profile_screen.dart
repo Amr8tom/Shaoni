@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shaoni/common/widgets/sized_boxes/sizer.dart';
-import 'package:shaoni/core/constants/asset_resoures.dart';
+import 'package:shaoni/core/constants/asset_resources.dart';
 import 'package:shaoni/core/constants/colors.dart';
 import 'package:shaoni/core/constants/app_sizes.dart';
-import 'package:shaoni/core/extentions/navigation_extension.dart';
+import 'package:shaoni/core/extensions/navigation_extension.dart';
 import 'package:shaoni/core/routing/route_names.dart';
 import 'package:shaoni/core/service_locator/service_locator.dart';
 import 'package:shaoni/features/navigation/data/model/user_model.dart';
@@ -78,7 +78,8 @@ class ProfileScreen extends StatelessWidget {
                                   height: 120.w,
                                   decoration: BoxDecoration(
                                     shape: BoxShape.circle,
-                                    color: ColorRes.error.withOpacity(0.3),
+                                    color:
+                                        ColorRes.error.withValues(alpha: 0.3),
                                   ),
                                 ),
 
@@ -178,7 +179,7 @@ class ProfileScreen extends StatelessWidget {
                               children: [
                                 Expanded(
                                   child: RadioListTile<int>(
-                                    title: Text(S.current.saudi ?? 'Saudi'),
+                                    title: Text(S.current.saudi),
                                     value: 1,
                                     groupValue: state.nationality,
                                     activeColor: ColorRes.primary,
@@ -188,8 +189,7 @@ class ProfileScreen extends StatelessWidget {
                                 ),
                                 Expanded(
                                   child: RadioListTile<int>(
-                                    title:
-                                        Text(S.current.nonSaudi ?? 'Non-Saudi'),
+                                    title: Text(S.current.nonSaudi),
                                     value: 2,
                                     groupValue: state.nationality,
                                     activeColor: ColorRes.primary,
@@ -208,7 +208,7 @@ class ProfileScreen extends StatelessWidget {
                               children: [
                                 Expanded(
                                   child: RadioListTile<int>(
-                                    title: Text(S.current.jeddah ?? 'Jeddah'),
+                                    title: Text(S.current.jeddah),
                                     value: 1,
                                     groupValue: state.city,
                                     activeColor: ColorRes.primary,
@@ -218,7 +218,7 @@ class ProfileScreen extends StatelessWidget {
                                 ),
                                 Expanded(
                                   child: RadioListTile<int>(
-                                    title: Text(S.current.makka ?? 'Makka'),
+                                    title: Text(S.current.makka),
                                     value: 2,
                                     groupValue: state.city,
                                     activeColor: ColorRes.primary,

@@ -1,5 +1,4 @@
 import 'package:equatable/equatable.dart';
-import 'package:shaoni/core/utils/usecases/base_usecase.dart';
 
 // class GetUserRequestsUseCase extends UseCase<> {}
 

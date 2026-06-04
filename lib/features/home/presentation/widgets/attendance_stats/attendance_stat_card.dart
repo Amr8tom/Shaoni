@@ -49,7 +49,7 @@ class AttendanceStatCard extends StatelessWidget {
         border: Border.all(color: ColorRes.grey5, width: 1),
         boxShadow: [
           BoxShadow(
-            color: color.withOpacity(0.06),
+            color: color.withValues(alpha: 0.06),
             blurRadius: 12,
             offset: const Offset(0, 4),
           ),

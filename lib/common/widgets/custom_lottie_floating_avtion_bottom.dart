@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lottie/lottie.dart';
-import '../../core/constants/asset_resoures.dart';
+import '../../core/constants/asset_resources.dart';
 import '../../core/device/device_utility.dart';
 import '../../core/constants/app_sizes.dart';
 import '../../core/constants/colors.dart';

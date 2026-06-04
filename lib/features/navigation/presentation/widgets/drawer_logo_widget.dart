@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../../../common/widgets/sized_boxes/sizer.dart';
 import '../../../../core/constants/app_sizes.dart';
-import '../../../../core/constants/asset_resoures.dart';
-import '../../../../core/constants/colors.dart';
-import '../../../../generated/l10n.dart';
+import '../../../../core/constants/asset_resources.dart';
 
 class DrawerLogoWidget extends StatelessWidget {
   const DrawerLogoWidget({super.key});

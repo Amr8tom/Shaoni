@@ -102,7 +102,7 @@ class HRServicesRepositoryImp extends HRServicesRepository {
       try {
         final response = await _local.getAllPermissionTimes();
         return Right(response);
-      } on CacheFailure catch (e) {
+      } on CacheFailure {
         return Left(CacheFailure());
       }
     }
@@ -124,7 +124,7 @@ class HRServicesRepositoryImp extends HRServicesRepository {
       try {
         final response = await _local.getAllPermissionTypes();
         return Right(response);
-      } on CacheFailure catch (e) {
+      } on CacheFailure {
         return Left(CacheFailure());
       }
     }
@@ -144,7 +144,7 @@ class HRServicesRepositoryImp extends HRServicesRepository {
       try {
         final response = await _local.getAllAttendanceRecords();
         return Right(response);
-      } on CacheFailure catch (e) {
+      } on CacheFailure {
         return Left(CacheFailure());
       }
     }
