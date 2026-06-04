@@ -14,7 +14,7 @@ class NavigationServiceLocator {
       () => NavigationRemoteDataSourcesImp(serviceLocator()),
     );
     serviceLocator.registerLazySingleton<NavigationLocalDataSources>(
-      () => NavigationLocalDataSourcesImp(),
+      () => NavigationLocalDataSourcesImp(serviceLocator()),
     );
 
     /// repositories
@@ -37,7 +37,7 @@ class NavigationServiceLocator {
 
     /// controller
     serviceLocator.registerFactory<NavigationCubit>(
-      () => NavigationCubit(serviceLocator()),
+      () => NavigationCubit(serviceLocator(), serviceLocator()),
     );
   }
 }

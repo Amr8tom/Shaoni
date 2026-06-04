@@ -8,8 +8,6 @@ import 'package:shaoni/features/home/presentation/widgets/request_card.dart';
 import 'package:shaoni/features/details_and_edit_for_requests/domain/entities/request_with_stage.dart';
 import 'package:shaoni/features/details_and_edit_for_requests/presentation/controller/my_requests_cubit.dart';
 import 'package:skeletonizer/skeletonizer.dart';
-import '../../../../core/local_storage/cache_helper.dart';
-import '../../../../core/local_storage/cache_keys.dart';
 import '../../../../generated/l10n.dart';
 import '../../../navigation/presentation/controllers/navigation_cubit.dart';
 
@@ -39,9 +37,8 @@ class UserRequestsGridView extends StatelessWidget {
           if (((controller.state.userRequests?.totalPages) ?? 0) >
               controller.userPage - 1) {
             controller.getAllUserRequests(
-                employeeId: int.parse(
-                    CacheHelper.getString(key: CacheKeys.employeeId) ??
-                        navController.state.user!.employeeId.toString()),
+                employeeId:
+                    int.parse(navController.state.user!.employeeId.toString()),
                 isFirestTime: false);
           }
         }

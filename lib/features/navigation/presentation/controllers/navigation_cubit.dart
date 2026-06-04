@@ -2,9 +2,8 @@ import 'dart:convert';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:shaoni/core/local_storage/session_storage/session_storage.dart';
 import 'package:shaoni/features/navigation/domain/use_cases/get_user_data_use_case.dart';
-import '../../../../core/local_storage/cache_helper.dart';
-import '../../../../core/local_storage/cache_keys.dart';
 import '../../../auth/domain/entities/user_entity.dart';
 import '../../../home/home_screen.dart';
 import '../../../details_and_edit_for_requests/presentation/screens/my_requests_screen.dart';
@@ -15,9 +14,11 @@ part 'navigation_state.dart';
 
 class NavigationCubit extends Cubit<NavigationState> {
   final GetUserDataUseCase _getUserDataUseCase;
+  final SessionStorage _sessionStorage;
 
-  NavigationCubit(this._getUserDataUseCase) : super(const NavigationState()) {
-    getUserData(CacheHelper.getString(key: CacheKeys.userId));
+  NavigationCubit(this._getUserDataUseCase, this._sessionStorage)
+      : super(const NavigationState()) {
+    getUserData(_sessionStorage.userId);
   }
 
   int indx = 0;
@@ -30,27 +31,23 @@ class NavigationCubit extends Cubit<NavigationState> {
     return result.fold(
       (failure) => emit(state.copyWith(status: NavigationStatus.error)),
       (user) async {
-        await CacheHelper.putString(
-            key: CacheKeys.employeeId, value: user.employeeId.toString());
-        await CacheHelper.putString(
-            key: CacheKeys.userName, value: user.fullName.toString());
-        await CacheHelper.putString(
-            key: CacheKeys.organizationName,
-            value: user.office?.name.toString() ?? '');
-        await CacheHelper.putString(
-            key: CacheKeys.departmentAddress,
-            value: user.department?.nameAr.toString() ?? '');
-        await CacheHelper.putString(
-            key: CacheKeys.offices,
-            value: user.department?.nameAr.toString() ?? '');
-        await CacheHelper.putString(
-            key: CacheKeys.officesList,
-            value: jsonEncode(user.officeIds
-                ?.map((office) => {
-                      'id': office.id,
-                      'name': office.name,
-                    })
-                .toList()));
+        await _sessionStorage.saveEmployeeId(user.employeeId.toString());
+        await _sessionStorage.saveUserName(user.fullName.toString());
+        await _sessionStorage.saveOrganizationName(
+          user.office?.name.toString() ?? '',
+        );
+        await _sessionStorage.saveDepartmentAddress(
+          user.department?.nameAr.toString() ?? '',
+        );
+        await _sessionStorage.saveOffices(
+          user.department?.nameAr.toString() ?? '',
+        );
+        await _sessionStorage.saveOfficesList(jsonEncode(user.officeIds
+            ?.map((office) => {
+                  'id': office.id,
+                  'name': office.name,
+                })
+            .toList()));
         emit(state.copyWith(status: NavigationStatus.success, user: user));
       },
     );

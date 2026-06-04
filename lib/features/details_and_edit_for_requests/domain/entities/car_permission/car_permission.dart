@@ -7,7 +7,7 @@ class CarPermission extends Equatable {
   final String? carNumber;
   final String? note;
   final String? state;
-  final String? attachments;
+  final List<String>? attachments;
 
   const CarPermission({
     this.externalName,
@@ -22,14 +22,28 @@ class CarPermission extends Equatable {
   /// fromJson
   factory CarPermission.fromJson(Map<String, dynamic> json) {
     return CarPermission(
-      externalName: json['externalName'],
-      carType: json['carType'],
-      carColor: json['carColor'],
-      carNumber: json['carNumber'],
-      note: json['note'],
-      state: json['state'],
-      attachments: json['attachments'],
+      externalName: json['externalName']?.toString(),
+      carType: json['carType']?.toString(),
+      carColor: json['carColor']?.toString(),
+      carNumber: json['carNumber']?.toString(),
+      note: json['note']?.toString(),
+      state: json['state']?.toString(),
+      attachments: _attachmentsFromJson(json['attachments']),
     );
+  }
+
+  static List<String>? _attachmentsFromJson(Object? value) {
+    if (value == null) return null;
+    if (value is String) return value.isEmpty ? null : [value];
+    if (value is List) {
+      final attachments = value
+          .where((item) => item != null)
+          .map((item) => item.toString())
+          .where((item) => item.isNotEmpty)
+          .toList();
+      return attachments.isEmpty ? null : attachments;
+    }
+    return null;
   }
 
   /// toJson

@@ -2,8 +2,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../../core/local_storage/cache_helper.dart';
-import '../../../../../core/local_storage/cache_keys.dart';
+import '../../../../../core/local_storage/session_storage/session_storage.dart';
 import '../../../../../core/utils/usecases/base_usecase.dart';
 import '../../../../../generated/l10n.dart';
 import '../../../domain/entity/complaint_request/complaint_reason.dart';
@@ -18,6 +17,7 @@ class ComplaintRequestCubit extends Cubit<ComplaintRequestState> {
   final GetComplaintTypesUseCase _getComplaintTypesUseCase;
   final GetComplaintReasonsUseCase _getComplaintReasonsUseCase;
   final CreateComplaintRequestUseCase _createComplaintRequestUseCase;
+  final SessionStorage _sessionStorage;
 
   /// Form key
   final requestFormKey = GlobalKey<FormState>();
@@ -51,6 +51,7 @@ class ComplaintRequestCubit extends Cubit<ComplaintRequestState> {
     this._getComplaintTypesUseCase,
     this._getComplaintReasonsUseCase,
     this._createComplaintRequestUseCase,
+    this._sessionStorage,
   ) : super(const ComplaintRequestState()) {
     getComplaintTypes();
     getComplaintReasons();
@@ -140,8 +141,7 @@ class ComplaintRequestCubit extends Cubit<ComplaintRequestState> {
     todayDateController.text = DateTime.now().toString().split(' ').first;
     final result = await _createComplaintRequestUseCase.call(
       params: CreateComplaintRequestParams(
-        employeeId:
-            int.parse(CacheHelper.getString(key: CacheKeys.employeeId) ?? "1"),
+        employeeId: int.parse(_sessionStorage.employeeId ?? "1"),
         officeId: officeIdController.text.isEmpty
             ? 0
             : int.tryParse(officeIdController.text),

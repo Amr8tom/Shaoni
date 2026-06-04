@@ -1,16 +1,16 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
+import 'package:shaoni/core/local_storage/local_storage.dart';
+import 'package:shaoni/core/local_storage/storage_keys.dart';
 import '../error/failure.dart';
-import '../local_storage/cache_helper.dart';
+
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
-import '../local_storage/cache_keys.dart';
 
 class DioHelper {
-  /// Get current language from cache
-  static String get currentLanguage =>
-      CacheHelper.getString(key: CacheKeys.lang) ?? 'en';
+  final LocalStorage _storage;
   final Dio dio;
-  DioHelper() : dio = Dio() {
+
+  DioHelper(this._storage) : dio = Dio() {
     /// Adding Pretty Dio Logger for debugging
     dio.interceptors.add(
       PrettyDioLogger(
@@ -26,6 +26,16 @@ class DioHelper {
     );
   }
 
+  String get _token => _storage.getString(key: StorageKeys.token.name) ?? '';
+
+  String get _language =>
+      _storage.getString(key: StorageKeys.lang.name) ?? _storage.cachedLanguage;
+
+  Map<String, dynamic> get _headers => {
+        "Authorization": "Bearer $_token",
+        "App-Language": _language,
+      };
+
   Future getData({
     required String url,
     bool isHeader = true,
@@ -36,12 +46,7 @@ class DioHelper {
         url,
         options: isHeader
             ? Options(
-                headers: {
-                  "Authorization":
-                      "Bearer ${CacheHelper.getString(key: CacheKeys.token)}",
-                  "App-Language":
-                      CacheHelper.getString(key: CacheKeys.lang) ?? 'en',
-                },
+                headers: _headers,
               )
             : null,
         data: data,
@@ -68,11 +73,7 @@ class DioHelper {
         options: Options(
           followRedirects: false,
           validateStatus: (status) => true,
-          headers: {
-            "Authorization":
-                "Bearer ${CacheHelper.getString(key: CacheKeys.token)}",
-            "App-Language": CacheHelper.getString(key: CacheKeys.lang) ?? 'en',
-          },
+          headers: _headers,
         ),
       );
       if (response.statusCode == 204 ||
@@ -108,11 +109,7 @@ class DioHelper {
         options: Options(
           followRedirects: false,
           validateStatus: (status) => true,
-          headers: {
-            "Authorization":
-                "Bearer ${CacheHelper.getString(key: CacheKeys.token)}",
-            "App-Language": CacheHelper.getString(key: CacheKeys.lang) ?? 'en',
-          },
+          headers: _headers,
         ),
       );
       if (response.statusCode == 204 ||
@@ -150,9 +147,7 @@ class DioHelper {
           headers: {
             // 'Content-Type': 'application/json',
             'Content-Type': 'multipart/form-data',
-            "Authorization":
-                "Bearer ${CacheHelper.getString(key: CacheKeys.token)}",
-            "App-Language": CacheHelper.getString(key: CacheKeys.lang) ?? 'en',
+            ..._headers,
           },
         ),
       );
@@ -211,11 +206,7 @@ class DioHelper {
       url,
       data: body,
       options: Options(
-        headers: {
-          "Authorization":
-              "Bearer ${CacheHelper.getString(key: CacheKeys.token)}",
-          "App-Language": currentLanguage,
-        },
+        headers: _headers,
       ),
     );
   }
@@ -228,11 +219,7 @@ class DioHelper {
       url,
       data: body,
       options: Options(
-        headers: {
-          "Authorization":
-              "Bearer ${CacheHelper.getString(key: CacheKeys.token)}",
-          "App-Language": currentLanguage,
-        },
+        headers: _headers,
       ),
     );
   }
@@ -245,11 +232,7 @@ class DioHelper {
       url,
       data: body,
       options: Options(
-        headers: {
-          "Authorization":
-              "Bearer ${CacheHelper.getString(key: CacheKeys.token)}",
-          "App-Language": currentLanguage,
-        },
+        headers: _headers,
       ),
     );
   }
@@ -262,11 +245,7 @@ class DioHelper {
       url,
       data: body,
       options: Options(
-        headers: {
-          "Authorization":
-              "Bearer ${CacheHelper.getString(key: CacheKeys.token)}",
-          "App-Language": currentLanguage,
-        },
+        headers: _headers,
       ),
     );
   }

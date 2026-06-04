@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:dartz/dartz.dart';
-import '../../../../core/local_storage/cache_helper.dart';
-import '../../../../core/local_storage/cache_keys.dart';
+import '../../../../core/local_storage/local_storage.dart';
+import '../../../../core/local_storage/storage_keys.dart';
 import '../model/all_services_model.dart';
 
 abstract class ServicesLocalDataSources {
@@ -13,18 +13,25 @@ abstract class ServicesLocalDataSources {
 }
 
 class ServicesLocalDataSourcesImp implements ServicesLocalDataSources {
+  final LocalStorage _storage;
+
+  const ServicesLocalDataSourcesImp(this._storage);
+
   @override
   Future<Unit> cacheAllServices(AllServicesModel allServicesModel) async {
     final String allServices = jsonEncode(allServicesModel.toJson());
-    CacheHelper.putString(key: CacheKeys.allServices, value: allServices);
+    await _storage.cacheString(
+      key: StorageKeys.allServices.name,
+      value: allServices,
+    );
     return Future.value(unit);
   }
 
   @override
   Future<AllServicesModel> getAllServices() async {
     final String? allServices =
-        CacheHelper.getString(key: CacheKeys.allServices);
-    if (allServices != null) {
+        _storage.getString(key: StorageKeys.allServices.name);
+    if (allServices != null && allServices.isNotEmpty) {
       return AllServicesModel.fromJson(jsonDecode(allServices));
     } else {
       return Future.value(AllServicesModel(services: []));

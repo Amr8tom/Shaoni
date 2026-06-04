@@ -91,7 +91,7 @@ class CarPermissionDetailsWidget extends StatelessWidget {
               /// download, so we just feed it the first attachment.
               if ((car?.attachments?.isNotEmpty ?? false))
                 LeavesAttachmentWidget(
-                  leavesAttachment: car!.attachments!,
+                  leavesAttachment: car!.attachments!.first,
                 ),
             ],
           ),

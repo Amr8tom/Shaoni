@@ -6,8 +6,7 @@ import '../../../../../generated/l10n.dart';
 import '../../../../common/widgets/sized_boxes/sizer.dart';
 import '../../../../core/constants/app_sizes.dart';
 import '../../../../core/constants/colors.dart';
-import '../../../../core/local_storage/cache_helper.dart';
-import '../../../../core/local_storage/cache_keys.dart';
+import '../../../../core/local_storage/session_storage/session_storage.dart';
 import '../../../../core/routing/route_names.dart';
 import '../../../../core/service_locator/service_locator.dart';
 import '../controllers/delete_account_cubit.dart';
@@ -301,10 +300,7 @@ class DeleteMyAccountBody extends StatelessWidget {
                       ),
                     ),
                     onPressed: () async {
-                      await CacheHelper.removeFromShared(key: CacheKeys.token);
-                      await CacheHelper.removeFromShared(key: CacheKeys.userId);
-                      await CacheHelper.removeFromShared(
-                          key: CacheKeys.employeeId);
+                      await serviceLocator<SessionStorage>().clearSession();
                       if (dialogContext.mounted) {
                         Navigator.pop(dialogContext);
                         context.pushReplacementNamed(DRoutesName.loginRoute);

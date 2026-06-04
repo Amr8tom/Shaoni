@@ -2,8 +2,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:shaoni/core/local_storage/cache_helper.dart';
-import 'package:shaoni/core/local_storage/cache_keys.dart';
+import 'package:shaoni/core/local_storage/session_storage/session_storage.dart';
 import 'package:shaoni/core/utils/usecases/base_usecase.dart';
 import 'package:shaoni/features/human_resources/domain/entity/id_document/country.dart';
 import 'package:shaoni/features/human_resources/domain/entity/id_document/id_renewal_request_type.dart';
@@ -18,6 +17,7 @@ class IDDocumentCubit extends Cubit<IDDocumentState> {
   final GetCountriesUseCase _getCountriesUseCase;
   final GetIDRenewalRequestTypesUseCase _getIDRenewalRequestTypesUseCase;
   final CreateIDDocumentUseCase _createIDDocumentUseCase;
+  final SessionStorage _sessionStorage;
 
   /// Form key
   final requestFormKey = GlobalKey<FormState>();
@@ -97,6 +97,7 @@ class IDDocumentCubit extends Cubit<IDDocumentState> {
     this._getCountriesUseCase,
     this._getIDRenewalRequestTypesUseCase,
     this._createIDDocumentUseCase,
+    this._sessionStorage,
   ) : super(const IDDocumentState()) {
     _loadLookups();
   }
@@ -247,9 +248,7 @@ class IDDocumentCubit extends Cubit<IDDocumentState> {
   Future<void> createIDDocument() async {
     emit(state.copyWith(status: IDDocumentStatus.createLoading));
     final params = CreateIDDocumentParams(
-      employeeId: int.tryParse(
-              CacheHelper.getString(key: CacheKeys.employeeId) ?? '0') ??
-          0,
+      employeeId: int.tryParse(_sessionStorage.employeeId ?? '0') ?? 0,
       officeId: int.tryParse(officeIdController.text) ?? 0,
       date: DateFormat('yyyy-MM-dd', 'en').format(DateTime.now()),
       requestTypes: _selectedRequestTypeCode ?? '',

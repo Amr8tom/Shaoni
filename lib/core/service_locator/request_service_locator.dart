@@ -61,7 +61,7 @@ class HRServiceLocator {
       () => HRServicesRemoteDataSourcesImp(serviceLocator()),
     );
     serviceLocator.registerLazySingleton<HRServicesLocalDataSources>(
-      () => HRServicesLocalDataSourcesImp(),
+      () => HRServicesLocalDataSourcesImp(serviceLocator()),
     );
 
     /// repositories
@@ -136,20 +136,26 @@ class HRServiceLocator {
         serviceLocator(),
         serviceLocator(),
         serviceLocator(),
+        serviceLocator(),
       ),
     );
     serviceLocator.registerFactory<AttendanceCubit>(
-      () => AttendanceCubit(serviceLocator(), serviceLocator(),
-          serviceLocator(), serviceLocator(), serviceLocator()),
+      () => AttendanceCubit(
+          serviceLocator(),
+          serviceLocator(),
+          serviceLocator(),
+          serviceLocator(),
+          serviceLocator(),
+          serviceLocator()),
     );
 
     serviceLocator.registerFactory<CarPermissionCubit>(
       () => CarPermissionCubit(serviceLocator(), serviceLocator(),
-          serviceLocator(), serviceLocator()),
+          serviceLocator(), serviceLocator(), serviceLocator()),
     );
     serviceLocator.registerFactory<ComplaintRequestCubit>(
-      () => ComplaintRequestCubit(
-          serviceLocator(), serviceLocator(), serviceLocator()),
+      () => ComplaintRequestCubit(serviceLocator(), serviceLocator(),
+          serviceLocator(), serviceLocator()),
     );
 
     /// ============================= start work =============================
@@ -167,6 +173,7 @@ class HRServiceLocator {
     );
     serviceLocator.registerFactory<StartWorkCubit>(
       () => StartWorkCubit(
+        serviceLocator(),
         serviceLocator(),
         serviceLocator(),
         serviceLocator(),
@@ -189,6 +196,7 @@ class HRServiceLocator {
         serviceLocator(),
         serviceLocator(),
         serviceLocator(),
+        serviceLocator(),
       ),
     );
 
@@ -207,6 +215,7 @@ class HRServiceLocator {
         serviceLocator<GetCountriesUseCase>(),
         serviceLocator<GetIDRenewalRequestTypesUseCase>(),
         serviceLocator<CreateIDDocumentUseCase>(),
+        serviceLocator(),
       ),
     );
 
@@ -229,6 +238,7 @@ class HRServiceLocator {
         serviceLocator(),
         serviceLocator(),
         serviceLocator(),
+        serviceLocator(),
       ),
     );
 
@@ -247,6 +257,7 @@ class HRServiceLocator {
     );
     serviceLocator.registerFactory<ProductOrderCubit>(
       () => ProductOrderCubit(
+        serviceLocator(),
         serviceLocator(),
         serviceLocator(),
         serviceLocator(),
@@ -281,6 +292,7 @@ class HRServiceLocator {
         serviceLocator<GetOutsideWorkingEmployeesUseCase>(),
         serviceLocator<GetOutsideWorkingProjectsUseCase>(),
         serviceLocator<CreateOutsideWorkingUseCase>(),
+        serviceLocator(),
       ),
     );
   }

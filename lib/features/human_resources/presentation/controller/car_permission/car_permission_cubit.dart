@@ -2,8 +2,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../../core/local_storage/cache_helper.dart';
-import '../../../../../core/local_storage/cache_keys.dart';
+import '../../../../../core/local_storage/session_storage/session_storage.dart';
 import '../../../../../core/utils/usecases/base_usecase.dart';
 import '../../../../../generated/l10n.dart';
 import '../../../domain/entity/car_permission/car_brand.dart';
@@ -20,6 +19,7 @@ class CarPermissionCubit extends Cubit<CarPermissionState> {
   final GetCarBrandsUseCase _getCarBrandsUseCase;
   final CreateCarPermissionUseCase _createCarPermissionUseCase;
   final UpdateCarPermissionUseCase _updateCarPermissionUseCase;
+  final SessionStorage _sessionStorage;
 
   /// Form key
   final requestFormKey = GlobalKey<FormState>();
@@ -57,6 +57,7 @@ class CarPermissionCubit extends Cubit<CarPermissionState> {
     this._getCarBrandsUseCase,
     this._createCarPermissionUseCase,
     this._updateCarPermissionUseCase,
+    this._sessionStorage,
   ) : super(const CarPermissionState()) {
     getCarBrands();
     getCarColors();
@@ -143,8 +144,7 @@ class CarPermissionCubit extends Cubit<CarPermissionState> {
     todayDateController.text = DateTime.now().toString().split(' ').first;
     final result = await _createCarPermissionUseCase.call(
       params: CreateCarPermissionParams(
-        employeeId:
-            int.parse(CacheHelper.getString(key: CacheKeys.employeeId) ?? "1"),
+        employeeId: int.parse(_sessionStorage.employeeId ?? "1"),
         carBrandId: selectedBrandId,
         carColorId: selectedColorId,
         officeId: officeIdController.text.isEmpty
@@ -186,8 +186,7 @@ class CarPermissionCubit extends Cubit<CarPermissionState> {
     final result = await _updateCarPermissionUseCase.call(
       params: UpdateCarPermissionParams(
         requestId: requestId,
-        employeeId:
-            int.parse(CacheHelper.getString(key: CacheKeys.employeeId) ?? "1"),
+        employeeId: int.parse(_sessionStorage.employeeId ?? "1"),
         carBrandId: selectedBrandId,
         carColorId: selectedColorId,
         officeId: officeIdController.text.isEmpty

@@ -2,8 +2,8 @@ import 'dart:convert';
 import 'package:dartz/dartz.dart';
 import 'package:shaoni/core/error/failure.dart';
 import 'package:shaoni/features/human_resources/data/model/attendance_record_model.dart';
-import '../../../../core/local_storage/cache_helper.dart';
-import '../../../../core/local_storage/cache_keys.dart';
+import '../../../../core/local_storage/local_storage.dart';
+import '../../../../core/local_storage/storage_keys.dart';
 import '../model/all_attendance_record_model.dart';
 import '../model/permission_time_model.dart';
 import '../model/permission_type_model.dart';
@@ -32,13 +32,17 @@ abstract class HRServicesLocalDataSources {
 }
 
 class HRServicesLocalDataSourcesImp implements HRServicesLocalDataSources {
+  final LocalStorage _storage;
+
+  const HRServicesLocalDataSourcesImp(this._storage);
+
   @override
   Future<Unit> cacheAllPermissionTimes(
       List<PermissionTimeModel> permissionTimes) async {
     final String permissionTimesString =
         jsonEncode(permissionTimes.map((e) => e.toJson()).toList());
-    CacheHelper.putString(
-        key: CacheKeys.permissionTimes, value: permissionTimesString);
+    await _storage.cacheString(
+        key: StorageKeys.permissionTimes.name, value: permissionTimesString);
     return Future.value(unit);
   }
 
@@ -46,15 +50,15 @@ class HRServicesLocalDataSourcesImp implements HRServicesLocalDataSources {
   Future<Unit> cacheAllPermissionTypes(
       List<PermissionTypeModel> permissionTypes) {
     final String permissionTypesString = jsonEncode(permissionTypes);
-    CacheHelper.putString(
-        key: CacheKeys.permissionTypes, value: permissionTypesString);
+    _storage.cacheString(
+        key: StorageKeys.permissionTypes.name, value: permissionTypesString);
     return Future.value(unit);
   }
 
   @override
   Future<List<PermissionTimeModel>> getAllPermissionTimes() async {
     final String? permissionTimesString =
-        CacheHelper.getString(key: CacheKeys.permissionTimes);
+        _storage.getString(key: StorageKeys.permissionTimes.name);
     if (permissionTimesString != null) {
       return (jsonDecode(permissionTimesString) as List)
           .map((e) => PermissionTimeModel.fromJson(e))
@@ -67,7 +71,7 @@ class HRServicesLocalDataSourcesImp implements HRServicesLocalDataSources {
   @override
   Future<List<PermissionTypeModel>> getAllPermissionTypes() async {
     final String? permissionTypesString =
-        CacheHelper.getString(key: CacheKeys.permissionTypes);
+        _storage.getString(key: StorageKeys.permissionTypes.name);
     if (permissionTypesString != null) {
       return (jsonDecode(permissionTypesString) as List)
           .map((e) => PermissionTypeModel.fromJson(e))
@@ -82,15 +86,16 @@ class HRServicesLocalDataSourcesImp implements HRServicesLocalDataSources {
       List<AttendanceRecordModel> attendanceRecords) async {
     final String attendanceRecordsString =
         jsonEncode(attendanceRecords.map((e) => e.toJson()).toList());
-    CacheHelper.putString(
-        key: CacheKeys.attendanceRecords, value: attendanceRecordsString);
+    await _storage.cacheString(
+        key: StorageKeys.attendanceRecords.name,
+        value: attendanceRecordsString);
     return Future.value(unit);
   }
 
   @override
   Future<AllAttendanceRecordModel> getAllAttendanceRecords() async {
     final String? allRecords =
-        CacheHelper.getString(key: CacheKeys.attendanceRecords);
+        _storage.getString(key: StorageKeys.attendanceRecords.name);
     if (allRecords != null) {
       final Map<String, dynamic> allAttendanceRecordsJson =
           jsonDecode(allRecords);

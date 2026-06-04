@@ -13,7 +13,7 @@ import '../../../language/presentation/controller/language_cubit.dart';
 /// between Arabic and English.
 ///
 /// It hooks into the existing global [LanguageCubit] (registered in
-/// `main.dart`) so the change is persisted via `CacheHelper` and the entire
+/// `main.dart`) so the change is persisted through local storage and the entire
 /// `MaterialApp` rebuilds with the new locale (same mechanism used by the
 /// drawer dropdown today).
 Future<void> showLanguagePickerSheet(BuildContext context) {

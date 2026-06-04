@@ -5,8 +5,7 @@ import '../../../../common/widgets/sized_boxes/sizer.dart';
 import '../../../../core/constants/app_sizes.dart';
 import '../../../../core/constants/colors.dart';
 import '../../../../core/device/device_utility.dart';
-import '../../../../core/local_storage/cache_helper.dart';
-import '../../../../core/local_storage/cache_keys.dart';
+import '../../../../core/local_storage/session_storage/session_storage.dart';
 import '../../../../core/routing/route_names.dart';
 import '../../../../core/service_locator/service_locator.dart';
 import '../../../language/presentation/controller/language_cubit.dart';
@@ -21,7 +20,7 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-  final token = CacheHelper.getString(key: CacheKeys.token);
+  final token = serviceLocator<SessionStorage>().token;
 
   @override
   void initState() {
@@ -80,7 +79,6 @@ class _SplashScreenState extends State<SplashScreen> {
                               serviceLocator<LanguageCubit>().changeLanguage(
                                 languageCode,
                               );
-                              CacheHelper.cacheLanguage(languageCode);
                               if (!mounted) return;
                               Navigator.of(
                                 context,

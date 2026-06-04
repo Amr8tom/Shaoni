@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../core/local_storage/cache_helper.dart';
-import '../../../../core/local_storage/cache_keys.dart';
+import '../../../../core/local_storage/local_storage.dart';
+import '../../../../core/local_storage/storage_keys.dart';
 
 part 'language_state.dart';
 
 class LanguageCubit extends Cubit<LanguageState> {
-  LanguageCubit() : super(LanguageLoading());
+  final LocalStorage _storage;
+
+  LanguageCubit(this._storage) : super(LanguageLoading());
+
   late String storedLang;
-  Locale currentLanguage = Locale("ar");
-  String? changedLang = CacheHelper.getString(key: CacheKeys.lang);
+  Locale currentLanguage = const Locale("ar");
   String showLang = "AR";
 
   // Getter for current language locale
@@ -18,30 +20,31 @@ class LanguageCubit extends Cubit<LanguageState> {
 
   Future<void> init() async {
     emit(LanguageLoading());
-    storedLang = (changedLang == '' ? "ar" : changedLang)!;
+    storedLang = _storage.getString(key: StorageKeys.lang.name) ?? '';
+    if (storedLang.isEmpty) {
+      storedLang = _storage.cachedLanguage;
+    }
+    storedLang = storedLang.isEmpty ? "ar" : storedLang;
     currentLanguage = Locale(storedLang);
     emit(LanguageSuccess());
   }
 
-  void changeLanguage(String lang) {
+  Future<void> changeLanguage(String lang) async {
     emit(LanguageLoading());
     currentLanguage = Locale(lang);
-    CacheHelper.putString(key: CacheKeys.lang, value: lang);
+    await _storage.cacheString(key: StorageKeys.lang.name, value: lang);
+    await _storage.cacheLanguage(code: lang);
 
     emit(LanguageSuccess());
   }
 
-  void toggleLang() {
+  Future<void> toggleLang() async {
     emit(LanguageLoading());
-    if (currentLanguage == Locale("en")) {
-      currentLanguage = Locale("ar");
-      showLang = "EN";
-      CacheHelper.putString(key: CacheKeys.lang, value: "ar");
-    } else {
-      currentLanguage = Locale("en");
-      showLang = "AR";
-      CacheHelper.putString(key: CacheKeys.lang, value: "en");
-    }
+    final nextLang = currentLanguage.languageCode == "en" ? "ar" : "en";
+    currentLanguage = Locale(nextLang);
+    showLang = nextLang == "ar" ? "EN" : "AR";
+    await _storage.cacheString(key: StorageKeys.lang.name, value: nextLang);
+    await _storage.cacheLanguage(code: nextLang);
 
     emit(LanguageSuccess());
   }

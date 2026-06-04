@@ -6,7 +6,10 @@ import 'package:shaoni/features/details_and_edit_for_requests/data/models/produc
 import 'package:shaoni/features/details_and_edit_for_requests/data/models/start_work_model.dart';
 import 'package:shaoni/features/details_and_edit_for_requests/data/models/study_model.dart';
 import 'package:shaoni/features/details_and_edit_for_requests/data/models/training_request_model.dart';
+import 'package:shaoni/features/details_and_edit_for_requests/domain/entities/car_permission/car_permission.dart';
+import 'package:shaoni/features/details_and_edit_for_requests/domain/entities/complaint_request/complaint_request_details.dart';
 import 'package:shaoni/features/details_and_edit_for_requests/domain/entities/extra_data.dart';
+import 'package:shaoni/features/human_resources/domain/entity/exit_permisstion.dart';
 
 class ExtraDataModel extends ExtraData {
   const ExtraDataModel({
@@ -27,38 +30,59 @@ class ExtraDataModel extends ExtraData {
 
   /// fromJson
   factory ExtraDataModel.fromJson(Map<String, dynamic> json) {
+    final attendanceJson = _jsonMap(json['attendance']);
+    final studyJson = _jsonMap(json['study']);
+    final startWorkJson = _jsonMap(json['startWorking']);
+    final experienceCertificateJson = _jsonMap(json['experienceCertificate']);
+    final idDocumentJson =
+        _jsonMap(json['idDocument']) ?? _jsonMap(json['idRenewalRequest']);
+    final medicalInsuranceJson = _jsonMap(json['medicalInsurance']);
+    final trainingRequestJson = _jsonMap(json['trainingRequest']);
+    final productOrderJson = _jsonMap(json['productOrder']);
+    final carPermissionJson = _jsonMap(json['carPermission']);
+    final exitPermissionJson = _jsonMap(json['exitPermission']);
+    final complaintRequestJson = _jsonMap(json['complaintRequest']);
+
     return ExtraDataModel(
-      attendance: json['attendance'] != null
-          ? AttendanceRequestDetailsModel.fromJson(json['attendance'])
+      attendance: attendanceJson != null
+          ? AttendanceRequestDetailsModel.fromJson(attendanceJson)
           : null,
-      study: json['study'] != null ? StudyModel.fromJson(json['study']) : null,
-      startWork: json['startWorking'] != null
-          ? StartWorkModel.fromJson(json['startWorking'])
+      study: studyJson != null ? StudyModel.fromJson(studyJson) : null,
+      startWork:
+          startWorkJson != null ? StartWorkModel.fromJson(startWorkJson) : null,
+      experienceCertificate: experienceCertificateJson != null
+          ? ExperienceCertificateModel.fromJson(experienceCertificateJson)
           : null,
-      experienceCertificate: json['experienceCertificate'] != null
-          ? ExperienceCertificateModel.fromJson(json['experienceCertificate'])
+      idDocument: idDocumentJson != null
+          ? IDDocumentModel.fromJson(idDocumentJson)
           : null,
-      idDocument: json['idDocument'] != null
-          ? IDDocumentModel.fromJson(json['idDocument'])
+      medicalInsurance: medicalInsuranceJson != null
+          ? MedicalInsuranceModel.fromJson(medicalInsuranceJson)
           : null,
-      medicalInsurance: json['medicalInsurance'] != null
-          ? MedicalInsuranceModel.fromJson(json['medicalInsurance'])
+      trainingRequest: trainingRequestJson != null
+          ? TrainingRequestModel.fromJson(trainingRequestJson)
           : null,
-      trainingRequest: json['trainingRequest'] != null
-          ? TrainingRequestModel.fromJson(json['trainingRequest'])
+      productOrder: productOrderJson != null
+          ? ProductOrderModel.fromJson(productOrderJson)
           : null,
-      productOrder: json['productOrder'] != null
-          ? ProductOrderModel.fromJson(json['productOrder'])
+      outsideWorking: json['outsideWorking']?.toString(),
+      visaRequest: json['visaRequest']?.toString(),
+      carPermission: carPermissionJson != null
+          ? CarPermission.fromJson(carPermissionJson)
           : null,
-      outsideWorking: json['outsideWorking'],
-      visaRequest: json['visaRequest'],
-      // Note: CarPermission, ExitPermission, ComplaintRequestDetails might also need to be cast to models if they have toJson
-      // but if we are only doing fromJson here, we use their existing fromJson if they have it.
-      carPermission: json[
-          'carPermission'], // Assuming no fromJson needed here or handled differently
-      exitPermission: json['exitPermission'],
-      complaintRequest: json['complaintRequest'],
+      exitPermission: exitPermissionJson != null
+          ? ExitPermission.fromJson(exitPermissionJson)
+          : null,
+      complaintRequest: complaintRequestJson != null
+          ? ComplaintRequestDetails.fromJson(complaintRequestJson)
+          : null,
     );
+  }
+
+  static Map<String, dynamic>? _jsonMap(Object? value) {
+    if (value is Map<String, dynamic>) return value;
+    if (value is Map) return Map<String, dynamic>.from(value);
+    return null;
   }
 
   /// to json
@@ -199,9 +223,9 @@ class ExtraDataModel extends ExtraData {
             },
       'outsideWorking': extraData.outsideWorking,
       'visaRequest': extraData.visaRequest,
-      // 'exitPermission': exitPermission?.toJson(),
-      // 'carPermission': carPermission?.toJson(),
-      // 'complaintRequest': complaintRequest?.toJson(),
+      'exitPermission': extraData.exitPermission?.toJson(),
+      'carPermission': extraData.carPermission?.toJson(),
+      'complaintRequest': extraData.complaintRequest?.toJson(),
     };
   }
 }

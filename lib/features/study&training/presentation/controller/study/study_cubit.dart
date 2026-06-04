@@ -1,8 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
-import 'package:shaoni/core/local_storage/cache_helper.dart';
-import 'package:shaoni/core/local_storage/cache_keys.dart';
+import 'package:shaoni/core/local_storage/session_storage/session_storage.dart';
 import 'package:shaoni/core/utils/usecases/base_usecase.dart';
 import 'package:shaoni/features/study&training/domain/entities/study/study_destination.dart';
 import 'package:shaoni/features/study&training/domain/entities/study/study_type.dart';
@@ -19,6 +18,7 @@ class StudyCubit extends Cubit<StudyState> {
   final GetStudyDestinationsUseCase _getStudyDestinationsUseCase;
   final CreateStudyUseCase _createStudyUseCase;
   final UpdateStudyUseCase _updateStudyUseCase;
+  final SessionStorage _sessionStorage;
 
   /// Form key
   final requestFormKey = GlobalKey<FormState>();
@@ -58,6 +58,7 @@ class StudyCubit extends Cubit<StudyState> {
     this._getStudyDestinationsUseCase,
     this._createStudyUseCase,
     this._updateStudyUseCase,
+    this._sessionStorage,
   ) : super(const StudyState()) {
     _loadLookups();
   }
@@ -135,9 +136,7 @@ class StudyCubit extends Cubit<StudyState> {
     emit(state.copyWith(status: StudyStatus.createStudyRequestLoading));
     final result = await _createStudyUseCase.call(
       params: CreateStudyParams(
-        employeeId: int.tryParse(
-                CacheHelper.getString(key: CacheKeys.employeeId) ?? '1') ??
-            1,
+        employeeId: int.tryParse(_sessionStorage.employeeId ?? '1') ?? 1,
         officeId: int.tryParse(officeIdController.text) ?? 0,
         requestType: _selectedStudyTypeCode,
         study: requiredStudyController.text.trim(),
@@ -170,9 +169,7 @@ class StudyCubit extends Cubit<StudyState> {
       params: UpdateStudyParams(
         requestId: requestId,
         data: CreateStudyParams(
-          employeeId: int.tryParse(
-                  CacheHelper.getString(key: CacheKeys.employeeId) ?? '1') ??
-              1,
+          employeeId: int.tryParse(_sessionStorage.employeeId ?? '1') ?? 1,
           officeId: int.tryParse(officeIdController.text) ?? 0,
           requestType: _selectedStudyTypeCode,
           study: requiredStudyController.text.trim(),

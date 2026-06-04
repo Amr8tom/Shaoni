@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:shaoni/core/extensions/navigation_extension.dart';
+import 'package:shaoni/core/local_storage/session_storage/session_storage.dart';
 
 import '../../../../core/constants/app_sizes.dart';
 import '../../../../core/constants/colors.dart';
-import '../../../../core/local_storage/cache_helper.dart';
-import '../../../../core/local_storage/cache_keys.dart';
 import '../../../../core/routing/route_names.dart';
+import '../../../../core/service_locator/service_locator.dart';
 import '../../../../generated/l10n.dart';
 
 /// Show logout confirmation dialog
@@ -49,9 +49,7 @@ void showLogoutDialog(BuildContext context) {
           /// Logout Button
           TextButton(
             onPressed: () async {
-              await CacheHelper.removeFromShared(key: CacheKeys.token);
-              await CacheHelper.removeFromShared(key: CacheKeys.userId);
-              await CacheHelper.removeFromShared(key: CacheKeys.employeeId);
+              await serviceLocator<SessionStorage>().clearSession();
               if (dialogContext.mounted) {
                 Navigator.pop(dialogContext);
                 context.pushReplacementNamed(DRoutesName.loginRoute);

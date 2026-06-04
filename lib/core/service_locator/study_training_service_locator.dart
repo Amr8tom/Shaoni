@@ -51,6 +51,7 @@ class StudyTrainingServiceLocator {
         serviceLocator(),
         serviceLocator(),
         serviceLocator(),
+        serviceLocator(),
       ),
     );
 
@@ -66,6 +67,7 @@ class StudyTrainingServiceLocator {
     );
     serviceLocator.registerFactory<TrainingRequestCubit>(
       () => TrainingRequestCubit(
+        serviceLocator(),
         serviceLocator(),
         serviceLocator(),
         serviceLocator(),

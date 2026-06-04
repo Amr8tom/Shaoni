@@ -98,31 +98,12 @@ class LoginForm extends StatelessWidget {
                       backgroundColor: ColorRes.primary,
                     ),
 
-              const Sizer(height: 24),
 
-              GestureDetector(
-                onTap: () {},
-                child: RichText(
-                  textAlign: TextAlign.center,
-                  text: TextSpan(
-                    style: Theme.of(context).textTheme.bodyMedium,
-                    children: [
-                      const TextSpan(text: "Don't have an account? "),
-                      TextSpan(
-                        text: S.current.singUp,
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: ColorRes.black,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
+
 
               const Sizer(height: 16),
 
-              // ── Privacy Policy note ───────────────────────────────────────
+              /// ── Privacy Policy note ───────────────────────────────────────
               RichText(
                 textAlign: TextAlign.center,
                 text: TextSpan(

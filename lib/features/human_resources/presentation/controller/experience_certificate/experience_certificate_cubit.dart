@@ -2,8 +2,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:shaoni/core/local_storage/cache_helper.dart';
-import 'package:shaoni/core/local_storage/cache_keys.dart';
+import 'package:shaoni/core/local_storage/session_storage/session_storage.dart';
 import 'package:shaoni/core/utils/usecases/base_usecase.dart';
 import 'package:shaoni/features/human_resources/domain/entity/experience_certificate/certificate_reason.dart';
 import 'package:shaoni/features/human_resources/domain/use_cases/experience_certificate/get_certificate_reasons_use_case.dart';
@@ -17,6 +16,7 @@ class ExperienceCertificateCubit extends Cubit<ExperienceCertificateState> {
   final GetCertificateReasonsUseCase _getCertificateReasonsUseCase;
   final CreateExperienceCertificateUseCase _createExperienceCertificateUseCase;
   final UpdateExperienceCertificateUseCase _updateExperienceCertificateUseCase;
+  final SessionStorage _sessionStorage;
 
   /// Form key
   final requestFormKey = GlobalKey<FormState>();
@@ -46,6 +46,7 @@ class ExperienceCertificateCubit extends Cubit<ExperienceCertificateState> {
     this._getCertificateReasonsUseCase,
     this._createExperienceCertificateUseCase,
     this._updateExperienceCertificateUseCase,
+    this._sessionStorage,
   ) : super(const ExperienceCertificateState()) {
     _loadLookups();
   }
@@ -94,9 +95,7 @@ class ExperienceCertificateCubit extends Cubit<ExperienceCertificateState> {
 
   CreateExperienceCertificateParams _buildParams() {
     return CreateExperienceCertificateParams(
-      employee: int.tryParse(
-              CacheHelper.getString(key: CacheKeys.employeeId) ?? '0') ??
-          0,
+      employee: int.tryParse(_sessionStorage.employeeId ?? '0') ?? 0,
       officeId: int.tryParse(officeIdController.text) ?? 0,
       certificateReasonId: _selectedReasonId ?? 0,
       reason: reasonController.text.trim(),

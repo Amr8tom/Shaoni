@@ -5,8 +5,6 @@ import 'package:shaoni/core/extensions/navigation_extension.dart';
 import 'package:shaoni/core/routing/route_names.dart';
 import 'package:shaoni/features/home/presentation/widgets/request_card.dart';
 import 'package:skeletonizer/skeletonizer.dart';
-import '../../../../core/local_storage/cache_helper.dart';
-import '../../../../core/local_storage/cache_keys.dart';
 import '../../../../generated/l10n.dart';
 import '../../../details_and_edit_for_requests/presentation/controller/my_requests_cubit.dart';
 import '../../../navigation/presentation/controllers/navigation_cubit.dart';
@@ -30,8 +28,7 @@ class ManagerRequestsGridView extends StatelessWidget {
             (controller.managerPage - 1)) {
           controller.getAllManagerRequests(
             managerID: int.parse(
-              CacheHelper.getString(key: CacheKeys.userId) ??
-                  navController.state.user!.id.toString(),
+              navController.state.user!.id.toString(),
             ),
             isFirestTime: false,
           );

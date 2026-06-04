@@ -28,7 +28,8 @@ class MyRequestsServiceLocator {
       () => MyRequestsRemoteDataSourcesImp(serviceLocator()),
     );
     serviceLocator.registerLazySingleton<MyRequestsLocalDataSources>(
-        () => MyRequestsLocalDataSourcesImp());
+      () => MyRequestsLocalDataSourcesImp(serviceLocator()),
+    );
 
     /// repositories
     serviceLocator.registerLazySingleton<MyRequestsRepository>(

@@ -32,7 +32,7 @@ class DeleteAccountServiceLocator {
 
     /// controller
     serviceLocator.registerFactory<DeleteAccountCubit>(
-      () => DeleteAccountCubit(serviceLocator()),
+      () => DeleteAccountCubit(serviceLocator(), serviceLocator()),
     );
   }
 }

@@ -13,7 +13,7 @@ class ServicesServiceLocator {
       () => ServicesRemoteDataSourcesImp(serviceLocator()),
     );
     serviceLocator.registerLazySingleton<ServicesLocalDataSources>(
-      () => ServicesLocalDataSourcesImp(),
+      () => ServicesLocalDataSourcesImp(serviceLocator()),
     );
 
     /// repositories

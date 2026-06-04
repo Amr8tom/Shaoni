@@ -2,8 +2,7 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
-import 'package:shaoni/core/local_storage/cache_helper.dart';
-import 'package:shaoni/core/local_storage/cache_keys.dart';
+import 'package:shaoni/core/local_storage/session_storage/session_storage.dart';
 import 'package:shaoni/core/utils/usecases/base_usecase.dart';
 import 'package:shaoni/features/study&training/domain/entities/training_request/course.dart';
 import 'package:shaoni/features/study&training/domain/use_cases/training_request/get_courses_use_case.dart';
@@ -16,6 +15,7 @@ class TrainingRequestCubit extends Cubit<TrainingRequestState> {
   final GetCoursesUseCase _getCoursesUseCase;
   final CreateTrainingRequestUseCase _createTrainingRequestUseCase;
   final UpdateTrainingRequestUseCase _updateTrainingRequestUseCase;
+  final SessionStorage _sessionStorage;
 
   /// Form key
   final requestFormKey = GlobalKey<FormState>();
@@ -44,6 +44,7 @@ class TrainingRequestCubit extends Cubit<TrainingRequestState> {
     this._getCoursesUseCase,
     this._createTrainingRequestUseCase,
     this._updateTrainingRequestUseCase,
+    this._sessionStorage,
   ) : super(const TrainingRequestState()) {
     _loadCourses();
   }
@@ -93,9 +94,7 @@ class TrainingRequestCubit extends Cubit<TrainingRequestState> {
   }
 
   CreateTrainingRequestParams _buildParams() {
-    final empId =
-        int.tryParse(CacheHelper.getString(key: CacheKeys.employeeId) ?? '0') ??
-            0;
+    final empId = int.tryParse(_sessionStorage.employeeId ?? '0') ?? 0;
     return CreateTrainingRequestParams(
       employeeId: empId,
       officeId: int.tryParse(officeIdController.text) ?? 0,

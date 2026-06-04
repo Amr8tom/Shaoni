@@ -35,7 +35,7 @@ class AuthServiceLocator {
 
     /// controller
     serviceLocator.registerFactory<LoginCubit>(
-      () => LoginCubit(serviceLocator(), serviceLocator()),
+      () => LoginCubit(serviceLocator(), serviceLocator(), serviceLocator()),
     );
     // serviceLocator.registerFactory<RegisterCubit>(
     //   () => RegisterCubit(serviceLocator()),

@@ -1,11 +1,11 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:shaoni/core/local_storage/cache_keys.dart';
+import 'package:shaoni/core/local_storage/session_storage/session_storage.dart';
+import 'package:shaoni/core/service_locator/service_locator.dart';
 import 'package:shaoni/features/auth/domain/entities/office.dart';
 import 'package:shaoni/features/auth/data/model/office_model.dart';
 import '../../../../../common/widgets/sized_boxes/sizer.dart';
 import '../../../../../core/constants/app_sizes.dart';
-import '../../../../../core/local_storage/cache_helper.dart';
 import '../../../../../generated/l10n.dart';
 import '../../../../auth/presentation/widgets/auth_text_filed.dart';
 import '../../attendance/widget/attendance_dropdown_field.dart';
@@ -27,11 +27,11 @@ class ApplicantDataWidget extends StatefulWidget {
 class _ApplicantDataWidgetState extends State<ApplicantDataWidget> {
   List<OfficeEntity> _offices = [];
   String? _selectedOfficeName;
+  final SessionStorage _sessionStorage = serviceLocator<SessionStorage>();
 
   void _loadOfficesFromCache() {
     try {
-      final decoded =
-          jsonDecode(CacheHelper.getString(key: CacheKeys.officesList) ?? '[]');
+      final decoded = jsonDecode(_sessionStorage.officesList ?? '[]');
       if (decoded is! List) return;
 
       _offices = (decoded)
@@ -79,8 +79,7 @@ class _ApplicantDataWidgetState extends State<ApplicantDataWidget> {
         AuthTextField(
           hint: S.current.applicantName,
           readOnly: true,
-          controller: TextEditingController(
-              text: CacheHelper.getString(key: CacheKeys.userName)),
+          controller: TextEditingController(text: _sessionStorage.userName),
           borderRadius: AppSizes.borderRadiusMd,
           prefixIcon: const Icon(Icons.person),
           validator: (value) =>
@@ -89,8 +88,8 @@ class _ApplicantDataWidgetState extends State<ApplicantDataWidget> {
         AuthTextField(
           hint: S.current.organizationalUnit,
           readOnly: true,
-          controller: TextEditingController(
-              text: CacheHelper.getString(key: CacheKeys.departmentAddress)),
+          controller:
+              TextEditingController(text: _sessionStorage.departmentAddress),
           borderRadius: AppSizes.borderRadiusMd,
           prefixIcon: const Icon(Icons.home_work),
           validator: (value) =>

@@ -2,8 +2,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:shaoni/core/local_storage/cache_helper.dart';
-import 'package:shaoni/core/local_storage/cache_keys.dart';
+import 'package:shaoni/core/local_storage/session_storage/session_storage.dart';
 import 'package:shaoni/core/utils/usecases/base_usecase.dart';
 import 'package:shaoni/features/human_resources/domain/entity/medical_insurance/medical_insurance_class.dart';
 import 'package:shaoni/features/human_resources/domain/entity/medical_insurance/employee_relative.dart';
@@ -20,6 +19,7 @@ class MedicalInsuranceCubit extends Cubit<MedicalInsuranceState> {
   final GetEmployeeRelativesUseCase _getEmployeeRelativesUseCase;
   final CreateMedicalInsuranceUseCase _createMedicalInsuranceUseCase;
   final UpdateMedicalInsuranceUseCase _updateMedicalInsuranceUseCase;
+  final SessionStorage _sessionStorage;
 
   /// Form key
   final requestFormKey = GlobalKey<FormState>();
@@ -54,6 +54,7 @@ class MedicalInsuranceCubit extends Cubit<MedicalInsuranceState> {
     this._getEmployeeRelativesUseCase,
     this._createMedicalInsuranceUseCase,
     this._updateMedicalInsuranceUseCase,
+    this._sessionStorage,
   ) : super(const MedicalInsuranceState()) {
     _loadLookups();
   }
@@ -64,7 +65,7 @@ class MedicalInsuranceCubit extends Cubit<MedicalInsuranceState> {
     emit(state.copyWith(status: MedicalInsuranceStatus.lookupsLoading));
     await _fetchInsuranceClasses();
     // Load relatives for the current employee
-    final empIdStr = CacheHelper.getString(key: CacheKeys.employeeId) ?? '0';
+    final empIdStr = _sessionStorage.employeeId ?? '0';
     final empId = int.tryParse(empIdStr) ?? 0;
     if (empId > 0) {
       await _fetchEmployeeRelatives(employeeId: empId);
@@ -143,9 +144,7 @@ class MedicalInsuranceCubit extends Cubit<MedicalInsuranceState> {
   }
 
   CreateMedicalInsuranceParams _buildParams() {
-    final empId =
-        int.tryParse(CacheHelper.getString(key: CacheKeys.employeeId) ?? '0') ??
-            0;
+    final empId = int.tryParse(_sessionStorage.employeeId ?? '0') ?? 0;
     return CreateMedicalInsuranceParams(
       employeeId: empId,
       officeId: int.tryParse(officeIdController.text) ?? 0,

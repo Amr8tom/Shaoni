@@ -4,7 +4,6 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'core/device/device_utility.dart';
 import 'core/service_locator/service_locator.dart';
 import 'core/utils/helpers/bloc_observer.dart';
 import 'core/utils/helpers/permissions_services.dart';
@@ -15,7 +14,6 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   await ScreenUtil.ensureScreenSize();
-  await DDeviceUtils.initCacheHelper();
   await DI.execute();
   await serviceLocator<LanguageCubit>().init();
   Bloc.observer = MyBlocObserver();

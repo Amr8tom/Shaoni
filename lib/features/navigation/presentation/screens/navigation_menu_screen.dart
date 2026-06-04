@@ -4,13 +4,11 @@ import 'package:shaoni/common/widgets/navigationbar/bottom_navigation_bar.dart';
 import 'package:shaoni/common/widgets/sized_boxes/sizer.dart';
 import 'package:shaoni/core/constants/app_sizes.dart';
 import 'package:shaoni/core/constants/colors.dart';
-import 'package:shaoni/core/local_storage/cache_helper.dart';
 import 'package:shaoni/features/home/presentation/controller/home_cubit.dart';
 import 'package:shaoni/features/details_and_edit_for_requests/presentation/controller/my_requests_cubit.dart';
 import 'package:shaoni/features/navigation/presentation/widgets/custom_navigation_appbar.dart';
 import 'package:upgrader/upgrader.dart';
 import '../../../../core/connection/check_for_updates.dart';
-import '../../../../core/local_storage/cache_keys.dart';
 import '../../../../core/service_locator/service_locator.dart';
 import '../controllers/navigation_cubit.dart';
 import '../widgets/custom_side_menu.dart';
@@ -63,9 +61,7 @@ class NavigationMenuScreen extends StatelessWidget {
                   if (state.status.isSuccess) {
                     /// if he is employee
                     requestController.getAllUserRequests(
-                        employeeId: int.parse(
-                            CacheHelper.getString(key: CacheKeys.employeeId) ??
-                                state.user!.employeeId.toString()));
+                        employeeId: state.user!.employeeId ?? 1);
                     if (state.user?.managerId == 0) {
                       /// if he is manager
                       requestController.getAllManagerRequests(

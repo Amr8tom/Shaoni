@@ -5,13 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
-import '../local_storage/cache_helper.dart';
-
 class DDeviceUtils {
-  static Future<void> initCacheHelper() async {
-    await CacheHelper.init();
-  }
-
   static void hideKeyboard(BuildContext context) {
     FocusScope.of(context).requestFocus(FocusNode());
   }

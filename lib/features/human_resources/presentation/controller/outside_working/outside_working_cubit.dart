@@ -2,8 +2,7 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
-import 'package:shaoni/core/local_storage/cache_helper.dart';
-import 'package:shaoni/core/local_storage/cache_keys.dart';
+import 'package:shaoni/core/local_storage/session_storage/session_storage.dart';
 import 'package:shaoni/core/utils/usecases/base_usecase.dart';
 import 'package:shaoni/features/human_resources/domain/entity/outside_working/outside_working_employee.dart';
 import 'package:shaoni/features/human_resources/domain/entity/outside_working/outside_working_project.dart';
@@ -37,6 +36,7 @@ class OutsideWorkingCubit extends Cubit<OutsideWorkingState> {
   final GetOutsideWorkingEmployeesUseCase _getOutsideWorkingEmployeesUseCase;
   final GetOutsideWorkingProjectsUseCase _getOutsideWorkingProjectsUseCase;
   final CreateOutsideWorkingUseCase _createOutsideWorkingUseCase;
+  final SessionStorage _sessionStorage;
 
   /// Form key
   final requestFormKey = GlobalKey<FormState>();
@@ -91,6 +91,7 @@ class OutsideWorkingCubit extends Cubit<OutsideWorkingState> {
     this._getOutsideWorkingEmployeesUseCase,
     this._getOutsideWorkingProjectsUseCase,
     this._createOutsideWorkingUseCase,
+    this._sessionStorage,
   ) : super(const OutsideWorkingState()) {
     _loadLookups();
   }
@@ -306,9 +307,7 @@ class OutsideWorkingCubit extends Cubit<OutsideWorkingState> {
     }).toList();
 
     final params = CreateOutsideWorkingParams(
-      employeeId: int.tryParse(
-              CacheHelper.getString(key: CacheKeys.employeeId) ?? '0') ??
-          0,
+      employeeId: int.tryParse(_sessionStorage.employeeId ?? '0') ?? 0,
       officeId: int.tryParse(officeIdController.text) ?? 0,
       date: DateFormat('yyyy-MM-dd', 'en').format(DateTime.now()),
       orderReason: orderReasonController.text.trim(),

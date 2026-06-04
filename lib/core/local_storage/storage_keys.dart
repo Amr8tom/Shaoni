@@ -1,4 +1,7 @@
-enum CacheKeys {
+enum StorageKeys {
+  cachedCode,
+  isDarkMode,
+  loginModel,
   userId,
   employeeId,
   managerId,

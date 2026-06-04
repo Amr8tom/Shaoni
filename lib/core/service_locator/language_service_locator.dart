@@ -6,6 +6,8 @@ import '../../features/language/presentation/controller/language_cubit.dart';
 
 class LanguageServiceLocator {
   static Future execute({required GetIt serviceLocator}) async {
-    serviceLocator.registerSingleton<LanguageCubit>(LanguageCubit());
+    serviceLocator.registerSingleton<LanguageCubit>(
+      LanguageCubit(serviceLocator()),
+    );
   }
 }

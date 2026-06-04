@@ -2,8 +2,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:shaoni/core/local_storage/cache_helper.dart';
-import 'package:shaoni/core/local_storage/cache_keys.dart';
+import 'package:shaoni/core/local_storage/session_storage/session_storage.dart';
 import 'package:shaoni/core/utils/usecases/base_usecase.dart';
 import 'package:shaoni/features/human_resources/domain/entity/product_order/product.dart';
 import 'package:shaoni/features/human_resources/domain/entity/product_order/product_category.dart';
@@ -19,6 +18,7 @@ class ProductOrderCubit extends Cubit<ProductOrderState> {
   final GetProductsByCategoryUseCase _getProductsByCategoryUseCase;
   final CreateProductOrderUseCase _createProductOrderUseCase;
   final UpdateProductOrderUseCase _updateProductOrderUseCase;
+  final SessionStorage _sessionStorage;
 
   /// Form key
   final requestFormKey = GlobalKey<FormState>();
@@ -44,6 +44,7 @@ class ProductOrderCubit extends Cubit<ProductOrderState> {
     this._getProductsByCategoryUseCase,
     this._createProductOrderUseCase,
     this._updateProductOrderUseCase,
+    this._sessionStorage,
   ) : super(const ProductOrderState()) {
     _loadCategories();
     _addLineItem(); // start with one empty row
@@ -159,9 +160,7 @@ class ProductOrderCubit extends Cubit<ProductOrderState> {
   // ── Build params ─────────────────────────────────────────────────────────
 
   CreateProductOrderParams _buildParams() {
-    final empId =
-        int.tryParse(CacheHelper.getString(key: CacheKeys.employeeId) ?? '0') ??
-            0;
+    final empId = int.tryParse(_sessionStorage.employeeId ?? '0') ?? 0;
     final lineIds = state.lineItems
         .where((i) => i.productId != null)
         .map((i) => RequestLineItemParams(

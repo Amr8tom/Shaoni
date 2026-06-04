@@ -3,8 +3,7 @@ import 'package:equatable/equatable.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:shaoni/core/extensions/navigation_extension.dart';
-import 'package:shaoni/core/local_storage/cache_helper.dart';
-import 'package:shaoni/core/local_storage/cache_keys.dart';
+import 'package:shaoni/core/local_storage/session_storage/session_storage.dart';
 import 'package:shaoni/features/auth/domain/usecases/change_password_use_case.dart';
 import 'package:shaoni/features/auth/domain/usecases/login_use_case.dart';
 
@@ -15,6 +14,7 @@ part 'login_state.dart';
 class LoginCubit extends Cubit<LoginState> {
   final LoginUseCase _loginUseCase;
   final ChangePasswordUseCase _changePasswordUseCase;
+  final SessionStorage _sessionStorage;
 
   /// final SendOtpUseCase _sendOtpUseCase;
   final nameController = TextEditingController();
@@ -29,6 +29,7 @@ class LoginCubit extends Cubit<LoginState> {
   LoginCubit(
     this._loginUseCase,
     this._changePasswordUseCase,
+    this._sessionStorage,
   ) : super(LoginState());
 
   /// login
@@ -49,10 +50,8 @@ class LoginCubit extends Cubit<LoginState> {
           ));
         },
         (data) async {
-          await CacheHelper.putString(
-              key: CacheKeys.token, value: data.accessToken!);
-          await CacheHelper.putString(
-              key: CacheKeys.userId, value: data.id.toString());
+          await _sessionStorage.saveToken(data.accessToken!);
+          await _sessionStorage.saveUserId(data.id.toString());
           emit(state.copyWith(
             status: LoginStatus.loggedIn,
             token: data.accessToken,
@@ -70,7 +69,7 @@ class LoginCubit extends Cubit<LoginState> {
       final result = await _changePasswordUseCase.call(
         params: NewPasswordParams(
           newPassword: newPasswordController.text.trim(),
-          userID: CacheHelper.getString(key: CacheKeys.userId) ?? '',
+          userID: _sessionStorage.userId ?? '',
         ),
       );
       result.fold(

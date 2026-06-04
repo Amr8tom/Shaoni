@@ -1,8 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
-import 'package:shaoni/core/local_storage/cache_helper.dart';
-import 'package:shaoni/core/local_storage/cache_keys.dart';
+import 'package:shaoni/core/local_storage/session_storage/session_storage.dart';
 import 'package:shaoni/core/utils/usecases/base_usecase.dart';
 import 'package:shaoni/features/human_resources/domain/entity/exit_permisstion.dart';
 import '../../../../services/domain/entity/request_services_entity.dart';
@@ -20,6 +19,7 @@ class ExitRequestServiceCubit extends Cubit<ExitRequestServiceState> {
   final GetPermissionTypesUseCase _getPermissionTypeUseCase;
   final CreateExitPermissionUseCase _createExitPermissionUseCase;
   final UpdateExitPermissionUseCase _updateExitPermissionUseCase;
+  final SessionStorage _sessionStorage;
   final todayDateController = TextEditingController();
   final permissionDateController = TextEditingController();
   final applicantNameController = TextEditingController();
@@ -43,6 +43,7 @@ class ExitRequestServiceCubit extends Cubit<ExitRequestServiceState> {
     this._getPermissionTimeUseCase,
     this._getPermissionTypeUseCase,
     this._updateExitPermissionUseCase,
+    this._sessionStorage,
   ) : super(const ExitRequestServiceState()) {
     getPermissionTypes();
     getPermissionTimes();
@@ -122,8 +123,7 @@ class ExitRequestServiceCubit extends Cubit<ExitRequestServiceState> {
 
     final result = await _createExitPermissionUseCase.call(
       params: CreateExitPermissionParams(
-          employeeId: int.parse(
-              CacheHelper.getString(key: CacheKeys.employeeId) ?? "1"),
+          employeeId: int.parse(_sessionStorage.employeeId ?? "1"),
           officeID: officeIDController.text.isEmpty
               ? 0
               : int.parse(officeIDController.text),
@@ -161,8 +161,7 @@ class ExitRequestServiceCubit extends Cubit<ExitRequestServiceState> {
     final result = await _updateExitPermissionUseCase.call(
       params: UpdateExitPermissionParams(
         requestId: requestId,
-        employeeId:
-            int.parse(CacheHelper.getString(key: CacheKeys.employeeId) ?? "1"),
+        employeeId: int.parse(_sessionStorage.employeeId ?? "1"),
         officeId: officeIDController.text.isEmpty
             ? 0
             : int.parse(officeIDController.text),

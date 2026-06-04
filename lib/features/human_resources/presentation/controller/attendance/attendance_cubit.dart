@@ -6,8 +6,7 @@ import 'package:shaoni/features/human_resources/domain/use_cases/attendance/get_
 import 'package:shaoni/features/human_resources/domain/use_cases/attendance/get_attendance_lookup_use_case.dart';
 import 'package:shaoni/features/human_resources/domain/use_cases/attendance/get_forget_reason_use_case.dart';
 import 'package:shaoni/features/human_resources/domain/use_cases/attendance/update_attendance_use_case.dart';
-import '../../../../../core/local_storage/cache_helper.dart';
-import '../../../../../core/local_storage/cache_keys.dart';
+import '../../../../../core/local_storage/session_storage/session_storage.dart';
 import '../../../../../core/utils/usecases/base_usecase.dart';
 import '../../../../../generated/l10n.dart';
 import '../../../domain/entity/attendance_record.dart';
@@ -20,6 +19,7 @@ class AttendanceCubit extends Cubit<AttendanceState> {
   final GetAttendanceLookupUseCase _getAttendanceLookupUseCase;
   final GetForgetReasonUseCase _getForgetReasonUseCase;
   final UpdateAttendanceUseCase _updateAttendanceUseCase;
+  final SessionStorage _sessionStorage;
   final requestFormKey = GlobalKey<FormState>();
   final todayDateController = TextEditingController();
 
@@ -46,7 +46,8 @@ class AttendanceCubit extends Cubit<AttendanceState> {
       this._createAttendanceUseCase,
       this._getAttendanceLookupUseCase,
       this._getForgetReasonUseCase,
-      this._updateAttendanceUseCase)
+      this._updateAttendanceUseCase,
+      this._sessionStorage)
       : super(const AttendanceState()) {
     getAttendanceRecords();
     _loadLookups();
@@ -64,8 +65,7 @@ class AttendanceCubit extends Cubit<AttendanceState> {
     emit(state.copyWith(status: AttendanceStatus.loading));
     final result = await _getAllMissingAttendanceUseCase.call(
         params: AllMissingAttendanceParams(
-            userId: int.parse(
-                CacheHelper.getString(key: CacheKeys.employeeId) ?? "1"),
+            userId: int.parse(_sessionStorage.employeeId ?? "1"),
             pageNumber: 1,
             pageSize: 10));
     result.fold(
@@ -131,7 +131,7 @@ class AttendanceCubit extends Cubit<AttendanceState> {
                   (S.current.localeee == "ar"
                           ? reasons.name
                           : reasons.nameEn) ??
-                    '3',
+                      '3',
                   style: const TextStyle(fontSize: 12),
                 ),
               ),
@@ -162,8 +162,7 @@ class AttendanceCubit extends Cubit<AttendanceState> {
         status: AttendanceStatus.createAttendanceRequestLoading));
     final result = await _createAttendanceUseCase.call(
         params: CreateAttendanceParams(
-            employee: int.parse(
-                CacheHelper.getString(key: CacheKeys.employeeId) ?? "1"),
+            employee: int.parse(_sessionStorage.employeeId ?? "1"),
             attendanceType: attendanceTypeController.text == S.current.checkedIn
                 ? "check_in"
                 : "check_out",
@@ -195,8 +194,7 @@ class AttendanceCubit extends Cubit<AttendanceState> {
     final result = await _updateAttendanceUseCase.call(
       params: UpdateAttendanceParams(
         requestId: requestId,
-        employee:
-            int.parse(CacheHelper.getString(key: CacheKeys.employeeId) ?? "1"),
+        employee: int.parse(_sessionStorage.employeeId ?? "1"),
         officeId: officeIDController.text.isEmpty
             ? 0
             : int.parse(officeIDController.text),

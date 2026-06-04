@@ -2,8 +2,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:shaoni/core/local_storage/cache_helper.dart';
-import 'package:shaoni/core/local_storage/cache_keys.dart';
+import 'package:shaoni/core/local_storage/session_storage/session_storage.dart';
 import 'package:shaoni/core/utils/usecases/base_usecase.dart';
 import 'package:shaoni/features/human_resources/domain/entity/start_work/employee.dart';
 import 'package:shaoni/features/human_resources/domain/entity/start_work/start_work_type.dart';
@@ -20,6 +19,7 @@ class StartWorkCubit extends Cubit<StartWorkState> {
   final GetEmployeesUseCase _getEmployeesUseCase;
   final CreateStartWorkUseCase _createStartWorkUseCase;
   final UpdateStartWorkUseCase _updateStartWorkUseCase;
+  final SessionStorage _sessionStorage;
 
   /// Form key
   final requestFormKey = GlobalKey<FormState>();
@@ -51,6 +51,7 @@ class StartWorkCubit extends Cubit<StartWorkState> {
     this._getEmployeesUseCase,
     this._createStartWorkUseCase,
     this._updateStartWorkUseCase,
+    this._sessionStorage,
   ) : super(const StartWorkState()) {
     _loadLookups();
   }
@@ -135,9 +136,7 @@ class StartWorkCubit extends Cubit<StartWorkState> {
       params: CreateStartWorkParams(
         date: DateFormat('yyyy-MM-dd', 'en').format(DateTime.now()),
         employee: _selectedEmployeeId ?? 0,
-        managerId: int.tryParse(
-                CacheHelper.getString(key: CacheKeys.employeeId) ?? '0') ??
-            0,
+        managerId: int.tryParse(_sessionStorage.employeeId ?? '0') ?? 0,
         officeId: int.tryParse(officeIdController.text) ?? 0,
         startDate: startDateController.text.trim(),
         typeId: _selectedTypeId ?? 0,
@@ -169,9 +168,7 @@ class StartWorkCubit extends Cubit<StartWorkState> {
         data: CreateStartWorkParams(
           date: DateFormat('yyyy-MM-dd', 'en').format(DateTime.now()),
           employee: _selectedEmployeeId ?? 0,
-          managerId: int.tryParse(
-                  CacheHelper.getString(key: CacheKeys.employeeId) ?? '0') ??
-              0,
+          managerId: int.tryParse(_sessionStorage.employeeId ?? '0') ?? 0,
           officeId: int.tryParse(officeIdController.text) ?? 0,
           startDate: startDateController.text.trim(),
           typeId: _selectedTypeId ?? 0,
