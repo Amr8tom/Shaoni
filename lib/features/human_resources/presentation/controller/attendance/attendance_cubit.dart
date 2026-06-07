@@ -6,6 +6,7 @@ import 'package:shaoni/features/human_resources/domain/use_cases/attendance/get_
 import 'package:shaoni/features/human_resources/domain/use_cases/attendance/get_attendance_lookup_use_case.dart';
 import 'package:shaoni/features/human_resources/domain/use_cases/attendance/get_forget_reason_use_case.dart';
 import 'package:shaoni/features/human_resources/domain/use_cases/attendance/update_attendance_use_case.dart';
+import 'package:shaoni/core/utils/helpers/string_normalizer.dart';
 import '../../../../../core/local_storage/session_storage/session_storage.dart';
 import '../../../../../core/utils/usecases/base_usecase.dart';
 import '../../../../../generated/l10n.dart';
@@ -163,7 +164,7 @@ class AttendanceCubit extends Cubit<AttendanceState> {
     final result = await _createAttendanceUseCase.call(
         params: CreateAttendanceParams(
             employee: int.parse(_sessionStorage.employeeId ?? "1"),
-            attendanceType: attendanceTypeController.text == S.current.checkedIn
+            attendanceType: StringNormalizer.isCheckIn(attendanceTypeController.text)
                 ? "check_in"
                 : "check_out",
             updateDate:
@@ -198,7 +199,7 @@ class AttendanceCubit extends Cubit<AttendanceState> {
         officeId: officeIDController.text.isEmpty
             ? 0
             : int.parse(officeIDController.text),
-        attendanceType: attendanceTypeController.text == S.current.checkedIn
+        attendanceType: StringNormalizer.isCheckIn(attendanceTypeController.text)
             ? "check_in"
             : "check_out",
         updateDate:
@@ -226,4 +227,21 @@ class AttendanceCubit extends Cubit<AttendanceState> {
 
   /// Pull-to-refresh entry point — same flow as initial load.
   Future<void> refresh() => getAttendanceRecords();
+
+  @override
+  Future<void> close() {
+    todayDateController.dispose();
+    attendanceDateController.dispose();
+    attendanceTimeController.dispose();
+    applicantNameController.dispose();
+    organizationalUnitController.dispose();
+    attachmentFileController.dispose();
+    attachmentFileNameController.dispose();
+    officeIDController.dispose();
+    durationController.dispose();
+    attendanceTypeController.dispose();
+    forgetReasonController.dispose();
+    orderReasonController.dispose();
+    return super.close();
+  }
 }

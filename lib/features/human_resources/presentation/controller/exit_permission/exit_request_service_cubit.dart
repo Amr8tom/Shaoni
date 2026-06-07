@@ -104,19 +104,6 @@ class ExitRequestServiceCubit extends Cubit<ExitRequestServiceState> {
     );
   }
 
-  // هو الفايل ملهوش دعوه
-  // {
-  // "employee_id": 2,
-  // "permission_type": 1,
-  // "type": "first",
-  // "exit_date": "2026-3-29",
-  // "number_of_hours": 1,
-  // "notes": "test",
-  // "stage_id": 1,
-  // "leaves_attachment": "test by amr",
-  // "leaves_attachment_name": "test"
-  // }
-
   /// create exit permission request
   Future createExitPermissionRequest() async {
     emit(state.copyWith(status: RequestStatus.createExitPermissionLoading));
@@ -217,10 +204,10 @@ class ExitRequestServiceCubit extends Cubit<ExitRequestServiceState> {
     attachmentFileController.clear();
     attachmentFileNameController.clear();
     notesController.clear();
-    // setExpandedIndex(null);
   }
 
-  void dispose() {
+  @override
+  Future<void> close() {
     todayDateController.dispose();
     permissionDateController.dispose();
     applicantNameController.dispose();
@@ -233,5 +220,7 @@ class ExitRequestServiceCubit extends Cubit<ExitRequestServiceState> {
     attachmentFileController.dispose();
     attachmentFileNameController.dispose();
     notesController.dispose();
+    officeIDController.dispose();
+    return super.close();
   }
 }

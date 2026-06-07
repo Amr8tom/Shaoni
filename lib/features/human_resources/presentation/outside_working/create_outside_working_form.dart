@@ -121,7 +121,7 @@ class CreateOutsideWorkingForm extends StatelessWidget {
                                 ),
                                 const Sizer(height: 35),
 
-                                /// ── بيانات الطلب ──────────────────────────
+                                /// ── request data ──────────────────────────
                                 Text(
                                   S.current.requestDetails,
                                   style: Theme.of(context)
@@ -132,7 +132,7 @@ class CreateOutsideWorkingForm extends StatelessWidget {
                                 const OutsideWorkingRequestDataWidget(),
                                 const Sizer(height: 35),
 
-                                /// ── مدة العمل + الحضور ────────────────────
+                                /// ──attendance  ────────────────────
                                 Text(
                                   S.current.duration,
                                   style: Theme.of(context)
@@ -143,7 +143,7 @@ class CreateOutsideWorkingForm extends StatelessWidget {
                                 const OutsideWorkingDurationWidget(),
                                 const Sizer(height: 35),
 
-                                /// ── الموظفون ───────────────────────────────
+                                /// ── employess ───────────────────────────────
                                 Text(
                                   S.current.employees,
                                   style: Theme.of(context)

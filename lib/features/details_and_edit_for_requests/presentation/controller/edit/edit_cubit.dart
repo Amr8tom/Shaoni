@@ -346,4 +346,10 @@ class EditCubit extends Cubit<EditState> {
       )),
     );
   }
+
+  @override
+  Future<void> close() {
+    editNotesController.dispose();
+    return super.close();
+  }
 }

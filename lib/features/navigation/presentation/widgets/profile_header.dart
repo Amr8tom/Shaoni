@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shaoni/core/constants/app_sizes.dart';
+import 'package:shaoni/core/utils/helpers/string_normalizer.dart';
 import '../../../../common/widgets/sized_boxes/sizer.dart';
 import '../../../../core/constants/asset_resources.dart';
 import '../../../../core/constants/colors.dart';
@@ -21,6 +22,7 @@ class ProfileHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = context.read<NavigationCubit>();
+    final isMale = StringNormalizer.isMale(controller.state.user?.gender);
 
     return GestureDetector(
       onTap: () {
@@ -64,17 +66,13 @@ class ProfileHeader extends StatelessWidget {
                           fit: BoxFit.cover,
                           errorBuilder: (context, error, stackTrace) {
                             return Image.asset(
-                              controller.state.user?.gender == "Male"
-                                  ? AssetRes.man1
-                                  : AssetRes.woman,
+                              isMale ? AssetRes.man1 : AssetRes.woman,
                               fit: BoxFit.fill,
                             );
                           },
                         )
                       : Image.asset(
-                          controller.state.user?.gender == "Male"
-                              ? AssetRes.man1
-                              : AssetRes.woman,
+                          isMale ? AssetRes.man1 : AssetRes.woman,
                           fit: BoxFit.fill,
                         ),
                 ),

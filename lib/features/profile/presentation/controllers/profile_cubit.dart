@@ -5,6 +5,8 @@ import 'package:shaoni/core/utils/enums/general_status.dart';
 import 'package:shaoni/features/auth/domain/entities/user_entity.dart';
 import 'package:shaoni/features/profile/domain/use_cases/update_profile_use_case.dart';
 
+import 'package:shaoni/core/utils/helpers/string_normalizer.dart';
+
 part 'profile_state.dart';
 
 class ProfileCubit extends Cubit<ProfileState> {
@@ -37,9 +39,9 @@ class ProfileCubit extends Cubit<ProfileState> {
   void initWithUser(UserEntity? user) {
     if (user == null) return;
 
-    final int gender = user.gender == "Male" ? 1 : 2;
-    final int nationality = user.nationality == "سعودي" ? 1 : 2;
-    final int city = user.city == "جده" ? 1 : 2;
+    final int gender = StringNormalizer.isMale(user.gender) ? 1 : 2;
+    final int nationality = StringNormalizer.isSaudi(user.nationality) ? 1 : 2;
+    final int city = StringNormalizer.isJeddah(user.city) ? 1 : 2;
 
     emit(state.copyWith(
       gender: gender,

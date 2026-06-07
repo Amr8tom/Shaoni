@@ -108,11 +108,13 @@ class LoginCubit extends Cubit<LoginState> {
     );
   }
 
-  void dispose() {
+  @override
+  Future<void> close() {
     nameController.dispose();
     passwordController.dispose();
-    confirmPasswordController.dispose();
     otpController.dispose();
-    super.close();
+    newPasswordController.dispose();
+    confirmPasswordController.dispose();
+    return super.close();
   }
 }

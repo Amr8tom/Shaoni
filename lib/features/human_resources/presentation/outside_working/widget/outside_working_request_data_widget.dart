@@ -6,7 +6,7 @@ import 'package:shaoni/features/human_resources/presentation/attendance/widget/a
 import 'package:shaoni/features/human_resources/presentation/controller/outside_working/outside_working_cubit.dart';
 import 'package:shaoni/generated/l10n.dart';
 
-/// نوع القسم + نوع المشروع + سبب الطلب
+
 class OutsideWorkingRequestDataWidget extends StatelessWidget {
   const OutsideWorkingRequestDataWidget({super.key});
 
@@ -17,7 +17,7 @@ class OutsideWorkingRequestDataWidget extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        // ── نوع القسم ─────────────────────────────────────────────────────
+        /// ──  department ─────────────────────────────────────────────────────
         DDropdownField(
           label: S.current.departmentType,
           hint: S.current.selectDepartmentType,
@@ -32,7 +32,7 @@ class OutsideWorkingRequestDataWidget extends StatelessWidget {
         ),
         const Sizer(height: 20),
 
-        // ── نوع المشروع ───────────────────────────────────────────────────
+        /// ── project type ───────────────────────────────────────────────────
         DDropdownField(
           label: S.current.projectType,
           hint: S.current.selectProjectType,
@@ -46,7 +46,7 @@ class OutsideWorkingRequestDataWidget extends StatelessWidget {
               (v == null || v.isEmpty) ? S.current.thisFieldRequired : null,
         ),
 
-        // ── اسم المشروع (conditional) ─────────────────────────────────────
+        /// project name (conditional) ─────────────────────────────────────
         if (cubit.showProjectName) ...[
           const Sizer(height: 20),
           DDropdownField(
@@ -64,7 +64,7 @@ class OutsideWorkingRequestDataWidget extends StatelessWidget {
 
         const Sizer(height: 20),
 
-        // ── سبب الطلب ─────────────────────────────────────────────────────
+        /// ── request reason  ─────────────────────────────────────────────────────
         DEditableField(
           label: S.current.orderReason,
           hint: S.current.orderReason,
