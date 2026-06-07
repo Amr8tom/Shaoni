@@ -7,7 +7,7 @@ import 'package:shaoni/features/navigation/domain/use_cases/get_user_data_use_ca
 import '../../../auth/domain/entities/user_entity.dart';
 import '../../../home/home_screen.dart';
 import '../../../details_and_edit_for_requests/presentation/screens/my_requests_screen.dart';
-import '../../../profile/profile_screen.dart';
+import '../../../profile/presentation/screens/profile_screen.dart';
 import '../../../services/presentation/screens/all_categories_screen.dart';
 
 part 'navigation_state.dart';

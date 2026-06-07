@@ -63,4 +63,11 @@ class ProfileCubit extends Cubit<ProfileState> {
   void setCity(int value) {
     emit(state.copyWith(city: value));
   }
+  @override
+  Future<void> close() {
+    nameController.dispose();
+    numberController.dispose();
+    emailController.dispose();
+    return super.close();
+  }
 }

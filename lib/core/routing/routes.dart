@@ -9,12 +9,12 @@ import 'package:shaoni/features/human_resources/presentation/medical_insurance/c
 import 'package:shaoni/features/study&training/presentation/training_request/create_training_request_form.dart';
 import 'package:shaoni/features/human_resources/presentation/product_order/create_product_order_form.dart';
 import 'package:shaoni/features/human_resources/presentation/outside_working/create_outside_working_form.dart';
-import 'package:shaoni/features/profile/profile_screen.dart';
+import 'package:shaoni/features/profile/presentation/screens/profile_screen.dart';
 import 'package:shaoni/features/services/presentation/screens/category_details_screen.dart';
 import '../../features/auth/presentation/screen/login_screen.dart';
 import '../../features/auth/presentation/screen/new_password_screen.dart';
 import '../../features/auth/presentation/screen/otp_screen.dart';
-import '../../features/delete_account/presentation/delete_my_account_screen.dart';
+import '../../features/delete_account/presentation/screens/delete_my_account_screen.dart';
 import '../../features/human_resources/presentation/attendance/create_attendance_request_form.dart';
 import '../../features/human_resources/presentation/car_permission/create_car_permission_screen.dart';
 import '../../features/human_resources/presentation/complaint_request/create_complaint_request_screen.dart';

@@ -10,10 +10,10 @@ import 'package:shaoni/core/routing/route_names.dart';
 import 'package:shaoni/core/service_locator/service_locator.dart';
 import 'package:shaoni/features/navigation/presentation/controllers/navigation_cubit.dart';
 import 'package:shaoni/features/profile/presentation/controllers/profile_cubit.dart';
-import '../../core/utils/enums/general_status.dart';
-import '../../generated/l10n.dart';
-import '../auth/presentation/widgets/auth_text_filed.dart';
-import '../navigation/presentation/widgets/custom_side_menu.dart';
+import '../../../../core/utils/enums/general_status.dart';
+import '../../../../generated/l10n.dart';
+import '../../../auth/presentation/widgets/auth_text_filed.dart';
+import '../../../navigation/presentation/widgets/custom_side_menu.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
