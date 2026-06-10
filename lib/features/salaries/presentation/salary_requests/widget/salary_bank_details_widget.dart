@@ -6,6 +6,7 @@ import '../../../../human_resources/presentation/attendance/widget/attendance_dr
 import '../../../../human_resources/presentation/attendance/widget/attendance_editable_field.dart';
 import '../../controller/salary_requests/salary_requests_cubit.dart';
 import '../../controller/salary_requests/salary_requests_state.dart';
+import '../../../../human_resources/presentation/widgets/general_request_templates/file_upload_widget.dart';
 
 class SalaryBankDetailsWidget extends StatelessWidget {
   const SalaryBankDetailsWidget({super.key});
@@ -83,8 +84,31 @@ class SalaryBankDetailsWidget extends StatelessWidget {
               controller: controller.ibanController,
             ),
 
-            // TODO: attachment uploaders for iban_attachment and disclaimer_attachment if needed
-            // Currently file upload handles general attachment
+            // Attachments
+            const Sizer(height: 24),
+            Row(
+              children: [
+                Expanded(
+                  child: FileUploadWidget(
+                    title: 'مرفق رقم الحساب المصرفي الدولي',
+                    onPickedFile: (fileName, base64String) {
+                      controller.ibanAttachmentController.text =
+                          base64String ?? '';
+                    },
+                  ),
+                ),
+                const Sizer(width: 16),
+                Expanded(
+                  child: FileUploadWidget(
+                    title: 'مرفق إخلاء المسؤولية',
+                    onPickedFile: (fileName, base64String) {
+                      controller.disclaimerAttachmentController.text =
+                          base64String ?? '';
+                    },
+                  ),
+                ),
+              ],
+            ),
           ],
         );
       },

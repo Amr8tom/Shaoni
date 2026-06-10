@@ -10,6 +10,7 @@ import 'package:shaoni/features/details_and_edit_for_requests/domain/entities/ca
 import 'package:shaoni/features/details_and_edit_for_requests/domain/entities/complaint_request/complaint_request_details.dart';
 import 'package:shaoni/features/details_and_edit_for_requests/domain/entities/extra_data.dart';
 import 'package:shaoni/features/human_resources/domain/entity/exit_permisstion.dart';
+import 'package:shaoni/features/details_and_edit_for_requests/data/models/salary_request_model.dart';
 
 class ExtraDataModel extends ExtraData {
   const ExtraDataModel({
@@ -26,6 +27,7 @@ class ExtraDataModel extends ExtraData {
     super.visaRequest,
     super.exitPermission,
     super.complaintRequest,
+    super.salaryRequest,
   });
 
   /// fromJson
@@ -42,6 +44,7 @@ class ExtraDataModel extends ExtraData {
     final carPermissionJson = _jsonMap(json['carPermission']);
     final exitPermissionJson = _jsonMap(json['exitPermission']);
     final complaintRequestJson = _jsonMap(json['complaintRequest']);
+    final salaryRequestJson = _jsonMap(json['salaryRequest']);
 
     return ExtraDataModel(
       attendance: attendanceJson != null
@@ -75,6 +78,9 @@ class ExtraDataModel extends ExtraData {
           : null,
       complaintRequest: complaintRequestJson != null
           ? ComplaintRequestDetails.fromJson(complaintRequestJson)
+          : null,
+      salaryRequest: salaryRequestJson != null
+          ? SalaryRequestModel.fromJson(salaryRequestJson)
           : null,
     );
   }
@@ -226,6 +232,9 @@ class ExtraDataModel extends ExtraData {
       'exitPermission': extraData.exitPermission?.toJson(),
       'carPermission': extraData.carPermission?.toJson(),
       'complaintRequest': extraData.complaintRequest?.toJson(),
+      'salaryRequest': extraData.salaryRequest != null
+          ? SalaryRequestModel.toJsonFromEntity(extraData.salaryRequest!)
+          : null,
     };
   }
 }

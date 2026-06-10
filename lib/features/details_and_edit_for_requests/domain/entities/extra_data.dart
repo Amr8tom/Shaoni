@@ -11,6 +11,7 @@ import 'package:shaoni/features/details_and_edit_for_requests/domain/entities/co
 import 'package:shaoni/features/details_and_edit_for_requests/domain/entities/attendance/attendance_request_details.dart';
 
 import '../../../human_resources/domain/entity/exit_permisstion.dart';
+import 'package:shaoni/features/details_and_edit_for_requests/domain/entities/salary_request.dart';
 
 class ExtraData extends Equatable {
   final AttendanceRequestDetails? attendance;
@@ -26,6 +27,7 @@ class ExtraData extends Equatable {
   final ExitPermission? exitPermission;
   final CarPermission? carPermission;
   final ComplaintRequestDetails? complaintRequest;
+  final SalaryRequest? salaryRequest;
 
   const ExtraData({
     this.carPermission,
@@ -41,6 +43,7 @@ class ExtraData extends Equatable {
     this.visaRequest,
     this.exitPermission,
     this.complaintRequest,
+    this.salaryRequest,
   });
 
   @override
@@ -58,5 +61,6 @@ class ExtraData extends Equatable {
         outsideWorking,
         visaRequest,
         exitPermission,
+        salaryRequest,
       ];
 }

@@ -14,6 +14,7 @@ import 'package:shaoni/features/details_and_edit_for_requests/domain/use_cases/g
 import 'package:shaoni/features/details_and_edit_for_requests/domain/use_cases/get_training_request_edit_use_case.dart';
 import 'package:shaoni/features/details_and_edit_for_requests/domain/use_cases/get_product_order_edit_use_case.dart';
 import 'package:shaoni/features/details_and_edit_for_requests/domain/use_cases/get_outside_working_edit_use_case.dart';
+import 'package:shaoni/features/details_and_edit_for_requests/domain/use_cases/get_salary_transfer_edit_use_case.dart';
 
 part 'edit_state.dart';
 
@@ -30,6 +31,7 @@ class EditCubit extends Cubit<EditState> {
   final GetTrainingRequestEditUseCase _getTrainingRequestEditUseCase;
   final GetProductOrderEditUseCase _getProductOrderEditUseCase;
   final GetOutsideWorkingEditUseCase _getOutsideWorkingEditUseCase;
+  final GetSalaryTransferEditUseCase _getSalaryTransferEditUseCase;
   final editNotesController = TextEditingController();
 
   EditCubit(
@@ -44,6 +46,7 @@ class EditCubit extends Cubit<EditState> {
     this._getTrainingRequestEditUseCase,
     this._getProductOrderEditUseCase,
     this._getOutsideWorkingEditUseCase,
+    this._getSalaryTransferEditUseCase,
   ) : super(const EditState());
 
   Future<void> editRequest({
@@ -84,11 +87,13 @@ class EditCubit extends Cubit<EditState> {
       case ServiceCode.outsideWorking:
         await _getOutsideWorkingEdit(requestId: requestId);
         break;
+      case ServiceCode.salaryTransfer:
+        await _getSalaryTransferEdit(requestId: requestId);
+        break;
       case ServiceCode.complaintRequest:
       case ServiceCode.loan:
       case ServiceCode.visaRequest:
       case ServiceCode.scrapRequest:
-      case ServiceCode.salaryTransfer:
       case ServiceCode.employeeTicketBooking:
       case ServiceCode.leaveReplace:
       case ServiceCode.leave:
@@ -98,6 +103,7 @@ class EditCubit extends Cubit<EditState> {
           status: EditStatus.error,
           errorMessage: 'Edit not supported for service: $serviceCode',
         ));
+        break;
     }
   }
 
@@ -331,6 +337,26 @@ class EditCubit extends Cubit<EditState> {
     emit(state.copyWith(status: EditStatus.loading));
     final result = await _getOutsideWorkingEditUseCase.call(
       params: GetOutsideWorkingEditParams(
+        requestId: requestId,
+        editReasons: editNotesController.text,
+      ),
+    );
+    result.fold(
+      (failure) => emit(state.copyWith(
+        status: EditStatus.error,
+        errorMessage: failure.message,
+      )),
+      (response) => emit(state.copyWith(
+        status: EditStatus.editRequestLoaded,
+        editResponse: response,
+      )),
+    );
+  }
+
+  Future<void> _getSalaryTransferEdit({required int requestId}) async {
+    emit(state.copyWith(status: EditStatus.loading));
+    final result = await _getSalaryTransferEditUseCase.call(
+      params: GetSalaryTransferEditParams(
         requestId: requestId,
         editReasons: editNotesController.text,
       ),

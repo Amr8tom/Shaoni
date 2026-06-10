@@ -8,6 +8,7 @@ import '../../../../core/constants/colors.dart';
 import '../../../../generated/l10n.dart';
 import '../../../home/presentation/widgets/order_text_card.dart';
 import '../controller/my_requests_cubit.dart';
+import 'attachements_widget.dart';
 
 class SalaryTransferDetailsWidget extends StatelessWidget {
   const SalaryTransferDetailsWidget({super.key});
@@ -17,8 +18,7 @@ class SalaryTransferDetailsWidget extends StatelessWidget {
     final controller = context.watch<MyRequestsCubit>();
     final requestData = controller.state.requestDetails;
     
-    // Note: Assuming extraData contains a salaryRequest object in the future
-    // For now we map available base fields.
+    final salaryRequest = requestData?.extraData?.salaryRequest;
 
     return Skeletonizer(
       enabled: controller.state.status.isLoading,
@@ -70,6 +70,50 @@ class SalaryTransferDetailsWidget extends StatelessWidget {
                   title: S.current.manager,
                   result: requestData?.managerFullName ?? '',
                 ),
+                const Sizer(height: 12),
+              ],
+
+              if (salaryRequest != null) ...[
+                Row(
+                  children: [
+                    Expanded(
+                      child: OrderTextCard(
+                        title: S.current.selectSalaryType, // Or a specific translation
+                        result: salaryRequest.salaryRequestType ?? '',
+                      ),
+                    ),
+                    const Sizer(width: 10),
+                    Expanded(
+                      child: OrderTextCard(
+                        title: S.current.accountNumber,
+                        result: salaryRequest.accountNumber ?? '',
+                      ),
+                    ),
+                  ],
+                ),
+                const Sizer(height: 12),
+                Row(
+                  children: [
+                    Expanded(
+                      child: OrderTextCard(
+                        title: S.current.ibanNumber,
+                        result: salaryRequest.iban ?? '',
+                      ),
+                    ),
+                    const Sizer(width: 10),
+                    Expanded(
+                      child: OrderTextCard(
+                        title: S.current.bankName,
+                        result: salaryRequest.bankId?.toString() ?? '', // Need to map ID to name ideally, but using ID for now
+                      ),
+                    ),
+                  ],
+                ),
+                const Sizer(height: 12),
+                if ((salaryRequest.ibanAttachment?.isNotEmpty ?? false))
+                  LeavesAttachmentWidget(
+                    leavesAttachment: salaryRequest.ibanAttachment!,
+                  ),
                 const Sizer(height: 12),
               ],
             ],

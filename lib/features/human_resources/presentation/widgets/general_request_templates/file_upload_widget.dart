@@ -11,8 +11,9 @@ class FileUploadWidget extends StatefulWidget {
   /// Callback to return the file name and base64 string to the parent.
   /// Returns null when the user removes the file.
   final void Function(String? fileName, String? base64String)? onPickedFile;
+  final String? title;
 
-  const FileUploadWidget({super.key, this.onPickedFile});
+  const FileUploadWidget({super.key, this.onPickedFile, this.title});
 
   @override
   State<FileUploadWidget> createState() => _FileUploadWidgetState();
@@ -27,11 +28,12 @@ class _FileUploadWidgetState extends State<FileUploadWidget> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         /// Upload section title
-        Text(
-          S.current.attachments,
-          style: Theme.of(context).textTheme.headlineMedium,
-        ),
-        const Sizer(height: 16),
+        if (widget.title != '')
+          Text(
+            widget.title ?? S.current.attachments,
+            style: Theme.of(context).textTheme.headlineMedium,
+          ),
+        if (widget.title != '') const Sizer(height: 16),
 
         /// Upload box
         GestureDetector(
