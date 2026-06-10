@@ -13,6 +13,7 @@ import '../widgets/medical_insurance_details_widget.dart';
 import '../widgets/training_request_details_widget.dart';
 import '../widgets/product_order_details_widget.dart';
 import '../widgets/outside_working_details_widget.dart';
+import '../widgets/salary_transfer_details_widget.dart';
 
 Widget getRequestDetailsWidget({required String serviceCode}) {
   switch (ServiceCode.fromCode(serviceCode)) {
@@ -40,6 +41,8 @@ Widget getRequestDetailsWidget({required String serviceCode}) {
       return const ProductOrderDetailsWidget();
     case ServiceCode.outsideWorking:
       return const OutsideWorkingDetailsWidget();
+    case ServiceCode.salaryTransfer:
+      return const SalaryTransferDetailsWidget();
     default:
       return const Sizer();
   }

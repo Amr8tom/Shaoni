@@ -5,14 +5,26 @@ import '../../../../core/constants/app_sizes.dart';
 import '../../../../core/constants/colors.dart';
 import '../../../../generated/l10n.dart';
 
-class CommentWritingWidget extends StatelessWidget {
-  final TextEditingController commentController = TextEditingController();
+class CommentWritingWidget extends StatefulWidget {
   final void Function(String comment)? onCommentSubmit;
 
-  CommentWritingWidget({
+  const CommentWritingWidget({
     super.key,
     this.onCommentSubmit,
   });
+
+  @override
+  State<CommentWritingWidget> createState() => _CommentWritingWidgetState();
+}
+
+class _CommentWritingWidgetState extends State<CommentWritingWidget> {
+  final TextEditingController commentController = TextEditingController();
+
+  @override
+  void dispose() {
+    commentController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +58,7 @@ class CommentWritingWidget extends StatelessWidget {
               ),
               maxLines: 3,
               controller: commentController,
-              onChanged: (value) => onCommentSubmit?.call(value),
+              onChanged: (value) => widget.onCommentSubmit?.call(value),
             ),
             const Sizer(height: 24),
           ],

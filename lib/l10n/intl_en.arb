@@ -905,5 +905,21 @@
   "selectAtLeastOneEmployee": "Please select at least one employee",
   "duration": "Duration",
   "employees": "Employees",
-  "tasks": "Tasks"
+  "tasks": "Tasks",
+  "salaryTransfer": "Salary Transfer",
+  "salaryTransferRequest": "Salary Request",
+  "bankCountry": "Bank Country",
+  "selectBankCountry": "Select Bank Country",
+  "bankName": "Bank Name",
+  "selectBank": "Select Bank",
+  "accountNumber": "Account Number",
+  "ibanNumber": "IBAN Number",
+  "letterDestination": "Letter Destination",
+  "selectLetterDestination": "Select Letter Destination",
+  "salaryTypeTarget": "Target Salary Type",
+  "selectSalaryType": "Select Salary Type",
+  "salaryDocumentType": "Document Type",
+  "selectSalaryDocumentType": "Select Document Type",
+  "selectRequestType": "Select Request Type",
+  "requestType": "Request Type"
 }

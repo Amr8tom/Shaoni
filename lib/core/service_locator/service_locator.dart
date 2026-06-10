@@ -5,6 +5,7 @@ import 'package:shaoni/core/service_locator/profile_service_locator.dart';
 import 'package:shaoni/core/service_locator/request_service_locator.dart';
 import 'package:shaoni/core/service_locator/services_service_locator.dart';
 import 'package:shaoni/core/service_locator/study_training_service_locator.dart';
+import 'package:shaoni/core/service_locator/salaries_service_locator.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../connection/check_network.dart';
 import '../dio/dio_helper.dart';
@@ -65,6 +66,9 @@ class DI {
 
     /// Study & training
     await StudyTrainingServiceLocator.execute(serviceLocator: serviceLocator);
+
+    /// Salaries
+    await SalariesServiceLocator.execute(serviceLocator: serviceLocator);
 
     /// delete account
     await DeleteAccountServiceLocator.execute(serviceLocator: serviceLocator);

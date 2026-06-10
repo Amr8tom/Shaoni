@@ -331,6 +331,28 @@ if (ServicesNames.hrServiceKeys.contains(serviceCode)) {
 }
 ```
 
+### 3.6 Request Status and Stage Card
+
+The request details screen shows a timeline of stages (e.g., Draft -> Manager Approval -> HR Approval). 
+When adding a new feature, you must configure its stages in `lib/features/details_and_edit_for_requests/domain/enums_and_extentions/request_enums.dart`.
+
+1. Open `request_enums.dart`.
+2. Find `extension RequestStatusExtensionList on CurrentStatus`.
+3. Inside `getRequestStatusEnumList`, add a `case` for your `ServiceCode` that returns the exact ordered list of stages for your feature.
+
+```dart
+case ServiceCode.xxxRequest:
+  return const [
+    RequestStatusEnum.draft,
+    RequestStatusEnum.managerApproval,
+    RequestStatusEnum.hrApproval,
+    RequestStatusEnum.approved,
+    RequestStatusEnum.rejected
+  ];
+```
+
+The UI (`RequestStageCard`) automatically uses this list to render the stepper and determine the active step based on the current status of the request. Do NOT hardcode stage titles or indices inside the details widget.
+
 ---
 
 ## 4. New Feature Checklist

@@ -1,189 +1,136 @@
 import '../../../../core/constants/service_codes.dart';
 import '../entities/current_status.dart';
 
-extension RequestStatusExtension on CurrentStatus {
-  RequestStatusEnum getRequestStatusEnum({required String? serviceType}) {
+extension RequestStatusExtensionList on CurrentStatus {
+  List<RequestStatusEnum> getRequestStatusEnumList(
+      {required String? serviceType}) {
     final tech = techName?.toLowerCase() ?? '';
 
     switch (ServiceCode.fromCode(serviceType)) {
       case ServiceCode.exitPermission:
-        switch (tech) {
-          case 'new':
-            return RequestStatusEnum.newRequest;
-          case 'manger':
-            return RequestStatusEnum.managerApproval;
-          case 'hr_approval':
-            return RequestStatusEnum.hrApproval;
-          case 'done':
-            return RequestStatusEnum.done;
-          case 'reject':
-            return RequestStatusEnum.rejected;
-        }
-        break;
+
+        return const [
+          RequestStatusEnum.newRequest,
+          RequestStatusEnum.managerApproval,
+          RequestStatusEnum.hrApproval,
+          RequestStatusEnum.done,
+          RequestStatusEnum.rejected
+        ];
 
       case ServiceCode.carPermission:
-        switch (tech) {
-          case 'draft':
-            return RequestStatusEnum.newRequest;
-          case 'applied':
-            return RequestStatusEnum.managerApproval;
-          case 'confirm':
-            return RequestStatusEnum.hrApproval;
-          case 'hr_manager':
-            return RequestStatusEnum.hrManager;
-          case 'approve':
-            return RequestStatusEnum.approved;
-          case 'cancel':
-            return RequestStatusEnum.cancel;
-        }
-        break;
+
+        return const [
+          RequestStatusEnum.draft,
+          RequestStatusEnum.managerApproval,
+          RequestStatusEnum.hrApproval,
+          RequestStatusEnum.hrManager,
+          RequestStatusEnum.approved,
+          RequestStatusEnum.cancel
+        ];
 
       case ServiceCode.attendanceUpdate:
-        switch (tech) {
-          case 'draft':
-            return RequestStatusEnum.newRequest;
-          case 'manager_confirm':
-            return RequestStatusEnum.managerApproval;
-          case 'confirm':
-            return RequestStatusEnum.confirmed;
-          case 'hr_approve':
-            return RequestStatusEnum.hrApproval;
-          case 'approve':
-            return RequestStatusEnum.approved;
-          case 'reject':
-            return RequestStatusEnum.rejected;
-          case 'cancel':
-            return RequestStatusEnum.cancel;
-        }
-        break;
+
+        return const [
+          RequestStatusEnum.draft,
+          RequestStatusEnum.managerApproval,
+          RequestStatusEnum.confirmed,
+          RequestStatusEnum.hrApproval,
+          RequestStatusEnum.approved,
+          RequestStatusEnum.rejected,
+          RequestStatusEnum.cancel
+        ];
 
       case ServiceCode.studyRequest:
-        switch (tech) {
-          case 'draft':
-            return RequestStatusEnum.newRequest;
-          case 'applied':
-            return RequestStatusEnum.managerApproval;
-          case 'hr_manager':
-            return RequestStatusEnum.confirmed;
-          case 'authority_holder':
-            return RequestStatusEnum.authorityHolder;
-          case 'approve':
-            return RequestStatusEnum.approved;
-          case 'confirm':
-            return RequestStatusEnum.confirmed;
-          case 'reject':
-            return RequestStatusEnum.rejected;
-          case 'not_valid':
-            return RequestStatusEnum.notValid;
-        }
-        break;
+
+        return const [
+          RequestStatusEnum.draft,
+          RequestStatusEnum.applied,
+          RequestStatusEnum.hrManager,
+          RequestStatusEnum.authorityHolder,
+          RequestStatusEnum.approved,
+          RequestStatusEnum.confirmed,
+          RequestStatusEnum.rejected,
+          RequestStatusEnum.notValid
+        ];
 
       case ServiceCode.complaintRequest:
-        switch (tech) {
-          case 'draft':
-            return RequestStatusEnum.newRequest;
-          case 'hr_manager':
-            return RequestStatusEnum.managerApproval;
-          case 'approve':
-            return RequestStatusEnum.approved;
-          case 'authority_holder':
-            return RequestStatusEnum.authorityHolder;
-          case 'reject':
-            return RequestStatusEnum.rejected;
-        }
-        break;
+
+        return const [
+          RequestStatusEnum.draft,
+          RequestStatusEnum.hrManager,
+          RequestStatusEnum.approved,
+          RequestStatusEnum.authorityHolder,
+          RequestStatusEnum.rejected
+        ];
 
       case ServiceCode.startWork:
-        switch (tech) {
-          case 'new':
-            return RequestStatusEnum.newRequest;
-          case 'confirm':
-            return RequestStatusEnum.managerApproval;
-          case 'hr_manager':
-            return RequestStatusEnum.hrManager;
-          case 'reject':
-            return RequestStatusEnum.rejected;
-          case 'approved':
-            return RequestStatusEnum.approved;
-        }
-        break;
+
+        return const [
+          RequestStatusEnum.newRequest,
+          RequestStatusEnum.confirmed,
+          RequestStatusEnum.hrManager,
+          RequestStatusEnum.rejected,
+          RequestStatusEnum.approved
+        ];
 
       case ServiceCode.idRenewalRequest:
-        switch (tech) {
-          case 'draft':
-            return RequestStatusEnum.newRequest;
-          case 'hr_manager':
-            return RequestStatusEnum.hrManager;
-          case 'approve':
-            return RequestStatusEnum.approved;
-          case 'reject':
-            return RequestStatusEnum.rejected;
-        }
-        break;
+
+        return const [
+          RequestStatusEnum.draft,
+          RequestStatusEnum.approved,
+          RequestStatusEnum.rejected,
+        ];
 
       case ServiceCode.experienceCertificate:
-        switch (tech) {
-          case 'new':
-            return RequestStatusEnum.newRequest;
-          case 'confirm':
-            return RequestStatusEnum.hrManager;
-          case 'reject':
-            return RequestStatusEnum.rejected;
-          case 'approve':
-            return RequestStatusEnum.approved;
-        }
-        break;
+
+        return const [ RequestStatusEnum.newRequest,
+          RequestStatusEnum.hrManager,
+          RequestStatusEnum.rejected,
+          RequestStatusEnum.approved
+        ];
+
 
       case ServiceCode.medicalInsuranceUpgrade:
-        switch (tech) {
-          case 'new':
-            return RequestStatusEnum.newRequest;
-          case 'confirm':
-            return RequestStatusEnum.hrManager;
-          case 'reject':
-            return RequestStatusEnum.rejected;
-          case 'approve':
-            return RequestStatusEnum.approved;
-        }
-        break;
+
+        return const [
+          RequestStatusEnum.newRequest,
+          RequestStatusEnum.hrManager,
+          RequestStatusEnum.rejected,
+          RequestStatusEnum.approved
+        ];
+
 
       case ServiceCode.trainingRequest:
-        switch (tech) {
-          case 'draft':
-            return RequestStatusEnum.newRequest;
-          case 'confirm':
-            return RequestStatusEnum.managerApproval;
-          case 'approve':
-            return RequestStatusEnum.approved;
-          case 'reject':
-            return RequestStatusEnum.rejected;
-        }
-        break;
 
+        return const [
+          RequestStatusEnum.draft,
+          RequestStatusEnum.confirmed,
+          RequestStatusEnum.approved,
+          RequestStatusEnum.rejected
+        ];
       case ServiceCode.productRequest:
-        switch (tech) {
-          case 'draft':
-            return RequestStatusEnum.newRequest;
-          case 'confirmed':
-            return RequestStatusEnum.managerApproval;
-          case 'specifications':
-            return RequestStatusEnum.approved;
-          case 'reject':
-            return RequestStatusEnum.rejected;
-          case 'approve':
-            return RequestStatusEnum.approved;
-          case 'cancel':
-            return RequestStatusEnum.cancel;
-          case 'close':
-            return RequestStatusEnum.closed;
-        }
-        break;
 
+        return const[ RequestStatusEnum.draft,
+          RequestStatusEnum.confirmed,
+          RequestStatusEnum.specifications,
+          RequestStatusEnum.rejected,
+          RequestStatusEnum.approved,
+          RequestStatusEnum.cancel,
+          RequestStatusEnum.closed
+        ];
+      case ServiceCode.salaryTransfer:
+        return const [
+          RequestStatusEnum.none,
+          RequestStatusEnum.confirmed,
+          RequestStatusEnum.approved,
+          RequestStatusEnum.rejected,
+
+
+        ];
       case ServiceCode.loan:
       case ServiceCode.outsideWorking:
       case ServiceCode.visaRequest:
       case ServiceCode.scrapRequest:
-      case ServiceCode.salaryTransfer:
       case ServiceCode.employeeTicketBooking:
       case ServiceCode.leaveReplace:
       case ServiceCode.leave:
@@ -193,44 +140,110 @@ extension RequestStatusExtension on CurrentStatus {
     }
 
     if (tech.contains('reject') || tech.contains('cancel')) {
-      return RequestStatusEnum.rejected;
+      return const[ RequestStatusEnum.rejected];
     }
     if (tech.contains('done') ||
         tech.contains('accept') ||
         tech.contains('approved') ||
         tech.contains('closed') ||
         tech.contains('completed')) {
-      return RequestStatusEnum.done;
+      return [RequestStatusEnum.done];
     }
     if (tech.contains('hr') || tech.contains('final')) {
-      return RequestStatusEnum.hrApproval;
+      return const [RequestStatusEnum.hrApproval];
     }
     if (tech.contains('manager') ||
         tech.contains('manger') ||
         tech.contains('direct')) {
-      return RequestStatusEnum.managerApproval;
+      return const [RequestStatusEnum.managerApproval];
     }
     if (tech.contains('new') ||
         tech.contains('applied') ||
         tech.contains('draft') ||
         tech.contains('submit') ||
         tech.contains('created')) {
-      return RequestStatusEnum.newRequest;
+      return const[ RequestStatusEnum.newRequest];
     }
 
-    return RequestStatusEnum.none;
+    return const [RequestStatusEnum.none];
+  }
+}
+
+extension RequestStatusStringExtension on String? {
+  RequestStatusEnum get toRequestStatusEnum {
+    final tech = this?.toLowerCase() ?? '';
+    switch (tech) {
+    // ---- New / Draft States ----
+      case 'new':
+        return RequestStatusEnum.newRequest;
+
+      case 'draft':
+        return RequestStatusEnum.draft;
+
+    // ---- Manager Level States ----
+      case 'manger':
+        return RequestStatusEnum.managerApproval;
+      case 'applied':
+        return RequestStatusEnum.applied;
+      case 'manager_confirm':
+        return RequestStatusEnum.managerApproval;
+      case 'confirmed':
+        return RequestStatusEnum.confirmed;
+
+    // ---- HR / Approval States ----
+      case 'hr_approval':
+      case 'hr_approve':
+        return RequestStatusEnum.hrApproval;
+
+    // ---- Final Approved States ----
+      case 'done':
+        return RequestStatusEnum.done;
+      case 'specifications':
+        return RequestStatusEnum.specifications;
+      case 'approved':
+        return RequestStatusEnum.approved;
+
+
+    // ---- Rejection / Cancellation States ----
+      case 'reject':
+        return RequestStatusEnum.rejected;
+
+      case 'cancel':
+        return RequestStatusEnum.cancel;
+
+      case 'close':
+        return RequestStatusEnum.closed;
+
+      case 'not_valid':
+        return RequestStatusEnum.notValid;
+
+      case 'authority_holder':
+        return RequestStatusEnum.authorityHolder;
+
+    // ---- Context Overlapping Conflicts ----
+      case 'confirm':
+       return RequestStatusEnum.confirmed;
+
+      case 'hr_manager':
+        return RequestStatusEnum.hrManager;
+
+      default:
+        return RequestStatusEnum.none;
+    }
   }
 }
 
 enum RequestStatusEnum {
   newRequest,
+  draft,
+  applied,
+  specifications,
   managerApproval,
   hrApproval,
   hrManager,
   rejected,
   confirmed,
   approved,
-  specifications,
   authorityHolder,
   notValid,
   cancel,

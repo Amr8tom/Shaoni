@@ -911,5 +911,21 @@
   "selectAtLeastOneEmployee": "يرجى اختيار موظف واحد على الأقل",
   "duration": "المدة",
   "employees": "الموظفون",
-  "tasks": "المهام"
+  "tasks": "المهام",
+  "salaryTransfer": "تحويل الراتب",
+  "salaryTransferRequest": "طلب راتب",
+  "bankCountry": "بلد البنك",
+  "selectBankCountry": "اختر بلد البنك",
+  "bankName": "البنك",
+  "selectBank": "اختر البنك",
+  "accountNumber": "رقم الحساب",
+  "ibanNumber": "رقم الآيبان (IBAN)",
+  "letterDestination": "جهة توجيه الخطاب",
+  "selectLetterDestination": "اختر جهة توجيه الخطاب",
+  "salaryTypeTarget": "نوع الراتب المراد تنفيذ العملية عليه",
+  "selectSalaryType": "اختر نوع الراتب",
+  "salaryDocumentType": "نوع المستند",
+  "selectSalaryDocumentType": "اختر نوع المستند",
+  "selectRequestType": "اختر نوع الطلب",
+  "requestType": "نوع الطلب"
 }

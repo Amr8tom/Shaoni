@@ -121,6 +121,18 @@ class URL {
       '$baseUrl/Lookup/GetComplaintReasons';
   static const String createComplaintRequest = '$baseUrl/ComplaintRequest';
 
+  /// ============================ salary requests ============================
+  static const String createSalaryRequest = '$baseUrl/Salary/create';
+  static const String updateSalaryRequest = '$baseUrl/Salary/update/';
+  static const String getSalaryRequestEdit = '$baseUrl/Salary/edit/';
+  static const String getSalarySubTypes = '$baseUrl/Lookup/GetSalarySubTypes';
+  static const String getSalaryTypes = '$baseUrl/Lookup/GetSalaryTypes';
+  static const String getSalaryDocumentTypes =
+      '$baseUrl/Lookup/GetSalaryDocumentTypes';
+  static const String getSalaryBanks = '$baseUrl/Salary/banks/';
+  static const String getLetterDestinations =
+      '$baseUrl/Salary/letter-destinations';
+
   /// ============================ exit permmison  ============================
   // static const String getAllRequestsWithStages = '$baseUrl/Request/with-stages/paged/by-user';
 

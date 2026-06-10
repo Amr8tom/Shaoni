@@ -24,36 +24,19 @@ class RequestStageCard extends StatelessWidget {
         : (status.nameEn ?? status.nameAr ?? '');
   }
 
-  RequestStatusEnum get _enum =>
-      status.getRequestStatusEnum(serviceType: serviceType);
+  List<RequestStatusEnum> get stages =>
+      status.getRequestStatusEnumList(serviceType: serviceType);
+  //
 
   int get _activeIndex {
-    switch (_enum) {
-      case RequestStatusEnum.newRequest:
-        return 0;
-      case RequestStatusEnum.managerApproval:
-        return 1;
-      case RequestStatusEnum.hrApproval:
-        return 2;
-      case RequestStatusEnum.done:
-        return 3; // all complete
-      case RequestStatusEnum.rejected:
-        return -1; // special state
-      default:
-        return 0;
-    }
+   final index =status.getRequestStatusEnumList(serviceType: serviceType).indexOf(status.techName.toRequestStatusEnum);
+   return index;
   }
 
-  bool get _isRejected => _enum == RequestStatusEnum.rejected;
+  bool get _isRejected => status.techName.toRequestStatusEnum == RequestStatusEnum.rejected;
 
   @override
   Widget build(BuildContext context) {
-    final stages = [
-      S.current.NNew,
-      S.current.managerApproval,
-      S.current.hrManagerApproval,
-    ];
-
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: AppSizes.padding),
       child: Container(
@@ -98,7 +81,7 @@ class RequestStageCard extends StatelessWidget {
 
                 return StageRow(
                   index: i,
-                  title: stages[i],
+                  title: stages[i].name,
                   isCompleted: isCompleted,
                   isActive: isActive,
                   isPending: isPending,

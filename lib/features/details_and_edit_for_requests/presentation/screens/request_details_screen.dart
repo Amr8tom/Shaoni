@@ -38,11 +38,11 @@ class RequestDetailsScreen extends StatelessWidget {
     final bool isEmployeeRequest = args['isEmployeeRequest'] as bool? ?? false;
     final String hijriDate = DateConverter.convertGregorianToHijri(date);
     final bool isManagerApproval =
-        currentStatus?.getRequestStatusEnum(serviceType: serviceCode) ==
-            RequestStatusEnum.managerApproval;
+        currentStatus?.getRequestStatusEnumList(serviceType: serviceCode)[1] ==
+            currentStatus?.techName;
     final bool isNewRequest =
-        currentStatus?.getRequestStatusEnum(serviceType: serviceCode) ==
-            RequestStatusEnum.newRequest;
+        currentStatus?.getRequestStatusEnumList(serviceType: serviceCode)[0] ==
+            currentStatus?.techName;
 
     return MultiBlocProvider(
       providers: [

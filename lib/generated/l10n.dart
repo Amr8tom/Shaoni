@@ -6449,10 +6449,10 @@ class S {
     );
   }
 
-  /// `Select request type`
+  /// `Select Request Type`
   String get selectRequestType {
     return Intl.message(
-      'Select request type',
+      'Select Request Type',
       name: 'selectRequestType',
       desc: '',
       args: [],
@@ -7057,6 +7057,131 @@ class S {
   /// `Tasks`
   String get tasks {
     return Intl.message('Tasks', name: 'tasks', desc: '', args: []);
+  }
+
+  /// `Salary Transfer`
+  String get salaryTransfer {
+    return Intl.message(
+      'Salary Transfer',
+      name: 'salaryTransfer',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Salary Request`
+  String get salaryTransferRequest {
+    return Intl.message(
+      'Salary Request',
+      name: 'salaryTransferRequest',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Bank Country`
+  String get bankCountry {
+    return Intl.message(
+      'Bank Country',
+      name: 'bankCountry',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Select Bank Country`
+  String get selectBankCountry {
+    return Intl.message(
+      'Select Bank Country',
+      name: 'selectBankCountry',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Bank Name`
+  String get bankName {
+    return Intl.message('Bank Name', name: 'bankName', desc: '', args: []);
+  }
+
+  /// `Select Bank`
+  String get selectBank {
+    return Intl.message('Select Bank', name: 'selectBank', desc: '', args: []);
+  }
+
+  /// `Account Number`
+  String get accountNumber {
+    return Intl.message(
+      'Account Number',
+      name: 'accountNumber',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `IBAN Number`
+  String get ibanNumber {
+    return Intl.message('IBAN Number', name: 'ibanNumber', desc: '', args: []);
+  }
+
+  /// `Letter Destination`
+  String get letterDestination {
+    return Intl.message(
+      'Letter Destination',
+      name: 'letterDestination',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Select Letter Destination`
+  String get selectLetterDestination {
+    return Intl.message(
+      'Select Letter Destination',
+      name: 'selectLetterDestination',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Target Salary Type`
+  String get salaryTypeTarget {
+    return Intl.message(
+      'Target Salary Type',
+      name: 'salaryTypeTarget',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Select Salary Type`
+  String get selectSalaryType {
+    return Intl.message(
+      'Select Salary Type',
+      name: 'selectSalaryType',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Document Type`
+  String get salaryDocumentType {
+    return Intl.message(
+      'Document Type',
+      name: 'salaryDocumentType',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Select Document Type`
+  String get selectSalaryDocumentType {
+    return Intl.message(
+      'Select Document Type',
+      name: 'selectSalaryDocumentType',
+      desc: '',
+      args: [],
+    );
   }
 }
 
