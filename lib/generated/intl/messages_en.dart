@@ -128,6 +128,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "bagDetails": MessageLookupByLibrary.simpleMessage("Bag Details:"),
     "bankCountry": MessageLookupByLibrary.simpleMessage("Bank Country"),
     "bankName": MessageLookupByLibrary.simpleMessage("Bank Name"),
+    "basic": MessageLookupByLibrary.simpleMessage("Basic"),
     "beforeEndOfDay": MessageLookupByLibrary.simpleMessage(
       "Before the end of the workday: leaving without returning (early departure).",
     ),
@@ -345,6 +346,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "dhuhr": MessageLookupByLibrary.simpleMessage("Dhuhr"),
     "dinner": MessageLookupByLibrary.simpleMessage("Dinner"),
     "direction": MessageLookupByLibrary.simpleMessage("To Get Qibla Direction"),
+    "disclaimerAttachment": MessageLookupByLibrary.simpleMessage(
+      "Disclaimer Attachment",
+    ),
     "discont": MessageLookupByLibrary.simpleMessage("discont"),
     "diseases": MessageLookupByLibrary.simpleMessage("Diseases"),
     "diseasesPr": MessageLookupByLibrary.simpleMessage("Diseases Problems"),
@@ -502,6 +506,17 @@ class MessageLookup extends MessageLookupByLibrary {
     "fingerprintRecord": MessageLookupByLibrary.simpleMessage(
       "Fingerprint Record",
     ),
+    "firstInstallmentDate": MessageLookupByLibrary.simpleMessage(
+      "First Installment Date",
+    ),
+    "gregorianDateHeader": MessageLookupByLibrary.simpleMessage("Date (G)"),
+    "hijriDateHeader": MessageLookupByLibrary.simpleMessage("Date (H)"),
+    "installmentAmount": MessageLookupByLibrary.simpleMessage("Installment Amount"),
+    "loanInstallments": MessageLookupByLibrary.simpleMessage("Installments"),
+    "needsGuarantor": MessageLookupByLibrary.simpleMessage("Needs Guarantor"),
+    "notPaid": MessageLookupByLibrary.simpleMessage("Not Paid"),
+    "odooRequestNumber": MessageLookupByLibrary.simpleMessage("Odoo Request Number"),
+    "paid": MessageLookupByLibrary.simpleMessage("Paid"),
     "firstName": MessageLookupByLibrary.simpleMessage("First Name "),
     "flashTodaySale": MessageLookupByLibrary.simpleMessage("Today Sale"),
     "followOeder": MessageLookupByLibrary.simpleMessage("Follow Order"),
@@ -592,6 +607,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "humanResources": MessageLookupByLibrary.simpleMessage("Human Resources"),
     "huv": MessageLookupByLibrary.simpleMessage("Hajj & Umrah Video Guide"),
     "iAgreeTo": MessageLookupByLibrary.simpleMessage("I agree to "),
+    "ibanAttachment": MessageLookupByLibrary.simpleMessage("IBAN Attachment"),
     "ibanNumber": MessageLookupByLibrary.simpleMessage("IBAN Number"),
     "idRenewalDocument": MessageLookupByLibrary.simpleMessage(
       "ID Document Add / Renewal Request",
@@ -638,6 +654,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "issueNumber": MessageLookupByLibrary.simpleMessage("Issue Number"),
     "issuingCountry": MessageLookupByLibrary.simpleMessage("Issuing Country"),
     "jeddah": MessageLookupByLibrary.simpleMessage("Jeddah"),
+    "jobNumber": MessageLookupByLibrary.simpleMessage("Job Number"),
+    "jobTitle": MessageLookupByLibrary.simpleMessage("Job Title"),
     "juz": MessageLookupByLibrary.simpleMessage("Juz"),
     "juzIndex": MessageLookupByLibrary.simpleMessage("Juz Index"),
     "kaaba": MessageLookupByLibrary.simpleMessage("Kaaba Tawaf"),
@@ -668,6 +686,15 @@ class MessageLookup extends MessageLookupByLibrary {
     "limit": MessageLookupByLibrary.simpleMessage("Lowest Limit"),
     "loRe": MessageLookupByLibrary.simpleMessage("   Location Residence"),
     "loading": MessageLookupByLibrary.simpleMessage("Loading..."),
+    "loanAmount": MessageLookupByLibrary.simpleMessage("Loan Amount"),
+    "loanPaymentPeriod": MessageLookupByLibrary.simpleMessage(
+      "Repayment Period (Months)",
+    ),
+    "loanRequest": MessageLookupByLibrary.simpleMessage("Loan Request"),
+    "loanRequestData": MessageLookupByLibrary.simpleMessage(
+      "Loan Request Data",
+    ),
+    "loanType": MessageLookupByLibrary.simpleMessage("Loan Type"),
     "loc": MessageLookupByLibrary.simpleMessage(
       "Location service Denied Forever !",
     ),
@@ -821,6 +848,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "notes": MessageLookupByLibrary.simpleMessage(" Additional Notes"),
     "notesHint": MessageLookupByLibrary.simpleMessage("Enter notes (optional)"),
+    "notesLabel": MessageLookupByLibrary.simpleMessage("Notes"),
     "notification": MessageLookupByLibrary.simpleMessage("Notifications"),
     "notifications": MessageLookupByLibrary.simpleMessage("Notifications"),
     "offers": MessageLookupByLibrary.simpleMessage("Offers"),
@@ -1103,14 +1131,20 @@ class MessageLookup extends MessageLookupByLibrary {
     "saf": MessageLookupByLibrary.simpleMessage("   Safwa Hotel"),
     "safwa": MessageLookupByLibrary.simpleMessage("Safwa Hotel"),
     "salaries": MessageLookupByLibrary.simpleMessage("Salaries and Bonuses"),
-    "salaryDocumentType": MessageLookupByLibrary.simpleMessage("Document Type"),
+    "salaryDefinition": MessageLookupByLibrary.simpleMessage(
+      "Salary Certificate",
+    ),
+    "salaryDefinitionRequest": MessageLookupByLibrary.simpleMessage(
+      "Salary Certificate Request",
+    ),
+    "salaryDocumentType": MessageLookupByLibrary.simpleMessage(
+      "Required Document",
+    ),
     "salaryTransfer": MessageLookupByLibrary.simpleMessage("Salary Transfer"),
     "salaryTransferRequest": MessageLookupByLibrary.simpleMessage(
       "Salary Request",
     ),
-    "salaryTypeTarget": MessageLookupByLibrary.simpleMessage(
-      "Target Salary Type",
-    ),
+    "salaryTypeTarget": MessageLookupByLibrary.simpleMessage("Salary Type"),
     "saleTime": MessageLookupByLibrary.simpleMessage("The Sale Time ends in"),
     "saudi": MessageLookupByLibrary.simpleMessage("Saudi"),
     "saudiArabia": MessageLookupByLibrary.simpleMessage("saudiArabia"),
@@ -1219,7 +1253,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Select Request Type",
     ),
     "selectSalaryDocumentType": MessageLookupByLibrary.simpleMessage(
-      "Select Document Type",
+      "Select Required Document",
     ),
     "selectSalaryType": MessageLookupByLibrary.simpleMessage(
       "Select Salary Type",
@@ -1376,6 +1410,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "totalOvertimeHours": MessageLookupByLibrary.simpleMessage(
       "Total Overtime Hours",
     ),
+    "totalSalary": MessageLookupByLibrary.simpleMessage("Total"),
     "totalWorkHours": MessageLookupByLibrary.simpleMessage("Total Work Hours"),
     "tourDetails": MessageLookupByLibrary.simpleMessage("Tour Details"),
     "tourForm": MessageLookupByLibrary.simpleMessage("Tour Form data"),

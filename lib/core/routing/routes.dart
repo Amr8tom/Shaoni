@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:shaoni/core/routing/route_names.dart';
 import 'package:shaoni/features/study&training/presentation/study/create_study_request_form.dart';
+import 'package:shaoni/features/salaries/presentation/loan/create_loan_form.dart';
 import 'package:shaoni/features/salaries/presentation/salary_requests/create_salary_request_form.dart';
 import 'package:shaoni/features/human_resources/presentation/start_work/create_start_work_form.dart';
 import 'package:shaoni/features/human_resources/presentation/experience_certificate/create_experience_certificate_form.dart';
@@ -180,6 +181,16 @@ class RouteGenerator {
         final int? requestId = args?['requestId'] as int?;
         return PageTransition(
           child: CreateStudyRequestForm(requestId: requestId),
+          type: PageTransitionType.rightToLeft,
+          settings: settings,
+        );
+
+      /// create loan request screen
+      case DRoutesName.createLoanRoute:
+        final args = settings.arguments as Map<String, dynamic>?;
+        final int? requestId = args?['requestId'] as int?;
+        return PageTransition(
+          child: CreateLoanForm(requestId: requestId),
           type: PageTransitionType.rightToLeft,
           settings: settings,
         );

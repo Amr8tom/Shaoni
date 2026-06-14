@@ -48,6 +48,8 @@ class NavigationCubit extends Cubit<NavigationState> {
                   'name': office.name,
                 })
             .toList()));
+        await _sessionStorage.saveJobNumber(user.jobNumber ?? '');
+        await _sessionStorage.saveJobTitle(user.jobTitle ?? '');
         emit(state.copyWith(status: NavigationStatus.success, user: user));
       },
     );

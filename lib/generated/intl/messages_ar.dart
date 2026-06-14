@@ -122,6 +122,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "bagDetails": MessageLookupByLibrary.simpleMessage("تفاصيل الحقيبة:"),
     "bankCountry": MessageLookupByLibrary.simpleMessage("بلد البنك"),
     "bankName": MessageLookupByLibrary.simpleMessage("البنك"),
+    "basic": MessageLookupByLibrary.simpleMessage("أساسي"),
     "beforeEndOfDay": MessageLookupByLibrary.simpleMessage(
       "قبل انتهاء الدوام: المغادرة وعدم العودة (الخروج المبكر).",
     ),
@@ -321,6 +322,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "direction": MessageLookupByLibrary.simpleMessage(
       "للحصول على اتجاه القبلة",
     ),
+    "disclaimerAttachment": MessageLookupByLibrary.simpleMessage(
+      "مرفق إخلاء المسؤولية",
+    ),
     "discont": MessageLookupByLibrary.simpleMessage("خصم"),
     "diseases": MessageLookupByLibrary.simpleMessage("الأمراض"),
     "diseasesPr": MessageLookupByLibrary.simpleMessage("مشاكل الأمراض"),
@@ -464,6 +468,17 @@ class MessageLookup extends MessageLookupByLibrary {
       "طلب إثبات بصمة",
     ),
     "fingerprintRecord": MessageLookupByLibrary.simpleMessage("سجل البصمة"),
+    "firstInstallmentDate": MessageLookupByLibrary.simpleMessage(
+      "تاريخ أول قسط",
+    ),
+    "gregorianDateHeader": MessageLookupByLibrary.simpleMessage("تاريخ (م)"),
+    "hijriDateHeader": MessageLookupByLibrary.simpleMessage("التاريخ (هـ)"),
+    "installmentAmount": MessageLookupByLibrary.simpleMessage("مبلغ القسط"),
+    "loanInstallments": MessageLookupByLibrary.simpleMessage("الأقساط"),
+    "needsGuarantor": MessageLookupByLibrary.simpleMessage("بحاجة إلى كفيل"),
+    "notPaid": MessageLookupByLibrary.simpleMessage("غير مدفوع"),
+    "odooRequestNumber": MessageLookupByLibrary.simpleMessage("رقم الطلب (Odoo)"),
+    "paid": MessageLookupByLibrary.simpleMessage("مدفوع"),
     "firstName": MessageLookupByLibrary.simpleMessage("الاسم الأول"),
     "flashTodaySale": MessageLookupByLibrary.simpleMessage("عِـــروٌض الــيوم"),
     "followOeder": MessageLookupByLibrary.simpleMessage("تتبع الطلب"),
@@ -556,6 +571,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "humanResources": MessageLookupByLibrary.simpleMessage("الموارد البشرية"),
     "huv": MessageLookupByLibrary.simpleMessage("دليل الحج والعمرة بالفيديو"),
     "iAgreeTo": MessageLookupByLibrary.simpleMessage("أوافق على"),
+    "ibanAttachment": MessageLookupByLibrary.simpleMessage("مرفق الآيبان"),
     "ibanNumber": MessageLookupByLibrary.simpleMessage("رقم الآيبان (IBAN)"),
     "idRenewalDocument": MessageLookupByLibrary.simpleMessage(
       "طلب تجديد / إضافة وثيقة ثبوتية",
@@ -598,6 +614,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "issueNumber": MessageLookupByLibrary.simpleMessage("رقم الإصدار"),
     "issuingCountry": MessageLookupByLibrary.simpleMessage("دولة الإصدار"),
     "jeddah": MessageLookupByLibrary.simpleMessage("جده"),
+    "jobNumber": MessageLookupByLibrary.simpleMessage("الرقم الوظيفي"),
+    "jobTitle": MessageLookupByLibrary.simpleMessage("المسمى الوظيفي"),
     "juz": MessageLookupByLibrary.simpleMessage("جزء"),
     "juzIndex": MessageLookupByLibrary.simpleMessage("فهرس الأجزاء"),
     "kaaba": MessageLookupByLibrary.simpleMessage("طواف الكعبة"),
@@ -626,6 +644,15 @@ class MessageLookup extends MessageLookupByLibrary {
     "limit": MessageLookupByLibrary.simpleMessage("الحد الأدني"),
     "loRe": MessageLookupByLibrary.simpleMessage("   موقع السكم"),
     "loading": MessageLookupByLibrary.simpleMessage("جاري التحميل"),
+    "loanAmount": MessageLookupByLibrary.simpleMessage("مبلغ السلفة"),
+    "loanPaymentPeriod": MessageLookupByLibrary.simpleMessage(
+      "مدة السداد (بالأشهر)",
+    ),
+    "loanRequest": MessageLookupByLibrary.simpleMessage("طلب سلفة"),
+    "loanRequestData": MessageLookupByLibrary.simpleMessage(
+      "بيانات طلب السلفة",
+    ),
+    "loanType": MessageLookupByLibrary.simpleMessage("نوع السلفة"),
     "loc": MessageLookupByLibrary.simpleMessage(
       "خدمة تحديد الموقع مرفوضة للأبد!",
     ),
@@ -781,6 +808,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "notesHint": MessageLookupByLibrary.simpleMessage(
       "أدخل الملاحظات (اختياري)",
     ),
+    "notesLabel": MessageLookupByLibrary.simpleMessage("ملاحظات"),
     "notification": MessageLookupByLibrary.simpleMessage("الإشعارات"),
     "notifications": MessageLookupByLibrary.simpleMessage("الاشعارات"),
     "offers": MessageLookupByLibrary.simpleMessage("العـروض"),
@@ -1046,12 +1074,16 @@ class MessageLookup extends MessageLookupByLibrary {
     "saf": MessageLookupByLibrary.simpleMessage("   فندق الصفوة"),
     "safwa": MessageLookupByLibrary.simpleMessage("فندق الصفوة"),
     "salaries": MessageLookupByLibrary.simpleMessage("الرواتب والمكافأت"),
-    "salaryDocumentType": MessageLookupByLibrary.simpleMessage("نوع المستند"),
+    "salaryDefinition": MessageLookupByLibrary.simpleMessage("تعريف راتب"),
+    "salaryDefinitionRequest": MessageLookupByLibrary.simpleMessage(
+      "طلب تعريف بالراتب",
+    ),
+    "salaryDocumentType": MessageLookupByLibrary.simpleMessage(
+      "المستند المطلوب",
+    ),
     "salaryTransfer": MessageLookupByLibrary.simpleMessage("تحويل الراتب"),
     "salaryTransferRequest": MessageLookupByLibrary.simpleMessage("طلب راتب"),
-    "salaryTypeTarget": MessageLookupByLibrary.simpleMessage(
-      "نوع الراتب المراد تنفيذ العملية عليه",
-    ),
+    "salaryTypeTarget": MessageLookupByLibrary.simpleMessage("نوع الراتب"),
     "saleTime": MessageLookupByLibrary.simpleMessage("هذا العرض ينتهي خلال "),
     "saudi": MessageLookupByLibrary.simpleMessage("سعودي"),
     "saudiArabia": MessageLookupByLibrary.simpleMessage("السعودية"),
@@ -1154,7 +1186,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "selectRegion": MessageLookupByLibrary.simpleMessage(" المنطقــة "),
     "selectRequestType": MessageLookupByLibrary.simpleMessage("اختر نوع الطلب"),
     "selectSalaryDocumentType": MessageLookupByLibrary.simpleMessage(
-      "اختر نوع المستند",
+      "اختر المستند المطلوب",
     ),
     "selectSalaryType": MessageLookupByLibrary.simpleMessage("اختر نوع الراتب"),
     "selectStartWorkType": MessageLookupByLibrary.simpleMessage(
@@ -1298,6 +1330,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "totalOvertimeHours": MessageLookupByLibrary.simpleMessage(
       "إجمالي ساعات الوقت الإضافي",
     ),
+    "totalSalary": MessageLookupByLibrary.simpleMessage("إجمالي"),
     "totalWorkHours": MessageLookupByLibrary.simpleMessage(
       "إجمالي ساعات العمل",
     ),

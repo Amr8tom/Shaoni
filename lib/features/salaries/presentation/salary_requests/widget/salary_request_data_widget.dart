@@ -46,12 +46,6 @@ class SalaryRequestDataWidget extends StatelessWidget {
             ),
             const Sizer(height: 16),
             if (controller.selectedSalaryRequestType != null) ...[
-              if (controller.selectedSalaryRequestType ==
-                  'salary_definition_request')
-                const SalaryDefinitionDetailsWidget()
-              else
-                const SalaryBankDetailsWidget(),
-              const Sizer(height: 16),
               DDropdownField(
                 label: S.current.salaryDocumentType,
                 hint: S.current.selectSalaryDocumentType,
@@ -65,10 +59,48 @@ class SalaryRequestDataWidget extends StatelessWidget {
                 value: controller.requiredDocumentController.text.isEmpty
                     ? null
                     : controller.requiredDocumentController.text,
+                validator: (val) {
+                  if (val == null || val.isEmpty) {
+                    return S.current.selectSalaryDocumentType;
+                  }
+                  return null;
+                },
                 onChanged: (val) {
                   controller.requiredDocumentController.text = val ?? '';
                 },
               ),
+              const Sizer(height: 16),
+              DDropdownField(
+                label: S.current.salaryTypeTarget,
+                hint: S.current.selectSalaryType,
+                icon: Icons.monetization_on,
+                items: lookups.salarySubTypes
+                    .map((e) => DropdownMenuItem<String>(
+                          value: e.code,
+                          child: Text(e.nameAr),
+                        ))
+                    .toList(),
+                value: controller.salaryTypeController.text.isEmpty
+                    ? null
+                    : controller.salaryTypeController.text,
+                validator: (val) {
+                  if (val == null || val.isEmpty) {
+                    return S.current.selectSalaryType;
+                  }
+                  return null;
+                },
+                onChanged: (val) {
+                  if (val != null) {
+                    controller.salaryTypeController.text = val;
+                  }
+                },
+              ),
+              const Sizer(height: 16),
+              if (controller.selectedSalaryRequestType ==
+                  'salary_definition_request')
+                const SalaryDefinitionDetailsWidget()
+              else
+                const SalaryBankDetailsWidget(),
               const Sizer(height: 16),
               DEditableField(
                 label: S.current.notes,

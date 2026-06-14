@@ -17,7 +17,7 @@ class SalaryTransferDetailsWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final controller = context.watch<MyRequestsCubit>();
     final requestData = controller.state.requestDetails;
-    
+
     final salaryRequest = requestData?.extraData?.salaryRequest;
 
     return Skeletonizer(
@@ -78,8 +78,9 @@ class SalaryTransferDetailsWidget extends StatelessWidget {
                   children: [
                     Expanded(
                       child: OrderTextCard(
-                        title: S.current.selectSalaryType, // Or a specific translation
-                        result: salaryRequest.salaryRequestType ?? '',
+                        title: S.current.requestType,
+                        result: _getSalaryRequestTypeLabel(
+                            salaryRequest.salaryRequestType),
                       ),
                     ),
                     const Sizer(width: 10),
@@ -96,24 +97,68 @@ class SalaryTransferDetailsWidget extends StatelessWidget {
                   children: [
                     Expanded(
                       child: OrderTextCard(
-                        title: S.current.ibanNumber,
-                        result: salaryRequest.iban ?? '',
+                        title: S.current.salaryDocumentType,
+                        result: _getRequiredDocumentLabel(
+                            salaryRequest.requiredDocument),
                       ),
                     ),
                     const Sizer(width: 10),
                     Expanded(
                       child: OrderTextCard(
-                        title: S.current.bankName,
-                        result: salaryRequest.bankId?.toString() ?? '', // Need to map ID to name ideally, but using ID for now
+                        title: S.current.ibanNumber,
+                        result: salaryRequest.iban ?? '',
                       ),
                     ),
                   ],
                 ),
                 const Sizer(height: 12),
-                if ((salaryRequest.ibanAttachment?.isNotEmpty ?? false))
+                Row(
+                  children: [
+                    Expanded(
+                      child: OrderTextCard(
+                        title: S.current.salaryTypeTarget,
+                        result: _getSalaryTypeLabel(salaryRequest.salaryType),
+                      ),
+                    ),
+                    const Sizer(width: 10),
+                    Expanded(
+                      child: OrderTextCard(
+                        title: S.current.notesLabel,
+                        result: salaryRequest.note ?? '',
+                      ),
+                    ),
+                  ],
+                ),
+                if (salaryRequest.bankId != null) ...[
+                  const Sizer(height: 12),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: OrderTextCard(
+                          title: S.current.bankName,
+                          result: salaryRequest.bankId!.toString(),
+                        ),
+                      ),
+                      const Sizer(width: 10),
+                      const Expanded(child: SizedBox.shrink()),
+                    ],
+                  ),
+                ],
+                if ((salaryRequest.ibanAttachment?.isNotEmpty ?? false)) ...[
+                  const Sizer(height: 12),
                   LeavesAttachmentWidget(
                     leavesAttachment: salaryRequest.ibanAttachment!,
+                    title: S.current.ibanAttachment,
                   ),
+                ],
+                if ((salaryRequest.disclaimerAttachment?.isNotEmpty ??
+                    false)) ...[
+                  const Sizer(height: 12),
+                  LeavesAttachmentWidget(
+                    leavesAttachment: salaryRequest.disclaimerAttachment!,
+                    title: S.current.disclaimerAttachment,
+                  ),
+                ],
                 const Sizer(height: 12),
               ],
             ],
@@ -121,6 +166,36 @@ class SalaryTransferDetailsWidget extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  String _getSalaryRequestTypeLabel(String? code) {
+    if (code == null) return '';
+    if (code == 'salary_transfer_request') {
+      return S.current.salaryTransfer;
+    }
+    if (code == 'salary_definition_request') {
+      return S.current.salaryDefinitionRequest;
+    }
+    return code;
+  }
+
+  String _getSalaryTypeLabel(String? code) {
+    if (code == null) return '';
+    if (code == 'basic') {
+      return S.current.basic;
+    }
+    if (code == 'total' || code == 'gross') {
+      return S.current.totalSalary;
+    }
+    return code;
+  }
+
+  String _getRequiredDocumentLabel(String? code) {
+    if (code == null) return '';
+    if (code == 'salary_definition' || code == 'salary_certificate') {
+      return S.current.salaryDefinition;
+    }
+    return code;
   }
 
   String _formatDate(String? iso) {

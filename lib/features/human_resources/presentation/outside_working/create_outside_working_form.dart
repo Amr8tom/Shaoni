@@ -154,7 +154,7 @@ class CreateOutsideWorkingForm extends StatelessWidget {
                                 const OutsideWorkingEmployeesWidget(),
                                 const Sizer(height: 35),
 
-                                /// ── المهام (لكل موظف) ───────────────────────
+                                /// ── tasks ───────────────────────
                                 if (cubit.selectedEmployees.isNotEmpty) ...[
                                   Text(
                                     '${S.current.tasks} (لكل موظف)',

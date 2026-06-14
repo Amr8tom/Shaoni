@@ -1774,6 +1774,16 @@ class S {
     );
   }
 
+  /// `Job Number`
+  String get jobNumber {
+    return Intl.message('Job Number', name: 'jobNumber', desc: '', args: []);
+  }
+
+  /// `Job Title`
+  String get jobTitle {
+    return Intl.message('Job Title', name: 'jobTitle', desc: '', args: []);
+  }
+
   /// `Request Details`
   String get requestDetails {
     return Intl.message(
@@ -7144,10 +7154,10 @@ class S {
     );
   }
 
-  /// `Target Salary Type`
+  /// `Salary Type`
   String get salaryTypeTarget {
     return Intl.message(
-      'Target Salary Type',
+      'Salary Type',
       name: 'salaryTypeTarget',
       desc: '',
       args: [],
@@ -7164,21 +7174,206 @@ class S {
     );
   }
 
-  /// `Document Type`
+  /// `Required Document`
   String get salaryDocumentType {
     return Intl.message(
-      'Document Type',
+      'Required Document',
       name: 'salaryDocumentType',
       desc: '',
       args: [],
     );
   }
 
-  /// `Select Document Type`
+  /// `Select Required Document`
   String get selectSalaryDocumentType {
     return Intl.message(
-      'Select Document Type',
+      'Select Required Document',
       name: 'selectSalaryDocumentType',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `IBAN Attachment`
+  String get ibanAttachment {
+    return Intl.message(
+      'IBAN Attachment',
+      name: 'ibanAttachment',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Disclaimer Attachment`
+  String get disclaimerAttachment {
+    return Intl.message(
+      'Disclaimer Attachment',
+      name: 'disclaimerAttachment',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Salary Certificate Request`
+  String get salaryDefinitionRequest {
+    return Intl.message(
+      'Salary Certificate Request',
+      name: 'salaryDefinitionRequest',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Salary Certificate`
+  String get salaryDefinition {
+    return Intl.message(
+      'Salary Certificate',
+      name: 'salaryDefinition',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Basic`
+  String get basic {
+    return Intl.message('Basic', name: 'basic', desc: '', args: []);
+  }
+
+  /// `Total`
+  String get totalSalary {
+    return Intl.message('Total', name: 'totalSalary', desc: '', args: []);
+  }
+
+  /// `Notes`
+  String get notesLabel {
+    return Intl.message('Notes', name: 'notesLabel', desc: '', args: []);
+  }
+
+  /// `Loan Request`
+  String get loanRequest {
+    return Intl.message(
+      'Loan Request',
+      name: 'loanRequest',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Loan Request Data`
+  String get loanRequestData {
+    return Intl.message(
+      'Loan Request Data',
+      name: 'loanRequestData',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Loan Type`
+  String get loanType {
+    return Intl.message('Loan Type', name: 'loanType', desc: '', args: []);
+  }
+
+  /// `Loan Amount`
+  String get loanAmount {
+    return Intl.message('Loan Amount', name: 'loanAmount', desc: '', args: []);
+  }
+
+  /// `Repayment Period (Months)`
+  String get loanPaymentPeriod {
+    return Intl.message(
+      'Repayment Period (Months)',
+      name: 'loanPaymentPeriod',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `First Installment Date`
+  String get firstInstallmentDate {
+    return Intl.message(
+      'First Installment Date',
+      name: 'firstInstallmentDate',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Odoo Request Number`
+  String get odooRequestNumber {
+    return Intl.message(
+      'Odoo Request Number',
+      name: 'odooRequestNumber',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Installments`
+  String get loanInstallments {
+    return Intl.message(
+      'Installments',
+      name: 'loanInstallments',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Installment Amount`
+  String get installmentAmount {
+    return Intl.message(
+      'Installment Amount',
+      name: 'installmentAmount',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Date (H)`
+  String get hijriDateHeader {
+    return Intl.message(
+      'Date (H)',
+      name: 'hijriDateHeader',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Date (G)`
+  String get gregorianDateHeader {
+    return Intl.message(
+      'Date (G)',
+      name: 'gregorianDateHeader',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Needs Guarantor`
+  String get needsGuarantor {
+    return Intl.message(
+      'Needs Guarantor',
+      name: 'needsGuarantor',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Paid`
+  String get paid {
+    return Intl.message(
+      'Paid',
+      name: 'paid',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Not Paid`
+  String get notPaid {
+    return Intl.message(
+      'Not Paid',
+      name: 'notPaid',
       desc: '',
       args: [],
     );

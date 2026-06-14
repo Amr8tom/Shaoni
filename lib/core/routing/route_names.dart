@@ -39,6 +39,7 @@ class DRoutesName {
   static const String createProductOrderRoute = 'create-product-order-route';
   static const String createSalaryTransferRoute =
       'create-salary-transfer-route';
+  static const String createLoanRoute = 'create-loan-route';
   static const String createOutsideWorkingRoute =
       'create-outside-working-route';
 

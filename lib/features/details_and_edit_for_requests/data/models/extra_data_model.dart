@@ -10,6 +10,7 @@ import 'package:shaoni/features/details_and_edit_for_requests/domain/entities/ca
 import 'package:shaoni/features/details_and_edit_for_requests/domain/entities/complaint_request/complaint_request_details.dart';
 import 'package:shaoni/features/details_and_edit_for_requests/domain/entities/extra_data.dart';
 import 'package:shaoni/features/human_resources/domain/entity/exit_permisstion.dart';
+import 'package:shaoni/features/details_and_edit_for_requests/data/models/loan_request_details_model.dart';
 import 'package:shaoni/features/details_and_edit_for_requests/data/models/salary_request_model.dart';
 
 class ExtraDataModel extends ExtraData {
@@ -28,6 +29,7 @@ class ExtraDataModel extends ExtraData {
     super.exitPermission,
     super.complaintRequest,
     super.salaryRequest,
+    super.loanRequest,
   });
 
   /// fromJson
@@ -45,6 +47,7 @@ class ExtraDataModel extends ExtraData {
     final exitPermissionJson = _jsonMap(json['exitPermission']);
     final complaintRequestJson = _jsonMap(json['complaintRequest']);
     final salaryRequestJson = _jsonMap(json['salaryRequest']);
+    final loanRequestJson = _jsonMap(json['loanRequest']);
 
     return ExtraDataModel(
       attendance: attendanceJson != null
@@ -81,6 +84,9 @@ class ExtraDataModel extends ExtraData {
           : null,
       salaryRequest: salaryRequestJson != null
           ? SalaryRequestModel.fromJson(salaryRequestJson)
+          : null,
+      loanRequest: loanRequestJson != null
+          ? LoanRequestDetailsModel.fromJson(loanRequestJson)
           : null,
     );
   }
@@ -234,6 +240,9 @@ class ExtraDataModel extends ExtraData {
       'complaintRequest': extraData.complaintRequest?.toJson(),
       'salaryRequest': extraData.salaryRequest != null
           ? SalaryRequestModel.toJsonFromEntity(extraData.salaryRequest!)
+          : null,
+      'loanRequest': extraData.loanRequest != null
+          ? LoanRequestDetailsModel.toJsonFromEntity(extraData.loanRequest!)
           : null,
     };
   }

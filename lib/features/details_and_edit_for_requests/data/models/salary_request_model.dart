@@ -11,6 +11,10 @@ class SalaryRequestModel extends SalaryRequest {
     super.accountNumber,
     super.iban,
     super.ibanAttachment,
+    super.disclaimerAttachment,
+    super.requiredDocument,
+    super.salaryType,
+    super.note,
   });
 
   factory SalaryRequestModel.fromJson(Map<String, dynamic> json) {
@@ -24,6 +28,13 @@ class SalaryRequestModel extends SalaryRequest {
       accountNumber: json['accountNumber']?.toString(),
       iban: json['iban']?.toString(),
       ibanAttachment: json['ibanAttachment']?.toString(),
+      disclaimerAttachment:
+          (json['disclaimerAttachment'] ?? json['disclaimer_attachment'])
+              ?.toString(),
+      requiredDocument:
+          (json['requiredDocument'] ?? json['required_document'])?.toString(),
+      salaryType: (json['salaryType'] ?? json['salary_type'])?.toString(),
+      note: (json['note'] ?? json['notes'])?.toString(),
     );
   }
 
@@ -38,6 +49,10 @@ class SalaryRequestModel extends SalaryRequest {
       'accountNumber': accountNumber,
       'iban': iban,
       'ibanAttachment': ibanAttachment,
+      'disclaimerAttachment': disclaimerAttachment,
+      'requiredDocument': requiredDocument,
+      'salaryType': salaryType,
+      'note': note,
     };
   }
 
@@ -52,6 +67,10 @@ class SalaryRequestModel extends SalaryRequest {
       'accountNumber': entity.accountNumber,
       'iban': entity.iban,
       'ibanAttachment': entity.ibanAttachment,
+      'disclaimerAttachment': entity.disclaimerAttachment,
+      'requiredDocument': entity.requiredDocument,
+      'salaryType': entity.salaryType,
+      'note': entity.note,
     };
   }
 }

@@ -121,6 +121,12 @@ class URL {
       '$baseUrl/Lookup/GetComplaintReasons';
   static const String createComplaintRequest = '$baseUrl/ComplaintRequest';
 
+  /// ============================ loan requests ============================
+  static const String getLoanTypes = '$baseUrl/Lookup/GetLoanTypes';
+  static const String createLoanRequest = '$baseUrl/LoanRequest';
+  static const String editLoanRequest = '$baseUrl/LoanRequest/edit/';
+  static const String updateLoanRequest = '$baseUrl/LoanRequest/update/';
+
   /// ============================ salary requests ============================
   static const String createSalaryRequest = '$baseUrl/Salary/create';
   static const String updateSalaryRequest = '$baseUrl/Salary/update/';

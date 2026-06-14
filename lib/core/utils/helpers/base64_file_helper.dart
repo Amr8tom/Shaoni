@@ -102,7 +102,37 @@ class Base64FileHelper {
       return null;
     }
 
-    final mime = mimeFromUri ?? _sniffMime(bytes);
+    // Check if the decoded bytes themselves form a valid base64 string.
+    // If so, try decoding it one more time. This handles cases where the
+    // server double-encoded the attachment or wrapped base64 inside base64.
+    try {
+      final decodedString = utf8.decode(bytes);
+      final cleanedSecond = decodedString.replaceAll(RegExp(r'\s'), '');
+      if (cleanedSecond.isNotEmpty) {
+        final secondBytes = base64Decode(cleanedSecond);
+        if (secondBytes.isNotEmpty) {
+          bytes = secondBytes;
+          if (mimeFromUri == 'text/plain' ||
+              mimeFromUri == 'application/octet-stream') {
+            mimeFromUri = null;
+          }
+        }
+      }
+    } catch (_) {
+      // Not double-encoded, keep original bytes
+    }
+
+    final sniffed = _sniffMime(bytes);
+    String mime = mimeFromUri ?? sniffed;
+
+    // Override generic mime types if the sniffed mime is more specific
+    if (mimeFromUri == 'text/plain' ||
+        mimeFromUri == 'application/octet-stream') {
+      if (sniffed != 'application/octet-stream' && sniffed != 'text/plain') {
+        mime = sniffed;
+      }
+    }
+
     return _infoFor(mime, bytes.length);
   }
 
@@ -135,7 +165,21 @@ class Base64FileHelper {
       final cleaned = base64String.startsWith('data:')
           ? base64String.substring(base64String.indexOf(',') + 1)
           : base64String;
-      final bytes = base64Decode(cleaned.replaceAll(RegExp(r'\s'), ''));
+      var bytes = base64Decode(cleaned.replaceAll(RegExp(r'\s'), ''));
+
+      // Check for double base64 encoding to write the actual binary file
+      try {
+        final decodedString = utf8.decode(bytes);
+        final cleanedSecond = decodedString.replaceAll(RegExp(r'\s'), '');
+        if (cleanedSecond.isNotEmpty) {
+          final secondBytes = base64Decode(cleanedSecond);
+          if (secondBytes.isNotEmpty) {
+            bytes = secondBytes;
+          }
+        }
+      } catch (_) {
+        // Not double encoded
+      }
 
       /// Save to the app documents directory so the file survives long
       /// enough for the user to act on it (temp dir gets cleared more

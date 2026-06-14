@@ -13,7 +13,6 @@ import '../../../../generated/l10n.dart';
 import '../../../human_resources/presentation/widgets/general_request_templates/applicant_data_widget.dart';
 import '../../../human_resources/presentation/widgets/general_request_templates/create_delete_buttons.dart';
 import '../../../human_resources/presentation/widgets/general_request_templates/date_data_widget.dart';
-import '../../../human_resources/presentation/widgets/general_request_templates/file_upload_widget.dart';
 import '../controller/salary_requests/salary_requests_cubit.dart';
 import '../controller/salary_requests/salary_requests_state.dart';
 import 'widget/salary_request_data_widget.dart';
@@ -122,15 +121,6 @@ class CreateSalaryRequestForm extends StatelessWidget {
                               const Sizer(height: 16),
 
                               const SalaryRequestDataWidget(),
-
-                              /// file upload
-                              const Sizer(height: 35),
-                              FileUploadWidget(
-                                onPickedFile: (fileName, base64String) {
-                                  controller.attachmentFileController.text =
-                                      base64String ?? '';
-                                },
-                              ),
 
                               const Sizer(height: 120),
                             ],

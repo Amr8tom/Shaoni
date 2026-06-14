@@ -40,4 +40,6 @@ enum StorageKeys {
   departmentAddress,
   offices,
   officesList,
+  jobNumber,
+  jobTitle,
 }

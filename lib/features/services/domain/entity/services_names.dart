@@ -6,7 +6,6 @@ class ServicesNames extends Equatable {
     ServiceCode.outsideWorking,
     ServiceCode.attendanceUpdate,
     ServiceCode.exitPermission,
-    ServiceCode.loan,
     ServiceCode.visaRequest,
     ServiceCode.carPermission,
     ServiceCode.scrapRequest,
@@ -29,6 +28,8 @@ class ServicesNames extends Equatable {
   ];
   static List<ServiceCode> salariesServiceKeys = [
     ServiceCode.salaryTransfer,
+    ServiceCode.loan,
+
   ];
 
   @override

@@ -106,6 +106,41 @@ class _ApplicantDataWidgetState extends State<ApplicantDataWidget> {
           validator: (value) =>
               (value?.isEmpty ?? true) ? S.current.pleaseEndterValue : null,
         ),
+        if ((_sessionStorage.jobNumber?.isNotEmpty ?? false) ||
+            (_sessionStorage.jobTitle?.isNotEmpty ?? false)) ...[
+          const Sizer(height: 18),
+          Row(
+            children: [
+              if (_sessionStorage.jobNumber?.isNotEmpty ?? false)
+                Expanded(
+                  child: AuthTextField(
+                    label: S.current.jobNumber,
+                    hint: S.current.jobNumber,
+                    readOnly: true,
+                    controller:
+                        TextEditingController(text: _sessionStorage.jobNumber),
+                    borderRadius: AppSizes.borderRadiusMd,
+                    prefixIcon: const Icon(Icons.badge_outlined),
+                  ),
+                ),
+              if ((_sessionStorage.jobNumber?.isNotEmpty ?? false) &&
+                  (_sessionStorage.jobTitle?.isNotEmpty ?? false))
+                const Sizer(width: 12),
+              if (_sessionStorage.jobTitle?.isNotEmpty ?? false)
+                Expanded(
+                  child: AuthTextField(
+                    label: S.current.jobTitle,
+                    hint: S.current.jobTitle,
+                    readOnly: true,
+                    controller:
+                        TextEditingController(text: _sessionStorage.jobTitle),
+                    borderRadius: AppSizes.borderRadiusMd,
+                    prefixIcon: const Icon(Icons.work_outline),
+                  ),
+                ),
+            ],
+          ),
+        ],
       ],
     );
   }

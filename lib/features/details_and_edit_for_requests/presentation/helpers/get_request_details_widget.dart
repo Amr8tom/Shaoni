@@ -12,6 +12,7 @@ import '../widgets/id_document_details_widget.dart';
 import '../widgets/medical_insurance_details_widget.dart';
 import '../widgets/training_request_details_widget.dart';
 import '../widgets/product_order_details_widget.dart';
+import '../widgets/loan_details_widget.dart';
 import '../widgets/outside_working_details_widget.dart';
 import '../widgets/salary_transfer_details_widget.dart';
 
@@ -43,6 +44,8 @@ Widget getRequestDetailsWidget({required String serviceCode}) {
       return const OutsideWorkingDetailsWidget();
     case ServiceCode.salaryTransfer:
       return const SalaryTransferDetailsWidget();
+    case ServiceCode.loan:
+      return const LoanDetailsWidget();
     default:
       return const Sizer();
   }

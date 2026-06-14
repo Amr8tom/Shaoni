@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import '../../../../common/widgets/sized_boxes/sizer.dart';
 import '../../../../core/constants/colors.dart';
 import '../../../../core/constants/app_sizes.dart';
+import '../../../../core/utils/helpers/arabic_to_english_number_formatter.dart';
 
 class AuthTextField extends StatefulWidget {
   final String? label;
@@ -59,19 +60,12 @@ class _AuthTextFieldState extends State<AuthTextField> {
             Text(
               widget.label!,
               style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                    color: ColorRes.primary,
+                    color: ColorRes.black,
                     fontSize: AppSizes.fontSizeSm / 1.1,
                   ),
             ),
             const Sizer(height: 8),
           ],
-          Text(
-            widget.label ?? '',
-            style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                  color: ColorRes.primary,
-                  fontSize: AppSizes.fontSizeSm / 1.1,
-                ),
-          ),
 
           /// Text Field
           TextFormField(
@@ -180,7 +174,10 @@ class _AuthTextFieldState extends State<AuthTextField> {
 
   List<TextInputFormatter>? _getFormatters() {
     if (widget.isPhone) {
-      return [FilteringTextInputFormatter.digitsOnly];
+      return [
+        ArabicToEnglishNumberFormatter(),
+        FilteringTextInputFormatter.digitsOnly,
+      ];
     }
     if (widget.isDate) {
       return [DateFormatter()];

@@ -41,32 +41,18 @@ class SalaryDefinitionDetailsWidget extends StatelessWidget {
               },
             ),
             const Sizer(height: 16),
-            DDropdownField(
-              label: S.current.salaryTypeTarget,
-              hint: S.current.selectSalaryType,
-              icon: Icons.monetization_on,
-              items: lookups.salarySubTypes
-                  .map((e) => DropdownMenuItem<String>(
-                        value: e.code,
-                        child: Text(e.nameAr),
-                      ))
-                  .toList(),
-              value: controller.salaryTypeController.text.isEmpty
-                  ? null
-                  : controller.salaryTypeController.text,
-              onChanged: (val) {
-                if (val != null) {
-                  controller.salaryTypeController.text = val;
-                }
-              },
-            ),
-            const Sizer(height: 16),
             DEditableField(
-              label: S.current.notes, // reason mapping to notes
-              hint: S.current.notes,
+              label: S.current.orderReason,
+              hint: S.current.orderReasonHint,
               icon: Icons.note,
               readOnly: false,
               controller: controller.reasonController,
+              validator: (val) {
+                if (val == null || val.trim().isEmpty) {
+                  return S.current.orderReasonHint;
+                }
+                return null;
+              },
             ),
           ],
         );

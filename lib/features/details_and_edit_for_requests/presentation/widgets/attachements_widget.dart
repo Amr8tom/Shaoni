@@ -17,8 +17,15 @@ import '../../../../generated/l10n.dart';
 ///     otherwise from the binary "magic bytes" of the decoded payload.
 class LeavesAttachmentWidget extends StatefulWidget {
   final String leavesAttachment;
+  final String? title;
+  final bool showHeader;
 
-  const LeavesAttachmentWidget({super.key, required this.leavesAttachment});
+  const LeavesAttachmentWidget({
+    super.key,
+    required this.leavesAttachment,
+    this.title,
+    this.showHeader = true,
+  });
 
   @override
   State<LeavesAttachmentWidget> createState() => _LeavesAttachmentWidgetState();
@@ -99,29 +106,31 @@ class _LeavesAttachmentWidgetState extends State<LeavesAttachmentWidget> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Divider(color: ColorRes.grey4),
-        const Sizer(height: 16),
+        if (widget.showHeader) ...[
+          Divider(color: ColorRes.grey4),
+          const Sizer(height: 16),
 
-        /// Section header — "Attachments"
-        Row(
-          children: [
-            Icon(
-              Icons.attach_file_rounded,
-              color: ColorRes.primary,
-              size: AppSizes.iconMd,
-            ),
-            const Sizer(width: 8),
-            Text(
-              S.current.attachments,
-              style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                    color: ColorRes.primary,
-                    fontSize: AppSizes.fontSizeSm,
-                    fontWeight: FontWeight.w800,
-                  ),
-            ),
-          ],
-        ),
-        const Sizer(height: 12),
+          /// Section header — "Attachments"
+          Row(
+            children: [
+              Icon(
+                Icons.attach_file_rounded,
+                color: ColorRes.primary,
+                size: AppSizes.iconMd,
+              ),
+              const Sizer(width: 8),
+              Text(
+                widget.title ?? S.current.attachments,
+                style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                      color: ColorRes.primary,
+                      fontSize: AppSizes.fontSizeSm,
+                      fontWeight: FontWeight.w800,
+                    ),
+              ),
+            ],
+          ),
+          const Sizer(height: 12),
+        ],
 
         /// File card
         _AttachmentFileCard(

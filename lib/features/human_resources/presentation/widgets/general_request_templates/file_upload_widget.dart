@@ -40,17 +40,7 @@ class _FileUploadWidgetState extends State<FileUploadWidget> {
           onTap: () async {
             try {
               final result = await FilePicker.platform.pickFiles(
-                type: FileType.custom,
-                allowedExtensions: [
-                  'pdf',
-                  'doc',
-                  'docx',
-                  'jpg',
-                  'jpeg',
-                  'png',
-                  'xlsx',
-                  'xls'
-                ],
+                type: FileType.any,
               );
 
               if (result != null && result.files.single.path != null) {

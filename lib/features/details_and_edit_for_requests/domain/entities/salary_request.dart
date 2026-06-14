@@ -10,6 +10,10 @@ class SalaryRequest extends Equatable {
   final String? accountNumber;
   final String? iban;
   final String? ibanAttachment;
+  final String? disclaimerAttachment;
+  final String? requiredDocument;
+  final String? salaryType;
+  final String? note;
 
   const SalaryRequest({
     this.id,
@@ -21,6 +25,10 @@ class SalaryRequest extends Equatable {
     this.accountNumber,
     this.iban,
     this.ibanAttachment,
+    this.disclaimerAttachment,
+    this.requiredDocument,
+    this.salaryType,
+    this.note,
   });
 
   @override
@@ -34,5 +42,9 @@ class SalaryRequest extends Equatable {
         accountNumber,
         iban,
         ibanAttachment,
+        disclaimerAttachment,
+        requiredDocument,
+        salaryType,
+        note,
       ];
 }

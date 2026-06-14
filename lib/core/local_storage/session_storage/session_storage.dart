@@ -8,6 +8,8 @@ abstract interface class SessionStorage {
   String? get departmentAddress;
   String? get offices;
   String? get officesList;
+  String? get jobNumber;
+  String? get jobTitle;
 
   Future<void> saveToken(String value);
   Future<void> saveUserId(String value);
@@ -18,6 +20,8 @@ abstract interface class SessionStorage {
   Future<void> saveDepartmentAddress(String value);
   Future<void> saveOffices(String value);
   Future<void> saveOfficesList(String value);
+  Future<void> saveJobNumber(String value);
+  Future<void> saveJobTitle(String value);
 
   Future<void> clearSession();
 }

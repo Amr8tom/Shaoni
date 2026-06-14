@@ -23,6 +23,8 @@ class UserModel extends UserEntity {
     required super.departmentId,
     required super.department,
     required super.gender,
+    super.jobNumber,
+    super.jobTitle,
   });
 
   /// fromJson
@@ -53,6 +55,15 @@ class UserModel extends UserEntity {
       department: json['data']['department'] != null
           ? DepartmentModel.fromJson(json['data']['department'])
           : null,
+      jobNumber: (json['data']['job_num'] ?? json['data']['jobNum'])?.toString(),
+      jobTitle: (json['data']['job_title'] ??
+              json['data']['jobTitle'] ??
+              json['data']['job_name'] ??
+              json['data']['jobName'] ??
+              json['data']['position'] ??
+              json['data']['positionName'] ??
+              json['data']['position_name'])
+          ?.toString(),
     );
   }
 

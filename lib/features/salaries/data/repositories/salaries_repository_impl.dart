@@ -1,6 +1,8 @@
 import 'package:dartz/dartz.dart';
 import '../../../../core/connection/check_network.dart';
 import '../../../../core/error/failure.dart';
+import '../../domain/entity/loan/create_loan_response.dart';
+import '../../domain/entity/loan/loan_type.dart';
 import '../../domain/entity/salary_requests/bank.dart';
 import '../../domain/entity/salary_requests/country.dart';
 import '../../domain/entity/salary_requests/create_salary_response.dart';
@@ -9,6 +11,9 @@ import '../../domain/entity/salary_requests/salary_document_type.dart';
 import '../../domain/entity/salary_requests/salary_sub_type.dart';
 import '../../domain/entity/salary_requests/salary_type.dart';
 import '../../domain/repository/salaries_repository.dart';
+import '../../domain/use_cases/loan/create_loan_use_case.dart';
+import '../../domain/use_cases/loan/edit_loan_use_case.dart';
+import '../../domain/use_cases/loan/update_loan_use_case.dart';
 import '../../domain/use_cases/salary_requests/create_salary_use_case.dart';
 import '../../domain/use_cases/salary_requests/edit_salary_use_case.dart';
 import '../../domain/use_cases/salary_requests/get_banks_use_case.dart';
@@ -247,6 +252,88 @@ class SalariesRepositoryImpl implements SalariesRepository {
       } catch (_) {
         return const Left(CacheFailure());
       }
+    }
+  }
+
+  // ── Loan ──
+  @override
+  Future<Either<Failure, List<LoanType>>> getLoanTypes() async {
+    if (await networkInfo.isConnected) {
+      try {
+        final remoteData = await remoteDataSource.getLoanTypes();
+        await localDataSource.cacheLoanTypes(remoteData);
+        return Right(remoteData);
+      } on ServerFailure catch (e) {
+        try {
+          final localData = await localDataSource.getCachedLoanTypes();
+          return Right(localData);
+        } catch (_) {
+          return Left(e);
+        }
+      } catch (e) {
+        return Left(ServerFailure(message: e.toString()));
+      }
+    } else {
+      try {
+        final localData = await localDataSource.getCachedLoanTypes();
+        return Right(localData);
+      } catch (_) {
+        return const Left(CacheFailure());
+      }
+    }
+  }
+
+  @override
+  Future<Either<Failure, CreateLoanResponse>> createLoanRequest({
+    required CreateLoanParams params,
+  }) async {
+    if (await networkInfo.isConnected) {
+      try {
+        final response = await remoteDataSource.createLoanRequest(params);
+        return Right(response);
+      } on ServerFailure catch (e) {
+        return Left(e);
+      } catch (e) {
+        return Left(ServerFailure(message: e.toString()));
+      }
+    } else {
+      return const Left(UnknownFailure());
+    }
+  }
+
+  @override
+  Future<Either<Failure, CreateLoanResponse>> editLoanRequest({
+    required EditLoanParams params,
+  }) async {
+    if (await networkInfo.isConnected) {
+      try {
+        final response = await remoteDataSource.editLoanRequest(params);
+        return Right(response);
+      } on ServerFailure catch (e) {
+        return Left(e);
+      } catch (e) {
+        return Left(ServerFailure(message: e.toString()));
+      }
+    } else {
+      return const Left(UnknownFailure());
+    }
+  }
+
+  @override
+  Future<Either<Failure, CreateLoanResponse>> updateLoanRequest({
+    required UpdateLoanParams params,
+  }) async {
+    if (await networkInfo.isConnected) {
+      try {
+        final response = await remoteDataSource.updateLoanRequest(params);
+        return Right(response);
+      } on ServerFailure catch (e) {
+        return Left(e);
+      } catch (e) {
+        return Left(ServerFailure(message: e.toString()));
+      }
+    } else {
+      return const Left(UnknownFailure());
     }
   }
 }

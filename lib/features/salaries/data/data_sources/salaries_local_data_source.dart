@@ -1,6 +1,7 @@
 import 'dart:convert';
 import '../../../../core/error/failure.dart';
 import '../../../../core/local_storage/local_storage.dart';
+import '../model/loan/loan_type_model.dart';
 import '../model/salary_requests/bank_model.dart';
 import '../model/salary_requests/country_model.dart';
 import '../model/salary_requests/letter_destination_model.dart';
@@ -26,6 +27,10 @@ abstract class SalariesLocalDataSource {
 
   Future<void> cacheLetterDestinations(List<LetterDestinationModel> items);
   Future<List<LetterDestinationModel>> getCachedLetterDestinations();
+
+  // ── Loan ──
+  Future<void> cacheLoanTypes(List<LoanTypeModel> items);
+  Future<List<LoanTypeModel>> getCachedLoanTypes();
 }
 
 class SalariesLocalDataSourceImpl implements SalariesLocalDataSource {
@@ -148,6 +153,26 @@ class SalariesLocalDataSourceImpl implements SalariesLocalDataSource {
     final decoded = jsonDecode(cached) as List<dynamic>;
     return decoded
         .map((e) => LetterDestinationModel.fromJson(e as Map<String, dynamic>))
+        .toList();
+  }
+
+  // ── Loan ──
+  @override
+  Future<void> cacheLoanTypes(List<LoanTypeModel> items) async {
+    final encoded = jsonEncode(
+      items.map(LoanTypeModel.toJsonFromEntity).toList(),
+    );
+    await cache.cacheString(key: 'cached_loan_types', value: encoded);
+  }
+
+  @override
+  Future<List<LoanTypeModel>> getCachedLoanTypes() async {
+    final cached = cache.getString(key: 'cached_loan_types');
+    if (cached == null || cached.isEmpty) throw const CacheFailure();
+
+    final decoded = jsonDecode(cached) as List<dynamic>;
+    return decoded
+        .map((e) => LoanTypeModel.fromJson(e as Map<String, dynamic>))
         .toList();
   }
 }

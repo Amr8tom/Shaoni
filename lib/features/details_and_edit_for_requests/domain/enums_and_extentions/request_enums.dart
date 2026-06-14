@@ -128,6 +128,13 @@ extension RequestStatusExtensionList on CurrentStatus {
 
         ];
       case ServiceCode.loan:
+        return const [
+          RequestStatusEnum.draft,
+          RequestStatusEnum.emp,
+          RequestStatusEnum.hr,
+          RequestStatusEnum.hrApproval,
+          RequestStatusEnum.rejected,
+        ];
       case ServiceCode.outsideWorking:
       case ServiceCode.visaRequest:
       case ServiceCode.scrapRequest:
@@ -237,8 +244,10 @@ enum RequestStatusEnum {
   newRequest,
   draft,
   applied,
+  emp,
   specifications,
   managerApproval,
+  hr,
   hrApproval,
   hrManager,
   rejected,
