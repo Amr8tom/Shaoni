@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hijri/hijri_calendar.dart';
 import 'package:intl/intl.dart';
+import 'package:shaoni/common/widgets/sized_boxes/sizer.dart';
 import '../../../../../core/constants/app_sizes.dart';
 import '../../../../../core/constants/colors.dart';
 import '../../../../../generated/l10n.dart';
@@ -24,7 +25,7 @@ class DateDataWidget extends StatelessWidget {
                 fontWeight: FontWeight.w900,
               ),
         ),
-
+const Sizer(height: 8,),
         /// date
         Row(
           spacing: 8,

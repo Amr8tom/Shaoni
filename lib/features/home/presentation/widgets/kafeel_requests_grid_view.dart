@@ -9,27 +9,25 @@ import '../../../../generated/l10n.dart';
 import '../../../details_and_edit_for_requests/presentation/controller/my_requests_cubit.dart';
 import '../../../navigation/presentation/controllers/navigation_cubit.dart';
 
-class ManagerRequestsGridView extends StatelessWidget {
-  const ManagerRequestsGridView({super.key});
+class KafeelRequestsGridView extends StatelessWidget {
+  const KafeelRequestsGridView({super.key});
 
   @override
   Widget build(BuildContext context) {
     final controller = context.watch<MyRequestsCubit>();
     final navController = context.watch<NavigationCubit>();
-    final validRequests = controller.state.itemsManager
+    final validRequests = controller.state.itemsKafeel
         .where((request) => request.request?.requestNumber != null)
         .toList();
 
-    controller.managerScrollController.addListener(() {
+    controller.kafeelScrollController.addListener(() {
       if (controller.state.status.isPageLoading) return;
-      if (controller.managerScrollController.position.pixels >=
-          controller.managerScrollController.position.maxScrollExtent - 160) {
-        if (((controller.state.managerRequests?.totalPages) ?? 0) >
-            (controller.managerPage - 1)) {
-          controller.getAllManagerRequests(
-            managerID: int.parse(
-              navController.state.user!.id.toString(),
-            ),
+      if (controller.kafeelScrollController.position.pixels >=
+          controller.kafeelScrollController.position.maxScrollExtent - 160) {
+        if (((controller.state.kafeelRequests?.totalPages) ?? 0) >
+            (controller.kafeelPage - 1)) {
+          controller.getAllKafeelRequests(
+            userId: navController.state.user!.employeeId ?? 1,
             isFirestTime: false,
           );
         }
@@ -39,7 +37,7 @@ class ManagerRequestsGridView extends StatelessWidget {
     return Skeletonizer(
       enabled: controller.state.status.isLoading,
       child: GridView.builder(
-        controller: controller.managerScrollController,
+        controller: controller.kafeelScrollController,
         padding: EdgeInsets.zero,
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 1,
@@ -61,7 +59,7 @@ class ManagerRequestsGridView extends StatelessWidget {
             orderNumber: request.request?.requestNumber ?? '',
             date: request.request?.createdAt?.substring(0, 10) ?? '',
             type: S.current.localeee == 'en'
-                ? controller.state.itemsManager[index].service?.nameEn
+                ? controller.state.itemsKafeel[index].service?.nameEn
                 : request.service?.nameAr ?? '',
             applicantName: request.requesterFullName ?? '',
             serviceCode: request.service?.nameEn ?? '',
@@ -83,7 +81,7 @@ class ManagerRequestsGridView extends StatelessWidget {
                       .extraData?.exitPermission?.permissionType
                       .toString(),
                   'serviceName': S.current.localeee == 'en'
-                      ? controller.state.itemsManager[index].service?.nameEn
+                      ? controller.state.itemsKafeel[index].service?.nameEn
                       : request.service?.nameAr ?? '',
                   'serviceCode': request.service?.code ?? '',
                   'numberOfHours': request
@@ -96,8 +94,7 @@ class ManagerRequestsGridView extends StatelessWidget {
                       request.extraData?.exitPermission?.leavesAttachment ??
                           S.current.noData,
                   'requestID': request.request?.id.toString() ?? '',
-                  'isManager':
-                      navController.state.user?.managerId == 0 ? true : false,
+                  'isManager': false,
                   'isEmployeeRequest': false,
                 },
               );

@@ -21,6 +21,12 @@ class AuthTextField extends StatefulWidget {
   final Color? borderColor, backgroundColor, formColor;
   final double? borderRadius;
 
+  /// Optional overrides. When provided they take precedence over the type
+  /// flags (isEmail/isPhone/isDate) so callers can build numeric or decimal
+  /// fields without introducing a new flag.
+  final TextInputType? keyboardType;
+  final List<TextInputFormatter>? inputFormatters;
+
   const AuthTextField({
     super.key,
     this.label,
@@ -39,6 +45,8 @@ class AuthTextField extends StatefulWidget {
     this.borderRadius,
     this.backgroundColor,
     this.formColor,
+    this.keyboardType,
+    this.inputFormatters,
   });
 
   @override
@@ -166,6 +174,7 @@ class _AuthTextFieldState extends State<AuthTextField> {
   }
 
   TextInputType _getKeyboardType() {
+    if (widget.keyboardType != null) return widget.keyboardType!;
     if (widget.isEmail) return TextInputType.emailAddress;
     if (widget.isPhone) return TextInputType.phone;
     if (widget.isDate) return TextInputType.datetime;
@@ -173,6 +182,7 @@ class _AuthTextFieldState extends State<AuthTextField> {
   }
 
   List<TextInputFormatter>? _getFormatters() {
+    if (widget.inputFormatters != null) return widget.inputFormatters;
     if (widget.isPhone) {
       return [
         ArabicToEnglishNumberFormatter(),

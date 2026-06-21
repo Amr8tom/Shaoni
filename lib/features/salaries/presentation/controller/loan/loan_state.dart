@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
 import '../../../domain/entity/loan/create_loan_response.dart';
+import '../../../domain/entity/loan/kafeel_employee.dart';
 import '../../../domain/entity/loan/loan_type.dart';
 
 abstract class LoanState extends Equatable {
@@ -15,11 +16,30 @@ class LoanLookupsLoading extends LoanState {}
 
 class LoanLookupsLoaded extends LoanState {
   final List<LoanType> loanTypes;
+  final List<KafeelEmployee> kafeelEmployees;
 
-  const LoanLookupsLoaded({required this.loanTypes});
+  /// Current form selections, surfaced through state so the UI rebuilds on
+  /// every change without holding any local widget state.
+  final String? selectedLoanTypeName;
+  final bool needKafeel;
+  final String? selectedKafeelName;
+
+  const LoanLookupsLoaded({
+    required this.loanTypes,
+    this.kafeelEmployees = const [],
+    this.selectedLoanTypeName,
+    this.needKafeel = false,
+    this.selectedKafeelName,
+  });
 
   @override
-  List<Object?> get props => [loanTypes];
+  List<Object?> get props => [
+        loanTypes,
+        kafeelEmployees,
+        selectedLoanTypeName,
+        needKafeel,
+        selectedKafeelName,
+      ];
 }
 
 class LoanLookupsError extends LoanState {

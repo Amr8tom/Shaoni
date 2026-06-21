@@ -51,6 +51,8 @@ class LoginForm extends StatelessWidget {
                 controller: controller.nameController,
                 prefixIcon: const Icon(Icons.person, color: ColorRes.grey),
               ),
+              const Sizer(height: 10),
+
               AuthTextField(
                 isPassword: true,
                 validator: Validators.password,

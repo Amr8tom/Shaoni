@@ -7,143 +7,149 @@ extension RequestStatusExtensionList on CurrentStatus {
     final tech = techName?.toLowerCase() ?? '';
 
     switch (ServiceCode.fromCode(serviceType)) {
-      case ServiceCode.exitPermission:
+    case ServiceCode.exitPermission:
+    return const [
+    RequestStatusEnum.newRequest,
+    RequestStatusEnum.managerApproval,
+    RequestStatusEnum.hrApproval,
+    RequestStatusEnum.done,
+    RequestStatusEnum.rejected
+    ];
 
-        return const [
-          RequestStatusEnum.newRequest,
-          RequestStatusEnum.managerApproval,
-          RequestStatusEnum.hrApproval,
-          RequestStatusEnum.done,
-          RequestStatusEnum.rejected
-        ];
+    case ServiceCode.carPermission:
 
-      case ServiceCode.carPermission:
+    return const [
+    RequestStatusEnum.draft,
+    RequestStatusEnum.applied,
+    RequestStatusEnum.confirmed,
+    RequestStatusEnum.hrManager,
+    RequestStatusEnum.rejected,
+    RequestStatusEnum.cancel,
+    RequestStatusEnum.approved
+    ];
 
-        return const [
-          RequestStatusEnum.draft,
-          RequestStatusEnum.managerApproval,
-          RequestStatusEnum.hrApproval,
-          RequestStatusEnum.hrManager,
-          RequestStatusEnum.approved,
-          RequestStatusEnum.cancel
-        ];
+    case ServiceCode.attendanceUpdate:
 
-      case ServiceCode.attendanceUpdate:
+    return const [
+    RequestStatusEnum.draft,
+    RequestStatusEnum.managerApproval,
+    RequestStatusEnum.confirmed,
+    RequestStatusEnum.hrApproval,
+    RequestStatusEnum.approved,
+    RequestStatusEnum.rejected,
+    RequestStatusEnum.cancel
+    ];
 
-        return const [
-          RequestStatusEnum.draft,
-          RequestStatusEnum.managerApproval,
-          RequestStatusEnum.confirmed,
-          RequestStatusEnum.hrApproval,
-          RequestStatusEnum.approved,
-          RequestStatusEnum.rejected,
-          RequestStatusEnum.cancel
-        ];
+    case ServiceCode.studyRequest:
 
-      case ServiceCode.studyRequest:
+    return const [
+    RequestStatusEnum.draft,
+    RequestStatusEnum.applied,
+    RequestStatusEnum.hrManager,
+    RequestStatusEnum.authorityHolder,
+    RequestStatusEnum.approved,
+    RequestStatusEnum.confirmed,
+    RequestStatusEnum.rejected,
+    RequestStatusEnum.notValid
+    ];
 
-        return const [
-          RequestStatusEnum.draft,
-          RequestStatusEnum.applied,
-          RequestStatusEnum.hrManager,
-          RequestStatusEnum.authorityHolder,
-          RequestStatusEnum.approved,
-          RequestStatusEnum.confirmed,
-          RequestStatusEnum.rejected,
-          RequestStatusEnum.notValid
-        ];
+    case ServiceCode.complaintRequest:
 
-      case ServiceCode.complaintRequest:
+    return const [
+    RequestStatusEnum.draft,
+    RequestStatusEnum.hrManager,
+    RequestStatusEnum.approved,
+    RequestStatusEnum.rejected
+    ];
 
-        return const [
-          RequestStatusEnum.draft,
-          RequestStatusEnum.hrManager,
-          RequestStatusEnum.approved,
-          RequestStatusEnum.authorityHolder,
-          RequestStatusEnum.rejected
-        ];
+    case ServiceCode.startWork:
 
-      case ServiceCode.startWork:
+    return const [
+    RequestStatusEnum.newRequest,
+    RequestStatusEnum.confirmed,
+    RequestStatusEnum.hrManager,
+    RequestStatusEnum.approved,
+    RequestStatusEnum.rejected,
+    ];
 
-        return const [
-          RequestStatusEnum.newRequest,
-          RequestStatusEnum.confirmed,
-          RequestStatusEnum.hrManager,
-          RequestStatusEnum.rejected,
-          RequestStatusEnum.approved
-        ];
+    case ServiceCode.idRenewalRequest:
 
-      case ServiceCode.idRenewalRequest:
+    return const [
+    RequestStatusEnum.draft,
+    RequestStatusEnum.hrManager,
+    RequestStatusEnum.approved,
+    RequestStatusEnum.rejected,
+    ];
 
-        return const [
-          RequestStatusEnum.draft,
-          RequestStatusEnum.approved,
-          RequestStatusEnum.rejected,
-        ];
+    case ServiceCode.experienceCertificate:
 
-      case ServiceCode.experienceCertificate:
-
-        return const [ RequestStatusEnum.newRequest,
-          RequestStatusEnum.hrManager,
-          RequestStatusEnum.rejected,
-          RequestStatusEnum.approved
-        ];
-
-
-      case ServiceCode.medicalInsuranceUpgrade:
-
-        return const [
-          RequestStatusEnum.newRequest,
-          RequestStatusEnum.hrManager,
-          RequestStatusEnum.rejected,
-          RequestStatusEnum.approved
-        ];
+    return const [
+    RequestStatusEnum.newRequest,
+    RequestStatusEnum.confirmed,
+    RequestStatusEnum.rejected,
+    RequestStatusEnum.approved
+    ];
 
 
-      case ServiceCode.trainingRequest:
+    case ServiceCode.medicalInsuranceUpgrade:
 
-        return const [
-          RequestStatusEnum.draft,
-          RequestStatusEnum.confirmed,
-          RequestStatusEnum.approved,
-          RequestStatusEnum.rejected
-        ];
-      case ServiceCode.productRequest:
-
-        return const[ RequestStatusEnum.draft,
-          RequestStatusEnum.confirmed,
-          RequestStatusEnum.specifications,
-          RequestStatusEnum.rejected,
-          RequestStatusEnum.approved,
-          RequestStatusEnum.cancel,
-          RequestStatusEnum.closed
-        ];
-      case ServiceCode.salaryTransfer:
-        return const [
-          RequestStatusEnum.none,
-          RequestStatusEnum.confirmed,
-          RequestStatusEnum.approved,
-          RequestStatusEnum.rejected,
+    return const [
+    RequestStatusEnum.newRequest,
+    RequestStatusEnum.confirmed,
+    RequestStatusEnum.hrManager,
+    RequestStatusEnum.employeeApprove,
+    RequestStatusEnum.budget,
+    RequestStatusEnum.authorityHolder,
+    RequestStatusEnum.rejected,
+    RequestStatusEnum.approved,
+    RequestStatusEnum.cancel
+    ];
 
 
-        ];
-      case ServiceCode.loan:
-        return const [
-          RequestStatusEnum.draft,
-          RequestStatusEnum.emp,
-          RequestStatusEnum.hr,
-          RequestStatusEnum.hrApproval,
-          RequestStatusEnum.rejected,
-        ];
-      case ServiceCode.outsideWorking:
-      case ServiceCode.visaRequest:
-      case ServiceCode.scrapRequest:
-      case ServiceCode.employeeTicketBooking:
-      case ServiceCode.leaveReplace:
-      case ServiceCode.leave:
-      case ServiceCode.leaveInterruptionRequest:
-      case null:
-        break;
+    case ServiceCode.trainingRequest:
+
+    return const [
+    RequestStatusEnum.draft,
+    RequestStatusEnum.confirmed,
+    RequestStatusEnum.approved,
+    RequestStatusEnum.rejected
+    ];
+    case ServiceCode.productRequest:
+
+    return const[ RequestStatusEnum.draft,
+    RequestStatusEnum.confirmed,
+    RequestStatusEnum.specifications,
+    RequestStatusEnum.approved,
+    RequestStatusEnum.closed,
+    RequestStatusEnum.cancel,
+    RequestStatusEnum.rejected,
+    ];
+    case ServiceCode.salaryTransfer:
+    return const [
+    RequestStatusEnum.newRequest,
+    RequestStatusEnum.confirmed,
+    RequestStatusEnum.approved,
+    RequestStatusEnum.rejected,
+
+
+    ];
+    case ServiceCode.loan:
+    return const [
+    RequestStatusEnum.draft,
+    RequestStatusEnum.emp,
+    RequestStatusEnum.hr,
+    RequestStatusEnum.hrApproval,
+    RequestStatusEnum.rejected,
+    ];
+    case ServiceCode.outsideWorking:
+    case ServiceCode.visaRequest:
+    case ServiceCode.scrapRequest:
+    case ServiceCode.employeeTicketBooking:
+    case ServiceCode.leaveReplace:
+    case ServiceCode.leave:
+    case ServiceCode.leaveInterruptionRequest:
+    case null:
+    break;
     }
 
     if (tech.contains('reject') || tech.contains('cancel')) {
@@ -187,6 +193,10 @@ extension RequestStatusStringExtension on String? {
       case 'draft':
         return RequestStatusEnum.draft;
 
+    // ---- Loan-specific States ----
+      case 'emp':
+        return RequestStatusEnum.emp;
+
     // ---- Manager Level States ----
       case 'manger':
         return RequestStatusEnum.managerApproval;
@@ -197,7 +207,10 @@ extension RequestStatusStringExtension on String? {
       case 'confirmed':
         return RequestStatusEnum.confirmed;
 
+
     // ---- HR / Approval States ----
+      case 'hr':
+        return RequestStatusEnum.hr;
       case 'hr_approval':
       case 'hr_approve':
         return RequestStatusEnum.hrApproval;
@@ -220,6 +233,8 @@ extension RequestStatusStringExtension on String? {
 
       case 'close':
         return RequestStatusEnum.closed;
+      case 'employee_approve':
+        return RequestStatusEnum.employeeApprove;
 
       case 'not_valid':
         return RequestStatusEnum.notValid;
@@ -229,7 +244,7 @@ extension RequestStatusStringExtension on String? {
 
     // ---- Context Overlapping Conflicts ----
       case 'confirm':
-       return RequestStatusEnum.confirmed;
+        return RequestStatusEnum.confirmed;
 
       case 'hr_manager':
         return RequestStatusEnum.hrManager;
@@ -244,6 +259,8 @@ enum RequestStatusEnum {
   newRequest,
   draft,
   applied,
+  employeeApprove,
+  budget,
   emp,
   specifications,
   managerApproval,

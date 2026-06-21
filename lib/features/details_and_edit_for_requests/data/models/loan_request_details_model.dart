@@ -6,6 +6,7 @@ class LoanRequestDetailsModel extends LoanRequestDetails {
   const LoanRequestDetailsModel({
     super.id,
     super.externalName,
+    super.state,
     super.loanTypeId,
     super.loanTypeName,
     super.loanRequestAmount,
@@ -14,6 +15,8 @@ class LoanRequestDetailsModel extends LoanRequestDetails {
     super.needEmp,
     super.employeeId,
     super.kafeelId,
+    super.editReasons,
+    super.rejectReasons,
     super.installments,
     super.installmentsCount,
   });
@@ -30,6 +33,7 @@ class LoanRequestDetailsModel extends LoanRequestDetails {
     return LoanRequestDetailsModel(
       id: json['id'] as int?,
       externalName: json['externalName']?.toString(),
+      state: json['state']?.toString(),
       loanTypeId: json['loanTypeId'] as int?,
       loanTypeName:
           (json['loanTypeName'] ?? json['loan_type_name'])?.toString(),
@@ -44,6 +48,8 @@ class LoanRequestDetailsModel extends LoanRequestDetails {
       needEmp: json['needEmp'] as bool?,
       employeeId: json['employeeId'] as int?,
       kafeelId: json['kafeelId'] as int?,
+      editReasons: json['editReasons']?.toString(),
+      rejectReasons: json['rejectReasons']?.toString(),
       installments: installments,
       installmentsCount: json['installment_ids_count'] as int?,
     );
@@ -55,6 +61,7 @@ class LoanRequestDetailsModel extends LoanRequestDetails {
     return {
       'id': entity.id,
       'externalName': entity.externalName,
+      'state': entity.state,
       'loanTypeId': entity.loanTypeId,
       'loanTypeName': entity.loanTypeName,
       'loanRequestAmount': entity.loanRequestAmount,
@@ -63,6 +70,8 @@ class LoanRequestDetailsModel extends LoanRequestDetails {
       'needEmp': entity.needEmp,
       'employeeId': entity.employeeId,
       'kafeelId': entity.kafeelId,
+      'editReasons': entity.editReasons,
+      'rejectReasons': entity.rejectReasons,
       'installment_ids': entity.installments
           ?.map((i) => LoanInstallmentModel.toJsonFromEntity(i))
           .toList(),

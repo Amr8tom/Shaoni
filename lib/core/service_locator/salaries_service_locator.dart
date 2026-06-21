@@ -5,6 +5,7 @@ import '../../features/salaries/data/repositories/salaries_repository_impl.dart'
 import '../../features/salaries/domain/repository/salaries_repository.dart';
 import '../../features/salaries/domain/use_cases/loan/create_loan_use_case.dart';
 import '../../features/salaries/domain/use_cases/loan/edit_loan_use_case.dart';
+import '../../features/salaries/domain/use_cases/loan/get_kafeel_employees_use_case.dart';
 import '../../features/salaries/domain/use_cases/loan/get_loan_types_use_case.dart';
 import '../../features/salaries/domain/use_cases/loan/update_loan_use_case.dart';
 import '../../features/salaries/domain/use_cases/salary_requests/create_salary_use_case.dart';
@@ -71,6 +72,9 @@ class SalariesServiceLocator {
     serviceLocator.registerLazySingleton<GetLoanTypesUseCase>(
       () => GetLoanTypesUseCase(serviceLocator()),
     );
+    serviceLocator.registerLazySingleton<GetKafeelEmployeesUseCase>(
+      () => GetKafeelEmployeesUseCase(serviceLocator()),
+    );
     serviceLocator.registerLazySingleton<CreateLoanUseCase>(
       () => CreateLoanUseCase(serviceLocator()),
     );
@@ -84,6 +88,7 @@ class SalariesServiceLocator {
     /// cubits
     serviceLocator.registerFactory<LoanCubit>(
       () => LoanCubit(
+        serviceLocator(),
         serviceLocator(),
         serviceLocator(),
         serviceLocator(),

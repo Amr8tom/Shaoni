@@ -35,14 +35,20 @@ class RequestDetailsScreen extends StatelessWidget {
     final String serviceName = args['serviceName'] ?? '';
     final String serviceCode = args['serviceCode'] ?? '';
     final bool isManager = args['isManager'] as bool? ?? false;
+    final bool isKafeel = args['isKafeel'] as bool? ?? false;
     final bool isEmployeeRequest = args['isEmployeeRequest'] as bool? ?? false;
     final String hijriDate = DateConverter.convertGregorianToHijri(date);
+    // Services without an explicit stage list fall back to a single-element
+    // list, so guard the index access instead of assuming a manager stage.
+    final List<RequestStatusEnum> requestStages =
+        currentStatus?.getRequestStatusEnumList(serviceType: serviceCode) ??
+            const [];
+    final RequestStatusEnum? currentStatusEnum =
+        currentStatus?.techName.toRequestStatusEnum;
     final bool isManagerApproval =
-        currentStatus?.getRequestStatusEnumList(serviceType: serviceCode)[1] ==
-            currentStatus?.techName.toRequestStatusEnum;
+        requestStages.length > 1 && requestStages[1] == currentStatusEnum;
     final bool isNewRequest =
-        currentStatus?.getRequestStatusEnumList(serviceType: serviceCode)[0] ==
-            currentStatus?.techName.toRequestStatusEnum;
+        requestStages.isNotEmpty && requestStages[0] == currentStatusEnum;
 
     return MultiBlocProvider(
       providers: [

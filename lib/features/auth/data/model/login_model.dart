@@ -18,7 +18,7 @@ class LoginModel extends LoginEntity {
       success: json['success'] ?? false,
       userName: json['data']['userName'] ?? '',
       role: json['data']['role'] ?? '',
-      id: json['data']['id'] ?? '',
+      id: json['data']['id'] as int?,
       errors: json['error'],
     );
   }

@@ -7,6 +7,8 @@ import 'package:shaoni/core/local_storage/session_storage/session_storage.dart';
 import 'package:shaoni/features/auth/domain/usecases/change_password_use_case.dart';
 import 'package:shaoni/features/auth/domain/usecases/login_use_case.dart';
 
+import 'dart:convert';
+
 import '../../../../../core/routing/route_names.dart';
 
 part 'login_state.dart';
@@ -51,7 +53,15 @@ class LoginCubit extends Cubit<LoginState> {
         },
         (data) async {
           await _sessionStorage.saveToken(data.accessToken!);
-          await _sessionStorage.saveUserId(data.id.toString());
+
+          // Prefer the id field from the response body; if absent, decode the
+          // JWT and use the "sub" claim (which carries the numeric user ID).
+          final String resolvedId = _resolveUserId(
+            bodyId: data.id,
+            token: data.accessToken,
+          );
+          await _sessionStorage.saveUserId(resolvedId);
+
           emit(state.copyWith(
             status: LoginStatus.loggedIn,
             token: data.accessToken,
@@ -97,6 +107,34 @@ class LoginCubit extends Cubit<LoginState> {
         predicate: (Route<dynamic> route) => false,
       );
     }
+  }
+
+  /// Returns the user ID as a string.
+  /// Prefers [bodyId] if present; otherwise decodes the JWT [token] and reads
+  /// the "sub" claim, which the backend sets to the numeric user ID.
+  String _resolveUserId({required int? bodyId, required String? token}) {
+    if (bodyId != null) return bodyId.toString();
+
+    // Fallback: decode JWT payload (second segment, base64url)
+    try {
+      if (token != null && token.isNotEmpty) {
+        final parts = token.split('.');
+        if (parts.length == 3) {
+          // base64url → base64 padding
+          String payload = parts[1];
+          payload += '=' * ((4 - payload.length % 4) % 4);
+          final decoded = utf8.decode(base64Url.decode(payload));
+          final Map<String, dynamic> claims =
+              jsonDecode(decoded) as Map<String, dynamic>;
+          final sub = claims['sub'];
+          if (sub != null) return sub.toString();
+        }
+      }
+    } catch (_) {
+      // If decoding fails for any reason, fall through to the empty fallback
+    }
+
+    return ''; // NavigationCubit will handle the empty string safely
   }
 
   void togglePasswordVisibility() {

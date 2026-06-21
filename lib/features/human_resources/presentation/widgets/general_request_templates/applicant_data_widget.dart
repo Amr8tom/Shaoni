@@ -29,6 +29,99 @@ class _ApplicantDataWidgetState extends State<ApplicantDataWidget> {
   String? _selectedOfficeName;
   final SessionStorage _sessionStorage = serviceLocator<SessionStorage>();
 
+
+
+  List<DropdownMenuItem<String>> get _officeItems => _offices
+      .map((o) => DropdownMenuItem<String>(value: o.name, child: Text(o.name)))
+      .toList();
+
+  void _onOfficeSelected(String? value) {
+    if (value == null) return;
+    setState(() => _selectedOfficeName = value);
+    try {
+      final selected = _offices.firstWhere((o) => o.name == value);
+      widget.onOfficeChanged?.call(selected.id, selected.name);
+    } catch (_) {}
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    _loadOfficesFromCache();
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(S.current.requestApplicantData,
+            style: Theme.of(context).textTheme.headlineMedium),
+        const Sizer(height: 8,),
+
+        AuthTextField(
+          hint: S.current.applicantName,
+          readOnly: true,
+          controller: TextEditingController(text: _sessionStorage.userName),
+          borderRadius: AppSizes.borderRadiusMd,
+          prefixIcon: const Icon(Icons.person),
+          validator: (value) =>
+              (value?.isEmpty ?? true) ? S.current.pleaseEndterValue : null,
+        ),
+        const Sizer(height: 8),
+
+        AuthTextField(
+          hint: S.current.organizationalUnit,
+          readOnly: true,
+          controller:
+              TextEditingController(text: _sessionStorage.departmentAddress),
+          borderRadius: AppSizes.borderRadiusMd,
+          prefixIcon: const Icon(Icons.home_work),
+
+        ),
+        const Sizer(height: 8),
+        DDropdownField(
+          label: '',
+          hint: S.current.location,
+          icon: Icons.work_outline_rounded,
+          value: _selectedOfficeName,
+          items: _officeItems,
+          onChanged: _onOfficeSelected,
+          validator: (value) =>
+              (value?.isEmpty ?? true) ? S.current.pleaseEndterValue : null,
+        ),
+        if ((_sessionStorage.jobNumber?.isNotEmpty ?? false) ||
+            (_sessionStorage.jobTitle?.isNotEmpty ?? false)) ...[
+          const Sizer(height: 8),
+          Row(
+            children: [
+              if (_sessionStorage.jobNumber?.isNotEmpty ?? false)
+                Expanded(
+                  child: AuthTextField(
+                    hint: S.current.jobNumber,
+                    readOnly: true,
+                    controller:
+                        TextEditingController(text: _sessionStorage.jobNumber),
+                    borderRadius: AppSizes.borderRadiusMd,
+                    prefixIcon: const Icon(Icons.badge_outlined),
+                  ),
+                ),
+              if ((_sessionStorage.jobNumber?.isNotEmpty ?? false) &&
+                  (_sessionStorage.jobTitle?.isNotEmpty ?? false))
+                const Sizer(width: 12),
+              if (_sessionStorage.jobTitle?.isNotEmpty ?? false)
+                Expanded(
+                  child: AuthTextField(
+                    hint: S.current.jobTitle,
+                    readOnly: true,
+                    controller:
+                        TextEditingController(text: _sessionStorage.jobTitle),
+                    borderRadius: AppSizes.borderRadiusMd,
+                    prefixIcon: const Icon(Icons.work_outline),
+                  ),
+                ),
+            ],
+          ),
+        ],
+      ],
+    );
+  }
+
   void _loadOfficesFromCache() {
     try {
       final decoded = jsonDecode(_sessionStorage.officesList ?? '[]');
@@ -53,95 +146,5 @@ class _ApplicantDataWidgetState extends State<ApplicantDataWidget> {
     } catch (_) {
       _offices = [];
     }
-  }
-
-  List<DropdownMenuItem<String>> get _officeItems => _offices
-      .map((o) => DropdownMenuItem<String>(value: o.name, child: Text(o.name)))
-      .toList();
-
-  void _onOfficeSelected(String? value) {
-    if (value == null) return;
-    setState(() => _selectedOfficeName = value);
-    try {
-      final selected = _offices.firstWhere((o) => o.name == value);
-      widget.onOfficeChanged?.call(selected.id, selected.name);
-    } catch (_) {}
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    _loadOfficesFromCache();
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(S.current.requestApplicantData,
-            style: Theme.of(context).textTheme.headlineMedium),
-        AuthTextField(
-          hint: S.current.applicantName,
-          readOnly: true,
-          controller: TextEditingController(text: _sessionStorage.userName),
-          borderRadius: AppSizes.borderRadiusMd,
-          prefixIcon: const Icon(Icons.person),
-          validator: (value) =>
-              (value?.isEmpty ?? true) ? S.current.pleaseEndterValue : null,
-        ),
-        AuthTextField(
-          hint: S.current.organizationalUnit,
-          readOnly: true,
-          controller:
-              TextEditingController(text: _sessionStorage.departmentAddress),
-          borderRadius: AppSizes.borderRadiusMd,
-          prefixIcon: const Icon(Icons.home_work),
-          validator: (value) =>
-              (value?.isEmpty ?? true) ? S.current.pleaseEndterValue : null,
-        ),
-        const Sizer(height: 18),
-        DDropdownField(
-          label: '',
-          hint: S.current.location,
-          icon: Icons.work_outline_rounded,
-          value: _selectedOfficeName,
-          items: _officeItems,
-          onChanged: _onOfficeSelected,
-          validator: (value) =>
-              (value?.isEmpty ?? true) ? S.current.pleaseEndterValue : null,
-        ),
-        if ((_sessionStorage.jobNumber?.isNotEmpty ?? false) ||
-            (_sessionStorage.jobTitle?.isNotEmpty ?? false)) ...[
-          const Sizer(height: 18),
-          Row(
-            children: [
-              if (_sessionStorage.jobNumber?.isNotEmpty ?? false)
-                Expanded(
-                  child: AuthTextField(
-                    label: S.current.jobNumber,
-                    hint: S.current.jobNumber,
-                    readOnly: true,
-                    controller:
-                        TextEditingController(text: _sessionStorage.jobNumber),
-                    borderRadius: AppSizes.borderRadiusMd,
-                    prefixIcon: const Icon(Icons.badge_outlined),
-                  ),
-                ),
-              if ((_sessionStorage.jobNumber?.isNotEmpty ?? false) &&
-                  (_sessionStorage.jobTitle?.isNotEmpty ?? false))
-                const Sizer(width: 12),
-              if (_sessionStorage.jobTitle?.isNotEmpty ?? false)
-                Expanded(
-                  child: AuthTextField(
-                    label: S.current.jobTitle,
-                    hint: S.current.jobTitle,
-                    readOnly: true,
-                    controller:
-                        TextEditingController(text: _sessionStorage.jobTitle),
-                    borderRadius: AppSizes.borderRadiusMd,
-                    prefixIcon: const Icon(Icons.work_outline),
-                  ),
-                ),
-            ],
-          ),
-        ],
-      ],
-    );
   }
 }

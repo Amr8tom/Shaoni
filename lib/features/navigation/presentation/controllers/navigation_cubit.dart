@@ -24,9 +24,12 @@ class NavigationCubit extends Cubit<NavigationState> {
   int indx = 0;
 
   Future<void> getUserData(String? id) async {
+    // Sanitize: treat null, empty string, or the literal "null" as missing
+    final String validId =
+        (id == null || id.isEmpty || id == 'null') ? '1' : id;
     emit(state.copyWith(status: NavigationStatus.loading));
     final result = await _getUserDataUseCase.call(
-      params: GetUserDataParams(id: id ?? "1"),
+      params: GetUserDataParams(id: validId),
     );
     return result.fold(
       (failure) => emit(state.copyWith(status: NavigationStatus.error)),

@@ -2,6 +2,7 @@ import 'package:dartz/dartz.dart';
 import '../../../../core/connection/check_network.dart';
 import '../../../../core/error/failure.dart';
 import '../../domain/entity/loan/create_loan_response.dart';
+import '../../domain/entity/loan/kafeel_employee.dart';
 import '../../domain/entity/loan/loan_type.dart';
 import '../../domain/entity/salary_requests/bank.dart';
 import '../../domain/entity/salary_requests/country.dart';
@@ -256,6 +257,22 @@ class SalariesRepositoryImpl implements SalariesRepository {
   }
 
   // ── Loan ──
+  @override
+  Future<Either<Failure, List<KafeelEmployee>>> getKafeelEmployees() async {
+    if (await networkInfo.isConnected) {
+      try {
+        final remoteData = await remoteDataSource.getKafeelEmployees();
+        return Right(remoteData);
+      } on ServerFailure catch (e) {
+        return Left(e);
+      } catch (e) {
+        return Left(ServerFailure(message: e.toString()));
+      }
+    } else {
+      return const Left(UnknownFailure());
+    }
+  }
+
   @override
   Future<Either<Failure, List<LoanType>>> getLoanTypes() async {
     if (await networkInfo.isConnected) {

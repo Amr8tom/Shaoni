@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:shaoni/features/details_and_edit_for_requests/domain/use_cases/approve_request_use_case.dart';
+import 'package:shaoni/features/details_and_edit_for_requests/domain/use_cases/get_all_kafeel_requests_use_case.dart';
 import 'package:shaoni/features/details_and_edit_for_requests/domain/use_cases/get_all_manager_requests_use_case.dart';
 import 'package:shaoni/features/details_and_edit_for_requests/domain/use_cases/get_all_user_requests_use_case.dart';
 import 'package:shaoni/features/details_and_edit_for_requests/domain/use_cases/get_request_details_use_case.dart';
@@ -15,22 +16,28 @@ class MyRequestsCubit extends Cubit<MyRequestsState> {
   final GetAllUserRequestsUseCase _getAllUserRequestsUseCase;
   final GetRequestDetailsUseCase _getRequestDetailsUseCase;
   final GetAllManagerRequestsUseCase _getAllManagerRequestsUseCase;
+  final GetAllKafeelRequestsUseCase _getAllKafeelRequestsUseCase;
   final ApproveRequestUseCase _approveRequestUseCase;
   final ScrollController userScrollController = ScrollController();
   final ScrollController managerScrollController = ScrollController();
+  final ScrollController kafeelScrollController = ScrollController();
   int userPage = 1;
   int managerPage = 1;
+  int kafeelPage = 1;
   final TextEditingController commentController = TextEditingController();
 
   // Debounce
   Timer? _userDebounceTimer;
   Timer? _managerDebounceTimer;
+  Timer? _kafeelDebounceTimer;
   bool _isUserDebouncing = false;
   bool _isManagerDebouncing = false;
+  bool _isKafeelDebouncing = false;
 
   MyRequestsCubit(
       this._getAllUserRequestsUseCase,
       this._getAllManagerRequestsUseCase,
+      this._getAllKafeelRequestsUseCase,
       this._approveRequestUseCase,
       this._getRequestDetailsUseCase)
       : super(const MyRequestsState());
@@ -122,6 +129,49 @@ class MyRequestsCubit extends Cubit<MyRequestsState> {
     });
   }
 
+  /// get all kafeel requests with debounce
+  Future getAllKafeelRequests(
+      {required int userId, bool isFirestTime = true}) async {
+    if (_isKafeelDebouncing) return;
+
+    _isKafeelDebouncing = true;
+
+    isFirestTime
+        ? emit(state.copyWith(status: MyRequestsStatus.loading))
+        : emit(state.copyWith(status: MyRequestsStatus.pageLoading));
+
+    final result = await _getAllKafeelRequestsUseCase.call(
+      params: GetAllKafeelRequestsParams(
+          userId: userId,
+          pageNumber: kafeelPage,
+          pageSize: 12),
+    );
+
+    result.fold(
+      (failure) => emit(state.copyWith(status: MyRequestsStatus.error)),
+      (requests) {
+        final List<RequestWithStage> updatedItems = [
+          ...state.itemsKafeel,
+          ...requests.items
+        ];
+
+        emit(state.copyWith(
+          status: MyRequestsStatus.success,
+          kafeelRequests: requests,
+          itemsKafeel: updatedItems,
+        ));
+      },
+    );
+
+    kafeelPage = kafeelPage + 1;
+
+    // Reset debounce after 500ms
+    _kafeelDebounceTimer?.cancel();
+    _kafeelDebounceTimer = Timer(const Duration(milliseconds: 500), () {
+      _isKafeelDebouncing = false;
+    });
+  }
+
   /// request details
   Future<RequestWithStage?> getRequestDetails({required int? requestId}) async {
     emit(state.copyWith(status: MyRequestsStatus.loading));
@@ -155,8 +205,10 @@ class MyRequestsCubit extends Cubit<MyRequestsState> {
   Future<void> close() {
     _userDebounceTimer?.cancel();
     _managerDebounceTimer?.cancel();
+    _kafeelDebounceTimer?.cancel();
     userScrollController.dispose();
     managerScrollController.dispose();
+    kafeelScrollController.dispose();
     commentController.dispose();
     return super.close();
   }

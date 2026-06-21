@@ -34,6 +34,7 @@ enum StorageKeys {
   allServices,
   myRequests,
   myRequestsByManager,
+  myRequestsByKafeel,
   email,
   userName,
   organizationName,

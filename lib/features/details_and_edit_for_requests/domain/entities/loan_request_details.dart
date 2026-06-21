@@ -4,6 +4,7 @@ import 'loan_installment.dart';
 class LoanRequestDetails extends Equatable {
   final int? id;
   final String? externalName;
+  final String? state;
   final int? loanTypeId;
   final String? loanTypeName;
   final double? loanRequestAmount;
@@ -12,12 +13,15 @@ class LoanRequestDetails extends Equatable {
   final bool? needEmp;
   final int? employeeId;
   final int? kafeelId;
+  final String? editReasons;
+  final String? rejectReasons;
   final List<LoanInstallment>? installments;
   final int? installmentsCount;
 
   const LoanRequestDetails({
     this.id,
     this.externalName,
+    this.state,
     this.loanTypeId,
     this.loanTypeName,
     this.loanRequestAmount,
@@ -26,6 +30,8 @@ class LoanRequestDetails extends Equatable {
     this.needEmp,
     this.employeeId,
     this.kafeelId,
+    this.editReasons,
+    this.rejectReasons,
     this.installments,
     this.installmentsCount,
   });
@@ -34,6 +40,7 @@ class LoanRequestDetails extends Equatable {
   List<Object?> get props => [
         id,
         externalName,
+        state,
         loanTypeId,
         loanTypeName,
         loanRequestAmount,
@@ -42,6 +49,8 @@ class LoanRequestDetails extends Equatable {
         needEmp,
         employeeId,
         kafeelId,
+        editReasons,
+        rejectReasons,
         installments,
         installmentsCount,
       ];

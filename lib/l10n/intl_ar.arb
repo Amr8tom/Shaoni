@@ -15,6 +15,7 @@
     "createRequest": "إنشاء الطلب",
     "acceptRequest":"قبول الطلب ",
       "submittedRequests":"الطلبات المقدمه",
+      "kafeelRequests": "طلبات الكفيل",
     "repositories":"المشتريات",
     "humanResources":"الموارد البشرية",
     "salaries":"الرواتب والمكافأت",
@@ -949,6 +950,7 @@
   "hijriDateHeader": "التاريخ (هـ)",
   "gregorianDateHeader": "تاريخ (م)",
   "needsGuarantor": "بحاجة إلى كفيل",
+  "selectGuarantor": "اختر الكفيل",
   "paid": "مدفوع",
   "notPaid": "غير مدفوع"
 }

@@ -28,6 +28,7 @@
   "managerApproval": "Manager Approval",
   "manager": "Manager",
   "submittedRequests":"Submitted Requests",
+  "kafeelRequests": "Kafeel Requests",
   "hrManagerApproval": "HR Manager Approval",
   "quranKarem": "Quran Kareem",
   "lightYourHeart":"Lighten your heart with the remembrance of Allah",
@@ -943,6 +944,7 @@
   "hijriDateHeader": "Date (H)",
   "gregorianDateHeader": "Date (G)",
   "needsGuarantor": "Needs Guarantor",
+  "selectGuarantor": "Select Guarantor",
   "paid": "Paid",
   "notPaid": "Not Paid"
 }

@@ -17,9 +17,10 @@ class DioHelper {
         requestHeader: true,
         requestBody: true,
         responseBody: true,
-        responseHeader: false,
+        responseHeader: true,
         error: true,
         compact: true,
+
         maxWidth: 90,
         enabled: kDebugMode,
       ),

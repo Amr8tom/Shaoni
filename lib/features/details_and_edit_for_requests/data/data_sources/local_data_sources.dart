@@ -11,6 +11,9 @@ abstract class MyRequestsLocalDataSources {
   Future cacheAllMyRequestsByManager(
       {required AllRequestsWithStagesModel requests});
   Future<AllRequestsWithStagesModel> getAllMyRequestsByManager();
+  Future cacheAllMyRequestsByKafeel(
+      {required AllRequestsWithStagesModel requests});
+  Future<AllRequestsWithStagesModel> getAllMyRequestsByKafeel();
   Future cacheRequestDetails({required RequestWithStageModel requestDetails});
   Future<RequestWithStageModel> getRequestDetails();
 }
@@ -54,6 +57,26 @@ class MyRequestsLocalDataSourcesImp implements MyRequestsLocalDataSources {
   Future<AllRequestsWithStagesModel> getAllMyRequestsByManager() async {
     final String? myRequestsString =
         _storage.getString(key: StorageKeys.myRequestsByManager.name);
+    if (myRequestsString != null) {
+      return AllRequestsWithStagesModel.fromJson(jsonDecode(myRequestsString));
+    }
+    throw CacheFailure();
+  }
+
+  @override
+  Future cacheAllMyRequestsByKafeel(
+      {required AllRequestsWithStagesModel requests}) async {
+    final String myRequestsString = jsonEncode(requests.toJson());
+    await _storage.cacheString(
+      key: StorageKeys.myRequestsByKafeel.name,
+      value: myRequestsString,
+    );
+  }
+
+  @override
+  Future<AllRequestsWithStagesModel> getAllMyRequestsByKafeel() async {
+    final String? myRequestsString =
+        _storage.getString(key: StorageKeys.myRequestsByKafeel.name);
     if (myRequestsString != null) {
       return AllRequestsWithStagesModel.fromJson(jsonDecode(myRequestsString));
     }

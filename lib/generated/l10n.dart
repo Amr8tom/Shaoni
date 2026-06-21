@@ -264,6 +264,16 @@ class S {
     );
   }
 
+  /// `Kafeel Requests`
+  String get kafeelRequests {
+    return Intl.message(
+      'Kafeel Requests',
+      name: 'kafeelRequests',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `HR Manager Approval`
   String get hrManagerApproval {
     return Intl.message(
@@ -7359,24 +7369,24 @@ class S {
     );
   }
 
-  /// `Paid`
-  String get paid {
+  /// `Select Guarantor`
+  String get selectGuarantor {
     return Intl.message(
-      'Paid',
-      name: 'paid',
+      'Select Guarantor',
+      name: 'selectGuarantor',
       desc: '',
       args: [],
     );
   }
 
+  /// `Paid`
+  String get paid {
+    return Intl.message('Paid', name: 'paid', desc: '', args: []);
+  }
+
   /// `Not Paid`
   String get notPaid {
-    return Intl.message(
-      'Not Paid',
-      name: 'notPaid',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Not Paid', name: 'notPaid', desc: '', args: []);
   }
 }
 

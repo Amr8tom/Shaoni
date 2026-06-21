@@ -5,25 +5,32 @@ final class MyRequestsState extends Equatable {
   final RequestWithStage? requestDetails;
   final AllRequestsWithStages? userRequests;
   final AllRequestsWithStages? managerRequests;
+  final AllRequestsWithStages? kafeelRequests;
   final List<RequestWithStage>
       itemsManager; // Keep this non-nullable with a default []
   final List<RequestWithStage>
       itemsUser; // Keep this non-nullable with a default []
+  final List<RequestWithStage>
+      itemsKafeel; // Keep this non-nullable with a default []
 
   const MyRequestsState({
     this.status = MyRequestsStatus.initialized,
-    this.itemsUser = const [], // Default to empty list
-    this.itemsManager = const [], // Default to empty list
+    this.itemsUser = const [],
+    this.itemsManager = const [],
+    this.itemsKafeel = const [],
     this.userRequests,
     this.requestDetails,
     this.managerRequests,
+    this.kafeelRequests,
   });
 
   MyRequestsState copyWith({
     MyRequestsStatus? status,
-    List<RequestWithStage>? itemsManager, // Nullable here
-    List<RequestWithStage>? itemsUser, // Nullable here
+    List<RequestWithStage>? itemsManager,
+    List<RequestWithStage>? itemsUser,
+    List<RequestWithStage>? itemsKafeel,
     AllRequestsWithStages? managerRequests,
+    AllRequestsWithStages? kafeelRequests,
     AllRequestsWithStages? userRequests,
     RequestWithStage? requestDetails,
   }) {
@@ -31,11 +38,11 @@ final class MyRequestsState extends Equatable {
       status: status ?? this.status,
       userRequests: userRequests ?? this.userRequests,
       managerRequests: managerRequests ?? this.managerRequests,
+      kafeelRequests: kafeelRequests ?? this.kafeelRequests,
       itemsManager: itemsManager ?? this.itemsManager,
+      itemsKafeel: itemsKafeel ?? this.itemsKafeel,
       requestDetails: requestDetails ?? this.requestDetails,
-      // Only replaces if you explicitly pass a new list
-      itemsUser: itemsUser ??
-          this.itemsUser, // Only replaces if you explicitly pass a new list
+      itemsUser: itemsUser ?? this.itemsUser,
     );
   }
 
@@ -44,8 +51,10 @@ final class MyRequestsState extends Equatable {
         status,
         userRequests,
         managerRequests,
+        kafeelRequests,
         itemsManager,
         itemsUser,
+        itemsKafeel,
         requestDetails
       ];
 }

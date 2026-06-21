@@ -123,6 +123,7 @@ class URL {
 
   /// ============================ loan requests ============================
   static const String getLoanTypes = '$baseUrl/Lookup/GetLoanTypes';
+  static const String getKafeelEmployees = '$baseUrl/Lookup/GetKafeelEmployees';
   static const String createLoanRequest = '$baseUrl/LoanRequest';
   static const String editLoanRequest = '$baseUrl/LoanRequest/edit/';
   static const String updateLoanRequest = '$baseUrl/LoanRequest/update/';
@@ -151,6 +152,8 @@ class URL {
   // static const String getAllRequestsWithStagesByManager = '$baseUrl/Request/with-stages/paged/for-manager';
   static const String getAllRequestsWithStagesByManager =
       '$baseUrl/Request/dashboard/paged/for-manager';
+  static const String getAllRequestsWithStagesByKafeel =
+      '$baseUrl/Request/with-stages/paged/by-kafeel';
   static const String approveRequest = '$baseUrl/Request/status/';
   static const String deleteAccount = "$baseUrl/User/delete";
   static const String getCountUnreadedNotificaion =

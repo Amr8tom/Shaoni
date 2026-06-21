@@ -6,6 +6,7 @@ import '../entities/approve_request.dart';
 import '../entities/all_requests_with_stages.dart';
 import '../entities/edit/edit_response.dart';
 import '../use_cases/approve_request_use_case.dart';
+import '../use_cases/get_all_kafeel_requests_use_case.dart';
 import '../use_cases/get_all_manager_requests_use_case.dart';
 import '../use_cases/get_all_user_requests_use_case.dart';
 import '../use_cases/get_attendance_edit_use_case.dart';
@@ -28,6 +29,8 @@ abstract class MyRequestsRepository {
       {required GetAllUserRequestsParams params});
   Future<Either<Failure, AllRequestsWithStages>> getAllManagerRequests(
       {required GetAllManagerRequestsParams params});
+  Future<Either<Failure, AllRequestsWithStages>> getAllKafeelRequests(
+      {required GetAllKafeelRequestsParams params});
   Future<Either<Failure, RequestWithStage>> getRequestDetails(
       {required GetRequestDetailsParams params});
   Future<Either<Failure, ApproveRequest>> acceptRequest(

@@ -5,6 +5,7 @@ import '../../features/details_and_edit_for_requests/data/data_sources/remote_da
 import '../../features/details_and_edit_for_requests/data/repositories/repository.dart';
 import '../../features/details_and_edit_for_requests/domain/repositories/repository.dart';
 import '../../features/details_and_edit_for_requests/domain/use_cases/approve_request_use_case.dart';
+import '../../features/details_and_edit_for_requests/domain/use_cases/get_all_kafeel_requests_use_case.dart';
 import '../../features/details_and_edit_for_requests/domain/use_cases/get_all_manager_requests_use_case.dart';
 import '../../features/details_and_edit_for_requests/domain/use_cases/get_all_user_requests_use_case.dart';
 import '../../features/details_and_edit_for_requests/domain/use_cases/get_attendance_edit_use_case.dart';
@@ -47,6 +48,9 @@ class MyRequestsServiceLocator {
     );
     serviceLocator.registerLazySingleton<GetAllManagerRequestsUseCase>(
       () => GetAllManagerRequestsUseCase(serviceLocator()),
+    );
+    serviceLocator.registerLazySingleton<GetAllKafeelRequestsUseCase>(
+      () => GetAllKafeelRequestsUseCase(serviceLocator()),
     );
     serviceLocator.registerLazySingleton<ApproveRequestUseCase>(
       () => ApproveRequestUseCase(serviceLocator()),
@@ -93,7 +97,7 @@ class MyRequestsServiceLocator {
 
     /// controllers
     serviceLocator.registerFactory(() => MyRequestsCubit(serviceLocator(),
-        serviceLocator(), serviceLocator(), serviceLocator()));
+        serviceLocator(), serviceLocator(), serviceLocator(), serviceLocator()));
     serviceLocator.registerFactory<EditCubit>(
       () => EditCubit(
         serviceLocator(),

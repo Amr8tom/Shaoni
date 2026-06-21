@@ -59,13 +59,20 @@ class NavigationMenuScreen extends StatelessWidget {
               body: BlocConsumer<NavigationCubit, NavigationState>(
                 listener: (context, state) {
                   if (state.status.isSuccess) {
-                    /// if he is employee
+                    /// employee requests (always)
                     requestController.getAllUserRequests(
                         employeeId: state.user!.employeeId ?? 1);
+
+                    /// manager requests (only for managers)
                     if (state.user?.managerId == 0) {
-                      /// if he is manager
                       requestController.getAllManagerRequests(
                           managerID: state.user!.id ?? 1);
+                    }
+
+                    /// kafeel requests (only for kafeel)
+                    if (state.user?.isKafeel == true) {
+                      requestController.getAllKafeelRequests(
+                          userId: state.user!.employeeId ?? 1);
                     }
                   }
                 },

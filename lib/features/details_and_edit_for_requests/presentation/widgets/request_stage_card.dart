@@ -26,17 +26,22 @@ class RequestStageCard extends StatelessWidget {
 
   List<RequestStatusEnum> get stages =>
       status.getRequestStatusEnumList(serviceType: serviceType);
+
   //
 
   int get _activeIndex {
-   final index =status.getRequestStatusEnumList(serviceType: serviceType).indexOf(status.techName.toRequestStatusEnum);
-   return index;
+    final index = status
+        .getRequestStatusEnumList(serviceType: serviceType)
+        .indexOf(status.techName.toRequestStatusEnum);
+    return index;
   }
 
-  bool get _isRejected => status.techName.toRequestStatusEnum == RequestStatusEnum.rejected;
+  bool get _isRejected =>
+      status.techName.toRequestStatusEnum == RequestStatusEnum.rejected;
 
   @override
   Widget build(BuildContext context) {
+
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: AppSizes.padding),
       child: Container(

@@ -15,6 +15,7 @@ class UserEntity extends Equatable {
   final String? city;
   final bool isActive;
   final int? employeeId;
+  final bool isKafeel;
   final int? managerId;
   final String? managerName;
   final int? officeId;
@@ -33,6 +34,7 @@ class UserEntity extends Equatable {
     required this.fullName,
     required this.userName,
     required this.email,
+    required this.isKafeel,
     required this.role,
     required this.roleId,
     required this.phoneNumber,
@@ -64,6 +66,7 @@ class UserEntity extends Equatable {
         nationality,
         city,
         isActive,
+        isKafeel,
         employeeId,
         managerId,
         managerName,

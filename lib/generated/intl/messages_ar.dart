@@ -471,14 +471,6 @@ class MessageLookup extends MessageLookupByLibrary {
     "firstInstallmentDate": MessageLookupByLibrary.simpleMessage(
       "تاريخ أول قسط",
     ),
-    "gregorianDateHeader": MessageLookupByLibrary.simpleMessage("تاريخ (م)"),
-    "hijriDateHeader": MessageLookupByLibrary.simpleMessage("التاريخ (هـ)"),
-    "installmentAmount": MessageLookupByLibrary.simpleMessage("مبلغ القسط"),
-    "loanInstallments": MessageLookupByLibrary.simpleMessage("الأقساط"),
-    "needsGuarantor": MessageLookupByLibrary.simpleMessage("بحاجة إلى كفيل"),
-    "notPaid": MessageLookupByLibrary.simpleMessage("غير مدفوع"),
-    "odooRequestNumber": MessageLookupByLibrary.simpleMessage("رقم الطلب (Odoo)"),
-    "paid": MessageLookupByLibrary.simpleMessage("مدفوع"),
     "firstName": MessageLookupByLibrary.simpleMessage("الاسم الأول"),
     "flashTodaySale": MessageLookupByLibrary.simpleMessage("عِـــروٌض الــيوم"),
     "followOeder": MessageLookupByLibrary.simpleMessage("تتبع الطلب"),
@@ -510,6 +502,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "grA1": MessageLookupByLibrary.simpleMessage("مجموعة أ-1"),
     "grB3": MessageLookupByLibrary.simpleMessage("مجموعة ب-3"),
     "grB6": MessageLookupByLibrary.simpleMessage("مجموعة ب-6"),
+    "gregorianDateHeader": MessageLookupByLibrary.simpleMessage("تاريخ (م)"),
     "groupA": MessageLookupByLibrary.simpleMessage("مجموعة أ"),
     "groups": MessageLookupByLibrary.simpleMessage("المجموعات"),
     "groupsKeywords": MessageLookupByLibrary.simpleMessage(
@@ -549,6 +542,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "helper": MessageLookupByLibrary.simpleMessage("مسـاعده"),
     "hh": MessageLookupByLibrary.simpleMessage("ي/ش/س  س:د"),
     "hijriDate": MessageLookupByLibrary.simpleMessage("التاريخ الهجري"),
+    "hijriDateHeader": MessageLookupByLibrary.simpleMessage("التاريخ (هـ)"),
     "hilton": MessageLookupByLibrary.simpleMessage("فندق هلتون"),
     "history": MessageLookupByLibrary.simpleMessage("التاريخ"),
     "hm": MessageLookupByLibrary.simpleMessage("الحج – منى"),
@@ -587,6 +581,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "includeWeekend": MessageLookupByLibrary.simpleMessage("يشمل عطلات؟"),
     "information": MessageLookupByLibrary.simpleMessage("المعلومات"),
+    "installmentAmount": MessageLookupByLibrary.simpleMessage("مبلغ القسط"),
     "installmentWithSouhoola": MessageLookupByLibrary.simpleMessage(
       "قسط مع سهولة",
     ),
@@ -623,6 +618,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "kaabahtawaf": MessageLookupByLibrary.simpleMessage("طواف الكعبة"),
     "kabaa": MessageLookupByLibrary.simpleMessage("الكعبة"),
     "kafeelName": MessageLookupByLibrary.simpleMessage("اسم الكفيل"),
+    "kafeelRequests": MessageLookupByLibrary.simpleMessage("طلبات الكفيل"),
     "karim": MessageLookupByLibrary.simpleMessage("الكريم"),
     "language": MessageLookupByLibrary.simpleMessage("الـلغة"),
     "languageArabic": MessageLookupByLibrary.simpleMessage("العربية"),
@@ -645,6 +641,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "loRe": MessageLookupByLibrary.simpleMessage("   موقع السكم"),
     "loading": MessageLookupByLibrary.simpleMessage("جاري التحميل"),
     "loanAmount": MessageLookupByLibrary.simpleMessage("مبلغ السلفة"),
+    "loanInstallments": MessageLookupByLibrary.simpleMessage("الأقساط"),
     "loanPaymentPeriod": MessageLookupByLibrary.simpleMessage(
       "مدة السداد (بالأشهر)",
     ),
@@ -742,6 +739,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "name": MessageLookupByLibrary.simpleMessage("الاسم:"),
     "nation": MessageLookupByLibrary.simpleMessage("الجنسية"),
     "nationalId": MessageLookupByLibrary.simpleMessage("رقم الهوية"),
+    "needsGuarantor": MessageLookupByLibrary.simpleMessage("بحاجة إلى كفيل"),
     "newPass": MessageLookupByLibrary.simpleMessage("كلمة مرور جديدة"),
     "newPassword": MessageLookupByLibrary.simpleMessage("كلمة المرور الجديدة"),
     "newProduct": MessageLookupByLibrary.simpleMessage("مٌــنتج جَـدٍيد"),
@@ -803,6 +801,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "notImplementedYet": MessageLookupByLibrary.simpleMessage(
       "هذه الميزة لم يتم تنفيذها بعد",
     ),
+    "notPaid": MessageLookupByLibrary.simpleMessage("غير مدفوع"),
     "notVerified": MessageLookupByLibrary.simpleMessage("يرجى تفعيل حسابك"),
     "notes": MessageLookupByLibrary.simpleMessage("ملاحظات إضافية"),
     "notesHint": MessageLookupByLibrary.simpleMessage(
@@ -811,6 +810,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "notesLabel": MessageLookupByLibrary.simpleMessage("ملاحظات"),
     "notification": MessageLookupByLibrary.simpleMessage("الإشعارات"),
     "notifications": MessageLookupByLibrary.simpleMessage("الاشعارات"),
+    "odooRequestNumber": MessageLookupByLibrary.simpleMessage(
+      "رقم الطلب (Odoo)",
+    ),
     "offers": MessageLookupByLibrary.simpleMessage("العـروض"),
     "omlet": MessageLookupByLibrary.simpleMessage("بيض أومليت"),
     "onboarding1Desc": MessageLookupByLibrary.simpleMessage(
@@ -876,6 +878,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "packingBody": MessageLookupByLibrary.simpleMessage(
       "نحن نقوم بتجهيز طلبك والبحث عن أقرب توصيل",
     ),
+    "paid": MessageLookupByLibrary.simpleMessage("مدفوع"),
     "passNo": MessageLookupByLibrary.simpleMessage("رقم جواز السفر"),
     "passport": MessageLookupByLibrary.simpleMessage("جواز سفر"),
     "passportAddress": MessageLookupByLibrary.simpleMessage("عنوان جواز السفر"),
@@ -1151,6 +1154,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "selectDocumentType": MessageLookupByLibrary.simpleMessage("اختر النوع"),
     "selectEmployee": MessageLookupByLibrary.simpleMessage("اختر الموظف"),
+    "selectGuarantor": MessageLookupByLibrary.simpleMessage("اختر الكفيل"),
     "selectInsuranceClass": MessageLookupByLibrary.simpleMessage(
       "اختر فئة التأمين",
     ),

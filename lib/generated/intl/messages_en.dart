@@ -509,14 +509,6 @@ class MessageLookup extends MessageLookupByLibrary {
     "firstInstallmentDate": MessageLookupByLibrary.simpleMessage(
       "First Installment Date",
     ),
-    "gregorianDateHeader": MessageLookupByLibrary.simpleMessage("Date (G)"),
-    "hijriDateHeader": MessageLookupByLibrary.simpleMessage("Date (H)"),
-    "installmentAmount": MessageLookupByLibrary.simpleMessage("Installment Amount"),
-    "loanInstallments": MessageLookupByLibrary.simpleMessage("Installments"),
-    "needsGuarantor": MessageLookupByLibrary.simpleMessage("Needs Guarantor"),
-    "notPaid": MessageLookupByLibrary.simpleMessage("Not Paid"),
-    "odooRequestNumber": MessageLookupByLibrary.simpleMessage("Odoo Request Number"),
-    "paid": MessageLookupByLibrary.simpleMessage("Paid"),
     "firstName": MessageLookupByLibrary.simpleMessage("First Name "),
     "flashTodaySale": MessageLookupByLibrary.simpleMessage("Today Sale"),
     "followOeder": MessageLookupByLibrary.simpleMessage("Follow Order"),
@@ -544,6 +536,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "grA1": MessageLookupByLibrary.simpleMessage("Group A-1"),
     "grB3": MessageLookupByLibrary.simpleMessage("Group B-3"),
     "grB6": MessageLookupByLibrary.simpleMessage("Group B-6"),
+    "gregorianDateHeader": MessageLookupByLibrary.simpleMessage("Date (G)"),
     "groupA": MessageLookupByLibrary.simpleMessage("Group A"),
     "groups": MessageLookupByLibrary.simpleMessage("Groups"),
     "groupsKeywords": MessageLookupByLibrary.simpleMessage(
@@ -585,6 +578,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "helper": MessageLookupByLibrary.simpleMessage("Help"),
     "hh": MessageLookupByLibrary.simpleMessage("mm/dd/yyyy  hh:mm"),
     "hijriDate": MessageLookupByLibrary.simpleMessage("Hijri Date"),
+    "hijriDateHeader": MessageLookupByLibrary.simpleMessage("Date (H)"),
     "hilton": MessageLookupByLibrary.simpleMessage("Hilton Hotel"),
     "history": MessageLookupByLibrary.simpleMessage("history"),
     "hm": MessageLookupByLibrary.simpleMessage("Hajj - Mena"),
@@ -625,6 +619,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "includeWeekend": MessageLookupByLibrary.simpleMessage("Include Weekend"),
     "information": MessageLookupByLibrary.simpleMessage("ّInformation"),
+    "installmentAmount": MessageLookupByLibrary.simpleMessage(
+      "Installment Amount",
+    ),
     "installmentWithSouhoola": MessageLookupByLibrary.simpleMessage(
       "Installment with souhoola",
     ),
@@ -665,6 +662,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "kaabahtawaf": MessageLookupByLibrary.simpleMessage("KAABAH TAWAF"),
     "kabaa": MessageLookupByLibrary.simpleMessage("The Kaaba"),
     "kafeelName": MessageLookupByLibrary.simpleMessage("Sponsor Name"),
+    "kafeelRequests": MessageLookupByLibrary.simpleMessage("Kafeel Requests"),
     "karim": MessageLookupByLibrary.simpleMessage("Karim"),
     "language": MessageLookupByLibrary.simpleMessage("Language"),
     "languageArabic": MessageLookupByLibrary.simpleMessage("العربية"),
@@ -687,6 +685,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "loRe": MessageLookupByLibrary.simpleMessage("   Location Residence"),
     "loading": MessageLookupByLibrary.simpleMessage("Loading..."),
     "loanAmount": MessageLookupByLibrary.simpleMessage("Loan Amount"),
+    "loanInstallments": MessageLookupByLibrary.simpleMessage("Installments"),
     "loanPaymentPeriod": MessageLookupByLibrary.simpleMessage(
       "Repayment Period (Months)",
     ),
@@ -782,6 +781,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "name": MessageLookupByLibrary.simpleMessage("Name:"),
     "nation": MessageLookupByLibrary.simpleMessage("Nationality"),
     "nationalId": MessageLookupByLibrary.simpleMessage("National ID"),
+    "needsGuarantor": MessageLookupByLibrary.simpleMessage("Needs Guarantor"),
     "newPass": MessageLookupByLibrary.simpleMessage("New Password"),
     "newPassword": MessageLookupByLibrary.simpleMessage("New Password"),
     "newProduct": MessageLookupByLibrary.simpleMessage("New Product"),
@@ -843,6 +843,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "notImplementedYet": MessageLookupByLibrary.simpleMessage(
       "This is not implemented yet",
     ),
+    "notPaid": MessageLookupByLibrary.simpleMessage("Not Paid"),
     "notVerified": MessageLookupByLibrary.simpleMessage(
       "please verify your account",
     ),
@@ -851,6 +852,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "notesLabel": MessageLookupByLibrary.simpleMessage("Notes"),
     "notification": MessageLookupByLibrary.simpleMessage("Notifications"),
     "notifications": MessageLookupByLibrary.simpleMessage("Notifications"),
+    "odooRequestNumber": MessageLookupByLibrary.simpleMessage(
+      "Odoo Request Number",
+    ),
     "offers": MessageLookupByLibrary.simpleMessage("Offers"),
     "omlet": MessageLookupByLibrary.simpleMessage("Omelets Eggs"),
     "onboarding1Desc": MessageLookupByLibrary.simpleMessage(
@@ -918,6 +922,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "packingBody": MessageLookupByLibrary.simpleMessage(
       "we are packing your order and searching for nearest delivery",
     ),
+    "paid": MessageLookupByLibrary.simpleMessage("Paid"),
     "passNo": MessageLookupByLibrary.simpleMessage("Passport No."),
     "passport": MessageLookupByLibrary.simpleMessage("Passport"),
     "passportAddress": MessageLookupByLibrary.simpleMessage("Passport Address"),
@@ -1214,6 +1219,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Select document type",
     ),
     "selectEmployee": MessageLookupByLibrary.simpleMessage("Select Employee"),
+    "selectGuarantor": MessageLookupByLibrary.simpleMessage("Select Guarantor"),
     "selectInsuranceClass": MessageLookupByLibrary.simpleMessage(
       "Select insurance class",
     ),

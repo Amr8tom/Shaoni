@@ -8,6 +8,7 @@ import '../../domain/use_cases/salary_requests/edit_salary_use_case.dart';
 import '../../domain/use_cases/salary_requests/get_banks_use_case.dart';
 import '../../domain/use_cases/salary_requests/update_salary_use_case.dart';
 import '../model/loan/create_loan_response_model.dart';
+import '../model/loan/kafeel_employee_model.dart';
 import '../model/loan/loan_type_model.dart';
 import '../model/salary_requests/bank_model.dart';
 import '../model/salary_requests/country_model.dart';
@@ -33,6 +34,7 @@ abstract class SalariesRemoteDataSource {
 
   // ── Loan ──
   Future<List<LoanTypeModel>> getLoanTypes();
+  Future<List<KafeelEmployeeModel>> getKafeelEmployees();
   Future<CreateLoanResponseModel> createLoanRequest(CreateLoanParams params);
   Future<CreateLoanResponseModel> editLoanRequest(EditLoanParams params);
   Future<CreateLoanResponseModel> updateLoanRequest(UpdateLoanParams params);
@@ -131,6 +133,15 @@ class SalariesRemoteDataSourceImpl implements SalariesRemoteDataSource {
   }
 
   // ── Loan ──
+  @override
+  Future<List<KafeelEmployeeModel>> getKafeelEmployees() async {
+    final response = await dioHelper.getData(url: URL.getKafeelEmployees);
+    final data = response is List ? response : (response['data'] as List? ?? []);
+    return data
+        .map((e) => KafeelEmployeeModel.fromJson(e as Map<String, dynamic>))
+        .toList();
+  }
+
   @override
   Future<List<LoanTypeModel>> getLoanTypes() async {
     final response = await dioHelper.getData(url: URL.getLoanTypes);

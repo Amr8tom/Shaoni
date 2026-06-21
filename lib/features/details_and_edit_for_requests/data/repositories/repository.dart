@@ -6,6 +6,7 @@ import 'package:shaoni/features/details_and_edit_for_requests/domain/entities/al
 import 'package:shaoni/features/details_and_edit_for_requests/domain/entities/edit/edit_response.dart';
 import 'package:shaoni/features/details_and_edit_for_requests/domain/entities/request_with_stage.dart';
 import 'package:shaoni/features/details_and_edit_for_requests/domain/use_cases/approve_request_use_case.dart';
+import 'package:shaoni/features/details_and_edit_for_requests/domain/use_cases/get_all_kafeel_requests_use_case.dart';
 import 'package:shaoni/features/details_and_edit_for_requests/domain/use_cases/get_all_manager_requests_use_case.dart';
 import 'package:shaoni/features/details_and_edit_for_requests/domain/use_cases/get_all_user_requests_use_case.dart';
 import 'package:shaoni/features/details_and_edit_for_requests/domain/use_cases/get_attendance_edit_use_case.dart';
@@ -84,6 +85,33 @@ class MyRequestsRepositoryImp extends MyRequestsRepository {
     } else {
       try {
         final requests = await _localDataSources.getAllMyRequestsByManager();
+        return Right(requests);
+      } on CacheFailure {
+        return Left(CacheFailure());
+      }
+    }
+  }
+
+  @override
+  Future<Either<Failure, AllRequestsWithStages>> getAllKafeelRequests(
+      {required GetAllKafeelRequestsParams params}) async {
+    if (await _networkInfo.isConnected) {
+      try {
+        final requests = await _remoteDataSources.getAllKafeelRequests(
+          params: params,
+        );
+        await _localDataSources.cacheAllMyRequestsByKafeel(requests: requests);
+        return Right(requests);
+      } on ServerFailure {
+        return Left(
+          ServerFailure(
+            message: ' ===================== Server Failure ===============',
+          ),
+        );
+      }
+    } else {
+      try {
+        final requests = await _localDataSources.getAllMyRequestsByKafeel();
         return Right(requests);
       } on CacheFailure {
         return Left(CacheFailure());

@@ -1,6 +1,7 @@
 import 'package:dartz/dartz.dart';
 import '../../../../core/error/failure.dart';
 import '../entity/loan/create_loan_response.dart';
+import '../entity/loan/kafeel_employee.dart';
 import '../entity/loan/loan_type.dart';
 import '../entity/salary_requests/bank.dart';
 import '../entity/salary_requests/country.dart';
@@ -46,6 +47,8 @@ abstract class SalariesRepository {
 
   // ── Loan ──
   Future<Either<Failure, List<LoanType>>> getLoanTypes();
+
+  Future<Either<Failure, List<KafeelEmployee>>> getKafeelEmployees();
 
   Future<Either<Failure, CreateLoanResponse>> createLoanRequest({
     required CreateLoanParams params,

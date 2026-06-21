@@ -4,6 +4,7 @@ import 'package:shaoni/features/details_and_edit_for_requests/data/models/all_re
 import 'package:shaoni/features/details_and_edit_for_requests/data/models/request_with_stage_model.dart';
 import 'package:shaoni/features/details_and_edit_for_requests/domain/use_cases/approve_request_use_case.dart';
 import '../../../../../core/error/failure.dart';
+import '../../domain/use_cases/get_all_kafeel_requests_use_case.dart';
 import '../../domain/use_cases/get_all_manager_requests_use_case.dart';
 import '../../domain/use_cases/get_all_user_requests_use_case.dart';
 import '../../domain/use_cases/get_attendance_edit_use_case.dart';
@@ -32,6 +33,10 @@ abstract class MyRequestsRemoteDataSources {
 
   Future<AllRequestsWithStagesModel> getAllManagerRequests({
     required GetAllManagerRequestsParams params,
+  });
+
+  Future<AllRequestsWithStagesModel> getAllKafeelRequests({
+    required GetAllKafeelRequestsParams params,
   });
 
   Future<ApproveRequestModel> acceptRequest({
@@ -117,6 +122,24 @@ class MyRequestsRemoteDataSourcesImp implements MyRequestsRemoteDataSources {
     try {
       final response = await _dio.postData(
         url: URL.getAllRequestsWithStagesByManager,
+        body: params.toMap(),
+      );
+      if (response == null) {
+        throw ServerFailure(message: 'Null response from server');
+      }
+      return AllRequestsWithStagesModel.fromJson(response);
+    } on ServerFailure {
+      rethrow;
+    }
+  }
+
+  @override
+  Future<AllRequestsWithStagesModel> getAllKafeelRequests({
+    required GetAllKafeelRequestsParams params,
+  }) async {
+    try {
+      final response = await _dio.postData(
+        url: URL.getAllRequestsWithStagesByKafeel,
         body: params.toMap(),
       );
       if (response == null) {
