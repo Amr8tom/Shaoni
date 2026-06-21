@@ -83,7 +83,7 @@ class KafeelRequestsGridView extends StatelessWidget {
                   'serviceName': S.current.localeee == 'en'
                       ? controller.state.itemsKafeel[index].service?.nameEn
                       : request.service?.nameAr ?? '',
-                  'serviceCode': request.service?.code ?? '',
+                  'serviceCode': request.service?.nameEn ?? '',
                   'numberOfHours': request
                       .extraData?.exitPermission?.numberOfHours
                       .toString(),

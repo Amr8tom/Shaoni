@@ -6369,6 +6369,26 @@ class S {
     );
   }
 
+  /// `Comment`
+  String get studyDurationComment {
+    return Intl.message(
+      'Comment',
+      name: 'studyDurationComment',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Comment on study duration`
+  String get studyDurationCommentHint {
+    return Intl.message(
+      'Comment on study duration',
+      name: 'studyDurationCommentHint',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `This field is required`
   String get thisFieldRequired {
     return Intl.message(

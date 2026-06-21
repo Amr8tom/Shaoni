@@ -2,6 +2,7 @@ import 'package:equatable/equatable.dart';
 
 class IDDocument extends Equatable {
   final int? id;
+  final String? externalName;
   final String? requestType;
   final String? documentType;
   final String? issuingCountry;
@@ -17,9 +18,12 @@ class IDDocument extends Equatable {
   final String? familyCardNumber;
   final String? drivingLicenseNumber;
   final String? date;
+  final String? editReasons;
+  final String? rejectReasons;
 
   const IDDocument({
     this.id,
+    this.externalName,
     this.requestType,
     this.documentType,
     this.issuingCountry,
@@ -35,11 +39,14 @@ class IDDocument extends Equatable {
     this.familyCardNumber,
     this.drivingLicenseNumber,
     this.date,
+    this.editReasons,
+    this.rejectReasons,
   });
 
   @override
   List<Object?> get props => [
         id,
+        externalName,
         requestType,
         documentType,
         issuingCountry,
@@ -55,5 +62,7 @@ class IDDocument extends Equatable {
         familyCardNumber,
         drivingLicenseNumber,
         date,
+        editReasons,
+        rejectReasons,
       ];
 }

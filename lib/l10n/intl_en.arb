@@ -828,6 +828,8 @@
   "endDate": "End Date",
   "orderReason": "Request Justification",
   "orderReasonHint": "Enter the reason for this request",
+  "studyDurationComment": "Comment",
+  "studyDurationCommentHint": "Comment on study duration",
   "thisFieldRequired": "This field is required",
   "startWork": "Start Work",
   "startWorkType": "Start Work Type",

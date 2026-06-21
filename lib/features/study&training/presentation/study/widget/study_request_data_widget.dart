@@ -76,7 +76,7 @@ class StudyRequestDataWidget extends StatelessWidget {
         ),
         const Sizer(height: 20),
 
-        // ── Study duration: start date | end date ────────────────────────
+        // ── Study duration: start date | end date | comment ───────────────
         Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -103,6 +103,19 @@ class StudyRequestDataWidget extends StatelessWidget {
                   controller.courseEndHijriController.text = hijri;
                   _updateDuration(controller);
                 },
+              ),
+            ),
+            const Sizer(width: 9.6),
+            Expanded(
+              child: DEditableField(
+                label: S.current.studyDurationComment,
+                hint: S.current.studyDurationCommentHint,
+                icon: Icons.comment_rounded,
+                iconColor: ColorRes.black,
+                controller: controller.commentController,
+                readOnly: false,
+                keyboardType: TextInputType.multiline,
+                // Optional — matches the web form, which doesn't require it.
               ),
             ),
           ],

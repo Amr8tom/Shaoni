@@ -169,6 +169,7 @@ class ExtraDataModel extends ExtraData {
           ? null
           : {
               'id': extraData.idDocument!.id,
+              'externalName': extraData.idDocument!.externalName,
               'requestType': extraData.idDocument!.requestType,
               'documentType': extraData.idDocument!.documentType,
               'issuingCountry': extraData.idDocument!.issuingCountry,
@@ -185,6 +186,8 @@ class ExtraDataModel extends ExtraData {
               'drivingLicenseNumber':
                   extraData.idDocument!.drivingLicenseNumber,
               'date': extraData.idDocument!.date,
+              'editReasons': extraData.idDocument!.editReasons,
+              'rejectReasons': extraData.idDocument!.rejectReasons,
             },
       'medicalInsurance': extraData.medicalInsurance == null
           ? null

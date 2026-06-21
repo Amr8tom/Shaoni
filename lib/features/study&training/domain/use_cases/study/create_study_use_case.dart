@@ -29,6 +29,9 @@ class CreateStudyParams {
   final String studyEndDate;
   final String note;
   final String reason;
+  // Free-text comment on the study duration ("تعليق") — independent from
+  // [note] ("ملاحظات"). Sent as its own 'comment' field in the request body.
+  final String comment;
   final String attachmentName;
   final String attachment;
 
@@ -42,6 +45,7 @@ class CreateStudyParams {
     required this.studyEndDate,
     required this.note,
     required this.reason,
+    this.comment = '',
     required this.attachmentName,
     required this.attachment,
   });
@@ -68,7 +72,7 @@ class CreateStudyParams {
       'study_end_date': studyEndDate,
       'note': note,
       'reason': reason,
-      'comment': note,
+      'comment': comment,
       'study_request_attachment_ids': attachments,
     };
   }

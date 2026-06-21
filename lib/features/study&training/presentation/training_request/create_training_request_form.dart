@@ -32,7 +32,7 @@ class CreateTrainingRequestForm extends StatelessWidget {
         appBar: DAppBar(
           showMenu: false,
           showBackArrow: true,
-          title: _isEditMode ? S.current.editRequest : null,
+          title: _isEditMode ? S.current.editRequest : S.current.trainingRequest,
         ),
         extendBodyBehindAppBar: true,
         backgroundColor: ColorRes.grey6,

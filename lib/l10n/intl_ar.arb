@@ -834,6 +834,8 @@
   "endDate": "تاريخ الانتهاء",
   "orderReason": "مبررات الطلب",
   "orderReasonHint": "أدخل سبب هذا الطلب",
+  "studyDurationComment": "تعليق",
+  "studyDurationCommentHint": "تعليق على مدة الدراسة",
   "thisFieldRequired": "هذا الحقل مطلوب",
   "startWork": "بدء العمل",
   "startWorkType": "نوع بدء العمل",

@@ -8,6 +8,8 @@ import '../../../../core/constants/colors.dart';
 import '../../../../generated/l10n.dart';
 import '../../../home/presentation/widgets/order_text_card.dart';
 import '../controller/my_requests_cubit.dart';
+import 'details/loan_info_cell.dart';
+import 'details/yes_no_badge.dart';
 
 class IDDocumentDetailsWidget extends StatelessWidget {
   const IDDocumentDetailsWidget({super.key});
@@ -41,11 +43,23 @@ class IDDocumentDetailsWidget extends StatelessWidget {
               Divider(color: ColorRes.grey4),
               const Sizer(height: 12),
 
-              /// Request type
-              if ((doc?.requestType?.isNotEmpty ?? false)) ...[
+              /// Odoo request number — full width
+              if ((doc?.externalName?.isNotEmpty ?? false)) ...[
                 OrderTextCard(
-                  title: S.current.requestType,
-                  result: doc?.requestType ?? '',
+                  title: S.current.odooRequestNumber,
+                  result: doc!.externalName!,
+                ),
+                const Sizer(height: 12),
+              ],
+
+              /// Request type — shown as a colored chip (matches web)
+              if ((doc?.requestType?.isNotEmpty ?? false)) ...[
+                LoanInfoCell(
+                  label: S.current.requestType,
+                  valueWidget: Align(
+                    alignment: AlignmentDirectional.centerStart,
+                    child: TypeBadge(label: doc!.requestType!),
+                  ),
                 ),
                 const Sizer(height: 12),
               ],
@@ -154,6 +168,53 @@ class IDDocumentDetailsWidget extends StatelessWidget {
                 OrderTextCard(
                   title: S.current.kafeelName,
                   result: doc?.kafeelName ?? '',
+                ),
+                const Sizer(height: 12),
+              ],
+
+              /// Tabaq + has-kafala — shown as Yes/No badges (matches web)
+              if (doc != null) ...[
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Expanded(
+                      child: LoanInfoCell(
+                        label: S.current.tabaq,
+                        valueWidget: Align(
+                          alignment: AlignmentDirectional.centerStart,
+                          child: YesNoBadge(value: doc.tabaq),
+                        ),
+                      ),
+                    ),
+                    const Sizer(width: 16),
+                    Expanded(
+                      child: LoanInfoCell(
+                        label: S.current.hasKafala,
+                        valueWidget: Align(
+                          alignment: AlignmentDirectional.centerStart,
+                          child: YesNoBadge(value: doc.kafala),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                const Sizer(height: 12),
+              ],
+
+              /// Edit reasons (shown when not null/empty)
+              if (doc?.editReasons?.isNotEmpty == true) ...[
+                _FullWidthTextBlock(
+                  label: S.current.editReasons,
+                  value: doc!.editReasons!,
+                ),
+                const Sizer(height: 12),
+              ],
+
+              /// Reject reasons (shown when not null/empty)
+              if (doc?.rejectReasons?.isNotEmpty == true) ...[
+                _FullWidthTextBlock(
+                  label: S.current.rejectReasons,
+                  value: doc!.rejectReasons!,
                 ),
                 const Sizer(height: 12),
               ],

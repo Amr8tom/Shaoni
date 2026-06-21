@@ -1258,6 +1258,10 @@ class MessageLookup extends MessageLookupByLibrary {
     "streetName": MessageLookupByLibrary.simpleMessage("أسم الشارع"),
     "study": MessageLookupByLibrary.simpleMessage("التدريب والدراسة"),
     "studyDestination": MessageLookupByLibrary.simpleMessage("الجهة / الوجهة"),
+    "studyDurationComment": MessageLookupByLibrary.simpleMessage("تعليق"),
+    "studyDurationCommentHint": MessageLookupByLibrary.simpleMessage(
+      "تعليق على مدة الدراسة",
+    ),
     "studyType": MessageLookupByLibrary.simpleMessage("نوع الدراسة"),
     "studyTypeRequired": MessageLookupByLibrary.simpleMessage(
       "نوع الدراسة مطلوب",

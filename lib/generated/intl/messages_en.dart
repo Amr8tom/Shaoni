@@ -1339,6 +1339,10 @@ class MessageLookup extends MessageLookupByLibrary {
     "studyDestination": MessageLookupByLibrary.simpleMessage(
       "Destination / Entity",
     ),
+    "studyDurationComment": MessageLookupByLibrary.simpleMessage("Comment"),
+    "studyDurationCommentHint": MessageLookupByLibrary.simpleMessage(
+      "Comment on study duration",
+    ),
     "studyType": MessageLookupByLibrary.simpleMessage("Study Type"),
     "studyTypeRequired": MessageLookupByLibrary.simpleMessage(
       "Study type is required",

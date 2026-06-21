@@ -40,6 +40,7 @@ class StudyCubit extends Cubit<StudyState> {
   final durationController = TextEditingController();
   final noteController = TextEditingController();
   final reasonController = TextEditingController();
+  final commentController = TextEditingController();
 
   /// ── Attachment controllers ───────────────────────────────────────────────
   final attachmentFileController = TextEditingController();
@@ -145,6 +146,7 @@ class StudyCubit extends Cubit<StudyState> {
         studyEndDate: courseEndDateController.text.trim(),
         note: noteController.text.trim(),
         reason: reasonController.text.trim(),
+        comment: commentController.text.trim(),
         attachmentName: attachmentFileNameController.text.trim(),
         attachment: attachmentFileController.text.trim(),
       ),
@@ -178,6 +180,7 @@ class StudyCubit extends Cubit<StudyState> {
           studyEndDate: courseEndDateController.text.trim(),
           note: noteController.text.trim(),
           reason: reasonController.text.trim(),
+          comment: commentController.text.trim(),
           attachmentName: attachmentFileNameController.text.trim(),
           attachment: attachmentFileController.text.trim(),
         ),
@@ -212,6 +215,7 @@ class StudyCubit extends Cubit<StudyState> {
     durationController.clear();
     noteController.clear();
     reasonController.clear();
+    commentController.clear();
     attachmentFileController.clear();
     attachmentFileNameController.clear();
   }
@@ -238,6 +242,7 @@ class StudyCubit extends Cubit<StudyState> {
     durationController.dispose();
     noteController.dispose();
     reasonController.dispose();
+    commentController.dispose();
     attachmentFileController.dispose();
     attachmentFileNameController.dispose();
     return super.close();

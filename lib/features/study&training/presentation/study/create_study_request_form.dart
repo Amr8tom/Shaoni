@@ -32,7 +32,7 @@ class CreateStudyRequestForm extends StatelessWidget {
         appBar: DAppBar(
           showMenu: false,
           showBackArrow: true,
-          title: _isEditMode ? S.current.editRequest : null,
+          title: _isEditMode ? S.current.editRequest : S.current.study,
         ),
         extendBodyBehindAppBar: true,
         backgroundColor: ColorRes.grey6,
