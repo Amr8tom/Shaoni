@@ -99,7 +99,7 @@ class RequestDetailsScreen extends StatelessWidget {
 
                   /// stages timeline
                   RequestStageCard(
-                    status: currentStatus!,
+                    status: currentStatus,
                     serviceType: serviceCode,
                   ),
 

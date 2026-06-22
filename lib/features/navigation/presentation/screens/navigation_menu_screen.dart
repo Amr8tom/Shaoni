@@ -63,10 +63,10 @@ class NavigationMenuScreen extends StatelessWidget {
                     requestController.getAllUserRequests(
                         employeeId: state.user!.employeeId ?? 1);
 
-                    /// manager requests (only for managers)
-                    if (state.user?.managerId == 1) {
+                    /// manager requests (only for managers the manger id 0 which means no manager)
+                    if (state.user?.jobTitle =="manager"||state.user?.managerId==0) {
                       requestController.getAllManagerRequests(
-                          managerID: state.user!.id ?? 1);
+                          managerID: state.user?.id??1);
                     }
 
                     /// kafeel requests (only for kafeel)

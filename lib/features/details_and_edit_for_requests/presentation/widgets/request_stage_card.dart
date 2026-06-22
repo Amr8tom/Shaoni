@@ -9,7 +9,7 @@ import 'package:shaoni/features/details_and_edit_for_requests/presentation/widge
 import '../../../../generated/l10n.dart';
 
 class RequestStageCard extends StatelessWidget {
-  final CurrentStatus status;
+  final CurrentStatus? status;
   final String serviceType;
 
   const RequestStageCard(
@@ -20,27 +20,28 @@ class RequestStageCard extends StatelessWidget {
   String _statusName(BuildContext context) {
     final isAr = S.current.localeee != 'en';
     return isAr
-        ? (status.nameAr ?? status.nameEn ?? '')
-        : (status.nameEn ?? status.nameAr ?? '');
+        ? (status?.nameAr ?? status?.nameEn ?? '')
+        : (status?.nameEn ?? status?.nameAr ?? '');
   }
 
   List<RequestStatusEnum> get stages =>
-      status.getRequestStatusEnumList(serviceType: serviceType);
+      status?.getRequestStatusEnumList(serviceType: serviceType) ?? const [];
 
   //
 
   int get _activeIndex {
-    final index = status
-        .getRequestStatusEnumList(serviceType: serviceType)
-        .indexOf(status.techName.toRequestStatusEnum);
+    if (status == null) return -1;
+    final list = status?.getRequestStatusEnumList(serviceType: serviceType) ?? [];
+    final index = list.indexOf(status!.techName.toRequestStatusEnum);
     return index;
   }
 
   bool get _isRejected =>
-      status.techName.toRequestStatusEnum == RequestStatusEnum.rejected;
+      status?.techName.toRequestStatusEnum == RequestStatusEnum.rejected;
 
   @override
   Widget build(BuildContext context) {
+    if (status == null) return const SizedBox.shrink();
 
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: AppSizes.padding),
@@ -54,7 +55,7 @@ class RequestStageCard extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            /// ── Header row: title + status badge ──────────────────────────
+            /// ── Header row: title + status? badge ──────────────────────────
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [

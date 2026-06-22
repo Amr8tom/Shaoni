@@ -17,7 +17,7 @@ class MyRequestsScreen extends StatelessWidget {
     final navController = context.watch<NavigationCubit>();
     final user = navController.state.user;
 
-    final bool isManager = user?.managerId == 1;
+    final bool isManager = user?.jobTitle?.toLowerCase() == 'manager';
     final bool isKafeel = user?.isKafeel ?? false;
 
     // Determine tab count and build tabs/views dynamically

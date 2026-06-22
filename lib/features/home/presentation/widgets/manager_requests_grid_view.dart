@@ -96,8 +96,10 @@ class ManagerRequestsGridView extends StatelessWidget {
                       request.extraData?.exitPermission?.leavesAttachment ??
                           S.current.noData,
                   'requestID': request.request?.id.toString() ?? '',
+                  'isKafeel': navController.state.user?.isKafeel,
                   'isManager':
-                      navController.state.user?.managerId == 0 ? true : false,
+
+                      navController.state.user?.jobTitle =="manager" ? true : false,
                   'isEmployeeRequest': false,
                 },
               );
