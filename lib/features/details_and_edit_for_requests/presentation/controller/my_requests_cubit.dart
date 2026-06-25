@@ -61,6 +61,7 @@ class MyRequestsCubit extends Cubit<MyRequestsState> {
           pageSize: 12),
     );
 
+    if (isClosed) return;
     result.fold(
       (failure) => emit(state.copyWith(status: MyRequestsStatus.error)),
       (requests) {
@@ -104,6 +105,7 @@ class MyRequestsCubit extends Cubit<MyRequestsState> {
           pageSize: 12),
     );
 
+    if (isClosed) return;
     result.fold(
       (failure) => emit(state.copyWith(status: MyRequestsStatus.error)),
       (requests) {
@@ -142,11 +144,10 @@ class MyRequestsCubit extends Cubit<MyRequestsState> {
 
     final result = await _getAllKafeelRequestsUseCase.call(
       params: GetAllKafeelRequestsParams(
-          userId: userId,
-          pageNumber: kafeelPage,
-          pageSize: 12),
+          userId: userId, pageNumber: kafeelPage, pageSize: 12),
     );
 
+    if (isClosed) return;
     result.fold(
       (failure) => emit(state.copyWith(status: MyRequestsStatus.error)),
       (requests) {
@@ -178,6 +179,7 @@ class MyRequestsCubit extends Cubit<MyRequestsState> {
     final result = await _getRequestDetailsUseCase.call(
       params: GetRequestDetailsParams(requestId: requestId!),
     );
+    if (isClosed) return null;
     result
         .fold((failure) => emit(state.copyWith(status: MyRequestsStatus.error)),
             (response) {
@@ -193,6 +195,7 @@ class MyRequestsCubit extends Cubit<MyRequestsState> {
     final result = await _approveRequestUseCase.call(
       params: params,
     );
+    if (isClosed) return;
     result.fold(
       (failure) => emit(state.copyWith(status: MyRequestsStatus.error)),
       (response) {

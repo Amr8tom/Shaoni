@@ -31,6 +31,7 @@ class NavigationCubit extends Cubit<NavigationState> {
     final result = await _getUserDataUseCase.call(
       params: GetUserDataParams(id: validId),
     );
+    if (isClosed) return;
     return result.fold(
       (failure) => emit(state.copyWith(status: NavigationStatus.error)),
       (user) async {
@@ -53,6 +54,7 @@ class NavigationCubit extends Cubit<NavigationState> {
             .toList()));
         await _sessionStorage.saveJobNumber(user.jobNumber ?? '');
         await _sessionStorage.saveJobTitle(user.jobTitle ?? '');
+        if (isClosed) return;
         emit(state.copyWith(status: NavigationStatus.success, user: user));
       },
     );

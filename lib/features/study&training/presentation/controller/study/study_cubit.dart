@@ -69,11 +69,13 @@ class StudyCubit extends Cubit<StudyState> {
   Future<void> _loadLookups() async {
     emit(state.copyWith(status: StudyStatus.lookupsLoading));
     await Future.wait([_fetchStudyTypes(), _fetchStudyDestinations()]);
+    if (isClosed) return;
     emit(state.copyWith(status: StudyStatus.lookupsLoaded));
   }
 
   Future<void> _fetchStudyTypes() async {
     final result = await _getStudyTypesUseCase.call(params: NoParams());
+    if (isClosed) return;
     result.fold(
       (failure) => emit(state.copyWith(
         status: StudyStatus.lookupsError,
@@ -83,7 +85,7 @@ class StudyCubit extends Cubit<StudyState> {
         _studyTypes = types;
         studyTypeItems = types
             .map((t) => DropdownMenuItem<String>(
-                  value: _localizedName(t.nameAr, t.nameEn),
+                  value: t.code,
                   child: Text(
                     _localizedName(t.nameAr, t.nameEn),
                     style: const TextStyle(fontSize: 12),
@@ -96,6 +98,7 @@ class StudyCubit extends Cubit<StudyState> {
 
   Future<void> _fetchStudyDestinations() async {
     final result = await _getStudyDestinationsUseCase.call(params: NoParams());
+    if (isClosed) return;
     result.fold(
       (failure) => emit(state.copyWith(
         status: StudyStatus.lookupsError,
@@ -105,7 +108,7 @@ class StudyCubit extends Cubit<StudyState> {
         _studyDestinations = destinations;
         studyDestinationItems = destinations
             .map((d) => DropdownMenuItem<String>(
-                  value: d.name,
+                  value: d.id.toString(),
                   child: Text(d.name, style: const TextStyle(fontSize: 12)),
                 ))
             .toList();
@@ -151,6 +154,7 @@ class StudyCubit extends Cubit<StudyState> {
         attachment: attachmentFileController.text.trim(),
       ),
     );
+    if (isClosed) return;
     result.fold(
       (failure) => emit(state.copyWith(
         status: StudyStatus.createStudyRequestError,
@@ -186,6 +190,7 @@ class StudyCubit extends Cubit<StudyState> {
         ),
       ),
     );
+    if (isClosed) return;
     result.fold(
       (failure) => emit(state.copyWith(
         status: StudyStatus.createStudyRequestError,

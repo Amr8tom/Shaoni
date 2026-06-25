@@ -61,11 +61,13 @@ class StartWorkCubit extends Cubit<StartWorkState> {
   Future<void> _loadLookups() async {
     emit(state.copyWith(status: StartWorkStatus.lookupsLoading));
     await Future.wait([_fetchStartWorkTypes(), _fetchEmployees()]);
+    if (isClosed) return;
     emit(state.copyWith(status: StartWorkStatus.lookupsLoaded));
   }
 
   Future<void> _fetchStartWorkTypes() async {
     final result = await _getStartWorkTypesUseCase.call(params: NoParams());
+    if (isClosed) return;
     result.fold(
       (failure) => emit(state.copyWith(
         status: StartWorkStatus.lookupsError,
@@ -88,6 +90,7 @@ class StartWorkCubit extends Cubit<StartWorkState> {
 
   Future<void> _fetchEmployees() async {
     final result = await _getEmployeesUseCase.call(params: NoParams());
+    if (isClosed) return;
     result.fold(
       (failure) => emit(state.copyWith(
         status: StartWorkStatus.lookupsError,
@@ -145,6 +148,7 @@ class StartWorkCubit extends Cubit<StartWorkState> {
       ),
     );
 
+    if (isClosed) return;
     result.fold(
       (failure) => emit(state.copyWith(
         status: StartWorkStatus.createError,
@@ -178,6 +182,7 @@ class StartWorkCubit extends Cubit<StartWorkState> {
       ),
     );
 
+    if (isClosed) return;
     result.fold(
       (failure) => emit(state.copyWith(
         status: StartWorkStatus.createError,

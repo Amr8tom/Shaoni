@@ -110,6 +110,7 @@ class SalaryRequestsCubit extends Cubit<SalaryRequestsState> {
     final countriesResult = await getCountriesUseCase();
     final destinationsResult = await getLetterDestinationsUseCase();
 
+    if (isClosed) return;
     typesResult.fold(
       (failure) => emit(SalaryRequestsError(message: failure.message ?? '')),
       (types) {
@@ -153,6 +154,7 @@ class SalaryRequestsCubit extends Cubit<SalaryRequestsState> {
     emit(SalaryRequestsBanksLoading());
     final result =
         await getBanksUseCase(params: GetBanksParams(countryId: countryId));
+    if (isClosed) return;
     result.fold(
       (failure) =>
           emit(SalaryRequestsBanksError(message: failure.message ?? '')),
@@ -191,6 +193,7 @@ class SalaryRequestsCubit extends Cubit<SalaryRequestsState> {
   Future<void> createRequestSubmit() async {
     emit(CreateSalaryRequestLoading());
     final result = await createSalaryUseCase(params: _buildParams());
+    if (isClosed) return;
     result.fold(
       (failure) {
         emit(CreateSalaryRequestError(message: failure.message ?? ''));
@@ -206,6 +209,7 @@ class SalaryRequestsCubit extends Cubit<SalaryRequestsState> {
       params: UpdateSalaryParams(
           requestId: requestId, createParams: _buildParams()),
     );
+    if (isClosed) return;
     result.fold(
       (failure) {
         emit(CreateSalaryRequestError(message: failure.message ?? ''));
@@ -221,6 +225,7 @@ class SalaryRequestsCubit extends Cubit<SalaryRequestsState> {
       params: EditSalaryParams(
           requestId: requestId, editReasons: noteController.text), // Example
     );
+    if (isClosed) return;
     result.fold(
       (failure) {
         emit(CreateSalaryRequestError(message: failure.message ?? ''));

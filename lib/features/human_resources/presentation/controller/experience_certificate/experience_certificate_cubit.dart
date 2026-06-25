@@ -61,6 +61,7 @@ class ExperienceCertificateCubit extends Cubit<ExperienceCertificateState> {
 
   Future<void> _fetchCertificateReasons() async {
     final result = await _getCertificateReasonsUseCase.call(params: NoParams());
+    if (isClosed) return;
     result.fold(
       (failure) => emit(state.copyWith(
         status: ExperienceCertificateStatus.lookupsError,
@@ -70,7 +71,7 @@ class ExperienceCertificateCubit extends Cubit<ExperienceCertificateState> {
         _certificateReasons = reasons;
         certificateReasonItems = reasons
             .map((r) => DropdownMenuItem<String>(
-                  value: _localizedName(r.nameAr, r.nameEn),
+                  value: r.id.toString(),
                   child: Text(
                     _localizedName(r.nameAr, r.nameEn),
                     style: const TextStyle(fontSize: 12),
@@ -112,6 +113,7 @@ class ExperienceCertificateCubit extends Cubit<ExperienceCertificateState> {
     final result = await _createExperienceCertificateUseCase.call(
       params: _buildParams(),
     );
+    if (isClosed) return;
     result.fold(
       (failure) => emit(state.copyWith(
         status: ExperienceCertificateStatus.createError,
@@ -134,6 +136,7 @@ class ExperienceCertificateCubit extends Cubit<ExperienceCertificateState> {
         data: _buildParams(),
       ),
     );
+    if (isClosed) return;
     result.fold(
       (failure) => emit(state.copyWith(
         status: ExperienceCertificateStatus.createError,

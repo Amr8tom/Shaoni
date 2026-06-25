@@ -20,6 +20,7 @@ import '../../features/details_and_edit_for_requests/domain/use_cases/get_traini
 import '../../features/details_and_edit_for_requests/domain/use_cases/get_product_order_edit_use_case.dart';
 import '../../features/details_and_edit_for_requests/domain/use_cases/get_outside_working_edit_use_case.dart';
 import '../../features/details_and_edit_for_requests/domain/use_cases/get_salary_transfer_edit_use_case.dart';
+import '../../features/details_and_edit_for_requests/domain/use_cases/get_loan_edit_use_case.dart';
 import '../../features/details_and_edit_for_requests/presentation/controller/edit/edit_cubit.dart';
 import '../../features/details_and_edit_for_requests/presentation/controller/my_requests_cubit.dart';
 
@@ -94,12 +95,20 @@ class MyRequestsServiceLocator {
     serviceLocator.registerLazySingleton<GetSalaryTransferEditUseCase>(
       () => GetSalaryTransferEditUseCase(serviceLocator()),
     );
+    serviceLocator.registerLazySingleton<GetLoanEditUseCase>(
+      () => GetLoanEditUseCase(serviceLocator()),
+    );
 
     /// controllers
-    serviceLocator.registerFactory(() => MyRequestsCubit(serviceLocator(),
-        serviceLocator(), serviceLocator(), serviceLocator(), serviceLocator()));
+    serviceLocator.registerFactory(() => MyRequestsCubit(
+        serviceLocator(),
+        serviceLocator(),
+        serviceLocator(),
+        serviceLocator(),
+        serviceLocator()));
     serviceLocator.registerFactory<EditCubit>(
       () => EditCubit(
+        serviceLocator(),
         serviceLocator(),
         serviceLocator(),
         serviceLocator(),

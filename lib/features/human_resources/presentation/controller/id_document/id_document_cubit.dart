@@ -141,12 +141,14 @@ class IDDocumentCubit extends Cubit<IDDocumentState> {
       _fetchRequestTypes(),
       _fetchCountries(),
     ]);
+    if (isClosed) return;
     emit(state.copyWith(status: IDDocumentStatus.lookupsLoaded));
   }
 
   Future<void> _fetchRequestTypes() async {
     final result =
         await _getIDRenewalRequestTypesUseCase.call(params: NoParams());
+    if (isClosed) return;
     result.fold(
       (failure) => emit(state.copyWith(
         status: IDDocumentStatus.lookupsError,
@@ -169,6 +171,7 @@ class IDDocumentCubit extends Cubit<IDDocumentState> {
 
   Future<void> _fetchCountries() async {
     final result = await _getCountriesUseCase.call(params: NoParams());
+    if (isClosed) return;
     result.fold(
       (failure) => emit(state.copyWith(
         status: IDDocumentStatus.lookupsError,
@@ -268,6 +271,7 @@ class IDDocumentCubit extends Cubit<IDDocumentState> {
       attachmentIds: [],
     );
     final result = await _createIDDocumentUseCase.call(params: params);
+    if (isClosed) return;
     result.fold(
       (failure) => emit(state.copyWith(
         status: IDDocumentStatus.createError,

@@ -69,6 +69,7 @@ class AttendanceCubit extends Cubit<AttendanceState> {
             userId: int.parse(_sessionStorage.employeeId ?? "1"),
             pageNumber: 1,
             pageSize: 10));
+    if (isClosed) return;
     result.fold(
       (failure) => emit(state.copyWith(
           status: AttendanceStatus.error, errorMessage: failure.message)),
@@ -88,6 +89,7 @@ class AttendanceCubit extends Cubit<AttendanceState> {
   Future<void> getAttendanceLookup() async {
     emit(state.copyWith(status: AttendanceStatus.lookupsLoading));
     final result = await _getAttendanceLookupUseCase.call(params: NoParams());
+    if (isClosed) return;
     result.fold(
       (failure) => emit(state.copyWith(status: AttendanceStatus.lookupsError)),
       (permission) {
@@ -118,6 +120,7 @@ class AttendanceCubit extends Cubit<AttendanceState> {
   Future<void> getForgetReason() async {
     emit(state.copyWith(status: AttendanceStatus.forgetLoading));
     final result = await _getForgetReasonUseCase.call(params: NoParams());
+    if (isClosed) return;
     result.fold(
       (failure) => emit(state.copyWith(status: AttendanceStatus.forgetError)),
       (permission) {
@@ -178,6 +181,7 @@ class AttendanceCubit extends Cubit<AttendanceState> {
                     (item) => item.value == forgetReasonController.text) +
                 1,
             date: ''));
+    if (isClosed) return;
     result.fold(
       (failure) => emit(state.copyWith(
           status: AttendanceStatus.error, errorMessage: failure.message)),
@@ -216,6 +220,7 @@ class AttendanceCubit extends Cubit<AttendanceState> {
         attachment: attachmentFileController.text,
       ),
     );
+    if (isClosed) return;
     result.fold(
       (failure) => emit(state.copyWith(
           status: AttendanceStatus.updateAttendanceRequestError,

@@ -28,6 +28,7 @@ class ProfileCubit extends Cubit<ProfileState> {
             nationalityId: state.nationality,
             cityId: state.city,
             genderId: state.gender));
+    if (isClosed) return;
     result.fold((failure) {
       emit(state.copyWith(status: GeneralStatus.error));
     }, (profile) {

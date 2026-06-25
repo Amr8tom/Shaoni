@@ -35,6 +35,7 @@ class LanguageCubit extends Cubit<LanguageState> {
     await _storage.cacheString(key: StorageKeys.lang.name, value: lang);
     await _storage.cacheLanguage(code: lang);
 
+    if (isClosed) return;
     emit(LanguageSuccess());
   }
 
@@ -46,6 +47,7 @@ class LanguageCubit extends Cubit<LanguageState> {
     await _storage.cacheString(key: StorageKeys.lang.name, value: nextLang);
     await _storage.cacheLanguage(code: nextLang);
 
+    if (isClosed) return;
     emit(LanguageSuccess());
   }
 }

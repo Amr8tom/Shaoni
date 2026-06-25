@@ -20,6 +20,7 @@ import '../../domain/use_cases/get_training_request_edit_use_case.dart';
 import '../../domain/use_cases/get_product_order_edit_use_case.dart';
 import '../../domain/use_cases/get_outside_working_edit_use_case.dart';
 import '../../domain/use_cases/get_salary_transfer_edit_use_case.dart';
+import '../../domain/use_cases/get_loan_edit_use_case.dart';
 import '../models/approve_request_model.dart';
 import '../models/edit_response_model.dart';
 
@@ -90,6 +91,10 @@ abstract class MyRequestsRemoteDataSources {
 
   Future<EditResponseModel> getSalaryTransferEdit({
     required GetSalaryTransferEditParams params,
+  });
+
+  Future<EditResponseModel> getLoanEdit({
+    required GetLoanEditParams params,
   });
 }
 
@@ -353,6 +358,21 @@ class MyRequestsRemoteDataSourcesImp implements MyRequestsRemoteDataSources {
     try {
       final response = await _dio.putData(
         url: '${URL.getSalaryRequestEdit}${params.requestId}',
+        body: params.toMap(),
+      );
+      return EditResponseModel.fromJson(response.data as Map<String, dynamic>);
+    } on ServerFailure {
+      rethrow;
+    }
+  }
+
+  @override
+  Future<EditResponseModel> getLoanEdit({
+    required GetLoanEditParams params,
+  }) async {
+    try {
+      final response = await _dio.putData(
+        url: '${URL.editLoanRequest}${params.requestId}',
         body: params.toMap(),
       );
       return EditResponseModel.fromJson(response.data as Map<String, dynamic>);

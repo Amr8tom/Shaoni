@@ -60,6 +60,7 @@ class ComplaintRequestCubit extends Cubit<ComplaintRequestState> {
   Future<void> getComplaintTypes() async {
     emit(state.copyWith(status: ComplaintRequestStatus.typesLoading));
     final result = await _getComplaintTypesUseCase.call(params: NoParams());
+    if (isClosed) return;
     result.fold(
       (failure) => emit(state.copyWith(
         status: ComplaintRequestStatus.typesError,
@@ -86,6 +87,7 @@ class ComplaintRequestCubit extends Cubit<ComplaintRequestState> {
   Future<void> getComplaintReasons() async {
     emit(state.copyWith(status: ComplaintRequestStatus.reasonsLoading));
     final result = await _getComplaintReasonsUseCase.call(params: NoParams());
+    if (isClosed) return;
     result.fold(
       (failure) => emit(state.copyWith(
         status: ComplaintRequestStatus.reasonsError,
@@ -96,7 +98,7 @@ class ComplaintRequestCubit extends Cubit<ComplaintRequestState> {
         complaintReasonItems = reasons
             .map(
               (r) => DropdownMenuItem<String>(
-                value: _localizedName(r.nameAr, r.nameEn),
+                value: r.id.toString(),
                 child: Text(
                   _localizedName(r.nameAr, r.nameEn),
                   style: const TextStyle(fontSize: 12),
@@ -160,6 +162,7 @@ class ComplaintRequestCubit extends Cubit<ComplaintRequestState> {
             : attachmentFileController.text,
       ),
     );
+    if (isClosed) return;
     result.fold(
       (failure) => emit(state.copyWith(
         status: ComplaintRequestStatus.createRequestError,

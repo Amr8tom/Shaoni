@@ -44,6 +44,7 @@ class LoginCubit extends Cubit<LoginState> {
           password: passwordController.text.trim(),
         ),
       );
+      if (isClosed) return;
       result.fold(
         (failure) {
           emit(state.copyWith(
@@ -62,6 +63,7 @@ class LoginCubit extends Cubit<LoginState> {
           );
           await _sessionStorage.saveUserId(resolvedId);
 
+          if (isClosed) return;
           emit(state.copyWith(
             status: LoginStatus.loggedIn,
             token: data.accessToken,
@@ -82,6 +84,7 @@ class LoginCubit extends Cubit<LoginState> {
           userID: _sessionStorage.userId ?? '',
         ),
       );
+      if (isClosed) return;
       result.fold(
         (failure) {
           emit(state.copyWith(

@@ -125,8 +125,6 @@ flutter:
     - assets/lotties/
     - assets/images/pngs/
     - assets/images/svgs/
-    - assets/images/jpegs/
-    - assets/images/gif/
     - assets/images/jpg/
     - assets/images/pngs/social_images/
     - assets/fonts/en/

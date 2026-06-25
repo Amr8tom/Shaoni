@@ -174,6 +174,7 @@ class LoanCubit extends Cubit<LoanState> {
     final loanTypesResult = await loanTypesFuture;
     final kafeelResult = await kafeelFuture;
 
+    if (isClosed) return;
     loanTypesResult.fold(
       (failure) => emit(LoanLookupsError(message: failure.message ?? '')),
       (loanTypes) {
@@ -208,6 +209,7 @@ class LoanCubit extends Cubit<LoanState> {
 
     final result = await createLoanUseCase(params: params);
 
+    if (isClosed) return;
     result.fold(
       (failure) {
         emit(CreateLoanError(message: failure.message ?? ''));
@@ -234,6 +236,7 @@ class LoanCubit extends Cubit<LoanState> {
 
     final result = await editLoanUseCase(params: params);
 
+    if (isClosed) return;
     result.fold(
       (failure) {
         emit(CreateLoanError(message: failure.message ?? ''));
@@ -275,6 +278,7 @@ class LoanCubit extends Cubit<LoanState> {
 
     final result = await updateLoanUseCase(params: params);
 
+    if (isClosed) return;
     result.fold(
       (failure) {
         emit(CreateLoanError(message: failure.message ?? ''));

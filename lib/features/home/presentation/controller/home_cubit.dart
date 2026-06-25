@@ -20,6 +20,7 @@ class HomeCubit extends Cubit<HomeState> {
   Future getAllStatusCounts() async {
     emit(state.copyWith(status: GeneralStatus.loading, requestsStatus: {}));
     final result = await _allStatusCountsUseCase.call(params: NoParams());
+    if (isClosed) return;
     result.fold(
       (failure) {
         emit(state.copyWith(status: GeneralStatus.error));

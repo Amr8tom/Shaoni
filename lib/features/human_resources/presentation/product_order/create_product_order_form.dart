@@ -32,7 +32,7 @@ class CreateProductOrderForm extends StatelessWidget {
         appBar: DAppBar(
           showMenu: false,
           showBackArrow: true,
-          title: _isEditMode ? S.current.editRequest : null,
+          title: _isEditMode ? S.current.editRequest : S.current.productOrder,
         ),
         extendBodyBehindAppBar: true,
         backgroundColor: ColorRes.grey6,
@@ -63,7 +63,7 @@ class CreateProductOrderForm extends StatelessWidget {
                     },
                     onTab1: () {
                       context.pushNamedAndRemoveUntil(
-                        DRoutesName.requestRoutes,
+                        DRoutesName.navigationMenuRoute,
                         predicate: (route) => false,
                       );
                     },
@@ -155,7 +155,8 @@ class CreateProductOrderForm extends StatelessWidget {
                                       .validate()) {
                                     if (_isEditMode) {
                                       controller.updateProductOrder(
-                                          requestId: requestId!);
+                                          requestId: requestId!
+                                      );
                                     } else {
                                       controller.createProductOrder();
                                     }

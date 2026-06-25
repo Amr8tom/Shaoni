@@ -53,6 +53,7 @@ class ExitRequestServiceCubit extends Cubit<ExitRequestServiceState> {
   Future getPermissionTimes() async {
     emit(state.copyWith(status: RequestStatus.permissionTimeLoading));
     final result = await _getPermissionTimeUseCase.call(params: NoParams());
+    if (isClosed) return;
     result.fold(
       (failure) =>
           emit(state.copyWith(status: RequestStatus.permissionTimeError)),
@@ -82,6 +83,7 @@ class ExitRequestServiceCubit extends Cubit<ExitRequestServiceState> {
   Future getPermissionTypes() async {
     emit(state.copyWith(status: RequestStatus.permissionTypesLoading));
     final result = await _getPermissionTypeUseCase.call(params: NoParams());
+    if (isClosed) return;
     result.fold(
       (failure) =>
           emit(state.copyWith(status: RequestStatus.permissionTypesError)),
@@ -126,6 +128,7 @@ class ExitRequestServiceCubit extends Cubit<ExitRequestServiceState> {
           notes: notesController.text),
     );
 
+    if (isClosed) return;
     result.fold(
       (failure) {
         emit(state.copyWith(
@@ -165,6 +168,7 @@ class ExitRequestServiceCubit extends Cubit<ExitRequestServiceState> {
       ),
     );
 
+    if (isClosed) return;
     result.fold(
       (failure) {
         emit(state.copyWith(

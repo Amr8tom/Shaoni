@@ -49,6 +49,15 @@ class RequestDetailsScreen extends StatelessWidget {
         requestStages.length > 1 && requestStages[1] == currentStatusEnum;
     final bool isNewRequest =
         requestStages.isNotEmpty && requestStages[0] == currentStatusEnum;
+    // The kafeel (guarantor) can act while the request is in its first two
+    // stages (draft / emp).
+    final bool isKafeelApproval =
+        currentStatusEnum == RequestStatusEnum.draft ||
+            currentStatusEnum == RequestStatusEnum.emp;
+    // Whoever is reviewing (manager or kafeel) sees the same accept/reject/edit
+    // controls; the kafeel just hits the same endpoints with their own session.
+    final bool canReview = !isEmployeeRequest &&
+        ((isManagerApproval && isManager) || (isKafeelApproval && isKafeel));
 
     return MultiBlocProvider(
       providers: [
@@ -86,8 +95,9 @@ class RequestDetailsScreen extends StatelessWidget {
 
                   const Sizer(height: 20),
 
-                  /// comment field — shown to manager when request is pending approval
-                  if (isManagerApproval && isManager && !isEmployeeRequest)
+                  /// comment field — shown to the reviewer (manager or kafeel)
+                  /// while the request is pending their approval
+                  if (canReview)
                     CommentWritingWidget(onCommentSubmit: (comment) {
                       context.read<EditCubit>().editNotesController.text =
                           comment;
@@ -105,8 +115,8 @@ class RequestDetailsScreen extends StatelessWidget {
 
                   const Sizer(height: 20),
 
-                  /// manager: accept/reject + edit
-                  if (isManagerApproval && isManager && !isEmployeeRequest) ...[
+                  /// reviewer (manager or kafeel): accept/reject + edit
+                  if (canReview) ...[
                     AcceptRejecttButton(
                       requestID: requestID,
                     ),

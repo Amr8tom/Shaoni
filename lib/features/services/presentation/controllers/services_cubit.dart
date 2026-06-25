@@ -20,10 +20,12 @@ class ServicesCubit extends Cubit<ServicesState> {
   Future getAllServices() async {
     emit(state.copyWith(status: GeneralStatus.loading));
     final result = await _getAllServicesUseCase.call(params: NoParams());
+    if (isClosed) return;
     result.fold(
       (failure) => emit(state.copyWith(status: GeneralStatus.error)),
       (services) {
         _divideServicesIntoCategories(services.services);
+        if (isClosed) return;
         emit(
           state.copyWith(
             status: GeneralStatus.success,
@@ -56,6 +58,7 @@ class ServicesCubit extends Cubit<ServicesState> {
       }
     }
 
+    if (isClosed) return;
     emit(state.copyWith(
       hrServices: hrServices,
       studyServices: studyServices,

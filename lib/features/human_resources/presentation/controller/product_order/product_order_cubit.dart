@@ -58,6 +58,7 @@ class ProductOrderCubit extends Cubit<ProductOrderState> {
   Future<void> _loadCategories() async {
     emit(state.copyWith(status: ProductOrderStatus.lookupsLoading));
     final result = await _getProductCategoriesUseCase.call(params: NoParams());
+    if (isClosed) return;
     result.fold(
       (failure) => emit(state.copyWith(
         status: ProductOrderStatus.lookupsError,
@@ -89,6 +90,7 @@ class ProductOrderCubit extends Cubit<ProductOrderState> {
         categoryId: categoryId == _allCategoriesKey ? null : categoryId,
       ),
     );
+    if (isClosed) return;
     result.fold(
       (failure) => emit(state.copyWith(
         status: ProductOrderStatus.lookupsLoaded,
@@ -189,6 +191,7 @@ class ProductOrderCubit extends Cubit<ProductOrderState> {
     emit(state.copyWith(status: ProductOrderStatus.createLoading));
     final result =
         await _createProductOrderUseCase.call(params: _buildParams());
+    if (isClosed) return;
     result.fold(
       (failure) => emit(state.copyWith(
         status: ProductOrderStatus.createError,
@@ -212,6 +215,7 @@ class ProductOrderCubit extends Cubit<ProductOrderState> {
         data: _buildParams(),
       ),
     );
+    if (isClosed) return;
     result.fold(
       (failure) => emit(state.copyWith(
         status: ProductOrderStatus.createError,

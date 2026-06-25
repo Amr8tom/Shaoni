@@ -8,7 +8,6 @@ class ServicesNames extends Equatable {
     ServiceCode.exitPermission,
     ServiceCode.visaRequest,
     ServiceCode.carPermission,
-    ServiceCode.scrapRequest,
     ServiceCode.startWork,
     ServiceCode.employeeTicketBooking,
     ServiceCode.idRenewalRequest,
@@ -25,6 +24,7 @@ class ServicesNames extends Equatable {
   ];
   static List<ServiceCode> productServiceKeys = [
     ServiceCode.productRequest,
+    ServiceCode.scrapRequest,
   ];
   static List<ServiceCode> salariesServiceKeys = [
     ServiceCode.salaryTransfer,

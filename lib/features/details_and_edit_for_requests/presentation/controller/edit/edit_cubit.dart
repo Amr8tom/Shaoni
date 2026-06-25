@@ -15,6 +15,7 @@ import 'package:shaoni/features/details_and_edit_for_requests/domain/use_cases/g
 import 'package:shaoni/features/details_and_edit_for_requests/domain/use_cases/get_product_order_edit_use_case.dart';
 import 'package:shaoni/features/details_and_edit_for_requests/domain/use_cases/get_outside_working_edit_use_case.dart';
 import 'package:shaoni/features/details_and_edit_for_requests/domain/use_cases/get_salary_transfer_edit_use_case.dart';
+import 'package:shaoni/features/details_and_edit_for_requests/domain/use_cases/get_loan_edit_use_case.dart';
 
 part 'edit_state.dart';
 
@@ -32,6 +33,7 @@ class EditCubit extends Cubit<EditState> {
   final GetProductOrderEditUseCase _getProductOrderEditUseCase;
   final GetOutsideWorkingEditUseCase _getOutsideWorkingEditUseCase;
   final GetSalaryTransferEditUseCase _getSalaryTransferEditUseCase;
+  final GetLoanEditUseCase _getLoanEditUseCase;
   final editNotesController = TextEditingController();
 
   EditCubit(
@@ -47,6 +49,7 @@ class EditCubit extends Cubit<EditState> {
     this._getProductOrderEditUseCase,
     this._getOutsideWorkingEditUseCase,
     this._getSalaryTransferEditUseCase,
+    this._getLoanEditUseCase,
   ) : super(const EditState());
 
   Future<void> editRequest({
@@ -90,8 +93,10 @@ class EditCubit extends Cubit<EditState> {
       case ServiceCode.salaryTransfer:
         await _getSalaryTransferEdit(requestId: requestId);
         break;
-      case ServiceCode.complaintRequest:
       case ServiceCode.loan:
+        await _getLoanEdit(requestId: requestId);
+        break;
+      case ServiceCode.complaintRequest:
       case ServiceCode.visaRequest:
       case ServiceCode.scrapRequest:
       case ServiceCode.employeeTicketBooking:
@@ -118,6 +123,7 @@ class EditCubit extends Cubit<EditState> {
         editReasons: editNotesController.text,
       ),
     );
+    if (isClosed) return;
     result.fold(
       (failure) => emit(state.copyWith(
         status: EditStatus.error,
@@ -141,6 +147,7 @@ class EditCubit extends Cubit<EditState> {
         notes: editNotesController.text,
       ),
     );
+    if (isClosed) return;
     result.fold(
       (failure) => emit(state.copyWith(
         status: EditStatus.error,
@@ -164,6 +171,7 @@ class EditCubit extends Cubit<EditState> {
         editReasons: editNotesController.text,
       ),
     );
+    if (isClosed) return;
     result.fold(
       (failure) => emit(state.copyWith(
         status: EditStatus.error,
@@ -187,6 +195,7 @@ class EditCubit extends Cubit<EditState> {
         editReasons: editNotesController.text,
       ),
     );
+    if (isClosed) return;
     result.fold(
       (failure) => emit(state.copyWith(
         status: EditStatus.error,
@@ -209,6 +218,7 @@ class EditCubit extends Cubit<EditState> {
         editReasons: editNotesController.text,
       ),
     );
+    if (isClosed) return;
     result.fold(
       (failure) => emit(state.copyWith(
         status: EditStatus.error,
@@ -231,6 +241,7 @@ class EditCubit extends Cubit<EditState> {
         editReasons: editNotesController.text,
       ),
     );
+    if (isClosed) return;
     result.fold(
       (failure) => emit(state.copyWith(
         status: EditStatus.error,
@@ -253,6 +264,7 @@ class EditCubit extends Cubit<EditState> {
         editReasons: editNotesController.text,
       ),
     );
+    if (isClosed) return;
     result.fold(
       (failure) => emit(state.copyWith(
         status: EditStatus.error,
@@ -275,6 +287,7 @@ class EditCubit extends Cubit<EditState> {
         editReasons: editNotesController.text,
       ),
     );
+    if (isClosed) return;
     result.fold(
       (failure) => emit(state.copyWith(
         status: EditStatus.error,
@@ -297,6 +310,7 @@ class EditCubit extends Cubit<EditState> {
         editReasons: editNotesController.text,
       ),
     );
+    if (isClosed) return;
     result.fold(
       (failure) => emit(state.copyWith(
         status: EditStatus.error,
@@ -319,6 +333,7 @@ class EditCubit extends Cubit<EditState> {
         editReasons: editNotesController.text,
       ),
     );
+    if (isClosed) return;
     result.fold(
       (failure) => emit(state.copyWith(
         status: EditStatus.error,
@@ -341,6 +356,7 @@ class EditCubit extends Cubit<EditState> {
         editReasons: editNotesController.text,
       ),
     );
+    if (isClosed) return;
     result.fold(
       (failure) => emit(state.copyWith(
         status: EditStatus.error,
@@ -361,6 +377,30 @@ class EditCubit extends Cubit<EditState> {
         editReasons: editNotesController.text,
       ),
     );
+    if (isClosed) return;
+    result.fold(
+      (failure) => emit(state.copyWith(
+        status: EditStatus.error,
+        errorMessage: failure.message,
+      )),
+      (response) => emit(state.copyWith(
+        status: EditStatus.editRequestLoaded,
+        editResponse: response,
+      )),
+    );
+  }
+
+  /// ── Loan ──────────────────────────────────────────────────────────────────
+
+  Future<void> _getLoanEdit({required int requestId}) async {
+    emit(state.copyWith(status: EditStatus.loading));
+    final result = await _getLoanEditUseCase.call(
+      params: GetLoanEditParams(
+        requestId: requestId,
+        editReasons: editNotesController.text,
+      ),
+    );
+    if (isClosed) return;
     result.fold(
       (failure) => emit(state.copyWith(
         status: EditStatus.error,

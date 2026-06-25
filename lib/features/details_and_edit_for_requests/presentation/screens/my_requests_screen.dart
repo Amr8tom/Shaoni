@@ -55,7 +55,9 @@ class MyRequestsScreen extends StatelessWidget {
             labelColor: Theme.of(context).primaryColor,
             unselectedLabelColor: ColorRes.grey,
             tabs: tabs,
-            labelStyle: Theme.of(context).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold,fontSize: AppSizes.fontSizeMd*0.7),
+            labelStyle: Theme.of(context).textTheme.titleMedium?.copyWith(
+                fontWeight: FontWeight.bold,
+                fontSize: AppSizes.fontSizeMd * 0.7),
           ),
           Expanded(
             child: TabBarView(children: views),

@@ -16,8 +16,7 @@ class LoanInstallmentModel extends LoanInstallment {
       name: json['name']?.toString(),
       installmentDate: json['installment_date']?.toString(),
       hijriDate: json['hijri_date']?.toString(),
-      installmentAmount:
-          (json['installment_amount'] as num?)?.toDouble(),
+      installmentAmount: (json['installment_amount'] as num?)?.toDouble(),
       status: json['status']?.toString(),
     );
   }

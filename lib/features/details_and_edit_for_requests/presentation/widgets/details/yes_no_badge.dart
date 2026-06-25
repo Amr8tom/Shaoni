@@ -17,9 +17,8 @@ class YesNoBadge extends StatelessWidget {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 4.h),
       decoration: BoxDecoration(
-        color: isYes
-            ? ColorRes.staticBlueColor.withOpacity(0.12)
-            : ColorRes.grey5,
+        color:
+            isYes ? ColorRes.staticBlueColor.withOpacity(0.12) : ColorRes.grey5,
         borderRadius: BorderRadius.circular(AppSizes.borderRadiusMd),
         border: Border.all(
           color: isYes

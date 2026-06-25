@@ -17,12 +17,14 @@ class DeleteAccountCubit extends Cubit<DeleteAccountState> {
   Future deleteAccount() async {
     emit(state.copyWith(status: GeneralStatus.loading));
     final result = await _deleteAccountUseCase.call(params: NoParams());
+    if (isClosed) return;
     result.fold(
       (failure) {
         emit(state.copyWith(status: GeneralStatus.error));
       },
       (deleteAccountModel) async {
         await _sessionStorage.clearSession();
+        if (isClosed) return;
         emit(
           state.copyWith(
             status: GeneralStatus.success,

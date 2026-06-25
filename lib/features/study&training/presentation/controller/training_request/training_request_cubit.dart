@@ -54,6 +54,7 @@ class TrainingRequestCubit extends Cubit<TrainingRequestState> {
   Future<void> _loadCourses() async {
     emit(state.copyWith(status: TrainingRequestStatus.lookupsLoading));
     final result = await _getCoursesUseCase.call(params: NoParams());
+    if (isClosed) return;
     result.fold(
       (failure) => emit(state.copyWith(
         status: TrainingRequestStatus.lookupsError,
@@ -111,6 +112,7 @@ class TrainingRequestCubit extends Cubit<TrainingRequestState> {
     emit(state.copyWith(status: TrainingRequestStatus.createLoading));
     final result =
         await _createTrainingRequestUseCase.call(params: _buildParams());
+    if (isClosed) return;
     result.fold(
       (failure) => emit(state.copyWith(
         status: TrainingRequestStatus.createError,
@@ -135,6 +137,7 @@ class TrainingRequestCubit extends Cubit<TrainingRequestState> {
         data: _buildParams(),
       ),
     );
+    if (isClosed) return;
     result.fold(
       (failure) => emit(state.copyWith(
         status: TrainingRequestStatus.createError,

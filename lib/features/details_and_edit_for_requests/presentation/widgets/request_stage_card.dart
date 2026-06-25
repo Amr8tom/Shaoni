@@ -31,7 +31,8 @@ class RequestStageCard extends StatelessWidget {
 
   int get _activeIndex {
     if (status == null) return -1;
-    final list = status?.getRequestStatusEnumList(serviceType: serviceType) ?? [];
+    final list =
+        status?.getRequestStatusEnumList(serviceType: serviceType) ?? [];
     final index = list.indexOf(status!.techName.toRequestStatusEnum);
     return index;
   }

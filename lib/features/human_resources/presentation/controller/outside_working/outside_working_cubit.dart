@@ -116,11 +116,13 @@ class OutsideWorkingCubit extends Cubit<OutsideWorkingState> {
     await _fetchDepartmentTypes();
     await _fetchProjectTypes();
     await _fetchEmployees();
+    if (isClosed) return;
     emit(state.copyWith(status: OutsideWorkingStatus.lookupsLoaded));
   }
 
   Future<void> _fetchAttendanceWays() async {
     final result = await _getAttendanceWayUseCase.call(params: NoParams());
+    if (isClosed) return;
     result.fold(
       (failure) => emit(state.copyWith(
         status: OutsideWorkingStatus.lookupsError,
@@ -141,6 +143,7 @@ class OutsideWorkingCubit extends Cubit<OutsideWorkingState> {
   Future<void> _fetchDepartmentTypes() async {
     final result =
         await _getDepartmentTypeLookupUseCase.call(params: NoParams());
+    if (isClosed) return;
     result.fold(
       (failure) => emit(state.copyWith(
         status: OutsideWorkingStatus.lookupsError,
@@ -160,6 +163,7 @@ class OutsideWorkingCubit extends Cubit<OutsideWorkingState> {
 
   Future<void> _fetchProjectTypes() async {
     final result = await _getProjectTypeLookupUseCase.call(params: NoParams());
+    if (isClosed) return;
     result.fold(
       (failure) => emit(state.copyWith(
         status: OutsideWorkingStatus.lookupsError,
@@ -180,6 +184,7 @@ class OutsideWorkingCubit extends Cubit<OutsideWorkingState> {
   Future<void> _fetchEmployees() async {
     final result =
         await _getOutsideWorkingEmployeesUseCase.call(params: NoParams());
+    if (isClosed) return;
     result.fold(
       (failure) => emit(state.copyWith(
         status: OutsideWorkingStatus.lookupsError,
@@ -195,6 +200,7 @@ class OutsideWorkingCubit extends Cubit<OutsideWorkingState> {
   Future<void> _fetchProjects() async {
     final result =
         await _getOutsideWorkingProjectsUseCase.call(params: NoParams());
+    if (isClosed) return;
     result.fold(
       (failure) => null,
       (projects) {
@@ -324,6 +330,7 @@ class OutsideWorkingCubit extends Cubit<OutsideWorkingState> {
     );
 
     final result = await _createOutsideWorkingUseCase.call(params: params);
+    if (isClosed) return;
     result.fold(
       (failure) => emit(state.copyWith(
         status: OutsideWorkingStatus.createError,

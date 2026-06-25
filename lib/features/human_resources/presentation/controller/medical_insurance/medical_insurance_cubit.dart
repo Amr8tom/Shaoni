@@ -76,6 +76,7 @@ class MedicalInsuranceCubit extends Cubit<MedicalInsuranceState> {
   Future<void> _fetchInsuranceClasses() async {
     final result =
         await _getMedicalInsuranceClassesUseCase.call(params: NoParams());
+    if (isClosed) return;
     result.fold(
       (failure) => emit(state.copyWith(
         status: MedicalInsuranceStatus.lookupsError,
@@ -100,6 +101,7 @@ class MedicalInsuranceCubit extends Cubit<MedicalInsuranceState> {
     final result = await _getEmployeeRelativesUseCase.call(
       params: GetEmployeeRelativesParams(employeeId: employeeId),
     );
+    if (isClosed) return;
     result.fold(
       (failure) {/* non-fatal, relatives stay empty */},
       (relatives) {
@@ -165,6 +167,7 @@ class MedicalInsuranceCubit extends Cubit<MedicalInsuranceState> {
     final result = await _createMedicalInsuranceUseCase.call(
       params: _buildParams(),
     );
+    if (isClosed) return;
     result.fold(
       (failure) => emit(state.copyWith(
         status: MedicalInsuranceStatus.createError,
@@ -187,6 +190,7 @@ class MedicalInsuranceCubit extends Cubit<MedicalInsuranceState> {
         data: _buildParams(),
       ),
     );
+    if (isClosed) return;
     result.fold(
       (failure) => emit(state.copyWith(
         status: MedicalInsuranceStatus.createError,

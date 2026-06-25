@@ -95,6 +95,7 @@ class KafeelRequestsGridView extends StatelessWidget {
                           S.current.noData,
                   'requestID': request.request?.id.toString() ?? '',
                   'isManager': false,
+                  'isKafeel': true,
                   'isEmployeeRequest': false,
                 },
               );
