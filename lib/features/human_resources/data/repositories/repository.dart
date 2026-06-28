@@ -59,6 +59,15 @@ import 'package:shaoni/features/human_resources/domain/use_cases/product_order/g
 import 'package:shaoni/features/human_resources/domain/use_cases/product_order/create_product_order_use_case.dart';
 import 'package:shaoni/features/human_resources/domain/use_cases/product_order/update_product_order_use_case.dart';
 import 'package:shaoni/features/human_resources/domain/use_cases/outside_working/create_outside_working_use_case.dart';
+import 'package:shaoni/features/human_resources/domain/entity/scrap_request/scrap_custody.dart';
+import 'package:shaoni/features/human_resources/domain/entity/scrap_request/scrap_lot.dart';
+import 'package:shaoni/features/human_resources/domain/entity/scrap_request/stock_request_entity.dart';
+import 'package:shaoni/features/human_resources/domain/entity/scrap_request/scrap_reason_entity.dart';
+import 'package:shaoni/features/human_resources/domain/entity/scrap_request/create_scrap_request_response.dart';
+import 'package:shaoni/features/human_resources/domain/use_cases/scrap_request/get_custodies_use_case.dart';
+import 'package:shaoni/features/human_resources/domain/use_cases/scrap_request/get_product_lots_use_case.dart';
+import 'package:shaoni/features/human_resources/domain/use_cases/scrap_request/create_scrap_request_use_case.dart';
+import 'package:shaoni/features/human_resources/domain/use_cases/scrap_request/update_scrap_request_use_case.dart';
 import 'package:shaoni/core/connection/check_network.dart';
 import 'package:shaoni/features/human_resources/data/data_sources/local_data_sources.dart';
 import 'package:shaoni/features/human_resources/data/data_sources/remote_data_sources.dart';
@@ -749,6 +758,100 @@ class HRServicesRepositoryImp extends HRServicesRepository {
     if (await _networkInfo.isConnected) {
       try {
         final response = await _remote.createOutsideWorking(params: params);
+        return Right(response);
+      } on ServerFailure catch (e) {
+        return Left(ServerFailure(message: e.message));
+      }
+    } else {
+      return Left(CacheFailure());
+    }
+  }
+
+  /// ============================= scrap request =============================
+
+  @override
+  Future<Either<Failure, List<ScrapCustody>>> getCustodies({
+    required GetCustodiesParams params,
+  }) async {
+    if (await _networkInfo.isConnected) {
+      try {
+        final response = await _remote.getCustodies(params: params);
+        return Right(response);
+      } on ServerFailure catch (e) {
+        return Left(ServerFailure(message: e.message));
+      }
+    } else {
+      return Left(CacheFailure());
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<StockRequestEntity>>> getStockRequests() async {
+    if (await _networkInfo.isConnected) {
+      try {
+        final response = await _remote.getStockRequests();
+        return Right(response);
+      } on ServerFailure catch (e) {
+        return Left(ServerFailure(message: e.message));
+      }
+    } else {
+      return Left(CacheFailure());
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<ScrapReasonEntity>>> getScrapReasons() async {
+    if (await _networkInfo.isConnected) {
+      try {
+        final response = await _remote.getScrapReasons();
+        return Right(response);
+      } on ServerFailure catch (e) {
+        return Left(ServerFailure(message: e.message));
+      }
+    } else {
+      return Left(CacheFailure());
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<ScrapLot>>> getProductLots({
+    required GetProductLotsParams params,
+  }) async {
+    if (await _networkInfo.isConnected) {
+      try {
+        final response = await _remote.getProductLots(params: params);
+        return Right(response);
+      } on ServerFailure catch (e) {
+        return Left(ServerFailure(message: e.message));
+      }
+    } else {
+      return Left(CacheFailure());
+    }
+  }
+
+  @override
+  Future<Either<Failure, CreateScrapRequestResponse>> createScrapRequest({
+    required CreateScrapRequestParams params,
+  }) async {
+    if (await _networkInfo.isConnected) {
+      try {
+        final response = await _remote.createScrapRequest(params: params);
+        return Right(response);
+      } on ServerFailure catch (e) {
+        return Left(ServerFailure(message: e.message));
+      }
+    } else {
+      return Left(CacheFailure());
+    }
+  }
+
+  @override
+  Future<Either<Failure, CreateScrapRequestResponse>> updateScrapRequest({
+    required UpdateScrapRequestParams params,
+  }) async {
+    if (await _networkInfo.isConnected) {
+      try {
+        final response = await _remote.updateScrapRequest(params: params);
         return Right(response);
       } on ServerFailure catch (e) {
         return Left(ServerFailure(message: e.message));

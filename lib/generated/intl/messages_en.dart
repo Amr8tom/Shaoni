@@ -300,6 +300,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "currentlyDownloadingSurahes": MessageLookupByLibrary.simpleMessage(
       "Currently downloading Surahes. Please wait...",
     ),
+    "custody": MessageLookupByLibrary.simpleMessage("Custody"),
     "customerStagnantItems": MessageLookupByLibrary.simpleMessage(
       "Customer\'s Stagnant Items.....You can browse stagnant items at other pharmacies in your area and repurchase them",
     ),
@@ -716,6 +717,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Are you sure you want to logout?",
     ),
     "lostBag": MessageLookupByLibrary.simpleMessage("Lost My Bags in Airport"),
+    "lotNumber": MessageLookupByLibrary.simpleMessage("Serial Number"),
     "luggage": MessageLookupByLibrary.simpleMessage("Luggage"),
     "lun": MessageLookupByLibrary.simpleMessage("Lunch"),
     "lunch": MessageLookupByLibrary.simpleMessage("Lunch"),
@@ -1093,6 +1095,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "requestDetails": MessageLookupByLibrary.simpleMessage("Request Details"),
     "requestLines": MessageLookupByLibrary.simpleMessage("Order Lines"),
     "requestNumber": MessageLookupByLibrary.simpleMessage("Request Number"),
+    "requestReason": MessageLookupByLibrary.simpleMessage("Request Reasons"),
     "requestSend": MessageLookupByLibrary.simpleMessage(
       "Request Sent Successfully",
     ),
@@ -1162,7 +1165,10 @@ class MessageLookup extends MessageLookupByLibrary {
     "schoolPermissionRequest": MessageLookupByLibrary.simpleMessage(
       "School Permission Request",
     ),
+    "scrapReason": MessageLookupByLibrary.simpleMessage("Scrap Reason"),
+    "scrapRequest": MessageLookupByLibrary.simpleMessage("Scrap Request"),
     "search": MessageLookupByLibrary.simpleMessage("Search here"),
+    "searchByName": MessageLookupByLibrary.simpleMessage("Search by name..."),
     "searchEmployee": MessageLookupByLibrary.simpleMessage("Search by name..."),
     "searchJuzIndex": MessageLookupByLibrary.simpleMessage(
       "Search Juz Index ...",
@@ -1183,7 +1189,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "selectArr": MessageLookupByLibrary.simpleMessage("select arrival city"),
     "selectAtLeastOneEmployee": MessageLookupByLibrary.simpleMessage(
-      "Please select at least one employee",
+      "Select at least one employee to set the visa dates.",
     ),
     "selectAttendanceWay": MessageLookupByLibrary.simpleMessage(
       "Select Attendance Way",
@@ -1207,6 +1213,10 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "selectCountry": MessageLookupByLibrary.simpleMessage("Select Country"),
     "selectCourse": MessageLookupByLibrary.simpleMessage("Select a course"),
+    "selectCustody": MessageLookupByLibrary.simpleMessage("Select Custody"),
+    "selectCustodyFirst": MessageLookupByLibrary.simpleMessage(
+      "Select custody first",
+    ),
     "selectDate": MessageLookupByLibrary.simpleMessage("Select Date"),
     "selectDep": MessageLookupByLibrary.simpleMessage("select departure city"),
     "selectDepartment": MessageLookupByLibrary.simpleMessage(
@@ -1233,6 +1243,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "selectLetterDestination": MessageLookupByLibrary.simpleMessage(
       "Select Letter Destination",
     ),
+    "selectLot": MessageLookupByLibrary.simpleMessage("Select Serial Number"),
     "selectLuggage": MessageLookupByLibrary.simpleMessage("Select Luggage"),
     "selectNation": MessageLookupByLibrary.simpleMessage("Select Nationality"),
     "selectOneActivity": MessageLookupByLibrary.simpleMessage(
@@ -1264,8 +1275,14 @@ class MessageLookup extends MessageLookupByLibrary {
     "selectSalaryType": MessageLookupByLibrary.simpleMessage(
       "Select Salary Type",
     ),
+    "selectScrapReason": MessageLookupByLibrary.simpleMessage(
+      "Select Scrap Reason",
+    ),
     "selectStartWorkType": MessageLookupByLibrary.simpleMessage(
       "Select start work type",
+    ),
+    "selectStockRequest": MessageLookupByLibrary.simpleMessage(
+      "Select Admin Letter",
     ),
     "selectStudyDestination": MessageLookupByLibrary.simpleMessage(
       "Select destination",
@@ -1274,6 +1291,10 @@ class MessageLookup extends MessageLookupByLibrary {
       "Select study type",
     ),
     "selectTime": MessageLookupByLibrary.simpleMessage("select time"),
+    "selectVisaType": MessageLookupByLibrary.simpleMessage("Select Visa Type"),
+    "selectVisaTypeFirst": MessageLookupByLibrary.simpleMessage(
+      "Select the visa type first to view the employees list.",
+    ),
     "selectedEmployees": MessageLookupByLibrary.simpleMessage(
       "Selected Employees",
     ),
@@ -1333,6 +1354,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "startWork": MessageLookupByLibrary.simpleMessage("Start Work"),
     "startWorkType": MessageLookupByLibrary.simpleMessage("Start Work Type"),
     "status": MessageLookupByLibrary.simpleMessage("Status"),
+    "stockRequest": MessageLookupByLibrary.simpleMessage("Admin Letter"),
     "stoning": MessageLookupByLibrary.simpleMessage("Stoning Devil in Mina"),
     "streetName": MessageLookupByLibrary.simpleMessage("Street Name"),
     "study": MessageLookupByLibrary.simpleMessage("Training and Education"),
@@ -1481,9 +1503,36 @@ class MessageLookup extends MessageLookupByLibrary {
     "view": MessageLookupByLibrary.simpleMessage("View"),
     "viewAll": MessageLookupByLibrary.simpleMessage("View all"),
     "visa": MessageLookupByLibrary.simpleMessage("Visa"),
+    "visaData": MessageLookupByLibrary.simpleMessage("Visa Data"),
+    "visaDatesPerEmployee": MessageLookupByLibrary.simpleMessage(
+      "Visa dates per employee",
+    ),
     "visaDetails": MessageLookupByLibrary.simpleMessage("Visa Details"),
+    "visaDirection": MessageLookupByLibrary.simpleMessage(
+      "Destination / Direction",
+    ),
+    "visaDirectionHint": MessageLookupByLibrary.simpleMessage(
+      "e.g. Saudi Arabia",
+    ),
     "visaForm": MessageLookupByLibrary.simpleMessage("Visa Form data"),
     "visaNo": MessageLookupByLibrary.simpleMessage("Visa No."),
+    "visaNotesHint": MessageLookupByLibrary.simpleMessage(
+      "Additional notes (optional)",
+    ),
+    "visaReasonHint": MessageLookupByLibrary.simpleMessage(
+      "Write the request reason...",
+    ),
+    "visaRequest": MessageLookupByLibrary.simpleMessage("Visa Request"),
+    "visaType": MessageLookupByLibrary.simpleMessage("Visa Type"),
+    "visaTypeExitReturn": MessageLookupByLibrary.simpleMessage(
+      "Exit And Return Visa",
+    ),
+    "visaTypeForeignCountry": MessageLookupByLibrary.simpleMessage(
+      "Visa To Foreign Country",
+    ),
+    "visaTypeKingdomEntry": MessageLookupByLibrary.simpleMessage(
+      "Kingdom Entry Visa",
+    ),
     "visitFactory": MessageLookupByLibrary.simpleMessage(
       "Visit Al-Kiswa Factory",
     ),

@@ -17,6 +17,7 @@ class AuthTextField extends StatefulWidget {
   final Widget? suffixIcon;
   final String? Function(String?)? validator;
   final void Function()? onTap;
+  final void Function(String)? onChanged;
   final bool readOnly;
   final Color? borderColor, backgroundColor, formColor;
   final double? borderRadius;
@@ -40,6 +41,7 @@ class AuthTextField extends StatefulWidget {
     this.suffixIcon,
     this.validator,
     this.onTap,
+    this.onChanged,
     this.borderColor,
     this.readOnly = false,
     this.borderRadius,
@@ -80,6 +82,7 @@ class _AuthTextFieldState extends State<AuthTextField> {
             controller: widget.controller,
             readOnly: widget.readOnly,
             onTap: widget.onTap,
+            onChanged: widget.onChanged,
             obscureText: widget.isPassword && !_showPassword,
             keyboardType: _getKeyboardType(),
             inputFormatters: _getFormatters(),

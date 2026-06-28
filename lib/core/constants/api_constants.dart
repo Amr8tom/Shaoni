@@ -85,6 +85,23 @@ class URL {
   static const String updateProductOrder = '$baseUrl/ProductOrder/update/';
   static const String getProductOrderEdit = '$baseUrl/ProductOrder/edit/';
 
+  /// ============================ scrap request ============================
+  static const String getStockRequests = '$baseUrl/Lookup/GetStockRequests';
+  static const String getScrapReasons = '$baseUrl/Lookup/GetScrapReasons';
+  static const String getProductLots = '$baseUrl/Lookup/GetOdooProductLots';
+  static const String createScrapRequest = '$baseUrl/ScrapRequest';
+  static const String updateScrapRequest = '$baseUrl/ScrapRequest/update/';
+  static const String getScrapRequestEdit = '$baseUrl/ScrapRequest/edit/';
+
+  /// ============================ booking management ============================
+  /// visa request
+  static const String getVisaTypes = '$baseUrl/Lookup/GetVisaTypes';
+  static const String getActiveLanguages =
+      '$baseUrl/Integration/get-active-languages';
+  static const String createVisaRequest = '$baseUrl/VisaRequest/create';
+  static const String updateVisaRequest = '$baseUrl/VisaRequest/update/';
+  static const String getVisaRequestEdit = '$baseUrl/VisaRequest/edit/';
+
   /// ============================ training request ============================
   static const String getCourses = '$baseUrl/Lookup/GetCourses';
   static const String createTrainingRequest = '$baseUrl/Training/create';

@@ -7074,10 +7074,10 @@ class S {
     );
   }
 
-  /// `Please select at least one employee`
+  /// `Select at least one employee to set the visa dates.`
   String get selectAtLeastOneEmployee {
     return Intl.message(
-      'Please select at least one employee',
+      'Select at least one employee to set the visa dates.',
       name: 'selectAtLeastOneEmployee',
       desc: '',
       args: [],
@@ -7407,6 +7407,236 @@ class S {
   /// `Not Paid`
   String get notPaid {
     return Intl.message('Not Paid', name: 'notPaid', desc: '', args: []);
+  }
+
+  /// `Scrap Request`
+  String get scrapRequest {
+    return Intl.message(
+      'Scrap Request',
+      name: 'scrapRequest',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Custody`
+  String get custody {
+    return Intl.message('Custody', name: 'custody', desc: '', args: []);
+  }
+
+  /// `Select Custody`
+  String get selectCustody {
+    return Intl.message(
+      'Select Custody',
+      name: 'selectCustody',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Admin Letter`
+  String get stockRequest {
+    return Intl.message(
+      'Admin Letter',
+      name: 'stockRequest',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Select Admin Letter`
+  String get selectStockRequest {
+    return Intl.message(
+      'Select Admin Letter',
+      name: 'selectStockRequest',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Scrap Reason`
+  String get scrapReason {
+    return Intl.message(
+      'Scrap Reason',
+      name: 'scrapReason',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Select Scrap Reason`
+  String get selectScrapReason {
+    return Intl.message(
+      'Select Scrap Reason',
+      name: 'selectScrapReason',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Serial Number`
+  String get lotNumber {
+    return Intl.message('Serial Number', name: 'lotNumber', desc: '', args: []);
+  }
+
+  /// `Select Serial Number`
+  String get selectLot {
+    return Intl.message(
+      'Select Serial Number',
+      name: 'selectLot',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Request Reasons`
+  String get requestReason {
+    return Intl.message(
+      'Request Reasons',
+      name: 'requestReason',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Select custody first`
+  String get selectCustodyFirst {
+    return Intl.message(
+      'Select custody first',
+      name: 'selectCustodyFirst',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Visa Request`
+  String get visaRequest {
+    return Intl.message(
+      'Visa Request',
+      name: 'visaRequest',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Visa Data`
+  String get visaData {
+    return Intl.message('Visa Data', name: 'visaData', desc: '', args: []);
+  }
+
+  /// `Visa Type`
+  String get visaType {
+    return Intl.message('Visa Type', name: 'visaType', desc: '', args: []);
+  }
+
+  /// `Select Visa Type`
+  String get selectVisaType {
+    return Intl.message(
+      'Select Visa Type',
+      name: 'selectVisaType',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Destination / Direction`
+  String get visaDirection {
+    return Intl.message(
+      'Destination / Direction',
+      name: 'visaDirection',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `e.g. Saudi Arabia`
+  String get visaDirectionHint {
+    return Intl.message(
+      'e.g. Saudi Arabia',
+      name: 'visaDirectionHint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Write the request reason...`
+  String get visaReasonHint {
+    return Intl.message(
+      'Write the request reason...',
+      name: 'visaReasonHint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Additional notes (optional)`
+  String get visaNotesHint {
+    return Intl.message(
+      'Additional notes (optional)',
+      name: 'visaNotesHint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Select the visa type first to view the employees list.`
+  String get selectVisaTypeFirst {
+    return Intl.message(
+      'Select the visa type first to view the employees list.',
+      name: 'selectVisaTypeFirst',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Search by name...`
+  String get searchByName {
+    return Intl.message(
+      'Search by name...',
+      name: 'searchByName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Visa dates per employee`
+  String get visaDatesPerEmployee {
+    return Intl.message(
+      'Visa dates per employee',
+      name: 'visaDatesPerEmployee',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Exit And Return Visa`
+  String get visaTypeExitReturn {
+    return Intl.message(
+      'Exit And Return Visa',
+      name: 'visaTypeExitReturn',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Visa To Foreign Country`
+  String get visaTypeForeignCountry {
+    return Intl.message(
+      'Visa To Foreign Country',
+      name: 'visaTypeForeignCountry',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Kingdom Entry Visa`
+  String get visaTypeKingdomEntry {
+    return Intl.message(
+      'Kingdom Entry Visa',
+      name: 'visaTypeKingdomEntry',
+      desc: '',
+      args: [],
+    );
   }
 }
 

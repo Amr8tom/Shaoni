@@ -51,6 +51,15 @@ import '../entity/product_order/create_product_order_response.dart';
 import '../use_cases/product_order/get_products_by_category_use_case.dart';
 import '../use_cases/product_order/create_product_order_use_case.dart';
 import '../use_cases/product_order/update_product_order_use_case.dart';
+import '../entity/scrap_request/scrap_custody.dart';
+import '../entity/scrap_request/scrap_lot.dart';
+import '../entity/scrap_request/stock_request_entity.dart';
+import '../entity/scrap_request/scrap_reason_entity.dart';
+import '../entity/scrap_request/create_scrap_request_response.dart';
+import '../use_cases/scrap_request/get_custodies_use_case.dart';
+import '../use_cases/scrap_request/get_product_lots_use_case.dart';
+import '../use_cases/scrap_request/create_scrap_request_use_case.dart';
+import '../use_cases/scrap_request/update_scrap_request_use_case.dart';
 import '../entity/outside_working/attendance_way.dart';
 import '../entity/outside_working/department_type_lookup.dart';
 import '../entity/outside_working/project_type_lookup.dart';
@@ -231,5 +240,26 @@ abstract class HRServicesRepository {
 
   Future<Either<Failure, CreateOutsideWorkingResponse>> createOutsideWorking({
     required CreateOutsideWorkingParams params,
+  });
+
+  /// ///////////////////////////////////// scrap request /////////////////////////////////////////////////////
+  Future<Either<Failure, List<ScrapCustody>>> getCustodies({
+    required GetCustodiesParams params,
+  });
+
+  Future<Either<Failure, List<StockRequestEntity>>> getStockRequests();
+
+  Future<Either<Failure, List<ScrapReasonEntity>>> getScrapReasons();
+
+  Future<Either<Failure, List<ScrapLot>>> getProductLots({
+    required GetProductLotsParams params,
+  });
+
+  Future<Either<Failure, CreateScrapRequestResponse>> createScrapRequest({
+    required CreateScrapRequestParams params,
+  });
+
+  Future<Either<Failure, CreateScrapRequestResponse>> updateScrapRequest({
+    required UpdateScrapRequestParams params,
   });
 }

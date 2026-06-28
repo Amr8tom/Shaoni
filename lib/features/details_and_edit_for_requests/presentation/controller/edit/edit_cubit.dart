@@ -16,6 +16,8 @@ import 'package:shaoni/features/details_and_edit_for_requests/domain/use_cases/g
 import 'package:shaoni/features/details_and_edit_for_requests/domain/use_cases/get_outside_working_edit_use_case.dart';
 import 'package:shaoni/features/details_and_edit_for_requests/domain/use_cases/get_salary_transfer_edit_use_case.dart';
 import 'package:shaoni/features/details_and_edit_for_requests/domain/use_cases/get_loan_edit_use_case.dart';
+import 'package:shaoni/features/details_and_edit_for_requests/domain/use_cases/get_scrap_request_edit_use_case.dart';
+import 'package:shaoni/features/details_and_edit_for_requests/domain/use_cases/get_visa_request_edit_use_case.dart';
 
 part 'edit_state.dart';
 
@@ -34,6 +36,8 @@ class EditCubit extends Cubit<EditState> {
   final GetOutsideWorkingEditUseCase _getOutsideWorkingEditUseCase;
   final GetSalaryTransferEditUseCase _getSalaryTransferEditUseCase;
   final GetLoanEditUseCase _getLoanEditUseCase;
+  final GetScrapRequestEditUseCase _getScrapRequestEditUseCase;
+  final GetVisaRequestEditUseCase _getVisaRequestEditUseCase;
   final editNotesController = TextEditingController();
 
   EditCubit(
@@ -50,6 +54,8 @@ class EditCubit extends Cubit<EditState> {
     this._getOutsideWorkingEditUseCase,
     this._getSalaryTransferEditUseCase,
     this._getLoanEditUseCase,
+    this._getScrapRequestEditUseCase,
+    this._getVisaRequestEditUseCase,
   ) : super(const EditState());
 
   Future<void> editRequest({
@@ -96,9 +102,13 @@ class EditCubit extends Cubit<EditState> {
       case ServiceCode.loan:
         await _getLoanEdit(requestId: requestId);
         break;
-      case ServiceCode.complaintRequest:
-      case ServiceCode.visaRequest:
       case ServiceCode.scrapRequest:
+        await _getScrapRequestEdit(requestId: requestId);
+        break;
+      case ServiceCode.visaRequest:
+        await _getVisaRequestEdit(requestId: requestId);
+        break;
+      case ServiceCode.complaintRequest:
       case ServiceCode.employeeTicketBooking:
       case ServiceCode.leaveReplace:
       case ServiceCode.leave:
@@ -396,6 +406,52 @@ class EditCubit extends Cubit<EditState> {
     emit(state.copyWith(status: EditStatus.loading));
     final result = await _getLoanEditUseCase.call(
       params: GetLoanEditParams(
+        requestId: requestId,
+        editReasons: editNotesController.text,
+      ),
+    );
+    if (isClosed) return;
+    result.fold(
+      (failure) => emit(state.copyWith(
+        status: EditStatus.error,
+        errorMessage: failure.message,
+      )),
+      (response) => emit(state.copyWith(
+        status: EditStatus.editRequestLoaded,
+        editResponse: response,
+      )),
+    );
+  }
+
+  /// ── Scrap Request ─────────────────────────────────────────────────────────
+
+  Future<void> _getScrapRequestEdit({required int requestId}) async {
+    emit(state.copyWith(status: EditStatus.loading));
+    final result = await _getScrapRequestEditUseCase.call(
+      params: GetScrapRequestEditParams(
+        requestId: requestId,
+        editReasons: editNotesController.text,
+      ),
+    );
+    if (isClosed) return;
+    result.fold(
+      (failure) => emit(state.copyWith(
+        status: EditStatus.error,
+        errorMessage: failure.message,
+      )),
+      (response) => emit(state.copyWith(
+        status: EditStatus.editRequestLoaded,
+        editResponse: response,
+      )),
+    );
+  }
+
+  /// ── Visa Request ──────────────────────────────────────────────────────────
+
+  Future<void> _getVisaRequestEdit({required int requestId}) async {
+    emit(state.copyWith(status: EditStatus.loading));
+    final result = await _getVisaRequestEditUseCase.call(
+      params: GetVisaRequestEditParams(
         requestId: requestId,
         editReasons: editNotesController.text,
       ),

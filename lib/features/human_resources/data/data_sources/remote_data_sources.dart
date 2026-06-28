@@ -48,6 +48,15 @@ import 'package:shaoni/features/human_resources/data/model/outside_working/outsi
 import 'package:shaoni/features/human_resources/data/model/outside_working/outside_working_project_model.dart';
 import 'package:shaoni/features/human_resources/data/model/outside_working/create_outside_working_response_model.dart';
 import 'package:shaoni/features/human_resources/domain/use_cases/outside_working/create_outside_working_use_case.dart';
+import 'package:shaoni/features/human_resources/data/model/scrap_request/scrap_custody_model.dart';
+import 'package:shaoni/features/human_resources/data/model/scrap_request/scrap_lot_model.dart';
+import 'package:shaoni/features/human_resources/data/model/scrap_request/stock_request_model.dart';
+import 'package:shaoni/features/human_resources/data/model/scrap_request/scrap_reason_model.dart';
+import 'package:shaoni/features/human_resources/data/model/scrap_request/create_scrap_request_response_model.dart';
+import 'package:shaoni/features/human_resources/domain/use_cases/scrap_request/get_custodies_use_case.dart';
+import 'package:shaoni/features/human_resources/domain/use_cases/scrap_request/get_product_lots_use_case.dart';
+import 'package:shaoni/features/human_resources/domain/use_cases/scrap_request/create_scrap_request_use_case.dart';
+import 'package:shaoni/features/human_resources/domain/use_cases/scrap_request/update_scrap_request_use_case.dart';
 import '../../../../core/constants/api_constants.dart';
 import '../../../../core/dio/dio_helper.dart';
 import '../../../../core/error/failure.dart';
@@ -209,6 +218,27 @@ abstract class HRServicesRemoteDataSources {
 
   Future<CreateOutsideWorkingResponseModel> createOutsideWorking({
     required CreateOutsideWorkingParams params,
+  });
+
+  /// ============================= scrap request =============================
+  Future<List<ScrapCustodyModel>> getCustodies({
+    required GetCustodiesParams params,
+  });
+
+  Future<List<StockRequestModel>> getStockRequests();
+
+  Future<List<ScrapReasonModel>> getScrapReasons();
+
+  Future<List<ScrapLotModel>> getProductLots({
+    required GetProductLotsParams params,
+  });
+
+  Future<CreateScrapRequestResponseModel> createScrapRequest({
+    required CreateScrapRequestParams params,
+  });
+
+  Future<CreateScrapRequestResponseModel> updateScrapRequest({
+    required UpdateScrapRequestParams params,
   });
 }
 
@@ -900,6 +930,104 @@ class HRServicesRemoteDataSourcesImp implements HRServicesRemoteDataSources {
       );
       if (response == null) throw ServerFailure(message: 'server failure');
       return CreateOutsideWorkingResponseModel.fromJson(response);
+    } on ServerFailure catch (e) {
+      throw ServerFailure(message: e.message);
+    }
+  }
+
+  /// ============================= scrap request =============================
+
+  @override
+  Future<List<ScrapCustodyModel>> getCustodies({
+    required GetCustodiesParams params,
+  }) async {
+    try {
+      final response = await _dio.getData(
+        url: '${URL.baseUrl}/${params.employeeId}/custodies',
+      );
+      if (response == null) throw ServerFailure(message: 'server failure');
+      final List raw = response is List
+          ? response
+          : (response as Map<String, dynamic>)['body'] as List;
+      return raw.map((e) => ScrapCustodyModel.fromJson(e)).toList();
+    } on ServerFailure catch (e) {
+      throw ServerFailure(message: e.message);
+    }
+  }
+
+  @override
+  Future<List<StockRequestModel>> getStockRequests() async {
+    try {
+      final response = await _dio.getData(url: URL.getStockRequests);
+      if (response == null) throw ServerFailure(message: 'server failure');
+      final List raw = response is List
+          ? response
+          : (response as Map<String, dynamic>)['body'] as List;
+      return raw.map((e) => StockRequestModel.fromJson(e)).toList();
+    } on ServerFailure catch (e) {
+      throw ServerFailure(message: e.message);
+    }
+  }
+
+  @override
+  Future<List<ScrapReasonModel>> getScrapReasons() async {
+    try {
+      final response = await _dio.getData(url: URL.getScrapReasons);
+      if (response == null) throw ServerFailure(message: 'server failure');
+      final List raw = response is List
+          ? response
+          : (response as Map<String, dynamic>)['body'] as List;
+      return raw.map((e) => ScrapReasonModel.fromJson(e)).toList();
+    } on ServerFailure catch (e) {
+      throw ServerFailure(message: e.message);
+    }
+  }
+
+  @override
+  Future<List<ScrapLotModel>> getProductLots({
+    required GetProductLotsParams params,
+  }) async {
+    try {
+      final response = await _dio.getData(
+        url: '${URL.getProductLots}/${params.productId}',
+      );
+      if (response == null) throw ServerFailure(message: 'server failure');
+      final List raw = response is List
+          ? response
+          : (response as Map<String, dynamic>)['body'] as List;
+      return raw.map((e) => ScrapLotModel.fromJson(e)).toList();
+    } on ServerFailure catch (e) {
+      throw ServerFailure(message: e.message);
+    }
+  }
+
+  @override
+  Future<CreateScrapRequestResponseModel> createScrapRequest({
+    required CreateScrapRequestParams params,
+  }) async {
+    try {
+      final response = await _dio.postData(
+        url: URL.createScrapRequest,
+        body: params.toMap(),
+      );
+      if (response == null) throw ServerFailure(message: 'server failure');
+      return CreateScrapRequestResponseModel.fromJson(response);
+    } on ServerFailure catch (e) {
+      throw ServerFailure(message: e.message);
+    }
+  }
+
+  @override
+  Future<CreateScrapRequestResponseModel> updateScrapRequest({
+    required UpdateScrapRequestParams params,
+  }) async {
+    try {
+      final response = await _dio.putData(
+        url: '${URL.updateScrapRequest}${params.requestId}',
+        body: params.data.toMap(),
+      );
+      return CreateScrapRequestResponseModel.fromJson(
+          response.data as Map<String, dynamic>);
     } on ServerFailure catch (e) {
       throw ServerFailure(message: e.message);
     }

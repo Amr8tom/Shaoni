@@ -1,5 +1,6 @@
 import 'package:data_connection_checker_tv/data_connection_checker.dart';
 import 'package:get_it/get_it.dart';
+import 'package:shaoni/core/service_locator/booking_management_service_locator.dart';
 import 'package:shaoni/core/service_locator/my_requests_service_locator.dart';
 import 'package:shaoni/core/service_locator/profile_service_locator.dart';
 import 'package:shaoni/core/service_locator/request_service_locator.dart';
@@ -63,6 +64,10 @@ class DI {
 
     /// HR request service
     await HRServiceLocator.execute(serviceLocator: serviceLocator);
+
+    /// Booking management
+    await BookingManagementServiceLocator.execute(
+        serviceLocator: serviceLocator);
 
     /// Study & training
     await StudyTrainingServiceLocator.execute(serviceLocator: serviceLocator);

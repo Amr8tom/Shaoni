@@ -128,8 +128,17 @@ extension RequestStatusExtensionList on CurrentStatus {
           RequestStatusEnum.hrApproval,
           RequestStatusEnum.rejected,
         ];
-      case ServiceCode.outsideWorking:
       case ServiceCode.visaRequest:
+        return const [
+          RequestStatusEnum.draft,
+          RequestStatusEnum.confirmed,
+          RequestStatusEnum.hrApproval,
+          RequestStatusEnum.externalRelations,
+          RequestStatusEnum.authorityHolder,
+          RequestStatusEnum.approved,
+          RequestStatusEnum.rejected,
+        ];
+      case ServiceCode.outsideWorking:
       case ServiceCode.scrapRequest:
       case ServiceCode.employeeTicketBooking:
       case ServiceCode.leaveReplace:
@@ -206,8 +215,12 @@ extension RequestStatusStringExtension on String? {
         return RequestStatusEnum.done;
       case 'specifications':
         return RequestStatusEnum.specifications;
+      case 'approve':
       case 'approved':
         return RequestStatusEnum.approved;
+
+      case 'external_relations':
+        return RequestStatusEnum.externalRelations;
 
       // ---- Rejection / Cancellation States ----
       case 'reject':
@@ -256,6 +269,7 @@ enum RequestStatusEnum {
   confirmed,
   approved,
   authorityHolder,
+  externalRelations,
   notValid,
   cancel,
   closed,

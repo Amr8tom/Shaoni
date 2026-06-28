@@ -278,6 +278,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "currentlyDownloadingSurahes": MessageLookupByLibrary.simpleMessage(
       "Currently downloading Surahes. Please wait...",
     ),
+    "custody": MessageLookupByLibrary.simpleMessage("العهدة"),
     "customerStagnantItems": MessageLookupByLibrary.simpleMessage(
       "الأصناف الراكدة للعملاء.....يمكنك تصفح الأصناف الراكدة في الصيدليات الأخرى في منطقتك وإعادة شرائها",
     ),
@@ -672,6 +673,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "هل أنت متأكد من رغبتك في تسجيل الخروج؟",
     ),
     "lostBag": MessageLookupByLibrary.simpleMessage("فقدت حقائبي في المطار"),
+    "lotNumber": MessageLookupByLibrary.simpleMessage("الرقم المتسلسل"),
     "luggage": MessageLookupByLibrary.simpleMessage("أمتعة السفر"),
     "lun": MessageLookupByLibrary.simpleMessage("الغداء"),
     "lunch": MessageLookupByLibrary.simpleMessage("الغداء"),
@@ -1034,6 +1036,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "requestDetails": MessageLookupByLibrary.simpleMessage("بيانات الطلب"),
     "requestLines": MessageLookupByLibrary.simpleMessage("بنود الطلب"),
     "requestNumber": MessageLookupByLibrary.simpleMessage("رقم الطلب"),
+    "requestReason": MessageLookupByLibrary.simpleMessage("مبررات الطلب"),
     "requestSend": MessageLookupByLibrary.simpleMessage("تم إرسال طلبك بنجاح"),
     "requestSentSuccessfully": MessageLookupByLibrary.simpleMessage(
       "تم ارسال طلبك بنجاح",
@@ -1097,9 +1100,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "schoolPermissionRequest": MessageLookupByLibrary.simpleMessage(
       "طلب إذن مدارس",
     ),
+    "scrapReason": MessageLookupByLibrary.simpleMessage("سبب التلف"),
+    "scrapRequest": MessageLookupByLibrary.simpleMessage("طلب إهلاك"),
     "search": MessageLookupByLibrary.simpleMessage(
       "البحث عن طريق الكلمات الرئيسية",
     ),
+    "searchByName": MessageLookupByLibrary.simpleMessage("ابحث بالاسم..."),
     "searchEmployee": MessageLookupByLibrary.simpleMessage("ابحث بالاسم..."),
     "searchJuzIndex": MessageLookupByLibrary.simpleMessage(
       "ابحث عن رقم الجزء...",
@@ -1120,7 +1126,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "selectArr": MessageLookupByLibrary.simpleMessage("اختر مدينة الوصول"),
     "selectAtLeastOneEmployee": MessageLookupByLibrary.simpleMessage(
-      "يرجى اختيار موظف واحد على الأقل",
+      "اختر موظفًا واحدًا على الأقل لتحديد تواريخ التأشيرة.",
     ),
     "selectAttendanceWay": MessageLookupByLibrary.simpleMessage(
       "اختر طريقة الحضور",
@@ -1146,6 +1152,10 @@ class MessageLookup extends MessageLookupByLibrary {
     "selectCourse": MessageLookupByLibrary.simpleMessage(
       "اختر الدورة التدريبية",
     ),
+    "selectCustody": MessageLookupByLibrary.simpleMessage("اختر العهدة"),
+    "selectCustodyFirst": MessageLookupByLibrary.simpleMessage(
+      "اختر العهدة أولاً",
+    ),
     "selectDate": MessageLookupByLibrary.simpleMessage("اختر التوقيت"),
     "selectDep": MessageLookupByLibrary.simpleMessage("اختر مدينة المغادرة"),
     "selectDepartment": MessageLookupByLibrary.simpleMessage("اختر القسم"),
@@ -1162,10 +1172,11 @@ class MessageLookup extends MessageLookupByLibrary {
     "selectIssuingCountry": MessageLookupByLibrary.simpleMessage(
       "اختر دولة الإصدار",
     ),
-    "selectLanguage": MessageLookupByLibrary.simpleMessage("أختيار اللغة"),
+    "selectLanguage": MessageLookupByLibrary.simpleMessage("اختر اللغة"),
     "selectLetterDestination": MessageLookupByLibrary.simpleMessage(
       "اختر جهة توجيه الخطاب",
     ),
+    "selectLot": MessageLookupByLibrary.simpleMessage("اختر الرقم المتسلسل"),
     "selectLuggage": MessageLookupByLibrary.simpleMessage(" اختر الأمتعة"),
     "selectNation": MessageLookupByLibrary.simpleMessage("اختر الجنسية"),
     "selectOneActivity": MessageLookupByLibrary.simpleMessage(
@@ -1193,14 +1204,22 @@ class MessageLookup extends MessageLookupByLibrary {
       "اختر المستند المطلوب",
     ),
     "selectSalaryType": MessageLookupByLibrary.simpleMessage("اختر نوع الراتب"),
+    "selectScrapReason": MessageLookupByLibrary.simpleMessage("اختر سبب التلف"),
     "selectStartWorkType": MessageLookupByLibrary.simpleMessage(
       "اختر نوع بدء العمل",
+    ),
+    "selectStockRequest": MessageLookupByLibrary.simpleMessage(
+      "اختر خطاب الإدارة",
     ),
     "selectStudyDestination": MessageLookupByLibrary.simpleMessage(
       "اختر الجهة",
     ),
     "selectStudyType": MessageLookupByLibrary.simpleMessage("اختر نوع الدراسة"),
     "selectTime": MessageLookupByLibrary.simpleMessage("حدد الوقت"),
+    "selectVisaType": MessageLookupByLibrary.simpleMessage("اختر نوع التأشيرة"),
+    "selectVisaTypeFirst": MessageLookupByLibrary.simpleMessage(
+      "اختر نوع التأشيرة أولاً لعرض قائمة الموظفين.",
+    ),
     "selectedEmployees": MessageLookupByLibrary.simpleMessage(
       "الموظفون المحددون",
     ),
@@ -1254,6 +1273,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "startWork": MessageLookupByLibrary.simpleMessage("بدء العمل"),
     "startWorkType": MessageLookupByLibrary.simpleMessage("نوع بدء العمل"),
     "status": MessageLookupByLibrary.simpleMessage("الحالة"),
+    "stockRequest": MessageLookupByLibrary.simpleMessage("خطاب الإدارة"),
     "stoning": MessageLookupByLibrary.simpleMessage("رجم الشيطان في منى"),
     "streetName": MessageLookupByLibrary.simpleMessage("أسم الشارع"),
     "study": MessageLookupByLibrary.simpleMessage("التدريب والدراسة"),
@@ -1397,9 +1417,32 @@ class MessageLookup extends MessageLookupByLibrary {
     "view": MessageLookupByLibrary.simpleMessage("عرض"),
     "viewAll": MessageLookupByLibrary.simpleMessage("رؤية الكل"),
     "visa": MessageLookupByLibrary.simpleMessage("التـأشيرات"),
+    "visaData": MessageLookupByLibrary.simpleMessage("بيانات التأشيرة"),
+    "visaDatesPerEmployee": MessageLookupByLibrary.simpleMessage(
+      "تواريخ التأشيرة لكل موظف",
+    ),
     "visaDetails": MessageLookupByLibrary.simpleMessage("تفاصيل التأشيرة"),
+    "visaDirection": MessageLookupByLibrary.simpleMessage("الوجهة / الاتجاه"),
+    "visaDirectionHint": MessageLookupByLibrary.simpleMessage(
+      "مثال: المملكة العربية السعودية",
+    ),
     "visaForm": MessageLookupByLibrary.simpleMessage("بيانات نموذج التأشيرة"),
     "visaNo": MessageLookupByLibrary.simpleMessage("رقم التأشيرة"),
+    "visaNotesHint": MessageLookupByLibrary.simpleMessage(
+      "ملاحظات إضافية (اختياري)",
+    ),
+    "visaReasonHint": MessageLookupByLibrary.simpleMessage("اكتب سبب الطلب..."),
+    "visaRequest": MessageLookupByLibrary.simpleMessage("طلب تأشيرة"),
+    "visaType": MessageLookupByLibrary.simpleMessage("نوع التأشيرة"),
+    "visaTypeExitReturn": MessageLookupByLibrary.simpleMessage(
+      "تأشيرة خروج وعودة",
+    ),
+    "visaTypeForeignCountry": MessageLookupByLibrary.simpleMessage(
+      "تأشيرة لدولة أجنبية",
+    ),
+    "visaTypeKingdomEntry": MessageLookupByLibrary.simpleMessage(
+      "تأشيرة دخول المملكة",
+    ),
     "visitFactory": MessageLookupByLibrary.simpleMessage(
       "زيارة تغيير كسوة الكعبة",
     ),

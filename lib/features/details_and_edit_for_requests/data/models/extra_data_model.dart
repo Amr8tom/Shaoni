@@ -12,6 +12,8 @@ import 'package:shaoni/features/details_and_edit_for_requests/domain/entities/ex
 import 'package:shaoni/features/human_resources/domain/entity/exit_permisstion.dart';
 import 'package:shaoni/features/details_and_edit_for_requests/data/models/loan_request_details_model.dart';
 import 'package:shaoni/features/details_and_edit_for_requests/data/models/salary_request_model.dart';
+import 'package:shaoni/features/details_and_edit_for_requests/data/models/scrap_request_model.dart';
+import 'package:shaoni/features/details_and_edit_for_requests/data/models/visa_request_model.dart';
 
 class ExtraDataModel extends ExtraData {
   const ExtraDataModel({
@@ -30,6 +32,7 @@ class ExtraDataModel extends ExtraData {
     super.complaintRequest,
     super.salaryRequest,
     super.loanRequest,
+    super.scrapRequest,
   });
 
   /// fromJson
@@ -48,6 +51,8 @@ class ExtraDataModel extends ExtraData {
     final complaintRequestJson = _jsonMap(json['complaintRequest']);
     final salaryRequestJson = _jsonMap(json['salaryRequest']);
     final loanRequestJson = _jsonMap(json['loanRequest']);
+    final scrapRequestJson = _jsonMap(json['scrapRequest']);
+    final visaRequestJson = _jsonMap(json['visaRequest']);
 
     return ExtraDataModel(
       attendance: attendanceJson != null
@@ -72,7 +77,9 @@ class ExtraDataModel extends ExtraData {
           ? ProductOrderModel.fromJson(productOrderJson)
           : null,
       outsideWorking: json['outsideWorking']?.toString(),
-      visaRequest: json['visaRequest']?.toString(),
+      visaRequest: visaRequestJson != null
+          ? VisaRequestModel.fromJson(visaRequestJson)
+          : null,
       carPermission: carPermissionJson != null
           ? CarPermission.fromJson(carPermissionJson)
           : null,
@@ -87,6 +94,9 @@ class ExtraDataModel extends ExtraData {
           : null,
       loanRequest: loanRequestJson != null
           ? LoanRequestDetailsModel.fromJson(loanRequestJson)
+          : null,
+      scrapRequest: scrapRequestJson != null
+          ? ScrapRequestModel.fromJson(scrapRequestJson)
           : null,
     );
   }
@@ -237,7 +247,9 @@ class ExtraDataModel extends ExtraData {
                   .toList(),
             },
       'outsideWorking': extraData.outsideWorking,
-      'visaRequest': extraData.visaRequest,
+      'visaRequest': extraData.visaRequest == null
+          ? null
+          : VisaRequestModel.toJsonFromEntity(extraData.visaRequest!),
       'exitPermission': extraData.exitPermission?.toJson(),
       'carPermission': extraData.carPermission?.toJson(),
       'complaintRequest': extraData.complaintRequest?.toJson(),
@@ -247,6 +259,28 @@ class ExtraDataModel extends ExtraData {
       'loanRequest': extraData.loanRequest != null
           ? LoanRequestDetailsModel.toJsonFromEntity(extraData.loanRequest!)
           : null,
+      'scrapRequest': extraData.scrapRequest == null
+          ? null
+          : {
+              'custodyId': extraData.scrapRequest!.custodyId,
+              'custodyName': extraData.scrapRequest!.custodyName,
+              'stockRequestId': extraData.scrapRequest!.stockRequestId,
+              'stockRequestName': extraData.scrapRequest!.stockRequestName,
+              'reasonId': extraData.scrapRequest!.reasonId,
+              'reasonName': extraData.scrapRequest!.reasonName,
+              'editReasons': extraData.scrapRequest!.editReasons,
+              'rejectReasons': extraData.scrapRequest!.rejectReasons,
+              'lines': extraData.scrapRequest!.lines
+                  .map((l) => {
+                        'productId': l.productId,
+                        'productName': l.productName,
+                        'quantity': l.quantity,
+                        'lotId': l.lotId,
+                        'lotName': l.lotName,
+                        'reason': l.reason,
+                      })
+                  .toList(),
+            },
     };
   }
 }

@@ -53,6 +53,13 @@ import '../../features/human_resources/domain/use_cases/product_order/get_produc
 import '../../features/human_resources/domain/use_cases/product_order/create_product_order_use_case.dart';
 import '../../features/human_resources/domain/use_cases/product_order/update_product_order_use_case.dart';
 import '../../features/human_resources/presentation/controller/product_order/product_order_cubit.dart';
+import '../../features/human_resources/domain/use_cases/scrap_request/get_custodies_use_case.dart';
+import '../../features/human_resources/domain/use_cases/scrap_request/get_stock_requests_use_case.dart';
+import '../../features/human_resources/domain/use_cases/scrap_request/get_scrap_reasons_use_case.dart';
+import '../../features/human_resources/domain/use_cases/scrap_request/get_product_lots_use_case.dart';
+import '../../features/human_resources/domain/use_cases/scrap_request/create_scrap_request_use_case.dart';
+import '../../features/human_resources/domain/use_cases/scrap_request/update_scrap_request_use_case.dart';
+import '../../features/human_resources/presentation/controller/scrap_request/scrap_request_cubit.dart';
 
 class HRServiceLocator {
   static Future<void> execute({required GetIt serviceLocator}) async {
@@ -292,6 +299,37 @@ class HRServiceLocator {
         serviceLocator<GetOutsideWorkingEmployeesUseCase>(),
         serviceLocator<GetOutsideWorkingProjectsUseCase>(),
         serviceLocator<CreateOutsideWorkingUseCase>(),
+        serviceLocator(),
+      ),
+    );
+
+    /// ============================ scrap request ============================
+    serviceLocator.registerLazySingleton<GetCustodiesUseCase>(
+      () => GetCustodiesUseCase(serviceLocator()),
+    );
+    serviceLocator.registerLazySingleton<GetStockRequestsUseCase>(
+      () => GetStockRequestsUseCase(serviceLocator()),
+    );
+    serviceLocator.registerLazySingleton<GetScrapReasonsUseCase>(
+      () => GetScrapReasonsUseCase(serviceLocator()),
+    );
+    serviceLocator.registerLazySingleton<GetProductLotsUseCase>(
+      () => GetProductLotsUseCase(serviceLocator()),
+    );
+    serviceLocator.registerLazySingleton<CreateScrapRequestUseCase>(
+      () => CreateScrapRequestUseCase(serviceLocator()),
+    );
+    serviceLocator.registerLazySingleton<UpdateScrapRequestUseCase>(
+      () => UpdateScrapRequestUseCase(serviceLocator()),
+    );
+    serviceLocator.registerFactory<ScrapRequestCubit>(
+      () => ScrapRequestCubit(
+        serviceLocator(),
+        serviceLocator(),
+        serviceLocator(),
+        serviceLocator(),
+        serviceLocator(),
+        serviceLocator(),
         serviceLocator(),
       ),
     );

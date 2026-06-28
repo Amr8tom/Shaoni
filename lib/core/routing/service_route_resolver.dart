@@ -57,11 +57,13 @@ class ServiceRouteResolver {
         return DRoutesName.createSalaryTransferRoute;
       case ServiceCode.loan:
         return DRoutesName.createLoanRoute;
+      case ServiceCode.scrapRequest:
+        return DRoutesName.createScrapRequestRoute;
+      case ServiceCode.visaRequest:
+        return DRoutesName.createVisaRequestRoute;
 
       case ServiceCode.exitPermission:
       case ServiceCode.attendanceUpdate:
-      case ServiceCode.visaRequest:
-      case ServiceCode.scrapRequest:
       case ServiceCode.employeeTicketBooking:
       case ServiceCode.leaveReplace:
       case ServiceCode.leave:

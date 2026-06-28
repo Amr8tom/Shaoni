@@ -11,6 +11,8 @@ import 'package:shaoni/features/human_resources/presentation/medical_insurance/c
 import 'package:shaoni/features/study&training/presentation/training_request/create_training_request_form.dart';
 import 'package:shaoni/features/human_resources/presentation/product_order/create_product_order_form.dart';
 import 'package:shaoni/features/human_resources/presentation/outside_working/create_outside_working_form.dart';
+import 'package:shaoni/features/human_resources/presentation/scrap_request/create_scrap_request_form.dart';
+import 'package:shaoni/features/booking_managment/presentation/visa_request/create_visa_request_form.dart';
 import 'package:shaoni/features/profile/presentation/screens/profile_screen.dart';
 import 'package:shaoni/features/services/presentation/screens/category_details_screen.dart';
 import '../../features/auth/presentation/screen/login_screen.dart';
@@ -141,6 +143,26 @@ class RouteGenerator {
         final int? requestId = args?['requestId'] as int?;
         return PageTransition(
           child: CreateProductOrderForm(requestId: requestId),
+          type: PageTransitionType.rightToLeft,
+          settings: settings,
+        );
+
+      /// create / edit scrap request screen
+      case DRoutesName.createScrapRequestRoute:
+        final args = settings.arguments as Map<String, dynamic>?;
+        final int? requestId = args?['requestId'] as int?;
+        return PageTransition(
+          child: CreateScrapRequestForm(requestId: requestId),
+          type: PageTransitionType.rightToLeft,
+          settings: settings,
+        );
+
+      /// create / edit visa request screen
+      case DRoutesName.createVisaRequestRoute:
+        final args = settings.arguments as Map<String, dynamic>?;
+        final int? requestId = args?['requestId'] as int?;
+        return PageTransition(
+          child: CreateVisaRequestForm(requestId: requestId),
           type: PageTransitionType.rightToLeft,
           settings: settings,
         );

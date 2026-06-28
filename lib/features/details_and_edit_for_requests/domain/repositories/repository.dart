@@ -23,6 +23,8 @@ import '../use_cases/get_product_order_edit_use_case.dart';
 import '../use_cases/get_outside_working_edit_use_case.dart';
 import '../use_cases/get_salary_transfer_edit_use_case.dart';
 import '../use_cases/get_loan_edit_use_case.dart';
+import '../use_cases/get_scrap_request_edit_use_case.dart';
+import '../use_cases/get_visa_request_edit_use_case.dart';
 
 abstract class MyRequestsRepository {
   /// get
@@ -88,5 +90,13 @@ abstract class MyRequestsRepository {
 
   Future<Either<Failure, EditResponse>> getLoanEdit({
     required GetLoanEditParams params,
+  });
+
+  Future<Either<Failure, EditResponse>> getScrapRequestEdit({
+    required GetScrapRequestEditParams params,
+  });
+
+  Future<Either<Failure, EditResponse>> getVisaRequestEdit({
+    required GetVisaRequestEditParams params,
   });
 }
