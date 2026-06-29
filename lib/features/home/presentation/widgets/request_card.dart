@@ -63,8 +63,8 @@ class RequestCard extends StatelessWidget {
                     children: [
                       OrderTextCard(
                         title: S.current.orderNumber,
-                        result: orderNumber.length >= 9
-                            ? orderNumber.substring(9)
+                        result: orderNumber.length >= 10
+                            ? orderNumber.substring(10)
                             : orderNumber,
                       ),
                       const Sizer(height: 8),

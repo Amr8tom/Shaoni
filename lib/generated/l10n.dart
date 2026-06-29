@@ -7638,6 +7638,131 @@ class S {
       args: [],
     );
   }
+
+  /// `Employee Ticket Booking`
+  String get ticketBooking {
+    return Intl.message(
+      'Employee Ticket Booking',
+      name: 'ticketBooking',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Travel Date`
+  String get travelDate {
+    return Intl.message('Travel Date', name: 'travelDate', desc: '', args: []);
+  }
+
+  /// `Ticket Type`
+  String get ticketType {
+    return Intl.message('Ticket Type', name: 'ticketType', desc: '', args: []);
+  }
+
+  /// `Select ticket type`
+  String get selectTicketType {
+    return Intl.message(
+      'Select ticket type',
+      name: 'selectTicketType',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Inbound (IN)`
+  String get ticketIn {
+    return Intl.message('Inbound (IN)', name: 'ticketIn', desc: '', args: []);
+  }
+
+  /// `Outbound (OUT)`
+  String get ticketOut {
+    return Intl.message(
+      'Outbound (OUT)',
+      name: 'ticketOut',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Task Type`
+  String get taskType {
+    return Intl.message('Task Type', name: 'taskType', desc: '', args: []);
+  }
+
+  /// `Itinerary`
+  String get itinerary {
+    return Intl.message('Itinerary', name: 'itinerary', desc: '', args: []);
+  }
+
+  /// `Employees Data`
+  String get employeesData {
+    return Intl.message(
+      'Employees Data',
+      name: 'employeesData',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add Employee`
+  String get addEmployee {
+    return Intl.message(
+      'Add Employee',
+      name: 'addEmployee',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No employees added yet. Tap "Add Employee" to add a row.`
+  String get noEmployeesAdded {
+    return Intl.message(
+      'No employees added yet. Tap "Add Employee" to add a row.',
+      name: 'noEmployeesAdded',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Ticket Class`
+  String get ticketClass {
+    return Intl.message(
+      'Ticket Class',
+      name: 'ticketClass',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Select ticket class`
+  String get selectTicketClass {
+    return Intl.message(
+      'Select ticket class',
+      name: 'selectTicketClass',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Attachment (optional)`
+  String get attachmentOptional {
+    return Intl.message(
+      'Attachment (optional)',
+      name: 'attachmentOptional',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `General Attachments`
+  String get generalAttachments {
+    return Intl.message(
+      'General Attachments',
+      name: 'generalAttachments',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -55,6 +55,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Add Correct Sign At All",
     ),
     "addEmail": MessageLookupByLibrary.simpleMessage("Add New Email"),
+    "addEmployee": MessageLookupByLibrary.simpleMessage("Add Employee"),
     "addLine": MessageLookupByLibrary.simpleMessage("Add Line"),
     "addNew": MessageLookupByLibrary.simpleMessage(" Add New"),
     "addNewAddress": MessageLookupByLibrary.simpleMessage("Add Address"),
@@ -98,6 +99,9 @@ class MessageLookup extends MessageLookupByLibrary {
       "Are you sure you want to delete your account?",
     ),
     "asr": MessageLookupByLibrary.simpleMessage("Asr"),
+    "attachmentOptional": MessageLookupByLibrary.simpleMessage(
+      "Attachment (optional)",
+    ),
     "attachments": MessageLookupByLibrary.simpleMessage("Attachments"),
     "attendance": MessageLookupByLibrary.simpleMessage("Attendance"),
     "attendanceAnnouncementBody": MessageLookupByLibrary.simpleMessage(
@@ -406,6 +410,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "employee": MessageLookupByLibrary.simpleMessage("Employee"),
     "employees": MessageLookupByLibrary.simpleMessage("Employees"),
+    "employeesData": MessageLookupByLibrary.simpleMessage("Employees Data"),
     "endDate": MessageLookupByLibrary.simpleMessage("End Date"),
     "endOfServiceRequest": MessageLookupByLibrary.simpleMessage(
       "End of Service Request",
@@ -529,6 +534,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "gallery": MessageLookupByLibrary.simpleMessage("Gallery"),
     "gender": MessageLookupByLibrary.simpleMessage("Gender"),
     "general": MessageLookupByLibrary.simpleMessage("General"),
+    "generalAttachments": MessageLookupByLibrary.simpleMessage(
+      "General Attachments",
+    ),
     "getPaymentCode": MessageLookupByLibrary.simpleMessage("Get Payment Code"),
     "getStarted": MessageLookupByLibrary.simpleMessage("Get Started"),
     "go": MessageLookupByLibrary.simpleMessage("Go to Home"),
@@ -651,6 +659,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "issueDate": MessageLookupByLibrary.simpleMessage("Issue Date"),
     "issueNumber": MessageLookupByLibrary.simpleMessage("Issue Number"),
     "issuingCountry": MessageLookupByLibrary.simpleMessage("Issuing Country"),
+    "itinerary": MessageLookupByLibrary.simpleMessage("Itinerary"),
     "jeddah": MessageLookupByLibrary.simpleMessage("Jeddah"),
     "jobNumber": MessageLookupByLibrary.simpleMessage("Job Number"),
     "jobTitle": MessageLookupByLibrary.simpleMessage("Job Title"),
@@ -796,6 +805,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "noData": MessageLookupByLibrary.simpleMessage(
       "There is no data here till now",
+    ),
+    "noEmployeesAdded": MessageLookupByLibrary.simpleMessage(
+      "No employees added yet. Tap \"Add Employee\" to add a row.",
     ),
     "noEmployeesFound": MessageLookupByLibrary.simpleMessage(
       "No employees found",
@@ -1290,6 +1302,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "selectStudyType": MessageLookupByLibrary.simpleMessage(
       "Select study type",
     ),
+    "selectTicketClass": MessageLookupByLibrary.simpleMessage(
+      "Select ticket class",
+    ),
+    "selectTicketType": MessageLookupByLibrary.simpleMessage(
+      "Select ticket type",
+    ),
     "selectTime": MessageLookupByLibrary.simpleMessage("select time"),
     "selectVisaType": MessageLookupByLibrary.simpleMessage("Select Visa Type"),
     "selectVisaTypeFirst": MessageLookupByLibrary.simpleMessage(
@@ -1396,6 +1414,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "tabaq": MessageLookupByLibrary.simpleMessage("Matched"),
     "tapToRead": MessageLookupByLibrary.simpleMessage("Tap to read"),
+    "taskType": MessageLookupByLibrary.simpleMessage("Task Type"),
     "tasks": MessageLookupByLibrary.simpleMessage("Tasks"),
     "tawafStart": MessageLookupByLibrary.simpleMessage(
       "Kaaba Tawaf activity will start within 30 minutes",
@@ -1426,6 +1445,13 @@ class MessageLookup extends MessageLookupByLibrary {
     "thisFieldRequired": MessageLookupByLibrary.simpleMessage(
       "This field is required",
     ),
+    "ticketBooking": MessageLookupByLibrary.simpleMessage(
+      "Employee Ticket Booking",
+    ),
+    "ticketClass": MessageLookupByLibrary.simpleMessage("Ticket Class"),
+    "ticketIn": MessageLookupByLibrary.simpleMessage("Inbound (IN)"),
+    "ticketOut": MessageLookupByLibrary.simpleMessage("Outbound (OUT)"),
+    "ticketType": MessageLookupByLibrary.simpleMessage("Ticket Type"),
     "time": MessageLookupByLibrary.simpleMessage("Time: "),
     "time09": MessageLookupByLibrary.simpleMessage("09:30 AM"),
     "timeNowIS": MessageLookupByLibrary.simpleMessage("Time now is "),
@@ -1451,6 +1477,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "training_course_data": MessageLookupByLibrary.simpleMessage(
       "Training Course Data",
     ),
+    "travelDate": MessageLookupByLibrary.simpleMessage("Travel Date"),
     "tryAgain": MessageLookupByLibrary.simpleMessage(
       "Please try again or sign up",
     ),

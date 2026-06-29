@@ -104,11 +104,9 @@ class UserRequestsGridView extends StatelessWidget {
                                       '',
                               'currentStatus':
                                   validRequests[index].currentStatus,
-                              'orderNumber': validRequests[index]
-                                      .request
-                                      ?.requestNumber
-                                      .toString() ??
-                                  '',
+                              'orderNumber':
+                                  validRequests[index].request?.requestNumber ??
+                                      "test",
                               'date': validRequests[index]
                                       .request
                                       ?.createdAt

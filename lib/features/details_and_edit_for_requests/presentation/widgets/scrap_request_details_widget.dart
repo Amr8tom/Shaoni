@@ -40,7 +40,6 @@ class ScrapRequestDetailsWidget extends StatelessWidget {
               ),
               Divider(color: ColorRes.grey4),
               const Sizer(height: 12),
-
               if ((scrap?.custodyName.isNotEmpty ?? false)) ...[
                 OrderTextCard(
                   title: S.current.custody,
@@ -48,7 +47,6 @@ class ScrapRequestDetailsWidget extends StatelessWidget {
                 ),
                 const Sizer(height: 12),
               ],
-
               if ((scrap?.stockRequestName.isNotEmpty ?? false)) ...[
                 OrderTextCard(
                   title: S.current.stockRequest,
@@ -56,7 +54,6 @@ class ScrapRequestDetailsWidget extends StatelessWidget {
                 ),
                 const Sizer(height: 12),
               ],
-
               if ((scrap?.reasonName.isNotEmpty ?? false)) ...[
                 OrderTextCard(
                   title: S.current.scrapReason,
@@ -64,7 +61,6 @@ class ScrapRequestDetailsWidget extends StatelessWidget {
                 ),
                 const Sizer(height: 12),
               ],
-
               if ((scrap?.lines.isNotEmpty ?? false)) ...[
                 Text(
                   S.current.requestLines,
@@ -73,10 +69,10 @@ class ScrapRequestDetailsWidget extends StatelessWidget {
                       ),
                 ),
                 const Sizer(height: 8),
-                ...(scrap?.lines ?? []).map((line) => _ScrapLineCard(line: line)),
+                ...(scrap?.lines ?? [])
+                    .map((line) => _ScrapLineCard(line: line)),
                 const Sizer(height: 8),
               ],
-
               if ((scrap?.editReasons?.isNotEmpty ?? false)) ...[
                 _FullWidthTextBlock(
                   label: S.current.editReasons,
@@ -84,7 +80,6 @@ class ScrapRequestDetailsWidget extends StatelessWidget {
                 ),
                 const Sizer(height: 12),
               ],
-
               if ((scrap?.rejectReasons?.isNotEmpty ?? false)) ...[
                 _FullWidthTextBlock(
                   label: S.current.rejectReasons,

@@ -53,6 +53,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "addEmail": MessageLookupByLibrary.simpleMessage(
       "إضافة بريد إلكتروني جديد",
     ),
+    "addEmployee": MessageLookupByLibrary.simpleMessage("إضافة موظف"),
     "addLine": MessageLookupByLibrary.simpleMessage("إضافة بند"),
     "addNew": MessageLookupByLibrary.simpleMessage(" اضف جديد"),
     "addNewAddress": MessageLookupByLibrary.simpleMessage("إضافة عنوان"),
@@ -94,6 +95,9 @@ class MessageLookup extends MessageLookupByLibrary {
       "هل آنت متاكد انك تريد حذف حسابك",
     ),
     "asr": MessageLookupByLibrary.simpleMessage("العصر"),
+    "attachmentOptional": MessageLookupByLibrary.simpleMessage(
+      "مرفق (اختياري)",
+    ),
     "attachments": MessageLookupByLibrary.simpleMessage("المرفقات"),
     "attendance": MessageLookupByLibrary.simpleMessage("الحضور"),
     "attendanceAnnouncementBody": MessageLookupByLibrary.simpleMessage(
@@ -378,6 +382,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "employee": MessageLookupByLibrary.simpleMessage("الموظف"),
     "employees": MessageLookupByLibrary.simpleMessage("الموظفون"),
+    "employeesData": MessageLookupByLibrary.simpleMessage("بيانات الموظفين"),
     "endDate": MessageLookupByLibrary.simpleMessage("النهاية م"),
     "endOfServiceRequest": MessageLookupByLibrary.simpleMessage(
       "طلب نهاية خدمة",
@@ -493,6 +498,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "gallery": MessageLookupByLibrary.simpleMessage("المعرض"),
     "gender": MessageLookupByLibrary.simpleMessage("النوع"),
     "general": MessageLookupByLibrary.simpleMessage("عام"),
+    "generalAttachments": MessageLookupByLibrary.simpleMessage(
+      "المرفقات العامة",
+    ),
     "getPaymentCode": MessageLookupByLibrary.simpleMessage(
       "احصل على كود الدفع",
     ),
@@ -609,6 +617,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "issueDate": MessageLookupByLibrary.simpleMessage("تاريخ الإصدار م"),
     "issueNumber": MessageLookupByLibrary.simpleMessage("رقم الإصدار"),
     "issuingCountry": MessageLookupByLibrary.simpleMessage("دولة الإصدار"),
+    "itinerary": MessageLookupByLibrary.simpleMessage("خط السير"),
     "jeddah": MessageLookupByLibrary.simpleMessage("جده"),
     "jobNumber": MessageLookupByLibrary.simpleMessage("الرقم الوظيفي"),
     "jobTitle": MessageLookupByLibrary.simpleMessage("المسمى الوظيفي"),
@@ -754,6 +763,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "noData": MessageLookupByLibrary.simpleMessage(
       "لا يــوجد شـئ في الوقت الحـالي",
+    ),
+    "noEmployeesAdded": MessageLookupByLibrary.simpleMessage(
+      "لم يتم إضافة أي موظفين بعد. اضغط \"إضافة موظف\" لإضافة سطر.",
     ),
     "noEmployeesFound": MessageLookupByLibrary.simpleMessage("لا يوجد موظفون"),
     "noFamilyMembersFound": MessageLookupByLibrary.simpleMessage(
@@ -1215,6 +1227,12 @@ class MessageLookup extends MessageLookupByLibrary {
       "اختر الجهة",
     ),
     "selectStudyType": MessageLookupByLibrary.simpleMessage("اختر نوع الدراسة"),
+    "selectTicketClass": MessageLookupByLibrary.simpleMessage(
+      "اختر فئة التذكرة",
+    ),
+    "selectTicketType": MessageLookupByLibrary.simpleMessage(
+      "اختر نوع التذكرة",
+    ),
     "selectTime": MessageLookupByLibrary.simpleMessage("حدد الوقت"),
     "selectVisaType": MessageLookupByLibrary.simpleMessage("اختر نوع التأشيرة"),
     "selectVisaTypeFirst": MessageLookupByLibrary.simpleMessage(
@@ -1308,6 +1326,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "tabaq": MessageLookupByLibrary.simpleMessage("طبق"),
     "tapToRead": MessageLookupByLibrary.simpleMessage("اضغط للقراءة"),
+    "taskType": MessageLookupByLibrary.simpleMessage("نوع المهمة"),
     "tasks": MessageLookupByLibrary.simpleMessage("المهام"),
     "tawafStart": MessageLookupByLibrary.simpleMessage(
       "سيبدأ نشاط الطواف بالكعبة خلال 30 دقيقة",
@@ -1340,6 +1359,13 @@ class MessageLookup extends MessageLookupByLibrary {
     "thisFieldRequired": MessageLookupByLibrary.simpleMessage(
       "هذا الحقل مطلوب",
     ),
+    "ticketBooking": MessageLookupByLibrary.simpleMessage(
+      "حجز تذاكر لموظفي الرابطة",
+    ),
+    "ticketClass": MessageLookupByLibrary.simpleMessage("فئة التذكرة"),
+    "ticketIn": MessageLookupByLibrary.simpleMessage("في الداخل (IN)"),
+    "ticketOut": MessageLookupByLibrary.simpleMessage("في الخارج (OUT)"),
+    "ticketType": MessageLookupByLibrary.simpleMessage("نوع التذكرة"),
     "time": MessageLookupByLibrary.simpleMessage("الوقت: "),
     "time09": MessageLookupByLibrary.simpleMessage("09:30 ص"),
     "timeNowIS": MessageLookupByLibrary.simpleMessage("حان وقت"),
@@ -1369,6 +1395,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "training_course_data": MessageLookupByLibrary.simpleMessage(
       "بيانات الدورات التدريبية",
     ),
+    "travelDate": MessageLookupByLibrary.simpleMessage("تاريخ السفر"),
     "tryAgain": MessageLookupByLibrary.simpleMessage(" حاول مرة أخرى"),
     "tryLater": MessageLookupByLibrary.simpleMessage(
       "الرجاء المحاولة مرة اخري فيما بعد",

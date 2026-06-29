@@ -23,6 +23,7 @@ import '../../features/details_and_edit_for_requests/domain/use_cases/get_salary
 import '../../features/details_and_edit_for_requests/domain/use_cases/get_loan_edit_use_case.dart';
 import '../../features/details_and_edit_for_requests/domain/use_cases/get_scrap_request_edit_use_case.dart';
 import '../../features/details_and_edit_for_requests/domain/use_cases/get_visa_request_edit_use_case.dart';
+import '../../features/details_and_edit_for_requests/domain/use_cases/get_ticket_booking_edit_use_case.dart';
 import '../../features/details_and_edit_for_requests/presentation/controller/edit/edit_cubit.dart';
 import '../../features/details_and_edit_for_requests/presentation/controller/my_requests_cubit.dart';
 
@@ -106,6 +107,9 @@ class MyRequestsServiceLocator {
     serviceLocator.registerLazySingleton<GetVisaRequestEditUseCase>(
       () => GetVisaRequestEditUseCase(serviceLocator()),
     );
+    serviceLocator.registerLazySingleton<GetTicketBookingEditUseCase>(
+      () => GetTicketBookingEditUseCase(serviceLocator()),
+    );
 
     /// controllers
     serviceLocator.registerFactory(() => MyRequestsCubit(
@@ -116,6 +120,7 @@ class MyRequestsServiceLocator {
         serviceLocator()));
     serviceLocator.registerFactory<EditCubit>(
       () => EditCubit(
+        serviceLocator(),
         serviceLocator(),
         serviceLocator(),
         serviceLocator(),

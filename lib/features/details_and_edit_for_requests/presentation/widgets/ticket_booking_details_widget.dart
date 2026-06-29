@@ -5,19 +5,20 @@ import 'package:skeletonizer/skeletonizer.dart';
 import '../../../../common/widgets/sized_boxes/sizer.dart';
 import '../../../../core/constants/app_sizes.dart';
 import '../../../../core/constants/colors.dart';
-import '../../../../generated/l10n.dart';
 import '../../../../core/utils/helpers/base64_file_helper.dart';
+import '../../../../core/utils/helpers/image_from_base64.dart';
+import '../../../../generated/l10n.dart';
 import '../../../home/presentation/widgets/order_text_card.dart';
-import '../../domain/entities/visa_request.dart';
+import '../../domain/entities/ticket_booking.dart';
 import '../controller/my_requests_cubit.dart';
 
-class VisaRequestDetailsWidget extends StatelessWidget {
-  const VisaRequestDetailsWidget({super.key});
+class TicketBookingDetailsWidget extends StatelessWidget {
+  const TicketBookingDetailsWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
     final controller = context.watch<MyRequestsCubit>();
-    final visa = controller.state.requestDetails?.extraData?.visaRequest;
+    final ticket = controller.state.requestDetails?.extraData?.ticketBooking;
 
     return Skeletonizer(
       enabled: controller.state.status.isLoading,
@@ -34,99 +35,81 @@ class VisaRequestDetailsWidget extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                S.current.visaRequest,
+                S.current.ticketBooking,
                 style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                       fontWeight: FontWeight.bold,
                     ),
               ),
               Divider(color: ColorRes.grey4),
               const Sizer(height: 12),
-              if ((visa?.visaTypeValue.isNotEmpty ?? false)) ...[
+              if ((controller.state.requestDetails?.request?.requestNumber
+                      ?.isNotEmpty ??
+                  false)) ...[
                 OrderTextCard(
-                  title: S.current.visaType,
-                  result: _visaTypeName(visa!.visaTypeValue),
+                  title: S.current.orderNumber,
+                  result:
+                      controller.state.requestDetails!.request!.requestNumber!,
                 ),
                 const Sizer(height: 12),
               ],
-              if ((visa?.direction.isNotEmpty ?? false)) ...[
+              if ((ticket?.ticketType.isNotEmpty ?? false)) ...[
                 OrderTextCard(
-                  title: S.current.visaDirection,
-                  result: visa!.direction,
+                  title: S.current.ticketType,
+                  result: _ticketTypeName(ticket!.ticketType),
                 ),
                 const Sizer(height: 12),
               ],
-              if ((visa?.dateFrom.isNotEmpty ?? false)) ...[
+              if ((ticket?.taskType.isNotEmpty ?? false)) ...[
                 OrderTextCard(
-                  title: S.current.startDate,
-                  result: _date(visa!.dateFrom),
+                  title: S.current.taskType,
+                  result: ticket!.taskType,
                 ),
                 const Sizer(height: 12),
               ],
-              if ((visa?.dateTo.isNotEmpty ?? false)) ...[
+              if ((ticket?.direction.isNotEmpty ?? false)) ...[
                 OrderTextCard(
-                  title: S.current.endDate,
-                  result: _date(visa!.dateTo),
+                  title: S.current.itinerary,
+                  result: ticket!.direction,
                 ),
                 const Sizer(height: 12),
               ],
-              if ((visa?.reason.isNotEmpty ?? false)) ...[
-                _FullWidthTextBlock(
-                  label: S.current.requestReason,
-                  value: visa!.reason,
+              if ((ticket?.travelDate.isNotEmpty ?? false)) ...[
+                OrderTextCard(
+                  title: S.current.travelDate,
+                  result: _date(ticket!.travelDate),
                 ),
                 const Sizer(height: 12),
               ],
-              if ((visa?.note.isNotEmpty ?? false)) ...[
+              if ((ticket?.note.isNotEmpty ?? false)) ...[
                 _FullWidthTextBlock(
                   label: S.current.notes,
-                  value: visa!.note,
+                  value: ticket!.note,
                 ),
                 const Sizer(height: 12),
               ],
-              if (visa?.attachmentBase64.isNotEmpty ?? false) ...[
+              if ((ticket?.lines.isNotEmpty ?? false)) ...[
                 Text(
-                  S.current.attachments,
+                  S.current.employeesData,
                   style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                         fontWeight: FontWeight.bold,
                       ),
                 ),
                 const Sizer(height: 8),
-                OutlinedButton.icon(
-                  onPressed: () => Base64FileHelper.downloadAndShare(
-                    base64String: visa!.attachmentBase64,
-                    customFileName: 'visa_attachment_${visa.id ?? ""}',
-                  ),
-                  icon: const Icon(Icons.download_rounded, size: 18),
-                  label: Text(S.current.downloadAttachment),
-                  style: OutlinedButton.styleFrom(
-                    foregroundColor: ColorRes.primary,
-                    side: const BorderSide(color: ColorRes.primary),
-                  ),
-                ),
-                const Sizer(height: 16),
-              ],
-              if ((visa?.lines.isNotEmpty ?? false)) ...[
-                Text(
-                  S.current.employees,
-                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                        fontWeight: FontWeight.bold,
-                      ),
-                ),
-                const Sizer(height: 8),
-                ...(visa?.lines ?? []).map((line) => _VisaLineCard(line: line)),
+                ...(ticket?.lines ?? [])
+                    .map((line) => _TicketLineCard(line: line)),
                 const Sizer(height: 8),
               ],
-              if ((visa?.editReasons?.isNotEmpty ?? false)) ...[
+              if ((ticket?.editReasons?.isNotEmpty ?? false)) ...[
                 _FullWidthTextBlock(
                   label: S.current.editReasons,
-                  value: visa!.editReasons!,
+                  value: ticket!.editReasons!,
                 ),
                 const Sizer(height: 12),
               ],
-              if ((visa?.rejectReasons?.isNotEmpty ?? false)) ...[
+              if ((ticket?.rejectReasons?.isNotEmpty ?? false)) ...[
                 _FullWidthTextBlock(
                   label: S.current.rejectReasons,
-                  value: visa!.rejectReasons!,
+                  value: ticket!.rejectReasons!,
                 ),
                 const Sizer(height: 12),
               ],
@@ -137,29 +120,25 @@ class VisaRequestDetailsWidget extends StatelessWidget {
     );
   }
 
-  /// Maps a visa type backend code to its localized label.
-  String _visaTypeName(String code) {
+  String _ticketTypeName(String code) {
     switch (code) {
-      case 'exit_return':
-        return S.current.visaTypeExitReturn;
-      case 'foreign_country':
-        return S.current.visaTypeForeignCountry;
-      case 'kingdom_entry':
-        return S.current.visaTypeKingdomEntry;
+      case 'in':
+        return S.current.ticketIn;
+      case 'out':
+        return S.current.ticketOut;
       default:
         return code;
     }
   }
 
-  /// Trims the time part from an ISO date string for display.
   String _date(String value) =>
       value.contains('T') ? value.split('T').first : value;
 }
 
-class _VisaLineCard extends StatelessWidget {
-  const _VisaLineCard({required this.line});
+class _TicketLineCard extends StatelessWidget {
+  const _TicketLineCard({required this.line});
 
-  final VisaRequestLineEntity line;
+  final TicketBookingLineEntity line;
 
   @override
   Widget build(BuildContext context) {
@@ -185,14 +164,49 @@ class _VisaLineCard extends StatelessWidget {
           ),
           const Sizer(height: 6),
           OrderTextCard(
-            title: S.current.startDate,
-            result: date(line.dateFrom),
+            title: S.current.travelDate,
+            result: date(line.travelDate),
           ),
-          const Sizer(height: 6),
-          OrderTextCard(
-            title: S.current.endDate,
-            result: date(line.dateTo),
-          ),
+          if (line.ticketTypeName.isNotEmpty) ...[
+            const Sizer(height: 6),
+            OrderTextCard(
+              title: S.current.ticketType,
+              result: line.ticketTypeName,
+            ),
+          ],
+          if (line.attachment.isNotEmpty) ...[
+            const Sizer(height: 6),
+            Text(
+              S.current.attachments,
+              style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                    color: ColorRes.grey2,
+                    fontWeight: FontWeight.w600,
+                  ),
+            ),
+            const Sizer(height: 6),
+            ClipRRect(
+              borderRadius: BorderRadius.circular(AppSizes.borderRadiusMd),
+              child: imageFromBaseString(
+                base64String: line.attachment,
+                width: double.infinity,
+                height: 150,
+                fit: BoxFit.cover,
+              ),
+            ),
+            const Sizer(height: 8),
+            OutlinedButton.icon(
+              onPressed: () => Base64FileHelper.downloadAndShare(
+                base64String: line.attachment,
+                customFileName: 'ticket_attachment_${line.employeeId}',
+              ),
+              icon: const Icon(Icons.download_rounded, size: 18),
+              label: Text(S.current.downloadAttachment),
+              style: OutlinedButton.styleFrom(
+                foregroundColor: ColorRes.primary,
+                side: const BorderSide(color: ColorRes.primary),
+              ),
+            ),
+          ],
         ],
       ),
     );

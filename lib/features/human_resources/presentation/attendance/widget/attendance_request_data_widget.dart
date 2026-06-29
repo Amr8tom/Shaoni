@@ -9,7 +9,9 @@ import '../../../domain/entity/attendance_record.dart';
 import '../../controller/attendance/attendance_cubit.dart';
 import 'attendance_dropdown_field.dart';
 import 'attendance_editable_field.dart';
+import 'attendance_editable_field.dart';
 import 'attendance_info_tile.dart';
+import '../../../../../../core/theme/theme.dart';
 
 class AttendanceRequestDataWidget extends StatelessWidget {
   const AttendanceRequestDataWidget({
@@ -190,7 +192,7 @@ class AttendanceRequestDataWidget extends StatelessWidget {
       helpText: S.current.selectDate,
       cancelText: S.current.cancel,
       confirmText: S.current.done,
-      builder: _pickerTheme,
+      builder: DAppTheme.datePickerBuilder,
     );
     if (pickedDate != null) {
       controller.attendanceDateController.text =
@@ -208,7 +210,7 @@ class AttendanceRequestDataWidget extends StatelessWidget {
       helpText: S.current.selectTime,
       cancelText: S.current.cancel,
       confirmText: S.current.done,
-      builder: _pickerTheme,
+      builder: DAppTheme.datePickerBuilder,
     );
     if (pickedTime != null) {
       /// Format as `HH:mm` (24-hour), independent of locale.
@@ -216,43 +218,6 @@ class AttendanceRequestDataWidget extends StatelessWidget {
       final minute = pickedTime.minute.toString().padLeft(2, '0');
       controller.attendanceTimeController.text = '$hour:$minute';
     }
-  }
-
-  /// Shared light theme used by both pickers so they match the app palette.
-  Widget _pickerTheme(BuildContext context, Widget? child) {
-    return Theme(
-      data: Theme.of(context).copyWith(
-        colorScheme: ColorScheme.light(
-          primary: ColorRes.primary,
-          onPrimary: ColorRes.white,
-          surface: ColorRes.white,
-          onSurface: ColorRes.black,
-        ),
-        textTheme: TextTheme(
-          titleLarge: TextStyle(
-            color: ColorRes.black,
-            fontWeight: FontWeight.bold,
-            fontSize: 6,
-          ),
-        ),
-        dialogTheme: DialogTheme(
-          backgroundColor: ColorRes.white,
-          titleTextStyle: Theme.of(
-            context,
-          ).textTheme.headlineSmall?.copyWith(
-                color: ColorRes.black,
-                fontWeight: FontWeight.bold,
-                fontSize: 6,
-              ),
-        ),
-        textButtonTheme: TextButtonThemeData(
-          style: TextButton.styleFrom(
-            foregroundColor: ColorRes.primary,
-          ),
-        ),
-      ),
-      child: child!,
-    );
   }
 
   String? _requiredValidator(String? value) {

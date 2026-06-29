@@ -8,6 +8,10 @@ import 'package:shaoni/features/booking_managment/domain/entity/visa_request/vis
 import 'package:shaoni/features/booking_managment/domain/entity/visa_request/visa_type.dart';
 import 'package:shaoni/features/booking_managment/domain/repository/repository.dart';
 import 'package:shaoni/features/booking_managment/domain/use_cases/visa_request/get_visa_employees_use_case.dart';
+import 'package:shaoni/features/booking_managment/domain/entity/ticket_booking/create_ticket_booking_response.dart';
+import 'package:shaoni/features/booking_managment/domain/entity/ticket_booking/ticket_class.dart';
+import 'package:shaoni/features/booking_managment/domain/use_cases/ticket_booking/create_ticket_booking_use_case.dart';
+import 'package:shaoni/features/booking_managment/domain/use_cases/ticket_booking/update_ticket_booking_use_case.dart';
 import 'package:shaoni/features/booking_managment/domain/use_cases/visa_request/create_visa_request_use_case.dart';
 import 'package:shaoni/features/booking_managment/domain/use_cases/visa_request/update_visa_request_use_case.dart';
 
@@ -71,6 +75,59 @@ class BookingManagementRepositoryImp implements BookingManagementRepository {
   }) async {
     try {
       final result = await _remoteDataSources.updateVisaRequest(params: params);
+      return Right(result);
+    } on ServerFailure catch (e) {
+      return Left(ServerFailure(message: e.message));
+    }
+  }
+
+  // ── Ticket booking ─────────────────────────────────────────────────────────
+
+  @override
+  Future<Either<Failure, List<TicketClass>>> getTicketTypes({
+    required NoParams params,
+  }) async {
+    try {
+      final result = await _remoteDataSources.getTicketTypes(params: params);
+      return Right(result);
+    } on ServerFailure catch (e) {
+      return Left(ServerFailure(message: e.message));
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<VisaEmployee>>> getTicketEmployees({
+    required NoParams params,
+  }) async {
+    try {
+      final result =
+          await _remoteDataSources.getTicketEmployees(params: params);
+      return Right(result);
+    } on ServerFailure catch (e) {
+      return Left(ServerFailure(message: e.message));
+    }
+  }
+
+  @override
+  Future<Either<Failure, CreateTicketBookingResponse>> createTicketBooking({
+    required CreateTicketBookingParams params,
+  }) async {
+    try {
+      final result =
+          await _remoteDataSources.createTicketBooking(params: params);
+      return Right(result);
+    } on ServerFailure catch (e) {
+      return Left(ServerFailure(message: e.message));
+    }
+  }
+
+  @override
+  Future<Either<Failure, CreateTicketBookingResponse>> updateTicketBooking({
+    required UpdateTicketBookingParams params,
+  }) async {
+    try {
+      final result =
+          await _remoteDataSources.updateTicketBooking(params: params);
       return Right(result);
     } on ServerFailure catch (e) {
       return Left(ServerFailure(message: e.message));

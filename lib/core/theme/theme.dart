@@ -55,4 +55,40 @@ class DAppTheme {
       inputDecorationTheme: DTextFormFieldTheme.darkInputDecorationTheme,
     );
   }
+
+  static Widget datePickerBuilder(BuildContext context, Widget? child) {
+    return Theme(
+      data: Theme.of(context).copyWith(
+        colorScheme: ColorScheme.light(
+          primary: ColorRes.primary,
+          onPrimary: ColorRes.white,
+          surface: ColorRes.white,
+          onSurface: ColorRes.black,
+        ),
+        textTheme: TextTheme(
+          titleLarge: TextStyle(
+            color: ColorRes.black,
+            fontWeight: FontWeight.bold,
+            fontSize: 6,
+          ),
+        ),
+        dialogTheme: DialogTheme(
+          backgroundColor: ColorRes.white,
+          titleTextStyle: Theme.of(
+            context,
+          ).textTheme.headlineSmall?.copyWith(
+                color: ColorRes.black,
+                fontWeight: FontWeight.bold,
+                fontSize: 6,
+              ),
+        ),
+        textButtonTheme: TextButtonThemeData(
+          style: TextButton.styleFrom(
+            foregroundColor: ColorRes.primary,
+          ),
+        ),
+      ),
+      child: child!,
+    );
+  }
 }

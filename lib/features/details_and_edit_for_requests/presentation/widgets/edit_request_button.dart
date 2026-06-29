@@ -55,10 +55,25 @@ class EditRequestButton extends StatelessWidget {
               final id = int.tryParse(requestID);
               if (id == null) return;
 
-              context.read<EditCubit>().editRequest(
-                    requestId: id,
-                    serviceCode: serviceCode,
-                  );
+              final editCubit = context.read<EditCubit>();
+
+              /// Edit reasons are required by the backend; block the call and
+              /// prompt the reviewer when no reason has been entered.
+              if (editCubit.editNotesController.text.trim().isEmpty) {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text(S.current.writeAcceptOrRejectReason),
+                    backgroundColor: ColorRes.staticRedColor,
+                    behavior: SnackBarBehavior.floating,
+                  ),
+                );
+                return;
+              }
+
+              editCubit.editRequest(
+                requestId: id,
+                serviceCode: serviceCode,
+              );
             },
             child: ClipRRect(
               borderRadius: BorderRadius.all(Radius.circular(AppSizes.xxl)),

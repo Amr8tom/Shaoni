@@ -4,6 +4,7 @@ class VisaRequestLineEntity extends Equatable {
   final int? id;
   final int? visaRequestLineOdooId;
   final int employeeId;
+  final String employeeName;
   final String dateFrom;
   final String dateTo;
 
@@ -11,13 +12,14 @@ class VisaRequestLineEntity extends Equatable {
     this.id,
     this.visaRequestLineOdooId,
     required this.employeeId,
+    this.employeeName = '',
     this.dateFrom = '',
     this.dateTo = '',
   });
 
   @override
   List<Object?> get props =>
-      [id, visaRequestLineOdooId, employeeId, dateFrom, dateTo];
+      [id, visaRequestLineOdooId, employeeId, employeeName, dateFrom, dateTo];
 }
 
 class VisaRequestEntity extends Equatable {

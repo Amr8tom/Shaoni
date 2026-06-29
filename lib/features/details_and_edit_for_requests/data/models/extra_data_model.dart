@@ -14,6 +14,7 @@ import 'package:shaoni/features/details_and_edit_for_requests/data/models/loan_r
 import 'package:shaoni/features/details_and_edit_for_requests/data/models/salary_request_model.dart';
 import 'package:shaoni/features/details_and_edit_for_requests/data/models/scrap_request_model.dart';
 import 'package:shaoni/features/details_and_edit_for_requests/data/models/visa_request_model.dart';
+import 'package:shaoni/features/details_and_edit_for_requests/data/models/ticket_booking_model.dart';
 
 class ExtraDataModel extends ExtraData {
   const ExtraDataModel({
@@ -33,6 +34,7 @@ class ExtraDataModel extends ExtraData {
     super.salaryRequest,
     super.loanRequest,
     super.scrapRequest,
+    super.ticketBooking,
   });
 
   /// fromJson
@@ -53,6 +55,7 @@ class ExtraDataModel extends ExtraData {
     final loanRequestJson = _jsonMap(json['loanRequest']);
     final scrapRequestJson = _jsonMap(json['scrapRequest']);
     final visaRequestJson = _jsonMap(json['visaRequest']);
+    final ticketBookingJson = _jsonMap(json['ticketBooking']);
 
     return ExtraDataModel(
       attendance: attendanceJson != null
@@ -97,6 +100,9 @@ class ExtraDataModel extends ExtraData {
           : null,
       scrapRequest: scrapRequestJson != null
           ? ScrapRequestModel.fromJson(scrapRequestJson)
+          : null,
+      ticketBooking: ticketBookingJson != null
+          ? TicketBookingModel.fromJson(ticketBookingJson)
           : null,
     );
   }
@@ -281,6 +287,9 @@ class ExtraDataModel extends ExtraData {
                       })
                   .toList(),
             },
+      'ticketBooking': extraData.ticketBooking == null
+          ? null
+          : TicketBookingModel.toJsonFromEntity(extraData.ticketBooking!),
     };
   }
 }

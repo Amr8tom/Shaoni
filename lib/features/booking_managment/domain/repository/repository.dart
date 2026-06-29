@@ -6,6 +6,10 @@ import 'package:shaoni/features/booking_managment/domain/entity/visa_request/vis
 import 'package:shaoni/features/booking_managment/domain/entity/visa_request/visa_language.dart';
 import 'package:shaoni/features/booking_managment/domain/entity/visa_request/visa_type.dart';
 import 'package:shaoni/features/booking_managment/domain/use_cases/visa_request/get_visa_employees_use_case.dart';
+import 'package:shaoni/features/booking_managment/domain/entity/ticket_booking/create_ticket_booking_response.dart';
+import 'package:shaoni/features/booking_managment/domain/entity/ticket_booking/ticket_class.dart';
+import 'package:shaoni/features/booking_managment/domain/use_cases/ticket_booking/create_ticket_booking_use_case.dart';
+import 'package:shaoni/features/booking_managment/domain/use_cases/ticket_booking/update_ticket_booking_use_case.dart';
 import 'package:shaoni/features/booking_managment/domain/use_cases/visa_request/create_visa_request_use_case.dart';
 import 'package:shaoni/features/booking_managment/domain/use_cases/visa_request/update_visa_request_use_case.dart';
 
@@ -29,5 +33,22 @@ abstract class BookingManagementRepository {
 
   Future<Either<Failure, CreateVisaResponse>> updateVisaRequest({
     required UpdateVisaRequestParams params,
+  });
+
+  /// ============================ ticket booking ============================
+  Future<Either<Failure, List<TicketClass>>> getTicketTypes({
+    required NoParams params,
+  });
+
+  Future<Either<Failure, List<VisaEmployee>>> getTicketEmployees({
+    required NoParams params,
+  });
+
+  Future<Either<Failure, CreateTicketBookingResponse>> createTicketBooking({
+    required CreateTicketBookingParams params,
+  });
+
+  Future<Either<Failure, CreateTicketBookingResponse>> updateTicketBooking({
+    required UpdateTicketBookingParams params,
   });
 }

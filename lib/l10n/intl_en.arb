@@ -976,5 +976,20 @@
   "selectAtLeastOneEmployee": "Select at least one employee to set the visa dates.",
   "visaTypeExitReturn": "Exit And Return Visa",
   "visaTypeForeignCountry": "Visa To Foreign Country",
-  "visaTypeKingdomEntry": "Kingdom Entry Visa"
+  "visaTypeKingdomEntry": "Kingdom Entry Visa",
+  "ticketBooking": "Employee Ticket Booking",
+  "travelDate": "Travel Date",
+  "ticketType": "Ticket Type",
+  "selectTicketType": "Select ticket type",
+  "ticketIn": "Inbound (IN)",
+  "ticketOut": "Outbound (OUT)",
+  "taskType": "Task Type",
+  "itinerary": "Itinerary",
+  "employeesData": "Employees Data",
+  "addEmployee": "Add Employee",
+  "noEmployeesAdded": "No employees added yet. Tap \"Add Employee\" to add a row.",
+  "ticketClass": "Ticket Class",
+  "selectTicketClass": "Select ticket class",
+  "attachmentOptional": "Attachment (optional)",
+  "generalAttachments": "General Attachments"
 }

@@ -5,7 +5,7 @@ class OdooRequest extends Equatable {
   final String code;
   final String status;
   final String? message;
-  final String? externalId;
+  final int? externalId;
   final String? externalName;
   final String? externalState;
   final String? externalStateId;

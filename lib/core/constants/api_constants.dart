@@ -102,6 +102,15 @@ class URL {
   static const String updateVisaRequest = '$baseUrl/VisaRequest/update/';
   static const String getVisaRequestEdit = '$baseUrl/VisaRequest/edit/';
 
+  /// employee ticket booking
+  static const String getTravelTicketTypes =
+      '$baseUrl/Lookup/GetTravelTicketTypes';
+  static const String createTicketBooking = '$baseUrl/EmployeeTicketBooking';
+  static const String updateTicketBooking =
+      '$baseUrl/EmployeeTicketBooking/update/';
+  static const String getTicketBookingEdit =
+      '$baseUrl/EmployeeTicketBooking/edit/';
+
   /// ============================ training request ============================
   static const String getCourses = '$baseUrl/Lookup/GetCourses';
   static const String createTrainingRequest = '$baseUrl/Training/create';

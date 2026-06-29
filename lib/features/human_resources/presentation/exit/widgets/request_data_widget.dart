@@ -8,6 +8,7 @@ import '../../../../../core/constants/colors.dart';
 import '../../../../../generated/l10n.dart';
 import '../../../../auth/presentation/widgets/auth_text_filed.dart';
 import '../../controller/exit_permission/exit_request_service_cubit.dart';
+import '../../../../../core/theme/theme.dart';
 
 class RequestDataWidget extends StatelessWidget {
   const RequestDataWidget({super.key});
@@ -52,44 +53,7 @@ class RequestDataWidget extends StatelessWidget {
                           confirmText: S.current.done,
                           initialDatePickerMode: DatePickerMode.day,
                           initialEntryMode: DatePickerEntryMode.calendar,
-                          builder: (
-                            BuildContext context,
-                            Widget? child,
-                          ) {
-                            return Theme(
-                              data: Theme.of(context).copyWith(
-                                colorScheme: ColorScheme.light(
-                                  primary: ColorRes.primary,
-                                  onPrimary: ColorRes.white,
-                                  surface: ColorRes.white,
-                                  onSurface: ColorRes.black,
-                                ),
-                                textTheme: TextTheme(
-                                  titleLarge: TextStyle(
-                                    color: ColorRes.black,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 6,
-                                  ),
-                                ),
-                                dialogTheme: DialogTheme(
-                                  backgroundColor: ColorRes.white,
-                                  titleTextStyle: Theme.of(
-                                    context,
-                                  ).textTheme.headlineSmall?.copyWith(
-                                        color: ColorRes.black,
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 6,
-                                      ),
-                                ),
-                                textButtonTheme: TextButtonThemeData(
-                                  style: TextButton.styleFrom(
-                                    foregroundColor: ColorRes.primary,
-                                  ),
-                                ),
-                              ),
-                              child: child!,
-                            );
-                          },
+                          builder: DAppTheme.datePickerBuilder,
                         );
                         if (pickedDate != null) {
                           controller.permissionDateController.text =

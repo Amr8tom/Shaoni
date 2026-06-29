@@ -7,6 +7,7 @@ import 'package:shaoni/features/human_resources/presentation/attendance/widget/a
 import 'package:shaoni/features/human_resources/presentation/controller/id_document/id_document_cubit.dart';
 import 'package:shaoni/generated/l10n.dart';
 import 'package:shaoni/core/constants/colors.dart';
+import 'package:shaoni/core/theme/theme.dart';
 
 class IDDocumentBaseFieldsWidget extends StatelessWidget {
   const IDDocumentBaseFieldsWidget({super.key});
@@ -75,44 +76,7 @@ class IDDocumentBaseFieldsWidget extends StatelessWidget {
               initialDate: DateTime.now(),
               firstDate: DateTime(1900),
               lastDate: DateTime(2100),
-              builder: (
-                BuildContext context,
-                Widget? child,
-              ) {
-                return Theme(
-                  data: Theme.of(context).copyWith(
-                    colorScheme: ColorScheme.light(
-                      primary: ColorRes.primary,
-                      onPrimary: ColorRes.white,
-                      surface: ColorRes.white,
-                      onSurface: ColorRes.black,
-                    ),
-                    textTheme: TextTheme(
-                      titleLarge: TextStyle(
-                        color: ColorRes.black,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 6,
-                      ),
-                    ),
-                    dialogTheme: DialogTheme(
-                      backgroundColor: ColorRes.white,
-                      titleTextStyle: Theme.of(
-                        context,
-                      ).textTheme.headlineSmall?.copyWith(
-                            color: ColorRes.black,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 6,
-                          ),
-                    ),
-                    textButtonTheme: TextButtonThemeData(
-                      style: TextButton.styleFrom(
-                        foregroundColor: ColorRes.primary,
-                      ),
-                    ),
-                  ),
-                  child: child!,
-                );
-              },
+              builder: DAppTheme.datePickerBuilder,
             );
             if (picked != null) {
               cubit.issueDateController.text =
@@ -138,44 +102,7 @@ class IDDocumentBaseFieldsWidget extends StatelessWidget {
               initialDate: DateTime.now(),
               firstDate: DateTime(1900),
               lastDate: DateTime(2100),
-              builder: (
-                BuildContext context,
-                Widget? child,
-              ) {
-                return Theme(
-                  data: Theme.of(context).copyWith(
-                    colorScheme: ColorScheme.light(
-                      primary: ColorRes.primary,
-                      onPrimary: ColorRes.white,
-                      surface: ColorRes.white,
-                      onSurface: ColorRes.black,
-                    ),
-                    textTheme: TextTheme(
-                      titleLarge: TextStyle(
-                        color: ColorRes.black,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 6,
-                      ),
-                    ),
-                    dialogTheme: DialogTheme(
-                      backgroundColor: ColorRes.white,
-                      titleTextStyle: Theme.of(
-                        context,
-                      ).textTheme.headlineSmall?.copyWith(
-                            color: ColorRes.black,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 6,
-                          ),
-                    ),
-                    textButtonTheme: TextButtonThemeData(
-                      style: TextButton.styleFrom(
-                        foregroundColor: ColorRes.primary,
-                      ),
-                    ),
-                  ),
-                  child: child!,
-                );
-              },
+              builder: DAppTheme.datePickerBuilder,
             );
             if (picked != null) {
               cubit.endDateController.text =

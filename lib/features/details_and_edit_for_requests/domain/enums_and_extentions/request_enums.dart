@@ -138,9 +138,16 @@ extension RequestStatusExtensionList on CurrentStatus {
           RequestStatusEnum.approved,
           RequestStatusEnum.rejected,
         ];
+      case ServiceCode.employeeTicketBooking:
+        return const [
+          RequestStatusEnum.draft,
+          RequestStatusEnum.confirmed,
+          RequestStatusEnum.rejected,
+          RequestStatusEnum.hrApproval,
+          RequestStatusEnum.approved,
+        ];
       case ServiceCode.outsideWorking:
       case ServiceCode.scrapRequest:
-      case ServiceCode.employeeTicketBooking:
       case ServiceCode.leaveReplace:
       case ServiceCode.leave:
       case ServiceCode.leaveInterruptionRequest:

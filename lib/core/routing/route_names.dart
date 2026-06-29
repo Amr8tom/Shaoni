@@ -44,6 +44,7 @@ class DRoutesName {
       'create-outside-working-route';
   static const String createScrapRequestRoute = 'create-scrap-request-route';
   static const String createVisaRequestRoute = 'create-visa-request-route';
+  static const String createTicketBookingRoute = 'create-ticket-booking-route';
 
   /// location & maps Screen
   static const String mapRoute = 'map-route';

@@ -5,15 +5,29 @@ class VisaRequestLineModel extends VisaRequestLineEntity {
     super.id,
     super.visaRequestLineOdooId,
     required super.employeeId,
+    super.employeeName = '',
     super.dateFrom = '',
     super.dateTo = '',
   });
 
   factory VisaRequestLineModel.fromJson(Map<String, dynamic> json) {
+    int? parseId(dynamic val) {
+      if (val is List && val.isNotEmpty) return val[0] as int;
+      if (val is int) return val;
+      return null;
+    }
+
+    String parseName(dynamic val) {
+      if (val is List && val.length > 1) return val[1].toString();
+      if (val is String) return val;
+      return '';
+    }
+
     return VisaRequestLineModel(
       id: json['id'] as int?,
       visaRequestLineOdooId: json['visaRequestLineOdooId'] as int?,
-      employeeId: json['employeeId'] as int? ?? 0,
+      employeeId: parseId(json['employeeId']) ?? 0,
+      employeeName: parseName(json['employeeId']),
       dateFrom: json['dateFrom'] as String? ?? '',
       dateTo: json['dateTo'] as String? ?? '',
     );

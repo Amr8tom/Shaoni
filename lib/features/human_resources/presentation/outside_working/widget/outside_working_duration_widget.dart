@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 import 'package:shaoni/common/widgets/sized_boxes/sizer.dart';
 import 'package:shaoni/core/constants/colors.dart';
+import 'package:shaoni/core/theme/theme.dart';
 import 'package:shaoni/features/human_resources/presentation/attendance/widget/attendance_dropdown_field.dart';
 import 'package:shaoni/features/human_resources/presentation/attendance/widget/attendance_editable_field.dart';
 import 'package:shaoni/features/human_resources/presentation/controller/outside_working/outside_working_cubit.dart';
@@ -21,20 +22,7 @@ class OutsideWorkingDurationWidget extends StatelessWidget {
       initialDate: DateTime.now(),
       firstDate: DateTime(1900),
       lastDate: DateTime(2100),
-      builder: (ctx, child) => Theme(
-        data: Theme.of(ctx).copyWith(
-          colorScheme: ColorScheme.light(
-            primary: ColorRes.primary,
-            onPrimary: ColorRes.white,
-            surface: ColorRes.white,
-            onSurface: ColorRes.black,
-          ),
-          textButtonTheme: TextButtonThemeData(
-            style: TextButton.styleFrom(foregroundColor: ColorRes.primary),
-          ),
-        ),
-        child: child!,
-      ),
+      builder: DAppTheme.datePickerBuilder,
     );
     if (picked != null) {
       controller.text = DateFormat('yyyy-MM-dd', 'en').format(picked);

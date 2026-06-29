@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../core/constants/colors.dart';
 import '../../../../../core/local_storage/session_storage/session_storage.dart';
 import '../../../../../core/service_locator/service_locator.dart';
+import '../../../../../core/theme/theme.dart';
 import '../../../domain/entity/loan/kafeel_employee.dart';
 import '../../../domain/entity/loan/loan_type.dart';
 import '../../../domain/use_cases/loan/create_loan_use_case.dart';
@@ -102,44 +103,7 @@ class LoanCubit extends Cubit<LoanState> {
           DateTime.now(),
       firstDate: DateTime.now(),
       lastDate: DateTime.now().add(const Duration(days: 365 * 5)),
-      builder: (
-          BuildContext context,
-          Widget? child,
-          ) {
-        return Theme(
-          data: Theme.of(context).copyWith(
-            colorScheme: ColorScheme.light(
-              primary: ColorRes.primary,
-              onPrimary: ColorRes.white,
-              surface: ColorRes.white,
-              onSurface: ColorRes.black,
-            ),
-            textTheme: TextTheme(
-              titleLarge: TextStyle(
-                color: ColorRes.black,
-                fontWeight: FontWeight.bold,
-                fontSize: 6,
-              ),
-            ),
-            dialogTheme: DialogTheme(
-              backgroundColor: ColorRes.white,
-              titleTextStyle: Theme.of(
-                context,
-              ).textTheme.headlineSmall?.copyWith(
-                color: ColorRes.black,
-                fontWeight: FontWeight.bold,
-                fontSize: 6,
-              ),
-            ),
-            textButtonTheme: TextButtonThemeData(
-              style: TextButton.styleFrom(
-                foregroundColor: ColorRes.primary,
-              ),
-            ),
-          ),
-          child: child!,
-        );
-      },
+      builder: DAppTheme.datePickerBuilder,
     );
     if (picked != null) {
       firstInstallmentDateController.text =

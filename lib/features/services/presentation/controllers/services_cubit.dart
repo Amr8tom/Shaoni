@@ -42,7 +42,7 @@ class ServicesCubit extends Cubit<ServicesState> {
     final studyServices = <Service>[];
     final purchasesServices = <Service>[];
     final salariesServices = <Service>[];
-
+    final reservationsServices = <Service>[];
 
     for (var service in services) {
       final serviceCode = ServiceCode.fromCode(service.nameEn);
@@ -53,8 +53,10 @@ class ServicesCubit extends Cubit<ServicesState> {
         studyServices.add(service);
       } else if (ServicesNames.productServiceKeys.contains(serviceCode)) {
         purchasesServices.add(service);
-      }else if (ServicesNames.salariesServiceKeys.contains(serviceCode)) {
+      } else if (ServicesNames.salariesServiceKeys.contains(serviceCode)) {
         salariesServices.add(service);
+      } else if (ServicesNames.reservationServiceKeys.contains(serviceCode)) {
+        reservationsServices.add(service);
       }
     }
 
@@ -64,6 +66,7 @@ class ServicesCubit extends Cubit<ServicesState> {
       studyServices: studyServices,
       purchasesServices: purchasesServices,
       salariesServices: salariesServices,
+      reservationsServices: reservationsServices,
     ));
   }
 }

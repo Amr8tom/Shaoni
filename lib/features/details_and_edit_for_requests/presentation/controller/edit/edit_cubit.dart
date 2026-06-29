@@ -18,6 +18,7 @@ import 'package:shaoni/features/details_and_edit_for_requests/domain/use_cases/g
 import 'package:shaoni/features/details_and_edit_for_requests/domain/use_cases/get_loan_edit_use_case.dart';
 import 'package:shaoni/features/details_and_edit_for_requests/domain/use_cases/get_scrap_request_edit_use_case.dart';
 import 'package:shaoni/features/details_and_edit_for_requests/domain/use_cases/get_visa_request_edit_use_case.dart';
+import 'package:shaoni/features/details_and_edit_for_requests/domain/use_cases/get_ticket_booking_edit_use_case.dart';
 
 part 'edit_state.dart';
 
@@ -38,6 +39,7 @@ class EditCubit extends Cubit<EditState> {
   final GetLoanEditUseCase _getLoanEditUseCase;
   final GetScrapRequestEditUseCase _getScrapRequestEditUseCase;
   final GetVisaRequestEditUseCase _getVisaRequestEditUseCase;
+  final GetTicketBookingEditUseCase _getTicketBookingEditUseCase;
   final editNotesController = TextEditingController();
 
   EditCubit(
@@ -56,6 +58,7 @@ class EditCubit extends Cubit<EditState> {
     this._getLoanEditUseCase,
     this._getScrapRequestEditUseCase,
     this._getVisaRequestEditUseCase,
+    this._getTicketBookingEditUseCase,
   ) : super(const EditState());
 
   Future<void> editRequest({
@@ -108,8 +111,10 @@ class EditCubit extends Cubit<EditState> {
       case ServiceCode.visaRequest:
         await _getVisaRequestEdit(requestId: requestId);
         break;
-      case ServiceCode.complaintRequest:
       case ServiceCode.employeeTicketBooking:
+        await _getTicketBookingEdit(requestId: requestId);
+        break;
+      case ServiceCode.complaintRequest:
       case ServiceCode.leaveReplace:
       case ServiceCode.leave:
       case ServiceCode.leaveInterruptionRequest:
@@ -452,6 +457,29 @@ class EditCubit extends Cubit<EditState> {
     emit(state.copyWith(status: EditStatus.loading));
     final result = await _getVisaRequestEditUseCase.call(
       params: GetVisaRequestEditParams(
+        requestId: requestId,
+        editReasons: editNotesController.text,
+      ),
+    );
+    if (isClosed) return;
+    result.fold(
+      (failure) => emit(state.copyWith(
+        status: EditStatus.error,
+        errorMessage: failure.message,
+      )),
+      (response) => emit(state.copyWith(
+        status: EditStatus.editRequestLoaded,
+        editResponse: response,
+      )),
+    );
+  }
+
+  /// ── Ticket Booking ────────────────────────────────────────────────────────
+
+  Future<void> _getTicketBookingEdit({required int requestId}) async {
+    emit(state.copyWith(status: EditStatus.loading));
+    final result = await _getTicketBookingEditUseCase.call(
+      params: GetTicketBookingEditParams(
         requestId: requestId,
         editReasons: editNotesController.text,
       ),

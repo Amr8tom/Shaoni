@@ -15,6 +15,7 @@ import 'package:shaoni/features/details_and_edit_for_requests/domain/entities/lo
 import 'package:shaoni/features/details_and_edit_for_requests/domain/entities/salary_request.dart';
 import 'package:shaoni/features/details_and_edit_for_requests/domain/entities/scrap_request.dart';
 import 'package:shaoni/features/details_and_edit_for_requests/domain/entities/visa_request.dart';
+import 'package:shaoni/features/details_and_edit_for_requests/domain/entities/ticket_booking.dart';
 
 class ExtraData extends Equatable {
   final AttendanceRequestDetails? attendance;
@@ -33,6 +34,7 @@ class ExtraData extends Equatable {
   final SalaryRequest? salaryRequest;
   final LoanRequestDetails? loanRequest;
   final ScrapRequestEntity? scrapRequest;
+  final TicketBookingEntity? ticketBooking;
 
   const ExtraData({
     this.carPermission,
@@ -51,6 +53,7 @@ class ExtraData extends Equatable {
     this.salaryRequest,
     this.loanRequest,
     this.scrapRequest,
+    this.ticketBooking,
   });
 
   @override
@@ -71,5 +74,6 @@ class ExtraData extends Equatable {
         salaryRequest,
         loanRequest,
         scrapRequest,
+        ticketBooking,
       ];
 }

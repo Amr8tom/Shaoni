@@ -982,5 +982,20 @@
   "selectAtLeastOneEmployee": "اختر موظفًا واحدًا على الأقل لتحديد تواريخ التأشيرة.",
   "visaTypeExitReturn": "تأشيرة خروج وعودة",
   "visaTypeForeignCountry": "تأشيرة لدولة أجنبية",
-  "visaTypeKingdomEntry": "تأشيرة دخول المملكة"
+  "visaTypeKingdomEntry": "تأشيرة دخول المملكة",
+  "ticketBooking": "حجز تذاكر لموظفي الرابطة",
+  "travelDate": "تاريخ السفر",
+  "ticketType": "نوع التذكرة",
+  "selectTicketType": "اختر نوع التذكرة",
+  "ticketIn": "في الداخل (IN)",
+  "ticketOut": "في الخارج (OUT)",
+  "taskType": "نوع المهمة",
+  "itinerary": "خط السير",
+  "employeesData": "بيانات الموظفين",
+  "addEmployee": "إضافة موظف",
+  "noEmployeesAdded": "لم يتم إضافة أي موظفين بعد. اضغط \"إضافة موظف\" لإضافة سطر.",
+  "ticketClass": "فئة التذكرة",
+  "selectTicketClass": "اختر فئة التذكرة",
+  "attachmentOptional": "مرفق (اختياري)",
+  "generalAttachments": "المرفقات العامة"
 }
