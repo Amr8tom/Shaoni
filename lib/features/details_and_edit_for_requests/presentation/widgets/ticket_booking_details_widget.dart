@@ -148,35 +148,47 @@ class _TicketLineCard extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.only(bottom: 8),
       padding: EdgeInsets.all(AppSizes.padding * 0.75),
+      width: double.infinity,
       decoration: BoxDecoration(
         color: ColorRes.grey6,
         borderRadius: BorderRadius.circular(AppSizes.borderRadiusMd),
         border: Border.all(color: ColorRes.grey5),
       ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          OrderTextCard(
-            title: S.current.employee,
-            result: line.employeeName.isNotEmpty
-                ? line.employeeName
-                : line.employeeId.toString(),
+        
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.start,
+          
+            children: [
+              OrderTextCard(
+                title: S.current.employee,
+                result: line.employeeName.isNotEmpty
+                    ? line.employeeName
+                    : line.employeeId.toString(),
+              ),
+              const Sizer(height: 4),
+              OrderTextCard(
+                title: S.current.travelDate,
+                result: date(line.travelDate),
+              ),
+              if (line.ticketTypeName.isNotEmpty) ...[
+                const Sizer(height: 6),
+                OrderTextCard(
+                  title: S.current.ticketType,
+                  result: line.ticketTypeName,
+                ),
+              ],
+            ],
           ),
-          const Sizer(height: 6),
-          OrderTextCard(
-            title: S.current.travelDate,
-            result: date(line.travelDate),
-          ),
-          if (line.ticketTypeName.isNotEmpty) ...[
-            const Sizer(height: 6),
-            OrderTextCard(
-              title: S.current.ticketType,
-              result: line.ticketTypeName,
-            ),
-          ],
-          if (line.attachment.isNotEmpty) ...[
-            const Sizer(height: 6),
-            Text(
+            if (line.attachment.isNotEmpty) ...[
+
+
+            Column(
+              children: [
+                     Text(
               S.current.attachments,
               style: Theme.of(context).textTheme.bodySmall?.copyWith(
                     color: ColorRes.grey2,
@@ -184,27 +196,19 @@ class _TicketLineCard extends StatelessWidget {
                   ),
             ),
             const Sizer(height: 6),
-            ClipRRect(
-              borderRadius: BorderRadius.circular(AppSizes.borderRadiusMd),
-              child: imageFromBaseString(
-                base64String: line.attachment,
-                width: double.infinity,
-                height: 150,
-                fit: BoxFit.cover,
-              ),
-            ),
-            const Sizer(height: 8),
-            OutlinedButton.icon(
-              onPressed: () => Base64FileHelper.downloadAndShare(
-                base64String: line.attachment,
-                customFileName: 'ticket_attachment_${line.employeeId}',
-              ),
-              icon: const Icon(Icons.download_rounded, size: 18),
-              label: Text(S.current.downloadAttachment),
-              style: OutlinedButton.styleFrom(
-                foregroundColor: ColorRes.primary,
-                side: const BorderSide(color: ColorRes.primary),
-              ),
+                OutlinedButton.icon(
+                  onPressed: () => Base64FileHelper.downloadAndShare(
+                    base64String: line.attachment,
+                    customFileName: 'ticket_attachment_${line.employeeId}',
+                  ),
+                  icon: const Icon(Icons.download_rounded, size: 18),
+                  label: Text(S.current.downloadAttachment),
+                  style: OutlinedButton.styleFrom(
+                    foregroundColor: ColorRes.primary,
+                    side: const BorderSide(color: ColorRes.primary),
+                  ),
+                ),
+              ],
             ),
           ],
         ],
