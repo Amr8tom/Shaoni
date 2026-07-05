@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shaoni/common/widgets/appbar/appbar.dart';
-import 'package:shaoni/core/device/device_utility.dart';
-import 'package:shaoni/core/constants/colors.dart';
 import 'package:shaoni/core/constants/app_sizes.dart';
+import 'package:shaoni/core/constants/colors.dart';
+import 'package:shaoni/core/device/device_utility.dart';
 import 'package:shaoni/core/widgets/buttons/d_button.dart';
 
+import '../../common/widgets/sized_boxes/sizer.dart';
 import '../../generated/l10n.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -50,14 +51,16 @@ class ProfileScreen extends StatelessWidget {
                               height: 120.w,
                               decoration: BoxDecoration(
                                 shape: BoxShape.circle,
-                                color: const Color(0xFFE8B4A8), // salmon/peach color behind avatar
+                                color: const Color(
+                                    0xFFE8B4A8), // salmon/peach color behind avatar
                               ),
                             ),
                             // Avatar image
                             Positioned.fill(
                               child: CircleAvatar(
                                 backgroundColor: Colors.transparent,
-                                backgroundImage: const AssetImage('assets/images/ss/avatar.png'),
+                                backgroundImage: const AssetImage(
+                                    'assets/images/ss/avatar.png'),
                               ),
                             ),
                             // Edit badge - bottom left
@@ -73,7 +76,8 @@ class ProfileScreen extends StatelessWidget {
                                   decoration: BoxDecoration(
                                     color: ColorRes.yellow, // olive/gold color
                                     shape: BoxShape.circle,
-                                    border: Border.all(color: ColorRes.white, width: 2),
+                                    border: Border.all(
+                                        color: ColorRes.white, width: 2),
                                     boxShadow: [
                                       BoxShadow(
                                         color: ColorRes.black.withOpacity(0.15),
@@ -127,7 +131,8 @@ class ProfileScreen extends StatelessWidget {
 
           // Bottom button - fixed at bottom
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: AppSizes.padding, vertical: AppSizes.md),
+            padding: EdgeInsets.symmetric(
+                horizontal: AppSizes.padding, vertical: AppSizes.md),
             child: SafeArea(
               top: false,
               child: DButton(
@@ -213,12 +218,14 @@ class _ProfileFieldState extends State<ProfileField> {
               readOnly: !isEditing,
               keyboardType: widget.keyboardType,
               obscureText: obscure,
-              textAlign: TextAlign.end, // Right aligned text
+              textAlign: TextAlign.end,
+              // Right aligned text
               textDirection: TextDirection.rtl,
               decoration: InputDecoration(
                 border: InputBorder.none,
                 isDense: true,
-                contentPadding: EdgeInsets.symmetric(vertical: 16.h, horizontal: 8.w),
+                contentPadding:
+                    EdgeInsets.symmetric(vertical: 16.h, horizontal: 8.w),
               ),
               style: TextStyle(
                 color: ColorRes.darkGrey,
