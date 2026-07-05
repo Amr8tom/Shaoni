@@ -4444,6 +4444,11 @@ class S {
     );
   }
 
+  /// `Leaves`
+  String get leaves {
+    return Intl.message('Leaves', name: 'leaves', desc: '', args: []);
+  }
+
   /// `Most Sold Items`
   String get mostSoldItmes {
     return Intl.message(
@@ -7759,6 +7764,101 @@ class S {
     return Intl.message(
       'General Attachments',
       name: 'generalAttachments',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Leave Interruption Request`
+  String get leaveInterruptionRequest {
+    return Intl.message(
+      'Leave Interruption Request',
+      name: 'leaveInterruptionRequest',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Type`
+  String get interruptionType {
+    return Intl.message('Type', name: 'interruptionType', desc: '', args: []);
+  }
+
+  /// `Select type`
+  String get selectInterruptionType {
+    return Intl.message(
+      'Select type',
+      name: 'selectInterruptionType',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Leave Type`
+  String get leaveType {
+    return Intl.message('Leave Type', name: 'leaveType', desc: '', args: []);
+  }
+
+  /// `Select leave type`
+  String get selectLeaveType {
+    return Intl.message(
+      'Select leave type',
+      name: 'selectLeaveType',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Leave`
+  String get leaveField {
+    return Intl.message('Leave', name: 'leaveField', desc: '', args: []);
+  }
+
+  /// `Select leave`
+  String get selectLeave {
+    return Intl.message(
+      'Select leave',
+      name: 'selectLeave',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Select the leave type first`
+  String get selectLeaveTypeFirst {
+    return Intl.message(
+      'Select the leave type first',
+      name: 'selectLeaveTypeFirst',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Leave Interruption Date`
+  String get interruptionDate {
+    return Intl.message(
+      'Leave Interruption Date',
+      name: 'interruptionDate',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Request Justifications`
+  String get requestJustifications {
+    return Intl.message(
+      'Request Justifications',
+      name: 'requestJustifications',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Explain in detail why the leave must be interrupted...`
+  String get interruptionReasonHint {
+    return Intl.message(
+      'Explain in detail why the leave must be interrupted...',
+      name: 'interruptionReasonHint',
       desc: '',
       args: [],
     );

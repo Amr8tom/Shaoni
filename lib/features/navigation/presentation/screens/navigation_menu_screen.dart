@@ -4,10 +4,11 @@ import 'package:shaoni/common/widgets/navigationbar/bottom_navigation_bar.dart';
 import 'package:shaoni/common/widgets/sized_boxes/sizer.dart';
 import 'package:shaoni/core/constants/app_sizes.dart';
 import 'package:shaoni/core/constants/colors.dart';
-import 'package:shaoni/features/home/presentation/controller/home_cubit.dart';
 import 'package:shaoni/features/details_and_edit_for_requests/presentation/controller/my_requests_cubit.dart';
+import 'package:shaoni/features/home/presentation/controller/home_cubit.dart';
 import 'package:shaoni/features/navigation/presentation/widgets/custom_navigation_appbar.dart';
 import 'package:upgrader/upgrader.dart';
+
 import '../../../../core/connection/check_for_updates.dart';
 import '../../../../core/service_locator/service_locator.dart';
 import '../controllers/navigation_cubit.dart';
@@ -46,11 +47,7 @@ class NavigationMenuScreen extends StatelessWidget {
                       showMenu: true,
                       height: AppSizes.appBarHeight * 1.8,
                     ),
-              // DAppBar(
-              //         scaffoldKey: scaffoldKey,
-              //         isHeader: true,
-              //         showMenu: true,
-              // ),
+
               key: scaffoldKey,
               drawer: const CustomSideMenu(),
               // extendBodyBehindAppBar: true,
@@ -64,9 +61,10 @@ class NavigationMenuScreen extends StatelessWidget {
                         employeeId: state.user!.employeeId ?? 1);
 
                     /// manager requests (only for managers the manger id 0 which means no manager)
-                    if (state.user?.jobTitle =="manager"||state.user?.managerId==0) {
+                    if (state.user?.jobTitle == "manager" ||
+                        state.user?.managerId == 0) {
                       requestController.getAllManagerRequests(
-                          managerID: state.user?.id??1);
+                          managerID: state.user?.id ?? 1);
                     }
 
                     /// kafeel requests (only for kafeel)

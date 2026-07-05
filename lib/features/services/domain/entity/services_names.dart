@@ -12,9 +12,6 @@ class ServicesNames extends Equatable {
     ServiceCode.complaintRequest,
     ServiceCode.medicalInsuranceUpgrade,
     ServiceCode.experienceCertificate,
-    ServiceCode.leaveReplace,
-    ServiceCode.leave,
-    ServiceCode.leaveInterruptionRequest,
   ];
   static List<ServiceCode> studyServiceKeys = [
     ServiceCode.studyRequest,
@@ -34,6 +31,11 @@ class ServicesNames extends Equatable {
         ServiceCode.employeeTicketBooking,
 
   ];
+  static List<ServiceCode> leaveServiceKeys = [
+ServiceCode.leaveReplace,
+    ServiceCode.leave,
+    ServiceCode.leaveInterruptionRequest,
+  ];
 
   @override
   List<Object?> get props => [
@@ -42,5 +44,6 @@ class ServicesNames extends Equatable {
     productServiceKeys,
     salariesServiceKeys,
     reservationServiceKeys,
+    leaveServiceKeys,
   ];
 }

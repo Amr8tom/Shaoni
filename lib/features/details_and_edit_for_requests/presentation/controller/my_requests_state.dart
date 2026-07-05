@@ -12,6 +12,7 @@ final class MyRequestsState extends Equatable {
       itemsUser; // Keep this non-nullable with a default []
   final List<RequestWithStage>
       itemsKafeel; // Keep this non-nullable with a default []
+  final String? selectedServiceCode;
 
   const MyRequestsState({
     this.status = MyRequestsStatus.initialized,
@@ -22,6 +23,7 @@ final class MyRequestsState extends Equatable {
     this.requestDetails,
     this.managerRequests,
     this.kafeelRequests,
+    this.selectedServiceCode,
   });
 
   MyRequestsState copyWith({
@@ -33,6 +35,7 @@ final class MyRequestsState extends Equatable {
     AllRequestsWithStages? kafeelRequests,
     AllRequestsWithStages? userRequests,
     RequestWithStage? requestDetails,
+    String? selectedServiceCode,
   }) {
     return MyRequestsState(
       status: status ?? this.status,
@@ -43,7 +46,30 @@ final class MyRequestsState extends Equatable {
       itemsKafeel: itemsKafeel ?? this.itemsKafeel,
       requestDetails: requestDetails ?? this.requestDetails,
       itemsUser: itemsUser ?? this.itemsUser,
+      selectedServiceCode: selectedServiceCode ?? this.selectedServiceCode,
     );
+  }
+
+  /// Getters for filtered items
+  List<RequestWithStage> get filteredItemsUser {
+    if (selectedServiceCode == null) return itemsUser;
+    return itemsUser
+        .where((item) => item.service?.nameEn == selectedServiceCode)
+        .toList();
+  }
+
+  List<RequestWithStage> get filteredItemsManager {
+    if (selectedServiceCode == null) return itemsManager;
+    return itemsManager
+        .where((item) => item.service?.nameEn == selectedServiceCode)
+        .toList();
+  }
+
+  List<RequestWithStage> get filteredItemsKafeel {
+    if (selectedServiceCode == null) return itemsKafeel;
+    return itemsKafeel
+        .where((item) => item.service?.nameEn == selectedServiceCode)
+        .toList();
   }
 
   @override
@@ -55,7 +81,8 @@ final class MyRequestsState extends Equatable {
         itemsManager,
         itemsUser,
         itemsKafeel,
-        requestDetails
+        requestDetails,
+        selectedServiceCode,
       ];
 }
 

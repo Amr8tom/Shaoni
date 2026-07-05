@@ -63,12 +63,13 @@ class ServiceRouteResolver {
         return DRoutesName.createVisaRequestRoute;
       case ServiceCode.employeeTicketBooking:
         return DRoutesName.createTicketBookingRoute;
+      case ServiceCode.leaveInterruptionRequest:
+        return DRoutesName.createLeaveInterruptionRoute;
 
       case ServiceCode.exitPermission:
       case ServiceCode.attendanceUpdate:
       case ServiceCode.leaveReplace:
       case ServiceCode.leave:
-      case ServiceCode.leaveInterruptionRequest:
       case null:
         return DRoutesName.noDataRoute;
     }

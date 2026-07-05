@@ -68,6 +68,15 @@ class ServicesGridView extends StatelessWidget {
               });
             },
             title: S.current.study),
+        ServiceCard(
+            img: AssetRes.leaves,
+            onTap: () {
+              context.pushNamed(DRoutesName.categoryDetailsRoute, arguments: {
+                'title': S.current.leaves,
+                'services': controller.state.leavesServices,
+              });
+            },
+            title: S.current.leaves),
       ],
 
       // physics: const NeverScrollableScrollPhysics(),

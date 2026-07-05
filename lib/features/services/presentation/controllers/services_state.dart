@@ -8,6 +8,7 @@ final class ServicesState extends Equatable {
   final List<Service>? purchasesServices;
   final List<Service>? salariesServices;
   final List<Service>? reservationsServices;
+  final List<Service>? leavesServices;
 
   const ServicesState({
     this.status = GeneralStatus.initialized,
@@ -15,6 +16,7 @@ final class ServicesState extends Equatable {
     this.hrServices,
     this.studyServices,
     this.purchasesServices,
+    this.leavesServices,
     this.salariesServices,
     this.reservationsServices,
   });
@@ -28,6 +30,7 @@ final class ServicesState extends Equatable {
     List<Service>? purchasesServices,
     List<Service>? salariesServices,
     List<Service>? reservationsServices,
+    List<Service>? leavesServices,
   }) {
     return ServicesState(
       status: status ?? this.status,
@@ -37,6 +40,7 @@ final class ServicesState extends Equatable {
       purchasesServices: purchasesServices ?? this.purchasesServices,
       salariesServices: salariesServices ?? this.salariesServices,
       reservationsServices: reservationsServices ?? this.reservationsServices,
+      leavesServices: leavesServices ?? this.leavesServices,
     );
   }
 
@@ -48,6 +52,7 @@ final class ServicesState extends Equatable {
         studyServices,
         purchasesServices,
         salariesServices,
-        reservationsServices
+        reservationsServices,
+        leavesServices
       ];
 }

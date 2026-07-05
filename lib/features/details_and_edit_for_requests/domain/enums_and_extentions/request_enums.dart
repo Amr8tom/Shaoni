@@ -146,11 +146,17 @@ extension RequestStatusExtensionList on CurrentStatus {
           RequestStatusEnum.hrApproval,
           RequestStatusEnum.approved,
         ];
+      case ServiceCode.leaveInterruptionRequest:
+        return const [
+          RequestStatusEnum.draft,
+          RequestStatusEnum.hrApproval,
+          RequestStatusEnum.approved,
+          RequestStatusEnum.rejected,
+        ];
       case ServiceCode.outsideWorking:
       case ServiceCode.scrapRequest:
       case ServiceCode.leaveReplace:
       case ServiceCode.leave:
-      case ServiceCode.leaveInterruptionRequest:
       case null:
         break;
     }

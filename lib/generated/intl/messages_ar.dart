@@ -605,6 +605,13 @@ class MessageLookup extends MessageLookupByLibrary {
       "خدمات الأقساط",
     ),
     "insuranceClass": MessageLookupByLibrary.simpleMessage("فئة التأمين"),
+    "interruptionDate": MessageLookupByLibrary.simpleMessage(
+      "تاريخ قطع الاجازة",
+    ),
+    "interruptionReasonHint": MessageLookupByLibrary.simpleMessage(
+      "اشرح بالتفصيل سبب ضرورة قطع الإجازة...",
+    ),
+    "interruptionType": MessageLookupByLibrary.simpleMessage("النوع"),
     "invalidEmail": MessageLookupByLibrary.simpleMessage(
       " أدخـل بـريد الكــتروني صَحـيح ",
     ),
@@ -639,7 +646,13 @@ class MessageLookup extends MessageLookupByLibrary {
     "lastAddress": MessageLookupByLibrary.simpleMessage("العنوان الأخير"),
     "lastName": MessageLookupByLibrary.simpleMessage("الاسم الأخير"),
     "later": MessageLookupByLibrary.simpleMessage("لاحقا"),
+    "leaveField": MessageLookupByLibrary.simpleMessage("إجازه"),
+    "leaveInterruptionRequest": MessageLookupByLibrary.simpleMessage(
+      "طلب قطع الإجازة",
+    ),
     "leaveRequest": MessageLookupByLibrary.simpleMessage("طلب إجازة"),
+    "leaveType": MessageLookupByLibrary.simpleMessage("نوع الإجازة"),
+    "leaves": MessageLookupByLibrary.simpleMessage("الإجازات"),
     "letsStart": MessageLookupByLibrary.simpleMessage("لنبدأ"),
     "letterDestination": MessageLookupByLibrary.simpleMessage(
       "جهة توجيه الخطاب",
@@ -1046,6 +1059,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "requestData": MessageLookupByLibrary.simpleMessage("بيانات الطلب"),
     "requestDetails": MessageLookupByLibrary.simpleMessage("بيانات الطلب"),
+    "requestJustifications": MessageLookupByLibrary.simpleMessage(
+      "مبررات الطلب",
+    ),
     "requestLines": MessageLookupByLibrary.simpleMessage("بنود الطلب"),
     "requestNumber": MessageLookupByLibrary.simpleMessage("رقم الطلب"),
     "requestReason": MessageLookupByLibrary.simpleMessage("مبررات الطلب"),
@@ -1180,11 +1196,19 @@ class MessageLookup extends MessageLookupByLibrary {
     "selectInsuranceClass": MessageLookupByLibrary.simpleMessage(
       "اختر فئة التأمين",
     ),
+    "selectInterruptionType": MessageLookupByLibrary.simpleMessage(
+      "اختر النوع",
+    ),
     "selectIssueDep": MessageLookupByLibrary.simpleMessage("آختر قسم المشكله "),
     "selectIssuingCountry": MessageLookupByLibrary.simpleMessage(
       "اختر دولة الإصدار",
     ),
     "selectLanguage": MessageLookupByLibrary.simpleMessage("اختر اللغة"),
+    "selectLeave": MessageLookupByLibrary.simpleMessage("اختر الإجازة"),
+    "selectLeaveType": MessageLookupByLibrary.simpleMessage("اختر نوع الإجازة"),
+    "selectLeaveTypeFirst": MessageLookupByLibrary.simpleMessage(
+      "اختر نوع الإجازة أولاً",
+    ),
     "selectLetterDestination": MessageLookupByLibrary.simpleMessage(
       "اختر جهة توجيه الخطاب",
     ),

@@ -13,6 +13,7 @@ import 'package:shaoni/features/human_resources/presentation/product_order/creat
 import 'package:shaoni/features/human_resources/presentation/outside_working/create_outside_working_form.dart';
 import 'package:shaoni/features/human_resources/presentation/scrap_request/create_scrap_request_form.dart';
 import 'package:shaoni/features/booking_managment/presentation/ticket_booking/create_ticket_booking_form.dart';
+import 'package:shaoni/features/leaves/presentation/leave_interruption/create_leave_interruption_form.dart';
 import 'package:shaoni/features/booking_managment/presentation/visa_request/create_visa_request_form.dart';
 import 'package:shaoni/features/profile/presentation/screens/profile_screen.dart';
 import 'package:shaoni/features/services/presentation/screens/category_details_screen.dart';
@@ -174,6 +175,16 @@ class RouteGenerator {
         final int? requestId = args?['requestId'] as int?;
         return PageTransition(
           child: CreateTicketBookingForm(requestId: requestId),
+          type: PageTransitionType.rightToLeft,
+          settings: settings,
+        );
+
+      /// create / edit leave interruption screen
+      case DRoutesName.createLeaveInterruptionRoute:
+        final args = settings.arguments as Map<String, dynamic>?;
+        final int? requestId = args?['requestId'] as int?;
+        return PageTransition(
+          child: CreateLeaveInterruptionForm(requestId: requestId),
           type: PageTransitionType.rightToLeft,
           settings: settings,
         );

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shaoni/common/widgets/appbar/appbar.dart';
-import 'package:shaoni/common/widgets/sized_boxes/sizer.dart';
 import 'package:shaoni/core/device/device_utility.dart';
 import 'package:shaoni/core/constants/colors.dart';
 import 'package:shaoni/core/constants/app_sizes.dart';

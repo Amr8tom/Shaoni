@@ -4,6 +4,7 @@ import 'package:shaoni/core/service_locator/booking_management_service_locator.d
 import 'package:shaoni/core/service_locator/my_requests_service_locator.dart';
 import 'package:shaoni/core/service_locator/profile_service_locator.dart';
 import 'package:shaoni/core/service_locator/request_service_locator.dart';
+import 'package:shaoni/core/service_locator/leaves_service_locator.dart';
 import 'package:shaoni/core/service_locator/services_service_locator.dart';
 import 'package:shaoni/core/service_locator/study_training_service_locator.dart';
 import 'package:shaoni/core/service_locator/salaries_service_locator.dart';
@@ -68,6 +69,9 @@ class DI {
     /// Booking management
     await BookingManagementServiceLocator.execute(
         serviceLocator: serviceLocator);
+
+    /// Leaves
+    await LeavesServiceLocator.execute(serviceLocator: serviceLocator);
 
     /// Study & training
     await StudyTrainingServiceLocator.execute(serviceLocator: serviceLocator);

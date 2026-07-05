@@ -647,6 +647,13 @@ class MessageLookup extends MessageLookupByLibrary {
       "Installments Services",
     ),
     "insuranceClass": MessageLookupByLibrary.simpleMessage("Insurance Class"),
+    "interruptionDate": MessageLookupByLibrary.simpleMessage(
+      "Leave Interruption Date",
+    ),
+    "interruptionReasonHint": MessageLookupByLibrary.simpleMessage(
+      "Explain in detail why the leave must be interrupted...",
+    ),
+    "interruptionType": MessageLookupByLibrary.simpleMessage("Type"),
     "invalidEmail": MessageLookupByLibrary.simpleMessage(
       " please enter valid email ",
     ),
@@ -683,7 +690,13 @@ class MessageLookup extends MessageLookupByLibrary {
     "lastAddress": MessageLookupByLibrary.simpleMessage("Last Address"),
     "lastName": MessageLookupByLibrary.simpleMessage("Last Name "),
     "later": MessageLookupByLibrary.simpleMessage("Later"),
+    "leaveField": MessageLookupByLibrary.simpleMessage("Leave"),
+    "leaveInterruptionRequest": MessageLookupByLibrary.simpleMessage(
+      "Leave Interruption Request",
+    ),
     "leaveRequest": MessageLookupByLibrary.simpleMessage("Leave Request"),
+    "leaveType": MessageLookupByLibrary.simpleMessage("Leave Type"),
+    "leaves": MessageLookupByLibrary.simpleMessage("Leaves"),
     "letsStart": MessageLookupByLibrary.simpleMessage("Welcome Again"),
     "letterDestination": MessageLookupByLibrary.simpleMessage(
       "Letter Destination",
@@ -1105,6 +1118,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "requestData": MessageLookupByLibrary.simpleMessage("Request Data"),
     "requestDetails": MessageLookupByLibrary.simpleMessage("Request Details"),
+    "requestJustifications": MessageLookupByLibrary.simpleMessage(
+      "Request Justifications",
+    ),
     "requestLines": MessageLookupByLibrary.simpleMessage("Order Lines"),
     "requestNumber": MessageLookupByLibrary.simpleMessage("Request Number"),
     "requestReason": MessageLookupByLibrary.simpleMessage("Request Reasons"),
@@ -1245,6 +1261,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "selectInsuranceClass": MessageLookupByLibrary.simpleMessage(
       "Select insurance class",
     ),
+    "selectInterruptionType": MessageLookupByLibrary.simpleMessage(
+      "Select type",
+    ),
     "selectIssueDep": MessageLookupByLibrary.simpleMessage(
       "Select Issue Department",
     ),
@@ -1252,6 +1271,13 @@ class MessageLookup extends MessageLookupByLibrary {
       "Select issuing country",
     ),
     "selectLanguage": MessageLookupByLibrary.simpleMessage("Select Language"),
+    "selectLeave": MessageLookupByLibrary.simpleMessage("Select leave"),
+    "selectLeaveType": MessageLookupByLibrary.simpleMessage(
+      "Select leave type",
+    ),
+    "selectLeaveTypeFirst": MessageLookupByLibrary.simpleMessage(
+      "Select the leave type first",
+    ),
     "selectLetterDestination": MessageLookupByLibrary.simpleMessage(
       "Select Letter Destination",
     ),

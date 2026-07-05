@@ -18,6 +18,7 @@ import '../widgets/salary_transfer_details_widget.dart';
 import '../widgets/scrap_request_details_widget.dart';
 import '../widgets/visa_request_details_widget.dart';
 import '../widgets/ticket_booking_details_widget.dart';
+import '../widgets/leave_interruption_details_widget.dart';
 
 Widget getRequestDetailsWidget({required String serviceCode}) {
   switch (ServiceCode.fromCode(serviceCode)) {
@@ -55,6 +56,8 @@ Widget getRequestDetailsWidget({required String serviceCode}) {
       return const VisaRequestDetailsWidget();
     case ServiceCode.employeeTicketBooking:
       return const TicketBookingDetailsWidget();
+    case ServiceCode.leaveInterruptionRequest:
+      return const LeaveInterruptionDetailsWidget();
     default:
       return const Sizer();
   }

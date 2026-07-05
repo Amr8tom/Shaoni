@@ -204,6 +204,48 @@ class MyRequestsCubit extends Cubit<MyRequestsState> {
     );
   }
 
+  /// set filter
+  void setFilter(String? serviceCode) {
+    emit(state.copyWith(selectedServiceCode: serviceCode));
+  }
+
+  /// clear filter
+  void clearFilter() {
+    emit(MyRequestsState(
+      status: state.status,
+      itemsUser: state.itemsUser,
+      itemsManager: state.itemsManager,
+      itemsKafeel: state.itemsKafeel,
+      userRequests: state.userRequests,
+      managerRequests: state.managerRequests,
+      kafeelRequests: state.kafeelRequests,
+      requestDetails: state.requestDetails,
+      selectedServiceCode: null,
+    ));
+  }
+
+  /// Get unique service types from all loaded items (User, Manager, Kafeel)
+  List<Map<String, String>> get availableServiceTypes {
+    final allItems = [
+      ...state.itemsUser,
+      ...state.itemsManager,
+      ...state.itemsKafeel,
+    ];
+
+    final Map<String, String> uniqueServices = {};
+    for (var item in allItems) {
+      final nameEn = item.service?.nameEn;
+      final nameAr = item.service?.nameAr;
+      if (nameEn != null && nameAr != null) {
+        uniqueServices[nameEn] = nameAr;
+      }
+    }
+
+    return uniqueServices.entries
+        .map((e) => {'nameEn': e.key, 'nameAr': e.value})
+        .toList();
+  }
+
   @override
   Future<void> close() {
     _userDebounceTimer?.cancel();

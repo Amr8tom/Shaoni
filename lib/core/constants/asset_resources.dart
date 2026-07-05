@@ -222,6 +222,7 @@ class AssetRes {
   static const String salaries = 'assets/images/pngs/salaries.png';
   static const String registration = 'assets/images/pngs/registration.png';
   static const String repositories = 'assets/images/pngs/repository.png';
+  static const String leaves = 'assets/images/pngs/leaves.png';
 
   /// other Icons
   static const String calenderIcon = 'assets/images/svgs/calender.svg';

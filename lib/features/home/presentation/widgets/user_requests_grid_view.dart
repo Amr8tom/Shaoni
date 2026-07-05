@@ -4,10 +4,11 @@ import 'package:shaoni/common/custom_ui.dart';
 import 'package:shaoni/core/constants/colors.dart';
 import 'package:shaoni/core/extensions/navigation_extension.dart';
 import 'package:shaoni/core/routing/route_names.dart';
-import 'package:shaoni/features/home/presentation/widgets/request_card.dart';
 import 'package:shaoni/features/details_and_edit_for_requests/domain/entities/request_with_stage.dart';
 import 'package:shaoni/features/details_and_edit_for_requests/presentation/controller/my_requests_cubit.dart';
+import 'package:shaoni/features/home/presentation/widgets/request_card.dart';
 import 'package:skeletonizer/skeletonizer.dart';
+
 import '../../../../generated/l10n.dart';
 import '../../../navigation/presentation/controllers/navigation_cubit.dart';
 
@@ -24,7 +25,7 @@ class UserRequestsGridView extends StatelessWidget {
                 6,
                 RequestWithStage(
                     odooStageId: 1, requesterFullName: '', managerFullName: ''))
-            : controller.state.itemsUser
+            : controller.state.filteredItemsUser
                 .where((request) => request.request?.requestNumber != null)
                 .toList();
 
@@ -48,111 +49,125 @@ class UserRequestsGridView extends StatelessWidget {
     /// Sample data - replace with actual data later
     return validRequests.isEmpty
         ? CustomUI.noData()
-        : SizedBox(
-            // height: AppSizes.fullHeight * 0.5,
-            child: Skeletonizer(
-              enabled: controller.state.status.isLoading ? true : false,
-              child: GridView.builder(
-                  controller: controller.userScrollController,
-                  padding: EdgeInsets.zero,
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 1,
-                    childAspectRatio: 4.2,
-                    crossAxisSpacing: 12,
-                    mainAxisSpacing: 12,
-                  ),
-                  shrinkWrap: true,
-                  // physics: const NeverScrollableScrollPhysics(),
-                  itemCount: validRequests.length,
-                  itemBuilder: (context, index) {
-                    return RequestCard(
-                      status: S.current.localeee == 'en'
-                          ? validRequests[index].currentStatus?.nameEn ?? ''
-                          : validRequests[index].currentStatus?.nameAr ?? '',
-                      statusColor:
-                          validRequests[index].request?.odooStatus == "new"
-                              ? ColorRes.staticBlueColor
-                              : ColorRes.staticGreenColor,
-                      orderNumber: validRequests[index]
-                              .request
-                              ?.requestNumber
-                              .toString() ??
-                          '',
-                      date: validRequests[index]
-                              .request
-                              ?.createdAt
-                              ?.substring(0, 10) ??
-                          '',
-                      type: S.current.localeee == "en"
-                          ? validRequests[index].service?.nameEn ?? ''
-                          : validRequests[index].service?.nameAr ?? '',
-                      onTap: () {
-                        context.pushNamed(DRoutesName.requestDetailsRoute,
-                            arguments: {
-                              'id': validRequests[index].request?.id ?? '',
-                              'en_status':
-                                  validRequests[index].currentStatus?.nameEn ??
-                                      '',
-                              'status': S.current.localeee == 'en'
-                                  ? validRequests[index]
+        : Stack(
+            alignment: AlignmentDirectional.topStart,
+            children: [
+              SizedBox(
+                // height: AppSizes.fullHeight * 0.5,
+                child: Skeletonizer(
+                  enabled: controller.state.status.isLoading ? true : false,
+                  child: GridView.builder(
+                      controller: controller.userScrollController,
+                      padding: EdgeInsets.zero,
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 1,
+                        childAspectRatio: 4.2,
+                        crossAxisSpacing: 12,
+                        mainAxisSpacing: 12,
+                      ),
+                      shrinkWrap: true,
+                      // physics: const NeverScrollableScrollPhysics(),
+                      itemCount: validRequests.length,
+                      itemBuilder: (context, index) {
+                        return RequestCard(
+                          status: S.current.localeee == 'en'
+                              ? validRequests[index].currentStatus?.nameEn ?? ''
+                              : validRequests[index].currentStatus?.nameAr ??
+                                  '',
+                          statusColor:
+                              validRequests[index].request?.odooStatus == "new"
+                                  ? ColorRes.staticBlueColor
+                                  : ColorRes.staticGreenColor,
+                          orderNumber: validRequests[index]
+                                  .request
+                                  ?.requestNumber
+                                  .toString() ??
+                              '',
+                          date: validRequests[index]
+                                  .request
+                                  ?.createdAt
+                                  ?.substring(0, 10) ??
+                              '',
+                          type: S.current.localeee == "en"
+                              ? validRequests[index].service?.nameEn ?? ''
+                              : validRequests[index].service?.nameAr ?? '',
+                          onTap: () {
+                            context.pushNamed(DRoutesName.requestDetailsRoute,
+                                arguments: {
+                                  'id': validRequests[index].request?.id ?? '',
+                                  'en_status': validRequests[index]
                                           .currentStatus
                                           ?.nameEn ??
-                                      ''
-                                  : validRequests[index]
-                                          .currentStatus
-                                          ?.nameAr ??
                                       '',
-                              'currentStatus':
-                                  validRequests[index].currentStatus,
-                              'orderNumber':
-                                  validRequests[index].request?.requestNumber ??
+                                  'status': S.current.localeee == 'en'
+                                      ? validRequests[index]
+                                              .currentStatus
+                                              ?.nameEn ??
+                                          ''
+                                      : validRequests[index]
+                                              .currentStatus
+                                              ?.nameAr ??
+                                          '',
+                                  'currentStatus':
+                                      validRequests[index].currentStatus,
+                                  'orderNumber': validRequests[index]
+                                          .request
+                                          ?.requestNumber ??
                                       "test",
-                              'date': validRequests[index]
-                                      .request
-                                      ?.createdAt
-                                      ?.substring(0, 10) ??
-                                  '',
-                              'permissionType': validRequests[index]
-                                  .extraData
-                                  ?.exitPermission
-                                  ?.permissionType
-                                  .toString(),
-                              'serviceName': S.current.localeee == "en"
-                                  ? validRequests[index].service?.nameEn ?? ''
-                                  : validRequests[index].service?.nameAr ?? '',
-                              'serviceCode':
-                                  validRequests[index].service?.nameEn ?? '',
-                              'numberOfHours': validRequests[index]
-                                  .extraData
-                                  ?.exitPermission
-                                  ?.numberOfHours
-                                  .toString(),
-                              'permissionDate': validRequests[index]
-                                      .extraData
-                                      ?.exitPermission
-                                      ?.exitDate
-                                      ?.substring(0, 10) ??
-                                  '',
-                              'leavesAttachment': validRequests[index]
-                                      .extraData
-                                      ?.exitPermission
-                                      ?.leavesAttachment ??
-                                  S.current.noData,
-                              'requestID':
-                                  validRequests[index].request?.id.toString() ??
+                                  'date': validRequests[index]
+                                          .request
+                                          ?.createdAt
+                                          ?.substring(0, 10) ??
                                       '',
-                              'isManager':
-                                  navController.state.user?.managerId == 0
-                                      ? true
-                                      : false,
-                              "isEmployeeRequest": true,
-                            });
-                      },
-                    );
-                  }
-                  // },
-                  ),
-            ),
+                                  'permissionType': validRequests[index]
+                                      .extraData
+                                      ?.exitPermission
+                                      ?.permissionType
+                                      .toString(),
+                                  'serviceName': S.current.localeee == "en"
+                                      ? validRequests[index].service?.nameEn ??
+                                          ''
+                                      : validRequests[index].service?.nameAr ??
+                                          '',
+                                  'serviceCode':
+                                      validRequests[index].service?.nameEn ??
+                                          '',
+                                  'numberOfHours': validRequests[index]
+                                      .extraData
+                                      ?.exitPermission
+                                      ?.numberOfHours
+                                      .toString(),
+                                  'permissionDate': validRequests[index]
+                                          .extraData
+                                          ?.exitPermission
+                                          ?.exitDate
+                                          ?.substring(0, 10) ??
+                                      '',
+                                  'leavesAttachment': validRequests[index]
+                                          .extraData
+                                          ?.exitPermission
+                                          ?.leavesAttachment ??
+                                      S.current.noData,
+                                  'requestID': validRequests[index]
+                                          .request
+                                          ?.id
+                                          .toString() ??
+                                      '',
+                                  'isManager':
+                                      navController.state.user?.managerId == 0
+                                          ? true
+                                          : false,
+                                  "isEmployeeRequest": true,
+                                });
+                          },
+                        );
+                      }
+                      // },
+                      ),
+                ),
+              ),
+            ],
           );
   }
 }

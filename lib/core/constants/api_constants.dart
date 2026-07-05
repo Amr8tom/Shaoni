@@ -111,6 +111,19 @@ class URL {
   static const String getTicketBookingEdit =
       '$baseUrl/EmployeeTicketBooking/edit/';
 
+  /// ============================ leaves ============================
+  /// leave interruption
+  static const String getLeaveTypes = '$baseUrl/Lookup/GetLeaveTypes';
+  static const String getInterruptionLeaveTypes =
+      '$baseUrl/Lookup/GetInterruptionLeaveTypes';
+  static const String searchEmployeeLeaves =
+      '$baseUrl/Lookup/SearchEmployeeLeaves';
+  static const String createLeaveInterruption = '$baseUrl/LeaveInterruption';
+  static const String updateLeaveInterruption =
+      '$baseUrl/LeaveInterruption/update/';
+  static const String getLeaveInterruptionEdit =
+      '$baseUrl/LeaveInterruption/edit/';
+
   /// ============================ training request ============================
   static const String getCourses = '$baseUrl/Lookup/GetCourses';
   static const String createTrainingRequest = '$baseUrl/Training/create';

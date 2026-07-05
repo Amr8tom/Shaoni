@@ -584,6 +584,7 @@
   "salaries": "Salaries and Bonuses",
   "registration": "Reservation Management",
   "study": "Training and Education",
+  "leaves": "Leaves",
   "mostSoldItmes": "Most Sold Items",
   "welcomeMessage": "Welcome in C-Store for cement products",
   "welcomeDescreption": "we have many awesome prizes like Laptops , iphone and cars",
@@ -991,5 +992,16 @@
   "ticketClass": "Ticket Class",
   "selectTicketClass": "Select ticket class",
   "attachmentOptional": "Attachment (optional)",
-  "generalAttachments": "General Attachments"
+  "generalAttachments": "General Attachments",
+  "leaveInterruptionRequest": "Leave Interruption Request",
+  "interruptionType": "Type",
+  "selectInterruptionType": "Select type",
+  "leaveType": "Leave Type",
+  "selectLeaveType": "Select leave type",
+  "leaveField": "Leave",
+  "selectLeave": "Select leave",
+  "selectLeaveTypeFirst": "Select the leave type first",
+  "interruptionDate": "Leave Interruption Date",
+  "requestJustifications": "Request Justifications",
+  "interruptionReasonHint": "Explain in detail why the leave must be interrupted..."
 }

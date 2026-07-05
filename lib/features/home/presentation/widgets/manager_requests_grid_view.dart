@@ -16,7 +16,7 @@ class ManagerRequestsGridView extends StatelessWidget {
   Widget build(BuildContext context) {
     final controller = context.watch<MyRequestsCubit>();
     final navController = context.watch<NavigationCubit>();
-    final validRequests = controller.state.itemsManager
+    final validRequests = controller.state.filteredItemsManager
         .where((request) => request.request?.requestNumber != null)
         .toList();
 

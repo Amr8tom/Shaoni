@@ -26,6 +26,7 @@ import '../use_cases/get_loan_edit_use_case.dart';
 import '../use_cases/get_scrap_request_edit_use_case.dart';
 import '../use_cases/get_visa_request_edit_use_case.dart';
 import '../use_cases/get_ticket_booking_edit_use_case.dart';
+import '../use_cases/get_leave_interruption_edit_use_case.dart';
 
 abstract class MyRequestsRepository {
   /// get
@@ -103,5 +104,9 @@ abstract class MyRequestsRepository {
 
   Future<Either<Failure, EditResponse>> getTicketBookingEdit({
     required GetTicketBookingEditParams params,
+  });
+
+  Future<Either<Failure, EditResponse>> getLeaveInterruptionEdit({
+    required GetLeaveInterruptionEditParams params,
   });
 }

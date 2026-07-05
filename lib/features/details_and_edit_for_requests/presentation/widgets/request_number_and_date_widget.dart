@@ -53,8 +53,8 @@ class RequestNumberAndDateWidget extends StatelessWidget {
                       : orderNumber,
                 ),
                 orderNumber.length >= 10
-                ? const Sizer(width: 20)
-                : const Sizer(width: 0),
+                    ? const Sizer(width: 20)
+                    : const Sizer(width: 0),
                 OrderTextCard(
                   title: S.current.orderStatus,
                   result: status,

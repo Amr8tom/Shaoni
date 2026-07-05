@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shaoni/features/details_and_edit_for_requests/presentation/controller/my_requests_cubit.dart';
+import 'package:shaoni/features/details_and_edit_for_requests/presentation/widgets/filter_bottom_sheet.dart';
+import 'package:shaoni/common/widgets/sheets/default_bottom_sheet/default_bottom_sheet_widget.dart';
 import 'package:shaoni/features/navigation/presentation/controllers/navigation_cubit.dart';
+
 import '../../../../core/constants/app_sizes.dart';
 import '../../../../core/constants/colors.dart';
 import '../../../../generated/l10n.dart';
@@ -50,14 +53,64 @@ class MyRequestsScreen extends StatelessWidget {
       length: tabs.length,
       child: Column(
         children: [
-          TabBar(
-            indicatorColor: Theme.of(context).primaryColor,
-            labelColor: Theme.of(context).primaryColor,
-            unselectedLabelColor: ColorRes.grey,
-            tabs: tabs,
-            labelStyle: Theme.of(context).textTheme.titleMedium?.copyWith(
-                fontWeight: FontWeight.bold,
-                fontSize: AppSizes.fontSizeMd * 0.7),
+          Padding(
+            padding: EdgeInsets.only(right: AppSizes.padding * 0.5),
+            child: Row(
+              children: [
+                Expanded(
+                  child: TabBar(
+                    indicatorColor: Theme.of(context).primaryColor,
+                    labelColor: Theme.of(context).primaryColor,
+                    unselectedLabelColor: ColorRes.grey,
+                    dividerColor: Colors.transparent,
+                    tabs: tabs,
+                    labelStyle: Theme.of(context).textTheme.titleMedium?.copyWith(
+                        fontWeight: FontWeight.bold,
+                        fontSize: AppSizes.fontSizeMd * 0.7),
+                  ),
+                ),
+                BlocBuilder<MyRequestsCubit, MyRequestsState>(
+                  builder: (context, state) {
+                    final isFiltered = state.selectedServiceCode != null;
+                    return IconButton(
+                      onPressed: () {
+                        final cubit = context.read<MyRequestsCubit>();
+                        showDBottomSheet(
+                          context: context,
+                          body: BlocProvider.value(
+                            value: cubit,
+                            child: const FilterBottomSheet(),
+                          ),
+                        );
+                      },
+                      icon: Stack(
+                        children: [
+                          Icon(
+                            Icons.filter_list_alt,
+                            color: isFiltered ? ColorRes.primary : ColorRes.green,
+                            size: AppSizes.iconLg,
+                          ),
+                          if (isFiltered)
+                            Positioned(
+                              top: 0,
+                              right: 0,
+                              child: Container(
+                                width: 8,
+                                height: 8,
+                                decoration: BoxDecoration(
+                                  color: ColorRes.primary,
+                                  shape: BoxShape.circle,
+                                  border: Border.all(color: Colors.white, width: 1.5),
+                                ),
+                              ),
+                            ),
+                        ],
+                      ),
+                    );
+                  },
+                ),
+              ],
+            ),
           ),
           Expanded(
             child: TabBarView(children: views),

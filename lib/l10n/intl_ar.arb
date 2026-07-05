@@ -21,6 +21,7 @@
     "salaries":"الرواتب والمكافأت",
     "registration":"ادارة الحجوزات",
     "study":"التدريب والدراسة",
+  "leaves": "الإجازات",
     "training_course_data": "بيانات الدورات التدريبية",
   "course_name": "اسم الدورة *",
       "uploadFileSelect":" اختر ملف للرفع",
@@ -997,5 +998,16 @@
   "ticketClass": "فئة التذكرة",
   "selectTicketClass": "اختر فئة التذكرة",
   "attachmentOptional": "مرفق (اختياري)",
-  "generalAttachments": "المرفقات العامة"
+  "generalAttachments": "المرفقات العامة",
+  "leaveInterruptionRequest": "طلب قطع الإجازة",
+  "interruptionType": "النوع",
+  "selectInterruptionType": "اختر النوع",
+  "leaveType": "نوع الإجازة",
+  "selectLeaveType": "اختر نوع الإجازة",
+  "leaveField": "إجازه",
+  "selectLeave": "اختر الإجازة",
+  "selectLeaveTypeFirst": "اختر نوع الإجازة أولاً",
+  "interruptionDate": "تاريخ قطع الاجازة",
+  "requestJustifications": "مبررات الطلب",
+  "interruptionReasonHint": "اشرح بالتفصيل سبب ضرورة قطع الإجازة..."
 }

@@ -157,11 +157,9 @@ class _TicketLineCard extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-        
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.start,
-          
             children: [
               OrderTextCard(
                 title: S.current.employee,
@@ -183,19 +181,17 @@ class _TicketLineCard extends StatelessWidget {
               ],
             ],
           ),
-            if (line.attachment.isNotEmpty) ...[
-
-
+          if (line.attachment.isNotEmpty) ...[
             Column(
               children: [
-                     Text(
-              S.current.attachments,
-              style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                    color: ColorRes.grey2,
-                    fontWeight: FontWeight.w600,
-                  ),
-            ),
-            const Sizer(height: 6),
+                Text(
+                  S.current.attachments,
+                  style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                        color: ColorRes.grey2,
+                        fontWeight: FontWeight.w600,
+                      ),
+                ),
+                const Sizer(height: 6),
                 OutlinedButton.icon(
                   onPressed: () => Base64FileHelper.downloadAndShare(
                     base64String: line.attachment,

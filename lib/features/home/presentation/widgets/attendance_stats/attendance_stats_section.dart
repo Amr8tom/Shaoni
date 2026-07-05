@@ -9,16 +9,6 @@ import '../../../../../core/routing/route_names.dart';
 import '../../../../../generated/l10n.dart';
 import 'attendance_stat_card.dart';
 
-/// "إحصائيات الحضور" section on the Home screen.
-///
-/// Renders the section header (title + "View all" link) and the 2×2 grid
-/// of [AttendanceStatCard] tiles.
-///
-/// Note on data:
-///   - Values + progress ratios are passed in as parameters with sensible
-///     defaults so the widget is testable in isolation. Once the API
-///     is hooked up, just pass the resolved values from the parent
-///     `BlocBuilder<HomeCubit, HomeState>`.
 class AttendanceStatsSection extends StatelessWidget {
   const AttendanceStatsSection({
     super.key,
@@ -39,8 +29,6 @@ class AttendanceStatsSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    /// Build the four cards once so we can wrap each in a staggered
-    /// animation slot with a unique [position] index.
     final cards = <Widget>[
       AttendanceStatCard(
         value: _formatNumber(totalLateHours),
@@ -79,10 +67,6 @@ class AttendanceStatsSection extends StatelessWidget {
           ),
           const Sizer(height: 12),
 
-          /// 2×2 grid — `IntrinsicHeight` keeps the two cards in a row
-          /// the same height even if one title wraps to two lines.
-          /// Each card is wrapped in a staggered slide+fade so they
-          /// fly in one-by-one when the screen first appears.
           IntrinsicHeight(
             child: Row(
               children: [
@@ -107,8 +91,6 @@ class AttendanceStatsSection extends StatelessWidget {
     );
   }
 
-  /// Wraps a stat card in a staggered grid animation so the four cards
-  /// appear sequentially with a slide-up + fade-in effect.
   Widget _animatedSlot(int position, Widget child) {
     return AnimationConfiguration.staggeredGrid(
       position: position,

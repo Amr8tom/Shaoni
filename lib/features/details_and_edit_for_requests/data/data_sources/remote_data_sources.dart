@@ -24,6 +24,7 @@ import '../../domain/use_cases/get_loan_edit_use_case.dart';
 import '../../domain/use_cases/get_scrap_request_edit_use_case.dart';
 import '../../domain/use_cases/get_visa_request_edit_use_case.dart';
 import '../../domain/use_cases/get_ticket_booking_edit_use_case.dart';
+import '../../domain/use_cases/get_leave_interruption_edit_use_case.dart';
 import '../models/approve_request_model.dart';
 import '../models/edit_response_model.dart';
 
@@ -110,6 +111,10 @@ abstract class MyRequestsRemoteDataSources {
 
   Future<EditResponseModel> getTicketBookingEdit({
     required GetTicketBookingEditParams params,
+  });
+
+  Future<EditResponseModel> getLeaveInterruptionEdit({
+    required GetLeaveInterruptionEditParams params,
   });
 }
 
@@ -433,6 +438,21 @@ class MyRequestsRemoteDataSourcesImp implements MyRequestsRemoteDataSources {
     try {
       final response = await _dio.putData(
         url: '${URL.getTicketBookingEdit}${params.requestId}',
+        body: params.toMap(),
+      );
+      return EditResponseModel.fromJson(response.data as Map<String, dynamic>);
+    } on ServerFailure {
+      rethrow;
+    }
+  }
+
+  @override
+  Future<EditResponseModel> getLeaveInterruptionEdit({
+    required GetLeaveInterruptionEditParams params,
+  }) async {
+    try {
+      final response = await _dio.putData(
+        url: '${URL.getLeaveInterruptionEdit}${params.requestId}',
         body: params.toMap(),
       );
       return EditResponseModel.fromJson(response.data as Map<String, dynamic>);
