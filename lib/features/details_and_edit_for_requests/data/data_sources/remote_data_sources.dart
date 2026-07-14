@@ -25,6 +25,7 @@ import '../../domain/use_cases/get_scrap_request_edit_use_case.dart';
 import '../../domain/use_cases/get_visa_request_edit_use_case.dart';
 import '../../domain/use_cases/get_ticket_booking_edit_use_case.dart';
 import '../../domain/use_cases/get_leave_interruption_edit_use_case.dart';
+import '../../domain/use_cases/get_leave_replace_edit_use_case.dart';
 import '../models/approve_request_model.dart';
 import '../models/edit_response_model.dart';
 
@@ -115,6 +116,10 @@ abstract class MyRequestsRemoteDataSources {
 
   Future<EditResponseModel> getLeaveInterruptionEdit({
     required GetLeaveInterruptionEditParams params,
+  });
+
+  Future<EditResponseModel> getLeaveReplaceEdit({
+    required GetLeaveReplaceEditParams params,
   });
 }
 
@@ -453,6 +458,21 @@ class MyRequestsRemoteDataSourcesImp implements MyRequestsRemoteDataSources {
     try {
       final response = await _dio.putData(
         url: '${URL.getLeaveInterruptionEdit}${params.requestId}',
+        body: params.toMap(),
+      );
+      return EditResponseModel.fromJson(response.data as Map<String, dynamic>);
+    } on ServerFailure {
+      rethrow;
+    }
+  }
+
+  @override
+  Future<EditResponseModel> getLeaveReplaceEdit({
+    required GetLeaveReplaceEditParams params,
+  }) async {
+    try {
+      final response = await _dio.putData(
+        url: '${URL.getLeaveReplaceEdit}${params.requestId}',
         body: params.toMap(),
       );
       return EditResponseModel.fromJson(response.data as Map<String, dynamic>);

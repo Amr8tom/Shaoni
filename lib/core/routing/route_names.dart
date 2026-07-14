@@ -47,6 +47,7 @@ class DRoutesName {
   static const String createTicketBookingRoute = 'create-ticket-booking-route';
   static const String createLeaveInterruptionRoute =
       'create-leave-interruption-route';
+  static const String createLeaveReplaceRoute = 'create-leave-replace-route';
 
   /// location & maps Screen
   static const String mapRoute = 'map-route';

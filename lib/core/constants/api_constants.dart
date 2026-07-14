@@ -6,6 +6,8 @@ class URL {
   static const String updateProfile = '$baseUrl/User/edit-profile';
   static const String getAllRequestsStatusCount =
       '$baseUrl/Request/status-counts/all-services';
+  static const String annualLeaveDetails =
+      '$baseUrl/hr_leave/annual-leave-type-details';
   static const String forgetPassword = '$baseUrl/Auth/ForgetPassword';
   static const String setPassword = '$baseUrl/Auth/SetPassword';
   static const String resendOtp = '$baseUrl/Auth/ResendOtp';
@@ -123,6 +125,11 @@ class URL {
       '$baseUrl/LeaveInterruption/update/';
   static const String getLeaveInterruptionEdit =
       '$baseUrl/LeaveInterruption/edit/';
+
+  /// leave replace
+  static const String createLeaveReplace = '$baseUrl/LeaveReplace';
+  static const String updateLeaveReplace = '$baseUrl/LeaveReplace/update/';
+  static const String getLeaveReplaceEdit = '$baseUrl/LeaveReplace/edit/';
 
   /// ============================ training request ============================
   static const String getCourses = '$baseUrl/Lookup/GetCourses';

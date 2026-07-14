@@ -1,20 +1,33 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shaoni/features/home/domain/use_cases/get_all_status_counts_use_case.dart';
+import 'package:shaoni/features/home/domain/use_cases/get_annual_leave_balance_use_case.dart';
 
 import '../../../../core/utils/enums/general_status.dart';
 import '../../../../core/utils/usecases/base_usecase.dart';
 import '../../../navigation/domain/entity/user_entity.dart';
 import '../../domain/entities/all_status_count.dart';
+import '../../domain/entities/annual_leave_balance.dart';
 
 part 'home_state.dart';
 
 class HomeCubit extends Cubit<HomeState> {
   final GetAllStatusCountsUseCase _allStatusCountsUseCase;
+  final GetAnnualLeaveBalanceUseCase _getAnnualLeaveBalanceUseCase;
 
-  HomeCubit(this._allStatusCountsUseCase)
+  HomeCubit(this._allStatusCountsUseCase, this._getAnnualLeaveBalanceUseCase)
       : super(const HomeState(requestsStatus: {})) {
     getAllStatusCounts();
+    getAnnualLeaveBalance();
+  }
+
+  Future<void> getAnnualLeaveBalance() async {
+    final result = await _getAnnualLeaveBalanceUseCase.call(params: NoParams());
+    if (isClosed) return;
+    result.fold(
+      (failure) {},
+      (balance) => emit(state.copyWith(annualLeaveBalance: balance)),
+    );
   }
 
   Future getAllStatusCounts() async {

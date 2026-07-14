@@ -1,11 +1,13 @@
 import 'package:shaoni/core/constants/api_constants.dart';
 import 'package:shaoni/core/error/failure.dart';
 import 'package:shaoni/features/home/data/model/all_status_count_model.dart';
+import 'package:shaoni/features/home/data/model/annual_leave_balance_model.dart';
 
 import '../../../../core/dio/dio_helper.dart';
 
 abstract class HomeRemoteDataSources {
   Future<List<AllStatusCountModel>> getAllStatusCountForAllServices();
+  Future<AnnualLeaveBalanceModel> getAnnualLeaveBalance();
 }
 
 class HomeRemoteDataSourcesImp implements HomeRemoteDataSources {
@@ -23,6 +25,19 @@ class HomeRemoteDataSourcesImp implements HomeRemoteDataSources {
       return (response as List)
           .map((e) => AllStatusCountModel.fromJson(e))
           .toList();
+    } on ServerFailure catch (e) {
+      throw ServerFailure(message: e.message);
+    }
+  }
+
+  @override
+  Future<AnnualLeaveBalanceModel> getAnnualLeaveBalance() async {
+    try {
+      final response = await _dio.getData(url: URL.annualLeaveDetails);
+      if (response == null) {
+        throw ServerFailure(message: 'No Data');
+      }
+      return AnnualLeaveBalanceModel.fromJson(response as Map<String, dynamic>);
     } on ServerFailure catch (e) {
       throw ServerFailure(message: e.message);
     }

@@ -6,76 +6,102 @@ import 'package:shaoni/features/human_resources/presentation/attendance/widget/a
 import 'package:shaoni/features/human_resources/presentation/controller/outside_working/outside_working_cubit.dart';
 import 'package:shaoni/generated/l10n.dart';
 
-
+/// سبب الطلب + نوع القسم + نوع المشروع (+ اسم المشروع عند اختيار مشروع محدد)
 class OutsideWorkingRequestDataWidget extends StatelessWidget {
   const OutsideWorkingRequestDataWidget({super.key});
 
+  /// The lookups return the backend code in `nameEn` and the label in `nameAr`.
+  String _label(String nameAr, String nameEn) => S.current.localeee == 'en'
+      ? (nameEn.isEmpty ? nameAr : nameEn)
+      : (nameAr.isEmpty ? nameEn : nameAr);
+
   @override
   Widget build(BuildContext context) {
-    final cubit = context.watch<OutsideWorkingCubit>();
+    final cubit = context.read<OutsideWorkingCubit>();
 
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: [
-        /// ──  department ─────────────────────────────────────────────────────
-        DDropdownField(
-          label: S.current.departmentType,
-          hint: S.current.selectDepartmentType,
-          icon: Icons.business_rounded,
-          items: cubit.departmentTypeItems,
-          value: cubit.departmentTypeController.text.isEmpty
-              ? null
-              : cubit.departmentTypeController.text,
-          onChanged: cubit.onDepartmentTypeSelected,
-          validator: (v) =>
-              (v == null || v.isEmpty) ? S.current.thisFieldRequired : null,
-        ),
-        const Sizer(height: 20),
+    return BlocBuilder<OutsideWorkingCubit, OutsideWorkingState>(
+      builder: (context, state) {
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            /// ── نوع القسم ───────────────────────────────────────────────────
+            DDropdownField(
+              label: S.current.departmentType,
+              hint: S.current.selectDepartmentType,
+              icon: Icons.business_rounded,
+              value: state.departmentTypeCode,
+              items: state.departmentTypes
+                  .map((t) => DropdownMenuItem<String>(
+                        value: t.nameEn,
+                        child: Text(_label(t.nameAr, t.nameEn),
+                            style: const TextStyle(fontSize: 12)),
+                      ))
+                  .toList(),
+              onChanged: cubit.onDepartmentTypeSelected,
+              validator: (v) =>
+                  (v == null || v.isEmpty) ? S.current.thisFieldRequired : null,
+            ),
+            const Sizer(height: 20),
 
-        /// ── project type ───────────────────────────────────────────────────
-        DDropdownField(
-          label: S.current.projectType,
-          hint: S.current.selectProjectType,
-          icon: Icons.category_rounded,
-          items: cubit.projectTypeItems,
-          value: cubit.projectTypeController.text.isEmpty
-              ? null
-              : cubit.projectTypeController.text,
-          onChanged: cubit.onProjectTypeSelected,
-          validator: (v) =>
-              (v == null || v.isEmpty) ? S.current.thisFieldRequired : null,
-        ),
+            /// ── نوع المشروع ─────────────────────────────────────────────────
+            DDropdownField(
+              label: S.current.projectType,
+              hint: S.current.selectProjectType,
+              icon: Icons.category_rounded,
+              value: state.projectTypeCode,
+              items: state.projectTypes
+                  .map((t) => DropdownMenuItem<String>(
+                        value: t.nameEn,
+                        child: Text(_label(t.nameAr, t.nameEn),
+                            style: const TextStyle(fontSize: 12)),
+                      ))
+                  .toList(),
+              onChanged: cubit.onProjectTypeSelected,
+              validator: (v) =>
+                  (v == null || v.isEmpty) ? S.current.thisFieldRequired : null,
+            ),
 
-        /// project name (conditional) ─────────────────────────────────────
-        if (cubit.showProjectName) ...[
-          const Sizer(height: 20),
-          DDropdownField(
-            label: S.current.projectName,
-            hint: S.current.selectProjectName,
-            icon: Icons.folder_rounded,
-            items: cubit.projectNameItems,
-            value: cubit
-                .selectedProjectId, // ID string; items also have id as value
-            onChanged: cubit.onProjectNameSelected,
-            validator: (v) =>
-                (v == null || v.isEmpty) ? S.current.thisFieldRequired : null,
-          ),
-        ],
+            /// ── اسم المشروع (only for a specific project type) ───────────────
+            if (state.showProjectName) ...[
+              const Sizer(height: 20),
+              if (state.projectsLoading)
+                const Center(child: CircularProgressIndicator())
+              else
+                DDropdownField(
+                  label: S.current.projectName,
+                  hint: S.current.selectProjectName,
+                  icon: Icons.folder_rounded,
+                  value: state.selectedProjectId?.toString(),
+                  items: state.projects
+                      .map((p) => DropdownMenuItem<String>(
+                            value: p.id.toString(),
+                            child: Text(p.name,
+                                style: const TextStyle(fontSize: 12)),
+                          ))
+                      .toList(),
+                  onChanged: cubit.onProjectNameSelected,
+                  validator: (v) => (v == null || v.isEmpty)
+                      ? S.current.thisFieldRequired
+                      : null,
+                ),
+            ],
 
-        const Sizer(height: 20),
+            const Sizer(height: 20),
 
-        /// ── request reason  ─────────────────────────────────────────────────────
-        DEditableField(
-          label: S.current.orderReason,
-          hint: S.current.orderReason,
-          icon: Icons.notes_rounded,
-          controller: cubit.orderReasonController,
-          readOnly: false,
-          keyboardType: TextInputType.multiline,
-          validator: (v) =>
-              (v == null || v.isEmpty) ? S.current.thisFieldRequired : null,
-        ),
-      ],
+            /// ── سبب الطلب ───────────────────────────────────────────────────
+            DEditableField(
+              label: S.current.orderReason,
+              hint: S.current.orderReason,
+              icon: Icons.notes_rounded,
+              controller: cubit.orderReasonController,
+              readOnly: false,
+              keyboardType: TextInputType.multiline,
+              validator: (v) =>
+                  (v == null || v.isEmpty) ? S.current.thisFieldRequired : null,
+            ),
+          ],
+        );
+      },
     );
   }
 }

@@ -79,10 +79,14 @@ class MessageLookup extends MessageLookupByLibrary {
     "angleDevice": MessageLookupByLibrary.simpleMessage("زاوية الجهاز"),
     "angleQibla": MessageLookupByLibrary.simpleMessage("زاوية القبلة"),
     "announcement": MessageLookupByLibrary.simpleMessage("إعلان"),
+    "annualLeaveBalance": MessageLookupByLibrary.simpleMessage(
+      "رصيد الاجازات السنوية",
+    ),
     "appLanguage": MessageLookupByLibrary.simpleMessage("لغة التطبيق"),
     "appName": MessageLookupByLibrary.simpleMessage("تيا"),
     "appTitle": MessageLookupByLibrary.simpleMessage("عميل تيا"),
     "applicantName": MessageLookupByLibrary.simpleMessage("مقدم الطلب"),
+    "approvedLabel": MessageLookupByLibrary.simpleMessage("معتمد"),
     "approvedRequest": MessageLookupByLibrary.simpleMessage("طلب معتمد"),
     "arabic": MessageLookupByLibrary.simpleMessage("العربية"),
     "arrDate": MessageLookupByLibrary.simpleMessage("تاريخ الوصول"),
@@ -415,6 +419,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "رقم الوردية المسائية",
     ),
     "excellent": MessageLookupByLibrary.simpleMessage("ممتاز"),
+    "exceptionRequest": MessageLookupByLibrary.simpleMessage("طلب استثناء"),
     "exitApp": MessageLookupByLibrary.simpleMessage("الخٍـروُج من التَـطبيـق"),
     "exitPermissionDescription": MessageLookupByLibrary.simpleMessage(
       "يستخدم إذن الخروج في الحالات التي تستدعي تواجد الموظف خارج مقر العمل أثناء ساعات الدوام الرسمية.",
@@ -650,6 +655,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "leaveInterruptionRequest": MessageLookupByLibrary.simpleMessage(
       "طلب قطع الإجازة",
     ),
+    "leaveReplaceRequest": MessageLookupByLibrary.simpleMessage(
+      "طلب استبدال الإجازة",
+    ),
     "leaveRequest": MessageLookupByLibrary.simpleMessage("طلب إجازة"),
     "leaveType": MessageLookupByLibrary.simpleMessage("نوع الإجازة"),
     "leaves": MessageLookupByLibrary.simpleMessage("الإجازات"),
@@ -754,6 +762,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "المنتجات الاكثر مبيعا",
     ),
     "mostafa": MessageLookupByLibrary.simpleMessage("مصطفى زكريا"),
+    "myLeaves": MessageLookupByLibrary.simpleMessage("اجازاتي"),
     "myOrder": MessageLookupByLibrary.simpleMessage("طلبي"),
     "myOrders": MessageLookupByLibrary.simpleMessage("طلباتي"),
     "myStagnantCategories": MessageLookupByLibrary.simpleMessage(
@@ -923,6 +932,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "paymentMethod": MessageLookupByLibrary.simpleMessage("طريقة الدفع"),
     "pdfGuide": MessageLookupByLibrary.simpleMessage("دليل PDF"),
     "pending": MessageLookupByLibrary.simpleMessage("معلقة"),
+    "pendingLabel": MessageLookupByLibrary.simpleMessage("قيد المعالجة"),
     "pendingRequest": MessageLookupByLibrary.simpleMessage("طلب قيد الانتظار"),
     "perInfo": MessageLookupByLibrary.simpleMessage("معلومات شخصية"),
     "perform": MessageLookupByLibrary.simpleMessage("أداء السعي"),
@@ -941,6 +951,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "pleaseAddRate": MessageLookupByLibrary.simpleMessage("يرجى إضافة تقييم"),
     "pleaseChooseActivity": MessageLookupByLibrary.simpleMessage(
       "يرجى اختيار النشاط",
+    ),
+    "pleaseCompleteRequiredFields": MessageLookupByLibrary.simpleMessage(
+      "الرجاء إكمال جميع الحقول المطلوبة.",
     ),
     "pleaseEndterValue": MessageLookupByLibrary.simpleMessage(
       "لا يمكنك ترك هذا الحقل فارغ",
@@ -976,6 +989,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "priceBeforeOffer": MessageLookupByLibrary.simpleMessage("السعر قبل العرض"),
     "privacyPolicy": MessageLookupByLibrary.simpleMessage("سياسة الخصوصية"),
     "privateTasks": MessageLookupByLibrary.simpleMessage("المهام الخاصة"),
+    "privateTasksHint": MessageLookupByLibrary.simpleMessage("مهمة خاصة ..."),
     "processingType": MessageLookupByLibrary.simpleMessage(
       "نوع المعالجة: فوري / يتطلب موافقة",
     ),
@@ -1040,6 +1054,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "registration": MessageLookupByLibrary.simpleMessage("ادارة الحجوزات"),
     "rejectReasons": MessageLookupByLibrary.simpleMessage("أسباب الرفض"),
     "rejectRequest": MessageLookupByLibrary.simpleMessage("رفض الطلب"),
+    "rejectedLabel": MessageLookupByLibrary.simpleMessage("مرفوض"),
     "rejectedRequest": MessageLookupByLibrary.simpleMessage("طلب مرفوض"),
     "remainingLeaves": MessageLookupByLibrary.simpleMessage(
       "الإجازات المتبقية",
@@ -1058,6 +1073,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "بيانات مقدم الطلب",
     ),
     "requestData": MessageLookupByLibrary.simpleMessage("بيانات الطلب"),
+    "requestDate": MessageLookupByLibrary.simpleMessage("تاريخ الطلب"),
     "requestDetails": MessageLookupByLibrary.simpleMessage("بيانات الطلب"),
     "requestJustifications": MessageLookupByLibrary.simpleMessage(
       "مبررات الطلب",
@@ -1119,6 +1135,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "salaryTransferRequest": MessageLookupByLibrary.simpleMessage("طلب راتب"),
     "salaryTypeTarget": MessageLookupByLibrary.simpleMessage("نوع الراتب"),
     "saleTime": MessageLookupByLibrary.simpleMessage("هذا العرض ينتهي خلال "),
+    "sameDepartmentEmployeesNote": MessageLookupByLibrary.simpleMessage(
+      "* سيتم عرض موظفي نفس الإدارة الخاصة بالمستخدم الحالي فقط إذا كان نوع القسم \"نفس القسم\".",
+    ),
     "saudi": MessageLookupByLibrary.simpleMessage("سعودي"),
     "saudiArabia": MessageLookupByLibrary.simpleMessage("السعودية"),
     "saveAndPay": MessageLookupByLibrary.simpleMessage("حفظ والدفع"),
@@ -1148,6 +1167,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "selDep": MessageLookupByLibrary.simpleMessage("اختر القسم"),
     "selIssue": MessageLookupByLibrary.simpleMessage("اختر قسم المشكلة"),
     "selLig": MessageLookupByLibrary.simpleMessage("حدد الأمتعة"),
+    "select": MessageLookupByLibrary.simpleMessage("اختر"),
     "selectActivity": MessageLookupByLibrary.simpleMessage("اختر النشاط"),
     "selectAddress": MessageLookupByLibrary.simpleMessage(
       "الرجـاء أختيار عنوان أولا",
@@ -1192,6 +1212,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "selectDocumentType": MessageLookupByLibrary.simpleMessage("اختر النوع"),
     "selectEmployee": MessageLookupByLibrary.simpleMessage("اختر الموظف"),
+    "selectEmployeesToShowTasks": MessageLookupByLibrary.simpleMessage(
+      "اختر موظفين لعرض المهام الخاصة بهم.",
+    ),
     "selectGuarantor": MessageLookupByLibrary.simpleMessage("اختر الكفيل"),
     "selectInsuranceClass": MessageLookupByLibrary.simpleMessage(
       "اختر فئة التأمين",
@@ -1349,9 +1372,18 @@ class MessageLookup extends MessageLookupByLibrary {
       "اضغط لتحديد الأمتعة",
     ),
     "tabaq": MessageLookupByLibrary.simpleMessage("طبق"),
+    "takenLeavesLabel": MessageLookupByLibrary.simpleMessage(
+      "الاجازات التي تم اخذها",
+    ),
     "tapToRead": MessageLookupByLibrary.simpleMessage("اضغط للقراءة"),
     "taskType": MessageLookupByLibrary.simpleMessage("نوع المهمة"),
     "tasks": MessageLookupByLibrary.simpleMessage("المهام"),
+    "tasksHint": MessageLookupByLibrary.simpleMessage(
+      "المهام الموكلة لهذا الموظف...",
+    ),
+    "tasksPerEmployee": MessageLookupByLibrary.simpleMessage(
+      "المهام (لكل موظف)",
+    ),
     "tawafStart": MessageLookupByLibrary.simpleMessage(
       "سيبدأ نشاط الطواف بالكعبة خلال 30 دقيقة",
     ),
@@ -1407,6 +1439,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "totalOvertimeHours": MessageLookupByLibrary.simpleMessage(
       "إجمالي ساعات الوقت الإضافي",
+    ),
+    "totalRequestsLabel": MessageLookupByLibrary.simpleMessage(
+      "اجمالي الطلبات",
     ),
     "totalSalary": MessageLookupByLibrary.simpleMessage("إجمالي"),
     "totalWorkHours": MessageLookupByLibrary.simpleMessage(

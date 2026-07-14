@@ -64,9 +64,12 @@ class MyRequestsScreen extends StatelessWidget {
                     unselectedLabelColor: ColorRes.grey,
                     dividerColor: Colors.transparent,
                     tabs: tabs,
-                    labelStyle: Theme.of(context).textTheme.titleMedium?.copyWith(
-                        fontWeight: FontWeight.bold,
-                        fontSize: AppSizes.fontSizeMd * 0.7),
+                    labelStyle: Theme.of(context)
+                        .textTheme
+                        .titleMedium
+                        ?.copyWith(
+                            fontWeight: FontWeight.bold,
+                            fontSize: AppSizes.fontSizeMd * 0.7),
                   ),
                 ),
                 BlocBuilder<MyRequestsCubit, MyRequestsState>(
@@ -87,7 +90,8 @@ class MyRequestsScreen extends StatelessWidget {
                         children: [
                           Icon(
                             Icons.filter_list_alt,
-                            color: isFiltered ? ColorRes.primary : ColorRes.green,
+                            color:
+                                isFiltered ? ColorRes.primary : ColorRes.green,
                             size: AppSizes.iconLg,
                           ),
                           if (isFiltered)
@@ -100,7 +104,8 @@ class MyRequestsScreen extends StatelessWidget {
                                 decoration: BoxDecoration(
                                   color: ColorRes.primary,
                                   shape: BoxShape.circle,
-                                  border: Border.all(color: Colors.white, width: 1.5),
+                                  border: Border.all(
+                                      color: Colors.white, width: 1.5),
                                 ),
                               ),
                             ),

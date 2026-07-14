@@ -9,7 +9,6 @@ import '../../../domain/entity/attendance_record.dart';
 import '../../controller/attendance/attendance_cubit.dart';
 import 'attendance_dropdown_field.dart';
 import 'attendance_editable_field.dart';
-import 'attendance_editable_field.dart';
 import 'attendance_info_tile.dart';
 import '../../../../../../core/theme/theme.dart';
 

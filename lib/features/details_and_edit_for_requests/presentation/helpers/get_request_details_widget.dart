@@ -19,6 +19,7 @@ import '../widgets/scrap_request_details_widget.dart';
 import '../widgets/visa_request_details_widget.dart';
 import '../widgets/ticket_booking_details_widget.dart';
 import '../widgets/leave_interruption_details_widget.dart';
+import '../widgets/leave_replace_details_widget.dart';
 
 Widget getRequestDetailsWidget({required String serviceCode}) {
   switch (ServiceCode.fromCode(serviceCode)) {
@@ -58,6 +59,8 @@ Widget getRequestDetailsWidget({required String serviceCode}) {
       return const TicketBookingDetailsWidget();
     case ServiceCode.leaveInterruptionRequest:
       return const LeaveInterruptionDetailsWidget();
+    case ServiceCode.leaveReplace:
+      return const LeaveReplaceDetailsWidget();
     default:
       return const Sizer();
   }

@@ -7779,6 +7779,101 @@ class S {
     );
   }
 
+  /// `Leave Replacement Request`
+  String get leaveReplaceRequest {
+    return Intl.message(
+      'Leave Replacement Request',
+      name: 'leaveReplaceRequest',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Request Date`
+  String get requestDate {
+    return Intl.message(
+      'Request Date',
+      name: 'requestDate',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Exception Request`
+  String get exceptionRequest {
+    return Intl.message(
+      'Exception Request',
+      name: 'exceptionRequest',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Select`
+  String get select {
+    return Intl.message('Select', name: 'select', desc: '', args: []);
+  }
+
+  /// `Please complete all required fields.`
+  String get pleaseCompleteRequiredFields {
+    return Intl.message(
+      'Please complete all required fields.',
+      name: 'pleaseCompleteRequiredFields',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Tasks (per employee)`
+  String get tasksPerEmployee {
+    return Intl.message(
+      'Tasks (per employee)',
+      name: 'tasksPerEmployee',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Tasks assigned to this employee...`
+  String get tasksHint {
+    return Intl.message(
+      'Tasks assigned to this employee...',
+      name: 'tasksHint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Private task...`
+  String get privateTasksHint {
+    return Intl.message(
+      'Private task...',
+      name: 'privateTasksHint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Select employees to show their tasks.`
+  String get selectEmployeesToShowTasks {
+    return Intl.message(
+      'Select employees to show their tasks.',
+      name: 'selectEmployeesToShowTasks',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `* When the department type is "Same Department", only employees from the current user's department are shown.`
+  String get sameDepartmentEmployeesNote {
+    return Intl.message(
+      '* When the department type is "Same Department", only employees from the current user\'s department are shown.',
+      name: 'sameDepartmentEmployeesNote',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Type`
   String get interruptionType {
     return Intl.message('Type', name: 'interruptionType', desc: '', args: []);
@@ -7859,6 +7954,61 @@ class S {
     return Intl.message(
       'Explain in detail why the leave must be interrupted...',
       name: 'interruptionReasonHint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `My Leaves`
+  String get myLeaves {
+    return Intl.message('My Leaves', name: 'myLeaves', desc: '', args: []);
+  }
+
+  /// `Annual Leave Balance`
+  String get annualLeaveBalance {
+    return Intl.message(
+      'Annual Leave Balance',
+      name: 'annualLeaveBalance',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Total Requests`
+  String get totalRequestsLabel {
+    return Intl.message(
+      'Total Requests',
+      name: 'totalRequestsLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Taken Leaves`
+  String get takenLeavesLabel {
+    return Intl.message(
+      'Taken Leaves',
+      name: 'takenLeavesLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Approved`
+  String get approvedLabel {
+    return Intl.message('Approved', name: 'approvedLabel', desc: '', args: []);
+  }
+
+  /// `Rejected`
+  String get rejectedLabel {
+    return Intl.message('Rejected', name: 'rejectedLabel', desc: '', args: []);
+  }
+
+  /// `Under Processing`
+  String get pendingLabel {
+    return Intl.message(
+      'Under Processing',
+      name: 'pendingLabel',
       desc: '',
       args: [],
     );

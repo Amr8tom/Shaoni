@@ -10,6 +10,9 @@ import 'package:shaoni/features/leaves/domain/repository/repository.dart';
 import 'package:shaoni/features/leaves/domain/use_cases/leave_interruption/create_leave_interruption_use_case.dart';
 import 'package:shaoni/features/leaves/domain/use_cases/leave_interruption/search_employee_leaves_use_case.dart';
 import 'package:shaoni/features/leaves/domain/use_cases/leave_interruption/update_leave_interruption_use_case.dart';
+import 'package:shaoni/features/leaves/domain/entity/leave_replace/create_leave_replace_response.dart';
+import 'package:shaoni/features/leaves/domain/use_cases/leave_replace/create_leave_replace_use_case.dart';
+import 'package:shaoni/features/leaves/domain/use_cases/leave_replace/update_leave_replace_use_case.dart';
 
 class LeavesRepositoryImp implements LeavesRepository {
   final LeavesRemoteDataSources _remoteDataSources;
@@ -76,6 +79,32 @@ class LeavesRepositoryImp implements LeavesRepository {
     try {
       final result =
           await _remoteDataSources.updateLeaveInterruption(params: params);
+      return Right(result);
+    } on ServerFailure catch (e) {
+      return Left(ServerFailure(message: e.message));
+    }
+  }
+
+  @override
+  Future<Either<Failure, CreateLeaveReplaceResponse>> createLeaveReplace({
+    required CreateLeaveReplaceParams params,
+  }) async {
+    try {
+      final result =
+          await _remoteDataSources.createLeaveReplace(params: params);
+      return Right(result);
+    } on ServerFailure catch (e) {
+      return Left(ServerFailure(message: e.message));
+    }
+  }
+
+  @override
+  Future<Either<Failure, CreateLeaveReplaceResponse>> updateLeaveReplace({
+    required UpdateLeaveReplaceParams params,
+  }) async {
+    try {
+      final result =
+          await _remoteDataSources.updateLeaveReplace(params: params);
       return Right(result);
     } on ServerFailure catch (e) {
       return Left(ServerFailure(message: e.message));

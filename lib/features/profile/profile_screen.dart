@@ -18,7 +18,6 @@ class ProfileScreen extends StatelessWidget {
     final phoneController = TextEditingController(text: '010123456789');
     final emailController = TextEditingController(text: 'm.zakaria@ejad.sa');
     final passwordController = TextEditingController(text: '*************');
-
     return Scaffold(
       backgroundColor: ColorRes.scaffoldBG,
       appBar: DAppBar(
@@ -36,7 +35,6 @@ class ProfileScreen extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     const Sizer(height: 24),
-
                     // Avatar with edit badge (bottom-left, olive/gold color)
                     Center(
                       child: SizedBox(
@@ -236,7 +234,6 @@ class _ProfileFieldState extends State<ProfileField> {
               onTapOutside: (_) => setState(() => isEditing = false),
             ),
           ),
-
           // Trailing icon - RIGHT side
           if (widget.trailingIcon != null)
             Padding(

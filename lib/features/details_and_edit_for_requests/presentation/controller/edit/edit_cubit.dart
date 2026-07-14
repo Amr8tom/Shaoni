@@ -20,6 +20,7 @@ import 'package:shaoni/features/details_and_edit_for_requests/domain/use_cases/g
 import 'package:shaoni/features/details_and_edit_for_requests/domain/use_cases/get_visa_request_edit_use_case.dart';
 import 'package:shaoni/features/details_and_edit_for_requests/domain/use_cases/get_ticket_booking_edit_use_case.dart';
 import 'package:shaoni/features/details_and_edit_for_requests/domain/use_cases/get_leave_interruption_edit_use_case.dart';
+import 'package:shaoni/features/details_and_edit_for_requests/domain/use_cases/get_leave_replace_edit_use_case.dart';
 
 part 'edit_state.dart';
 
@@ -42,6 +43,7 @@ class EditCubit extends Cubit<EditState> {
   final GetVisaRequestEditUseCase _getVisaRequestEditUseCase;
   final GetTicketBookingEditUseCase _getTicketBookingEditUseCase;
   final GetLeaveInterruptionEditUseCase _getLeaveInterruptionEditUseCase;
+  final GetLeaveReplaceEditUseCase _getLeaveReplaceEditUseCase;
   final editNotesController = TextEditingController();
 
   EditCubit(
@@ -62,6 +64,7 @@ class EditCubit extends Cubit<EditState> {
     this._getVisaRequestEditUseCase,
     this._getTicketBookingEditUseCase,
     this._getLeaveInterruptionEditUseCase,
+    this._getLeaveReplaceEditUseCase,
   ) : super(const EditState());
 
   Future<void> editRequest({
@@ -120,8 +123,10 @@ class EditCubit extends Cubit<EditState> {
       case ServiceCode.leaveInterruptionRequest:
         await _getLeaveInterruptionEdit(requestId: requestId);
         break;
-      case ServiceCode.complaintRequest:
       case ServiceCode.leaveReplace:
+        await _getLeaveReplaceEdit(requestId: requestId);
+        break;
+      case ServiceCode.complaintRequest:
       case ServiceCode.leave:
       case null:
         emit(state.copyWith(
@@ -508,6 +513,29 @@ class EditCubit extends Cubit<EditState> {
     emit(state.copyWith(status: EditStatus.loading));
     final result = await _getLeaveInterruptionEditUseCase.call(
       params: GetLeaveInterruptionEditParams(
+        requestId: requestId,
+        editReasons: editNotesController.text,
+      ),
+    );
+    if (isClosed) return;
+    result.fold(
+      (failure) => emit(state.copyWith(
+        status: EditStatus.error,
+        errorMessage: failure.message,
+      )),
+      (response) => emit(state.copyWith(
+        status: EditStatus.editRequestLoaded,
+        editResponse: response,
+      )),
+    );
+  }
+
+  /// ── Leave Replace ─────────────────────────────────────────────────────────
+
+  Future<void> _getLeaveReplaceEdit({required int requestId}) async {
+    emit(state.copyWith(status: EditStatus.loading));
+    final result = await _getLeaveReplaceEditUseCase.call(
+      params: GetLeaveReplaceEditParams(
         requestId: requestId,
         editReasons: editNotesController.text,
       ),

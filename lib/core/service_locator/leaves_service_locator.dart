@@ -7,7 +7,10 @@ import 'package:shaoni/features/leaves/domain/use_cases/leave_interruption/get_i
 import 'package:shaoni/features/leaves/domain/use_cases/leave_interruption/get_leave_types_use_case.dart';
 import 'package:shaoni/features/leaves/domain/use_cases/leave_interruption/search_employee_leaves_use_case.dart';
 import 'package:shaoni/features/leaves/domain/use_cases/leave_interruption/update_leave_interruption_use_case.dart';
+import 'package:shaoni/features/leaves/domain/use_cases/leave_replace/create_leave_replace_use_case.dart';
+import 'package:shaoni/features/leaves/domain/use_cases/leave_replace/update_leave_replace_use_case.dart';
 import 'package:shaoni/features/leaves/presentation/controller/leave_interruption/leave_interruption_cubit.dart';
+import 'package:shaoni/features/leaves/presentation/controller/leave_replace/leave_replace_cubit.dart';
 
 class LeavesServiceLocator {
   static Future<void> execute({required GetIt serviceLocator}) async {
@@ -40,6 +43,23 @@ class LeavesServiceLocator {
     serviceLocator.registerFactory<LeaveInterruptionCubit>(
       () => LeaveInterruptionCubit(
         serviceLocator(),
+        serviceLocator(),
+        serviceLocator(),
+        serviceLocator(),
+        serviceLocator(),
+        serviceLocator(),
+      ),
+    );
+
+    /// ============================ leave replace ============================
+    serviceLocator.registerLazySingleton<CreateLeaveReplaceUseCase>(
+      () => CreateLeaveReplaceUseCase(serviceLocator()),
+    );
+    serviceLocator.registerLazySingleton<UpdateLeaveReplaceUseCase>(
+      () => UpdateLeaveReplaceUseCase(serviceLocator()),
+    );
+    serviceLocator.registerFactory<LeaveReplaceCubit>(
+      () => LeaveReplaceCubit(
         serviceLocator(),
         serviceLocator(),
         serviceLocator(),

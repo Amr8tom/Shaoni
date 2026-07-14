@@ -35,6 +35,7 @@ enum StorageKeys {
   myRequests,
   myRequestsByManager,
   myRequestsByKafeel,
+  annualLeaveBalance,
   email,
   userName,
   organizationName,

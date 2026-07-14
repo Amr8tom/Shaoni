@@ -22,9 +22,7 @@ class LeaveDateField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = TextEditingController(
-      text: date == null
-          ? ''
-          : DateFormat('dd/MM/yyyy', 'en').format(date!),
+      text: date == null ? '' : DateFormat('dd/MM/yyyy', 'en').format(date!),
     );
 
     return AuthTextField(

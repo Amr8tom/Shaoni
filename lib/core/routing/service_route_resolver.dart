@@ -65,10 +65,11 @@ class ServiceRouteResolver {
         return DRoutesName.createTicketBookingRoute;
       case ServiceCode.leaveInterruptionRequest:
         return DRoutesName.createLeaveInterruptionRoute;
+      case ServiceCode.leaveReplace:
+        return DRoutesName.createLeaveReplaceRoute;
 
       case ServiceCode.exitPermission:
       case ServiceCode.attendanceUpdate:
-      case ServiceCode.leaveReplace:
       case ServiceCode.leave:
       case null:
         return DRoutesName.noDataRoute;

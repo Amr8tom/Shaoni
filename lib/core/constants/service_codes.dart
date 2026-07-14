@@ -28,6 +28,7 @@ enum ServiceCode {
   /// matching enum value when the numeric code differs from the tech name.
   static const Map<String, ServiceCode> _numericAliases = {
     '2737': ServiceCode.loan,
+    '2717': ServiceCode.leaveReplace,
   };
 
   static ServiceCode? fromCode(String? value) {

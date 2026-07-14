@@ -5,12 +5,14 @@ final class HomeState extends Equatable {
   final UserEntity? user;
   final List<AllStatusCount>? allStatusCounts;
   final Map<String, String>? requestsStatus;
+  final AnnualLeaveBalance? annualLeaveBalance;
 
   const HomeState({
     this.status = GeneralStatus.initialized,
     this.requestsStatus,
     this.user,
     this.allStatusCounts,
+    this.annualLeaveBalance,
   });
 
   /// copyWith method
@@ -19,12 +21,14 @@ final class HomeState extends Equatable {
     UserEntity? user,
     List<AllStatusCount>? allStatusCounts,
     Map<String, String>? requestsStatus,
+    AnnualLeaveBalance? annualLeaveBalance,
   }) {
     return HomeState(
       status: status ?? this.status,
       user: user ?? this.user,
       allStatusCounts: allStatusCounts ?? this.allStatusCounts,
       requestsStatus: requestsStatus ?? this.requestsStatus,
+      annualLeaveBalance: annualLeaveBalance ?? this.annualLeaveBalance,
     );
   }
 
@@ -34,5 +38,6 @@ final class HomeState extends Equatable {
         requestsStatus,
         user,
         allStatusCounts,
+        annualLeaveBalance,
       ];
 }

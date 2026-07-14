@@ -16,6 +16,8 @@ import 'package:shaoni/features/details_and_edit_for_requests/data/models/scrap_
 import 'package:shaoni/features/details_and_edit_for_requests/data/models/visa_request_model.dart';
 import 'package:shaoni/features/details_and_edit_for_requests/data/models/ticket_booking_model.dart';
 import 'package:shaoni/features/details_and_edit_for_requests/data/models/leave_interruption_model.dart';
+import 'package:shaoni/features/details_and_edit_for_requests/data/models/leave_replace_model.dart';
+import 'package:shaoni/features/details_and_edit_for_requests/data/models/outside_working_details_model.dart';
 
 class ExtraDataModel extends ExtraData {
   const ExtraDataModel({
@@ -37,6 +39,7 @@ class ExtraDataModel extends ExtraData {
     super.scrapRequest,
     super.ticketBooking,
     super.leaveInterruption,
+    super.leaveReplace,
   });
 
   /// fromJson
@@ -59,6 +62,7 @@ class ExtraDataModel extends ExtraData {
     final visaRequestJson = _jsonMap(json['visaRequest']);
     final ticketBookingJson = _jsonMap(json['ticketBooking']);
     final leaveInterruptionJson = _jsonMap(json['leaveInterruption']);
+    final leaveReplaceJson = _jsonMap(json['leaveReplace']);
 
     return ExtraDataModel(
       attendance: attendanceJson != null
@@ -82,7 +86,10 @@ class ExtraDataModel extends ExtraData {
       productOrder: productOrderJson != null
           ? ProductOrderModel.fromJson(productOrderJson)
           : null,
-      outsideWorking: json['outsideWorking']?.toString(),
+      outsideWorking: _jsonMap(json['outsideWorking']) != null
+          ? OutsideWorkingDetailsModel.fromJson(
+              _jsonMap(json['outsideWorking'])!)
+          : null,
       visaRequest: visaRequestJson != null
           ? VisaRequestModel.fromJson(visaRequestJson)
           : null,
@@ -109,6 +116,9 @@ class ExtraDataModel extends ExtraData {
           : null,
       leaveInterruption: leaveInterruptionJson != null
           ? LeaveInterruptionModel.fromJson(leaveInterruptionJson)
+          : null,
+      leaveReplace: leaveReplaceJson != null
+          ? LeaveReplaceModel.fromJson(leaveReplaceJson)
           : null,
     );
   }
@@ -258,7 +268,10 @@ class ExtraDataModel extends ExtraData {
                   .map(ProductOrderLineItem.toJsonFromEntity)
                   .toList(),
             },
-      'outsideWorking': extraData.outsideWorking,
+      'outsideWorking': extraData.outsideWorking == null
+          ? null
+          : OutsideWorkingDetailsModel.toJsonFromEntity(
+              extraData.outsideWorking!),
       'visaRequest': extraData.visaRequest == null
           ? null
           : VisaRequestModel.toJsonFromEntity(extraData.visaRequest!),
@@ -300,6 +313,9 @@ class ExtraDataModel extends ExtraData {
           ? null
           : LeaveInterruptionModel.toJsonFromEntity(
               extraData.leaveInterruption!),
+      'leaveReplace': extraData.leaveReplace == null
+          ? null
+          : LeaveReplaceModel.toJsonFromEntity(extraData.leaveReplace!),
     };
   }
 }

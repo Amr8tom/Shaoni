@@ -27,6 +27,15 @@ class CreateOutsideWorkingForm extends StatelessWidget {
 
   bool get _isEditMode => requestId != null;
 
+  void _warn(BuildContext context, String message) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(message),
+        backgroundColor: ColorRes.error.withValues(alpha: 0.5),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -91,6 +100,7 @@ class CreateOutsideWorkingForm extends StatelessWidget {
 
                 return Form(
                   key: cubit.requestFormKey,
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
                   child: Padding(
                     padding: EdgeInsets.symmetric(
                         horizontal: AppSizes.padding * 1.5),
@@ -155,16 +165,14 @@ class CreateOutsideWorkingForm extends StatelessWidget {
                                 const Sizer(height: 35),
 
                                 /// ── tasks ───────────────────────
-                                if (cubit.selectedEmployees.isNotEmpty) ...[
-                                  Text(
-                                    '${S.current.tasks} (لكل موظف)',
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .headlineMedium,
-                                  ),
-                                  const Sizer(height: 12),
-                                  const OutsideWorkingTasksWidget(),
-                                ],
+                                Text(
+                                  S.current.tasksPerEmployee,
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .headlineMedium,
+                                ),
+                                const Sizer(height: 12),
+                                const OutsideWorkingTasksWidget(),
 
                                 const Sizer(height: 120),
                               ],
@@ -179,20 +187,24 @@ class CreateOutsideWorkingForm extends StatelessWidget {
                               : CreateDeleteButtons(
                                   deleteTab: () => cubit.resetForm(),
                                   createTab: () {
-                                    if (cubit.selectedEmployees.isEmpty) {
-                                      ScaffoldMessenger.of(context)
-                                          .showSnackBar(SnackBar(
-                                        content: Text(
-                                            S.current.selectAtLeastOneEmployee),
-                                        backgroundColor: ColorRes.error
-                                            .withValues(alpha: 0.5),
-                                      ));
+                                    if (state.selectedEmployees.isEmpty) {
+                                      _warn(context,
+                                          S.current.selectAtLeastOneEmployee);
                                       return;
                                     }
-                                    if (cubit.requestFormKey.currentState!
-                                        .validate()) {
-                                      cubit.createOutsideWorking();
+                                    final form =
+                                        cubit.requestFormKey.currentState;
+                                    if (form == null) return;
+                                    if (!form.validate()) {
+                                      // Without this the tap looks like a no-op
+                                      // when the failing field is scrolled away.
+                                      _warn(
+                                          context,
+                                          S.current
+                                              .pleaseCompleteRequiredFields);
+                                      return;
                                     }
+                                    cubit.createOutsideWorking();
                                   },
                                 ),
 

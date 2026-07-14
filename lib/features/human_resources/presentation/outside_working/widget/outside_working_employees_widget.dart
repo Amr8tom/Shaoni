@@ -6,90 +6,103 @@ import 'package:shaoni/features/human_resources/domain/entity/outside_working/ou
 import 'package:shaoni/features/human_resources/presentation/controller/outside_working/outside_working_cubit.dart';
 import 'package:shaoni/generated/l10n.dart';
 
-/// Searchable employee multi-select list (plain checkbox tiles)
+/// Searchable employee multi-select.
+///
+/// The list is scoped by the chosen department type: "same department" shows
+/// only the applicant's colleagues, any other type shows everyone.
 class OutsideWorkingEmployeesWidget extends StatelessWidget {
   const OutsideWorkingEmployeesWidget({super.key});
 
+  /// Keeps the box from growing to the full directory length.
+  static const double _listMaxHeight = 300;
+
   @override
   Widget build(BuildContext context) {
-    final cubit = context.watch<OutsideWorkingCubit>();
-    final employees = cubit.filteredEmployees;
+    final cubit = context.read<OutsideWorkingCubit>();
 
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: [
-        // ── Search label + field ──────────────────────────────────────────
-        Text(
-          S.current.searchEmployee,
-          style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                fontWeight: FontWeight.w500,
-              ),
-        ),
-        const Sizer(height: 8),
-        TextField(
-          decoration: InputDecoration(
-            hintText: '${S.current.searchEmployee}...',
-            filled: true,
-            fillColor: ColorRes.white,
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(10),
-              borderSide: BorderSide(color: ColorRes.greyShade300),
-            ),
-            enabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(10),
-              borderSide: BorderSide(color: ColorRes.greyShade300),
-            ),
-            contentPadding:
-                const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-          ),
-          onChanged: cubit.onEmployeeSearchChanged,
-        ),
-        const Sizer(height: 12),
+    return BlocBuilder<OutsideWorkingCubit, OutsideWorkingState>(
+      builder: (context, state) {
+        final employees = state.visibleEmployees;
 
-        // ── Employee checkbox list ────────────────────────────────────────
-        Container(
-          decoration: BoxDecoration(
-            color: ColorRes.white,
-            border: Border.all(color: Colors.grey.shade200),
-            borderRadius: BorderRadius.circular(10),
-          ),
-          child: employees.isEmpty
-              ? Padding(
-                  padding: const EdgeInsets.all(24),
-                  child: Center(
-                    child: Text(S.current.noEmployeesFound,
-                        style: Theme.of(context).textTheme.bodyMedium),
-                  ),
-                )
-              : ListView.separated(
-                  shrinkWrap: true,
-                  physics: const NeverScrollableScrollPhysics(),
-                  itemCount: employees.length,
-                  separatorBuilder: (_, __) =>
-                      Divider(height: 1, color: Colors.grey.shade200),
-                  itemBuilder: (context, index) {
-                    final employee = employees[index];
-                    final isSelected = cubit.isEmployeeSelected(employee);
-                    return _EmployeeCheckTile(
-                      employee: employee,
-                      isSelected: isSelected,
-                      onTap: () => cubit.toggleEmployee(employee),
-                    );
-                  },
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            // ── Search ────────────────────────────────────────────────────
+            Text(
+              S.current.searchEmployee,
+              style: Theme.of(context)
+                  .textTheme
+                  .bodyMedium
+                  ?.copyWith(fontWeight: FontWeight.w500),
+            ),
+            const Sizer(height: 8),
+            TextField(
+              decoration: InputDecoration(
+                hintText: '${S.current.searchEmployee}...',
+                filled: true,
+                fillColor: ColorRes.white,
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10),
+                  borderSide: BorderSide(color: ColorRes.greyShade300),
                 ),
-        ),
+                enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10),
+                  borderSide: BorderSide(color: ColorRes.greyShade300),
+                ),
+                contentPadding:
+                    const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+              ),
+              onChanged: cubit.onEmployeeSearchChanged,
+            ),
+            const Sizer(height: 12),
 
-        // ── Department note ───────────────────────────────────────────────
-        const Sizer(height: 8),
-        Text(
-          '* الخاصة بالمستخدم الحالي فقط Department إذا كان نوع القسم "نفس القسم" سيتم عرض موظفي نفس.',
-          textDirection: TextDirection.rtl,
-          style: Theme.of(context)
-              .textTheme
-              .bodySmall
-              ?.copyWith(color: Colors.grey.shade600),
-        ),
-      ],
+            // ── Employee checkbox list ────────────────────────────────────
+            Container(
+              constraints: const BoxConstraints(maxHeight: _listMaxHeight),
+              decoration: BoxDecoration(
+                color: ColorRes.white,
+                border: Border.all(color: ColorRes.greyShade300),
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: employees.isEmpty
+                  ? Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 20),
+                      child: Center(
+                        child: Text(
+                          S.current.noEmployeesFound,
+                          style: Theme.of(context).textTheme.bodyMedium,
+                        ),
+                      ),
+                    )
+                  : ListView.separated(
+                      shrinkWrap: true,
+                      padding: EdgeInsets.zero,
+                      itemCount: employees.length,
+                      separatorBuilder: (_, __) =>
+                          Divider(height: 1, color: ColorRes.greyShade300),
+                      itemBuilder: (context, index) {
+                        final employee = employees[index];
+                        return _EmployeeCheckTile(
+                          employee: employee,
+                          isSelected: state.isEmployeeSelected(employee),
+                          onTap: () => cubit.toggleEmployee(employee),
+                        );
+                      },
+                    ),
+            ),
+
+            // ── Department scoping note ───────────────────────────────────
+            const Sizer(height: 8),
+            Text(
+              S.current.sameDepartmentEmployeesNote,
+              style: Theme.of(context)
+                  .textTheme
+                  .bodySmall
+                  ?.copyWith(color: ColorRes.grey2),
+            ),
+          ],
+        );
+      },
     );
   }
 }
@@ -107,6 +120,10 @@ class _EmployeeCheckTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final label = employee.jobTitle.isEmpty
+        ? employee.name
+        : '${employee.name} - ${employee.jobTitle}';
+
     return InkWell(
       onTap: onTap,
       child: Padding(
@@ -130,9 +147,8 @@ class _EmployeeCheckTile extends StatelessWidget {
             const Sizer(width: 12),
             Expanded(
               child: Text(
-                employee.name,
+                label,
                 style: Theme.of(context).textTheme.bodyMedium,
-                textDirection: TextDirection.rtl,
               ),
             ),
           ],

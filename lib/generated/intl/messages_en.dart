@@ -83,10 +83,14 @@ class MessageLookup extends MessageLookupByLibrary {
     "angleDevice": MessageLookupByLibrary.simpleMessage("Device Angle"),
     "angleQibla": MessageLookupByLibrary.simpleMessage("Qibla Angle"),
     "announcement": MessageLookupByLibrary.simpleMessage("Announcement"),
+    "annualLeaveBalance": MessageLookupByLibrary.simpleMessage(
+      "Annual Leave Balance",
+    ),
     "appLanguage": MessageLookupByLibrary.simpleMessage("App Language"),
     "appName": MessageLookupByLibrary.simpleMessage("teaa"),
     "appTitle": MessageLookupByLibrary.simpleMessage("Teaa Client"),
     "applicantName": MessageLookupByLibrary.simpleMessage("Applicant"),
+    "approvedLabel": MessageLookupByLibrary.simpleMessage("Approved"),
     "approvedRequest": MessageLookupByLibrary.simpleMessage("Approved Request"),
     "arabic": MessageLookupByLibrary.simpleMessage("Arabic"),
     "arrDate": MessageLookupByLibrary.simpleMessage("Arrival Date"),
@@ -447,6 +451,9 @@ class MessageLookup extends MessageLookupByLibrary {
       "evening shift Number",
     ),
     "excellent": MessageLookupByLibrary.simpleMessage("Excellent"),
+    "exceptionRequest": MessageLookupByLibrary.simpleMessage(
+      "Exception Request",
+    ),
     "exitApp": MessageLookupByLibrary.simpleMessage("Exit App"),
     "exitPermissionDescription": MessageLookupByLibrary.simpleMessage(
       "Exit permission is used when an employee needs to be outside the workplace during official working hours.",
@@ -694,6 +701,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "leaveInterruptionRequest": MessageLookupByLibrary.simpleMessage(
       "Leave Interruption Request",
     ),
+    "leaveReplaceRequest": MessageLookupByLibrary.simpleMessage(
+      "Leave Replacement Request",
+    ),
     "leaveRequest": MessageLookupByLibrary.simpleMessage("Leave Request"),
     "leaveType": MessageLookupByLibrary.simpleMessage("Leave Type"),
     "leaves": MessageLookupByLibrary.simpleMessage("Leaves"),
@@ -796,6 +806,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "mostSoldItmes": MessageLookupByLibrary.simpleMessage("Most Sold Items"),
     "mostafa": MessageLookupByLibrary.simpleMessage("Mostafa Zakaria"),
+    "myLeaves": MessageLookupByLibrary.simpleMessage("My Leaves"),
     "myOrder": MessageLookupByLibrary.simpleMessage("My Order"),
     "myOrders": MessageLookupByLibrary.simpleMessage("Orders"),
     "myStagnantCategories": MessageLookupByLibrary.simpleMessage(
@@ -967,6 +978,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "paymentMethod": MessageLookupByLibrary.simpleMessage("Payment Method"),
     "pdfGuide": MessageLookupByLibrary.simpleMessage("PDF Guide"),
     "pending": MessageLookupByLibrary.simpleMessage("Pending"),
+    "pendingLabel": MessageLookupByLibrary.simpleMessage("Under Processing"),
     "pendingRequest": MessageLookupByLibrary.simpleMessage("Pending Request"),
     "perInfo": MessageLookupByLibrary.simpleMessage("Personal Information"),
     "perform": MessageLookupByLibrary.simpleMessage("Perform SA\'I"),
@@ -989,6 +1001,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "pleaseAddRate": MessageLookupByLibrary.simpleMessage("please add rate"),
     "pleaseChooseActivity": MessageLookupByLibrary.simpleMessage(
       "please choose activity",
+    ),
+    "pleaseCompleteRequiredFields": MessageLookupByLibrary.simpleMessage(
+      "Please complete all required fields.",
     ),
     "pleaseEndterValue": MessageLookupByLibrary.simpleMessage(
       "please dont let this filed null",
@@ -1030,6 +1045,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "privacyPolicy": MessageLookupByLibrary.simpleMessage("Privacy Policy"),
     "privateTasks": MessageLookupByLibrary.simpleMessage("Private Tasks"),
+    "privateTasksHint": MessageLookupByLibrary.simpleMessage("Private task..."),
     "processingType": MessageLookupByLibrary.simpleMessage(
       "Processing Type: Immediate / Requires Approval",
     ),
@@ -1099,6 +1115,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "rejectReasons": MessageLookupByLibrary.simpleMessage("Rejection Reasons"),
     "rejectRequest": MessageLookupByLibrary.simpleMessage("Reject Request"),
+    "rejectedLabel": MessageLookupByLibrary.simpleMessage("Rejected"),
     "rejectedRequest": MessageLookupByLibrary.simpleMessage("Rejected Request"),
     "remainingLeaves": MessageLookupByLibrary.simpleMessage("Remaining Leaves"),
     "rememberMe": MessageLookupByLibrary.simpleMessage("Remember Me"),
@@ -1117,6 +1134,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Request applicant Data",
     ),
     "requestData": MessageLookupByLibrary.simpleMessage("Request Data"),
+    "requestDate": MessageLookupByLibrary.simpleMessage("Request Date"),
     "requestDetails": MessageLookupByLibrary.simpleMessage("Request Details"),
     "requestJustifications": MessageLookupByLibrary.simpleMessage(
       "Request Justifications",
@@ -1182,6 +1200,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "salaryTypeTarget": MessageLookupByLibrary.simpleMessage("Salary Type"),
     "saleTime": MessageLookupByLibrary.simpleMessage("The Sale Time ends in"),
+    "sameDepartmentEmployeesNote": MessageLookupByLibrary.simpleMessage(
+      "* When the department type is \"Same Department\", only employees from the current user\'s department are shown.",
+    ),
     "saudi": MessageLookupByLibrary.simpleMessage("Saudi"),
     "saudiArabia": MessageLookupByLibrary.simpleMessage("saudiArabia"),
     "saveAndPay": MessageLookupByLibrary.simpleMessage("Save and Pay"),
@@ -1211,6 +1232,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "selDep": MessageLookupByLibrary.simpleMessage("Select Department"),
     "selIssue": MessageLookupByLibrary.simpleMessage("select issue department"),
     "selLig": MessageLookupByLibrary.simpleMessage("Select Luggage"),
+    "select": MessageLookupByLibrary.simpleMessage("Select"),
     "selectActivity": MessageLookupByLibrary.simpleMessage("Select Activity"),
     "selectAddress": MessageLookupByLibrary.simpleMessage(
       "Please Select Address first",
@@ -1257,6 +1279,9 @@ class MessageLookup extends MessageLookupByLibrary {
       "Select document type",
     ),
     "selectEmployee": MessageLookupByLibrary.simpleMessage("Select Employee"),
+    "selectEmployeesToShowTasks": MessageLookupByLibrary.simpleMessage(
+      "Select employees to show their tasks.",
+    ),
     "selectGuarantor": MessageLookupByLibrary.simpleMessage("Select Guarantor"),
     "selectInsuranceClass": MessageLookupByLibrary.simpleMessage(
       "Select insurance class",
@@ -1439,9 +1464,16 @@ class MessageLookup extends MessageLookupByLibrary {
       "Tap to select luggage",
     ),
     "tabaq": MessageLookupByLibrary.simpleMessage("Matched"),
+    "takenLeavesLabel": MessageLookupByLibrary.simpleMessage("Taken Leaves"),
     "tapToRead": MessageLookupByLibrary.simpleMessage("Tap to read"),
     "taskType": MessageLookupByLibrary.simpleMessage("Task Type"),
     "tasks": MessageLookupByLibrary.simpleMessage("Tasks"),
+    "tasksHint": MessageLookupByLibrary.simpleMessage(
+      "Tasks assigned to this employee...",
+    ),
+    "tasksPerEmployee": MessageLookupByLibrary.simpleMessage(
+      "Tasks (per employee)",
+    ),
     "tawafStart": MessageLookupByLibrary.simpleMessage(
       "Kaaba Tawaf activity will start within 30 minutes",
     ),
@@ -1493,6 +1525,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "totalLateHours": MessageLookupByLibrary.simpleMessage("Total Late Hours"),
     "totalOvertimeHours": MessageLookupByLibrary.simpleMessage(
       "Total Overtime Hours",
+    ),
+    "totalRequestsLabel": MessageLookupByLibrary.simpleMessage(
+      "Total Requests",
     ),
     "totalSalary": MessageLookupByLibrary.simpleMessage("Total"),
     "totalWorkHours": MessageLookupByLibrary.simpleMessage("Total Work Hours"),

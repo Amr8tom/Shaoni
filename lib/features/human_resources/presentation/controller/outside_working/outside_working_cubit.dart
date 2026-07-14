@@ -4,19 +4,21 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 import 'package:shaoni/core/local_storage/session_storage/session_storage.dart';
 import 'package:shaoni/core/utils/usecases/base_usecase.dart';
+import 'package:shaoni/features/human_resources/domain/entity/outside_working/attendance_way.dart';
+import 'package:shaoni/features/human_resources/domain/entity/outside_working/department_type_lookup.dart';
 import 'package:shaoni/features/human_resources/domain/entity/outside_working/outside_working_employee.dart';
 import 'package:shaoni/features/human_resources/domain/entity/outside_working/outside_working_project.dart';
+import 'package:shaoni/features/human_resources/domain/entity/outside_working/project_type_lookup.dart';
 import 'package:shaoni/features/human_resources/domain/use_cases/outside_working/get_attendance_way_use_case.dart';
 import 'package:shaoni/features/human_resources/domain/use_cases/outside_working/get_department_type_lookup_use_case.dart';
 import 'package:shaoni/features/human_resources/domain/use_cases/outside_working/get_project_type_lookup_use_case.dart';
 import 'package:shaoni/features/human_resources/domain/use_cases/outside_working/get_outside_working_employees_use_case.dart';
 import 'package:shaoni/features/human_resources/domain/use_cases/outside_working/get_outside_working_projects_use_case.dart';
 import 'package:shaoni/features/human_resources/domain/use_cases/outside_working/create_outside_working_use_case.dart';
-import 'package:shaoni/generated/l10n.dart';
 
 part 'outside_working_state.dart';
 
-/// Per-employee mutable task data.
+/// Per-employee task inputs. Controllers must live in the cubit, not in state.
 class EmployeeTaskData {
   final TextEditingController tasksController = TextEditingController();
   final TextEditingController privateTasksController = TextEditingController();
@@ -38,48 +40,13 @@ class OutsideWorkingCubit extends Cubit<OutsideWorkingState> {
   final CreateOutsideWorkingUseCase _createOutsideWorkingUseCase;
   final SessionStorage _sessionStorage;
 
-  /// Form key
   final requestFormKey = GlobalKey<FormState>();
 
-  // ── Header controllers ────────────────────────────────────────────────────
+  // ── Controllers ───────────────────────────────────────────────────────────
   final officeIdController = TextEditingController();
-  final applicantNameController = TextEditingController();
   final orderReasonController = TextEditingController();
-
-  // ── Date controllers ──────────────────────────────────────────────────────
   final startDateController = TextEditingController();
   final endDateController = TextEditingController();
-
-  // ── Dropdown controllers (store nameEn code for payload) ──────────────────
-  final departmentTypeController = TextEditingController();
-  final projectTypeController = TextEditingController();
-  final attendanceWayController = TextEditingController();
-
-  // ── Project name display controller ──────────────────────────────────────
-  final projectNameController = TextEditingController();
-
-  // ── Lookup data ───────────────────────────────────────────────────────────
-  List<OutsideWorkingEmployee> _employees = [];
-  List<OutsideWorkingProject> _projects = [];
-
-  // ── Selected codes / ids ──────────────────────────────────────────────────
-  String? _selectedDepartmentTypeCode;
-  String? _selectedProjectTypeCode;
-  String? _selectedAttendanceWayCode;
-  List<int> _selectedProjectIds = [];
-
-  /// Used as the dropdown value for project name (id string); controller holds display name.
-  String? selectedProjectId;
-
-  // ── Dropdown items ────────────────────────────────────────────────────────
-  List<DropdownMenuItem<String>> departmentTypeItems = [];
-  List<DropdownMenuItem<String>> projectTypeItems = [];
-  List<DropdownMenuItem<String>> attendanceWayItems = [];
-  List<DropdownMenuItem<String>> projectNameItems = [];
-
-  // ── Employee multi-select ─────────────────────────────────────────────────
-  List<OutsideWorkingEmployee> selectedEmployees = [];
-  String employeeSearchQuery = '';
 
   /// Per-employee task data keyed by employee id.
   final Map<int, EmployeeTaskData> employeeTaskData = {};
@@ -96,18 +63,6 @@ class OutsideWorkingCubit extends Cubit<OutsideWorkingState> {
     _loadLookups();
   }
 
-  // ── Computed getters ──────────────────────────────────────────────────────
-
-  bool get showProjectName => _selectedProjectTypeCode != 'general';
-
-  List<OutsideWorkingEmployee> get filteredEmployees {
-    if (employeeSearchQuery.isEmpty) return _employees;
-    return _employees
-        .where((e) =>
-            e.name.toLowerCase().contains(employeeSearchQuery.toLowerCase()))
-        .toList();
-  }
-
   // ── Lookups ───────────────────────────────────────────────────────────────
 
   Future<void> _loadLookups() async {
@@ -117,7 +72,9 @@ class OutsideWorkingCubit extends Cubit<OutsideWorkingState> {
     await _fetchProjectTypes();
     await _fetchEmployees();
     if (isClosed) return;
-    emit(state.copyWith(status: OutsideWorkingStatus.lookupsLoaded));
+    if (state.status != OutsideWorkingStatus.lookupsError) {
+      emit(state.copyWith(status: OutsideWorkingStatus.lookupsLoaded));
+    }
   }
 
   Future<void> _fetchAttendanceWays() async {
@@ -128,15 +85,7 @@ class OutsideWorkingCubit extends Cubit<OutsideWorkingState> {
         status: OutsideWorkingStatus.lookupsError,
         errorMessage: failure.message,
       )),
-      (ways) {
-        attendanceWayItems = ways
-            .map((w) => DropdownMenuItem<String>(
-                  value: w.nameEn,
-                  child: Text(_localizedName(w.nameAr, w.nameEn),
-                      style: const TextStyle(fontSize: 12)),
-                ))
-            .toList();
-      },
+      (ways) => emit(state.copyWith(attendanceWays: ways)),
     );
   }
 
@@ -149,15 +98,7 @@ class OutsideWorkingCubit extends Cubit<OutsideWorkingState> {
         status: OutsideWorkingStatus.lookupsError,
         errorMessage: failure.message,
       )),
-      (types) {
-        departmentTypeItems = types
-            .map((t) => DropdownMenuItem<String>(
-                  value: t.nameEn,
-                  child: Text(_localizedName(t.nameAr, t.nameEn),
-                      style: const TextStyle(fontSize: 12)),
-                ))
-            .toList();
-      },
+      (types) => emit(state.copyWith(departmentTypes: types)),
     );
   }
 
@@ -169,15 +110,7 @@ class OutsideWorkingCubit extends Cubit<OutsideWorkingState> {
         status: OutsideWorkingStatus.lookupsError,
         errorMessage: failure.message,
       )),
-      (types) {
-        projectTypeItems = types
-            .map((t) => DropdownMenuItem<String>(
-                  value: t.nameEn,
-                  child: Text(_localizedName(t.nameAr, t.nameEn),
-                      style: const TextStyle(fontSize: 12)),
-                ))
-            .toList();
-      },
+      (types) => emit(state.copyWith(projectTypes: types)),
     );
   }
 
@@ -190,122 +123,135 @@ class OutsideWorkingCubit extends Cubit<OutsideWorkingState> {
         status: OutsideWorkingStatus.lookupsError,
         errorMessage: failure.message,
       )),
-      (employees) {
-        _employees = employees;
-        notifyDropdownChanged();
-      },
+      (employees) => emit(state.copyWith(
+        employees: employees,
+        currentUserDepartmentId: _resolveCurrentUserDepartment(employees),
+      )),
     );
   }
 
   Future<void> _fetchProjects() async {
+    emit(state.copyWith(projectsLoading: true));
     final result =
         await _getOutsideWorkingProjectsUseCase.call(params: NoParams());
     if (isClosed) return;
     result.fold(
-      (failure) => null,
-      (projects) {
-        _projects = projects;
-        projectNameItems = projects
-            .map((p) => DropdownMenuItem<String>(
-                  value: p.id.toString(),
-                  child: Text(p.name, style: const TextStyle(fontSize: 12)),
-                ))
-            .toList();
-        notifyDropdownChanged();
-      },
+      (failure) => emit(state.copyWith(
+        projectsLoading: false,
+        status: OutsideWorkingStatus.lookupsError,
+        errorMessage: failure.message,
+      )),
+      (projects) => emit(state.copyWith(
+        projectsLoading: false,
+        projects: projects,
+      )),
     );
+  }
+
+  /// The session only stores the employee id, so the applicant's department is
+  /// resolved by finding them in the employee directory.
+  int? _resolveCurrentUserDepartment(List<OutsideWorkingEmployee> employees) {
+    final employeeId = int.tryParse(_sessionStorage.employeeId ?? '');
+    if (employeeId == null) return null;
+    for (final employee in employees) {
+      if (employee.id == employeeId) return employee.departmentId;
+    }
+    return null;
   }
 
   // ── Selection handlers ────────────────────────────────────────────────────
 
+  /// Switching the department type changes which employees are eligible, so any
+  /// previous picks (and their task inputs) are dropped.
   void onDepartmentTypeSelected(String? value) {
-    _selectedDepartmentTypeCode = value;
-    departmentTypeController.text = value ?? '';
-    notifyDropdownChanged();
+    if (value == null) return;
+    _disposeTaskData();
+    emit(state.copyWith(
+      departmentTypeCode: value,
+      selectedEmployees: const [],
+      employeeSearchQuery: '',
+    ));
   }
 
   void onProjectTypeSelected(String? value) {
-    _selectedProjectTypeCode = value;
-    projectTypeController.text = value ?? '';
-    if (value != 'general' && _projects.isEmpty) {
+    if (value == null) return;
+    emit(state.copyWith(
+      projectTypeCode: value,
+      clearSelectedProject: true,
+    ));
+    if (value != kGeneralProject && state.projects.isEmpty) {
       _fetchProjects();
     }
-    projectNameController.clear();
-    _selectedProjectIds = [];
-    selectedProjectId = null;
-    notifyDropdownChanged();
   }
 
   void onProjectNameSelected(String? value) {
-    if (value == null) return;
-    final id = int.tryParse(value);
-    if (id != null) {
-      _selectedProjectIds = [id];
-      selectedProjectId = value;
-      final project = _projects.firstWhere((p) => p.id == id,
-          orElse: () => OutsideWorkingProject(id: id, name: value));
-      projectNameController.text = project.name;
-    }
-    notifyDropdownChanged();
+    final id = int.tryParse(value ?? '');
+    if (id == null) return;
+    emit(state.copyWith(selectedProjectId: id));
   }
 
   void onAttendanceWaySelected(String? value) {
-    _selectedAttendanceWayCode = value;
-    attendanceWayController.text = value ?? '';
-    notifyDropdownChanged();
+    if (value == null) return;
+    emit(state.copyWith(attendanceWayCode: value));
+  }
+
+  void setIncludeWeekend(bool value) {
+    emit(state.copyWith(includeWeekend: value));
   }
 
   // ── Employee multi-select ─────────────────────────────────────────────────
 
   void toggleEmployee(OutsideWorkingEmployee employee) {
-    if (selectedEmployees.any((e) => e.id == employee.id)) {
-      selectedEmployees =
-          selectedEmployees.where((e) => e.id != employee.id).toList();
-      // dispose and remove task data
+    final isSelected = state.isEmployeeSelected(employee);
+
+    if (isSelected) {
       employeeTaskData[employee.id]?.dispose();
       employeeTaskData.remove(employee.id);
+      emit(state.copyWith(
+        selectedEmployees:
+            state.selectedEmployees.where((e) => e.id != employee.id).toList(),
+      ));
     } else {
-      selectedEmployees = [...selectedEmployees, employee];
-      // create fresh task data for this employee
-      employeeTaskData[employee.id] = EmployeeTaskData();
+      // Each line inherits the request-level weekend choice by default.
+      employeeTaskData[employee.id] = EmployeeTaskData()
+        ..includeWeekend = state.includeWeekend;
+      emit(state.copyWith(
+        selectedEmployees: [...state.selectedEmployees, employee],
+      ));
     }
-    emit(state.copyWith(version: state.version + 1));
   }
 
-  bool isEmployeeSelected(OutsideWorkingEmployee employee) =>
-      selectedEmployees.any((e) => e.id == employee.id);
-
   void onEmployeeSearchChanged(String query) {
-    employeeSearchQuery = query;
-    emit(state.copyWith(version: state.version + 1));
+    emit(state.copyWith(employeeSearchQuery: query));
   }
 
   // ── Per-employee task setters ─────────────────────────────────────────────
 
-  void setIncludeWeekend(int employeeId, bool value) {
+  void setEmployeeIncludeWeekend(int employeeId, bool value) {
     employeeTaskData[employeeId]?.includeWeekend = value;
-    emit(state.copyWith(version: state.version + 1));
+    _bumpTaskData();
   }
 
   void setExceptionRequest(int employeeId, bool value) {
     employeeTaskData[employeeId]?.exceptionRequest = value;
-    emit(state.copyWith(version: state.version + 1));
+    _bumpTaskData();
   }
 
-  void notifyDropdownChanged() {
-    emit(state.copyWith(version: state.version + 1));
-  }
+  void _bumpTaskData() =>
+      emit(state.copyWith(taskDataVersion: state.taskDataVersion + 1));
 
   // ── Create ────────────────────────────────────────────────────────────────
 
   Future<void> createOutsideWorking() async {
     emit(state.copyWith(status: OutsideWorkingStatus.createLoading));
 
-    final lines = selectedEmployees.map((e) {
+    final includeWeekend = state.includeWeekend;
+
+    final lines = state.selectedEmployees.map((e) {
       final data = employeeTaskData[e.id];
       return OutWorkingLine(
         employee: e.id,
-        includeWeekend: data?.includeWeekend ?? false,
+        includeWeekend: data?.includeWeekend ?? includeWeekend,
         exceptionRequest: data?.exceptionRequest ?? false,
         tasks: data?.tasksController.text.trim() ?? '',
         privateTasks: data?.privateTasksController.text.trim() ?? '',
@@ -317,15 +263,16 @@ class OutsideWorkingCubit extends Cubit<OutsideWorkingState> {
       officeId: int.tryParse(officeIdController.text) ?? 0,
       date: DateFormat('yyyy-MM-dd', 'en').format(DateTime.now()),
       orderReason: orderReasonController.text.trim(),
-      departmentType: _selectedDepartmentTypeCode ?? '',
-      projectType: _selectedProjectTypeCode ?? '',
-      projectName:
-          _selectedProjectTypeCode == 'general' ? [] : _selectedProjectIds,
-      employeeIds: selectedEmployees.map((e) => e.id).toList(),
+      departmentType: state.departmentTypeCode ?? '',
+      projectType: state.projectTypeCode ?? '',
+      projectName: state.showProjectName && state.selectedProjectId != null
+          ? [state.selectedProjectId!]
+          : const [],
+      employeeIds: state.selectedEmployees.map((e) => e.id).toList(),
       startDate: startDateController.text.trim(),
       endDate: endDateController.text.trim(),
-      includeWeekend: lines.any((l) => l.includeWeekend),
-      attendanceWay: _selectedAttendanceWayCode ?? '',
+      includeWeekend: includeWeekend,
+      attendanceWay: state.attendanceWayCode ?? '',
       outWorkingLines: lines,
     );
 
@@ -347,53 +294,36 @@ class OutsideWorkingCubit extends Cubit<OutsideWorkingState> {
 
   void resetForm() {
     officeIdController.clear();
-    applicantNameController.clear();
     orderReasonController.clear();
     startDateController.clear();
     endDateController.clear();
-    departmentTypeController.clear();
-    projectTypeController.clear();
-    attendanceWayController.clear();
-    projectNameController.clear();
-    _selectedDepartmentTypeCode = null;
-    _selectedProjectTypeCode = null;
-    _selectedAttendanceWayCode = null;
-    _selectedProjectIds = [];
-    selectedProjectId = null;
-    // dispose all per-employee data
+    _disposeTaskData();
+
+    emit(OutsideWorkingState(
+      status: OutsideWorkingStatus.lookupsLoaded,
+      departmentTypes: state.departmentTypes,
+      projectTypes: state.projectTypes,
+      attendanceWays: state.attendanceWays,
+      projects: state.projects,
+      employees: state.employees,
+      currentUserDepartmentId: state.currentUserDepartmentId,
+    ));
+  }
+
+  void _disposeTaskData() {
     for (final data in employeeTaskData.values) {
       data.dispose();
     }
     employeeTaskData.clear();
-    selectedEmployees = [];
-    employeeSearchQuery = '';
-    emit(state.copyWith(
-        status: OutsideWorkingStatus.lookupsLoaded,
-        version: state.version + 1));
-  }
-
-  // ── Helpers ───────────────────────────────────────────────────────────────
-
-  String _localizedName(String ar, String en) {
-    return S.current.localeee == 'en'
-        ? (en.isEmpty ? ar : en)
-        : (ar.isEmpty ? en : ar);
   }
 
   @override
   Future<void> close() {
     officeIdController.dispose();
-    applicantNameController.dispose();
     orderReasonController.dispose();
     startDateController.dispose();
     endDateController.dispose();
-    departmentTypeController.dispose();
-    projectTypeController.dispose();
-    attendanceWayController.dispose();
-    projectNameController.dispose();
-    for (final data in employeeTaskData.values) {
-      data.dispose();
-    }
+    _disposeTaskData();
     return super.close();
   }
 }

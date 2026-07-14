@@ -11,6 +11,9 @@ import 'package:shaoni/features/leaves/data/model/leave_interruption/leave_type_
 import 'package:shaoni/features/leaves/domain/use_cases/leave_interruption/create_leave_interruption_use_case.dart';
 import 'package:shaoni/features/leaves/domain/use_cases/leave_interruption/search_employee_leaves_use_case.dart';
 import 'package:shaoni/features/leaves/domain/use_cases/leave_interruption/update_leave_interruption_use_case.dart';
+import 'package:shaoni/features/leaves/data/model/leave_replace/create_leave_replace_response_model.dart';
+import 'package:shaoni/features/leaves/domain/use_cases/leave_replace/create_leave_replace_use_case.dart';
+import 'package:shaoni/features/leaves/domain/use_cases/leave_replace/update_leave_replace_use_case.dart';
 
 abstract class LeavesRemoteDataSources {
   /// ============================= leave interruption =============================
@@ -29,6 +32,15 @@ abstract class LeavesRemoteDataSources {
 
   Future<CreateLeaveInterruptionResponseModel> updateLeaveInterruption({
     required UpdateLeaveInterruptionParams params,
+  });
+
+  /// ============================= leave replace =============================
+  Future<CreateLeaveReplaceResponseModel> createLeaveReplace({
+    required CreateLeaveReplaceParams params,
+  });
+
+  Future<CreateLeaveReplaceResponseModel> updateLeaveReplace({
+    required UpdateLeaveReplaceParams params,
   });
 }
 
@@ -126,6 +138,39 @@ class LeavesRemoteDataSourcesImp implements LeavesRemoteDataSources {
         body: params.data.toMap(),
       );
       return CreateLeaveInterruptionResponseModel.fromJson(
+          _decode(response.data) as Map<String, dynamic>);
+    } on ServerFailure catch (e) {
+      throw ServerFailure(message: e.message);
+    }
+  }
+
+  @override
+  Future<CreateLeaveReplaceResponseModel> createLeaveReplace({
+    required CreateLeaveReplaceParams params,
+  }) async {
+    try {
+      final response = await _dio.postData(
+        url: URL.createLeaveReplace,
+        body: params.toMap(),
+      );
+      if (response == null) throw ServerFailure(message: 'server failure');
+      return CreateLeaveReplaceResponseModel.fromJson(
+          _decode(response) as Map<String, dynamic>);
+    } on ServerFailure catch (e) {
+      throw ServerFailure(message: e.message);
+    }
+  }
+
+  @override
+  Future<CreateLeaveReplaceResponseModel> updateLeaveReplace({
+    required UpdateLeaveReplaceParams params,
+  }) async {
+    try {
+      final response = await _dio.putData(
+        url: '${URL.updateLeaveReplace}${params.requestId}',
+        body: params.toMap(),
+      );
+      return CreateLeaveReplaceResponseModel.fromJson(
           _decode(response.data) as Map<String, dynamic>);
     } on ServerFailure catch (e) {
       throw ServerFailure(message: e.message);

@@ -153,8 +153,12 @@ class StatisticsListView extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.only(bottom: AppSizes.iconPadding * 2),
                   child: Text(count,
-                      style: Theme.of(context).textTheme.headlineLarge?.copyWith(
-                          color: color, fontSize: AppSizes.fontSizeXXLg * 1.2)),
+                      style: Theme.of(context)
+                          .textTheme
+                          .headlineLarge
+                          ?.copyWith(
+                              color: color,
+                              fontSize: AppSizes.fontSizeXXLg * 1.2)),
                 ),
                 const Spacer(),
                 Image.asset(

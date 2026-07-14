@@ -153,9 +153,28 @@ extension RequestStatusExtensionList on CurrentStatus {
           RequestStatusEnum.approved,
           RequestStatusEnum.rejected,
         ];
-      case ServiceCode.outsideWorking:
-      case ServiceCode.scrapRequest:
       case ServiceCode.leaveReplace:
+        return const [
+          RequestStatusEnum.draft,
+          RequestStatusEnum.confirmed,
+          RequestStatusEnum.hr,
+          RequestStatusEnum.approved,
+          RequestStatusEnum.rejected,
+        ];
+      case ServiceCode.outsideWorking:
+        return const [
+          RequestStatusEnum.newRequest,
+          RequestStatusEnum.inProgress,
+          RequestStatusEnum.topManager,
+          RequestStatusEnum.budget,
+          RequestStatusEnum.achievement,
+          RequestStatusEnum.approved,
+          RequestStatusEnum.achievementTwo,
+          RequestStatusEnum.approveTwo,
+          RequestStatusEnum.finalStage,
+          RequestStatusEnum.rejected,
+        ];
+      case ServiceCode.scrapRequest:
       case ServiceCode.leave:
       case null:
         break;
@@ -260,6 +279,22 @@ extension RequestStatusStringExtension on String? {
       case 'hr_manager':
         return RequestStatusEnum.hrManager;
 
+      // ---- Outside Working States ----
+      case 'in_progress':
+        return RequestStatusEnum.inProgress;
+      case 'manager1':
+        return RequestStatusEnum.topManager;
+      case 'budget':
+        return RequestStatusEnum.budget;
+      case 'achievement':
+        return RequestStatusEnum.achievement;
+      case 'achievement2':
+        return RequestStatusEnum.achievementTwo;
+      case 'approve2':
+        return RequestStatusEnum.approveTwo;
+      case 'final':
+        return RequestStatusEnum.finalStage;
+
       default:
         return RequestStatusEnum.none;
     }
@@ -287,5 +322,12 @@ enum RequestStatusEnum {
   cancel,
   closed,
   done,
+  // outside working
+  inProgress,
+  topManager,
+  achievement,
+  achievementTwo,
+  approveTwo,
+  finalStage,
   none,
 }
