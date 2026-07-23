@@ -24,6 +24,9 @@ class SessionStorageImpl implements SessionStorage {
   String? get userName => storage.getString(key: StorageKeys.userName.name);
 
   @override
+  String? get email => storage.getString(key: StorageKeys.email.name);
+
+  @override
   String? get organizationName =>
       storage.getString(key: StorageKeys.organizationName.name);
 
@@ -39,12 +42,10 @@ class SessionStorageImpl implements SessionStorage {
       storage.getString(key: StorageKeys.officesList.name);
 
   @override
-  String? get jobNumber =>
-      storage.getString(key: StorageKeys.jobNumber.name);
+  String? get jobNumber => storage.getString(key: StorageKeys.jobNumber.name);
 
   @override
-  String? get jobTitle =>
-      storage.getString(key: StorageKeys.jobTitle.name);
+  String? get jobTitle => storage.getString(key: StorageKeys.jobTitle.name);
 
   @override
   Future<void> saveToken(String value) =>
@@ -65,6 +66,10 @@ class SessionStorageImpl implements SessionStorage {
   @override
   Future<void> saveUserName(String value) =>
       storage.cacheString(key: StorageKeys.userName.name, value: value);
+
+  @override
+  Future<void> saveEmail(String value) =>
+      storage.cacheString(key: StorageKeys.email.name, value: value);
 
   @override
   Future<void> saveOrganizationName(String value) =>
@@ -97,6 +102,7 @@ class SessionStorageImpl implements SessionStorage {
     await storage.remove(key: StorageKeys.employeeId.name);
     await storage.remove(key: StorageKeys.managerId.name);
     await storage.remove(key: StorageKeys.userName.name);
+    await storage.remove(key: StorageKeys.email.name);
     await storage.remove(key: StorageKeys.organizationName.name);
     await storage.remove(key: StorageKeys.departmentAddress.name);
     await storage.remove(key: StorageKeys.offices.name);

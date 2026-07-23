@@ -5,6 +5,7 @@ class LeaveTypeModel extends LeaveType {
     required super.id,
     super.nameAr = '',
     super.nameEn = '',
+    super.leaveValidationType = '',
   });
 
   factory LeaveTypeModel.fromJson(Map<String, dynamic> json) {
@@ -12,6 +13,7 @@ class LeaveTypeModel extends LeaveType {
       id: json['id'] as int? ?? 0,
       nameAr: json['nameAr'] as String? ?? '',
       nameEn: json['nameEn'] as String? ?? '',
+      leaveValidationType: json['leaveValidationType'] as String? ?? '',
     );
   }
 }

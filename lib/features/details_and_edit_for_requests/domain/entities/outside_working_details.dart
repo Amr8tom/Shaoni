@@ -2,6 +2,11 @@ import 'package:equatable/equatable.dart';
 
 class OutsideWorkingLineEntity extends Equatable {
   final int? id;
+
+  /// Odoo line id — this is the id the accept/refuse action endpoint expects
+  /// (`POST /OutsideWorkingLines/action/{odooLineId}`), shown on the web as
+  /// "رقم طلب التكليف".
+  final int? odooLineId;
   final int? employeeId;
   final String startDate;
   final String endDate;
@@ -15,6 +20,7 @@ class OutsideWorkingLineEntity extends Equatable {
 
   const OutsideWorkingLineEntity({
     this.id,
+    this.odooLineId,
     this.employeeId,
     this.startDate = '',
     this.endDate = '',
@@ -30,6 +36,7 @@ class OutsideWorkingLineEntity extends Equatable {
   @override
   List<Object?> get props => [
         id,
+        odooLineId,
         employeeId,
         startDate,
         endDate,

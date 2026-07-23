@@ -14,6 +14,14 @@ import 'package:shaoni/features/leaves/domain/use_cases/leave_interruption/updat
 import 'package:shaoni/features/leaves/data/model/leave_replace/create_leave_replace_response_model.dart';
 import 'package:shaoni/features/leaves/domain/use_cases/leave_replace/create_leave_replace_use_case.dart';
 import 'package:shaoni/features/leaves/domain/use_cases/leave_replace/update_leave_replace_use_case.dart';
+import 'package:shaoni/features/leaves/data/model/leave_request/leave_appointment_model.dart';
+import 'package:shaoni/features/leaves/domain/use_cases/leave_request/get_leave_appointments_use_case.dart';
+import 'package:shaoni/features/leaves/data/model/leave_request/create_leave_request_response_model.dart';
+import 'package:shaoni/features/leaves/domain/use_cases/leave_request/create_leave_request_use_case.dart';
+import 'package:shaoni/features/leaves/domain/use_cases/leave_request/update_leave_request_use_case.dart';
+import 'package:shaoni/features/leaves/data/model/leave_request/leave_employee_model.dart';
+import 'package:shaoni/features/leaves/data/model/leave_request/leave_request_edit_data_model.dart';
+import 'package:shaoni/features/leaves/domain/use_cases/leave_request/get_leave_request_for_edit_use_case.dart';
 
 abstract class LeavesRemoteDataSources {
   /// ============================= leave interruption =============================
@@ -41,6 +49,26 @@ abstract class LeavesRemoteDataSources {
 
   Future<CreateLeaveReplaceResponseModel> updateLeaveReplace({
     required UpdateLeaveReplaceParams params,
+  });
+
+  /// ============================= leave request =============================
+  Future<List<LeaveAppointmentModel>> getLeaveAppointments({
+    required GetLeaveAppointmentsParams params,
+  });
+
+  Future<CreateLeaveRequestResponseModel> createLeaveRequest({
+    required CreateLeaveRequestParams params,
+  });
+
+  Future<CreateLeaveRequestResponseModel> updateLeaveRequest({
+    required UpdateLeaveRequestParams params,
+  });
+
+  Future<List<LeaveEmployeeModel>> getLeaveEmployees(
+      {required NoParams params});
+
+  Future<LeaveRequestEditDataModel> getLeaveRequestForEdit({
+    required GetLeaveRequestForEditParams params,
   });
 }
 
@@ -172,6 +200,104 @@ class LeavesRemoteDataSourcesImp implements LeavesRemoteDataSources {
       );
       return CreateLeaveReplaceResponseModel.fromJson(
           _decode(response.data) as Map<String, dynamic>);
+    } on ServerFailure catch (e) {
+      throw ServerFailure(message: e.message);
+    }
+  }
+
+  @override
+  Future<List<LeaveAppointmentModel>> getLeaveAppointments({
+    required GetLeaveAppointmentsParams params,
+  }) async {
+    try {
+      final response = _decode(await _dio.getData(
+        url: '${URL.getLeaveAppointments}${params.employeeId}',
+      ));
+      if (response == null) return const [];
+      final List raw = response is List
+          ? response
+          : ((response as Map<String, dynamic>)['body'] ??
+              response['data'] ??
+              const []) as List;
+      return raw
+          .map((e) => LeaveAppointmentModel.fromJson(e as Map<String, dynamic>))
+          .toList();
+    } on ServerFailure catch (e) {
+      throw ServerFailure(message: e.message);
+    }
+  }
+
+  @override
+  Future<CreateLeaveRequestResponseModel> createLeaveRequest({
+    required CreateLeaveRequestParams params,
+  }) async {
+    try {
+      final response = await _dio.postData(
+        url: URL.createLeaveRequest,
+        body: params.toMap(),
+      );
+      if (response == null) throw ServerFailure(message: 'server failure');
+      return CreateLeaveRequestResponseModel.fromJson(
+          _decode(response) as Map<String, dynamic>);
+    } on ServerFailure catch (e) {
+      throw ServerFailure(message: e.message);
+    }
+  }
+
+  @override
+  Future<CreateLeaveRequestResponseModel> updateLeaveRequest({
+    required UpdateLeaveRequestParams params,
+  }) async {
+    try {
+      final response = await _dio.putData(
+        url: '${URL.updateLeaveRequest}${params.requestId}',
+        body: params.toMap(),
+      );
+      return CreateLeaveRequestResponseModel.fromJson(
+          _decode(response.data) as Map<String, dynamic>);
+    } on ServerFailure catch (e) {
+      throw ServerFailure(message: e.message);
+    }
+  }
+
+  @override
+  Future<List<LeaveEmployeeModel>> getLeaveEmployees({
+    required NoParams params,
+  }) async {
+    try {
+      final response = _decode(await _dio.getData(url: URL.syncEmployees));
+      if (response == null) return const [];
+      final List raw = response is List
+          ? response
+          : ((response as Map<String, dynamic>)['data'] ??
+              response['body'] ??
+              const []) as List;
+      return raw
+          .map((e) => LeaveEmployeeModel.fromJson(e as Map<String, dynamic>))
+          .toList();
+    } on ServerFailure catch (e) {
+      throw ServerFailure(message: e.message);
+    }
+  }
+
+  @override
+  Future<LeaveRequestEditDataModel> getLeaveRequestForEdit({
+    required GetLeaveRequestForEditParams params,
+  }) async {
+    try {
+      final response = _decode(await _dio.getData(
+        url: '${URL.leaveRequestWithStages}${params.requestId}/with-stages',
+      ));
+      if (response is! Map<String, dynamic>) {
+        throw ServerFailure(message: 'server failure');
+      }
+      final extraData = response['extraData'];
+      final leaveRequest =
+          extraData is Map<String, dynamic> ? extraData['leaveRequest'] : null;
+      if (leaveRequest is! Map<String, dynamic>) {
+        throw ServerFailure(message: 'server failure');
+      }
+      return LeaveRequestEditDataModel.fromJson(leaveRequest);
     } on ServerFailure catch (e) {
       throw ServerFailure(message: e.message);
     }

@@ -27,12 +27,14 @@ class CreateTrainingRequestForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => serviceLocator<TrainingRequestCubit>(),
+      create: (context) =>
+          serviceLocator<TrainingRequestCubit>()..init(requestId: requestId),
       child: Scaffold(
         appBar: DAppBar(
           showMenu: false,
           showBackArrow: true,
-          title: _isEditMode ? S.current.editRequest : S.current.trainingRequest,
+          title:
+              _isEditMode ? S.current.editRequest : S.current.trainingRequest,
         ),
         extendBodyBehindAppBar: true,
         backgroundColor: ColorRes.grey6,

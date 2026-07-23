@@ -33,6 +33,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "aboutApp": MessageLookupByLibrary.simpleMessage("About the App"),
     "ac": MessageLookupByLibrary.simpleMessage("Arafa Camps"),
     "accDetails": MessageLookupByLibrary.simpleMessage("Account Details"),
+    "accept": MessageLookupByLibrary.simpleMessage("Accept"),
     "acceptRequest": MessageLookupByLibrary.simpleMessage("Accept Request"),
     "accepted": MessageLookupByLibrary.simpleMessage("Accepted"),
     "acceptedBody": MessageLookupByLibrary.simpleMessage(
@@ -48,6 +49,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "acg": MessageLookupByLibrary.simpleMessage("Activity Guide"),
     "actMeal": MessageLookupByLibrary.simpleMessage("Activities Meals"),
+    "actionExecutedSuccessfully": MessageLookupByLibrary.simpleMessage(
+      "Action executed successfully",
+    ),
     "activities": MessageLookupByLibrary.simpleMessage("Activities"),
     "activity": MessageLookupByLibrary.simpleMessage("Activity"),
     "activityPhases": MessageLookupByLibrary.simpleMessage("Activity Phases"),
@@ -79,7 +83,11 @@ class MessageLookup extends MessageLookupByLibrary {
     "alsoAvailable": MessageLookupByLibrary.simpleMessage(
       "Also Available In :",
     ),
+    "alternativeEmployee": MessageLookupByLibrary.simpleMessage(
+      "Alternative Employee",
+    ),
     "amount": MessageLookupByLibrary.simpleMessage("The amount"),
+    "and": MessageLookupByLibrary.simpleMessage("and"),
     "angleDevice": MessageLookupByLibrary.simpleMessage("Device Angle"),
     "angleQibla": MessageLookupByLibrary.simpleMessage("Qibla Angle"),
     "announcement": MessageLookupByLibrary.simpleMessage("Announcement"),
@@ -103,6 +111,9 @@ class MessageLookup extends MessageLookupByLibrary {
       "Are you sure you want to delete your account?",
     ),
     "asr": MessageLookupByLibrary.simpleMessage("Asr"),
+    "assignmentNumber": MessageLookupByLibrary.simpleMessage(
+      "Assignment Request No.",
+    ),
     "attachmentOptional": MessageLookupByLibrary.simpleMessage(
       "Attachment (optional)",
     ),
@@ -163,6 +174,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "byContinuingYouAgreeToOur": MessageLookupByLibrary.simpleMessage(
       "By logging in you agree to our",
     ),
+    "byEmployee": MessageLookupByLibrary.simpleMessage("By Employee"),
+    "byHours": MessageLookupByLibrary.simpleMessage("By Hours"),
     "callUs": MessageLookupByLibrary.simpleMessage("Call us"),
     "camera": MessageLookupByLibrary.simpleMessage("Camera"),
     "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
@@ -317,6 +330,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "date05": MessageLookupByLibrary.simpleMessage("05/17/2024  06:30PM"),
     "date15": MessageLookupByLibrary.simpleMessage("15/04/2024"),
     "dateBirth": MessageLookupByLibrary.simpleMessage("Date of Brith"),
+    "day": MessageLookupByLibrary.simpleMessage("day"),
+    "days": MessageLookupByLibrary.simpleMessage("days"),
     "delayedCash": MessageLookupByLibrary.simpleMessage("Delayed Cash"),
     "delayedCashDes": MessageLookupByLibrary.simpleMessage(
       "buy now and buy later ",
@@ -327,6 +342,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "delayedCashScreenDesTime": MessageLookupByLibrary.simpleMessage(
       "You have 30 days to repay the debt",
     ),
+    "delete": MessageLookupByLibrary.simpleMessage("Delete"),
     "deleteAccount": MessageLookupByLibrary.simpleMessage("Delete My Account"),
     "deleteBody": MessageLookupByLibrary.simpleMessage(
       "This action is irreversible. All your data will be lost, and you will not be able to recover it.",
@@ -339,6 +355,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "depDate": MessageLookupByLibrary.simpleMessage("Departure Date"),
     "depFli": MessageLookupByLibrary.simpleMessage("Departure Flight No."),
     "depart": MessageLookupByLibrary.simpleMessage("Depart to Mina"),
+    "department": MessageLookupByLibrary.simpleMessage("Department"),
     "departmentType": MessageLookupByLibrary.simpleMessage("Department Type"),
     "des": MessageLookupByLibrary.simpleMessage("Description"),
     "desc": MessageLookupByLibrary.simpleMessage("Description:"),
@@ -353,6 +370,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "details": MessageLookupByLibrary.simpleMessage("Details"),
     "deviceAngle": MessageLookupByLibrary.simpleMessage("Device Angle"),
     "dhuhr": MessageLookupByLibrary.simpleMessage("Dhuhr"),
+    "didNotReceiveCode": MessageLookupByLibrary.simpleMessage(
+      "Didn\'t receive the code?",
+    ),
     "dinner": MessageLookupByLibrary.simpleMessage("Dinner"),
     "direction": MessageLookupByLibrary.simpleMessage("To Get Qibla Direction"),
     "disclaimerAttachment": MessageLookupByLibrary.simpleMessage(
@@ -413,8 +433,12 @@ class MessageLookup extends MessageLookupByLibrary {
       "The Reset Code is Sent",
     ),
     "employee": MessageLookupByLibrary.simpleMessage("Employee"),
+    "employeeName": MessageLookupByLibrary.simpleMessage("Employee"),
     "employees": MessageLookupByLibrary.simpleMessage("Employees"),
     "employeesData": MessageLookupByLibrary.simpleMessage("Employees Data"),
+    "employeesDetails": MessageLookupByLibrary.simpleMessage(
+      "Employees Details",
+    ),
     "endDate": MessageLookupByLibrary.simpleMessage("End Date"),
     "endOfServiceRequest": MessageLookupByLibrary.simpleMessage(
       "End of Service Request",
@@ -590,6 +614,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "guide": MessageLookupByLibrary.simpleMessage("Guide"),
     "ha": MessageLookupByLibrary.simpleMessage("Hajj - Arafa"),
     "hajj": MessageLookupByLibrary.simpleMessage("Hajj Activity"),
+    "halfDay": MessageLookupByLibrary.simpleMessage("Half Day"),
     "hasKafala": MessageLookupByLibrary.simpleMessage("Under Sponsorship"),
     "helper": MessageLookupByLibrary.simpleMessage("Help"),
     "hh": MessageLookupByLibrary.simpleMessage("mm/dd/yyyy  hh:mm"),
@@ -705,6 +730,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Leave Replacement Request",
     ),
     "leaveRequest": MessageLookupByLibrary.simpleMessage("Leave Request"),
+    "leaveRequestTitle": MessageLookupByLibrary.simpleMessage("Leave Request"),
     "leaveType": MessageLookupByLibrary.simpleMessage("Leave Type"),
     "leaves": MessageLookupByLibrary.simpleMessage("Leaves"),
     "letsStart": MessageLookupByLibrary.simpleMessage("Welcome Again"),
@@ -764,7 +790,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "makkah": MessageLookupByLibrary.simpleMessage("Makkah"),
     "male": MessageLookupByLibrary.simpleMessage("Male"),
     "manager": MessageLookupByLibrary.simpleMessage("Manager"),
+    "managerAccept": MessageLookupByLibrary.simpleMessage("Manager Approval"),
     "managerApproval": MessageLookupByLibrary.simpleMessage("Manager Approval"),
+    "managerReject": MessageLookupByLibrary.simpleMessage("Manager Rejection"),
     "markAll": MessageLookupByLibrary.simpleMessage("Mark all as read"),
     "meCo": MessageLookupByLibrary.simpleMessage("Meal Components "),
     "meal": MessageLookupByLibrary.simpleMessage("Meal"),
@@ -799,7 +827,10 @@ class MessageLookup extends MessageLookupByLibrary {
     "mobileWalletDes": MessageLookupByLibrary.simpleMessage(
       "you can pay using your mobile phone wallet",
     ),
+    "mode": MessageLookupByLibrary.simpleMessage("Mode"),
     "moneyYouLoan": MessageLookupByLibrary.simpleMessage("you loan"),
+    "month": MessageLookupByLibrary.simpleMessage("month"),
+    "months": MessageLookupByLibrary.simpleMessage("months"),
     "more": MessageLookupByLibrary.simpleMessage("More"),
     "morningShift": MessageLookupByLibrary.simpleMessage(
       "Morning shift Number",
@@ -920,6 +951,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "oof": MessageLookupByLibrary.simpleMessage("of"),
     "op": MessageLookupByLibrary.simpleMessage("Open"),
     "open": MessageLookupByLibrary.simpleMessage("Open Google Map"),
+    "openAttachment": MessageLookupByLibrary.simpleMessage("Open Attachment"),
     "or": MessageLookupByLibrary.simpleMessage("or"),
     "orderDate": MessageLookupByLibrary.simpleMessage("Order Date"),
     "orderDetails": MessageLookupByLibrary.simpleMessage("Order Details"),
@@ -1031,6 +1063,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "prayerKeywords": MessageLookupByLibrary.simpleMessage(
       "prayer,salah,mosque,azan,dua,worship,prostration,qibla,direction,fajr,dhuhr,asr,maghrib,isha,tahajjud,sunnah,nafl,rakat,imam,masjid,islamic,muslim,religion,spiritual,ablution,wudu,adhan,call,times",
     ),
+    "preBookedLeaves": MessageLookupByLibrary.simpleMessage(
+      "Pre-booked Leaves (view only)",
+    ),
     "previous": MessageLookupByLibrary.simpleMessage("previous"),
     "previousRequest": MessageLookupByLibrary.simpleMessage(
       "Previous Requests",
@@ -1113,6 +1148,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "registration": MessageLookupByLibrary.simpleMessage(
       "Reservation Management",
     ),
+    "reject": MessageLookupByLibrary.simpleMessage("Reject"),
     "rejectReasons": MessageLookupByLibrary.simpleMessage("Rejection Reasons"),
     "rejectRequest": MessageLookupByLibrary.simpleMessage("Reject Request"),
     "rejectedLabel": MessageLookupByLibrary.simpleMessage("Rejected"),
@@ -1130,18 +1166,27 @@ class MessageLookup extends MessageLookupByLibrary {
     "reqDetails": MessageLookupByLibrary.simpleMessage("Request Details"),
     "reqSub": MessageLookupByLibrary.simpleMessage("Request Sub Activity"),
     "reqtitle": MessageLookupByLibrary.simpleMessage("Request Title"),
+    "requestAcceptedSuccessfully": MessageLookupByLibrary.simpleMessage(
+      "You have accepted the assignment successfully.",
+    ),
     "requestApplicantData": MessageLookupByLibrary.simpleMessage(
       "Request applicant Data",
     ),
     "requestData": MessageLookupByLibrary.simpleMessage("Request Data"),
     "requestDate": MessageLookupByLibrary.simpleMessage("Request Date"),
     "requestDetails": MessageLookupByLibrary.simpleMessage("Request Details"),
+    "requestJustification": MessageLookupByLibrary.simpleMessage(
+      "Request Justification",
+    ),
     "requestJustifications": MessageLookupByLibrary.simpleMessage(
       "Request Justifications",
     ),
     "requestLines": MessageLookupByLibrary.simpleMessage("Order Lines"),
     "requestNumber": MessageLookupByLibrary.simpleMessage("Request Number"),
     "requestReason": MessageLookupByLibrary.simpleMessage("Request Reasons"),
+    "requestRejectedSuccessfully": MessageLookupByLibrary.simpleMessage(
+      "You have rejected the assignment successfully.",
+    ),
     "requestSend": MessageLookupByLibrary.simpleMessage(
       "Request Sent Successfully",
     ),
@@ -1165,6 +1210,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "res": MessageLookupByLibrary.simpleMessage("Residencies"),
     "resLocation": MessageLookupByLibrary.simpleMessage("Residence Location"),
     "resend": MessageLookupByLibrary.simpleMessage("Resend Code"),
+    "resendAfter": MessageLookupByLibrary.simpleMessage("Resend after"),
     "reservation": MessageLookupByLibrary.simpleMessage("Reservation"),
     "resetPassword": MessageLookupByLibrary.simpleMessage("Reset Password"),
     "resi": MessageLookupByLibrary.simpleMessage("Residences"),
@@ -1227,6 +1273,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Search Surah Index ...",
     ),
     "searchTitle": MessageLookupByLibrary.simpleMessage("Search"),
+    "second": MessageLookupByLibrary.simpleMessage("s"),
     "seconds": MessageLookupByLibrary.simpleMessage("Seconds"),
     "seeAll": MessageLookupByLibrary.simpleMessage("see all"),
     "selDep": MessageLookupByLibrary.simpleMessage("Select Department"),
@@ -1236,6 +1283,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "selectActivity": MessageLookupByLibrary.simpleMessage("Select Activity"),
     "selectAddress": MessageLookupByLibrary.simpleMessage(
       "Please Select Address first",
+    ),
+    "selectAlternativeEmployee": MessageLookupByLibrary.simpleMessage(
+      "Select alternative employee",
     ),
     "selectArr": MessageLookupByLibrary.simpleMessage("select arrival city"),
     "selectAtLeastOneEmployee": MessageLookupByLibrary.simpleMessage(
@@ -1574,6 +1624,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "userPolicy": MessageLookupByLibrary.simpleMessage("User Policy"),
     "ut": MessageLookupByLibrary.simpleMessage(
       "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo con",
+    ),
+    "validationType": MessageLookupByLibrary.simpleMessage(
+      "Accreditation Type",
     ),
     "valu": MessageLookupByLibrary.simpleMessage("Valu"),
     "verificationCode": MessageLookupByLibrary.simpleMessage(

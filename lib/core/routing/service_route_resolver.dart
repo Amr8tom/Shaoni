@@ -67,10 +67,11 @@ class ServiceRouteResolver {
         return DRoutesName.createLeaveInterruptionRoute;
       case ServiceCode.leaveReplace:
         return DRoutesName.createLeaveReplaceRoute;
+      case ServiceCode.leave:
+        return DRoutesName.createLeaveRequestRoute;
 
       case ServiceCode.exitPermission:
       case ServiceCode.attendanceUpdate:
-      case ServiceCode.leave:
       case null:
         return DRoutesName.noDataRoute;
     }

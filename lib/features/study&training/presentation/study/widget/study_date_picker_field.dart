@@ -70,24 +70,29 @@ class StudyDatePickerField extends StatelessWidget {
         ),
         const Sizer(height: 6),
 
-        // ── Hijri display (read-only) ─────────────────────────────────────
-        Container(
-          padding: EdgeInsets.symmetric(
-            horizontal: AppSizes.padding * 0.8,
-            vertical: AppSizes.padding * 0.55,
-          ),
-          decoration: BoxDecoration(
-            color: ColorRes.grey4,
-            borderRadius: BorderRadius.circular(AppSizes.borderRadiusMd),
-          ),
-          child: Text(
-            hijriController.text.isEmpty ? '––' : '${hijriController.text} هـ',
-            textAlign: TextAlign.center,
-            style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                  color: ColorRes.grey2,
-                  fontSize: 11,
-                ),
-          ),
+        // ── Hijri display (read-only, reactive) ───────────────────────────
+        ValueListenableBuilder<TextEditingValue>(
+          valueListenable: hijriController,
+          builder: (context, value, _) {
+            return Container(
+              padding: EdgeInsets.symmetric(
+                horizontal: AppSizes.padding * 0.8,
+                vertical: AppSizes.padding * 0.55,
+              ),
+              decoration: BoxDecoration(
+                color: ColorRes.grey4,
+                borderRadius: BorderRadius.circular(AppSizes.borderRadiusMd),
+              ),
+              child: Text(
+                value.text.isEmpty ? '––' : '${value.text} هـ',
+                textAlign: TextAlign.center,
+                style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                      color: ColorRes.grey2,
+                      fontSize: 11,
+                    ),
+              ),
+            );
+          },
         ),
       ],
     );

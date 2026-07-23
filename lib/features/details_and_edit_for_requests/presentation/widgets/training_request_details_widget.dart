@@ -8,6 +8,17 @@ import '../../../../core/constants/colors.dart';
 import '../../../../generated/l10n.dart';
 import '../../../home/presentation/widgets/order_text_card.dart';
 import '../controller/my_requests_cubit.dart';
+import 'attachements_widget.dart';
+
+/// The training API returns the literal string `"false"` when no file was
+/// uploaded, so guard against it before trying to decode base64.
+bool _hasAttachment(String? value) {
+  final attachment = value?.trim().toLowerCase();
+  return attachment != null &&
+      attachment.isNotEmpty &&
+      attachment != 'false' &&
+      attachment != 'null';
+}
 
 class TrainingRequestDetailsWidget extends StatelessWidget {
   const TrainingRequestDetailsWidget({super.key});
@@ -130,6 +141,11 @@ class TrainingRequestDetailsWidget extends StatelessWidget {
                 ),
                 const Sizer(height: 12),
               ],
+
+              /// Attachment — the API sends the literal "false" when there is
+              /// none, so only render a real base64 payload.
+              if (_hasAttachment(tr?.attachment))
+                LeavesAttachmentWidget(leavesAttachment: tr!.attachment!),
             ],
           ),
         ),

@@ -19,6 +19,7 @@ import 'package:shaoni/features/details_and_edit_for_requests/domain/entities/ti
 import 'package:shaoni/features/details_and_edit_for_requests/domain/entities/leave_interruption.dart';
 import 'package:shaoni/features/details_and_edit_for_requests/domain/entities/leave_replace.dart';
 import 'package:shaoni/features/details_and_edit_for_requests/domain/entities/outside_working_details.dart';
+import 'package:shaoni/features/details_and_edit_for_requests/domain/entities/leave_request.dart';
 
 class ExtraData extends Equatable {
   final AttendanceRequestDetails? attendance;
@@ -40,6 +41,7 @@ class ExtraData extends Equatable {
   final TicketBookingEntity? ticketBooking;
   final LeaveInterruptionEntity? leaveInterruption;
   final LeaveReplaceEntity? leaveReplace;
+  final LeaveRequestEntity? leaveRequest;
 
   const ExtraData({
     this.carPermission,
@@ -61,6 +63,7 @@ class ExtraData extends Equatable {
     this.ticketBooking,
     this.leaveInterruption,
     this.leaveReplace,
+    this.leaveRequest,
   });
 
   @override
@@ -84,5 +87,6 @@ class ExtraData extends Equatable {
         ticketBooking,
         leaveInterruption,
         leaveReplace,
+        leaveRequest,
       ];
 }

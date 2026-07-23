@@ -25,6 +25,8 @@ import '../../features/details_and_edit_for_requests/domain/use_cases/get_scrap_
 import '../../features/details_and_edit_for_requests/domain/use_cases/get_visa_request_edit_use_case.dart';
 import '../../features/details_and_edit_for_requests/domain/use_cases/get_ticket_booking_edit_use_case.dart';
 import '../../features/details_and_edit_for_requests/domain/use_cases/get_leave_interruption_edit_use_case.dart';
+import '../../features/details_and_edit_for_requests/domain/use_cases/outside_working_line_action_use_case.dart';
+import '../../features/details_and_edit_for_requests/domain/use_cases/get_outside_working_requests_use_case.dart';
 import '../../features/details_and_edit_for_requests/domain/use_cases/get_leave_replace_edit_use_case.dart';
 import '../../features/details_and_edit_for_requests/presentation/controller/edit/edit_cubit.dart';
 import '../../features/details_and_edit_for_requests/presentation/controller/my_requests_cubit.dart';
@@ -63,6 +65,12 @@ class MyRequestsServiceLocator {
     );
     serviceLocator.registerLazySingleton<GetRequestDetailsUseCase>(
       () => GetRequestDetailsUseCase(serviceLocator()),
+    );
+    serviceLocator.registerLazySingleton<OutsideWorkingLineActionUseCase>(
+      () => OutsideWorkingLineActionUseCase(serviceLocator()),
+    );
+    serviceLocator.registerLazySingleton<GetOutsideWorkingRequestsUseCase>(
+      () => GetOutsideWorkingRequestsUseCase(serviceLocator()),
     );
     serviceLocator.registerLazySingleton<GetCarPermissionEditUseCase>(
       () => GetCarPermissionEditUseCase(serviceLocator()),
@@ -121,6 +129,9 @@ class MyRequestsServiceLocator {
 
     /// controllers
     serviceLocator.registerFactory(() => MyRequestsCubit(
+        serviceLocator(),
+        serviceLocator(),
+        serviceLocator(),
         serviceLocator(),
         serviceLocator(),
         serviceLocator(),

@@ -7,12 +7,17 @@ class LeaveType extends Equatable {
   final String nameAr;
   final String nameEn;
 
+  /// e.g. "third" / "manager" / "both" — used as `validation_type` when
+  /// creating an hr.leave request.
+  final String leaveValidationType;
+
   const LeaveType({
     required this.id,
     this.nameAr = '',
     this.nameEn = '',
+    this.leaveValidationType = '',
   });
 
   @override
-  List<Object?> get props => [id, nameAr, nameEn];
+  List<Object?> get props => [id, nameAr, nameEn, leaveValidationType];
 }

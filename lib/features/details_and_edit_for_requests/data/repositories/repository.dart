@@ -24,6 +24,9 @@ import 'package:shaoni/features/details_and_edit_for_requests/domain/use_cases/g
 import 'package:shaoni/features/details_and_edit_for_requests/domain/use_cases/get_visa_request_edit_use_case.dart';
 import 'package:shaoni/features/details_and_edit_for_requests/domain/use_cases/get_ticket_booking_edit_use_case.dart';
 import 'package:shaoni/features/details_and_edit_for_requests/domain/use_cases/get_leave_interruption_edit_use_case.dart';
+import 'package:shaoni/features/details_and_edit_for_requests/domain/use_cases/outside_working_line_action_use_case.dart';
+import 'package:shaoni/features/details_and_edit_for_requests/domain/entities/outside_working_line_action_response.dart';
+import 'package:shaoni/features/details_and_edit_for_requests/domain/use_cases/get_outside_working_requests_use_case.dart';
 import 'package:shaoni/features/details_and_edit_for_requests/domain/use_cases/get_leave_replace_edit_use_case.dart';
 import 'package:shaoni/features/details_and_edit_for_requests/domain/use_cases/get_car_permission_edit_use_case.dart';
 import 'package:shaoni/features/details_and_edit_for_requests/domain/use_cases/get_exit_permission_edit_use_case.dart';
@@ -459,6 +462,41 @@ class MyRequestsRepositoryImp extends MyRequestsRepository {
       try {
         final result =
             await _remoteDataSources.getLeaveReplaceEdit(params: params);
+        return Right(result);
+      } on ServerFailure catch (e) {
+        return Left(ServerFailure(message: e.message));
+      }
+    } else {
+      return Left(CacheFailure());
+    }
+  }
+
+  @override
+  Future<Either<Failure, OutsideWorkingLineActionResponse>>
+      outsideWorkingLineAction({
+    required OutsideWorkingLineActionParams params,
+  }) async {
+    if (await _networkInfo.isConnected) {
+      try {
+        final result =
+            await _remoteDataSources.outsideWorkingLineAction(params: params);
+        return Right(result);
+      } on ServerFailure catch (e) {
+        return Left(ServerFailure(message: e.message));
+      }
+    } else {
+      return Left(CacheFailure());
+    }
+  }
+
+  @override
+  Future<Either<Failure, AllRequestsWithStages>> getOutsideWorkingRequests({
+    required GetOutsideWorkingRequestsParams params,
+  }) async {
+    if (await _networkInfo.isConnected) {
+      try {
+        final result =
+            await _remoteDataSources.getOutsideWorkingRequests(params: params);
         return Right(result);
       } on ServerFailure catch (e) {
         return Left(ServerFailure(message: e.message));

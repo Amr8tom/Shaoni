@@ -64,18 +64,18 @@ class DDropdownField extends StatelessWidget {
           decoration: InputDecoration(
             isDense: true,
             hintText: hint,
-            hintStyle: Theme.of(context).textTheme.bodyMedium?.copyWith(
+            hintStyle: Theme.of(context).textTheme.titleLarge?.copyWith(
                   color: ColorRes.grey2.withValues(alpha: 0.6),
                   fontSize: AppSizes.fontSizeSm,
                 ),
-            prefixIcon: Padding(
-              padding: EdgeInsets.symmetric(horizontal: AppSizes.padding * 0.8),
-              child: Icon(
-                icon,
-                size: AppSizes.iconMd,
-                // color: ColorRes.primary,
-              ),
-            ),
+            // prefixIcon: Padding(
+            //   padding: EdgeInsets.symmetric(horizontal: AppSizes.padding * 0.8),
+            //   child: Icon(
+            //     icon,
+            //     size: AppSizes.iconMd,
+            //     // color: ColorRes.primary,
+            //   ),
+            // ),
             prefixIconConstraints: BoxConstraints(
               minWidth: AppSizes.iconLg,
               minHeight: AppSizes.iconLg,

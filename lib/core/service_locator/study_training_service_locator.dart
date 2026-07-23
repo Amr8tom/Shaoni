@@ -6,9 +6,11 @@ import 'package:shaoni/features/study&training/domain/repository/repository.dart
 import 'package:shaoni/features/study&training/domain/use_cases/study/create_study_use_case.dart';
 import 'package:shaoni/features/study&training/domain/use_cases/study/get_study_destinations_use_case.dart';
 import 'package:shaoni/features/study&training/domain/use_cases/study/get_study_types_use_case.dart';
+import 'package:shaoni/features/study&training/domain/use_cases/study/get_study_for_edit_use_case.dart';
 import 'package:shaoni/features/study&training/domain/use_cases/study/update_study_use_case.dart';
 import 'package:shaoni/features/study&training/domain/use_cases/training_request/create_training_request_use_case.dart';
 import 'package:shaoni/features/study&training/domain/use_cases/training_request/get_courses_use_case.dart';
+import 'package:shaoni/features/study&training/domain/use_cases/training_request/get_training_for_edit_use_case.dart';
 import 'package:shaoni/features/study&training/domain/use_cases/training_request/update_training_request_use_case.dart';
 import 'package:shaoni/features/study&training/presentation/controller/study/study_cubit.dart';
 import 'package:shaoni/features/study&training/presentation/controller/training_request/training_request_cubit.dart';
@@ -45,8 +47,12 @@ class StudyTrainingServiceLocator {
     serviceLocator.registerLazySingleton<UpdateStudyUseCase>(
       () => UpdateStudyUseCase(serviceLocator()),
     );
+    serviceLocator.registerLazySingleton<GetStudyForEditUseCase>(
+      () => GetStudyForEditUseCase(serviceLocator()),
+    );
     serviceLocator.registerFactory<StudyCubit>(
       () => StudyCubit(
+        serviceLocator(),
         serviceLocator(),
         serviceLocator(),
         serviceLocator(),
@@ -65,8 +71,12 @@ class StudyTrainingServiceLocator {
     serviceLocator.registerLazySingleton<UpdateTrainingRequestUseCase>(
       () => UpdateTrainingRequestUseCase(serviceLocator()),
     );
+    serviceLocator.registerLazySingleton<GetTrainingForEditUseCase>(
+      () => GetTrainingForEditUseCase(serviceLocator()),
+    );
     serviceLocator.registerFactory<TrainingRequestCubit>(
       () => TrainingRequestCubit(
+        serviceLocator(),
         serviceLocator(),
         serviceLocator(),
         serviceLocator(),

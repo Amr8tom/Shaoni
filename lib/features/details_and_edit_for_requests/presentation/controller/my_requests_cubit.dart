@@ -7,6 +7,10 @@ import 'package:shaoni/features/details_and_edit_for_requests/domain/use_cases/g
 import 'package:shaoni/features/details_and_edit_for_requests/domain/use_cases/get_all_manager_requests_use_case.dart';
 import 'package:shaoni/features/details_and_edit_for_requests/domain/use_cases/get_all_user_requests_use_case.dart';
 import 'package:shaoni/features/details_and_edit_for_requests/domain/use_cases/get_request_details_use_case.dart';
+import 'package:shaoni/features/details_and_edit_for_requests/domain/use_cases/outside_working_line_action_use_case.dart';
+import 'package:shaoni/features/details_and_edit_for_requests/domain/use_cases/get_outside_working_requests_use_case.dart';
+import 'package:shaoni/core/constants/service_codes.dart';
+import 'package:shaoni/core/local_storage/session_storage/session_storage.dart';
 import '../../domain/entities/all_requests_with_stages.dart';
 import '../../domain/entities/request_with_stage.dart';
 
@@ -18,6 +22,14 @@ class MyRequestsCubit extends Cubit<MyRequestsState> {
   final GetAllManagerRequestsUseCase _getAllManagerRequestsUseCase;
   final GetAllKafeelRequestsUseCase _getAllKafeelRequestsUseCase;
   final ApproveRequestUseCase _approveRequestUseCase;
+  final OutsideWorkingLineActionUseCase _outsideWorkingLineActionUseCase;
+  final GetOutsideWorkingRequestsUseCase _getOutsideWorkingRequestsUseCase;
+  final SessionStorage _sessionStorage;
+
+  /// The outside-working grid follows the logged-in role convention already
+  /// used by the requests screen (job title == 'manager').
+  bool get isManagerUser =>
+      _sessionStorage.jobTitle?.toLowerCase() == 'manager';
   final ScrollController userScrollController = ScrollController();
   final ScrollController managerScrollController = ScrollController();
   final ScrollController kafeelScrollController = ScrollController();
@@ -39,7 +51,10 @@ class MyRequestsCubit extends Cubit<MyRequestsState> {
       this._getAllManagerRequestsUseCase,
       this._getAllKafeelRequestsUseCase,
       this._approveRequestUseCase,
-      this._getRequestDetailsUseCase)
+      this._getRequestDetailsUseCase,
+      this._outsideWorkingLineActionUseCase,
+      this._getOutsideWorkingRequestsUseCase,
+      this._sessionStorage)
       : super(const MyRequestsState());
 
   /// getAllUserRequests with debounce
@@ -62,12 +77,22 @@ class MyRequestsCubit extends Cubit<MyRequestsState> {
     );
 
     if (isClosed) return;
-    result.fold(
-      (failure) => emit(state.copyWith(status: MyRequestsStatus.error)),
-      (requests) {
+    await result.fold(
+      (failure) async => emit(state.copyWith(status: MyRequestsStatus.error)),
+      (requests) async {
+        // Outside-working requests come from their own endpoint, so drop any
+        // that leak through the generic by-user list to avoid duplicates.
+        final byUserItems =
+            requests.items.where((i) => !_isOutsideWorking(i)).toList();
+
+        // Load the dedicated outside-working list once, on the first page.
+        final owItems =
+            isFirestTime ? await _fetchOutsideWorkingRequests() : const [];
+
         final List<RequestWithStage> updatedItems = [
           ...state.itemsUser,
-          ...requests.items
+          ...owItems,
+          ...byUserItems,
         ];
         emit(state.copyWith(
           status: MyRequestsStatus.success,
@@ -200,6 +225,51 @@ class MyRequestsCubit extends Cubit<MyRequestsState> {
       (failure) => emit(state.copyWith(status: MyRequestsStatus.error)),
       (response) {
         emit(state.copyWith(status: MyRequestsStatus.sendRequestSuccess));
+      },
+    );
+  }
+
+  bool _isOutsideWorking(RequestWithStage item) =>
+      ServiceCode.fromCode(item.service?.nameEn ?? item.service?.code) ==
+      ServiceCode.outsideWorking;
+
+  /// Fetches the dedicated outside-working list for the current user.
+  Future<List<RequestWithStage>> _fetchOutsideWorkingRequests() async {
+    final userId = int.tryParse(_sessionStorage.userId ?? '0') ?? 0;
+    if (userId == 0) return const [];
+    final result = await _getOutsideWorkingRequestsUseCase.call(
+      params: GetOutsideWorkingRequestsParams(userId: userId),
+    );
+    return result.fold((_) => const [], (data) => data.items);
+  }
+
+  /// Employee / manager accept / refuse on a single outside-working line.
+  /// Allowed regardless of the request's current stage.
+  ///
+  /// Returns true when the action succeeded, so the caller can confirm and
+  /// navigate away.
+  Future<bool> outsideWorkingLineAction({
+    required int lineId,
+    required OutsideWorkingLineAction action,
+    String cancelReason = '',
+  }) async {
+    emit(state.copyWith(status: MyRequestsStatus.sendRequestLoading));
+    final result = await _outsideWorkingLineActionUseCase.call(
+      params: OutsideWorkingLineActionParams(
+        lineId: lineId,
+        action: action,
+        cancelReason: cancelReason,
+      ),
+    );
+    if (isClosed) return false;
+    return result.fold(
+      (failure) {
+        emit(state.copyWith(status: MyRequestsStatus.error));
+        return false;
+      },
+      (response) {
+        emit(state.copyWith(status: MyRequestsStatus.sendRequestSuccess));
+        return response.isSuccess;
       },
     );
   }

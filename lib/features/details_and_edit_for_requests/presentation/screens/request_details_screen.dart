@@ -11,6 +11,7 @@ import 'package:shaoni/features/details_and_edit_for_requests/presentation/widge
 import '../../../../core/utils/helpers/date_converter.dart';
 import '../../../../core/constants/colors.dart';
 import '../../../../generated/l10n.dart';
+import '../../../../core/constants/service_codes.dart';
 import '../../domain/enums_and_extentions/request_enums.dart';
 import '../helpers/get_request_details_widget.dart';
 import '../widgets/accept_request_button.dart';
@@ -48,7 +49,21 @@ class RequestDetailsScreen extends StatelessWidget {
     final bool isManagerApproval =
         requestStages.length > 1 && requestStages[1] == currentStatusEnum;
     final bool isNewRequest =
-        requestStages.isNotEmpty && requestStages[0] == currentStatusEnum;
+        requestStages.isNotEmpty && [requestStages[1] || requestStages[0]] == currentStatusEnum;
+    // Some services stay employee-editable past the first stage, so the
+    // update button must not be gated on `isNewRequest` alone.
+    final bool isEditableWhilePending =
+        switch (ServiceCode.fromCode(serviceCode)) {
+      ServiceCode.leave => currentStatusEnum == RequestStatusEnum.draft ||
+          currentStatusEnum == RequestStatusEnum.confirmed,
+      ServiceCode.studyRequest =>
+        currentStatusEnum == RequestStatusEnum.draft ||
+            currentStatusEnum == RequestStatusEnum.applied,
+      ServiceCode.trainingRequest =>
+        currentStatusEnum == RequestStatusEnum.draft ||
+            currentStatusEnum == RequestStatusEnum.confirmed,
+      _ => false,
+    };
     // The kafeel (guarantor) can act while the request is in its first two
     // stages (draft / emp).
     final bool isKafeelApproval =
@@ -127,7 +142,8 @@ class RequestDetailsScreen extends StatelessWidget {
                     ),
 
                     /// employee: update their own request
-                  ] else if (isEmployeeRequest && isNewRequest)
+                  ] else if (isEmployeeRequest &&
+                      (isNewRequest || isEditableWhilePending))
                     UpdateRequestButton(
                       requestID: requestID,
                       serviceType: serviceCode,

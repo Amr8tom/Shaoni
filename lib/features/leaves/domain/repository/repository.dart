@@ -11,6 +11,14 @@ import 'package:shaoni/features/leaves/domain/use_cases/leave_interruption/updat
 import 'package:shaoni/features/leaves/domain/entity/leave_replace/create_leave_replace_response.dart';
 import 'package:shaoni/features/leaves/domain/use_cases/leave_replace/create_leave_replace_use_case.dart';
 import 'package:shaoni/features/leaves/domain/use_cases/leave_replace/update_leave_replace_use_case.dart';
+import 'package:shaoni/features/leaves/domain/entity/leave_request/leave_appointment.dart';
+import 'package:shaoni/features/leaves/domain/use_cases/leave_request/get_leave_appointments_use_case.dart';
+import 'package:shaoni/features/leaves/domain/entity/leave_request/create_leave_request_response.dart';
+import 'package:shaoni/features/leaves/domain/use_cases/leave_request/create_leave_request_use_case.dart';
+import 'package:shaoni/features/leaves/domain/use_cases/leave_request/update_leave_request_use_case.dart';
+import 'package:shaoni/features/leaves/domain/entity/leave_request/leave_employee.dart';
+import 'package:shaoni/features/leaves/domain/entity/leave_request/leave_request_edit_data.dart';
+import 'package:shaoni/features/leaves/domain/use_cases/leave_request/get_leave_request_for_edit_use_case.dart';
 
 abstract class LeavesRepository {
   /// ============================ leave interruption ============================
@@ -43,5 +51,26 @@ abstract class LeavesRepository {
 
   Future<Either<Failure, CreateLeaveReplaceResponse>> updateLeaveReplace({
     required UpdateLeaveReplaceParams params,
+  });
+
+  /// ============================ leave request ============================
+  Future<Either<Failure, List<LeaveAppointment>>> getLeaveAppointments({
+    required GetLeaveAppointmentsParams params,
+  });
+
+  Future<Either<Failure, CreateLeaveRequestResponse>> createLeaveRequest({
+    required CreateLeaveRequestParams params,
+  });
+
+  Future<Either<Failure, CreateLeaveRequestResponse>> updateLeaveRequest({
+    required UpdateLeaveRequestParams params,
+  });
+
+  Future<Either<Failure, List<LeaveEmployee>>> getLeaveEmployees({
+    required NoParams params,
+  });
+
+  Future<Either<Failure, LeaveRequestEditData>> getLeaveRequestForEdit({
+    required GetLeaveRequestForEditParams params,
   });
 }

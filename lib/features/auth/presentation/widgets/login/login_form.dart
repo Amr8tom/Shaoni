@@ -100,9 +100,6 @@ class LoginForm extends StatelessWidget {
                       backgroundColor: ColorRes.primary,
                     ),
 
-
-
-
               const Sizer(height: 16),
 
               /// ── Privacy Policy note ───────────────────────────────────────

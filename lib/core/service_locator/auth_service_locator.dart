@@ -5,14 +5,14 @@ import '../../features/auth/data/data_sources/remote_data_sources.dart';
 import '../../features/auth/data/repositories/auth_repositories.dart';
 import '../../features/auth/domain/repositories/auth_repositories.dart';
 import '../../features/auth/domain/usecases/login_use_case.dart';
+import '../../features/auth/domain/usecases/request_otp_use_case.dart';
+import '../../features/auth/domain/usecases/verify_otp_use_case.dart';
 import '../../features/auth/presentation/controller/login/login_cubit.dart';
+import '../../features/auth/presentation/controller/otp/otp_cubit.dart';
 
 class AuthServiceLocator {
   static Future<void> execute({required GetIt serviceLocator}) async {
-    /// data sources
-    // serviceLocator.registerLazySingleton<AuthLocalDataSources>(
-    //   () => AuthLocalDataSourcesImp(),
-    // );
+
     serviceLocator.registerLazySingleton<AuthRemoteDataSources>(
       () => AuthRemoteDataSourcesImp(serviceLocator()),
     );
@@ -32,10 +32,24 @@ class AuthServiceLocator {
     serviceLocator.registerLazySingleton<ChangePasswordUseCase>(
       () => ChangePasswordUseCase(serviceLocator()),
     );
+    serviceLocator.registerLazySingleton<RequestOtpUseCase>(
+      () => RequestOtpUseCase(serviceLocator()),
+    );
+    serviceLocator.registerLazySingleton<VerifyOtpUseCase>(
+      () => VerifyOtpUseCase(serviceLocator()),
+    );
 
     /// controller
     serviceLocator.registerFactory<LoginCubit>(
       () => LoginCubit(serviceLocator(), serviceLocator(), serviceLocator()),
+    );
+    serviceLocator.registerFactory<OtpCubit>(
+      () => OtpCubit(
+        serviceLocator(),
+        serviceLocator(),
+        serviceLocator(),
+        serviceLocator(),
+      ),
     );
     // serviceLocator.registerFactory<RegisterCubit>(
     //   () => RegisterCubit(serviceLocator()),

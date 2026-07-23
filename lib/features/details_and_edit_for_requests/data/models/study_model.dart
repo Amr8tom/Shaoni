@@ -32,10 +32,44 @@ class StudyModel extends Study {
       comment: json['comment'] as String?,
       editReasons: json['editReasons'] as String?,
       rejectReasons: json['rejectReasons'] as String?,
-      attachments: json['attachments'] != null
-          ? List<String>.from(json['attachments'] as List)
-          : null,
+      attachments: _parseAttachments(json['attachments']),
     );
+  }
+
+  /// `attachments` has shipped in two shapes:
+  ///   - legacy: a plain list of base64 strings
+  ///   - current: `[{ id, name, files: [{ id, name, attachmentBase64 }] }]`
+  /// Both are flattened to the base64 strings the attachment widget expects.
+  static List<String>? _parseAttachments(Object? raw) {
+    if (raw is! List) return null;
+
+    final result = <String>[];
+    for (final item in raw) {
+      if (item is String) {
+        if (item.isNotEmpty) result.add(item);
+        continue;
+      }
+      if (item is! Map) continue;
+
+      var addedFromFiles = false;
+      final files = item['files'];
+      if (files is List) {
+        for (final file in files) {
+          if (file is! Map) continue;
+          final base64 = file['attachmentBase64'] ?? file['attachment'];
+          if (base64 is String && base64.isNotEmpty) {
+            result.add(base64);
+            addedFromFiles = true;
+          }
+        }
+      }
+      if (addedFromFiles) continue;
+
+      final base64 = item['attachmentBase64'] ?? item['attachment'];
+      if (base64 is String && base64.isNotEmpty) result.add(base64);
+    }
+
+    return result.isEmpty ? null : result;
   }
 
   /// toJson

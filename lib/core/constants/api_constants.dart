@@ -12,6 +12,10 @@ class URL {
   static const String setPassword = '$baseUrl/Auth/SetPassword';
   static const String resendOtp = '$baseUrl/Auth/ResendOtp';
   static const String sendOtp = '$baseUrl/Auth/PilgrimLoginOtp';
+
+  /// login one-time-password (sent to the user's e-mail after a valid login)
+  static const String requestOtp = '$baseUrl/User/otp/request';
+  static const String verifyOtp = '$baseUrl/User/otp/verify';
   // static const String feedback = '$baseUrl/feedbacks/CreateFeedback';
 
   /// human resources
@@ -126,6 +130,14 @@ class URL {
   static const String getLeaveInterruptionEdit =
       '$baseUrl/LeaveInterruption/edit/';
 
+  /// leave request
+  static const String getLeaveAppointments = '$baseUrl/hr_leave/appointments/';
+  static const String createLeaveRequest = '$baseUrl/hr_leave/create';
+  static const String updateLeaveRequest = '$baseUrl/hr_leave/update/';
+
+  /// Prefill source for editing an existing leave request.
+  static const String leaveRequestWithStages = '$baseUrl/Request/';
+
   /// leave replace
   static const String createLeaveReplace = '$baseUrl/LeaveReplace';
   static const String updateLeaveReplace = '$baseUrl/LeaveReplace/update/';
@@ -160,6 +172,10 @@ class URL {
   static const String createOutsideWorking = '$baseUrl/OutsideWorking/create';
   static const String updateOutsideWorking = '$baseUrl/OutsideWorking/update/';
   static const String getOutsideWorkingEdit = '$baseUrl/OutsideWorking/edit/';
+
+  /// Accept / refuse a single assignment line: append the line's odooLineId.
+  static const String outsideWorkingLineAction =
+      '$baseUrl/OutsideWorkingLines/action/';
 
   /// ============================ complaint request ============================
   static const String getComplaintTypes = '$baseUrl/Lookup/GetComplaintTypes';
@@ -200,6 +216,11 @@ class URL {
       '$baseUrl/Request/dashboard/paged/for-manager';
   static const String getAllRequestsWithStagesByKafeel =
       '$baseUrl/Request/with-stages/paged/by-kafeel';
+
+  /// Outside-working requests for the current user's grid (comes from its own
+  /// endpoint instead of the generic by-user list).
+  static const String getOutsideWorkingRequests =
+      '$baseUrl/Request/with-stages/paged/for-outside-working-employee';
   static const String approveRequest = '$baseUrl/Request/status/';
   static const String deleteAccount = "$baseUrl/User/delete";
   static const String getCountUnreadedNotificaion =

@@ -25,6 +25,9 @@ import '../../domain/use_cases/get_scrap_request_edit_use_case.dart';
 import '../../domain/use_cases/get_visa_request_edit_use_case.dart';
 import '../../domain/use_cases/get_ticket_booking_edit_use_case.dart';
 import '../../domain/use_cases/get_leave_interruption_edit_use_case.dart';
+import '../../domain/use_cases/outside_working_line_action_use_case.dart';
+import '../models/outside_working_line_action_response_model.dart';
+import '../../domain/use_cases/get_outside_working_requests_use_case.dart';
 import '../../domain/use_cases/get_leave_replace_edit_use_case.dart';
 import '../models/approve_request_model.dart';
 import '../models/edit_response_model.dart';
@@ -120,6 +123,14 @@ abstract class MyRequestsRemoteDataSources {
 
   Future<EditResponseModel> getLeaveReplaceEdit({
     required GetLeaveReplaceEditParams params,
+  });
+
+  Future<OutsideWorkingLineActionResponseModel> outsideWorkingLineAction({
+    required OutsideWorkingLineActionParams params,
+  });
+
+  Future<AllRequestsWithStagesModel> getOutsideWorkingRequests({
+    required GetOutsideWorkingRequestsParams params,
   });
 }
 
@@ -476,6 +487,40 @@ class MyRequestsRemoteDataSourcesImp implements MyRequestsRemoteDataSources {
         body: params.toMap(),
       );
       return EditResponseModel.fromJson(response.data as Map<String, dynamic>);
+    } on ServerFailure {
+      rethrow;
+    }
+  }
+
+  @override
+  Future<OutsideWorkingLineActionResponseModel> outsideWorkingLineAction({
+    required OutsideWorkingLineActionParams params,
+  }) async {
+    try {
+      final response = await _dio.postData(
+        url: '${URL.outsideWorkingLineAction}${params.lineId}',
+        body: params.toMap(),
+      );
+      if (response == null) throw ServerFailure(message: 'server failure');
+      return OutsideWorkingLineActionResponseModel.fromJson(response);
+    } on ServerFailure {
+      rethrow;
+    }
+  }
+
+  @override
+  Future<AllRequestsWithStagesModel> getOutsideWorkingRequests({
+    required GetOutsideWorkingRequestsParams params,
+  }) async {
+    try {
+      final response = await _dio.postData(
+        url: URL.getOutsideWorkingRequests,
+        body: params.toMap(),
+      );
+      if (response == null) {
+        throw ServerFailure(message: 'Null response from server');
+      }
+      return AllRequestsWithStagesModel.fromJson(response);
     } on ServerFailure {
       rethrow;
     }

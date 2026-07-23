@@ -48,6 +48,7 @@ class DRoutesName {
   static const String createLeaveInterruptionRoute =
       'create-leave-interruption-route';
   static const String createLeaveReplaceRoute = 'create-leave-replace-route';
+  static const String createLeaveRequestRoute = 'create-leave-request-route';
 
   /// location & maps Screen
   static const String mapRoute = 'map-route';

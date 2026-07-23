@@ -27,6 +27,9 @@ import '../use_cases/get_scrap_request_edit_use_case.dart';
 import '../use_cases/get_visa_request_edit_use_case.dart';
 import '../use_cases/get_ticket_booking_edit_use_case.dart';
 import '../use_cases/get_leave_interruption_edit_use_case.dart';
+import '../use_cases/outside_working_line_action_use_case.dart';
+import '../entities/outside_working_line_action_response.dart';
+import '../use_cases/get_outside_working_requests_use_case.dart';
 import '../use_cases/get_leave_replace_edit_use_case.dart';
 
 abstract class MyRequestsRepository {
@@ -113,5 +116,16 @@ abstract class MyRequestsRepository {
 
   Future<Either<Failure, EditResponse>> getLeaveReplaceEdit({
     required GetLeaveReplaceEditParams params,
+  });
+
+  /// Employee accept / refuse on a single outside-working assignment line.
+  Future<Either<Failure, OutsideWorkingLineActionResponse>>
+      outsideWorkingLineAction({
+    required OutsideWorkingLineActionParams params,
+  });
+
+  /// Paged outside-working requests for the current user's grid.
+  Future<Either<Failure, AllRequestsWithStages>> getOutsideWorkingRequests({
+    required GetOutsideWorkingRequestsParams params,
   });
 }

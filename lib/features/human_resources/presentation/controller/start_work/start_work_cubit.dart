@@ -33,6 +33,7 @@ class StartWorkCubit extends Cubit<StartWorkState> {
   final startWorkTypeController = TextEditingController();
   final employeeController = TextEditingController();
   final startDateController = TextEditingController();
+  final startHijriController = TextEditingController();
   final noteController = TextEditingController();
 
   /// ── Attachment controllers ───────────────────────────────────────────────
@@ -204,6 +205,7 @@ class StartWorkCubit extends Cubit<StartWorkState> {
     startWorkTypeController.clear();
     employeeController.clear();
     startDateController.clear();
+    startHijriController.clear();
     noteController.clear();
     attachmentFileController.clear();
   }
@@ -224,6 +226,7 @@ class StartWorkCubit extends Cubit<StartWorkState> {
     startWorkTypeController.dispose();
     employeeController.dispose();
     startDateController.dispose();
+    startHijriController.dispose();
     noteController.dispose();
     attachmentFileController.dispose();
     return super.close();

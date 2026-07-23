@@ -6,6 +6,7 @@ import 'package:shaoni/features/human_resources/presentation/attendance/widget/a
 import 'package:shaoni/features/human_resources/presentation/attendance/widget/attendance_editable_field.dart';
 import 'package:shaoni/features/study&training/presentation/controller/study/study_cubit.dart';
 import 'package:shaoni/features/study&training/presentation/study/widget/study_date_picker_field.dart';
+import 'package:shaoni/features/study&training/presentation/study/widget/study_duration_field.dart';
 import 'package:shaoni/generated/l10n.dart';
 
 class StudyRequestDataWidget extends StatelessWidget {
@@ -18,7 +19,9 @@ class StudyRequestDataWidget extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        // ── Row: study type | required study (text) | destination ────────
+        const Sizer(height: 8),
+
+        /// ── Row: study type | required study (text) | destination ────────
         Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -36,21 +39,6 @@ class StudyRequestDataWidget extends StatelessWidget {
                 },
                 validator: (v) => (v == null || v.isEmpty)
                     ? S.current.studyTypeRequired
-                    : null,
-              ),
-            ),
-            const Sizer(width: 9.6),
-            Expanded(
-              child: DEditableField(
-                label: S.current.requiredStudy,
-                hint: S.current.requiredStudyHint,
-                icon: Icons.menu_book_rounded,
-                iconColor: ColorRes.black,
-                controller: controller.requiredStudyController,
-                readOnly: false,
-                keyboardType: TextInputType.text,
-                validator: (v) => (v == null || v.isEmpty)
-                    ? S.current.thisFieldRequired
                     : null,
               ),
             ),
@@ -76,7 +64,7 @@ class StudyRequestDataWidget extends StatelessWidget {
         ),
         const Sizer(height: 20),
 
-        // ── Study duration: start date | end date | comment ───────────────
+        /// ── Study duration: start date | end date | comment ───────────────
         Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -88,7 +76,7 @@ class StudyRequestDataWidget extends StatelessWidget {
                 onDateSelected: (gregorian, hijri) {
                   controller.courseStartDateController.text = gregorian;
                   controller.courseStartHijriController.text = hijri;
-                  _updateDuration(controller);
+                  controller.updateDuration();
                 },
               ),
             ),
@@ -101,8 +89,40 @@ class StudyRequestDataWidget extends StatelessWidget {
                 onDateSelected: (gregorian, hijri) {
                   controller.courseEndDateController.text = gregorian;
                   controller.courseEndHijriController.text = hijri;
-                  _updateDuration(controller);
+                  controller.updateDuration();
                 },
+              ),
+            ),
+          ],
+        ),
+
+        /// Duration field (Reactive)
+        const StudyDurationField(),
+
+        const Sizer(height: 20),
+        Text(
+          S.current.requestJustification,
+          style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+                fontWeight: FontWeight.w900,
+              ),
+        ),
+        const Sizer(height: 12),
+
+        ///- study comment and required
+        Row(
+          children: [
+            Expanded(
+              child: DEditableField(
+                label: S.current.requiredStudy,
+                hint: S.current.requiredStudyHint,
+                icon: Icons.menu_book_rounded,
+                iconColor: ColorRes.black,
+                controller: controller.requiredStudyController,
+                readOnly: false,
+                keyboardType: TextInputType.text,
+                validator: (v) => (v == null || v.isEmpty)
+                    ? S.current.thisFieldRequired
+                    : null,
               ),
             ),
             const Sizer(width: 9.6),
@@ -120,7 +140,6 @@ class StudyRequestDataWidget extends StatelessWidget {
             ),
           ],
         ),
-        const Sizer(height: 20),
 
         // ── Reason / justification ───────────────────────────────────────
         DEditableField(
@@ -136,21 +155,5 @@ class StudyRequestDataWidget extends StatelessWidget {
         ),
       ],
     );
-  }
-
-  void _updateDuration(StudyCubit controller) {
-    final start = controller.courseStartDateController.text;
-    final end = controller.courseEndDateController.text;
-    if (start.isEmpty || end.isEmpty) return;
-    try {
-      final startDate = DateTime.parse(start);
-      final endDate = DateTime.parse(end);
-      if (endDate.isBefore(startDate)) return;
-      final days = endDate.difference(startDate).inDays;
-      final months = (days / 30).floor();
-      final remDays = days % 30;
-      controller.durationController.text =
-          months > 0 ? '$months شهر و $remDays يوم' : '$days يوم';
-    } catch (_) {}
   }
 }

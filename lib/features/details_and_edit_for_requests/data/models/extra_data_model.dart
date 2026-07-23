@@ -18,6 +18,7 @@ import 'package:shaoni/features/details_and_edit_for_requests/data/models/ticket
 import 'package:shaoni/features/details_and_edit_for_requests/data/models/leave_interruption_model.dart';
 import 'package:shaoni/features/details_and_edit_for_requests/data/models/leave_replace_model.dart';
 import 'package:shaoni/features/details_and_edit_for_requests/data/models/outside_working_details_model.dart';
+import 'package:shaoni/features/details_and_edit_for_requests/data/models/leave_request_model.dart';
 
 class ExtraDataModel extends ExtraData {
   const ExtraDataModel({
@@ -40,6 +41,7 @@ class ExtraDataModel extends ExtraData {
     super.ticketBooking,
     super.leaveInterruption,
     super.leaveReplace,
+    super.leaveRequest,
   });
 
   /// fromJson
@@ -63,6 +65,7 @@ class ExtraDataModel extends ExtraData {
     final ticketBookingJson = _jsonMap(json['ticketBooking']);
     final leaveInterruptionJson = _jsonMap(json['leaveInterruption']);
     final leaveReplaceJson = _jsonMap(json['leaveReplace']);
+    final leaveRequestJson = _jsonMap(json['leaveRequest']);
 
     return ExtraDataModel(
       attendance: attendanceJson != null
@@ -119,6 +122,9 @@ class ExtraDataModel extends ExtraData {
           : null,
       leaveReplace: leaveReplaceJson != null
           ? LeaveReplaceModel.fromJson(leaveReplaceJson)
+          : null,
+      leaveRequest: leaveRequestJson != null
+          ? LeaveRequestModel.fromJson(leaveRequestJson)
           : null,
     );
   }
@@ -316,6 +322,9 @@ class ExtraDataModel extends ExtraData {
       'leaveReplace': extraData.leaveReplace == null
           ? null
           : LeaveReplaceModel.toJsonFromEntity(extraData.leaveReplace!),
+      'leaveRequest': extraData.leaveRequest == null
+          ? null
+          : LeaveRequestModel.toJsonFromEntity(extraData.leaveRequest!),
     };
   }
 }

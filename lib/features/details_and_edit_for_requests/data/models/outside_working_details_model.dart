@@ -3,6 +3,7 @@ import 'package:shaoni/features/details_and_edit_for_requests/domain/entities/ou
 class OutsideWorkingLineModel extends OutsideWorkingLineEntity {
   const OutsideWorkingLineModel({
     super.id,
+    super.odooLineId,
     super.employeeId,
     super.startDate = '',
     super.endDate = '',
@@ -18,6 +19,7 @@ class OutsideWorkingLineModel extends OutsideWorkingLineEntity {
   factory OutsideWorkingLineModel.fromJson(Map<String, dynamic> json) {
     return OutsideWorkingLineModel(
       id: json['id'] as int?,
+      odooLineId: json['odooLineId'] as int?,
       employeeId: json['employeeId'] as int?,
       startDate: json['startDate'] as String? ?? '',
       endDate: json['endDate'] as String? ?? '',
@@ -34,6 +36,7 @@ class OutsideWorkingLineModel extends OutsideWorkingLineEntity {
   static Map<String, dynamic> toJsonFromEntity(OutsideWorkingLineEntity e) {
     return {
       'id': e.id,
+      'odooLineId': e.odooLineId,
       'employeeId': e.employeeId,
       'startDate': e.startDate,
       'endDate': e.endDate,

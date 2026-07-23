@@ -6,6 +6,7 @@ import 'package:shaoni/core/local_storage/session_storage/session_storage.dart';
 import 'package:shaoni/core/utils/usecases/base_usecase.dart';
 import 'package:shaoni/features/study&training/domain/entities/training_request/course.dart';
 import 'package:shaoni/features/study&training/domain/use_cases/training_request/get_courses_use_case.dart';
+import 'package:shaoni/features/study&training/domain/use_cases/training_request/get_training_for_edit_use_case.dart';
 import 'package:shaoni/features/study&training/domain/use_cases/training_request/create_training_request_use_case.dart';
 import 'package:shaoni/features/study&training/domain/use_cases/training_request/update_training_request_use_case.dart';
 
@@ -15,6 +16,7 @@ class TrainingRequestCubit extends Cubit<TrainingRequestState> {
   final GetCoursesUseCase _getCoursesUseCase;
   final CreateTrainingRequestUseCase _createTrainingRequestUseCase;
   final UpdateTrainingRequestUseCase _updateTrainingRequestUseCase;
+  final GetTrainingForEditUseCase _getTrainingForEditUseCase;
   final SessionStorage _sessionStorage;
 
   /// Form key
@@ -40,13 +42,47 @@ class TrainingRequestCubit extends Cubit<TrainingRequestState> {
   /// Raw courses list for ID resolution
   List<Course> _courses = [];
 
+  /// Date of the request being edited; blank when creating (uses today).
+  String _editDate = '';
+
   TrainingRequestCubit(
     this._getCoursesUseCase,
     this._createTrainingRequestUseCase,
     this._updateTrainingRequestUseCase,
+    this._getTrainingForEditUseCase,
     this._sessionStorage,
-  ) : super(const TrainingRequestState()) {
-    _loadCourses();
+  ) : super(const TrainingRequestState());
+
+  /// Loads courses, then prefills from the existing request when editing.
+  Future<void> init({int? requestId}) async {
+    await _loadCourses();
+    if (requestId != null) await _prefill(requestId);
+  }
+
+  /// Populates the form from an existing training request so an update does
+  /// not overwrite untouched fields with blanks.
+  Future<void> _prefill(int requestId) async {
+    final result = await _getTrainingForEditUseCase.call(
+      params: GetTrainingForEditParams(requestId: requestId),
+    );
+    if (isClosed) return;
+
+    result.fold((_) {}, (data) {
+      courseController.text = data.courseName;
+      noteController.text = data.note;
+      _editDate = data.date;
+      if (data.officeId != null) {
+        officeIdController.text = data.officeId.toString();
+      }
+      // Already normalised: the API's "false" sentinel becomes ''.
+      attachmentFileController.text = data.attachment;
+
+      final match = _courses.where((c) => c.id == data.courseId);
+      emit(state.copyWith(
+        status: TrainingRequestStatus.lookupsLoaded,
+        selectedCourse: match.isEmpty ? null : match.first,
+      ));
+    });
   }
 
   // ── Lookups ──────────────────────────────────────────────────────────────
@@ -99,7 +135,10 @@ class TrainingRequestCubit extends Cubit<TrainingRequestState> {
     return CreateTrainingRequestParams(
       employeeId: empId,
       officeId: int.tryParse(officeIdController.text) ?? 0,
-      date: DateFormat('yyyy-MM-dd', 'en').format(DateTime.now()),
+      // Keep the original request date when editing; new requests use today.
+      date: _editDate.isNotEmpty
+          ? _editDate
+          : DateFormat('yyyy-MM-dd', 'en').format(DateTime.now()),
       courseId: _selectedCourseId ?? 0,
       note: noteController.text.trim(),
       attachmentIds: [],
@@ -135,6 +174,7 @@ class TrainingRequestCubit extends Cubit<TrainingRequestState> {
       params: UpdateTrainingRequestParams(
         requestId: requestId,
         data: _buildParams(),
+        attachment: attachmentFileController.text,
       ),
     );
     if (isClosed) return;

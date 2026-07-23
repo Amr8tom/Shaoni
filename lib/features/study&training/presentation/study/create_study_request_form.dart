@@ -8,6 +8,7 @@ import 'package:shaoni/core/extensions/navigation_extension.dart';
 import 'package:shaoni/core/service_locator/service_locator.dart';
 import 'package:shaoni/features/study&training/presentation/controller/study/study_cubit.dart';
 import 'package:shaoni/features/study&training/presentation/study/widget/study_request_data_widget.dart';
+
 import '../../../../common/widgets/dialogs/custom_dialog_img_title_des.dart';
 import '../../../../core/constants/asset_resources.dart';
 import '../../../../core/routing/route_names.dart';
@@ -27,7 +28,8 @@ class CreateStudyRequestForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => serviceLocator<StudyCubit>(),
+      create: (context) =>
+          serviceLocator<StudyCubit>()..init(requestId: requestId),
       child: Scaffold(
         appBar: DAppBar(
           showMenu: false,
@@ -63,7 +65,7 @@ class CreateStudyRequestForm extends StatelessWidget {
                     },
                     onTab1: () {
                       context.pushNamedAndRemoveUntil(
-                        DRoutesName.requestRoutes,
+                        DRoutesName.navigationMenuRoute,
                         predicate: (route) => false,
                       );
                     },

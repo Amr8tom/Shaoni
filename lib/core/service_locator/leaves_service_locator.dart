@@ -9,6 +9,12 @@ import 'package:shaoni/features/leaves/domain/use_cases/leave_interruption/searc
 import 'package:shaoni/features/leaves/domain/use_cases/leave_interruption/update_leave_interruption_use_case.dart';
 import 'package:shaoni/features/leaves/domain/use_cases/leave_replace/create_leave_replace_use_case.dart';
 import 'package:shaoni/features/leaves/domain/use_cases/leave_replace/update_leave_replace_use_case.dart';
+import 'package:shaoni/features/leaves/domain/use_cases/leave_request/get_leave_appointments_use_case.dart';
+import 'package:shaoni/features/leaves/domain/use_cases/leave_request/create_leave_request_use_case.dart';
+import 'package:shaoni/features/leaves/domain/use_cases/leave_request/update_leave_request_use_case.dart';
+import 'package:shaoni/features/leaves/domain/use_cases/leave_request/get_leave_employees_use_case.dart';
+import 'package:shaoni/features/leaves/domain/use_cases/leave_request/get_leave_request_for_edit_use_case.dart';
+import 'package:shaoni/features/leaves/presentation/controller/leave_request/leave_request_cubit.dart';
 import 'package:shaoni/features/leaves/presentation/controller/leave_interruption/leave_interruption_cubit.dart';
 import 'package:shaoni/features/leaves/presentation/controller/leave_replace/leave_replace_cubit.dart';
 
@@ -57,6 +63,34 @@ class LeavesServiceLocator {
     );
     serviceLocator.registerLazySingleton<UpdateLeaveReplaceUseCase>(
       () => UpdateLeaveReplaceUseCase(serviceLocator()),
+    );
+
+    /// ============================ leave request ============================
+    serviceLocator.registerLazySingleton<GetLeaveAppointmentsUseCase>(
+      () => GetLeaveAppointmentsUseCase(serviceLocator()),
+    );
+    serviceLocator.registerLazySingleton<CreateLeaveRequestUseCase>(
+      () => CreateLeaveRequestUseCase(serviceLocator()),
+    );
+    serviceLocator.registerLazySingleton<UpdateLeaveRequestUseCase>(
+      () => UpdateLeaveRequestUseCase(serviceLocator()),
+    );
+    serviceLocator.registerLazySingleton<GetLeaveEmployeesUseCase>(
+      () => GetLeaveEmployeesUseCase(serviceLocator()),
+    );
+    serviceLocator.registerLazySingleton<GetLeaveRequestForEditUseCase>(
+      () => GetLeaveRequestForEditUseCase(serviceLocator()),
+    );
+    serviceLocator.registerFactory<LeaveRequestCubit>(
+      () => LeaveRequestCubit(
+        serviceLocator(),
+        serviceLocator(),
+        serviceLocator(),
+        serviceLocator(),
+        serviceLocator(),
+        serviceLocator(),
+        serviceLocator(),
+      ),
     );
     serviceLocator.registerFactory<LeaveReplaceCubit>(
       () => LeaveReplaceCubit(

@@ -1269,6 +1269,31 @@ class S {
     );
   }
 
+  /// `Didn't receive the code?`
+  String get didNotReceiveCode {
+    return Intl.message(
+      'Didn\'t receive the code?',
+      name: 'didNotReceiveCode',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Resend after`
+  String get resendAfter {
+    return Intl.message(
+      'Resend after',
+      name: 'resendAfter',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `s`
+  String get second {
+    return Intl.message('s', name: 'second', desc: '', args: []);
+  }
+
   /// `verify OTP`
   String get sendOtp {
     return Intl.message('verify OTP', name: 'sendOtp', desc: '', args: []);
@@ -7809,6 +7834,186 @@ class S {
     );
   }
 
+  /// `Employees Details`
+  String get employeesDetails {
+    return Intl.message(
+      'Employees Details',
+      name: 'employeesDetails',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Assignment Request No.`
+  String get assignmentNumber {
+    return Intl.message(
+      'Assignment Request No.',
+      name: 'assignmentNumber',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Accept`
+  String get accept {
+    return Intl.message('Accept', name: 'accept', desc: '', args: []);
+  }
+
+  /// `Reject`
+  String get reject {
+    return Intl.message('Reject', name: 'reject', desc: '', args: []);
+  }
+
+  /// `Manager Approval`
+  String get managerAccept {
+    return Intl.message(
+      'Manager Approval',
+      name: 'managerAccept',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Manager Rejection`
+  String get managerReject {
+    return Intl.message(
+      'Manager Rejection',
+      name: 'managerReject',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Leave Request`
+  String get leaveRequestTitle {
+    return Intl.message(
+      'Leave Request',
+      name: 'leaveRequestTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Employee`
+  String get employeeName {
+    return Intl.message('Employee', name: 'employeeName', desc: '', args: []);
+  }
+
+  /// `Alternative Employee`
+  String get alternativeEmployee {
+    return Intl.message(
+      'Alternative Employee',
+      name: 'alternativeEmployee',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Department`
+  String get department {
+    return Intl.message('Department', name: 'department', desc: '', args: []);
+  }
+
+  /// `Accreditation Type`
+  String get validationType {
+    return Intl.message(
+      'Accreditation Type',
+      name: 'validationType',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Select alternative employee`
+  String get selectAlternativeEmployee {
+    return Intl.message(
+      'Select alternative employee',
+      name: 'selectAlternativeEmployee',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Pre-booked Leaves (view only)`
+  String get preBookedLeaves {
+    return Intl.message(
+      'Pre-booked Leaves (view only)',
+      name: 'preBookedLeaves',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Mode`
+  String get mode {
+    return Intl.message('Mode', name: 'mode', desc: '', args: []);
+  }
+
+  /// `By Employee`
+  String get byEmployee {
+    return Intl.message('By Employee', name: 'byEmployee', desc: '', args: []);
+  }
+
+  /// `days`
+  String get days {
+    return Intl.message('days', name: 'days', desc: '', args: []);
+  }
+
+  /// `Half Day`
+  String get halfDay {
+    return Intl.message('Half Day', name: 'halfDay', desc: '', args: []);
+  }
+
+  /// `By Hours`
+  String get byHours {
+    return Intl.message('By Hours', name: 'byHours', desc: '', args: []);
+  }
+
+  /// `Open Attachment`
+  String get openAttachment {
+    return Intl.message(
+      'Open Attachment',
+      name: 'openAttachment',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Delete`
+  String get delete {
+    return Intl.message('Delete', name: 'delete', desc: '', args: []);
+  }
+
+  /// `Action executed successfully`
+  String get actionExecutedSuccessfully {
+    return Intl.message(
+      'Action executed successfully',
+      name: 'actionExecutedSuccessfully',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You have accepted the assignment successfully.`
+  String get requestAcceptedSuccessfully {
+    return Intl.message(
+      'You have accepted the assignment successfully.',
+      name: 'requestAcceptedSuccessfully',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You have rejected the assignment successfully.`
+  String get requestRejectedSuccessfully {
+    return Intl.message(
+      'You have rejected the assignment successfully.',
+      name: 'requestRejectedSuccessfully',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Select`
   String get select {
     return Intl.message('Select', name: 'select', desc: '', args: []);
@@ -8012,6 +8217,36 @@ class S {
       desc: '',
       args: [],
     );
+  }
+
+  /// `Request Justification`
+  String get requestJustification {
+    return Intl.message(
+      'Request Justification',
+      name: 'requestJustification',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `month`
+  String get month {
+    return Intl.message('month', name: 'month', desc: '', args: []);
+  }
+
+  /// `months`
+  String get months {
+    return Intl.message('months', name: 'months', desc: '', args: []);
+  }
+
+  /// `day`
+  String get day {
+    return Intl.message('day', name: 'day', desc: '', args: []);
+  }
+
+  /// `and`
+  String get and {
+    return Intl.message('and', name: 'and', desc: '', args: []);
   }
 }
 

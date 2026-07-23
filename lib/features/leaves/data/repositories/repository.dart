@@ -13,6 +13,14 @@ import 'package:shaoni/features/leaves/domain/use_cases/leave_interruption/updat
 import 'package:shaoni/features/leaves/domain/entity/leave_replace/create_leave_replace_response.dart';
 import 'package:shaoni/features/leaves/domain/use_cases/leave_replace/create_leave_replace_use_case.dart';
 import 'package:shaoni/features/leaves/domain/use_cases/leave_replace/update_leave_replace_use_case.dart';
+import 'package:shaoni/features/leaves/domain/entity/leave_request/leave_appointment.dart';
+import 'package:shaoni/features/leaves/domain/use_cases/leave_request/get_leave_appointments_use_case.dart';
+import 'package:shaoni/features/leaves/domain/entity/leave_request/create_leave_request_response.dart';
+import 'package:shaoni/features/leaves/domain/use_cases/leave_request/create_leave_request_use_case.dart';
+import 'package:shaoni/features/leaves/domain/use_cases/leave_request/update_leave_request_use_case.dart';
+import 'package:shaoni/features/leaves/domain/entity/leave_request/leave_employee.dart';
+import 'package:shaoni/features/leaves/domain/entity/leave_request/leave_request_edit_data.dart';
+import 'package:shaoni/features/leaves/domain/use_cases/leave_request/get_leave_request_for_edit_use_case.dart';
 
 class LeavesRepositoryImp implements LeavesRepository {
   final LeavesRemoteDataSources _remoteDataSources;
@@ -105,6 +113,70 @@ class LeavesRepositoryImp implements LeavesRepository {
     try {
       final result =
           await _remoteDataSources.updateLeaveReplace(params: params);
+      return Right(result);
+    } on ServerFailure catch (e) {
+      return Left(ServerFailure(message: e.message));
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<LeaveAppointment>>> getLeaveAppointments({
+    required GetLeaveAppointmentsParams params,
+  }) async {
+    try {
+      final result =
+          await _remoteDataSources.getLeaveAppointments(params: params);
+      return Right(result);
+    } on ServerFailure catch (e) {
+      return Left(ServerFailure(message: e.message));
+    }
+  }
+
+  @override
+  Future<Either<Failure, CreateLeaveRequestResponse>> createLeaveRequest({
+    required CreateLeaveRequestParams params,
+  }) async {
+    try {
+      final result =
+          await _remoteDataSources.createLeaveRequest(params: params);
+      return Right(result);
+    } on ServerFailure catch (e) {
+      return Left(ServerFailure(message: e.message));
+    }
+  }
+
+  @override
+  Future<Either<Failure, CreateLeaveRequestResponse>> updateLeaveRequest({
+    required UpdateLeaveRequestParams params,
+  }) async {
+    try {
+      final result =
+          await _remoteDataSources.updateLeaveRequest(params: params);
+      return Right(result);
+    } on ServerFailure catch (e) {
+      return Left(ServerFailure(message: e.message));
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<LeaveEmployee>>> getLeaveEmployees({
+    required NoParams params,
+  }) async {
+    try {
+      final result = await _remoteDataSources.getLeaveEmployees(params: params);
+      return Right(result);
+    } on ServerFailure catch (e) {
+      return Left(ServerFailure(message: e.message));
+    }
+  }
+
+  @override
+  Future<Either<Failure, LeaveRequestEditData>> getLeaveRequestForEdit({
+    required GetLeaveRequestForEditParams params,
+  }) async {
+    try {
+      final result =
+          await _remoteDataSources.getLeaveRequestForEdit(params: params);
       return Right(result);
     } on ServerFailure catch (e) {
       return Left(ServerFailure(message: e.message));

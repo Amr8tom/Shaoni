@@ -174,8 +174,17 @@ extension RequestStatusExtensionList on CurrentStatus {
           RequestStatusEnum.finalStage,
           RequestStatusEnum.rejected,
         ];
-      case ServiceCode.scrapRequest:
       case ServiceCode.leave:
+        return const [
+          RequestStatusEnum.draft,
+          RequestStatusEnum.confirmed,
+          RequestStatusEnum.managerApproval,
+          RequestStatusEnum.hrApproval,
+          RequestStatusEnum.approved,
+          RequestStatusEnum.rejected,
+          RequestStatusEnum.cancel,
+        ];
+      case ServiceCode.scrapRequest:
       case null:
         break;
     }
@@ -294,6 +303,16 @@ extension RequestStatusStringExtension on String? {
         return RequestStatusEnum.approveTwo;
       case 'final':
         return RequestStatusEnum.finalStage;
+
+      // ---- Leave Request (hr.leave) States ----
+      case 'validate1':
+        return RequestStatusEnum.managerApproval;
+      case 'validate2':
+        return RequestStatusEnum.hrApproval;
+      case 'validate':
+        return RequestStatusEnum.approved;
+      case 'refuse':
+        return RequestStatusEnum.rejected;
 
       default:
         return RequestStatusEnum.none;

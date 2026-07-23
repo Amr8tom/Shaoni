@@ -3,8 +3,12 @@ import '../../../../core/dio/dio_helper.dart';
 import '../../../../core/error/failure.dart';
 import '../../../../core/utils/usecases/base_usecase.dart';
 import '../../domain/use_cases/study/create_study_use_case.dart';
+import '../../domain/use_cases/study/get_study_for_edit_use_case.dart';
 import '../../domain/use_cases/study/update_study_use_case.dart';
+import '../model/study/study_edit_data_model.dart';
 import '../../domain/use_cases/training_request/create_training_request_use_case.dart';
+import '../../domain/use_cases/training_request/get_training_for_edit_use_case.dart';
+import '../model/training_request/training_edit_data_model.dart';
 import '../../domain/use_cases/training_request/update_training_request_use_case.dart';
 import '../model/study/create_study_model.dart';
 import '../model/study/study_destination_model.dart';
@@ -28,6 +32,10 @@ abstract class StudyServicesRemoteDataSources {
     required UpdateStudyParams params,
   });
 
+  Future<StudyEditDataModel> getStudyForEdit({
+    required GetStudyForEditParams params,
+  });
+
   /// ============================= training request =============================
   Future<List<CourseModel>> getCourses();
 
@@ -37,6 +45,10 @@ abstract class StudyServicesRemoteDataSources {
 
   Future<CreateTrainingResponseModel> updateTrainingRequest({
     required UpdateTrainingRequestParams params,
+  });
+
+  Future<TrainingEditDataModel> getTrainingForEdit({
+    required GetTrainingForEditParams params,
   });
 }
 
@@ -109,6 +121,29 @@ class StudyServicesRemoteDataSourcesImp
     }
   }
 
+  @override
+  Future<StudyEditDataModel> getStudyForEdit({
+    required GetStudyForEditParams params,
+  }) async {
+    try {
+      final response = await _dio.getData(
+        url: '${URL.getRequestDetailsStages}${params.requestId}/with-stages',
+      );
+      if (response is! Map<String, dynamic>) {
+        throw ServerFailure(message: 'server failure');
+      }
+      final extraData = response['extraData'];
+      final study =
+          extraData is Map<String, dynamic> ? extraData['study'] : null;
+      if (study is! Map<String, dynamic>) {
+        throw ServerFailure(message: 'server failure');
+      }
+      return StudyEditDataModel.fromJson(study);
+    } on ServerFailure catch (e) {
+      throw ServerFailure(message: e.message);
+    }
+  }
+
   /// ============================= training request =============================
 
   @override
@@ -148,10 +183,27 @@ class StudyServicesRemoteDataSourcesImp
     try {
       final response = await _dio.putData(
         url: '${URL.updateTrainingRequest}${params.requestId}',
-        body: params.data.toMap(),
+        body: params.toMap(),
       );
       return CreateTrainingResponseModel.fromJson(
           response.data as Map<String, dynamic>);
+    } on ServerFailure catch (e) {
+      throw ServerFailure(message: e.message);
+    }
+  }
+
+  @override
+  Future<TrainingEditDataModel> getTrainingForEdit({
+    required GetTrainingForEditParams params,
+  }) async {
+    try {
+      final response = await _dio.getData(
+        url: '${URL.getRequestDetailsStages}${params.requestId}/with-stages',
+      );
+      if (response is! Map<String, dynamic>) {
+        throw ServerFailure(message: 'server failure');
+      }
+      return TrainingEditDataModel.fromResponse(response);
     } on ServerFailure catch (e) {
       throw ServerFailure(message: e.message);
     }

@@ -7,6 +7,9 @@ import 'package:shaoni/features/auth/domain/usecases/change_password_use_case.da
 import 'package:shaoni/features/auth/domain/usecases/login_use_case.dart';
 
 import '../../../../core/connection/check_network.dart';
+import '../../domain/entities/otp_response.dart';
+import '../../domain/usecases/request_otp_use_case.dart';
+import '../../domain/usecases/verify_otp_use_case.dart';
 import '../data_sources/remote_data_sources.dart';
 
 class AuthRepositoriesImp implements AuthRepositories {
@@ -36,6 +39,36 @@ class AuthRepositoriesImp implements AuthRepositories {
     if (await _networkInfo.isConnected) {
       try {
         final result = await _remoteDataSources.changePassword(params: params);
+        return Right(result);
+      } on ServerFailure catch (e) {
+        return Left(e);
+      }
+    } else {
+      return Left(CacheFailure());
+    }
+  }
+
+  @override
+  Future<Either<Failure, OtpResponse>> requestOtp(
+      {required RequestOtpParams params}) async {
+    if (await _networkInfo.isConnected) {
+      try {
+        final result = await _remoteDataSources.requestOtp(params: params);
+        return Right(result);
+      } on ServerFailure catch (e) {
+        return Left(e);
+      }
+    } else {
+      return Left(CacheFailure());
+    }
+  }
+
+  @override
+  Future<Either<Failure, OtpResponse>> verifyOtp(
+      {required VerifyOtpParams params}) async {
+    if (await _networkInfo.isConnected) {
+      try {
+        final result = await _remoteDataSources.verifyOtp(params: params);
         return Right(result);
       } on ServerFailure catch (e) {
         return Left(e);

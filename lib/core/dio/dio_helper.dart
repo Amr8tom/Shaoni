@@ -20,7 +20,6 @@ class DioHelper {
         responseHeader: true,
         error: true,
         compact: true,
-
         maxWidth: 90,
         enabled: kDebugMode,
       ),

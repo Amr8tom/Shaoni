@@ -64,9 +64,10 @@ class StartWorkRequestDataWidget extends StatelessWidget {
         StudyDatePickerField(
           label: S.current.startDate,
           gregorianController: controller.startDateController,
-          hijriController: TextEditingController(),
+          hijriController: controller.startHijriController,
           onDateSelected: (gregorian, hijri) {
             controller.startDateController.text = gregorian;
+            controller.startHijriController.text = hijri;
           },
         ),
         const Sizer(height: 20),

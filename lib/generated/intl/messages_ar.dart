@@ -33,6 +33,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "aboutApp": MessageLookupByLibrary.simpleMessage("عن التطبيق"),
     "ac": MessageLookupByLibrary.simpleMessage("مخيمات عرفة"),
     "accDetails": MessageLookupByLibrary.simpleMessage("تفاصيل الحساب"),
+    "accept": MessageLookupByLibrary.simpleMessage("موافقة الموظف"),
     "acceptRequest": MessageLookupByLibrary.simpleMessage("قبول الطلب "),
     "accepted": MessageLookupByLibrary.simpleMessage("مقبــوُل"),
     "acceptedBody": MessageLookupByLibrary.simpleMessage(
@@ -44,6 +45,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "accounting_course": MessageLookupByLibrary.simpleMessage("كورس محاسبة"),
     "acg": MessageLookupByLibrary.simpleMessage("دليل النشاط"),
     "actMeal": MessageLookupByLibrary.simpleMessage("وجبات الأنشطة"),
+    "actionExecutedSuccessfully": MessageLookupByLibrary.simpleMessage(
+      "تم تنفيذ الإجراء بنجاح",
+    ),
     "activities": MessageLookupByLibrary.simpleMessage("الأنشطة"),
     "activity": MessageLookupByLibrary.simpleMessage("الأنشطة"),
     "activityPhases": MessageLookupByLibrary.simpleMessage("مراحل النشاط"),
@@ -75,7 +79,11 @@ class MessageLookup extends MessageLookupByLibrary {
       "هل لديك حساب بالفعل؟",
     ),
     "alsoAvailable": MessageLookupByLibrary.simpleMessage(" : أيضا متاح في"),
+    "alternativeEmployee": MessageLookupByLibrary.simpleMessage(
+      "الموظف البديل",
+    ),
     "amount": MessageLookupByLibrary.simpleMessage("المبلغ"),
+    "and": MessageLookupByLibrary.simpleMessage("و"),
     "angleDevice": MessageLookupByLibrary.simpleMessage("زاوية الجهاز"),
     "angleQibla": MessageLookupByLibrary.simpleMessage("زاوية القبلة"),
     "announcement": MessageLookupByLibrary.simpleMessage("إعلان"),
@@ -99,6 +107,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "هل آنت متاكد انك تريد حذف حسابك",
     ),
     "asr": MessageLookupByLibrary.simpleMessage("العصر"),
+    "assignmentNumber": MessageLookupByLibrary.simpleMessage("رقم طلب التكليف"),
     "attachmentOptional": MessageLookupByLibrary.simpleMessage(
       "مرفق (اختياري)",
     ),
@@ -151,6 +160,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "byContinuingYouAgreeToOur": MessageLookupByLibrary.simpleMessage(
       "بالمواصلة، فإنك توافق على",
     ),
+    "byEmployee": MessageLookupByLibrary.simpleMessage("حسب الموظف"),
+    "byHours": MessageLookupByLibrary.simpleMessage("بالساعات"),
     "callUs": MessageLookupByLibrary.simpleMessage("اتصل بنا"),
     "camera": MessageLookupByLibrary.simpleMessage("كاميرا"),
     "cancel": MessageLookupByLibrary.simpleMessage("إلغاء"),
@@ -295,6 +306,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "date05": MessageLookupByLibrary.simpleMessage("05/17/2024  06:30PM"),
     "date15": MessageLookupByLibrary.simpleMessage("15/04/2024"),
     "dateBirth": MessageLookupByLibrary.simpleMessage("التاريخ الميلادي"),
+    "day": MessageLookupByLibrary.simpleMessage("يوم"),
+    "days": MessageLookupByLibrary.simpleMessage("يوم"),
     "delayedCash": MessageLookupByLibrary.simpleMessage("الدفع المؤجل"),
     "delayedCashDes": MessageLookupByLibrary.simpleMessage(
       "اشتري الآن وادفع لاحقا",
@@ -305,6 +318,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "delayedCashScreenDesTime": MessageLookupByLibrary.simpleMessage(
       "وصف شاشة الدفع المؤجل مع الوقت",
     ),
+    "delete": MessageLookupByLibrary.simpleMessage("حذف"),
     "deleteAccount": MessageLookupByLibrary.simpleMessage("احذف حسابي"),
     "deleteBody": MessageLookupByLibrary.simpleMessage(
       "هذا الإجراء لا رجعة فيه. ستفقد جميع بياناتك، ولن تتمكن من استعادتها.",
@@ -317,6 +331,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "depDate": MessageLookupByLibrary.simpleMessage("تاريخ المغادرة"),
     "depFli": MessageLookupByLibrary.simpleMessage("رقم رحلة المغادرة"),
     "depart": MessageLookupByLibrary.simpleMessage("الإنطلاق إلى منى"),
+    "department": MessageLookupByLibrary.simpleMessage("الإدارة"),
     "departmentType": MessageLookupByLibrary.simpleMessage("نوع القسم"),
     "des": MessageLookupByLibrary.simpleMessage("الوصف"),
     "desc": MessageLookupByLibrary.simpleMessage("الوصف:"),
@@ -327,6 +342,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "details": MessageLookupByLibrary.simpleMessage("تفاصيل"),
     "deviceAngle": MessageLookupByLibrary.simpleMessage("زاوية الجهاز"),
     "dhuhr": MessageLookupByLibrary.simpleMessage("الظهر"),
+    "didNotReceiveCode": MessageLookupByLibrary.simpleMessage("لم يصلك الرمز؟"),
     "dinner": MessageLookupByLibrary.simpleMessage("العشاء"),
     "direction": MessageLookupByLibrary.simpleMessage(
       "للحصول على اتجاه القبلة",
@@ -385,8 +401,10 @@ class MessageLookup extends MessageLookupByLibrary {
       "تم إرسال كود إعادة التعيين",
     ),
     "employee": MessageLookupByLibrary.simpleMessage("الموظف"),
+    "employeeName": MessageLookupByLibrary.simpleMessage("الموظف"),
     "employees": MessageLookupByLibrary.simpleMessage("الموظفون"),
     "employeesData": MessageLookupByLibrary.simpleMessage("بيانات الموظفين"),
+    "employeesDetails": MessageLookupByLibrary.simpleMessage("تفاصيل الموظفين"),
     "endDate": MessageLookupByLibrary.simpleMessage("النهاية م"),
     "endOfServiceRequest": MessageLookupByLibrary.simpleMessage(
       "طلب نهاية خدمة",
@@ -552,6 +570,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "guide": MessageLookupByLibrary.simpleMessage("إرشاد"),
     "ha": MessageLookupByLibrary.simpleMessage("الحج - عرفة"),
     "hajj": MessageLookupByLibrary.simpleMessage("نشاط الحج"),
+    "halfDay": MessageLookupByLibrary.simpleMessage("نصف يوم"),
     "hasKafala": MessageLookupByLibrary.simpleMessage("هل علي كفالة"),
     "helper": MessageLookupByLibrary.simpleMessage("مسـاعده"),
     "hh": MessageLookupByLibrary.simpleMessage("ي/ش/س  س:د"),
@@ -659,6 +678,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "طلب استبدال الإجازة",
     ),
     "leaveRequest": MessageLookupByLibrary.simpleMessage("طلب إجازة"),
+    "leaveRequestTitle": MessageLookupByLibrary.simpleMessage("طلب إجازة"),
     "leaveType": MessageLookupByLibrary.simpleMessage("نوع الإجازة"),
     "leaves": MessageLookupByLibrary.simpleMessage("الإجازات"),
     "letsStart": MessageLookupByLibrary.simpleMessage("لنبدأ"),
@@ -718,7 +738,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "makkah": MessageLookupByLibrary.simpleMessage("مكة"),
     "male": MessageLookupByLibrary.simpleMessage("ذكر"),
     "manager": MessageLookupByLibrary.simpleMessage("المدير"),
+    "managerAccept": MessageLookupByLibrary.simpleMessage("موافقة المدير"),
     "managerApproval": MessageLookupByLibrary.simpleMessage("موافقة المدير"),
+    "managerReject": MessageLookupByLibrary.simpleMessage("رفض المدير"),
     "markAll": MessageLookupByLibrary.simpleMessage("تحديد كمقروءة"),
     "meCo": MessageLookupByLibrary.simpleMessage("مكونات الوجبة "),
     "meal": MessageLookupByLibrary.simpleMessage("الوجبة"),
@@ -753,7 +775,10 @@ class MessageLookup extends MessageLookupByLibrary {
     "mobileWalletDes": MessageLookupByLibrary.simpleMessage(
       "يمكنك الدفع باستخدام محفظة هاتفك المحمول",
     ),
+    "mode": MessageLookupByLibrary.simpleMessage("الوضع"),
     "moneyYouLoan": MessageLookupByLibrary.simpleMessage("قَم بسـداد"),
+    "month": MessageLookupByLibrary.simpleMessage("شهر"),
+    "months": MessageLookupByLibrary.simpleMessage("أشهر"),
     "more": MessageLookupByLibrary.simpleMessage("الــمزيد"),
     "morningShift": MessageLookupByLibrary.simpleMessage(
       "رقم الوردية الصباحية",
@@ -874,6 +899,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "oof": MessageLookupByLibrary.simpleMessage("من"),
     "op": MessageLookupByLibrary.simpleMessage("مفتوحة"),
     "open": MessageLookupByLibrary.simpleMessage("افتح خريطة جوجل"),
+    "openAttachment": MessageLookupByLibrary.simpleMessage("فتح المرفق"),
     "or": MessageLookupByLibrary.simpleMessage("أو"),
     "orderDate": MessageLookupByLibrary.simpleMessage("تاريخ الطلب"),
     "orderDetails": MessageLookupByLibrary.simpleMessage("تفاصيل الطلب"),
@@ -981,6 +1007,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "prayerKeywords": MessageLookupByLibrary.simpleMessage(
       "صلاة,صلاه,مسجد,جامع,أذان,اذان,دعاء,عبادة,سجود,قبلة,اتجاه,فجر,ظهر,عصر,مغرب,عشاء,تهجد,سنة,نافلة,ركعة,ركعات,إمام,امام,مصلى,إسلامي,اسلامي,مسلم,دين,روحاني,روحانية,وضوء,غسل,طهارة,تيمم,اقامة,اقامه,توقيت,مواقيت,أوقات,اوقات,مؤذن,موذن,محراب,منبر,خطبة,جمعة,عيد,رمضان,صيام,قرآن,قران,ذكر,تسبيح,استغفار,حمد,شكر",
     ),
+    "preBookedLeaves": MessageLookupByLibrary.simpleMessage(
+      "الإجازات المحجوزة مسبقًا (للعرض فقط)",
+    ),
     "previous": MessageLookupByLibrary.simpleMessage("السابق"),
     "previousRequest": MessageLookupByLibrary.simpleMessage("الطلبات السابقة"),
     "previousTrips": MessageLookupByLibrary.simpleMessage("الرحلات السابقة"),
@@ -1052,6 +1081,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "تم تسـجيل حســابك بنجــاح",
     ),
     "registration": MessageLookupByLibrary.simpleMessage("ادارة الحجوزات"),
+    "reject": MessageLookupByLibrary.simpleMessage("رفض الموظف"),
     "rejectReasons": MessageLookupByLibrary.simpleMessage("أسباب الرفض"),
     "rejectRequest": MessageLookupByLibrary.simpleMessage("رفض الطلب"),
     "rejectedLabel": MessageLookupByLibrary.simpleMessage("مرفوض"),
@@ -1069,18 +1099,27 @@ class MessageLookup extends MessageLookupByLibrary {
     "reqDetails": MessageLookupByLibrary.simpleMessage("طلب تفاصيل"),
     "reqSub": MessageLookupByLibrary.simpleMessage("طلب نشاط فرعي"),
     "reqtitle": MessageLookupByLibrary.simpleMessage("اكتب عنوان الطلب هنا"),
+    "requestAcceptedSuccessfully": MessageLookupByLibrary.simpleMessage(
+      "تمت الموافقة على التكليف بنجاح.",
+    ),
     "requestApplicantData": MessageLookupByLibrary.simpleMessage(
       "بيانات مقدم الطلب",
     ),
     "requestData": MessageLookupByLibrary.simpleMessage("بيانات الطلب"),
     "requestDate": MessageLookupByLibrary.simpleMessage("تاريخ الطلب"),
     "requestDetails": MessageLookupByLibrary.simpleMessage("بيانات الطلب"),
+    "requestJustification": MessageLookupByLibrary.simpleMessage(
+      "مبررات الطلب",
+    ),
     "requestJustifications": MessageLookupByLibrary.simpleMessage(
       "مبررات الطلب",
     ),
     "requestLines": MessageLookupByLibrary.simpleMessage("بنود الطلب"),
     "requestNumber": MessageLookupByLibrary.simpleMessage("رقم الطلب"),
     "requestReason": MessageLookupByLibrary.simpleMessage("مبررات الطلب"),
+    "requestRejectedSuccessfully": MessageLookupByLibrary.simpleMessage(
+      "تم رفض التكليف بنجاح.",
+    ),
     "requestSend": MessageLookupByLibrary.simpleMessage("تم إرسال طلبك بنجاح"),
     "requestSentSuccessfully": MessageLookupByLibrary.simpleMessage(
       "تم ارسال طلبك بنجاح",
@@ -1102,6 +1141,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "res": MessageLookupByLibrary.simpleMessage("السكن"),
     "resLocation": MessageLookupByLibrary.simpleMessage("موقع السكن"),
     "resend": MessageLookupByLibrary.simpleMessage("إعادة إرسال"),
+    "resendAfter": MessageLookupByLibrary.simpleMessage("إعادة الإرسال بعد"),
     "reservation": MessageLookupByLibrary.simpleMessage("الحـجز"),
     "resetPassword": MessageLookupByLibrary.simpleMessage(
       "استعادة كلمة المرور",
@@ -1162,6 +1202,7 @@ class MessageLookup extends MessageLookupByLibrary {
       " ابحث في فهرس السور",
     ),
     "searchTitle": MessageLookupByLibrary.simpleMessage("الــبحث"),
+    "second": MessageLookupByLibrary.simpleMessage("ثانية"),
     "seconds": MessageLookupByLibrary.simpleMessage("ثواني"),
     "seeAll": MessageLookupByLibrary.simpleMessage("رؤية الكل"),
     "selDep": MessageLookupByLibrary.simpleMessage("اختر القسم"),
@@ -1171,6 +1212,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "selectActivity": MessageLookupByLibrary.simpleMessage("اختر النشاط"),
     "selectAddress": MessageLookupByLibrary.simpleMessage(
       "الرجـاء أختيار عنوان أولا",
+    ),
+    "selectAlternativeEmployee": MessageLookupByLibrary.simpleMessage(
+      "اختر الموظف البديل",
     ),
     "selectArr": MessageLookupByLibrary.simpleMessage("اختر مدينة الوصول"),
     "selectAtLeastOneEmployee": MessageLookupByLibrary.simpleMessage(
@@ -1489,6 +1533,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "ut": MessageLookupByLibrary.simpleMessage(
       "هناك حقيقة أن المحتوى المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل ال��ارجي الفقرات في الصفحة التي يقرأها.",
     ),
+    "validationType": MessageLookupByLibrary.simpleMessage("نوع الاعتماد"),
     "valu": MessageLookupByLibrary.simpleMessage("فاليو"),
     "verificationCode": MessageLookupByLibrary.simpleMessage("كود التحقق"),
     "verificationStatus": MessageLookupByLibrary.simpleMessage(

@@ -45,11 +45,11 @@ class LeaveDateField extends StatelessWidget {
           initialDate: date ?? now,
           firstDate: DateTime(now.year - 2),
           lastDate: DateTime(now.year + 5),
-          builder: (context, child) => Localizations.override(
-            context: context,
-            locale: const Locale('en'),
-            child: DAppTheme.datePickerBuilder(context, child),
-          ),
+          // Note: do NOT wrap in Localizations.override(locale: 'en') — that
+          // reloads S for 'en' and sets Intl.defaultLocale globally, flipping
+          // the whole app to English. The field text is already English via
+          // DateFormat('dd/MM/yyyy', 'en').
+          builder: DAppTheme.datePickerBuilder,
         );
         if (picked != null) onPicked(picked);
       },

@@ -3,6 +3,10 @@ import '../../../../core/connection/check_network.dart';
 import '../../../../core/error/failure.dart';
 import '../../../../core/utils/usecases/base_usecase.dart';
 import '../../domain/entities/study/create_study_response.dart';
+import '../../domain/entities/study/study_edit_data.dart';
+import '../../domain/entities/training_request/training_edit_data.dart';
+import '../../domain/use_cases/study/get_study_for_edit_use_case.dart';
+import '../../domain/use_cases/training_request/get_training_for_edit_use_case.dart';
 import '../../domain/entities/study/study_destination.dart';
 import '../../domain/entities/study/study_type.dart';
 import '../../domain/entities/training_request/course.dart';
@@ -89,6 +93,22 @@ class StudyServicesRepositoryImp extends StudyServicesRepository {
     }
   }
 
+  @override
+  Future<Either<Failure, StudyEditData>> getStudyForEdit({
+    required GetStudyForEditParams params,
+  }) async {
+    if (await _networkInfo.isConnected) {
+      try {
+        final response = await _remote.getStudyForEdit(params: params);
+        return Right(response);
+      } on ServerFailure catch (e) {
+        return Left(ServerFailure(message: e.message));
+      }
+    } else {
+      return Left(CacheFailure());
+    }
+  }
+
   /// ===================== training request =====================
 
   @override
@@ -128,6 +148,22 @@ class StudyServicesRepositoryImp extends StudyServicesRepository {
     if (await _networkInfo.isConnected) {
       try {
         final response = await _remote.updateTrainingRequest(params: params);
+        return Right(response);
+      } on ServerFailure catch (e) {
+        return Left(ServerFailure(message: e.message));
+      }
+    } else {
+      return Left(CacheFailure());
+    }
+  }
+
+  @override
+  Future<Either<Failure, TrainingEditData>> getTrainingForEdit({
+    required GetTrainingForEditParams params,
+  }) async {
+    if (await _networkInfo.isConnected) {
+      try {
+        final response = await _remote.getTrainingForEdit(params: params);
         return Right(response);
       } on ServerFailure catch (e) {
         return Left(ServerFailure(message: e.message));
