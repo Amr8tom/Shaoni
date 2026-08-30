@@ -66,8 +66,7 @@ class CreateScrapRequestParams extends Equatable {
         'custody_id': custodyId,
         if (stockRequestId != null) 'stock_request_id': stockRequestId,
         'reason_id': reasonId,
-        'request_line_ids':
-            requestLineIds.map((item) => item.toMap()).toList(),
+        'request_line_ids': requestLineIds.map((item) => item.toMap()).toList(),
       };
 
   @override

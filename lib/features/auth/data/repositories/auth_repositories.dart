@@ -77,4 +77,5 @@ class AuthRepositoriesImp implements AuthRepositories {
       return Left(CacheFailure());
     }
   }
+
 }

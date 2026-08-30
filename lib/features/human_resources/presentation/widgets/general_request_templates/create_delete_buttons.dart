@@ -1,5 +1,7 @@
 import 'dart:ui';
+
 import 'package:flutter/material.dart';
+
 import '../../../../../common/widgets/sized_boxes/sizer.dart';
 import '../../../../../core/constants/app_sizes.dart';
 import '../../../../../core/constants/asset_resources.dart';
@@ -63,8 +65,6 @@ class CreateDeleteButtons extends StatelessWidget {
                       ),
                       child: Image.asset(
                         AssetRes.trashIcon,
-                        width: AppSizes.iconLg,
-                        height: AppSizes.iconLg,
                       ),
                     ),
                   ),

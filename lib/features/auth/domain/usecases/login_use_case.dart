@@ -19,16 +19,25 @@ class LoginUseCase extends UseCase<LoginEntity, LoginParams> {
 class LoginParams extends Equatable {
   final String userName, password;
 
-  const LoginParams({required this.userName, required this.password});
+  /// FCM registration token for this device; the backend stores it so it can
+  /// push notifications to the user. Empty when Firebase can't provide one.
+  final String firebaseToken;
+
+  const LoginParams({
+    required this.userName,
+    required this.password,
+    this.firebaseToken = '',
+  });
 
   /// toJson
   Map<String, dynamic> toJson() {
     return {
       'userName': userName,
       'password': password,
+      'firebaseToken': firebaseToken,
     };
   }
 
   @override
-  List<Object?> get props => [userName, password];
+  List<Object?> get props => [userName, password, firebaseToken];
 }

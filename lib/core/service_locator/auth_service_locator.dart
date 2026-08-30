@@ -12,7 +12,6 @@ import '../../features/auth/presentation/controller/otp/otp_cubit.dart';
 
 class AuthServiceLocator {
   static Future<void> execute({required GetIt serviceLocator}) async {
-
     serviceLocator.registerLazySingleton<AuthRemoteDataSources>(
       () => AuthRemoteDataSourcesImp(serviceLocator()),
     );

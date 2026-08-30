@@ -3,17 +3,17 @@
 <plist version="1.0">
 <dict>
 	<key>API_KEY</key>
-	<string>AIzaSyC5-A0KXL1tUISBP9fbuaJ9USb2xm66Bw8</string>
+	<string>AIzaSyBI6QzN4vCpuMzJmbz9Hgl-yRZ2cMFCTGA</string>
 	<key>GCM_SENDER_ID</key>
-	<string>414736215528</string>
+	<string>749989687580</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>com.shaoni.shaoni</string>
 	<key>PROJECT_ID</key>
-	<string>shaoniapp</string>
+	<string>shaoni-app</string>
 	<key>STORAGE_BUCKET</key>
-	<string>shaoniapp.firebasestorage.app</string>
+	<string>shaoni-app.firebasestorage.app</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -25,6 +25,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:414736215528:ios:ab88fdd5940271b63d485d</string>
+	<string>1:749989687580:ios:a1fee2bcfc5fd29a728ad9</string>
 </dict>
 </plist>

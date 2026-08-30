@@ -27,6 +27,7 @@ class UserEntity extends Equatable {
   final DepartmentEntity? department;
   final String? jobNumber;
   final String? jobTitle;
+  final String? registrationNumber;
 
   const UserEntity({
     required this.id,
@@ -51,6 +52,7 @@ class UserEntity extends Equatable {
     required this.gender,
     this.jobNumber,
     this.jobTitle,
+    this.registrationNumber,
   });
 
   @override
@@ -77,5 +79,6 @@ class UserEntity extends Equatable {
         department,
         jobNumber,
         jobTitle,
+        registrationNumber,
       ];
 }

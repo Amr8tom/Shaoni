@@ -116,6 +116,8 @@ class DAppBar extends StatelessWidget implements PreferredSizeWidget {
                         );
                       },
                       icon: SvgPicture.asset(
+                        width: AppSizes.iconLg * 0.8,
+                        height: AppSizes.iconLg * 0.8,
                         AssetRes.notificationIcon,
                         colorFilter: const ColorFilter.mode(
                             ColorRes.white, BlendMode.srcIn),

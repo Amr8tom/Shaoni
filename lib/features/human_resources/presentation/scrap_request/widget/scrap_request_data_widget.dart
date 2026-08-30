@@ -24,8 +24,7 @@ class ScrapRequestDataWidget extends StatelessWidget {
           padding: EdgeInsets.all(AppSizes.padding),
           decoration: BoxDecoration(
             color: ColorRes.white,
-            borderRadius:
-                BorderRadius.circular(AppSizes.borderRadiusLarge),
+            borderRadius: BorderRadius.circular(AppSizes.borderRadiusLarge),
             border: Border.all(color: ColorRes.greyForBorders),
           ),
           child: Column(
@@ -39,15 +38,13 @@ class ScrapRequestDataWidget extends StatelessWidget {
               ),
               Divider(color: ColorRes.grey4),
               const Sizer(height: 8),
-
               ...state.lineItems.map(
                 (item) => ScrapLineItemRow(
                   key: ValueKey(item.localId),
                   item: item,
                   lots: lots,
                   qtyController: controller.qtyController(item.localId),
-                  reasonController:
-                      controller.reasonController(item.localId),
+                  reasonController: controller.reasonController(item.localId),
                   onLotChanged: (id, name) =>
                       controller.updateItemLot(item.localId, id, name),
                   onDelete: state.lineItems.length > 1
@@ -55,9 +52,7 @@ class ScrapRequestDataWidget extends StatelessWidget {
                       : null,
                 ),
               ),
-
               const Sizer(height: 12),
-
               GestureDetector(
                 onTap: controller.addLineItem,
                 child: Container(
@@ -67,8 +62,7 @@ class ScrapRequestDataWidget extends StatelessWidget {
                   ),
                   decoration: BoxDecoration(
                     border: Border.all(
-                        color: ColorRes.primary,
-                        style: BorderStyle.solid),
+                        color: ColorRes.primary, style: BorderStyle.solid),
                     borderRadius:
                         BorderRadius.circular(AppSizes.borderRadiusMd),
                     color: ColorRes.primary.withValues(alpha: 0.06),
@@ -80,10 +74,7 @@ class ScrapRequestDataWidget extends StatelessWidget {
                       const Sizer(width: 6.4),
                       Text(
                         S.current.addLine,
-                        style: Theme.of(context)
-                            .textTheme
-                            .bodyMedium
-                            ?.copyWith(
+                        style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                               color: ColorRes.primary,
                               fontWeight: FontWeight.w600,
                             ),

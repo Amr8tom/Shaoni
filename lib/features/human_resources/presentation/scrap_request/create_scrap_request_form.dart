@@ -32,9 +32,7 @@ class CreateScrapRequestForm extends StatelessWidget {
         appBar: DAppBar(
           showMenu: false,
           showBackArrow: true,
-          title: _isEditMode
-              ? S.current.editRequest
-              : S.current.scrapRequest,
+          title: _isEditMode ? S.current.editRequest : S.current.scrapRequest,
         ),
         extendBodyBehindAppBar: true,
         backgroundColor: ColorRes.grey6,
@@ -46,10 +44,8 @@ class CreateScrapRequestForm extends StatelessWidget {
                 if (state.status.isError) {
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(
-                      content:
-                          Text(state.errorMessage ?? S.current.error),
-                      backgroundColor:
-                          ColorRes.error.withValues(alpha: 0.5),
+                      content: Text(state.errorMessage ?? S.current.error),
+                      backgroundColor: ColorRes.error.withValues(alpha: 0.5),
                     ),
                   );
                 }
@@ -58,8 +54,7 @@ class CreateScrapRequestForm extends StatelessWidget {
                   customDialogImgTitleDes(
                     button1: S.current.myOrders,
                     button2: S.current.home,
-                    orderNumber:
-                        _isEditMode ? '' : (state.requestNumber ?? ''),
+                    orderNumber: _isEditMode ? '' : (state.requestNumber ?? ''),
                     onTab2: () {
                       context.pushNamedAndRemoveUntil(
                         DRoutesName.navigationMenuRoute,
@@ -112,9 +107,8 @@ class CreateScrapRequestForm extends StatelessWidget {
 
                               Text(
                                 S.current.requestDetails,
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .headlineMedium,
+                                style:
+                                    Theme.of(context).textTheme.headlineMedium,
                               ),
                               const Sizer(height: 16),
 
@@ -126,8 +120,8 @@ class CreateScrapRequestForm extends StatelessWidget {
                                     ? state.custodies
                                         .cast<dynamic>()
                                         .firstWhere(
-                                          (c) => c?.id ==
-                                              state.selectedCustodyId,
+                                          (c) =>
+                                              c?.id == state.selectedCustodyId,
                                           orElse: () => null,
                                         )
                                     : null,
@@ -136,10 +130,9 @@ class CreateScrapRequestForm extends StatelessWidget {
                                           value: c,
                                           child: Text(
                                             c.name,
-                                            style: const TextStyle(
-                                                fontSize: 12),
-                                            overflow:
-                                                TextOverflow.ellipsis,
+                                            style:
+                                                const TextStyle(fontSize: 12),
+                                            overflow: TextOverflow.ellipsis,
                                           ),
                                         ))
                                     .toList(),
@@ -159,7 +152,8 @@ class CreateScrapRequestForm extends StatelessWidget {
                                     ? state.stockRequests
                                         .cast<dynamic>()
                                         .firstWhere(
-                                          (r) => r?.id ==
+                                          (r) =>
+                                              r?.id ==
                                               state.selectedStockRequestId,
                                           orElse: () => null,
                                         )
@@ -169,10 +163,9 @@ class CreateScrapRequestForm extends StatelessWidget {
                                           value: r,
                                           child: Text(
                                             r.name,
-                                            style: const TextStyle(
-                                                fontSize: 12),
-                                            overflow:
-                                                TextOverflow.ellipsis,
+                                            style:
+                                                const TextStyle(fontSize: 12),
+                                            overflow: TextOverflow.ellipsis,
                                           ),
                                         ))
                                     .toList(),
@@ -192,8 +185,8 @@ class CreateScrapRequestForm extends StatelessWidget {
                                     ? state.scrapReasons
                                         .cast<dynamic>()
                                         .firstWhere(
-                                          (r) => r?.id ==
-                                              state.selectedReasonId,
+                                          (r) =>
+                                              r?.id == state.selectedReasonId,
                                           orElse: () => null,
                                         )
                                     : null,
@@ -202,10 +195,9 @@ class CreateScrapRequestForm extends StatelessWidget {
                                           value: r,
                                           child: Text(
                                             r.name,
-                                            style: const TextStyle(
-                                                fontSize: 12),
-                                            overflow:
-                                                TextOverflow.ellipsis,
+                                            style:
+                                                const TextStyle(fontSize: 12),
+                                            overflow: TextOverflow.ellipsis,
                                           ),
                                         ))
                                     .toList(),
@@ -223,7 +215,6 @@ class CreateScrapRequestForm extends StatelessWidget {
                             ],
                           ),
                         ),
-
                         state.status.isLoading
                             ? Center(
                                 child: CircularProgressIndicator(
@@ -233,8 +224,7 @@ class CreateScrapRequestForm extends StatelessWidget {
                             : CreateDeleteButtons(
                                 deleteTab: () => controller.resetForm(),
                                 createTab: () {
-                                  if (controller.requestFormKey
-                                      .currentState!
+                                  if (controller.requestFormKey.currentState!
                                       .validate()) {
                                     if (_isEditMode) {
                                       controller.updateScrapRequest(
@@ -297,13 +287,11 @@ class _LabeledDropdown<T> extends StatelessWidget {
               vertical: AppSizes.padding * 0.5,
             ),
             border: OutlineInputBorder(
-              borderRadius:
-                  BorderRadius.circular(AppSizes.borderRadiusMd),
+              borderRadius: BorderRadius.circular(AppSizes.borderRadiusMd),
               borderSide: BorderSide(color: ColorRes.greyForBorders),
             ),
             enabledBorder: OutlineInputBorder(
-              borderRadius:
-                  BorderRadius.circular(AppSizes.borderRadiusMd),
+              borderRadius: BorderRadius.circular(AppSizes.borderRadiusMd),
               borderSide: BorderSide(color: ColorRes.greyForBorders),
             ),
             filled: true,

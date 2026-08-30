@@ -44,4 +44,5 @@ enum StorageKeys {
   officesList,
   jobNumber,
   jobTitle,
+  registrationNumber,
 }

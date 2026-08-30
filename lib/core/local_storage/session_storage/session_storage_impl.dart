@@ -48,6 +48,10 @@ class SessionStorageImpl implements SessionStorage {
   String? get jobTitle => storage.getString(key: StorageKeys.jobTitle.name);
 
   @override
+  String? get registrationNumber =>
+      storage.getString(key: StorageKeys.registrationNumber.name);
+
+  @override
   Future<void> saveToken(String value) =>
       storage.cacheString(key: StorageKeys.token.name, value: value);
 
@@ -96,6 +100,10 @@ class SessionStorageImpl implements SessionStorage {
       storage.cacheString(key: StorageKeys.jobTitle.name, value: value);
 
   @override
+  Future<void> saveRegistrationNumber(String value) => storage.cacheString(
+      key: StorageKeys.registrationNumber.name, value: value);
+
+  @override
   Future<void> clearSession() async {
     await storage.remove(key: StorageKeys.token.name);
     await storage.remove(key: StorageKeys.userId.name);
@@ -109,5 +117,6 @@ class SessionStorageImpl implements SessionStorage {
     await storage.remove(key: StorageKeys.officesList.name);
     await storage.remove(key: StorageKeys.jobNumber.name);
     await storage.remove(key: StorageKeys.jobTitle.name);
+    await storage.remove(key: StorageKeys.registrationNumber.name);
   }
 }

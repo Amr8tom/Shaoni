@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shaoni/core/constants/app_sizes.dart';
 import 'package:shaoni/core/utils/helpers/string_normalizer.dart';
+
 import '../../../../common/widgets/sized_boxes/sizer.dart';
 import '../../../../core/constants/asset_resources.dart';
 import '../../../../core/constants/colors.dart';
@@ -29,7 +30,7 @@ class ProfileHeader extends StatelessWidget {
         controller.changeIndex(3);
       },
       child: SizedBox(
-        width: 250,
+        width: AppSizes.widthcontainer * 1.8,
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -102,7 +103,7 @@ class ProfileHeader extends StatelessWidget {
                   ),
                   const Sizer(height: 2),
                   Text(
-                    controller.state.user?.fullName ?? "مصطفى ذكريا محمد",
+                    controller.state.user?.fullName ?? " please sign in",
                     style: TextStyle(
                       color: ColorRes.white,
                       fontSize: AppSizes.fontSizeSm,

@@ -57,8 +57,7 @@ class ScrapRequestCubit extends Cubit<ScrapRequestState> {
     final empId = int.tryParse(_sessionStorage.employeeId ?? '0') ?? 0;
 
     final results = await Future.wait([
-      _getCustodiesUseCase.call(
-          params: GetCustodiesParams(employeeId: empId)),
+      _getCustodiesUseCase.call(params: GetCustodiesParams(employeeId: empId)),
       _getStockRequestsUseCase.call(params: NoParams()),
       _getScrapReasonsUseCase.call(params: NoParams()),
     ]);
@@ -129,11 +128,13 @@ class ScrapRequestCubit extends Cubit<ScrapRequestState> {
     ));
     loadLotsForProduct(custody.productId);
     // update all line items to use the custody's product
-    final updated = state.lineItems.map((item) => item.copyWith(
-          productId: custody.productId,
-          productName: custody.productName,
-          clearLot: true,
-        )).toList();
+    final updated = state.lineItems
+        .map((item) => item.copyWith(
+              productId: custody.productId,
+              productName: custody.productName,
+              clearLot: true,
+            ))
+        .toList();
     emit(state.copyWith(lineItems: updated));
   }
 
@@ -173,8 +174,7 @@ class ScrapRequestCubit extends Cubit<ScrapRequestState> {
     _qtyControllers.remove(localId);
     _reasonControllers[localId]?.dispose();
     _reasonControllers.remove(localId);
-    final items =
-        state.lineItems.where((i) => i.localId != localId).toList();
+    final items = state.lineItems.where((i) => i.localId != localId).toList();
     emit(state.copyWith(lineItems: items));
   }
 

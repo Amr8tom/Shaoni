@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:shaoni/common/widgets/appbar/appbar.dart';
-import 'package:shaoni/core/device/device_utility.dart';
-import 'package:shaoni/core/constants/colors.dart';
 import 'package:shaoni/core/constants/app_sizes.dart';
+import 'package:shaoni/core/constants/colors.dart';
+import 'package:shaoni/core/device/device_utility.dart';
 import 'package:shaoni/core/widgets/buttons/d_button.dart';
 
+import '../../common/widgets/sized_boxes/sizer.dart';
 import '../../generated/l10n.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -25,7 +26,8 @@ class ProfileScreen extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: AppSizes.padding, vertical: AppSizes.ld),
+          padding: EdgeInsets.symmetric(
+              horizontal: AppSizes.padding, vertical: AppSizes.ld),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
@@ -43,7 +45,8 @@ class ProfileScreen extends StatelessWidget {
                         backgroundColor: ColorRes.white,
                         child: CircleAvatar(
                           radius: (AppSizes.productImageSize / 2) - 6,
-                          backgroundImage: const AssetImage('assets/images/ss/avatar.png'),
+                          backgroundImage:
+                              const AssetImage('assets/images/ss/avatar.png'),
                           // use actual user image or placeholder
                         ),
                       ),
@@ -59,7 +62,8 @@ class ProfileScreen extends StatelessWidget {
                             decoration: BoxDecoration(
                               color: ColorRes.primary,
                               shape: BoxShape.circle,
-                              border: Border.all(color: ColorRes.white, width: 2),
+                              border:
+                                  Border.all(color: ColorRes.white, width: 2),
                               boxShadow: [
                                 BoxShadow(
                                   color: ColorRes.black.withOpacity(0.12),
@@ -210,9 +214,11 @@ class _ProfileFieldState extends State<ProfileField> {
                 hintText: widget.hintText,
                 border: InputBorder.none,
                 isDense: true,
-                contentPadding: EdgeInsets.symmetric(vertical: AppSizes.md, horizontal: AppSizes.sm),
+                contentPadding: EdgeInsets.symmetric(
+                    vertical: AppSizes.md, horizontal: AppSizes.sm),
               ),
-              style: TextStyle(color: ColorRes.black, fontSize: AppSizes.fontSizeMd),
+              style: TextStyle(
+                  color: ColorRes.black, fontSize: AppSizes.fontSizeMd),
               onFieldSubmitted: (_) => setState(() => isEditing = false),
             ),
           ),

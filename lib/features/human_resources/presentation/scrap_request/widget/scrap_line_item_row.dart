@@ -67,8 +67,7 @@ class ScrapLineItemRow extends StatelessWidget {
             ),
             decoration: BoxDecoration(
               color: ColorRes.grey5,
-              borderRadius:
-                  BorderRadius.circular(AppSizes.borderRadiusMd),
+              borderRadius: BorderRadius.circular(AppSizes.borderRadiusMd),
               border: Border.all(color: ColorRes.grey5),
             ),
             child: Text(
@@ -126,13 +125,11 @@ class ScrapLineItemRow extends StatelessWidget {
                 vertical: AppSizes.padding * 0.5,
               ),
               border: OutlineInputBorder(
-                borderRadius:
-                    BorderRadius.circular(AppSizes.borderRadiusMd),
+                borderRadius: BorderRadius.circular(AppSizes.borderRadiusMd),
                 borderSide: BorderSide(color: ColorRes.grey5),
               ),
               enabledBorder: OutlineInputBorder(
-                borderRadius:
-                    BorderRadius.circular(AppSizes.borderRadiusMd),
+                borderRadius: BorderRadius.circular(AppSizes.borderRadiusMd),
                 borderSide: BorderSide(color: ColorRes.grey5),
               ),
               filled: true,
@@ -166,13 +163,11 @@ class ScrapLineItemRow extends StatelessWidget {
                 vertical: AppSizes.padding * 0.5,
               ),
               border: OutlineInputBorder(
-                borderRadius:
-                    BorderRadius.circular(AppSizes.borderRadiusMd),
+                borderRadius: BorderRadius.circular(AppSizes.borderRadiusMd),
                 borderSide: BorderSide(color: ColorRes.grey5),
               ),
               enabledBorder: OutlineInputBorder(
-                borderRadius:
-                    BorderRadius.circular(AppSizes.borderRadiusMd),
+                borderRadius: BorderRadius.circular(AppSizes.borderRadiusMd),
                 borderSide: BorderSide(color: ColorRes.grey5),
               ),
               filled: true,

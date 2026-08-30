@@ -221,6 +221,7 @@
      "location": "Location",
      "jobNumber": "Job Number",
      "jobTitle": "Job Title",
+     "registrationNumber": "Registration Number",
      "requestDetails": "Request Details",
      "permissionDate": "Permission Date",
      "permissionTime": "Permission Time",

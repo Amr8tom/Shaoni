@@ -76,6 +76,18 @@ class CarRequestDataWidget extends StatelessWidget {
           keyboardType: TextInputType.text,
           validator: _requiredValidator,
         ),
+        const Sizer(height: 14),
+
+        /// ─── Full-width: notes (optional) ────────────────────────────
+        DEditableField(
+          label: S.current.notes,
+          hint: S.current.notesHint,
+          icon: Icons.sticky_note_2_outlined,
+          iconColor: ColorRes.black,
+          controller: controller.notesController,
+          readOnly: false,
+          keyboardType: TextInputType.multiline,
+        ),
       ],
     );
   }

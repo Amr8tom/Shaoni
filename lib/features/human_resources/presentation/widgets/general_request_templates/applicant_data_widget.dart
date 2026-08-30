@@ -29,8 +29,6 @@ class _ApplicantDataWidgetState extends State<ApplicantDataWidget> {
   String? _selectedOfficeName;
   final SessionStorage _sessionStorage = serviceLocator<SessionStorage>();
 
-
-
   List<DropdownMenuItem<String>> get _officeItems => _offices
       .map((o) => DropdownMenuItem<String>(value: o.name, child: Text(o.name)))
       .toList();
@@ -52,8 +50,9 @@ class _ApplicantDataWidgetState extends State<ApplicantDataWidget> {
       children: [
         Text(S.current.requestApplicantData,
             style: Theme.of(context).textTheme.headlineMedium),
-        const Sizer(height: 8,),
-
+        const Sizer(
+          height: 8,
+        ),
         AuthTextField(
           hint: S.current.applicantName,
           readOnly: true,
@@ -64,7 +63,6 @@ class _ApplicantDataWidgetState extends State<ApplicantDataWidget> {
               (value?.isEmpty ?? true) ? S.current.pleaseEndterValue : null,
         ),
         const Sizer(height: 8),
-
         AuthTextField(
           hint: S.current.organizationalUnit,
           readOnly: true,
@@ -72,7 +70,6 @@ class _ApplicantDataWidgetState extends State<ApplicantDataWidget> {
               TextEditingController(text: _sessionStorage.departmentAddress),
           borderRadius: AppSizes.borderRadiusMd,
           prefixIcon: const Icon(Icons.home_work),
-
         ),
         const Sizer(height: 8),
         DDropdownField(
@@ -85,6 +82,17 @@ class _ApplicantDataWidgetState extends State<ApplicantDataWidget> {
           validator: (value) =>
               (value?.isEmpty ?? true) ? S.current.pleaseEndterValue : null,
         ),
+        if (_sessionStorage.registrationNumber?.isNotEmpty ?? false) ...[
+          const Sizer(height: 8),
+          AuthTextField(
+            hint: S.current.registrationNumber,
+            readOnly: true,
+            controller:
+                TextEditingController(text: _sessionStorage.registrationNumber),
+            borderRadius: AppSizes.borderRadiusMd,
+            prefixIcon: const Icon(Icons.assignment_ind_outlined),
+          ),
+        ],
         if ((_sessionStorage.jobNumber?.isNotEmpty ?? false) ||
             (_sessionStorage.jobTitle?.isNotEmpty ?? false)) ...[
           const Sizer(height: 8),

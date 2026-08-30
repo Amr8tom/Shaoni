@@ -25,7 +25,10 @@ class DateDataWidget extends StatelessWidget {
                 fontWeight: FontWeight.w900,
               ),
         ),
-const Sizer(height: 8,),
+        const Sizer(
+          height: 8,
+        ),
+
         /// date
         Row(
           spacing: 8,

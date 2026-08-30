@@ -1,5 +1,5 @@
-import java.util.Properties
 import java.io.FileInputStream
+import java.util.Properties
 
 plugins {
     id("com.android.application")
@@ -28,9 +28,9 @@ android {
         applicationId = "com.shaoni.shaoni"
         minSdk = 24
         targetSdk = 36
-        versionCode = 16
-        versionName = "1.1.6"
-        multiDexEnabled= true
+        versionCode = 17
+        versionName = "1.1.7 "
+        multiDexEnabled = true
     }
     signingConfigs {
         create("release") {

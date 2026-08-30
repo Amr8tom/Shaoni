@@ -54,6 +54,9 @@ class NavigationCubit extends Cubit<NavigationState> {
             .toList()));
         await _sessionStorage.saveJobNumber(user.jobNumber ?? '');
         await _sessionStorage.saveJobTitle(user.jobTitle ?? '');
+        await _sessionStorage.saveRegistrationNumber(
+          user.registrationNumber ?? '',
+        );
         if (isClosed) return;
         emit(state.copyWith(status: NavigationStatus.success, user: user));
       },

@@ -167,9 +167,10 @@ class AttendanceCubit extends Cubit<AttendanceState> {
     final result = await _createAttendanceUseCase.call(
         params: CreateAttendanceParams(
             employee: int.parse(_sessionStorage.employeeId ?? "1"),
-            attendanceType: StringNormalizer.isCheckIn(attendanceTypeController.text)
-                ? "check_in"
-                : "check_out",
+            attendanceType:
+                StringNormalizer.isCheckIn(attendanceTypeController.text)
+                    ? "check_in"
+                    : "check_out",
             updateDate:
                 '${attendanceDateController.text} ${attendanceTimeController.text}',
             attendanceId: int.parse(state.records.first.odooId),
@@ -203,9 +204,10 @@ class AttendanceCubit extends Cubit<AttendanceState> {
         officeId: officeIDController.text.isEmpty
             ? 0
             : int.parse(officeIDController.text),
-        attendanceType: StringNormalizer.isCheckIn(attendanceTypeController.text)
-            ? "check_in"
-            : "check_out",
+        attendanceType:
+            StringNormalizer.isCheckIn(attendanceTypeController.text)
+                ? "check_in"
+                : "check_out",
         updateDate:
             '${attendanceDateController.text} ${attendanceTimeController.text}',
         date: attendanceDateController.text,

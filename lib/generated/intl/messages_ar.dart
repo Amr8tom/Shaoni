@@ -1081,6 +1081,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "تم تسـجيل حســابك بنجــاح",
     ),
     "registration": MessageLookupByLibrary.simpleMessage("ادارة الحجوزات"),
+    "registrationNumber": MessageLookupByLibrary.simpleMessage("رقم التسجيل"),
     "reject": MessageLookupByLibrary.simpleMessage("رفض الموظف"),
     "rejectReasons": MessageLookupByLibrary.simpleMessage("أسباب الرفض"),
     "rejectRequest": MessageLookupByLibrary.simpleMessage("رفض الطلب"),

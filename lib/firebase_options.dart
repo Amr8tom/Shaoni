@@ -50,19 +50,18 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyD8LPtuAccG6JJZqXhZwoHGpEntmkf2ew8',
-    appId: '1:414736215528:android:36da94caa2a03c973d485d',
-    messagingSenderId: '414736215528',
-    projectId: 'shaoniapp',
-    storageBucket: 'shaoniapp.firebasestorage.app',
+    apiKey: 'AIzaSyB-XwbBiyKzsGLyVhMEi08sggmW_Qf6Mjo',
+    appId: '1:749989687580:android:0de7f84dfca6104a728ad9',
+    messagingSenderId: '749989687580',
+    projectId: 'shaoni-app',
+    storageBucket: 'shaoni-app.firebasestorage.app',
   );
-
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyC5-A0KXL1tUISBP9fbuaJ9USb2xm66Bw8',
-    appId: '1:414736215528:ios:ab88fdd5940271b63d485d',
-    messagingSenderId: '414736215528',
-    projectId: 'shaoniapp',
-    storageBucket: 'shaoniapp.firebasestorage.app',
+    apiKey: 'AIzaSyBI6QzN4vCpuMzJmbz9Hgl-yRZ2cMFCTGA',
+    appId: '1:749989687580:ios:a1fee2bcfc5fd29a728ad9',
+    messagingSenderId: '749989687580',
+    projectId: 'shaoni-app',
+    storageBucket: 'shaoni-app.firebasestorage.app',
     iosBundleId: 'com.shaoni.shaoni',
   );
 }

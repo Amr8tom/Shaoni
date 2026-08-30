@@ -155,8 +155,7 @@ class CreateProductOrderForm extends StatelessWidget {
                                       .validate()) {
                                     if (_isEditMode) {
                                       controller.updateProductOrder(
-                                          requestId: requestId!
-                                      );
+                                          requestId: requestId!);
                                     } else {
                                       controller.createProductOrder();
                                     }

@@ -1819,6 +1819,16 @@ class S {
     return Intl.message('Job Title', name: 'jobTitle', desc: '', args: []);
   }
 
+  /// `Registration Number`
+  String get registrationNumber {
+    return Intl.message(
+      'Registration Number',
+      name: 'registrationNumber',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Request Details`
   String get requestDetails {
     return Intl.message(

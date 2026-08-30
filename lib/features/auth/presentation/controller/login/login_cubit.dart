@@ -38,10 +38,17 @@ class LoginCubit extends Cubit<LoginState> {
   Future<void> login() async {
     if (loginFormKey.currentState!.validate()) {
       emit(state.copyWith(status: LoginStatus.loginLoading));
+
+      // Grab the device's FCM token so the backend can push to it. If Firebase
+      // can't provide one, we still log in — just with an empty token.
+      final firebaseToken = await _getFirebaseToken();
+      if (isClosed) return;
+
       final result = await _loginUseCase.call(
         params: LoginParams(
           userName: nameController.text.trim(),
           password: passwordController.text.trim(),
+          firebaseToken: firebaseToken,
         ),
       );
       if (isClosed) return;
@@ -71,6 +78,16 @@ class LoginCubit extends Cubit<LoginState> {
           ));
         },
       );
+    }
+  }
+
+  /// Reads the current FCM token, returning '' on any failure so a Firebase
+  /// problem (no network, permission denied, simulator) never blocks login.
+  Future<String> _getFirebaseToken() async {
+    try {
+      return await firebaseInstance.getToken() ?? '';
+    } catch (_) {
+      return '';
     }
   }
 

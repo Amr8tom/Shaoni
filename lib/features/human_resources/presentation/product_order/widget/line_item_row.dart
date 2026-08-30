@@ -62,13 +62,13 @@ class LineItemRow extends StatelessWidget {
             value: item.categoryId != null ? item.categoryName : null,
             items: categories
                 .map((c) => DropdownMenuItem<dynamic>(
-              value: c,
-              child: Text(
-                c.name as String,
-                style: const TextStyle(fontSize: 12),
-                overflow: TextOverflow.ellipsis,
-              ),
-            ))
+                      value: c,
+                      child: Text(
+                        c.name as String,
+                        style: const TextStyle(fontSize: 12),
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ))
                 .toList(),
             onChanged: (c) {
               if (c != null) {
@@ -85,13 +85,13 @@ class LineItemRow extends StatelessWidget {
             value: item.productId != null ? item.productName : null,
             items: products
                 .map((p) => DropdownMenuItem<dynamic>(
-              value: p,
-              child: Text(
-                p.name as String,
-                style: const TextStyle(fontSize: 12),
-                overflow: TextOverflow.ellipsis,
-              ),
-            ))
+                      value: p,
+                      child: Text(
+                        p.name as String,
+                        style: const TextStyle(fontSize: 12),
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ))
                 .toList(),
             onChanged: (p) {
               if (p != null) {
@@ -105,9 +105,9 @@ class LineItemRow extends StatelessWidget {
           Text(
             S.current.quantity,
             style: Theme.of(context).textTheme.bodySmall?.copyWith(
-              color: ColorRes.grey2,
-              fontWeight: FontWeight.w600,
-            ),
+                  color: ColorRes.grey2,
+                  fontWeight: FontWeight.w600,
+                ),
           ),
           const Sizer(height: 4),
           TextFormField(
@@ -143,9 +143,9 @@ class LineItemRow extends StatelessWidget {
           Text(
             S.current.notes,
             style: Theme.of(context).textTheme.bodySmall?.copyWith(
-              color: ColorRes.grey2,
-              fontWeight: FontWeight.w600,
-            ),
+                  color: ColorRes.grey2,
+                  fontWeight: FontWeight.w600,
+                ),
           ),
           const Sizer(height: 4),
           TextFormField(
@@ -175,7 +175,6 @@ class LineItemRow extends StatelessWidget {
   }
 }
 
-
 // ── Generic dropdown field ───────────────────────────────────────────────────
 
 class _DropdownField<T> extends StatelessWidget {
@@ -201,9 +200,9 @@ class _DropdownField<T> extends StatelessWidget {
         Text(
           label,
           style: Theme.of(context).textTheme.bodySmall?.copyWith(
-            color: ColorRes.grey2,
-            fontWeight: FontWeight.w600,
-          ),
+                color: ColorRes.grey2,
+                fontWeight: FontWeight.w600,
+              ),
         ),
         const Sizer(height: 4),
         DropdownButtonFormField<T>(

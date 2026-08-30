@@ -1148,6 +1148,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "registration": MessageLookupByLibrary.simpleMessage(
       "Reservation Management",
     ),
+    "registrationNumber": MessageLookupByLibrary.simpleMessage(
+      "Registration Number",
+    ),
     "reject": MessageLookupByLibrary.simpleMessage("Reject"),
     "rejectReasons": MessageLookupByLibrary.simpleMessage("Rejection Reasons"),
     "rejectRequest": MessageLookupByLibrary.simpleMessage("Reject Request"),

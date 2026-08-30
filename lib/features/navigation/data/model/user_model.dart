@@ -26,6 +26,7 @@ class UserModel extends UserEntity {
     required super.gender,
     super.jobNumber,
     super.jobTitle,
+    super.registrationNumber,
   });
 
   /// fromJson
@@ -57,7 +58,8 @@ class UserModel extends UserEntity {
       department: json['data']['department'] != null
           ? DepartmentModel.fromJson(json['data']['department'])
           : null,
-      jobNumber: (json['data']['job_num'] ?? json['data']['jobNum'])?.toString(),
+      jobNumber:
+          (json['data']['job_num'] ?? json['data']['jobNum'])?.toString(),
       jobTitle: (json['data']['job_title'] ??
               json['data']['jobTitle'] ??
               json['data']['job_name'] ??
@@ -66,6 +68,7 @@ class UserModel extends UserEntity {
               json['data']['positionName'] ??
               json['data']['position_name'])
           ?.toString(),
+      registrationNumber: json['data']['registrationNumber']?.toString(),
     );
   }
 
@@ -81,7 +84,7 @@ class UserModel extends UserEntity {
       'roleId': roleId,
       'phoneNumber': phoneNumber,
       'city': city,
-      'is_kafeel':isKafeel,
+      'is_kafeel': isKafeel,
       'isActive': isActive,
       'gender': gender,
       'employeeId': employeeId,
