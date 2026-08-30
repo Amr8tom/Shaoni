@@ -49,7 +49,7 @@ class HomeScreen extends StatelessWidget {
           /// make Size
           const Sizer(height: 24),
 
-          const Sizer(height: 24),
+          const Sizer(height: 100),
         ],
       ),
     );
