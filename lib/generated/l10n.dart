@@ -2814,6 +2814,226 @@ class S {
     return Intl.message('Done', name: 'done', desc: '', args: []);
   }
 
+  /// `New Request`
+  String get statusNewRequest {
+    return Intl.message(
+      'New Request',
+      name: 'statusNewRequest',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Draft`
+  String get statusDraft {
+    return Intl.message('Draft', name: 'statusDraft', desc: '', args: []);
+  }
+
+  /// `Applied`
+  String get statusApplied {
+    return Intl.message('Applied', name: 'statusApplied', desc: '', args: []);
+  }
+
+  /// `Employee Approval`
+  String get statusEmployeeApprove {
+    return Intl.message(
+      'Employee Approval',
+      name: 'statusEmployeeApprove',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Budget`
+  String get statusBudget {
+    return Intl.message('Budget', name: 'statusBudget', desc: '', args: []);
+  }
+
+  /// `Employee`
+  String get statusEmp {
+    return Intl.message('Employee', name: 'statusEmp', desc: '', args: []);
+  }
+
+  /// `Specifications`
+  String get statusSpecifications {
+    return Intl.message(
+      'Specifications',
+      name: 'statusSpecifications',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Manager Approval`
+  String get statusManagerApproval {
+    return Intl.message(
+      'Manager Approval',
+      name: 'statusManagerApproval',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `HR`
+  String get statusHr {
+    return Intl.message('HR', name: 'statusHr', desc: '', args: []);
+  }
+
+  /// `HR Approval`
+  String get statusHrApproval {
+    return Intl.message(
+      'HR Approval',
+      name: 'statusHrApproval',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `HR Manager`
+  String get statusHrManager {
+    return Intl.message(
+      'HR Manager',
+      name: 'statusHrManager',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Rejected`
+  String get statusRejected {
+    return Intl.message('Rejected', name: 'statusRejected', desc: '', args: []);
+  }
+
+  /// `Confirmed`
+  String get statusConfirmed {
+    return Intl.message(
+      'Confirmed',
+      name: 'statusConfirmed',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Approved`
+  String get statusApproved {
+    return Intl.message('Approved', name: 'statusApproved', desc: '', args: []);
+  }
+
+  /// `Authority Holder`
+  String get statusAuthorityHolder {
+    return Intl.message(
+      'Authority Holder',
+      name: 'statusAuthorityHolder',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `External Relations`
+  String get statusExternalRelations {
+    return Intl.message(
+      'External Relations',
+      name: 'statusExternalRelations',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Not Valid`
+  String get statusNotValid {
+    return Intl.message(
+      'Not Valid',
+      name: 'statusNotValid',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Canceled`
+  String get statusCancel {
+    return Intl.message('Canceled', name: 'statusCancel', desc: '', args: []);
+  }
+
+  /// `Closed`
+  String get statusClosed {
+    return Intl.message('Closed', name: 'statusClosed', desc: '', args: []);
+  }
+
+  /// `Done`
+  String get statusDone {
+    return Intl.message('Done', name: 'statusDone', desc: '', args: []);
+  }
+
+  /// `Sale Done`
+  String get statusSaleDone {
+    return Intl.message(
+      'Sale Done',
+      name: 'statusSaleDone',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `In Progress`
+  String get statusInProgress {
+    return Intl.message(
+      'In Progress',
+      name: 'statusInProgress',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Top Manager`
+  String get statusTopManager {
+    return Intl.message(
+      'Top Manager',
+      name: 'statusTopManager',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Achievement`
+  String get statusAchievement {
+    return Intl.message(
+      'Achievement',
+      name: 'statusAchievement',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Achievement 2`
+  String get statusAchievementTwo {
+    return Intl.message(
+      'Achievement 2',
+      name: 'statusAchievementTwo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Approval 2`
+  String get statusApproveTwo {
+    return Intl.message(
+      'Approval 2',
+      name: 'statusApproveTwo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Final Stage`
+  String get statusFinalStage {
+    return Intl.message(
+      'Final Stage',
+      name: 'statusFinalStage',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Skip`
   String get sk {
     return Intl.message('Skip', name: 'sk', desc: '', args: []);
@@ -8114,6 +8334,81 @@ class S {
     return Intl.message(
       'Select leave type',
       name: 'selectLeaveType',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Employee Contract`
+  String get employeeContract {
+    return Intl.message(
+      'Employee Contract',
+      name: 'employeeContract',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Select contract`
+  String get selectContract {
+    return Intl.message(
+      'Select contract',
+      name: 'selectContract',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Task Management`
+  String get taskManagement {
+    return Intl.message(
+      'Task Management',
+      name: 'taskManagement',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Select task`
+  String get selectTask {
+    return Intl.message('Select task', name: 'selectTask', desc: '', args: []);
+  }
+
+  /// `Employee Transfer`
+  String get employeeTransfer {
+    return Intl.message(
+      'Employee Transfer',
+      name: 'employeeTransfer',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Job Title Modification`
+  String get jobTitleModification {
+    return Intl.message(
+      'Job Title Modification',
+      name: 'jobTitleModification',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `End of Loan Period`
+  String get endLoanPeriod {
+    return Intl.message(
+      'End of Loan Period',
+      name: 'endLoanPeriod',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Extend Employee Working Period`
+  String get extendWorkingPeriod {
+    return Intl.message(
+      'Extend Employee Working Period',
+      name: 'extendWorkingPeriod',
       desc: '',
       args: [],
     );

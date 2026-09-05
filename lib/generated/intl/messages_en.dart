@@ -433,13 +433,20 @@ class MessageLookup extends MessageLookupByLibrary {
       "The Reset Code is Sent",
     ),
     "employee": MessageLookupByLibrary.simpleMessage("Employee"),
+    "employeeContract": MessageLookupByLibrary.simpleMessage(
+      "Employee Contract",
+    ),
     "employeeName": MessageLookupByLibrary.simpleMessage("Employee"),
+    "employeeTransfer": MessageLookupByLibrary.simpleMessage(
+      "Employee Transfer",
+    ),
     "employees": MessageLookupByLibrary.simpleMessage("Employees"),
     "employeesData": MessageLookupByLibrary.simpleMessage("Employees Data"),
     "employeesDetails": MessageLookupByLibrary.simpleMessage(
       "Employees Details",
     ),
     "endDate": MessageLookupByLibrary.simpleMessage("End Date"),
+    "endLoanPeriod": MessageLookupByLibrary.simpleMessage("End of Loan Period"),
     "endOfServiceRequest": MessageLookupByLibrary.simpleMessage(
       "End of Service Request",
     ),
@@ -495,6 +502,9 @@ class MessageLookup extends MessageLookupByLibrary {
       "Expired Products or Expired Items.......Dispose of expired items by uploading expired or damaged products",
     ),
     "exploreIraq": MessageLookupByLibrary.simpleMessage("explore Iraq  "),
+    "extendWorkingPeriod": MessageLookupByLibrary.simpleMessage(
+      "Extend Employee Working Period",
+    ),
     "externalMission": MessageLookupByLibrary.simpleMessage(
       "External assignments: when an employee is assigned a task that requires being at another location.",
     ),
@@ -702,6 +712,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "jeddah": MessageLookupByLibrary.simpleMessage("Jeddah"),
     "jobNumber": MessageLookupByLibrary.simpleMessage("Job Number"),
     "jobTitle": MessageLookupByLibrary.simpleMessage("Job Title"),
+    "jobTitleModification": MessageLookupByLibrary.simpleMessage(
+      "Job Title Modification",
+    ),
     "juz": MessageLookupByLibrary.simpleMessage("Juz"),
     "juzIndex": MessageLookupByLibrary.simpleMessage("Juz Index"),
     "kaaba": MessageLookupByLibrary.simpleMessage("Kaaba Tawaf"),
@@ -1314,6 +1327,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "selectComplaintType": MessageLookupByLibrary.simpleMessage(
       "Select Complaint Type",
     ),
+    "selectContract": MessageLookupByLibrary.simpleMessage("Select contract"),
     "selectCountry": MessageLookupByLibrary.simpleMessage("Select Country"),
     "selectCourse": MessageLookupByLibrary.simpleMessage("Select a course"),
     "selectCustody": MessageLookupByLibrary.simpleMessage("Select Custody"),
@@ -1406,6 +1420,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "selectStudyType": MessageLookupByLibrary.simpleMessage(
       "Select study type",
     ),
+    "selectTask": MessageLookupByLibrary.simpleMessage("Select task"),
     "selectTicketClass": MessageLookupByLibrary.simpleMessage(
       "Select ticket class",
     ),
@@ -1476,6 +1491,45 @@ class MessageLookup extends MessageLookupByLibrary {
     "startWork": MessageLookupByLibrary.simpleMessage("Start Work"),
     "startWorkType": MessageLookupByLibrary.simpleMessage("Start Work Type"),
     "status": MessageLookupByLibrary.simpleMessage("Status"),
+    "statusAchievement": MessageLookupByLibrary.simpleMessage("Achievement"),
+    "statusAchievementTwo": MessageLookupByLibrary.simpleMessage(
+      "Achievement 2",
+    ),
+    "statusApplied": MessageLookupByLibrary.simpleMessage("Applied"),
+    "statusApproveTwo": MessageLookupByLibrary.simpleMessage("Approval 2"),
+    "statusApproved": MessageLookupByLibrary.simpleMessage("Approved"),
+    "statusAuthorityHolder": MessageLookupByLibrary.simpleMessage(
+      "Authority Holder",
+    ),
+    "statusBudget": MessageLookupByLibrary.simpleMessage("Budget"),
+    "statusCancel": MessageLookupByLibrary.simpleMessage("Canceled"),
+    "statusClosed": MessageLookupByLibrary.simpleMessage("Closed"),
+    "statusConfirmed": MessageLookupByLibrary.simpleMessage("Confirmed"),
+    "statusDone": MessageLookupByLibrary.simpleMessage("Done"),
+    "statusDraft": MessageLookupByLibrary.simpleMessage("Draft"),
+    "statusEmp": MessageLookupByLibrary.simpleMessage("Employee"),
+    "statusEmployeeApprove": MessageLookupByLibrary.simpleMessage(
+      "Employee Approval",
+    ),
+    "statusExternalRelations": MessageLookupByLibrary.simpleMessage(
+      "External Relations",
+    ),
+    "statusFinalStage": MessageLookupByLibrary.simpleMessage("Final Stage"),
+    "statusHr": MessageLookupByLibrary.simpleMessage("HR"),
+    "statusHrApproval": MessageLookupByLibrary.simpleMessage("HR Approval"),
+    "statusHrManager": MessageLookupByLibrary.simpleMessage("HR Manager"),
+    "statusInProgress": MessageLookupByLibrary.simpleMessage("In Progress"),
+    "statusManagerApproval": MessageLookupByLibrary.simpleMessage(
+      "Manager Approval",
+    ),
+    "statusNewRequest": MessageLookupByLibrary.simpleMessage("New Request"),
+    "statusNotValid": MessageLookupByLibrary.simpleMessage("Not Valid"),
+    "statusRejected": MessageLookupByLibrary.simpleMessage("Rejected"),
+    "statusSaleDone": MessageLookupByLibrary.simpleMessage("Sale Done"),
+    "statusSpecifications": MessageLookupByLibrary.simpleMessage(
+      "Specifications",
+    ),
+    "statusTopManager": MessageLookupByLibrary.simpleMessage("Top Manager"),
     "stockRequest": MessageLookupByLibrary.simpleMessage("Admin Letter"),
     "stoning": MessageLookupByLibrary.simpleMessage("Stoning Devil in Mina"),
     "streetName": MessageLookupByLibrary.simpleMessage("Street Name"),
@@ -1519,6 +1573,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "tabaq": MessageLookupByLibrary.simpleMessage("Matched"),
     "takenLeavesLabel": MessageLookupByLibrary.simpleMessage("Taken Leaves"),
     "tapToRead": MessageLookupByLibrary.simpleMessage("Tap to read"),
+    "taskManagement": MessageLookupByLibrary.simpleMessage("Task Management"),
     "taskType": MessageLookupByLibrary.simpleMessage("Task Type"),
     "tasks": MessageLookupByLibrary.simpleMessage("Tasks"),
     "tasksHint": MessageLookupByLibrary.simpleMessage(

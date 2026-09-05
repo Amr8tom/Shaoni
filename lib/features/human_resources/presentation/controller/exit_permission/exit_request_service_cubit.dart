@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:shaoni/core/local_storage/session_storage/session_storage.dart';
 import 'package:shaoni/core/utils/usecases/base_usecase.dart';
 import 'package:shaoni/features/human_resources/domain/entity/exit_permisstion.dart';
+import '../../../../../generated/l10n.dart';
 import '../../../../services/domain/entity/request_services_entity.dart';
 import '../../../domain/entity/permission_time.dart';
 import '../../../domain/entity/permission_type.dart';
@@ -58,12 +59,14 @@ class ExitRequestServiceCubit extends Cubit<ExitRequestServiceState> {
       (failure) =>
           emit(state.copyWith(status: RequestStatus.permissionTimeError)),
       (permission) {
+        final isAr = S.current.localeee == 'ar';
         durationItems = permission
             .map(
               (time) => DropdownMenuItem(
-                value: time.name ?? '3',
+                // Value sent to the API as `type` (first / med / last).
+                value: time.value ?? '',
                 child: Text(
-                  time.name ?? '3',
+                  (isAr ? time.nameAr : time.nameEn) ?? (time.value ?? ''),
                   style: const TextStyle(fontSize: 12),
                 ),
               ),
@@ -88,11 +91,16 @@ class ExitRequestServiceCubit extends Cubit<ExitRequestServiceState> {
       (failure) =>
           emit(state.copyWith(status: RequestStatus.permissionTypesError)),
       (permission) {
+        final isAr = S.current.localeee == 'ar';
         permissionTypeItems = permission
             .map(
               (item) => DropdownMenuItem(
-                value: item.name ?? '3',
-                child: Text(item.name ?? '3'),
+                // Value is the type id, sent to the API as `permission_type`.
+                value: item.id.toString(),
+                child: Text(
+                  (isAr ? item.nameAr : item.nameEn) ?? item.name ?? '',
+                  style: const TextStyle(fontSize: 12),
+                ),
               ),
             )
             .toList();
@@ -116,9 +124,7 @@ class ExitRequestServiceCubit extends Cubit<ExitRequestServiceState> {
           officeID: officeIDController.text.isEmpty
               ? 0
               : int.parse(officeIDController.text),
-          permissionType: permissionTypeItems.indexWhere(
-                  (item) => item.value == permissionTypeController.text) +
-              1,
+          permissionType: int.tryParse(permissionTypeController.text) ?? 0,
           type: permissionTimeTypeController.text,
           exitDate: permissionDateController.text,
           numberOfHours: int.parse(durationController.text),
@@ -155,9 +161,7 @@ class ExitRequestServiceCubit extends Cubit<ExitRequestServiceState> {
         officeId: officeIDController.text.isEmpty
             ? 0
             : int.parse(officeIDController.text),
-        permissionType: permissionTypeItems.indexWhere(
-                (item) => item.value == permissionTypeController.text) +
-            1,
+        permissionType: int.tryParse(permissionTypeController.text) ?? 0,
         type: permissionTimeTypeController.text,
         exitDate: permissionDateController.text,
         numberOfHours: int.parse(durationController.text),

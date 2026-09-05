@@ -46,6 +46,18 @@ class ExperienceCertificateDataWidget extends StatelessWidget {
           validator: (v) =>
               (v == null || v.isEmpty) ? S.current.thisFieldRequired : null,
         ),
+        const Sizer(height: 20),
+
+        // ── Text area: notes (optional) ─────────────────────────────────
+        DEditableField(
+          label: S.current.notes,
+          hint: S.current.notesHint,
+          icon: Icons.sticky_note_2_outlined,
+          iconColor: ColorRes.black,
+          controller: controller.noteController,
+          readOnly: false,
+          keyboardType: TextInputType.multiline,
+        ),
       ],
     );
   }

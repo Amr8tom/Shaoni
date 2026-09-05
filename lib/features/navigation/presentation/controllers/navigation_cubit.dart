@@ -43,6 +43,9 @@ class NavigationCubit extends Cubit<NavigationState> {
         await _sessionStorage.saveDepartmentAddress(
           user.department?.nameAr.toString() ?? '',
         );
+        await _sessionStorage.saveDepartmentId(
+          (user.departmentId ?? 0).toString(),
+        );
         await _sessionStorage.saveOffices(
           user.department?.nameAr.toString() ?? '',
         );

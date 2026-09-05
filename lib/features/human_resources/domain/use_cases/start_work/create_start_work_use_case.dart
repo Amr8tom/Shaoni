@@ -28,6 +28,7 @@ class CreateStartWorkParams {
   final int typeId;
   final String note;
   final String attachment;
+  final String attachmentName;
   final int hrContractId;
   final int upgradeOrderId;
   final int taskManagementId;
@@ -46,6 +47,7 @@ class CreateStartWorkParams {
     required this.typeId,
     this.note = '',
     this.attachment = '',
+    this.attachmentName = '',
     this.hrContractId = 0,
     this.upgradeOrderId = 0,
     this.taskManagementId = 0,
@@ -64,7 +66,14 @@ class CreateStartWorkParams {
         'start_date': startDate,
         'type_id': typeId,
         'note': note,
-        'attachment': attachment,
+        'attachment_ids': attachment.isEmpty
+            ? <Map<String, dynamic>>[]
+            : [
+                {
+                  'name': attachmentName,
+                  'attachment': attachment,
+                }
+              ],
         'hr_contract_id': hrContractId,
         'upgrade_order_id': upgradeOrderId,
         'task_management_id': taskManagementId,

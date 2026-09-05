@@ -17,6 +17,10 @@ import 'package:shaoni/features/human_resources/domain/entity/attendance/update_
 import 'package:shaoni/features/human_resources/domain/entity/exit_permission/update_exit_permission.dart';
 import 'package:shaoni/features/human_resources/domain/entity/start_work/start_work_type.dart';
 import 'package:shaoni/features/human_resources/domain/entity/start_work/employee.dart';
+import 'package:shaoni/features/human_resources/domain/entity/start_work/start_work_option.dart';
+import 'package:shaoni/features/human_resources/domain/entity/start_work/employee_leave_type.dart';
+import 'package:shaoni/features/human_resources/domain/use_cases/start_work/get_employee_contracts_use_case.dart';
+import 'package:shaoni/features/human_resources/domain/use_cases/start_work/get_employee_leave_types_use_case.dart';
 import 'package:shaoni/features/human_resources/domain/entity/start_work/create_start_work_response.dart';
 import 'package:shaoni/features/human_resources/domain/entity/experience_certificate/certificate_reason.dart';
 import 'package:shaoni/features/human_resources/domain/entity/experience_certificate/create_experience_certificate_response.dart';
@@ -370,6 +374,54 @@ class HRServicesRepositoryImp extends HRServicesRepository {
     if (await _networkInfo.isConnected) {
       try {
         final response = await _remote.getEmployees(params: params);
+        return Right(response);
+      } on ServerFailure catch (e) {
+        return Left(ServerFailure(message: e.message));
+      }
+    } else {
+      return Left(CacheFailure());
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<StartWorkOption>>> getEmployeeContracts({
+    required GetEmployeeContractsParams params,
+  }) async {
+    if (await _networkInfo.isConnected) {
+      try {
+        final response = await _remote.getEmployeeContracts(params: params);
+        return Right(response);
+      } on ServerFailure catch (e) {
+        return Left(ServerFailure(message: e.message));
+      }
+    } else {
+      return Left(CacheFailure());
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<StartWorkOption>>> getTaskManagement({
+    required NoParams params,
+  }) async {
+    if (await _networkInfo.isConnected) {
+      try {
+        final response = await _remote.getTaskManagement(params: params);
+        return Right(response);
+      } on ServerFailure catch (e) {
+        return Left(ServerFailure(message: e.message));
+      }
+    } else {
+      return Left(CacheFailure());
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<EmployeeLeaveType>>> getEmployeeLeaveTypes({
+    required GetEmployeeLeaveTypesParams params,
+  }) async {
+    if (await _networkInfo.isConnected) {
+      try {
+        final response = await _remote.getEmployeeLeaveTypes(params: params);
         return Right(response);
       } on ServerFailure catch (e) {
         return Left(ServerFailure(message: e.message));

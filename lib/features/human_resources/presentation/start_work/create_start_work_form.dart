@@ -123,6 +123,8 @@ class CreateStartWorkForm extends StatelessWidget {
                                 onPickedFile: (fileName, base64String) {
                                   controller.attachmentFileController.text =
                                       base64String ?? '';
+                                  controller.attachmentFileNameController.text =
+                                      fileName ?? '';
                                 },
                               ),
 

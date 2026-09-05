@@ -34,7 +34,11 @@ class AttendanceMissingItem extends StatelessWidget {
                     outMode: null))
             : state.records;
 
-        return state.isEmpty
+        // Render off the actual records, not the shared `status` flag: the
+        // lookup/forget flows run concurrently and can overwrite `status`
+        // (e.g. to lookupsLoaded) after the records fetch resolves, which
+        // would otherwise blank the screen when there are no records.
+        return (!state.isLoading && records.isEmpty)
             ? CustomUI.noData()
             : ListView.builder(
                 physics: const AlwaysScrollableScrollPhysics(

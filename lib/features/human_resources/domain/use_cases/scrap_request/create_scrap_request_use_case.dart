@@ -24,12 +24,16 @@ class ScrapLineItemParams extends Equatable {
   final int productQty;
   final int? lotId;
   final String reason;
+  final String productName;
+  final String lotName;
 
   const ScrapLineItemParams({
     required this.productId,
     required this.productQty,
     this.lotId,
     this.reason = '',
+    this.productName = '',
+    this.lotName = '',
   });
 
   Map<String, dynamic> toMap() => {
@@ -37,35 +41,47 @@ class ScrapLineItemParams extends Equatable {
         'product_qty': productQty,
         if (lotId != null) 'lot_id': lotId,
         'reason': reason,
+        'product_name': productName,
+        'lot_name': lotName,
       };
 
   @override
-  List<Object?> get props => [productId, productQty, lotId, reason];
+  List<Object?> get props =>
+      [productId, productQty, lotId, reason, productName, lotName];
 }
 
 class CreateScrapRequestParams extends Equatable {
   final int employeeId;
   final int officeId;
-  final int custodyId;
+  final int departmentId;
+  final String requestDate;
+  final String state;
+  final List<int> custodyIds;
   final int? stockRequestId;
-  final int reasonId;
+  final int scrapReasonId;
   final List<ScrapLineItemParams> requestLineIds;
 
   const CreateScrapRequestParams({
     required this.employeeId,
     required this.officeId,
-    required this.custodyId,
+    required this.departmentId,
+    required this.requestDate,
+    this.state = 'draft',
+    required this.custodyIds,
     this.stockRequestId,
-    required this.reasonId,
+    required this.scrapReasonId,
     required this.requestLineIds,
   });
 
   Map<String, dynamic> toMap() => {
         'employee_id': employeeId,
+        'state': state,
         'office_id': officeId,
-        'custody_id': custodyId,
+        'department_id': departmentId,
+        'request_date': requestDate,
+        'custody_ids': custodyIds,
         if (stockRequestId != null) 'stock_request_id': stockRequestId,
-        'reason_id': reasonId,
+        'scrap_reason_id': scrapReasonId,
         'request_line_ids': requestLineIds.map((item) => item.toMap()).toList(),
       };
 
@@ -73,9 +89,12 @@ class CreateScrapRequestParams extends Equatable {
   List<Object?> get props => [
         employeeId,
         officeId,
-        custodyId,
+        departmentId,
+        requestDate,
+        state,
+        custodyIds,
         stockRequestId,
-        reasonId,
+        scrapReasonId,
         requestLineIds,
       ];
 }

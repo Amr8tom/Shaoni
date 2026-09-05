@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import '../../../../../core/local_storage/session_storage/session_storage.dart';
 import '../../../../../core/utils/usecases/base_usecase.dart';
 import '../../../../../generated/l10n.dart';
-import '../../../domain/entity/complaint_request/complaint_reason.dart';
 import '../../../domain/entity/complaint_request/complaint_type.dart';
 import '../../../domain/use_cases/complaint_request/create_complaint_request_use_case.dart';
 import '../../../domain/use_cases/complaint_request/get_complaint_reasons_use_case.dart';
@@ -45,7 +44,6 @@ class ComplaintRequestCubit extends Cubit<ComplaintRequestState> {
   /// Raw lookup lists (kept so we can resolve a selected name back to its
   /// `id` when sending the create request to the API).
   List<ComplaintType> _types = [];
-  List<ComplaintReason> _reasons = [];
 
   ComplaintRequestCubit(
     this._getComplaintTypesUseCase,
@@ -94,7 +92,6 @@ class ComplaintRequestCubit extends Cubit<ComplaintRequestState> {
         errorMessage: failure.message,
       )),
       (reasons) {
-        _reasons = reasons;
         complaintReasonItems = reasons
             .map(
               (r) => DropdownMenuItem<String>(
@@ -124,12 +121,10 @@ class ComplaintRequestCubit extends Cubit<ComplaintRequestState> {
   }
 
   int? get selectedComplaintReasonId {
+    // The reason dropdown stores the reason id (see `complaintReasonItems`,
+    // value: r.id.toString()), so read it back directly.
     if (complaintReasonController.text.isEmpty) return null;
-    final selected = _reasons.where(
-      (r) =>
-          _localizedName(r.nameAr, r.nameEn) == complaintReasonController.text,
-    );
-    return selected.isEmpty ? null : selected.first.id;
+    return int.tryParse(complaintReasonController.text);
   }
 
   // -----------------------------------------------------------------

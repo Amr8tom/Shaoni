@@ -16,9 +16,6 @@ class ScrapRequestDataWidget extends StatelessWidget {
     return BlocBuilder<ScrapRequestCubit, ScrapRequestState>(
       builder: (context, state) {
         final controller = context.read<ScrapRequestCubit>();
-        final lots = state.custodyProductId != null
-            ? (state.lots[state.custodyProductId!] ?? const [])
-            : const [];
 
         return Container(
           padding: EdgeInsets.all(AppSizes.padding),
@@ -42,9 +39,14 @@ class ScrapRequestDataWidget extends StatelessWidget {
                 (item) => ScrapLineItemRow(
                   key: ValueKey(item.localId),
                   item: item,
-                  lots: lots,
+                  products: state.availableProducts,
+                  lots: item.productId != null
+                      ? (state.lots[item.productId!] ?? const [])
+                      : const [],
                   qtyController: controller.qtyController(item.localId),
                   reasonController: controller.reasonController(item.localId),
+                  onProductChanged: (id, name) =>
+                      controller.selectLineProduct(item.localId, id, name),
                   onLotChanged: (id, name) =>
                       controller.updateItemLot(item.localId, id, name),
                   onDelete: state.lineItems.length > 1

@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:shaoni/core/constants/colors.dart';
 import 'package:shaoni/core/extensions/navigation_extension.dart';
 import 'package:shaoni/core/routing/route_names.dart';
 import 'package:shaoni/features/home/presentation/widgets/request_card.dart';
 import 'package:skeletonizer/skeletonizer.dart';
-import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
+
+import '../../../../common/custom_ui.dart';
 import '../../../../generated/l10n.dart';
 import '../../../details_and_edit_for_requests/presentation/controller/my_requests_cubit.dart';
 import '../../../navigation/presentation/controllers/navigation_cubit.dart';
@@ -34,6 +36,10 @@ class KafeelRequestsGridView extends StatelessWidget {
         }
       }
     });
+
+    if (validRequests.length == 0) {
+      return CustomUI.emptyData();
+    }
 
     return AnimationLimiter(
       child: Skeletonizer(

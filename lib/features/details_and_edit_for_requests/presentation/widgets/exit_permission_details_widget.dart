@@ -8,7 +8,7 @@ import '../../../../core/constants/colors.dart';
 import '../../../../generated/l10n.dart';
 import '../../../home/presentation/widgets/order_text_card.dart';
 import '../controller/my_requests_cubit.dart';
-import 'attachements_widget.dart';
+import 'attachments_view.dart';
 
 class ExitPermissionDetailsWidget extends StatelessWidget {
   const ExitPermissionDetailsWidget({super.key});
@@ -76,10 +76,11 @@ class ExitPermissionDetailsWidget extends StatelessWidget {
                 ],
               ),
               const Sizer(height: 12),
-              LeavesAttachmentWidget(
-                  leavesAttachment: controller.state.requestDetails?.extraData
-                          ?.exitPermission?.leavesAttachment ??
-                      '')
+              AttachmentsView(
+                attachments: controller.state.requestDetails?.extraData
+                        ?.exitPermission?.attachments ??
+                    const [],
+              ),
             ],
           ),
         ),

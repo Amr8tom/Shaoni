@@ -196,7 +196,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "change": MessageLookupByLibrary.simpleMessage(" تغيير "),
     "changeColor": MessageLookupByLibrary.simpleMessage("تغيير اللون"),
     "chatUs": MessageLookupByLibrary.simpleMessage("تحدث الينا "),
-    "checkIn": MessageLookupByLibrary.simpleMessage("تسجيل الوصول"),
+    "checkIn": MessageLookupByLibrary.simpleMessage("تسجيل الدخـول"),
     "checkInFromRecord": MessageLookupByLibrary.simpleMessage(
       "وقت الحضور (من السجل)",
     ),
@@ -206,7 +206,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "وقت الانصراف (من السجل)",
     ),
     "checkOutMode": MessageLookupByLibrary.simpleMessage("وضع الانصراف"),
-    "checkedIn": MessageLookupByLibrary.simpleMessage("تم تسجيل الوصول"),
+    "checkedIn": MessageLookupByLibrary.simpleMessage("تم تسجيل الدخـول"),
     "checkedOut": MessageLookupByLibrary.simpleMessage("تم تسجيل الخروج"),
     "chooseImage": MessageLookupByLibrary.simpleMessage("اختر صورة"),
     "choosePaymentMethod": MessageLookupByLibrary.simpleMessage("طرق الدفع"),
@@ -401,11 +401,14 @@ class MessageLookup extends MessageLookupByLibrary {
       "تم إرسال كود إعادة التعيين",
     ),
     "employee": MessageLookupByLibrary.simpleMessage("الموظف"),
+    "employeeContract": MessageLookupByLibrary.simpleMessage("عقد الموظف"),
     "employeeName": MessageLookupByLibrary.simpleMessage("الموظف"),
+    "employeeTransfer": MessageLookupByLibrary.simpleMessage("نقل الموظف"),
     "employees": MessageLookupByLibrary.simpleMessage("الموظفون"),
     "employeesData": MessageLookupByLibrary.simpleMessage("بيانات الموظفين"),
     "employeesDetails": MessageLookupByLibrary.simpleMessage("تفاصيل الموظفين"),
     "endDate": MessageLookupByLibrary.simpleMessage("النهاية م"),
+    "endLoanPeriod": MessageLookupByLibrary.simpleMessage("نهاية فترة الإعارة"),
     "endOfServiceRequest": MessageLookupByLibrary.simpleMessage(
       "طلب نهاية خدمة",
     ),
@@ -453,6 +456,9 @@ class MessageLookup extends MessageLookupByLibrary {
       "المنتجات منتهية الصلاحية أو الأصناف المنتهية الصلاحية.......تخلص من الأصناف منتهية الصلاحية عن طريق رفع المنتجات المنتهية الصلاحية أو التالفة",
     ),
     "exploreIraq": MessageLookupByLibrary.simpleMessage("استكشف العراق"),
+    "extendWorkingPeriod": MessageLookupByLibrary.simpleMessage(
+      "تمديد فترة عمل الموظف",
+    ),
     "externalMission": MessageLookupByLibrary.simpleMessage(
       "المهمات الخارجية: إذا كلف الموظف بمهمة عمل تتطلب تواجده في موقع آخر.",
     ),
@@ -652,6 +658,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "jeddah": MessageLookupByLibrary.simpleMessage("جده"),
     "jobNumber": MessageLookupByLibrary.simpleMessage("الرقم الوظيفي"),
     "jobTitle": MessageLookupByLibrary.simpleMessage("المسمى الوظيفي"),
+    "jobTitleModification": MessageLookupByLibrary.simpleMessage(
+      "تعديل المسمى الوظيفي",
+    ),
     "juz": MessageLookupByLibrary.simpleMessage("جزء"),
     "juzIndex": MessageLookupByLibrary.simpleMessage("فهرس الأجزاء"),
     "kaaba": MessageLookupByLibrary.simpleMessage("طواف الكعبة"),
@@ -1241,6 +1250,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "selectComplaintType": MessageLookupByLibrary.simpleMessage(
       "اختر نوع الشكوى",
     ),
+    "selectContract": MessageLookupByLibrary.simpleMessage("اختر العقد"),
     "selectCountry": MessageLookupByLibrary.simpleMessage("الـدولـة"),
     "selectCourse": MessageLookupByLibrary.simpleMessage(
       "اختر الدورة التدريبية",
@@ -1319,6 +1329,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "اختر الجهة",
     ),
     "selectStudyType": MessageLookupByLibrary.simpleMessage("اختر نوع الدراسة"),
+    "selectTask": MessageLookupByLibrary.simpleMessage("اختر المهمة"),
     "selectTicketClass": MessageLookupByLibrary.simpleMessage(
       "اختر فئة التذكرة",
     ),
@@ -1380,9 +1391,54 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "startDate": MessageLookupByLibrary.simpleMessage("تاريخ البداية"),
     "startSearch": MessageLookupByLibrary.simpleMessage("ابدا البحث"),
-    "startWork": MessageLookupByLibrary.simpleMessage("بدء العمل"),
-    "startWorkType": MessageLookupByLibrary.simpleMessage("نوع بدء العمل"),
+    "startWork": MessageLookupByLibrary.simpleMessage("مباشرة العمل"),
+    "startWorkType": MessageLookupByLibrary.simpleMessage("نوع مباشرة العمل"),
     "status": MessageLookupByLibrary.simpleMessage("الحالة"),
+    "statusAchievement": MessageLookupByLibrary.simpleMessage("الإنجاز"),
+    "statusAchievementTwo": MessageLookupByLibrary.simpleMessage(
+      "الإنجاز الثاني",
+    ),
+    "statusApplied": MessageLookupByLibrary.simpleMessage("تم التقديم"),
+    "statusApproveTwo": MessageLookupByLibrary.simpleMessage(
+      "الموافقة الثانية",
+    ),
+    "statusApproved": MessageLookupByLibrary.simpleMessage("تمت الموافقة"),
+    "statusAuthorityHolder": MessageLookupByLibrary.simpleMessage(
+      "صاحب الصلاحية",
+    ),
+    "statusBudget": MessageLookupByLibrary.simpleMessage("الميزانية"),
+    "statusCancel": MessageLookupByLibrary.simpleMessage("ملغي"),
+    "statusClosed": MessageLookupByLibrary.simpleMessage("مغلق"),
+    "statusConfirmed": MessageLookupByLibrary.simpleMessage("مؤكد"),
+    "statusDone": MessageLookupByLibrary.simpleMessage("تم"),
+    "statusDraft": MessageLookupByLibrary.simpleMessage("تحت الإنشاء"),
+    "statusEmp": MessageLookupByLibrary.simpleMessage("الموظف"),
+    "statusEmployeeApprove": MessageLookupByLibrary.simpleMessage(
+      "موافقة الموظف",
+    ),
+    "statusExternalRelations": MessageLookupByLibrary.simpleMessage(
+      "العلاقات الخارجية",
+    ),
+    "statusFinalStage": MessageLookupByLibrary.simpleMessage(
+      "المرحلة النهائية",
+    ),
+    "statusHr": MessageLookupByLibrary.simpleMessage("الموارد البشرية"),
+    "statusHrApproval": MessageLookupByLibrary.simpleMessage(
+      "موافقة الموارد البشرية",
+    ),
+    "statusHrManager": MessageLookupByLibrary.simpleMessage(
+      "مدير الموارد البشرية",
+    ),
+    "statusInProgress": MessageLookupByLibrary.simpleMessage("قيد التنفيذ"),
+    "statusManagerApproval": MessageLookupByLibrary.simpleMessage(
+      "موافقة المدير",
+    ),
+    "statusNewRequest": MessageLookupByLibrary.simpleMessage("طلب جديد"),
+    "statusNotValid": MessageLookupByLibrary.simpleMessage("غير صالح"),
+    "statusRejected": MessageLookupByLibrary.simpleMessage("مرفوض"),
+    "statusSaleDone": MessageLookupByLibrary.simpleMessage("تم البيع"),
+    "statusSpecifications": MessageLookupByLibrary.simpleMessage("المواصفات"),
+    "statusTopManager": MessageLookupByLibrary.simpleMessage("المدير الأعلى"),
     "stockRequest": MessageLookupByLibrary.simpleMessage("خطاب الإدارة"),
     "stoning": MessageLookupByLibrary.simpleMessage("رجم الشيطان في منى"),
     "streetName": MessageLookupByLibrary.simpleMessage("أسم الشارع"),
@@ -1421,6 +1477,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "الاجازات التي تم اخذها",
     ),
     "tapToRead": MessageLookupByLibrary.simpleMessage("اضغط للقراءة"),
+    "taskManagement": MessageLookupByLibrary.simpleMessage("إدارة المهام"),
     "taskType": MessageLookupByLibrary.simpleMessage("نوع المهمة"),
     "tasks": MessageLookupByLibrary.simpleMessage("المهام"),
     "tasksHint": MessageLookupByLibrary.simpleMessage(

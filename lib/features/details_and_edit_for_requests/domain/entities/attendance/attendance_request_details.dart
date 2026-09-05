@@ -1,3 +1,5 @@
+import 'package:shaoni/core/models/request_attachment.dart';
+
 class AttendanceRequestDetails {
   final int id;
   final int attendanceId;
@@ -6,6 +8,7 @@ class AttendanceRequestDetails {
   final String? attendanceType;
   final String? forgetReason;
   final String? missingAttendance;
+  final List<RequestAttachment> attachments;
 
   AttendanceRequestDetails({
     required this.id,
@@ -15,5 +18,6 @@ class AttendanceRequestDetails {
     required this.attendanceType,
     required this.forgetReason,
     required this.missingAttendance,
+    this.attachments = const [],
   });
 }

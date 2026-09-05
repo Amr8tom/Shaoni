@@ -178,6 +178,7 @@ class AttendanceCubit extends Cubit<AttendanceState> {
                 ? 0
                 : int.parse(officeIDController.text),
             orderReason: orderReasonController.text,
+            note: orderReasonController.text,
             forgetReasonsIds: forgetReasonItems.indexWhere(
                     (item) => item.value == forgetReasonController.text) +
                 1,
@@ -215,6 +216,7 @@ class AttendanceCubit extends Cubit<AttendanceState> {
             ? (int.tryParse(state.records.first.odooId) ?? 0)
             : 0,
         orderReason: orderReasonController.text,
+        note: orderReasonController.text,
         forgetReasonsIds: forgetReasonItems.indexWhere(
                 (item) => item.value == forgetReasonController.text) +
             1,

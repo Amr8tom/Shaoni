@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:shaoni/core/models/request_attachment.dart';
 
 class ExitPermission extends Equatable {
   final int? id;
@@ -8,6 +9,7 @@ class ExitPermission extends Equatable {
   final int? permissionType;
   final String? notes;
   final String? leavesAttachment;
+  final List<RequestAttachment> attachments;
 
   const ExitPermission({
     this.id,
@@ -17,6 +19,7 @@ class ExitPermission extends Equatable {
     this.permissionType,
     this.notes,
     this.leavesAttachment,
+    this.attachments = const [],
   });
 
   /// from Json
@@ -29,6 +32,7 @@ class ExitPermission extends Equatable {
       permissionType: json['permissionType'],
       notes: json['notes'],
       leavesAttachment: json['leavesAttachment'],
+      attachments: RequestAttachment.fromServiceMap(json),
     );
   }
 
@@ -42,6 +46,7 @@ class ExitPermission extends Equatable {
       'permissionType': permissionType,
       'notes': notes,
       'leavesAttachment': leavesAttachment,
+      'leaves_attachment_ids': attachments.map((e) => e.toJson()).toList(),
     };
   }
 
@@ -54,5 +59,6 @@ class ExitPermission extends Equatable {
         permissionType,
         notes,
         leavesAttachment,
+        attachments,
       ];
 }

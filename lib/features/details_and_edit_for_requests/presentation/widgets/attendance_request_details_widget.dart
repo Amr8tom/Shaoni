@@ -8,6 +8,7 @@ import '../../../../core/constants/colors.dart';
 import '../../../../generated/l10n.dart';
 import '../../../home/presentation/widgets/order_text_card.dart';
 import '../controller/my_requests_cubit.dart';
+import 'attachments_view.dart';
 
 class AttendanceRequestDetailsWidget extends StatelessWidget {
   const AttendanceRequestDetailsWidget({super.key});
@@ -77,6 +78,10 @@ class AttendanceRequestDetailsWidget extends StatelessWidget {
                   label: S.current.notes,
                   value: attendance!.notes!,
                 ),
+
+              /// Attachments (if any)
+              if (attendance?.attachments.isNotEmpty ?? false)
+                AttachmentsView(attachments: attendance!.attachments),
             ],
           ),
         ),

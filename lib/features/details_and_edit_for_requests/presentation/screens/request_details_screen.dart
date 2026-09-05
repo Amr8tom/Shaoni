@@ -48,9 +48,9 @@ class RequestDetailsScreen extends StatelessWidget {
         currentStatus?.techName.toRequestStatusEnum;
     final bool isManagerApproval =
         requestStages.length > 1 && requestStages[1] == currentStatusEnum;
-    final bool isNewRequest = (requestStages.isNotEmpty &&
-            requestStages[0] == currentStatusEnum) ||
-        (requestStages.length > 1 && requestStages[1] == currentStatusEnum);
+    final bool isNewRequest =
+        (requestStages.isNotEmpty && requestStages[0] == currentStatusEnum) ||
+            (requestStages.length > 1 && requestStages[1] == currentStatusEnum);
     // Some services stay employee-editable past the first stage, so the
     // update button must not be gated on `isNewRequest` alone.
     final bool isEditableWhilePending =

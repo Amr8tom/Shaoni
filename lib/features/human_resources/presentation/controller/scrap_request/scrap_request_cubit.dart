@@ -1,6 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:shaoni/core/local_storage/session_storage/session_storage.dart';
 import 'package:shaoni/core/utils/usecases/base_usecase.dart';
 import 'package:shaoni/features/human_resources/domain/entity/scrap_request/scrap_custody.dart';
@@ -119,23 +120,45 @@ class ScrapRequestCubit extends Cubit<ScrapRequestState> {
 
   // ── Header field setters ─────────────────────────────────────────────────
 
-  void selectCustody(ScrapCustody custody) {
-    emit(state.copyWith(
-      selectedCustodyId: custody.id,
-      selectedCustodyName: custody.name,
-      custodyProductId: custody.productId,
-      custodyProductName: custody.productName,
-    ));
-    loadLotsForProduct(custody.productId);
-    // update all line items to use the custody's product
+  /// Add or remove a custody from the header multi-select.
+  void toggleCustody(ScrapCustody custody) {
+    final ids = List<int>.from(state.selectedCustodyIds);
+    if (ids.contains(custody.id)) {
+      ids.remove(custody.id);
+    } else {
+      ids.add(custody.id);
+    }
+    emit(state.copyWith(selectedCustodyIds: ids));
+
+    // Preload lots for every product now available.
+    for (final p in state.availableProducts) {
+      loadLotsForProduct(p.id);
+    }
+
+    // Drop any line whose product is no longer offered by the selected
+    // custodies (prevents stale product/lot selections and dropdown crashes).
+    final availableIds = state.availableProducts.map((p) => p.id).toSet();
     final updated = state.lineItems
-        .map((item) => item.copyWith(
-              productId: custody.productId,
-              productName: custody.productName,
-              clearLot: true,
-            ))
+        .map((item) =>
+            item.productId != null && !availableIds.contains(item.productId)
+                ? item.copyWith(clearProduct: true, clearLot: true)
+                : item)
         .toList();
     emit(state.copyWith(lineItems: updated));
+  }
+
+  /// Pick the product for a single line (from the selected custodies' pool).
+  void selectLineProduct(String localId, int productId, String productName) {
+    loadLotsForProduct(productId);
+    final items = state.lineItems.map((i) {
+      if (i.localId != localId) return i;
+      return i.copyWith(
+        productId: productId,
+        productName: productName,
+        clearLot: true,
+      );
+    }).toList();
+    emit(state.copyWith(lineItems: items));
   }
 
   void selectStockRequest(StockRequestEntity sr) {
@@ -159,11 +182,7 @@ class ScrapRequestCubit extends Cubit<ScrapRequestState> {
     _qtyControllers[id] = TextEditingController(text: '1');
     _reasonControllers[id] = TextEditingController();
     final items = List<ScrapLineItemState>.from(state.lineItems)
-      ..add(ScrapLineItemState(
-        localId: id,
-        productId: state.custodyProductId,
-        productName: state.custodyProductName,
-      ));
+      ..add(ScrapLineItemState(localId: id));
     emit(state.copyWith(lineItems: items));
   }
 
@@ -195,6 +214,7 @@ class ScrapRequestCubit extends Cubit<ScrapRequestState> {
 
   CreateScrapRequestParams _buildParams() {
     final empId = int.tryParse(_sessionStorage.employeeId ?? '0') ?? 0;
+    final deptId = int.tryParse(_sessionStorage.departmentId ?? '0') ?? 0;
     final lineIds = state.lineItems
         .where((i) => i.productId != null)
         .map((i) => ScrapLineItemParams(
@@ -203,15 +223,19 @@ class ScrapRequestCubit extends Cubit<ScrapRequestState> {
                   int.tryParse(_qtyControllers[i.localId]?.text ?? '1') ?? 1,
               lotId: i.lotId,
               reason: _reasonControllers[i.localId]?.text.trim() ?? '',
+              productName: i.productName,
+              lotName: i.lotName,
             ))
         .toList();
 
     return CreateScrapRequestParams(
       employeeId: empId,
       officeId: int.tryParse(officeIdController.text) ?? 0,
-      custodyId: state.selectedCustodyId ?? 0,
+      departmentId: deptId,
+      requestDate: DateFormat('yyyy-MM-dd', 'en').format(DateTime.now()),
+      custodyIds: state.selectedCustodyIds,
       stockRequestId: state.selectedStockRequestId,
-      reasonId: state.selectedReasonId ?? 0,
+      scrapReasonId: state.selectedReasonId ?? 0,
       requestLineIds: lineIds,
     );
   }
@@ -277,10 +301,7 @@ class ScrapRequestCubit extends Cubit<ScrapRequestState> {
     _itemCounter = 0;
     emit(state.copyWith(
       lineItems: [],
-      selectedCustodyId: null,
-      selectedCustodyName: '',
-      custodyProductId: null,
-      custodyProductName: '',
+      selectedCustodyIds: [],
       selectedStockRequestId: null,
       selectedStockRequestName: '',
       selectedReasonId: null,

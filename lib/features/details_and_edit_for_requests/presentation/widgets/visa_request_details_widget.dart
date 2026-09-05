@@ -10,9 +10,6 @@ import '../../../home/presentation/widgets/order_text_card.dart';
 import '../../domain/entities/visa_request.dart';
 import '../controller/my_requests_cubit.dart';
 
-
-
-
 class VisaRequestDetailsWidget extends StatelessWidget {
   const VisaRequestDetailsWidget({super.key});
   @override

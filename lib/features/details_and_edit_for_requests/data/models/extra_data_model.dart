@@ -152,6 +152,9 @@ class ExtraDataModel extends ExtraData {
               'attendanceType': extraData.attendance!.attendanceType,
               'forgetReason': extraData.attendance!.forgetReason,
               'missingAttendance': extraData.attendance!.missingAttendance,
+              'attachments': extraData.attendance!.attachments
+                  .map((e) => e.toJson())
+                  .toList(),
             },
       'study': extraData.study == null
           ? null
@@ -168,7 +171,8 @@ class ExtraDataModel extends ExtraData {
               'comment': extraData.study!.comment,
               'editReasons': extraData.study!.editReasons,
               'rejectReasons': extraData.study!.rejectReasons,
-              'attachments': extraData.study!.attachments,
+              'attachments':
+                  extraData.study!.attachments.map((e) => e.toJson()).toList(),
             },
       'startWork': extraData.startWork == null
           ? null

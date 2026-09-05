@@ -32,6 +32,9 @@ import '../../features/human_resources/presentation/controller/attendance/attend
 import '../../features/human_resources/presentation/controller/exit_permission/exit_request_service_cubit.dart';
 import '../../features/human_resources/domain/use_cases/start_work/get_start_work_types_use_case.dart';
 import '../../features/human_resources/domain/use_cases/start_work/get_employees_use_case.dart';
+import '../../features/human_resources/domain/use_cases/start_work/get_employee_contracts_use_case.dart';
+import '../../features/human_resources/domain/use_cases/start_work/get_task_management_use_case.dart';
+import '../../features/human_resources/domain/use_cases/start_work/get_employee_leave_types_use_case.dart';
 import '../../features/human_resources/domain/use_cases/start_work/create_start_work_use_case.dart';
 import '../../features/human_resources/domain/use_cases/start_work/update_start_work_use_case.dart';
 import '../../features/human_resources/presentation/controller/start_work/start_work_cubit.dart';
@@ -172,6 +175,15 @@ class HRServiceLocator {
     serviceLocator.registerLazySingleton<GetEmployeesUseCase>(
       () => GetEmployeesUseCase(serviceLocator()),
     );
+    serviceLocator.registerLazySingleton<GetEmployeeContractsUseCase>(
+      () => GetEmployeeContractsUseCase(serviceLocator()),
+    );
+    serviceLocator.registerLazySingleton<GetTaskManagementUseCase>(
+      () => GetTaskManagementUseCase(serviceLocator()),
+    );
+    serviceLocator.registerLazySingleton<GetEmployeeLeaveTypesUseCase>(
+      () => GetEmployeeLeaveTypesUseCase(serviceLocator()),
+    );
     serviceLocator.registerLazySingleton<CreateStartWorkUseCase>(
       () => CreateStartWorkUseCase(serviceLocator()),
     );
@@ -180,6 +192,9 @@ class HRServiceLocator {
     );
     serviceLocator.registerFactory<StartWorkCubit>(
       () => StartWorkCubit(
+        serviceLocator(),
+        serviceLocator(),
+        serviceLocator(),
         serviceLocator(),
         serviceLocator(),
         serviceLocator(),

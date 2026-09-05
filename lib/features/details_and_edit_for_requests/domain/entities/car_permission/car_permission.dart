@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:shaoni/core/models/request_attachment.dart';
 
 class CarPermission extends Equatable {
   final String? externalName;
@@ -7,7 +8,7 @@ class CarPermission extends Equatable {
   final String? carNumber;
   final String? note;
   final String? state;
-  final List<String>? attachments;
+  final List<RequestAttachment> attachments;
 
   const CarPermission({
     this.externalName,
@@ -16,7 +17,7 @@ class CarPermission extends Equatable {
     this.carNumber,
     this.note,
     this.state,
-    this.attachments,
+    this.attachments = const [],
   });
 
   /// fromJson
@@ -28,22 +29,8 @@ class CarPermission extends Equatable {
       carNumber: json['carNumber']?.toString(),
       note: json['note']?.toString(),
       state: json['state']?.toString(),
-      attachments: _attachmentsFromJson(json['attachments']),
+      attachments: RequestAttachment.fromServiceMap(json),
     );
-  }
-
-  static List<String>? _attachmentsFromJson(Object? value) {
-    if (value == null) return null;
-    if (value is String) return value.isEmpty ? null : [value];
-    if (value is List) {
-      final attachments = value
-          .where((item) => item != null)
-          .map((item) => item.toString())
-          .where((item) => item.isNotEmpty)
-          .toList();
-      return attachments.isEmpty ? null : attachments;
-    }
-    return null;
   }
 
   /// toJson
@@ -55,7 +42,7 @@ class CarPermission extends Equatable {
       'carNumber': carNumber,
       'note': note,
       'state': state,
-      'attachments': attachments,
+      'attachments': attachments.map((e) => e.toJson()).toList(),
     };
   }
 

@@ -6,6 +6,7 @@ import 'package:shaoni/core/constants/app_sizes.dart';
 import 'package:shaoni/core/constants/colors.dart';
 import 'package:shaoni/core/extensions/navigation_extension.dart';
 import 'package:shaoni/core/service_locator/service_locator.dart';
+import 'package:shaoni/features/human_resources/domain/entity/scrap_request/scrap_custody.dart';
 import 'package:shaoni/features/human_resources/presentation/controller/scrap_request/scrap_request_cubit.dart';
 import 'package:shaoni/features/human_resources/presentation/scrap_request/widget/scrap_request_data_widget.dart';
 
@@ -112,35 +113,11 @@ class CreateScrapRequestForm extends StatelessWidget {
                               ),
                               const Sizer(height: 16),
 
-                              /// Custody dropdown
-                              _LabeledDropdown<dynamic>(
-                                label: S.current.custody,
-                                hint: S.current.selectCustody,
-                                value: state.selectedCustodyId != null
-                                    ? state.custodies
-                                        .cast<dynamic>()
-                                        .firstWhere(
-                                          (c) =>
-                                              c?.id == state.selectedCustodyId,
-                                          orElse: () => null,
-                                        )
-                                    : null,
-                                items: state.custodies
-                                    .map((c) => DropdownMenuItem<dynamic>(
-                                          value: c,
-                                          child: Text(
-                                            c.name,
-                                            style:
-                                                const TextStyle(fontSize: 12),
-                                            overflow: TextOverflow.ellipsis,
-                                          ),
-                                        ))
-                                    .toList(),
-                                onChanged: (c) {
-                                  if (c != null) {
-                                    controller.selectCustody(c);
-                                  }
-                                },
+                              /// Custody multi-select
+                              _CustodyMultiSelect(
+                                custodies: state.custodies,
+                                selectedIds: state.selectedCustodyIds,
+                                onToggle: controller.toggleCustody,
                               ),
                               const Sizer(height: 16),
 
@@ -244,6 +221,102 @@ class CreateScrapRequestForm extends StatelessWidget {
           },
         ),
       ),
+    );
+  }
+}
+
+// ── Custody multi-select ──────────────────────────────────────────────────────
+
+class _CustodyMultiSelect extends StatelessWidget {
+  const _CustodyMultiSelect({
+    required this.custodies,
+    required this.selectedIds,
+    required this.onToggle,
+  });
+
+  final List<ScrapCustody> custodies;
+  final List<int> selectedIds;
+  final void Function(ScrapCustody) onToggle;
+
+  @override
+  Widget build(BuildContext context) {
+    final selected =
+        custodies.where((c) => selectedIds.contains(c.id)).toList();
+    final unselected =
+        custodies.where((c) => !selectedIds.contains(c.id)).toList();
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          S.current.custody,
+          style: Theme.of(context)
+              .textTheme
+              .bodyMedium
+              ?.copyWith(fontWeight: FontWeight.w600),
+        ),
+        const Sizer(height: 6),
+        Container(
+          width: double.infinity,
+          padding: EdgeInsets.symmetric(
+            horizontal: AppSizes.padding * 0.75,
+            vertical: AppSizes.padding * 0.5,
+          ),
+          decoration: BoxDecoration(
+            color: ColorRes.white,
+            borderRadius: BorderRadius.circular(AppSizes.borderRadiusMd),
+            border: Border.all(color: ColorRes.greyForBorders),
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              if (selected.isNotEmpty)
+                Wrap(
+                  spacing: 6,
+                  runSpacing: 2,
+                  children: selected
+                      .map((c) => Chip(
+                            label: Text(
+                              c.name,
+                              style: const TextStyle(fontSize: 12),
+                            ),
+                            onDeleted: () => onToggle(c),
+                            deleteIcon: const Icon(Icons.close, size: 16),
+                            materialTapTargetSize:
+                                MaterialTapTargetSize.shrinkWrap,
+                            visualDensity: VisualDensity.compact,
+                            backgroundColor:
+                                ColorRes.primary.withValues(alpha: 0.10),
+                          ))
+                      .toList(),
+                ),
+              DropdownButtonHideUnderline(
+                child: DropdownButton<ScrapCustody>(
+                  isExpanded: true,
+                  value: null,
+                  hint: Text(
+                    S.current.selectCustody,
+                    style: const TextStyle(fontSize: 12),
+                  ),
+                  items: unselected
+                      .map((c) => DropdownMenuItem<ScrapCustody>(
+                            value: c,
+                            child: Text(
+                              c.name,
+                              style: const TextStyle(fontSize: 12),
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          ))
+                      .toList(),
+                  onChanged: (c) {
+                    if (c != null) onToggle(c);
+                  },
+                ),
+              ),
+            ],
+          ),
+        ),
+      ],
     );
   }
 }

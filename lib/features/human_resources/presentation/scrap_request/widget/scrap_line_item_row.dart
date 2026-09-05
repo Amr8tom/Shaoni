@@ -10,19 +10,29 @@ class ScrapLineItemRow extends StatelessWidget {
   const ScrapLineItemRow({
     super.key,
     required this.item,
+    required this.products,
     required this.lots,
     required this.qtyController,
     required this.reasonController,
+    required this.onProductChanged,
     required this.onLotChanged,
     required this.onDelete,
   });
 
   final ScrapLineItemState item;
+  final List<ScrapProductOption> products;
   final List<dynamic> lots;
   final TextEditingController? qtyController;
   final TextEditingController? reasonController;
+  final void Function(int id, String name) onProductChanged;
   final void Function(int id, String name) onLotChanged;
   final VoidCallback? onDelete;
+
+  /// De-duplicate lots by id so no two [DropdownMenuItem]s share a value.
+  List<dynamic> get _uniqueLots {
+    final seen = <int>{};
+    return lots.where((l) => seen.add(l.id as int)).toList();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -50,47 +60,45 @@ class ScrapLineItemRow extends StatelessWidget {
               ),
             ),
 
-          /// Product (read-only from custody)
-          Text(
-            S.current.product,
-            style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                  color: ColorRes.grey2,
-                  fontWeight: FontWeight.w600,
-                ),
-          ),
-          const Sizer(height: 4),
-          Container(
-            width: double.infinity,
-            padding: EdgeInsets.symmetric(
-              horizontal: AppSizes.padding * 0.75,
-              vertical: AppSizes.padding * 0.6,
-            ),
-            decoration: BoxDecoration(
-              color: ColorRes.grey5,
-              borderRadius: BorderRadius.circular(AppSizes.borderRadiusMd),
-              border: Border.all(color: ColorRes.grey5),
-            ),
-            child: Text(
-              item.productName.isNotEmpty
-                  ? item.productName
-                  : S.current.selectCustodyFirst,
-              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                    color: item.productName.isNotEmpty
-                        ? ColorRes.black
-                        : ColorRes.grey2,
-                  ),
-            ),
+          /// Product dropdown (chosen from the selected custodies' products)
+          _DropdownField<int>(
+            hint: products.isEmpty
+                ? S.current.selectCustodyFirst
+                : S.current.product,
+            label: S.current.product,
+            value: products.any((p) => p.id == item.productId)
+                ? item.productId
+                : null,
+            items: products
+                .map((p) => DropdownMenuItem<int>(
+                      value: p.id,
+                      child: Text(
+                        p.name,
+                        style: const TextStyle(fontSize: 12),
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ))
+                .toList(),
+            onChanged: (id) {
+              if (id == null) return;
+              final selected = products.firstWhere((p) => p.id == id);
+              onProductChanged(selected.id, selected.name);
+            },
           ),
           const Sizer(height: 8),
 
           /// Lot dropdown
-          _DropdownField<dynamic>(
+          _DropdownField<int>(
             hint: S.current.selectLot,
             label: S.current.lotNumber,
-            value: item.lotId != null ? item.lotName : null,
-            items: lots
-                .map((l) => DropdownMenuItem<dynamic>(
-                      value: l,
+            // Guard against a stale selection: if the previously selected lot
+            // is not in the current list (e.g. after the custody/product
+            // changed), fall back to null instead of crashing the dropdown.
+            value:
+                _uniqueLots.any((l) => l.id == item.lotId) ? item.lotId : null,
+            items: _uniqueLots
+                .map((l) => DropdownMenuItem<int>(
+                      value: l.id as int,
                       child: Text(
                         l.name as String,
                         style: const TextStyle(fontSize: 12),
@@ -98,10 +106,10 @@ class ScrapLineItemRow extends StatelessWidget {
                       ),
                     ))
                 .toList(),
-            onChanged: (l) {
-              if (l != null) {
-                onLotChanged(l.id as int, l.name as String);
-              }
+            onChanged: (id) {
+              if (id == null) return;
+              final selected = _uniqueLots.firstWhere((l) => l.id == id);
+              onLotChanged(selected.id as int, selected.name as String);
             },
           ),
           const Sizer(height: 8),
@@ -193,7 +201,7 @@ class _DropdownField<T> extends StatelessWidget {
 
   final String hint;
   final String label;
-  final String? value;
+  final T? value;
   final List<DropdownMenuItem<T>> items;
   final void Function(T?) onChanged;
 
@@ -212,7 +220,7 @@ class _DropdownField<T> extends StatelessWidget {
         const Sizer(height: 4),
         DropdownButtonFormField<T>(
           hint: Text(hint, style: const TextStyle(fontSize: 12)),
-          value: null,
+          value: value,
           isExpanded: true,
           decoration: InputDecoration(
             contentPadding: EdgeInsets.symmetric(

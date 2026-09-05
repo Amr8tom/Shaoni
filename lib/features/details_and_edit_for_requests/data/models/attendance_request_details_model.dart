@@ -1,3 +1,5 @@
+import 'package:shaoni/core/models/request_attachment.dart';
+
 import '../../domain/entities/attendance/attendance_request_details.dart';
 
 class AttendanceRequestDetailsModel extends AttendanceRequestDetails {
@@ -8,7 +10,8 @@ class AttendanceRequestDetailsModel extends AttendanceRequestDetails {
       required super.notes,
       required super.attendanceType,
       required super.forgetReason,
-      required super.missingAttendance});
+      required super.missingAttendance,
+      super.attachments});
 
   /// fromJson
   factory AttendanceRequestDetailsModel.fromJson(Map<String, dynamic> json) {
@@ -20,6 +23,7 @@ class AttendanceRequestDetailsModel extends AttendanceRequestDetails {
       attendanceType: json['attendanceType'],
       forgetReason: json['forgetReason'],
       missingAttendance: json['missingAttendance'],
+      attachments: RequestAttachment.fromServiceMap(json),
     );
   }
 
@@ -33,6 +37,7 @@ class AttendanceRequestDetailsModel extends AttendanceRequestDetails {
       'attendanceType': attendanceType,
       'forgetReason': forgetReason,
       'missingAttendance': missingAttendance,
+      'attachments': attachments.map((e) => e.toJson()).toList(),
     };
   }
 }

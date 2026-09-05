@@ -8,7 +8,7 @@ import '../../../../core/constants/colors.dart';
 import '../../../../generated/l10n.dart';
 import '../../../home/presentation/widgets/order_text_card.dart';
 import '../controller/my_requests_cubit.dart';
-import 'attachements_widget.dart';
+import 'attachments_view.dart';
 
 class StudyRequestDetailsWidget extends StatelessWidget {
   const StudyRequestDetailsWidget({super.key});
@@ -94,11 +94,8 @@ class StudyRequestDetailsWidget extends StatelessWidget {
                 const Sizer(height: 12),
               ],
 
-              /// Attachment — first item when present
-              if ((study?.attachments?.isNotEmpty ?? false))
-                LeavesAttachmentWidget(
-                  leavesAttachment: study!.attachments!.first,
-                ),
+              /// Attachments — URL + base64, renders nothing when empty
+              AttachmentsView(attachments: study?.attachments ?? const []),
             ],
           ),
         ),

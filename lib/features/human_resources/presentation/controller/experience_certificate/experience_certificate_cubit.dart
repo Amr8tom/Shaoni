@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:shaoni/core/local_storage/session_storage/session_storage.dart';
 import 'package:shaoni/core/utils/usecases/base_usecase.dart';
-import 'package:shaoni/features/human_resources/domain/entity/experience_certificate/certificate_reason.dart';
 import 'package:shaoni/features/human_resources/domain/use_cases/experience_certificate/get_certificate_reasons_use_case.dart';
 import 'package:shaoni/features/human_resources/domain/use_cases/experience_certificate/create_experience_certificate_use_case.dart';
 import 'package:shaoni/features/human_resources/domain/use_cases/experience_certificate/update_experience_certificate_use_case.dart';
@@ -39,9 +38,6 @@ class ExperienceCertificateCubit extends Cubit<ExperienceCertificateState> {
   /// Dropdown items for the UI
   List<DropdownMenuItem<String>> certificateReasonItems = [];
 
-  /// Raw list for ID resolution
-  List<CertificateReason> _certificateReasons = [];
-
   ExperienceCertificateCubit(
     this._getCertificateReasonsUseCase,
     this._createExperienceCertificateUseCase,
@@ -68,7 +64,6 @@ class ExperienceCertificateCubit extends Cubit<ExperienceCertificateState> {
         errorMessage: failure.message,
       )),
       (reasons) {
-        _certificateReasons = reasons;
         certificateReasonItems = reasons
             .map((r) => DropdownMenuItem<String>(
                   value: r.id.toString(),
@@ -85,13 +80,10 @@ class ExperienceCertificateCubit extends Cubit<ExperienceCertificateState> {
   // ── Helpers ──────────────────────────────────────────────────────────────
 
   int? get _selectedReasonId {
+    // The dropdown stores the reason id (see `certificateReasonItems`,
+    // value: r.id.toString()), so read it back directly.
     if (certificateReasonController.text.isEmpty) return null;
-    final match = _certificateReasons.where(
-      (r) =>
-          _localizedName(r.nameAr, r.nameEn) ==
-          certificateReasonController.text,
-    );
-    return match.isEmpty ? null : match.first.id;
+    return int.tryParse(certificateReasonController.text);
   }
 
   CreateExperienceCertificateParams _buildParams() {
@@ -102,7 +94,14 @@ class ExperienceCertificateCubit extends Cubit<ExperienceCertificateState> {
       reason: reasonController.text.trim(),
       note: noteController.text.trim(),
       date: DateFormat('yyyy-MM-dd', "en").format(DateTime.now()),
-      attachmentIds: [],
+      attachmentIds: attachmentFileController.text.isEmpty
+          ? const []
+          : [
+              {
+                'name': attachmentFileNameController.text,
+                'attachment': attachmentFileController.text,
+              }
+            ],
     );
   }
 

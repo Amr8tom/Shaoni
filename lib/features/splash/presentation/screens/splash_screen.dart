@@ -98,9 +98,12 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   Future _delayBeforeNavigation() async {
-    if (token?.trim() != '' || token!.isNotEmpty) {
-      await Future.delayed(const Duration(seconds: 4, milliseconds: 500));
 
+
+    if (token?.trim() == '' || token == null || token!.isEmpty) {
+      return null;
+    } else {
+      await Future.delayed(const Duration(seconds: 4, milliseconds: 500));
       if (!mounted) return;
       context.pushReplacementNamed(DRoutesName.navigationMenuRoute);
     }

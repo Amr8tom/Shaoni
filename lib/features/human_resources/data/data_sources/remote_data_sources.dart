@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'package:shaoni/features/human_resources/data/model/attendance/attendance_look_up_model.dart';
 import 'package:shaoni/features/human_resources/data/model/attendance/attendance_model.dart';
 import 'package:shaoni/features/human_resources/data/model/attendance/forget_reason_model.dart';
@@ -16,6 +17,10 @@ import 'package:shaoni/features/human_resources/domain/use_cases/attendance/upda
 import 'package:shaoni/features/human_resources/domain/use_cases/exit/update_exit_permission_use_case.dart';
 import 'package:shaoni/features/human_resources/data/model/start_work/start_work_type_model.dart';
 import 'package:shaoni/features/human_resources/data/model/start_work/employee_model.dart';
+import 'package:shaoni/features/human_resources/data/model/start_work/start_work_option_model.dart';
+import 'package:shaoni/features/human_resources/data/model/start_work/employee_leave_type_model.dart';
+import 'package:shaoni/features/human_resources/domain/use_cases/start_work/get_employee_contracts_use_case.dart';
+import 'package:shaoni/features/human_resources/domain/use_cases/start_work/get_employee_leave_types_use_case.dart';
 import 'package:shaoni/features/human_resources/data/model/start_work/create_start_work_model.dart';
 import 'package:shaoni/features/human_resources/domain/use_cases/start_work/create_start_work_use_case.dart';
 import 'package:shaoni/features/human_resources/domain/use_cases/start_work/update_start_work_use_case.dart';
@@ -133,6 +138,18 @@ abstract class HRServicesRemoteDataSources {
 
   Future<List<EmployeeModel>> getEmployees({
     required NoParams params,
+  });
+
+  Future<List<StartWorkOptionModel>> getEmployeeContracts({
+    required GetEmployeeContractsParams params,
+  });
+
+  Future<List<StartWorkOptionModel>> getTaskManagement({
+    required NoParams params,
+  });
+
+  Future<List<EmployeeLeaveTypeModel>> getEmployeeLeaveTypes({
+    required GetEmployeeLeaveTypesParams params,
   });
 
   Future<CreateStartWorkModel> createStartWorkRequest({
@@ -546,6 +563,62 @@ class HRServicesRemoteDataSourcesImp implements HRServicesRemoteDataSources {
           ? response
           : (response as Map<String, dynamic>)['data'] as List;
       return raw.map((e) => EmployeeModel.fromJson(e)).toList();
+    } on ServerFailure catch (e) {
+      throw ServerFailure(message: e.message);
+    }
+  }
+
+  @override
+  Future<List<StartWorkOptionModel>> getEmployeeContracts({
+    required GetEmployeeContractsParams params,
+  }) async {
+    try {
+      final response = await _dio.getData(
+        url: '${URL.getEmployeeContracts}${params.employeeId}',
+      );
+      if (response == null) throw ServerFailure(message: 'server failure');
+      // This endpoint returns `text/plain`, so Dio hands back a JSON string.
+      final decoded = response is String ? jsonDecode(response) : response;
+      final List raw = decoded is List
+          ? decoded
+          : (decoded as Map<String, dynamic>)['body'] as List;
+      return raw.map((e) => StartWorkOptionModel.fromJson(e)).toList();
+    } on ServerFailure catch (e) {
+      throw ServerFailure(message: e.message);
+    }
+  }
+
+  @override
+  Future<List<StartWorkOptionModel>> getTaskManagement({
+    required NoParams params,
+  }) async {
+    try {
+      final response = await _dio.getData(url: URL.getTaskManagement);
+      if (response == null) throw ServerFailure(message: 'server failure');
+      final decoded = response is String ? jsonDecode(response) : response;
+      final List raw = decoded is List
+          ? decoded
+          : (decoded as Map<String, dynamic>)['body'] as List;
+      return raw.map((e) => StartWorkOptionModel.fromJson(e)).toList();
+    } on ServerFailure catch (e) {
+      throw ServerFailure(message: e.message);
+    }
+  }
+
+  @override
+  Future<List<EmployeeLeaveTypeModel>> getEmployeeLeaveTypes({
+    required GetEmployeeLeaveTypesParams params,
+  }) async {
+    try {
+      final response = await _dio.getData(
+        url: '${URL.getEmployeeLeaveTypes}${params.employeeId}',
+      );
+      if (response == null) throw ServerFailure(message: 'server failure');
+      final decoded = response is String ? jsonDecode(response) : response;
+      final List raw = decoded is List
+          ? decoded
+          : (decoded as Map<String, dynamic>)['body'] as List;
+      return raw.map((e) => EmployeeLeaveTypeModel.fromJson(e)).toList();
     } on ServerFailure catch (e) {
       throw ServerFailure(message: e.message);
     }

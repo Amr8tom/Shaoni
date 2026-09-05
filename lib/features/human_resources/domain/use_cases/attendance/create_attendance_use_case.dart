@@ -25,6 +25,7 @@ class CreateAttendanceParams {
   final String date;
   final int attendanceId;
   final String orderReason;
+  final String note;
   final int forgetReasonsIds;
 
   CreateAttendanceParams({
@@ -35,6 +36,7 @@ class CreateAttendanceParams {
     required this.date,
     required this.attendanceId,
     required this.orderReason,
+    this.note = '',
     required this.forgetReasonsIds,
   });
 
@@ -47,6 +49,7 @@ class CreateAttendanceParams {
       "date": date,
       "attendance_id": attendanceId,
       "order_reason": orderReason,
+      "note": note,
       "forget_reasons_ids": forgetReasonsIds,
       "office_id": officeId,
       // "request_attachment_ids": this.requestAttachmentIds.map((e) => e.toMap()).toList(),

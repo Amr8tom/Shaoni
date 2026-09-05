@@ -27,9 +27,13 @@ import '../use_cases/exit/create_exit_permission_use_case.dart';
 import '../use_cases/attendance/get_all_missing_attendance_use_case.dart';
 import '../entity/start_work/start_work_type.dart';
 import '../entity/start_work/employee.dart';
+import '../entity/start_work/start_work_option.dart';
+import '../entity/start_work/employee_leave_type.dart';
 import '../entity/start_work/create_start_work_response.dart';
 import '../use_cases/start_work/create_start_work_use_case.dart';
 import '../use_cases/start_work/update_start_work_use_case.dart';
+import '../use_cases/start_work/get_employee_contracts_use_case.dart';
+import '../use_cases/start_work/get_employee_leave_types_use_case.dart';
 import '../entity/experience_certificate/certificate_reason.dart';
 import '../entity/experience_certificate/create_experience_certificate_response.dart';
 import '../use_cases/experience_certificate/create_experience_certificate_use_case.dart';
@@ -138,6 +142,18 @@ abstract class HRServicesRepository {
 
   Future<Either<Failure, List<Employee>>> getEmployees({
     required NoParams params,
+  });
+
+  Future<Either<Failure, List<StartWorkOption>>> getEmployeeContracts({
+    required GetEmployeeContractsParams params,
+  });
+
+  Future<Either<Failure, List<StartWorkOption>>> getTaskManagement({
+    required NoParams params,
+  });
+
+  Future<Either<Failure, List<EmployeeLeaveType>>> getEmployeeLeaveTypes({
+    required GetEmployeeLeaveTypesParams params,
   });
 
   Future<Either<Failure, CreateStartWorkResponse>> createStartWorkRequest({

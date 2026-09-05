@@ -8,7 +8,7 @@ import '../../../../core/constants/colors.dart';
 import '../../../../generated/l10n.dart';
 import '../../../home/presentation/widgets/order_text_card.dart';
 import '../controller/my_requests_cubit.dart';
-import 'attachements_widget.dart';
+import 'attachments_view.dart';
 
 class ComplaintRequestDetailsWidget extends StatelessWidget {
   const ComplaintRequestDetailsWidget({super.key});
@@ -101,11 +101,8 @@ class ComplaintRequestDetailsWidget extends StatelessWidget {
                   ],
                 ),
 
-              /// Attachment — when present.
-              if ((complaint?.attachments?.isNotEmpty ?? false))
-                LeavesAttachmentWidget(
-                  leavesAttachment: complaint!.attachments?.first,
-                ),
+              /// Attachments — URL + base64, renders nothing when empty.
+              AttachmentsView(attachments: complaint?.attachments ?? const []),
             ],
           ),
         ),

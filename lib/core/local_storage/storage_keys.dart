@@ -40,6 +40,7 @@ enum StorageKeys {
   userName,
   organizationName,
   departmentAddress,
+  departmentId,
   offices,
   officesList,
   jobNumber,

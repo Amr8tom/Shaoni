@@ -1,5 +1,17 @@
 part of 'scrap_request_cubit.dart';
 
+// ── Product option (derived from selected custodies) ─────────────────────────
+
+class ScrapProductOption extends Equatable {
+  final int id;
+  final String name;
+
+  const ScrapProductOption({required this.id, required this.name});
+
+  @override
+  List<Object?> get props => [id, name];
+}
+
 // ── Line item state ──────────────────────────────────────────────────────────
 
 class ScrapLineItemState extends Equatable {
@@ -23,13 +35,14 @@ class ScrapLineItemState extends Equatable {
     int? lotId,
     String? lotName,
     bool clearLot = false,
+    bool clearProduct = false,
   }) {
     return ScrapLineItemState(
       localId: localId,
-      productId: productId ?? this.productId,
-      productName: productName ?? this.productName,
-      lotId: clearLot ? null : (lotId ?? this.lotId),
-      lotName: clearLot ? '' : (lotName ?? this.lotName),
+      productId: clearProduct ? null : (productId ?? this.productId),
+      productName: clearProduct ? '' : (productName ?? this.productName),
+      lotId: (clearLot || clearProduct) ? null : (lotId ?? this.lotId),
+      lotName: (clearLot || clearProduct) ? '' : (lotName ?? this.lotName),
     );
   }
 
@@ -69,10 +82,7 @@ class ScrapRequestState extends Equatable {
   final List<ScrapReasonEntity> scrapReasons;
   final Map<int, List<ScrapLot>> lots;
   final List<ScrapLineItemState> lineItems;
-  final int? selectedCustodyId;
-  final String selectedCustodyName;
-  final int? custodyProductId;
-  final String custodyProductName;
+  final List<int> selectedCustodyIds;
   final int? selectedStockRequestId;
   final String selectedStockRequestName;
   final int? selectedReasonId;
@@ -87,10 +97,7 @@ class ScrapRequestState extends Equatable {
     this.scrapReasons = const [],
     this.lots = const {},
     this.lineItems = const [],
-    this.selectedCustodyId,
-    this.selectedCustodyName = '',
-    this.custodyProductId,
-    this.custodyProductName = '',
+    this.selectedCustodyIds = const [],
     this.selectedStockRequestId,
     this.selectedStockRequestName = '',
     this.selectedReasonId,
@@ -99,6 +106,23 @@ class ScrapRequestState extends Equatable {
     this.requestNumber,
   });
 
+  /// Custodies currently selected in the header multi-select.
+  List<ScrapCustody> get selectedCustodies =>
+      custodies.where((c) => selectedCustodyIds.contains(c.id)).toList();
+
+  /// Distinct products offered by the selected custodies — the pool the
+  /// per-line product dropdown chooses from.
+  List<ScrapProductOption> get availableProducts {
+    final seen = <int>{};
+    final result = <ScrapProductOption>[];
+    for (final c in selectedCustodies) {
+      if (c.productId != 0 && seen.add(c.productId)) {
+        result.add(ScrapProductOption(id: c.productId, name: c.productName));
+      }
+    }
+    return result;
+  }
+
   ScrapRequestState copyWith({
     ScrapRequestStatus? status,
     List<ScrapCustody>? custodies,
@@ -106,10 +130,7 @@ class ScrapRequestState extends Equatable {
     List<ScrapReasonEntity>? scrapReasons,
     Map<int, List<ScrapLot>>? lots,
     List<ScrapLineItemState>? lineItems,
-    int? selectedCustodyId,
-    String? selectedCustodyName,
-    int? custodyProductId,
-    String? custodyProductName,
+    List<int>? selectedCustodyIds,
     int? selectedStockRequestId,
     String? selectedStockRequestName,
     int? selectedReasonId,
@@ -124,10 +145,7 @@ class ScrapRequestState extends Equatable {
       scrapReasons: scrapReasons ?? this.scrapReasons,
       lots: lots ?? this.lots,
       lineItems: lineItems ?? this.lineItems,
-      selectedCustodyId: selectedCustodyId ?? this.selectedCustodyId,
-      selectedCustodyName: selectedCustodyName ?? this.selectedCustodyName,
-      custodyProductId: custodyProductId ?? this.custodyProductId,
-      custodyProductName: custodyProductName ?? this.custodyProductName,
+      selectedCustodyIds: selectedCustodyIds ?? this.selectedCustodyIds,
       selectedStockRequestId:
           selectedStockRequestId ?? this.selectedStockRequestId,
       selectedStockRequestName:
@@ -147,10 +165,7 @@ class ScrapRequestState extends Equatable {
         scrapReasons,
         lots,
         lineItems,
-        selectedCustodyId,
-        selectedCustodyName,
-        custodyProductId,
-        custodyProductName,
+        selectedCustodyIds,
         selectedStockRequestId,
         selectedStockRequestName,
         selectedReasonId,

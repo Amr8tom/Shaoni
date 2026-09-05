@@ -35,6 +35,10 @@ class SessionStorageImpl implements SessionStorage {
       storage.getString(key: StorageKeys.departmentAddress.name);
 
   @override
+  String? get departmentId =>
+      storage.getString(key: StorageKeys.departmentId.name);
+
+  @override
   String? get offices => storage.getString(key: StorageKeys.offices.name);
 
   @override
@@ -84,6 +88,10 @@ class SessionStorageImpl implements SessionStorage {
       key: StorageKeys.departmentAddress.name, value: value);
 
   @override
+  Future<void> saveDepartmentId(String value) =>
+      storage.cacheString(key: StorageKeys.departmentId.name, value: value);
+
+  @override
   Future<void> saveOffices(String value) =>
       storage.cacheString(key: StorageKeys.offices.name, value: value);
 
@@ -113,6 +121,7 @@ class SessionStorageImpl implements SessionStorage {
     await storage.remove(key: StorageKeys.email.name);
     await storage.remove(key: StorageKeys.organizationName.name);
     await storage.remove(key: StorageKeys.departmentAddress.name);
+    await storage.remove(key: StorageKeys.departmentId.name);
     await storage.remove(key: StorageKeys.offices.name);
     await storage.remove(key: StorageKeys.officesList.name);
     await storage.remove(key: StorageKeys.jobNumber.name);

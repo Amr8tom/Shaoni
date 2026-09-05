@@ -5,7 +5,7 @@
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![Platforms](https://img.shields.io/badge/Platforms-Android%20%7C%20iOS-lightgrey.svg)](#-supported-platforms)
 
-Shaoni is a bilingual employee self-service application for submitting, tracking, reviewing, and approving internal company requests. It brings HR, leave, salary, purchasing, training, and travel services into one mobile workflow for employees, managers, and guarantors (kafeels).
+Shaoni is a bilingual employee self-service application for submitting, tracking, reviewing, and approving internal company requests. It brings HR, leave, salary, purchasing, training, and travel services into one mobile workflow for two user types: employees and managers.
 
 ## 📋 Table of Contents
 
@@ -28,12 +28,12 @@ Shaoni is a bilingual employee self-service application for submitting, tracking
 
 ## 🎯 About
 
-Shaoni provides employees with a single place to view personal request statistics, discover the services available to their account, create requests, follow approval stages, and maintain their profile. Managers and kafeels receive additional request-review views when their user data grants those responsibilities.
+Shaoni provides employees and managers with the same dashboard, services catalogue, personal request list, and profile experience. Managers additionally receive a **Submitted Requests** view for reviewing requests assigned to them.
 
 ### Key Highlights
 
 - **Twenty employee services** grouped into six business categories.
-- **Role-aware workflows** for employees, managers, kafeels, HR, and other approval authorities.
+- **Two user types** with a shared experience and an additional manager review view.
 - **Request lifecycle tracking** with localized statuses and a visual stage timeline.
 - **Create and update flows** with server-backed dropdowns and prefilled edit forms.
 - **Arabic and English support** with right-to-left and left-to-right layouts.
@@ -91,7 +91,7 @@ Shared infrastructure includes named routing, service-code resolution, network c
 
 ### Home dashboard
 
-The dashboard presents the authenticated employee, announcements, annual leave balance, total requests, and status statistics. Available manager and kafeel request data is loaded according to the employee record.
+The dashboard presents the authenticated user, announcements, annual leave balance, total requests, and status statistics. Employees and managers see the same dashboard; the role difference appears in request management rather than on the Home screen.
 
 | Employee Home | My Requests | Profile |
 |---|---|---|
@@ -104,7 +104,7 @@ The bottom navigation provides four primary destinations:
 
 1. **Home** - employee summary and request statistics.
 2. **Services** - permitted service categories and request creation.
-3. **Requests** - employee, manager, and kafeel request lists.
+3. **Requests** - personal requests for every user, plus submitted requests for managers.
 4. **Profile** - employee information and profile updates.
 
 The side drawer provides access to Settings, Privacy Policy, and Logout. Settings include runtime language switching between Arabic and English.
@@ -159,7 +159,7 @@ Most services are editable only during their initial stages. Leave, Study, and T
 ### Approval behavior
 
 - Every request begins in a new or draft state.
-- The positive sequence depends on the service and may include a manager, kafeel, HR, budget, external relations, or an authority holder.
+- The positive sequence depends on the service and may include a manager, guarantor/kafeel approval, HR, budget, external relations, or an authority holder.
 - A permitted reviewer can add a comment and approve or reject a request.
 - Rejection stops the positive workflow and stores the rejection reason.
 - Cancellation and rejection are terminal alternatives and are omitted from the compact positive sequences below.
@@ -255,24 +255,37 @@ Both forms support repeatable request lines. Product options depend on the selec
 
 ## ✅ Request Management and Approvals
 
+### User types
+
+Shaoni has two application user types:
+
+| Employee | Manager |
+|---|---|
+| Uses the standard dashboard, services catalogue, **My Requests**, and profile screens. | Uses the same dashboard and application screens, with an additional **Submitted Requests** tab for manager review. |
+
+The role does not change the Home dashboard layout. It changes the available request tabs and review actions.
+
+| Employee Request View | Manager Request View |
+|---|---|
+| <img src="assets/images/docs/orders.png" width="210" alt="Employee My Requests view"> | <img src="assets/images/docs/services_mamanger view.png" width="210" alt="Manager My Requests and Submitted Requests tabs"> |
+| Employees see requests they submitted. | Managers can switch between their own requests and requests submitted for their review. |
+
 ### Employee requests
 
-Employees always receive a **My Requests** view containing request number, service, creation date, and current status. Requests support pagination and filtering by service.
+Employees and managers always receive a **My Requests** view containing request number, service, creation date, and current status. Requests support pagination and filtering by service.
 
 Selecting a request opens service-specific details, attachments where available, the current stage, and the approval timeline. An Update button is displayed only when the current stage is employee-editable.
 
 ### Manager requests
 
-Users whose employee record identifies them as managers receive a **Submitted Requests** tab. When a request is waiting at the applicable manager stage, the reviewer can:
+Users whose employee record identifies them as managers receive the additional **Submitted Requests** tab shown above. When a request is waiting at the applicable manager stage, the reviewer can:
 
 - Read all service-specific details.
 - Add a review comment.
 - Approve or reject the request.
 - Open the service edit flow when manager editing is supported.
 
-### Kafeel requests
-
-Users marked as kafeels receive a **Kafeel Requests** tab. The kafeel can review applicable guarantor-stage requests and use the same review controls while the request is waiting for their action.
+A kafeel may still participate as a guarantor in a service workflow such as a loan, but this is an approval responsibility rather than a separate documented application user type.
 
 ### Status timeline
 
@@ -301,7 +314,6 @@ App-Language: ar|en
 | Dashboard | Request status counts and annual leave balance |
 | Employee requests | `GET /Request/dashboard/paged/by-user` |
 | Manager requests | `GET /Request/dashboard/paged/for-manager` |
-| Kafeel requests | `GET /Request/with-stages/paged/by-kafeel` |
 | Request details | `GET /Request/{id}/with-stages` |
 | Review action | `POST /Request/status/{id}` |
 | Lookups | Service-specific values under `/Lookup` and `/Integration` |
@@ -519,7 +531,7 @@ Important request flows should cover:
 - Create and update payload mapping.
 - Edit-prefill behavior.
 - Service-code route and details dispatch.
-- Employee, manager, and kafeel visibility rules.
+- Employee and manager visibility rules.
 - Approval-stage interpretation.
 - Arabic and English layouts.
 

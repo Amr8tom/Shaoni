@@ -88,7 +88,7 @@ class RequestStageCard extends StatelessWidget {
 
                 return StageRow(
                   index: i,
-                  title: stages[i].name,
+                  title: stages[i].label,
                   isCompleted: isCompleted,
                   isActive: isActive,
                   isPending: isPending,

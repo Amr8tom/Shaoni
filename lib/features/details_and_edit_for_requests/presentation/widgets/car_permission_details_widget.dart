@@ -8,7 +8,7 @@ import '../../../../core/constants/colors.dart';
 import '../../../../generated/l10n.dart';
 import '../../../home/presentation/widgets/order_text_card.dart';
 import '../controller/my_requests_cubit.dart';
-import 'attachements_widget.dart';
+import 'attachments_view.dart';
 
 /// Displays the four core fields of a Car-Permission request inside the
 /// request-details screen:
@@ -85,14 +85,9 @@ class CarPermissionDetailsWidget extends StatelessWidget {
               ),
               const Sizer(height: 12),
 
-              /// Attachment — first item of `carPermission.attachments`
-              /// when present. The shared `LeavesAttachmentWidget` already
-              /// handles base64 → typed file detection + share-sheet
-              /// download, so we just feed it the first attachment.
-              if ((car?.attachments?.isNotEmpty ?? false))
-                LeavesAttachmentWidget(
-                  leavesAttachment: car!.attachments!.first,
-                ),
+              /// Attachments — URL (preview + open) or base64, handled by the
+              /// centralized [AttachmentsView].
+              AttachmentsView(attachments: car?.attachments ?? const []),
             ],
           ),
         ),

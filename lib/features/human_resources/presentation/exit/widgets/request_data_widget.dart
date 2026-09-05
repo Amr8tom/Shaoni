@@ -209,6 +209,21 @@ class RequestDataWidget extends StatelessWidget {
                   ),
                 ],
               ),
+
+              /// make size
+              const Sizer(height: 20),
+
+              /// request reason (notes) — optional
+              AuthTextField(
+                borderRadius: AppSizes.borderRadiusMd,
+                hint: S.current.orderReason,
+                controller: controller.notesController,
+                keyboardType: TextInputType.multiline,
+                prefixIcon: Icon(
+                  Icons.notes_rounded,
+                  color: ColorRes.grey2.withValues(alpha: 0.5),
+                ),
+              ),
             ],
           ),
         );

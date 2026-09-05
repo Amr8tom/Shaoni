@@ -171,6 +171,17 @@ class AttendanceRequestDataWidget extends StatelessWidget {
           },
           validator: _requiredValidator,
         ),
+        const Sizer(height: 14),
+
+        /// Full-width: request reason (order_reason) — required
+        DEditableField(
+          label: S.current.orderReason,
+          hint: S.current.reasonHint,
+          icon: Icons.notes_rounded,
+          controller: controller.orderReasonController,
+          keyboardType: TextInputType.multiline,
+          validator: _requiredValidator,
+        ),
       ],
     );
   }

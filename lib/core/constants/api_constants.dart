@@ -78,6 +78,15 @@ class URL {
   static const String getStartWorkTypes =
       '$baseUrl/Lookup/GetStartWorkingTypes';
   static const String getEmployees = '$baseUrl/Lookup/GetEmployees';
+
+  /// Start-work conditional-field lookups. The employee-filtered ones expect
+  /// the employee id appended to the path.
+  static const String getEmployeeContracts =
+      '$baseUrl/Lookup/GetEmployeeContracts/';
+  static const String getTaskManagement = '$baseUrl/Lookup/GetTaskManagement';
+  static const String getEmployeeLeaveTypes =
+      '$baseUrl/Lookup/GetEmployeeLeavesTypes/';
+
   static const String createStartWork = '$baseUrl/StartWorking';
   static const String updateStartWork = '$baseUrl/StartWorking/update/';
   static const String getStartWorkEdit = '$baseUrl/StartWorking/edit/';

@@ -1,4 +1,5 @@
 import '../../../../core/constants/service_codes.dart';
+import '../../../../generated/l10n.dart';
 import '../entities/current_status.dart';
 
 extension RequestStatusExtensionList on CurrentStatus {
@@ -18,13 +19,12 @@ extension RequestStatusExtensionList on CurrentStatus {
 
       case ServiceCode.carPermission:
         return const [
-          RequestStatusEnum.draft,
-          RequestStatusEnum.applied,
-          RequestStatusEnum.confirmed,
-          RequestStatusEnum.hrManager,
-          RequestStatusEnum.rejected,
-          RequestStatusEnum.cancel,
-          RequestStatusEnum.approved
+          RequestStatusEnum.draft, // draft
+          RequestStatusEnum.confirmed, // confirm → اعتماد المدير المباشر
+          RequestStatusEnum.hrManager, // hr_manager → موافقة صاحب الصلاحية
+          RequestStatusEnum.approved, // approve → معتمد
+          RequestStatusEnum.rejected, // reject
+          RequestStatusEnum.cancel, // cancel
         ];
 
       case ServiceCode.attendanceUpdate:
@@ -185,6 +185,15 @@ extension RequestStatusExtensionList on CurrentStatus {
           RequestStatusEnum.cancel,
         ];
       case ServiceCode.scrapRequest:
+        return const [
+          RequestStatusEnum.draft, // draft
+          RequestStatusEnum.approved, // approve → Submitted
+          RequestStatusEnum.confirmed, // confirmed
+          RequestStatusEnum.done, // done → Transfer Done
+          RequestStatusEnum.saleDone, // sale → Sale done
+          RequestStatusEnum.rejected, // reject
+          RequestStatusEnum.cancel, // cancel
+        ];
       case null:
         break;
     }
@@ -254,6 +263,8 @@ extension RequestStatusStringExtension on String? {
       // ---- Final Approved States ----
       case 'done':
         return RequestStatusEnum.done;
+      case 'sale':
+        return RequestStatusEnum.saleDone;
       case 'specifications':
         return RequestStatusEnum.specifications;
       case 'approve':
@@ -320,6 +331,71 @@ extension RequestStatusStringExtension on String? {
   }
 }
 
+extension RequestStatusEnumLocalized on RequestStatusEnum {
+  /// Localized display label for a workflow stage (falls back to the raw
+  /// enum name for [RequestStatusEnum.none]).
+  String get label {
+    switch (this) {
+      case RequestStatusEnum.newRequest:
+        return S.current.statusNewRequest;
+      case RequestStatusEnum.draft:
+        return S.current.statusDraft;
+      case RequestStatusEnum.applied:
+        return S.current.statusApplied;
+      case RequestStatusEnum.employeeApprove:
+        return S.current.statusEmployeeApprove;
+      case RequestStatusEnum.budget:
+        return S.current.statusBudget;
+      case RequestStatusEnum.emp:
+        return S.current.statusEmp;
+      case RequestStatusEnum.specifications:
+        return S.current.statusSpecifications;
+      case RequestStatusEnum.managerApproval:
+        return S.current.statusManagerApproval;
+      case RequestStatusEnum.hr:
+        return S.current.statusHr;
+      case RequestStatusEnum.hrApproval:
+        return S.current.statusHrApproval;
+      case RequestStatusEnum.hrManager:
+        return S.current.statusHrManager;
+      case RequestStatusEnum.rejected:
+        return S.current.statusRejected;
+      case RequestStatusEnum.confirmed:
+        return S.current.statusConfirmed;
+      case RequestStatusEnum.approved:
+        return S.current.statusApproved;
+      case RequestStatusEnum.authorityHolder:
+        return S.current.statusAuthorityHolder;
+      case RequestStatusEnum.externalRelations:
+        return S.current.statusExternalRelations;
+      case RequestStatusEnum.notValid:
+        return S.current.statusNotValid;
+      case RequestStatusEnum.cancel:
+        return S.current.statusCancel;
+      case RequestStatusEnum.closed:
+        return S.current.statusClosed;
+      case RequestStatusEnum.done:
+        return S.current.statusDone;
+      case RequestStatusEnum.saleDone:
+        return S.current.statusSaleDone;
+      case RequestStatusEnum.inProgress:
+        return S.current.statusInProgress;
+      case RequestStatusEnum.topManager:
+        return S.current.statusTopManager;
+      case RequestStatusEnum.achievement:
+        return S.current.statusAchievement;
+      case RequestStatusEnum.achievementTwo:
+        return S.current.statusAchievementTwo;
+      case RequestStatusEnum.approveTwo:
+        return S.current.statusApproveTwo;
+      case RequestStatusEnum.finalStage:
+        return S.current.statusFinalStage;
+      case RequestStatusEnum.none:
+        return '';
+    }
+  }
+}
+
 enum RequestStatusEnum {
   newRequest,
   draft,
@@ -341,6 +417,7 @@ enum RequestStatusEnum {
   cancel,
   closed,
   done,
+  saleDone,
   // outside working
   inProgress,
   topManager,

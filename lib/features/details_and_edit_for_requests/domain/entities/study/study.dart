@@ -15,6 +15,7 @@
 // flutter: ║            }
 
 import 'package:equatable/equatable.dart';
+import 'package:shaoni/core/models/request_attachment.dart';
 
 class Study extends Equatable {
   final String? requestType;
@@ -29,7 +30,7 @@ class Study extends Equatable {
   final String? comment;
   final String? editReasons;
   final String? rejectReasons;
-  final List<String>? attachments;
+  final List<RequestAttachment> attachments;
 
   const Study({
     this.requestType,
@@ -44,7 +45,7 @@ class Study extends Equatable {
     this.comment,
     this.editReasons,
     this.rejectReasons,
-    this.attachments,
+    this.attachments = const [],
   });
 
   @override
