@@ -131,7 +131,7 @@ Only services returned for the authenticated user by the services API are placed
 - Dropdown values are loaded from backend lookup endpoints.
 - The displayed dropdown label follows the active language; the selected identifier is sent to the API.
 - Date and time values are selected through application pickers and converted to the backend format.
-- Read-only employee information comes from the authenticated session or user profile.
+- Read-only applicant information (such as name, organizational unit, location, job number, job title, and registration number when available) comes from the authenticated session or user profile.
 - Attachments are available only on services that support them.
 - Repeatable line sections require at least one valid line before submission.
 - Validation and server errors are shown through the application's standard feedback components.
@@ -144,7 +144,7 @@ In the service tables below, **Required** lists the core validated inputs. **Con
 2. Review the entered information.
 3. Select **Submit**.
 4. Shaoni validates the form and sends it to the service endpoint.
-5. On success, a confirmation dialog is displayed and the request becomes available under **My Requests**.
+5. On success, a confirmation dialog shows the new request number and offers quick navigation to **My Requests** or **Home**, and the request becomes available under **My Requests**.
 
 ### How to update an existing request
 
@@ -182,13 +182,13 @@ Services are fetched from `GET /Service/get-all-services`, normalized by technic
 | Attendance Update | `attendance.update` | Missing attendance record, attendance type, applicable date/time | Check-in/check-out fields and forget reason depend on the selected record/type | Draft → Manager → Confirmed → HR → Approved |
 | Car Permission | `car.permission` | Car brand, color, and number | Notes | Draft → Applied → Confirmed → HR Manager → Approved |
 | Outside Working | `outside.working` | Department/project settings, attendance method, start/end dates, employees, employee tasks | Weekend, exception, private-task, and project selections | New → In Progress → Top Manager → Budget → Achievement stages → Final |
-| Start Work | `start.work` | Start-work type, employee, start date | Notes | New → Confirmed → HR Manager → Approved |
+| Start Work | `start.work` | Start-work type, employee, start date, and the type-specific field | The extra field is driven by the selected type — an employee-contract, task-management, or leave-type dropdown; an employee-transfer, job-title, or working-period text field; or an end-of-loan date. Promotion needs no extra field. Notes and attachment are optional | New → Confirmed → HR Manager → Approved |
 | ID Renewal | `id.renewal.request` | Request type, document type, issuing country, document-specific identifiers and dates | Passport, ID, family-card, licence, kafeel, tabaq, and kafala fields depend on document type | Draft → HR Manager → Approved |
 | Complaint | `complaint.request` | Complaint type, reason, and description | No update flow is currently registered | Draft → HR Manager → Approved |
 | Medical Insurance Upgrade | `upgrade.medical.insurance` | Insurance class and upgrade reason | Family inclusion, selected relatives, notes | New → Confirmed → HR Manager → Employee Approval → Budget → Authority Holder → Approved |
-| Experience Certificate | `experience.certificate` | Certificate reason and request reason | Additional explanation | New → Confirmed → Approved |
+| Experience Certificate | `experience.certificate` | Certificate reason and request reason | Notes and an attachment | New → Confirmed → Approved |
 
-Human Resources uses lookup endpoints for permission types, attendance data, forget reasons, cars, employees, countries, document types, insurance classes, relatives, departments, projects, complaint classifications, and other service-specific values.
+Human Resources uses lookup endpoints for permission types, attendance data, forget reasons, cars, employees, countries, document types, insurance classes, relatives, departments, projects, complaint classifications, employee contracts, task-management items, employee leave types, and other service-specific values.
 
 ### 📦 Purchases and Repositories
 
@@ -200,9 +200,9 @@ Human Resources uses lookup endpoints for permission types, attendance data, for
 | Service | Technical code | Required inputs | Conditional / optional inputs | Positive approval sequence |
 |---|---|---|---|---|
 | Product Order | `product.request` | Request reason and at least one category/product/quantity line | Notes and additional request lines | Draft → Confirmed → Specifications → Approved → Closed |
-| Scrap Request | `scrap.request` | Custody, stock request, scrap reason, request reason, and at least one product/lot/quantity line | Additional lines and line-dependent lots | Backend-defined stages |
+| Scrap Request | `scrap.request` | One or more custodies (multi-select), management letter, damage reason, and at least one line with product, lot, and quantity | Per-line notes, additional lines, and line-dependent lots | Draft → Submitted → Confirmed → Transfer Done → Sale Done |
 
-Both forms support repeatable request lines. Product options depend on the selected category, while scrap lots depend on the selected stock/product context.
+Both forms support repeatable request lines. Product-order options depend on the selected category, while scrap allows selecting multiple custodies and picking each line's product from those custodies, with lots depending on the chosen product.
 
 ### 💰 Salaries and Bonuses
 

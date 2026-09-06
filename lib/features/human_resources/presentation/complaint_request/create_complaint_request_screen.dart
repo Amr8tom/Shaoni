@@ -58,7 +58,7 @@ class CreateComplaintRequestScreen extends StatelessWidget {
                       predicate: (route) => false,
                     ),
                     onTab1: () => context.pushNamedAndRemoveUntil(
-                      DRoutesName.navigationMenuRoute,
+                      DRoutesName.requestRoutes,
                       predicate: (route) => false,
                     ),
                     context: context,

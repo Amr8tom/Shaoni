@@ -65,7 +65,7 @@ class CreateIDDocumentForm extends StatelessWidget {
                     },
                     onTab1: () {
                       context.pushNamedAndRemoveUntil(
-                        DRoutesName.requestRoutes,
+                        DRoutesName.navigationMenuRoute,
                         predicate: (route) => false,
                       );
                     },

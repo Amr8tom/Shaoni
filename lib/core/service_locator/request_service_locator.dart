@@ -18,6 +18,7 @@ import 'package:shaoni/features/human_resources/presentation/controller/car_perm
 import 'package:shaoni/features/human_resources/presentation/controller/complaint_request/complaint_request_cubit.dart';
 import '../../features/human_resources/data/data_sources/local_data_sources.dart';
 import '../../features/human_resources/data/data_sources/remote_data_sources.dart';
+import '../../features/human_resources/data/data_sources/remote_data_sources_impl.dart';
 import '../../features/human_resources/data/repositories/repository.dart';
 import '../../features/human_resources/domain/repository/repository.dart';
 import '../../features/human_resources/domain/use_cases/attendance/create_attendance_use_case.dart';
